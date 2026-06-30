@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agente de Seguridad Digital. Asesoría personalizada en ciberseguridad, protección contra estafas, verificación de links y transferencias. Atención 24/7.">
+    <meta name="keywords" content="ciberseguridad, estafas digitales, prevención de fraude, seguridad móvil, phishing, verificación CVU">
+    <meta name="author" content="Mg. Norberto Germán Aguilar">
+    <title>Agente de Seguridad Digital | Protege lo Que Importa</title>
+    
+    <style>
+        /* ==========================================================================
+           VARIABLES Y CONFIGURACIÓN BASE
+           ========================================================================== */
+        :root {
+            --bg-dark: #070B14;
+            --bg-mid: #0E1628;
+            --bg-card: rgba(14, 22, 40, 0.7);
+            --primary: #00F2FE;
+            --primary-hover: #00D1DB;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --border-glass: rgba(0, 242, 254, 0.2);
+            --transition: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+
+        /* Patrón hexagonal */
+        .bg-pattern { background-image: url("data:image/svg+xml,%3Csvg width='60' height='100' viewBox='0 0 60 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 100L0 85V55l30-15 30 15v30L30 100zM15 76.34l15 8.66 15-8.66V58.66L30 50l-15 8.66v17.68zM30 40L0 25V-5l30-15 30 15v30L30 40zM15 16.34l15 8.66 15-8.66V-1.34L30-10 15-1.34v17.68z' fill='%2300f2fe' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E"); }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .glass { background: var(--bg-card); backdrop-filter: blur(12px); border: 1px solid var(--border-glass); border-radius: 16px; }
+        
+        /* Botones */
+        .btn { padding: 14px 28px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); border: none; display: inline-block; text-align: center; }
+        .btn-primary { background-color: var(--primary); color: var(--bg-dark); box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3); }
+        .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); }
+        .btn-outline { background-color: transparent; color: var(--primary); border: 1px solid var(--primary); }
+
+        /* Header */
+        header { position: fixed; width: 100%; top: 0; z-index: 1000; background: rgba(7, 11, 20, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-glass); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: #fff; font-size: 0.9rem; }
+
+        /* Sections */
+        section { padding: 5rem 0; }
+        .section-title { font-size: 2.5rem; margin-bottom: 1rem; text-align: center; }
+
+        /* Hero */
+        .hero { min-height: 90vh; display: flex; align-items: center; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; color: var(--primary); }
+        
+        /* Grid general */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body class="bg-pattern">
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo"><strong>Agente de Seguridad Digital</strong></div>
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#especialista">Especialista</a>
+                <a href="#contacto" class="btn btn-outline" style="padding: 8px 16px;">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div style="max-width: 800px;">
+                <h1>Protegé tus cuentas y transferencias 24/7</h1>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Asesoría personalizada en ciberseguridad. Protegemos tu patrimonio frente a estafas digitales con un especialista real de tu lado.</p>
+                <div style="display:flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="#contacto" class="btn btn-primary">Consulta inicial sin costo</a>
+                    <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="valor" class="container">
+        <h2 class="section-title">¿Por qué confiar en nosotros?</h2>
+        <div class="grid">
+            <div class="glass" style="padding: 2rem;">
+                <h3>Atención Humana Real</h3>
+                <p>Nada de respuestas de bots. Evaluamos tu situación de riesgo con criterio experto.</p>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h3>Disponibilidad 24/7</h3>
+                <p>Las estafas no descansan. Estamos para vos ante cualquier alerta inusual.</p>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h3>Asesoría sin compromiso</h3>
+                <p>Evaluamos tu caso inicialmente sin costo para ofrecerte la solución justa.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="container">
+        <h2 class="section-title">Nuestras Capacidades</h2>
+        <div class="grid">
+            <div class="glass" style="padding: 2rem;">
+                <h4>Verificación CVU/CBU</h4>
+                <p>Validamos destinatarios para evitar fraudes en transferencias.</p>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h4>Detección de Spam</h4>
+                <p>Análisis de números sospechosos y llamadas fraudulentas.</p>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h4>Control de Links</h4>
+                <p>Consultá antes de hacer clic. Verificamos riesgos de phishing.</p>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h4>Análisis de Correos</h4>
+                <p>Revisión técnica de emails para detectar intentos de suplantación.</p>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h4>Fugas de Datos</h4>
+                <p>Verificamos si tus datos fueron expuestos en filtraciones.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="especialista" class="container">
+        <div class="glass" style="padding: 3rem; text-align: center;">
+            <h2 class="section-title">Mg. Norberto Germán Aguilar</h2>
+            <p style="color: var(--primary);">Especialista en Ciberseguridad</p>
+            <p style="margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">Profesional dedicado a la prevención de riesgos informáticos y educación digital para usuarios, priorizando siempre la protección de tu identidad y patrimonio.</p>
+        </div>
+    </section>
+
+    <section id="contacto" class="container">
+        <h2 class="section-title">Contacto</h2>
+        <div class="grid" style="text-align: center;">
+            <div class="glass" style="padding: 2rem;">
+                <h3>WhatsApp</h3>
+                <p>Respuesta rápida</p>
+                <a href="https://wa.me/543517145640" class="btn btn-primary" style="margin-top:1rem">Escribir Ahora</a>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h3>Email</h3>
+                <p>Consultas formales</p>
+                <a href="mailto:gaguilar.work@gmail.com" class="btn btn-outline" style="margin-top:1rem">Enviar Correo</a>
+            </div>
+            <div class="glass" style="padding: 2rem;">
+                <h3>Twitter / X</h3>
+                <p>Consejos y Alertas</p>
+                <a href="https://x.com/ger011026" class="btn btn-outline" style="margin-top:1rem">Seguir @ger011026</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 2rem;">
+        <p>&copy; <span id="year"></span> Agente de Seguridad Digital. Seguridad Digital Protege lo Que Importa.</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
