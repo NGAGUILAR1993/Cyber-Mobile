@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Cyber Mobile</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #050b14; color: #e2e8f0; padding: 2rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 2rem; background: rgba(10, 19, 37, 0.85); }
+        th, td { padding: 1rem; border: 1px solid #0055ff; text-align: left; }
+        th { background: #00d2ff; color: #050b14; }
+        .stats-grid { display: flex; gap: 2rem; margin-top: 2rem; }
+        .stat-card { background: rgba(10, 19, 37, 0.85); border: 1px solid #00d2ff; padding: 2rem; border-radius: 8px; width: 100%; text-align: center;}
+        .stat-card h2 { color: #00d2ff; font-size: 3rem; margin: 0; }
+    </style>
+</head>
+<body>
+    <h1>Panel de Control Analítico</h1>
+    
+    <div id="login-section">
+        <p>Ingresá la contraseña administrativa para ver los datos:</p>
+        <input type="password" id="password" placeholder="Contraseña...">
+        <button onclick="loadData()" style="padding: 0.5rem 1rem; background: #00d2ff; border: none; cursor: pointer;">Ingresar</button>
+    </div>
+
+    <div id="dashboard" style="display: none;">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h2 id="total-views">0</h2>
+                <p>Visitas Totales</p>
+            </div>
+            <div class="stat-card">
+                <h2 id="total-clicks">0</h2>
+                <p>Clics en Botones (CTA)</p>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha y Hora</th>
+                    <th>Tipo de Evento</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function loadData() {
+            const pwd = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch('/api/stats', {
+                    headers: { 'Authorization': `Bearer ${pwd}` }
+                });
+
+                if (!response.ok) {
+                    alert('Contraseña incorrecta o error de servidor.');
+                    return;
+                }
+
+                const data = await response.json();
+                
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+
+                let views = 0;
+                let clicks = 0;
+                const tbody = document.getElementById('table-body');
+
+                data.forEach(item => {
+                    if (item.event === 'page_view') views++;
+                    if (item.event === 'click_cta') clicks++;
+
+                    const date = new Date(item.timestamp).toLocaleString('es-AR');
+                    const details = item.details.texto || 'N/A';
+
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${date}</td>
+                            <td>${item.event === 'page_view' ? '👁️ Visita' : '🖱️ Clic CTA'}</td>
+                            <td>${details}</td>
+                        </tr>
+                    `;
+                });
+
+                document.getElementById('total-views').innerText = views;
+                document.getElementById('total-clicks').innerText = clicks;
+
+            } catch (error) {
+                alert('Error de conexión.');
+            }
+        }
+    </script>
+</body>
+</html>
