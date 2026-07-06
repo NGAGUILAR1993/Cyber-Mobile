@@ -662,5 +662,36 @@
             }
         });
     </script>
+    <script>
+    (function() {
+        // Función para enviar eventos al backend
+        const trackEvent = (eventName, details = {}) => {
+            fetch('/api/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    event: eventName, 
+                    path: window.location.pathname,
+                    details: details 
+                })
+            }).catch(err => console.error("Tracking bloqueado"));
+        };
+
+        // 1. Registrar carga de página (Visita)
+        window.addEventListener('load', () => {
+            trackEvent('page_view', { userAgent: navigator.userAgent });
+        });
+
+        // 2. Registrar clics en botones de interés
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                trackEvent('click_cta', { 
+                    texto: e.target.innerText.trim(),
+                    destino: e.target.getAttribute('href')
+                });
+            });
+        });
+    })();
+</script>
 </body>
 </html>
