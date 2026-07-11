@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Mobile | Agente de Seguridad Digital</title>
+    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Variables y Reset --- */
+        :root {
+            --bg-dark: #03070f;
+            --bg-panel: rgba(10, 19, 37, 0.4);
+            --primary-cyan: #00d2ff;
+            --secondary-blue: #0055ff;
+            --accent-neon: #00ffcc;
+            --text-light: #f1f5f9;
+            --text-muted: #94a3b8;
+            --danger-red: #ff3366;
+            --success-green: #00e676;
+            --warning-yellow: #ffc400;
+            --glass-border: rgba(0, 210, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 85, 255, 0.1) 0%, transparent 60%),
+                linear-gradient(rgba(0,210,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,210,255,0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Navegación --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(3, 7, 15, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-cyan);
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, text-shadow 0.3s;
+            font-size: 1.05rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-cyan);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+        }
+
+        /* --- Barra Flotante Compartir Redes Sociales --- */
+        .social-share-bar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: var(--bg-panel);
+            backdrop-filter: blur(10px);
+            padding: 15px 10px;
+            border: 1px solid var(--glass-border);
+            border-left: none;
+            border-radius: 0 12px 12px 0;
+            z-index: 999;
+            box-shadow: 5px 0 20px rgba(0,0,0,0.5);
+        }
+
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.1) translateX(5px);
+            background: var(--primary-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+        }
+
+        /* --- Hero Section & n8n Animation --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 7rem 2rem 3rem;
+            overflow: hidden;
+        }
+
+        .n8n-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .n8n-line {
+            fill: none;
+            stroke: var(--secondary-blue);
+            stroke-width: 1.5;
+            opacity: 0.3;
+        }
+
+        .n8n-glow {
+            fill: none;
+            stroke: var(--primary-cyan);
+            stroke-width: 2.5;
+            stroke-dasharray: 150 600;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 8px var(--primary-cyan));
+            animation: flow 5s linear infinite;
+        }
+
+        @keyframes flow {
+            from { stroke-dashoffset: 750; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        .hero-logo-img {
+            width: 110px;
+            height: auto;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0, 210, 255, 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(0, 85, 255, 0.5);
+        }
+
+        .hero h2 {
+            font-size: 1.4rem;
+            color: var(--primary-cyan);
+            margin-bottom: 2rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 400;
+            text-transform: none;
+            max-width: 700px;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- Botones --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            color: var(--text-light);
+            background: rgba(0, 210, 255, 0.1);
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+            border-radius: 6px;
+            border: 1px solid var(--primary-cyan);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-cyan);
+            color: var(--bg-dark);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-long {
+            white-space: normal;
+            max-width: 100%;
+            line-height: 1.4;
+            padding: 1.2rem;
+        }
+
+        /* --- Secciones Generales --- */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 4rem;
+            color: #fff;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-cyan);
+            margin: 1.5rem auto 0;
+            box-shadow: 0 0 15px var(--primary-cyan);
+            border-radius: 2px;
+        }
+
+        /* --- Estadísticas (Nueva Sección) --- */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: transform 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 255, 0.4);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-cyan);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+        }
+
+        .stat-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Cuadrículas (Glassmorphism Cards) --- */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-cyan), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 210, 255, 0.3);
+            background: rgba(10, 19, 37, 0.6);
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card h3 span {
+            color: var(--primary-cyan);
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* --- Simulador Interactivo --- */
+        .interactive-section {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .scenario-selector {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .scenario-btn {
+            background: var(--bg-panel);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-align: left;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .scenario-btn:hover {
+            border-color: var(--primary-cyan);
+            background: rgba(0, 210, 255, 0.05);
+        }
+
+        .scenario-btn.active {
+            background: rgba(0, 210, 255, 0.1);
+            border-color: var(--primary-cyan);
+            border-left: 4px solid var(--primary-cyan);
+            font-weight: 600;
+        }
+
+        .phone-frame {
+            width: 320px;
+            height: 650px;
+            background: #0f172a;
+            border-radius: 40px;
+            border: 6px solid #1e293b;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 210, 255, 0.1);
+            padding: 12px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-screen {
+            background: #efeae2;
+            width: 100%;
+            height: 100%;
+            border-radius: 28px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M20 20h60v60H20z" fill="rgba(0,0,0,0.03)"/></svg>');
+        }
+
+        .wa-header {
+            background: #075e54;
+            color: white;
+            padding: 15px;
+            font-family: sans-serif;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .wa-header .avatar {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-cyan);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .wa-chat {
+            flex-grow: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        
+        .wa-chat::-webkit-scrollbar { display: none; }
+
+        .msg {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-family: sans-serif;
+            font-size: 0.9rem;
+            color: #1f2937;
+            position: relative;
+            line-height: 1.4;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            animation: fadeInChat 0.4s ease forwards;
+        }
+
+        .msg-user {
+            background: #dcf8c6;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .msg-agent {
+            background: #ffffff;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            border-left: 4px solid var(--primary-cyan);
+        }
+
+        .msg-agent.safe { border-left-color: var(--success-green); }
+        .msg-agent.warning { border-left-color: var(--warning-yellow); }
+        .msg-agent.danger { border-left-color: var(--danger-red); }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 15px;
+            background: #fff;
+            align-self: flex-start;
+            border-radius: 12px;
+            border-bottom-left-radius: 4px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .dot {
+            width: 6px; height: 6px;
+            background: #94a3b8;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        @keyframes fadeInChat {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Animaciones de Scroll --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Contacto y Footer --- */
+        .contact-box {
+            background: var(--bg-panel);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 4rem 3rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-box h3 { margin-bottom: 1.5rem; font-size: 2rem; }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info span { color: var(--primary-cyan); font-weight: 500; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 850px) {
+            .nav-links { display: none; }
+            .interactive-section { flex-direction: column; align-items: center; }
+            .scenario-selector { width: 100%; }
+            .hero h1 { font-size: 2.8rem; }
+            .social-share-bar {
+                flex-direction: row;
+                top: auto; bottom: 0; left: 50%;
+                transform: translateX(-50%);
+                border-radius: 12px 12px 0 0;
+                border-left: 1px solid var(--glass-border);
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="social-share-bar">
+        <a href="https://api.whatsapp.com/send?text=Mirá%20este%20Agente%20de%20Seguridad%20Digital%3A%20https%3A%2F%2Fcyber-mobile-lilac.vercel.app" target="_blank" class="share-btn" title="Compartir en WhatsApp">W</a>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcyber-mobile-lilac.vercel.app&text=Conocé%20el%20Agente%20de%20Seguridad%20Digital%20Cyber%20Mobile" target="_blank" class="share-btn" title="Compartir en X">X</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcyber-mobile-lilac.vercel.app" target="_blank" class="share-btn" title="Compartir en LinkedIn">in</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcyber-mobile-lilac.vercel.app" target="_blank" class="share-btn" title="Compartir en Facebook">f</a>
+    </div>
+
+    <nav>
+        <a href="#hero" class="nav-logo">CYBER MOBILE</a>
+        <div class="nav-links">
+            <a href="#estadisticas">Contexto</a>
+            <a href="#herramientas">Herramientas</a>
+            <a href="#simulador">Simulador</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <header id="hero" class="hero">
+        <svg class="n8n-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+            <path class="n8n-line" d="M100,150 L300,250 L500,100 L700,350 L900,200" />
+            <path class="n8n-line" d="M150,450 L350,350 L550,500 L800,250" />
+            <path class="n8n-glow" d="M100,150 L300,250 L500,100 L700,350 L900,200" />
+            <path class="n8n-glow" d="M150,450 L350,350 L550,500 L800,250" style="animation-delay: 2s; stroke: var(--accent-neon);" />
+            <circle cx="300" cy="250" r="4" fill="#00d2ff" /><circle cx="700" cy="350" r="4" fill="#00ffcc" />
+        </svg>
+
+        <img src="cyber_agent_logo.png" alt="Escudo Cyber Mobile" class="hero-logo-img reveal">
+        <h1 class="reveal">Cyber Mobile</h1>
+        <h2 class="reveal">El mundo laboral y personal están más conectados de lo que creemos. Validá cada riesgo digital con un Experto en tu bolsillo.</h2>
+    </header>
+
+    <section id="estadisticas">
+        <h2 class="section-title reveal">El panorama actual</h2>
+        <div class="stats-container">
+            <div class="stat-card reveal">
+                <div class="stat-number">85%</div>
+                <div class="stat-desc">De los ciberataques inician por un engaño humano (Phishing/Vishing). La tecnología no basta, se requiere criterio.</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">+300%</div>
+                <div class="stat-desc">Incremento en fraudes financieros por suplantación de identidad mediante transferencias exprés en el último año.</div>
+            </div>
+            <div class="stat-card reveal">
+                <div class="stat-number">60%</div>
+                <div class="stat-desc">De los usuarios móviles admite no saber cómo identificar un enlace o archivo malicioso antes de abrirlo.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="herramientas">
+        <h2 class="section-title reveal">Capacidades del Agente</h2>
+        <div class="grid-cards">
+            <div class="card reveal">
+                <h3><span>📧</span> Verificar Email</h3>
+                <p>Auditoría de correos. Descubrí si tu email o contraseña han sido expuestos en filtraciones de bases de datos globales.</p>
+            </div>
+            <div class="card reveal">
+                <h3><span>🏦</span> Verificar CVU/CBU</h3>
+                <p>Análisis riguroso de cuentas destino antes de realizar transferencias para evitar estafas financieras.</p>
+            </div>
+            <div class="card reveal">
+                <h3><span>🔗</span> Verificar URL</h3>
+                <p>Análisis en tiempo real de enlaces recibidos por SMS o chat para detectar suplantación de identidad (Phishing).</p>
+            </div>
+            <div class="card reveal">
+                <h3><span>📁</span> Verificar Archivo</h3>
+                <p>Inspección de documentos PDF, Word o ejecutables sospechosos contra decenas de motores antivirus.</p>
+            </div>
+            <div class="card reveal">
+                <h3><span>🌐</span> Verificar IP</h3>
+                <p>Geolocalización y análisis de reputación de direcciones IP para identificar inicios de sesión inusuales.</p>
+            </div>
+            <div class="card reveal">
+                <h3><span>🏢</span> Verificar Usuario/Org</h3>
+                <p>Investigación de perfiles de redes sociales o tiendas online para medir su nivel de confiabilidad.</p>
+            </div>
+            <div class="card reveal">
+                <h3><span>🎙️</span> Verificar Teléfono</h3>
+                <p>Cruce de datos de números desconocidos para identificar posibles estafas telefónicas o telemarketing agresivo.</p>
+            </div>
+            <div class="card reveal">
+                <h3><span>🛡️</span> Asesoría General</h3>
+                <p>Consultoría experta, clara y sin tecnicismos sobre buenas prácticas de seguridad y configuración de privacidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulador">
+        <h2 class="section-title reveal">Prueba Interactiva</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;" class="reveal">Seleccioná una herramienta para ver cómo opera el Agente directamente en tu WhatsApp.</p>
+        
+        <div class="interactive-section reveal">
+            <div class="scenario-selector" id="scenario-buttons">
+                <button class="scenario-btn active" data-scenario="email">Verificar Email <span>→</span></button>
+                <button class="scenario-btn" data-scenario="cvu">Verificar CVU/CBU <span>→</span></button>
+                <button class="scenario-btn" data-scenario="url">Verificar URL <span>→</span></button>
+                <button class="scenario-btn" data-scenario="archivo">Verificar Archivo <span>→</span></button>
+                <button class="scenario-btn" data-scenario="ip">Verificar IP <span>→</span></button>
+                <button class="scenario-btn" data-scenario="usuario">Verificar Usuario u Org <span>→</span></button>
+                <button class="scenario-btn" data-scenario="telefono">Verificar Número Telefónico <span>→</span></button>
+                <button class="scenario-btn" data-scenario="asesoria">Asesoría en Ciberseguridad <span>→</span></button>
+            </div>
+            
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="wa-header">
+                        <div class="avatar">CM</div>
+                        <div>
+                            <div style="font-size: 1rem;">Cyber Mobile Experto</div>
+                            <div style="font-size: 0.75rem; font-weight: normal; opacity: 0.8;">En línea</div>
+                        </div>
+                    </div>
+                    <div class="wa-chat" id="chat-window">
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="contact-box reveal">
+            <h3 style="color: var(--primary-cyan); font-family: 'Orbitron', sans-serif;">Iniciá tu Tranquilidad Digital</h3>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Escribinos y poné a prueba a tu Agente de Seguridad Digital durante 1 semana de forma gratuita.</p>
+            
+            <div class="contact-info" style="margin-bottom: 3rem;">
+                <p>Email: <a href="mailto:cybermobile.ai@gmail.com" style="color: var(--primary-cyan); text-decoration: none;">cybermobile.ai@gmail.com</a></p>
+                <p>Instagram: <a href="https://instagram.com/cybermobile.ai" target="_blank" style="color: var(--primary-cyan); text-decoration: none;">@cybermobile.ai</a></p>
+            </div>
+
+            <a href="mailto:cybermobile.ai@gmail.com?subject=Solicitud%20Prueba%20Gratuita%201%20Semana" class="btn btn-long">Solicitar Prueba Gratuita (1 Semana)</a>
+            
+            <div style="margin-top: 2rem;">
+                <a href="portfolio_digital.pdf" target="_blank" style="color: var(--text-muted); text-decoration: underline; font-size: 0.95rem;">Descargar Portfolio Corporativo (.PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Cyber Mobile. Todos los derechos reservados.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #475569;">Arquitectura Web Protegida. Implementación de CSP activa por diseño.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animaciones de Scroll (Reveal)
+            const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+            const revealOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, revealOptions);
+            document.querySelectorAll('.reveal').forEach(el => revealOnScroll.observe(el));
+
+            // Lógica del Simulador Interactivo
+            const scenariosData = {
+                email: [
+                    { sender: 'user', text: 'Hola, me podrías verificar si mi correo personal (contacto@ejemplo.com) tuvo alguna filtración?' },
+                    { sender: 'agent', type: 'warning', text: '<strong>⚠️ AUDITORÍA DE PRIVACIDAD</strong><br>Encontramos tu correo en 2 filtraciones de bases de datos antiguas (2021). No hay contraseñas recientes expuestas, pero te sugiero activar la verificación en dos pasos (2FA) por precaución.' }
+                ],
+                cvu: [
+                    { sender: 'user', text: 'Me pasaron este CVU para señar un alquiler en la costa: 00000031000123456789. ¿Es seguro?' },
+                    { sender: 'agent', type: 'safe', text: '<strong>✅ VERIFICADO</strong><br>El CVU corresponde a una entidad bancaria registrada a nombre de una empresa legal. No posee reportes de fraude recientes. Podés avanzar con la transferencia.' }
+                ],
+                url: [
+                    { sender: 'user', text: 'Me llegó un SMS que dice que bloquearon mi paquete de Correo Argentino. Link: <i>seguimiento-paquete-arg.com</i>' },
+                    { sender: 'agent', type: 'danger', text: '<strong>🔴 ALERTA CRÍTICA</strong><br>Ese enlace es falso (Phishing). Está diseñado para robar los datos de tu tarjeta de crédito. <strong>No ingreses ningún dato.</strong> Bloqueá el número remitente.' }
+                ],
+                archivo: [
+                    { sender: 'user', text: 'Me enviaron un PDF adjunto que dice "Factura_vencida_Abril.pdf", pero yo no tengo deudas. Te lo reenvío.' },
+                    { sender: 'agent', type: 'danger', text: '<strong>🔴 ARCHIVO MALICIOSO</strong><br>Análisis completado: 12 motores de seguridad detectaron un troyano oculto en ese PDF. <strong>Eliminalo de tu dispositivo inmediatamente.</strong>' }
+                ],
+                ip: [
+                    { sender: 'user', text: 'Me llegó una alerta de inicio de sesión en mi cuenta desde la IP 185.15.xx.xx. Yo estoy en Buenos Aires.' },
+                    { sender: 'agent', type: 'warning', text: '<strong>⚠️ ALERTA DE UBICACIÓN</strong><br>Esa dirección IP pertenece a un servicio de VPN/Hosting ubicado en Rusia. Si no fuiste vos o alguien de tu equipo, alguien accedió a tu cuenta. Cambiá la clave ahora mismo.' }
+                ],
+                usuario: [
+                    { sender: 'user', text: '¿Podés verificar esta tienda de Instagram @superofertas_zapatillas? Venden muy barato.' },
+                    { sender: 'agent', type: 'warning', text: '<strong>⚠️ PRECAUCIÓN</strong><br>La cuenta fue creada hace solo 5 días, cambió de nombre de usuario 3 veces y los comentarios están desactivados. Es un patrón típico de tiendas fraudulentas. Desaconsejamos la compra.' }
+                ],
+                telefono: [
+                    { sender: 'user', text: 'Tengo varias llamadas perdidas de este número: +54 11 5000-XXXX' },
+                    { sender: 'agent', type: 'safe', text: '<strong>ℹ️ INFORMACIÓN</strong><br>Ese número está reportado en múltiples bases de datos comunitarias como Spam/Telemarketing (Venta de seguros). No es una amenaza directa, podés ignorarlo o bloquearlo.' }
+                ],
+                asesoria: [
+                    { sender: 'user', text: 'Me robaron el celular y tengo miedo de que entren a mi WhatsApp. ¿Qué hago rápido?' },
+                    { sender: 'agent', type: 'safe', text: '<strong>🛡️ PROTOCOLO DE EMERGENCIA:</strong><br>1. Enviá un mail a <i>support@whatsapp.com</i> con el asunto "Teléfono robado: Desactivar mi cuenta" e incluí tu número con código de país.<br>2. Llamá a tu operadora para bloquear el chip (SIM).<br>Te guío paso a paso.' }
+                ]
+            };
+
+            const chatWindow = document.getElementById('chat-window');
+            const buttons = document.querySelectorAll('.scenario-btn');
+
+            async function playScenario(scenarioKey) {
+                // Limpiar chat
+                chatWindow.innerHTML = '';
+                const messages = scenariosData[scenarioKey];
+                
+                // Mostrar msj del usuario instantáneo
+                const userMsg = document.createElement('div');
+                userMsg.className = 'msg msg-user';
+                userMsg.innerHTML = messages[0].text;
+                chatWindow.appendChild(userMsg);
+
+                // Mostrar indicador escribiendo
+                const typing = document.createElement('div');
+                typing.className = 'typing-indicator';
+                typing.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+                chatWindow.appendChild(typing);
+
+                // Simular tiempo de respuesta
+                setTimeout(() => {
+                    chatWindow.removeChild(typing);
+                    const agentMsg = document.createElement('div');
+                    agentMsg.className = `msg msg-agent ${messages[1].type}`;
+                    agentMsg.innerHTML = messages[1].text;
+                    chatWindow.appendChild(agentMsg);
+                    chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
+                }, 1500);
+            }
+
+            // Iniciar escenario por defecto
+            playScenario('email');
+
+            // Eventos de botones
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+                    playScenario(e.currentTarget.dataset.scenario);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
