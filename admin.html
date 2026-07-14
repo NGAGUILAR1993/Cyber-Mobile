@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal de Administrador - Cyber SOC v2.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --neon-cyan: #00d2ff;
+            --neon-magenta: #ff1493;
+            --neon-green: #00ff41;
+            --neon-gold: #ffd700;
+            --neon-purple: #8b5cf6;
+            --bg: #0f1117;
+            --card: #1a1f3a;
+            --text: #e0e0ff;
+            --text-muted: #a0aec0;
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            background: rgba(15, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            padding: 1.5rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--bg);
+            font-size: 20px;
+        }
+
+        .header-title h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+        }
+
+        .header-title p {
+            font-size: 0.7rem;
+            color: var(--neon-cyan);
+            font-family: 'Roboto Mono', monospace;
+            margin-top: 0.2rem;
+        }
+
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'Roboto Mono', monospace;
+            color: var(--neon-green);
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 210, 255, 0.08), inset 0 0 20px rgba(0, 210, 255, 0.02);
+            padding: 1.5rem;
+            border-radius: 4px;
+            transition: all 300ms var(--ease-out);
+            cursor: pointer;
+        }
+
+        .kpi-card:hover {
+            border-color: rgba(0, 210, 255, 0.6);
+            box-shadow: 0 12px 48px rgba(0, 210, 255, 0.15), inset 0 0 30px rgba(0, 210, 255, 0.05);
+        }
+
+        .kpi-label {
+            font-size: 0.75rem;
+            font-family: 'Roboto Mono', monospace;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--neon-cyan);
+        }
+
+        /* Charts Container */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 210, 255, 0.08);
+            padding: 1.5rem;
+            border-radius: 4px;
+            transition: all 300ms var(--ease-out);
+        }
+
+        .chart-card:hover {
+            border-color: rgba(0, 210, 255, 0.6);
+            box-shadow: 0 12px 48px rgba(0, 210, 255, 0.15);
+        }
+
+        .chart-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        canvas {
+            max-height: 300px;
+        }
+
+        /* Logs Section */
+        .logs-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .logs-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 210, 255, 0.08);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .logs-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .log-item {
+            padding: 0.75rem;
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 200ms var(--ease-out);
+        }
+
+        .log-item:hover {
+            background: rgba(0, 210, 255, 0.1);
+            border-color: rgba(0, 210, 255, 0.4);
+            transform: translateX(4px);
+        }
+
+        .log-time {
+            color: var(--neon-cyan);
+            font-weight: bold;
+        }
+
+        .log-status {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        .status-success {
+            background: rgba(0, 255, 65, 0.2);
+            color: var(--neon-green);
+        }
+
+        .status-warning {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--neon-gold);
+        }
+
+        .status-error {
+            background: rgba(255, 20, 147, 0.2);
+            color: var(--neon-magenta);
+        }
+
+        .log-details {
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+        }
+
+        /* Sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 40;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 300ms var(--ease-out);
+        }
+
+        .sidebar-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg);
+            border-left: 1px solid rgba(0, 210, 255, 0.3);
+            box-shadow: -8px 0 32px rgba(0, 210, 255, 0.1);
+            z-index: 50;
+            transform: translateX(100%);
+            transition: transform 300ms var(--ease-out);
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            position: sticky;
+            top: 0;
+            background: rgba(15, 17, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            color: var(--neon-cyan);
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 200ms var(--ease-out);
+            font-size: 1.2rem;
+        }
+
+        .close-btn:hover {
+            background: rgba(0, 210, 255, 0.1);
+            border-color: rgba(0, 210, 255, 0.6);
+        }
+
+        .sidebar-content {
+            padding: 1.5rem;
+        }
+
+        .sidebar-section {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            backdrop-filter: blur(15px);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-section-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--neon-cyan);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .sidebar-label {
+            color: rgba(0, 210, 255, 0.7);
+        }
+
+        .sidebar-value {
+            color: var(--neon-cyan);
+            font-weight: bold;
+            word-break: break-all;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(0, 210, 255, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.3rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+            transition: width 300ms var(--ease-out);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(0, 210, 255, 0.3);
+            background: rgba(15, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            font-family: 'Roboto Mono', monospace;
+            color: rgba(0, 210, 255, 0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logs-section {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                max-width: 100%;
+            }
+
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 1rem;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 210, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 210, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 210, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                <div class="logo">⚡</div>
+                <div class="header-title">
+                    <h1>Terminal de Administrador</h1>
+                    <p>v2.0 | SOC SYSTEM ONLINE</p>
+                </div>
+            </div>
+            <div class="system-status">
+                <div class="pulse"></div>
+                <span id="status-text">CARGANDO...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- KPI Section -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Accesos Totales</div>
+                <div class="kpi-value" id="kpi-total">0</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Usuarios Activos</div>
+                <div class="kpi-value" id="kpi-users">0</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Tiempo Promedio (ms)</div>
+                <div class="kpi-value" id="kpi-time">0</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Salud del Sistema</div>
+                <div class="kpi-value" id="kpi-health">100%</div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-title">Accesos por Hora</div>
+                <canvas id="accessChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Distribución de Eventos</div>
+                <canvas id="distributionChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Accesos por Ubicación</div>
+                <canvas id="locationChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Logs Section -->
+        <div class="logs-section">
+            <div class="logs-card">
+                <div class="logs-title">Accesos Recientes</div>
+                <div id="logs-container"></div>
+            </div>
+            <div class="logs-card">
+                <div class="logs-title">Ubicaciones Top</div>
+                <div id="locations-container"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">Detalles de Conexión</div>
+            <button class="close-btn" id="closeBtn">&times;</button>
+        </div>
+        <div class="sidebar-content" id="sidebarContent"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <span>Terminal de Administrador © 2026</span>
+            <span id="footer-time">Sistema en línea | Última actualización: --:--:--</span>
+        </div>
+    </footer>
+
+    <script>
+        let charts = {};
+        let allAccesses = [];
+
+        // Obtener datos del tracker
+        function loadMetrics() {
+            if (typeof AdminTerminal !== 'undefined') {
+                const metrics = AdminTerminal.getMetrics();
+                allAccesses = metrics.accesses || [];
+                
+                document.getElementById('kpi-total').textContent = metrics.totalAccess;
+                document.getElementById('kpi-users').textContent = metrics.activeUsers;
+                document.getElementById('kpi-time').textContent = metrics.avgResponseTime;
+                document.getElementById('kpi-health').textContent = metrics.systemHealth + '%';
+                document.getElementById('status-text').textContent = 'SISTEMA ACTIVO';
+
+                renderLogs();
+                renderLocations(metrics.locations);
+                updateCharts();
+            }
+        }
+
+        // Initialize Charts
+        function initializeCharts() {
+            const ctx1 = document.getElementById('accessChart').getContext('2d');
+            charts.access = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '23:59'],
+                    datasets: [{
+                        label: 'Accesos',
+                        data: [0, 0, 0, 0, 0, 0, 0],
+                        borderColor: '#00d2ff',
+                        backgroundColor: 'rgba(0, 210, 255, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#00d2ff',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#e0e0ff', font: { family: "'Rajdhani', sans-serif", size: 12 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: { color: '#a0aec0', font: { family: "'Roboto Mono', monospace" } },
+                            grid: { color: 'rgba(0, 210, 255, 0.1)' }
+                        },
+                        x: {
+                            ticks: { color: '#a0aec0', font: { family: "'Roboto Mono', monospace" } },
+                            grid: { color: 'rgba(0, 210, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+
+            const ctx2 = document.getElementById('distributionChart').getContext('2d');
+            charts.distribution = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Exitosos', 'Advertencias', 'Errores'],
+                    datasets: [{
+                        data: [0, 0, 0],
+                        backgroundColor: ['#00ff41', '#ffd700', '#ff1493'],
+                        borderColor: '#0f1117',
+                        borderWidth: 2,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#e0e0ff', font: { family: "'Rajdhani', sans-serif", size: 12 } }
+                        }
+                    }
+                }
+            });
+
+            const ctx3 = document.getElementById('locationChart').getContext('2d');
+            charts.location = new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Accesos por Ubicación',
+                        data: [],
+                        backgroundColor: ['#00d2ff', '#ff1493', '#8b5cf6', '#00ff41', '#ffd700'],
+                        borderColor: '#00d2ff',
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: '#e0e0ff', font: { family: "'Rajdhani', sans-serif", size: 12 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: { color: '#a0aec0', font: { family: "'Rajdhani', sans-serif" } },
+                            grid: { color: 'rgba(0, 210, 255, 0.1)' }
+                        },
+                        x: {
+                            ticks: { color: '#a0aec0', font: { family: "'Roboto Mono', monospace" } },
+                            grid: { color: 'rgba(0, 210, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update Charts
+        function updateCharts() {
+            const successCount = allAccesses.filter(l => l.status === 'success').length;
+            const warningCount = allAccesses.filter(l => l.status === 'warning').length;
+            const errorCount = allAccesses.filter(l => l.status === 'error').length;
+
+            charts.distribution.data.datasets[0].data = [successCount, warningCount, errorCount];
+            charts.distribution.update();
+
+            const hourData = [0, 0, 0, 0, 0, 0, 0];
+            allAccesses.forEach(log => {
+                const hour = Math.floor(new Date(log.timestamp).getHours() / 3);
+                if (hour < 7) hourData[hour]++;
+            });
+            charts.access.data.datasets[0].data = hourData;
+            charts.access.update();
+        }
+
+        // Render Logs
+        function renderLogs() {
+            const container = document.getElementById('logs-container');
+            if (allAccesses.length === 0) {
+                container.innerHTML = '<div class="log-details">Sin accesos registrados</div>';
+                return;
+            }
+            
+            container.innerHTML = allAccesses.slice(0, 10).map((log, idx) => `
+                <div class="log-item" onclick="openSidebar(${idx})">
+                    <div>
+                        <span class="log-time">${new Date(log.timestamp).toLocaleTimeString()}</span>
+                        <span class="log-status status-${log.status}">${log.status.toUpperCase()}</span>
+                    </div>
+                    <div class="log-details">${log.event}</div>
+                    <div class="log-details">📍 ${log.location} | 🔗 ${log.ip}</div>
+                    <div class="log-details">⏱️ ${log.duration}ms</div>
+                </div>
+            `).join('');
+        }
+
+        // Render Locations
+        function renderLocations(locations) {
+            const container = document.getElementById('locations-container');
+            const sorted = Object.entries(locations)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
+
+            if (sorted.length === 0) {
+                container.innerHTML = '<div class="log-details">Sin ubicaciones registradas</div>';
+                return;
+            }
+
+            container.innerHTML = sorted.map(([city, count]) => `
+                <div class="log-item">
+                    <div class="log-details">📍 ${city}</div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.3rem;">
+                        <span style="color: #a0aec0;">Accesos:</span>
+                        <span style="color: var(--neon-cyan); font-weight: bold;">${count}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Actualizar gráfico de ubicaciones
+            charts.location.data.labels = sorted.map(([city]) => city);
+            charts.location.data.datasets[0].data = sorted.map(([, count]) => count);
+            charts.location.update();
+        }
+
+        // Sidebar Functions
+        function openSidebar(index) {
+            const log = allAccesses[index];
+            if (!log) return;
+
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const content = document.getElementById('sidebarContent');
+
+            content.innerHTML = `
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">📋 Información de Sesión</div>
+                    <div class="sidebar-row"><span class="sidebar-label">ID de Sesión:</span><span class="sidebar-value">${log.sessionId}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Timestamp:</span><span class="sidebar-value">${new Date(log.timestamp).toLocaleString()}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Evento:</span><span class="sidebar-value">${log.event}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Duración:</span><span class="sidebar-value">${log.duration}ms</span></div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">🌐 Información de Red</div>
+                    <div class="sidebar-row"><span class="sidebar-label">Dirección IP:</span><span class="sidebar-value">${log.ip}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Puerto:</span><span class="sidebar-value">${log.port}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Protocolo:</span><span class="sidebar-value">${log.protocol}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Ancho de Banda:</span><span class="sidebar-value">${log.bandwidth} Mbps</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Latencia:</span><span class="sidebar-value">${log.latency}ms</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Pérdida de Paquetes:</span><span class="sidebar-value">${log.packetLoss.toFixed(2)}%</span></div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">📍 Información Geográfica</div>
+                    <div class="sidebar-row"><span class="sidebar-label">Ciudad:</span><span class="sidebar-value">${log.location}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">País:</span><span class="sidebar-value">${log.country}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">ISP:</span><span class="sidebar-value">${log.isp}</span></div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">🖥️ Información del Dispositivo</div>
+                    <div class="sidebar-row"><span class="sidebar-label">Navegador:</span><span class="sidebar-value">${log.browser}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Sistema Operativo:</span><span class="sidebar-value">${log.os}</span></div>
+                    <div class="sidebar-row"><span class="sidebar-label">Tipo de Dispositivo:</span><span class="sidebar-value">${log.device}</span></div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">⚡ Métricas de Rendimiento</div>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="sidebar-row"><span class="sidebar-label">Latencia</span><span class="sidebar-value">${log.latency}ms</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: ${Math.min(log.latency / 2, 100)}%"></div></div>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <div class="sidebar-row"><span class="sidebar-label">Ancho de Banda</span><span class="sidebar-value">${log.bandwidth} Mbps</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: ${Math.min(log.bandwidth, 100)}%"></div></div>
+                    </div>
+                    <div>
+                        <div class="sidebar-row"><span class="sidebar-label">Pérdida de Paquetes</span><span class="sidebar-value">${log.packetLoss.toFixed(2)}%</span></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: ${Math.min(log.packetLoss * 50, 100)}%"></div></div>
+                    </div>
+                </div>
+            `;
+
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // Update Footer Time
+        function updateFooterTime() {
+            const now = new Date();
+            document.getElementById('footer-time').textContent = `Sistema en línea | Última actualización: ${now.toLocaleTimeString()}`;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+            loadMetrics();
+            updateFooterTime();
+
+            document.getElementById('closeBtn').addEventListener('click', closeSidebar);
+            document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
+
+            // Actualizar cada 2 segundos
+            setInterval(() => {
+                loadMetrics();
+            }, 2000);
+
+            setInterval(updateFooterTime, 1000);
+
+            // Escuchar eventos del tracker
+            window.addEventListener('adminTerminalAccess', function(event) {
+                loadMetrics();
+            });
+        });
+    </script>
+</body>
+</html>
