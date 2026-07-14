@@ -984,36 +984,57 @@
             });
         });
     </script>
-    <!-- Analytics Tracking Script -->
+   <!-- Analytics Tracking Script Avanzado -->
     <script>
     (function() {
+        const startTime = Date.now();
+        
         const trackEvent = (eventName, details = {}) => {
             fetch('/api/track', {
                 method: 'POST',
+                keepalive: true, // Crucial para que el dato viaje aunque se cierre la pestaña
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
                     event: eventName, 
                     path: window.location.pathname,
                     details: details 
                 })
-            }).catch(err => console.error("Tracking bloqueado"));
+            }).catch(() => {});
         };
 
-        // Registrar visita al entrar
+        // 1. Visita y Datos de Origen
         window.addEventListener('load', () => {
-            trackEvent('page_view', { userAgent: navigator.userAgent });
+            const zonaHoraria = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const idioma = navigator.language;
+            const origen = document.referrer || "Directo";
+            
+            trackEvent('page_view', { 
+                userAgent: navigator.userAgent,
+                ubicacion: zonaHoraria,
+                idioma: idioma,
+                referido_desde: origen
+            });
         });
 
-        // Registrar clics en botones importantes
-        document.querySelectorAll('.btn, .tab-btn').forEach(btn => {
+        // 2. Clics
+        document.querySelectorAll('.btn, .tab-btn, .scenario-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 trackEvent('click_cta', { 
-                    texto: e.target.innerText.trim(),
-                    destino: e.target.getAttribute('href') || e.target.getAttribute('data-tab')
+                    texto: e.currentTarget.innerText.trim() || e.currentTarget.dataset.scenario,
+                    destino: e.currentTarget.getAttribute('href') || e.currentTarget.getAttribute('data-tab')
                 });
             });
         });
+
+        // 3. Tiempo de retención (Al salir)
+        window.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                const tiempoSegundos = Math.round((Date.now() - startTime) / 1000);
+                trackEvent('time_spent', { segundos: tiempoSegundos });
+            }
+        });
     })();
+    </script>
     </script>
 </body>
 </html>
