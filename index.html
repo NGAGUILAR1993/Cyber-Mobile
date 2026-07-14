@@ -984,5 +984,36 @@
             });
         });
     </script>
+    <!-- Analytics Tracking Script -->
+    <script>
+    (function() {
+        const trackEvent = (eventName, details = {}) => {
+            fetch('/api/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    event: eventName, 
+                    path: window.location.pathname,
+                    details: details 
+                })
+            }).catch(err => console.error("Tracking bloqueado"));
+        };
+
+        // Registrar visita al entrar
+        window.addEventListener('load', () => {
+            trackEvent('page_view', { userAgent: navigator.userAgent });
+        });
+
+        // Registrar clics en botones importantes
+        document.querySelectorAll('.btn, .tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                trackEvent('click_cta', { 
+                    texto: e.target.innerText.trim(),
+                    destino: e.target.getAttribute('href') || e.target.getAttribute('data-tab')
+                });
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
