@@ -1,188 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Mobile | SOC Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Librería para gráficos profesionales -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        :root {
-            --bg-dark: #020617;
-            --bg-panel: rgba(15, 23, 42, 0.6);
-            --primary-cyan: #00d2ff;
-            --danger-red: #ff3366;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-glow: rgba(0, 210, 255, 0.2);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Rajdhani', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            background-image: 
-                linear-gradient(rgba(0, 210, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 210, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-            padding: 2rem;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-glow);
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary-cyan);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .btn-refresh {
-            background: rgba(0, 210, 255, 0.1);
-            border: 1px solid var(--primary-cyan);
-            color: var(--primary-cyan);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-family: 'Orbitron', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .btn-refresh:hover { background: var(--primary-cyan); color: var(--bg-dark); }
-
-        /* Tarjetas de Resumen (KPIs) */
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .kpi-card {
-            background: var(--bg-panel);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glow);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .kpi-card h3 { color: var(--text-muted); font-size: 1rem; margin-bottom: 0.5rem; }
-        .kpi-card .number { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; color: var(--text-light); }
-        .kpi-card .cyan { color: var(--primary-cyan); text-shadow: 0 0 10px rgba(0, 210, 255, 0.4); }
-
-        /* Gráficos */
-        .charts-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .chart-container {
-            background: var(--bg-panel);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glow);
-            border-radius: 8px;
-            padding: 1.5rem;
-            height: 300px;
-        }
-
-        /* Tabla de Eventos (Terminal Style) */
-        .log-section {
-            background: var(--bg-panel);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-glow);
-            border-radius: 8px;
-            padding: 1.5rem;
-            overflow-x: auto;
-        }
-
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th { color: var(--primary-cyan); border-bottom: 1px solid var(--border-glow); padding: 10px; font-family: 'Orbitron', sans-serif; }
-        td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
-        tr:hover { background: rgba(0, 210, 255, 0.05); }
-
-        .tag-test { background: rgba(255, 51, 102, 0.2); color: var(--danger-red); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
-        .tag-real { background: rgba(0, 210, 255, 0.2); color: var(--primary-cyan); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }
-
-        @media (max-width: 768px) { .charts-grid { grid-template-columns: 1fr; } }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1><span style="font-size: 2rem;">🛡️</span> Centro de Comando (SOC)</h1>
-        <button class="btn-refresh" onclick="location.reload()">ACTUALIZAR DATOS</button>
-    </header>
-
-    <!-- Resumen de Métricas -->
-    <div class="kpi-grid">
-        <div class="kpi-card">
-            <h3>VISITAS TOTALES</h3>
-            <div class="number cyan" id="kpi-visitas">--</div>
-        </div>
-        <div class="kpi-card">
-            <h3>TIEMPO PROMEDIO (Seg)</h3>
-            <div class="number" id="kpi-tiempo">--</div>
-        </div>
-        <div class="kpi-card">
-            <h3>INTERACCIONES (Clics)</h3>
-            <div class="number cyan" id="kpi-clics">--</div>
-        </div>
-        <div class="kpi-card">
-            <h3>TASA DE ACTIVIDAD</h3>
-            <div class="number" id="kpi-tasa">--%</div>
-        </div>
-    </div>
-
-    <!-- Gráficos Visuales -->
-    <div class="charts-grid">
-        <div class="chart-container">
-            <h3 style="margin-bottom: 1rem; color: var(--text-muted); text-align: center;">Dispositivos</h3>
-            <canvas id="deviceChart"></canvas>
-        </div>
-        <div class="chart-container">
-            <h3 style="margin-bottom: 1rem; color: var(--text-muted); text-align: center;">Interacción por Herramienta</h3>
-            <canvas id="clicksChart"></canvas>
-        </div>
-    </div>
-
-    <!-- Tabla en Vivo -->
-    <div class="log-section">
-        <h3 style="margin-bottom: 1rem; color: var(--primary-cyan); font-family: 'Orbitron', sans-serif;">REGISTRO DE EVENTOS (TIEMPO REAL)</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Fecha / Hora</th>
-                    <th>Evento</th>
-                    <th>Detalle / Ubicación</th>
-                    <th>Dispositivo (Filtro)</th>
-                </tr>
-            </thead>
-            <tbody id="log-table-body">
-                <tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Cargando telemetría...</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Lógica del SOC -->
-    <script>
-        // Esta función decodifica el SO y el Navegador para decirte si sos vos o es un cliente
+<script>
         function analyzeAgent(agentStr) {
             if (!agentStr) return { desc: 'Desconocido', isTest: false };
             let desc = "";
@@ -205,11 +21,21 @@
             return { desc, isTest };
         }
 
-        async function fetchMetrics() {
+        async function fetchMetrics(password) {
             try {
-                // Asume que tu backend tiene una ruta para recuperar las estadísticas.
-                // Si la ruta que configuraste antes para leer la DB se llama distinto, ajustala acá.
-                const response = await fetch('/api/stats'); 
+                // Acá está la corrección: enviamos tu contraseña al backend para que te autorice
+                const response = await fetch('/api/stats', {
+                    headers: {
+                        'Authorization': `Bearer ${password}`
+                    }
+                }); 
+                
+                // Si el servidor (Vercel) rebota la contraseña, mostramos error
+                if (response.status === 401) {
+                    document.body.innerHTML = "<h1 style='color:var(--danger-red); text-align:center; margin-top:20vh;'>ACCESO DENEGADO<br><span style='font-size:1.2rem; color:var(--text-muted);'>Contraseña incorrecta</span></h1>";
+                    return;
+                }
+                
                 const data = await response.json();
                 
                 let visitas = 0;
@@ -223,9 +49,7 @@
                 const tbody = document.getElementById('log-table-body');
                 tbody.innerHTML = '';
 
-                // Procesar cada evento guardado
                 data.forEach(log => {
-                    // Contadores KPI
                     if (log.event === 'page_view') visitas++;
                     if (log.event === 'click_cta') clics++;
                     if (log.event === 'time_spent' && log.details && log.details.segundos) {
@@ -233,7 +57,6 @@
                         eventosTiempo++;
                     }
 
-                    // Gráficos
                     const agentInfo = analyzeAgent(log.details ? log.details.userAgent : '');
                     if (log.event === 'page_view') {
                         if (agentInfo.isTest) deviceStats['Tus Pruebas']++;
@@ -245,7 +68,6 @@
                         btnStats[txt] = (btnStats[txt] || 0) + 1;
                     }
 
-                    // Llenar tabla
                     const date = new Date(log.timestamp || Date.now());
                     const formatDate = `${date.toLocaleDateString()} - ${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
                     
@@ -266,13 +88,11 @@
                     tbody.appendChild(tr);
                 });
 
-                // Actualizar KPIs HTML
                 document.getElementById('kpi-visitas').innerText = visitas;
                 document.getElementById('kpi-clics').innerText = clics;
                 document.getElementById('kpi-tiempo').innerText = eventosTiempo > 0 ? Math.round(tiempoAcumulado / eventosTiempo) : '--';
                 document.getElementById('kpi-tasa').innerText = visitas > 0 ? Math.round((clics / visitas) * 100) + '%' : '--%';
 
-                // Dibujar Gráficos
                 new Chart(document.getElementById('deviceChart'), {
                     type: 'doughnut',
                     data: {
@@ -309,17 +129,15 @@
 
             } catch (error) {
                 console.error("Error al cargar telemetría:", error);
-                document.getElementById('log-table-body').innerHTML = '<tr><td colspan="4" style="color: var(--danger-red);">Error de conexión con la base de datos.</td></tr>';
+                document.getElementById('log-table-body').innerHTML = '<tr><td colspan="4" style="color: var(--danger-red); text-align: center;">Error de conexión con la base de datos.</td></tr>';
             }
         }
 
-        // Simular autenticación rápida si querías contraseña
+        // Pide la clave y ejecuta la función principal
         const pass = prompt("Acceso Restringido. Ingrese clave de administrador SOC:");
-        if (pass === "TU_CONTRASEÑA_ACA") { // <-- Cambiá esto por la contraseña que estabas usando
-            fetchMetrics();
+        if (pass) {
+            fetchMetrics(pass);
         } else {
-            document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20vh;'>ACCESO DENEGADO</h1>";
+            document.body.innerHTML = "<h1 style='color:var(--danger-red); text-align:center; margin-top:20vh;'>ACCESO CANCELADO</h1>";
         }
     </script>
-</body>
-</html>
