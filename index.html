@@ -959,7 +959,7 @@
 
         // --- Sistema de Analíticas ---
         window.trackEvent = function(eventName, details = {}) {
-            fetch('/api/track', {
+            fetch('https://cyber-mobile-lilac.vercel.app/api/track', {
                 method: 'POST',
                 keepalive: true,
                 headers: { 'Content-Type': 'application/json' },
