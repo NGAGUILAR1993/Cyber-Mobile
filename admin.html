@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Terminal | Cyber Mobile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-base: #0a0d16;
+            --bg-card: rgba(12, 16, 28, 0.75);
+            --cyan: #00d9ff;
+            --magenta: #d946ef;
+            --green: #10b981;
+            --red: #ef4444;
+            --yellow: #f59e0b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: rgba(0, 217, 255, 0.15);
+        }
+
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* AUTENTICACIÓN */
+        .auth-wrapper {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #0a0d16 0%, #0f172a 50%, #0a0d16 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .auth-wrapper.hidden { display: none; }
+
+        .auth-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 4rem 3.5rem;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.08);
+            backdrop-filter: blur(20px);
+        }
+
+        .auth-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 28px;
+            color: var(--bg-base);
+            margin: 0 auto 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .auth-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-align: center;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .auth-input:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+            background: rgba(0, 217, 255, 0.02);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            border: none;
+            color: var(--bg-base);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .auth-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.3);
+        }
+
+        .auth-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .auth-error.show { display: block; }
+
+        /* DASHBOARD */
+        .dashboard {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .dashboard.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .logo-badge {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 24px;
+            color: var(--bg-base);
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.25);
+        }
+
+        .header-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+
+        .header-text p {
+            font-size: 0.75rem;
+            color: var(--cyan);
+            font-family: 'Roboto Mono', monospace;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+        }
+
+        .period-selector {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .period-btn {
+            padding: 0.6rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .period-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .period-btn.active {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            border-color: transparent;
+            color: var(--bg-base);
+        }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logout-btn:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        /* MAIN */
+        main {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--cyan), var(--magenta));
+            border-radius: 2px;
+        }
+
+        /* KPI GRID */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.8rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 2.8rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--cyan);
+            margin-bottom: 0.8rem;
+        }
+
+        .kpi-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* CHARTS */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* LISTS */
+        .list-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .list-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.05);
+        }
+
+        .list-item:last-child { border-bottom: none; }
+
+        .list-item-label { font-weight: 600; color: var(--text-primary); }
+        .list-item-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(0, 217, 255, 0.1);
+            border-top-color: var(--cyan);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .charts-grid { grid-template-columns: 1fr; }
+            .header-content { flex-direction: column; align-items: flex-start; }
+            main { padding: 1rem; }
+            .kpi-value { font-size: 2rem; }
+            .period-selector { width: 100%; }
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 217, 255, 0.2);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 217, 255, 0.3); }
+    </style>
+</head>
+<body>
+
+    <!-- AUTENTICACIÓN -->
+    <div class="auth-wrapper" id="authWrapper">
+        <div class="auth-box">
+            <div style="text-align: center; margin-bottom: 2.5rem;">
+                <div class="auth-logo">A</div>
+                <h2 class="auth-title">Analytics Terminal</h2>
+                <p class="auth-subtitle">Cyber Mobile</p>
+            </div>
+            <div class="auth-error" id="authError"></div>
+            <input type="password" class="auth-input" id="authPassword" placeholder="••••••••" onkeypress="handleAuthKey(event)">
+            <button class="auth-btn" onclick="authenticate()">Autenticar</button>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard" id="dashboard">
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="logo-badge">A</div>
+                    <div class="header-text">
+                        <h1>Analytics Terminal</h1>
+                        <p>Cyber Mobile | Web Tracking</p>
+                    </div>
+                </div>
+                <div class="period-selector">
+                    <button class="period-btn active" onclick="changePeriod('today')">Hoy</button>
+                    <button class="period-btn" onclick="changePeriod('week')">Semana</button>
+                    <button class="period-btn" onclick="changePeriod('month')">Mes</button>
+                </div>
+                <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="content" class="loading">
+                <div class="spinner"></div>
+                <p>Cargando datos...</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const API_ENDPOINT = 'https://tu-api-domain.com/api'; // Cambia por tu URL
+        const AUTH_PASSWORD = 'analytics2026';
+        let currentPeriod = 'today';
+
+        function handleAuthKey(e) {
+            if (e.key === 'Enter') authenticate();
+        }
+
+        function authenticate() {
+            const password = document.getElementById('authPassword').value;
+            const errorDiv = document.getElementById('authError');
+            
+            if (password === AUTH_PASSWORD) {
+                errorDiv.classList.remove('show');
+                document.getElementById('authWrapper').classList.add('hidden');
+                document.getElementById('dashboard').classList.add('visible');
+                loadAnalytics();
+                setInterval(loadAnalytics, 10000); // Actualiza cada 10 segundos
+            } else {
+                errorDiv.textContent = 'Credenciales inválidas';
+                errorDiv.classList.add('show');
+                document.getElementById('authPassword').value = '';
+            }
+        }
+
+        function logout() {
+            if (confirm('¿Cerrar sesión?')) {
+                document.getElementById('authWrapper').classList.remove('hidden');
+                document.getElementById('dashboard').classList.remove('visible');
+                document.getElementById('authPassword').value = '';
+            }
+        }
+
+        function changePeriod(period) {
+            currentPeriod = period;
+            document.querySelectorAll('.period-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            loadAnalytics();
+        }
+
+        async function loadAnalytics() {
+            try {
+                const response = await fetch(`${API_ENDPOINT}/analytics/${currentPeriod}`);
+                if (!response.ok) throw new Error('Failed to fetch');
+                
+                const data = await response.json();
+                renderDashboard(data);
+            } catch (error) {
+                document.getElementById('content').innerHTML = `
+                    <p style="color: var(--red);">Error al cargar datos: ${error.message}</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                        Verifica que la API esté disponible en: ${API_ENDPOINT}
+                    </p>
+                `;
+            }
+        }
+
+        function renderDashboard(data) {
+            const html = `
+                <!-- KPI SUMMARY -->
+                <section>
+                    <h2 class="section-title">Resumen</h2>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-label">Page Views</div>
+                            <div class="kpi-value">${data.summary.totalPageViews}</div>
+                            <div class="kpi-meta">vistas de página</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Sesiones Únicas</div>
+                            <div class="kpi-value">${data.summary.uniqueSessions}</div>
+                            <div class="kpi-meta">usuarios únicos</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Total de Clicks</div>
+                            <div class="kpi-value">${data.summary.totalClicks}</div>
+                            <div class="kpi-meta">interacciones registradas</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-label">Duración Promedio</div>
+                            <div class="kpi-value">${data.summary.avgSessionDuration}s</div>
+                            <div class="kpi-meta">por sesión</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PÁGINAS TOP -->
+                <section>
+                    <h2 class="section-title">Páginas Más Visitadas</h2>
+                    <div class="list-card">
+                        ${data.pageviews.byPage.slice(0, 10).map(page => `
+                            <div class="list-item">
+                                <div class="list-item-label">${page.path || '/'}</div>
+                                <div class="list-item-value">${page.views}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- CLICKS TOP -->
+                <section>
+                    <h2 class="section-title">Elementos Más Clickeados</h2>
+                    <div class="list-card">
+                        ${data.clicks.byElement.slice(0, 10).map(elem => `
+                            <div class="list-item">
+                                <div class="list-item-label">${elem.element}</div>
+                                <div class="list-item-value">${elem.clicks}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- CHARTS -->
+                <section>
+                    <h2 class="section-title">Distribución</h2>
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <h3 class="chart-title">Dispositivos</h3>
+                            <div class="chart-container">
+                                <canvas id="devicesChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3 class="chart-title">Navegadores</h3>
+                            <div class="chart-container">
+                                <canvas id="browsersChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3 class="chart-title">Top Países</h3>
+                            <div class="chart-container">
+                                <canvas id="countriesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CIUDADES -->
+                <section>
+                    <h2 class="section-title">Top Ciudades</h2>
+                    <div class="list-card">
+                        ${data.geography.cities.slice(0, 15).map(city => `
+                            <div class="list-item">
+                                <div class="list-item-label">${city.name}</div>
+                                <div class="list-item-value">${city.count}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+
+            document.getElementById('content').innerHTML = html;
+            initCharts(data);
+        }
+
+        function initCharts(data) {
+            Chart.defaults.color = '#cbd5e1';
+            Chart.defaults.font.family = "'Rajdhani', sans-serif";
+
+            // Dispositivos
+            const devicesCtx = document.getElementById('devicesChart')?.getContext('2d');
+            if (devicesCtx) {
+                new Chart(devicesCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: data.devices.map(d => d.type),
+                        datasets: [{
+                            data: data.devices.map(d => d.count),
+                            backgroundColor: ['#00d9ff', '#d946ef', '#10b981'],
+                            borderWidth: 2,
+                            borderColor: '#0a0d16'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom' } }
+                    }
+                });
+            }
+
+            // Navegadores
+            const browsersCtx = document.getElementById('browsersChart')?.getContext('2d');
+            if (browsersCtx) {
+                new Chart(browsersCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.browsers.map(b => b.name),
+                        datasets: [{
+                            label: 'Usuarios',
+                            data: data.browsers.map(b => b.count),
+                            backgroundColor: '#00d9ff',
+                            borderRadius: 6,
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: { legend: { display: false } },
+                        scales: { x: { grid: { color: 'rgba(0, 217, 255, 0.05)' } } }
+                    }
+                });
+            }
+
+            // Países
+            const countriesCtx = document.getElementById('countriesChart')?.getContext('2d');
+            if (countriesCtx) {
+                new Chart(countriesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.geography.countries.slice(0, 8).map(c => c.name),
+                        datasets: [{
+                            label: 'Vistas',
+                            data: data.geography.countries.slice(0, 8).map(c => c.count),
+                            backgroundColor: '#d946ef',
+                            borderRadius: 6,
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { grid: { color: 'rgba(0, 217, 255, 0.05)' } },
+                            x: { grid: { color: 'rgba(0, 217, 255, 0.05)' } }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Carga inicial
+        window.addEventListener('load', () => {
+            loadAnalytics();
+        });
+    </script>
+</body>
+</html>
