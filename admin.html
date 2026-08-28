@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; connect-src 'self' https://cyber-mobile-lilac.vercel.app; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Terminal Admin - Cyber Mobile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-base: #0a0d16;
+            --bg-card: rgba(12, 16, 28, 0.8);
+            --cyan: #00d9ff;
+            --cyan-light: #00f0ff;
+            --blue: #1d4ed8;
+            --green: #10b981;
+            --red: #ef4444;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: rgba(0, 217, 255, 0.15);
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .cyber-bg {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background: linear-gradient(135deg, #0a0d16 0%, #0f1720 50%, #0a0d16 100%);
+        }
+
+        .cyber-lines {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .line-vertical {
+            position: absolute;
+            width: 2px; height: 200%;
+            background: linear-gradient(180deg, transparent 0%, var(--cyan) 20%, var(--cyan-light) 50%, var(--cyan) 80%, transparent 100%);
+            box-shadow: 0 0 10px var(--cyan), 0 0 20px rgba(0, 217, 255, 0.5);
+            animation: flow 6s infinite linear;
+        }
+
+        .line-horizontal {
+            position: absolute;
+            height: 2px; width: 200%;
+            background: linear-gradient(90deg, transparent 0%, var(--blue) 20%, var(--cyan) 50%, var(--blue) 80%, transparent 100%);
+            box-shadow: 0 0 10px var(--blue);
+            animation: flowH 8s infinite linear;
+        }
+
+        .line-diagonal {
+            position: absolute;
+            width: 2px; height: 300%;
+            background: linear-gradient(45deg, transparent 0%, var(--cyan) 30%, var(--cyan) 70%, transparent 100%);
+            box-shadow: 0 0 8px var(--cyan);
+            animation: flowDiag 7s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes flow { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+        @keyframes flowH { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+        @keyframes flowDiag { 0% { transform: translate(-100%, -100%); } 100% { transform: translate(100%, 100%); } }
+
+        .cyber-grid {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(0, 217, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 217, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+            animation: gridPan 20s linear infinite;
+        }
+
+        @keyframes gridPan { 0% { background-position: 0 0; } 100% { background-position: 50px 50px; } }
+
+        .auth-wrapper {
+            position: fixed; inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .auth-wrapper.hidden { display: none; }
+
+        .auth-box {
+            background: rgba(12, 16, 28, 0.95);
+            border: 2px solid var(--cyan);
+            padding: 3rem;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.15);
+            backdrop-filter: blur(20px);
+            text-align: center;
+        }
+
+        .auth-logo {
+            width: 140px; height: 140px;
+            margin: 0 auto 2rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid var(--cyan);
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.5);
+            background: #000;
+        }
+
+        .auth-logo img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center;
+            display: block; 
+        }
+
+        .auth-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .auth-subtitle {
+            font-size: 0.9rem;
+            color: var(--cyan);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .auth-field {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .auth-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            outline: none;
+            caret-color: var(--cyan);
+        }
+
+        .auth-input:focus {
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+            background: rgba(0, 217, 255, 0.03);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border: 1px solid var(--cyan);
+            color: var(--bg-base);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.25);
+        }
+
+        .auth-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .auth-error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: none;
+            font-size: 0.9rem;
+            text-align: center;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .auth-error.show { display: block; }
+
+        .dashboard {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .dashboard.visible { display: block; opacity: 1; }
+
+        header {
+            background: rgba(12, 16, 28, 0.85);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .header-left { display: flex; align-items: center; gap: 1.2rem; }
+
+        .logo-badge {
+            width: 50px; height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.35);
+            border: 1px solid var(--cyan);
+            overflow: hidden;
+            background: #000;
+        }
+
+        .logo-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .header-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+
+        .header-text p {
+            font-size: 0.75rem;
+            color: var(--cyan);
+            font-family: 'Roboto Mono', monospace;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-dot {
+            width: 10px; height: 10px;
+            background: var(--green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--green);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logout-btn:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        main {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--cyan), var(--blue));
+            border-radius: 2px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .kpi-card {
+            background: rgba(12, 16, 28, 0.85);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .kpi-value {
+            font-size: 2.8rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+
+        .kpi-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .chart-card {
+            background: rgba(12, 16, 28, 0.85);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .events-section {
+            background: rgba(12, 16, 28, 0.85);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .event-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            align-items: center;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .event-item:hover {
+            background: rgba(0, 217, 255, 0.08);
+            border-color: rgba(0, 217, 255, 0.3);
+        }
+
+        .event-type { color: var(--cyan); font-weight: 600; }
+        .event-time { color: var(--text-muted); white-space: nowrap; }
+
+        @media (max-width: 768px) {
+            .charts-grid { grid-template-columns: 1fr; }
+            .kpi-value { font-size: 2rem; }
+        }
+    
+        .secBtn,.perBtn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);
+          color:var(--text-muted);padding:9px 16px;border-radius:6px;cursor:pointer;
+          font-family:inherit;font-size:.85rem;font-weight:600;transition:all .15s;}
+        .secBtn.active,.perBtn.active{background:rgba(0,229,255,.12);border-color:var(--accent,#00e5ff);
+          color:var(--accent,#00e5ff);}
+        .secBtn:hover,.perBtn:hover{color:var(--accent,#00e5ff);}
+        .obs-row{display:grid;grid-template-columns:40px 1fr 80px;gap:12px;padding:9px 12px;
+          border-bottom:1px solid rgba(255,255,255,.06);align-items:center;font-size:.88rem;}
+        .obs-per{margin-bottom:20px;}
+        .obs-per h4{margin:0 0 8px;font-size:.95rem;color:var(--text,#fff);}
+
+    </style>
+</head>
+<body>
+
+    <div class="cyber-bg"></div>
+    <div class="cyber-grid"></div>
+    <div class="cyber-lines" id="cyberLines"></div>
+
+    <!-- AUTENTICACIÓN -->
+    <div class="auth-wrapper" id="authWrapper">
+        <div class="auth-box">
+            <!-- Updated Shield Logo -->
+            <div class="auth-logo">
+                <img src="Escudo CM.jpeg" alt="Cyber Mobile Logo">
+            </div>
+            
+            <h2 class="auth-title">Cyber Mobile</h2>
+            <p class="auth-subtitle">Terminal Administrativa</p>
+            
+            <div class="auth-error" id="authError"></div>
+            
+            <div class="auth-field">
+                <label class="auth-label">Usuario</label>
+                <input type="text" class="auth-input" id="authUser" autocomplete="off" onkeypress="if(event.key==='Enter') authenticate()">
+            </div>
+            
+            <div class="auth-field">
+                <label class="auth-label">Contraseña</label>
+                <input type="password" class="auth-input" id="authPassword" autocomplete="off" onkeypress="if(event.key==='Enter') authenticate()">
+            </div>
+            
+            <button class="auth-btn" id="authBtn" onclick="authenticate()">Autenticar</button>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="dashboard" id="dashboard">
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    <!-- Updated Small Header Logo -->
+                    <div class="logo-badge">
+                        <img src="Escudo CM.jpeg" alt="Cyber Mobile Badge">
+                    </div>
+                    <div class="header-text">
+                        <h1>Terminal Admin</h1>
+                        <p>Cyber Mobile | Datos en Vivo</p>
+                    </div>
+                </div>
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    Sincronizando
+                </div>
+                <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <main>
+
+        <div class="sec-switch" style="display:flex;gap:8px;margin:0 0 24px;flex-wrap:wrap;">
+          <button class="secBtn active" data-sec="analitica">📊 Analítica del sitio</button>
+          <button class="secBtn" data-sec="observatorio">🛡️ Observatorio</button>
+        </div>
+
+            <div id="sec-analitica">
+            <section>
+                <h2 class="section-title">Interacciones en Vivo</h2>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-label">Total de Interacciones</div>
+                        <div class="kpi-value" id="total-interactions">0</div>
+                        <div class="kpi-meta" id="interactions-detail">Cargando datos...</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Vistas de Página</div>
+                        <div class="kpi-value" id="page-views">0</div>
+                        <div class="kpi-meta" id="views-detail">Usuarios en el sitio</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Clicks Registrados</div>
+                        <div class="kpi-value" id="total-clicks">0</div>
+                        <div class="kpi-meta" id="clicks-detail">Interacciones con CTA</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-label">Simulaciones</div>
+                        <div class="kpi-value" id="simulations">0</div>
+                        <div class="kpi-meta" id="sim-detail">Escenarios ejecutados</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Análisis</h2>
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3 class="chart-title">Distribución de Eventos</h3>
+                        <div class="chart-container">
+                            <canvas id="distributionChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3 class="chart-title">Últimos Eventos</h3>
+                        <div class="chart-container">
+                            <canvas id="hourlyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Eventos Recientes (Últimos 50)</h2>
+                <div class="events-section">
+                    <div class="events-list" id="eventsList">
+                        <p style="color: var(--text-muted); text-align: center;">Conectando a datos en vivo...</p>
+                    </div>
+                </div>
+            </section>
+            </div><!-- /sec-analitica -->
+
+            <div id="sec-observatorio" style="display:none;">
+              <section>
+                <h2 class="section-title">Estado del Observatorio</h2>
+                <div class="kpi-grid">
+                  <div class="kpi-card"><div class="kpi-label">Última actualización</div>
+                    <div class="kpi-value" id="obs-last" style="font-size:1.4rem;">—</div>
+                    <div class="kpi-meta" id="obs-last-meta">Cargando...</div></div>
+                  <div class="kpi-card"><div class="kpi-label">Snapshots registrados</div>
+                    <div class="kpi-value" id="obs-snaps">0</div>
+                    <div class="kpi-meta">Corridas del motor guardadas</div></div>
+                  <div class="kpi-card"><div class="kpi-label">En cuarentena</div>
+                    <div class="kpi-value" id="obs-quar">0</div>
+                    <div class="kpi-meta">Modalidades nuevas sin publicar</div></div>
+                  <div class="kpi-card"><div class="kpi-label">Modalidades en Top</div>
+                    <div class="kpi-value" id="obs-modal">0</div>
+                    <div class="kpi-meta">En la última publicación</div></div>
+                </div>
+              </section>
+
+              <section>
+                <h2 class="section-title">Evolución por período</h2>
+                <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+                  <button class="perBtn active" data-per="semanal">Semanal</button>
+                  <button class="perBtn" data-per="mensual">Mensual</button>
+                  <button class="perBtn" data-per="anual">Anual</button>
+                </div>
+                <div class="events-section"><div id="obs-periodos" style="padding:8px;">
+                  <p style="color:var(--text-muted);text-align:center;">Cargando métricas...</p>
+                </div></div>
+              </section>
+
+              <section>
+                <h2 class="section-title">Cuarentena — modalidades nuevas detectadas</h2>
+                <div class="events-section"><div id="obs-cuarentena" style="padding:8px;">
+                  <p style="color:var(--text-muted);text-align:center;">Sin elementos.</p>
+                </div></div>
+              </section>
+            </div><!-- /sec-observatorio -->
+        </main>
+    </div>
+
+    <script>
+        const STATS_ENDPOINT = '/api/stats';
+        const LOGIN_ENDPOINT = '/api/login';
+        // La clave NO vive en el navegador. Se valida en el servidor.
+        // Tras un login correcto, el servidor devuelve el token en memoria (nunca en el HTML).
+        let SESSION_TOKEN = null;
+
+        async function authenticate() {
+            const user = document.getElementById('authUser').value.trim();
+            const pass = document.getElementById('authPassword').value;
+            const error = document.getElementById('authError');
+            const btn = document.getElementById('authBtn');
+            btn.disabled = true; btn.textContent = 'Verificando...';
+
+            try {
+                const r = await fetch(LOGIN_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user, password: pass })
+                });
+                const data = await r.json().catch(() => ({}));
+
+                if (r.ok && data.success && data.token) {
+                    SESSION_TOKEN = data.token;         // solo en memoria de la pestaña
+                    error.classList.remove('show');
+                    document.getElementById('authWrapper').classList.add('hidden');
+                    document.getElementById('dashboard').classList.add('visible');
+                    document.getElementById('authPassword').value = '';
+                    initDashboard();
+                } else {
+                    error.textContent = data.error || '❌ Credenciales inválidas';
+                    error.classList.add('show');
+                    document.getElementById('authPassword').value = '';
+                }
+            } catch (e) {
+                error.textContent = '❌ Error de conexión';
+                error.classList.add('show');
+            } finally {
+                btn.disabled = false; btn.textContent = 'Autenticar';
+            }
+        }
+
+        function logout() {
+            if (confirm('¿Cerrar sesión?')) {
+                SESSION_TOKEN = null;
+                document.getElementById('authWrapper').classList.remove('hidden');
+                document.getElementById('dashboard').classList.remove('visible');
+                document.getElementById('authUser').value = '';
+                document.getElementById('authPassword').value = '';
+            }
+        }
+
+        function createCyberLines() {
+            const container = document.getElementById('cyberLines');
+            for(let i = 0; i < 25; i++) {
+                const line = document.createElement('div');
+                line.className = 'line-vertical';
+                line.style.left = Math.random() * 100 + '%';
+                line.style.animationDelay = Math.random() * 6 + 's';
+                line.style.opacity = (0.3 + Math.random() * 0.4).toString();
+                container.appendChild(line);
+            }
+            for(let i = 0; i < 15; i++) {
+                const line = document.createElement('div');
+                line.className = 'line-horizontal';
+                line.style.top = Math.random() * 100 + '%';
+                line.style.animationDelay = Math.random() * 8 + 's';
+                line.style.opacity = (0.25 + Math.random() * 0.35).toString();
+                container.appendChild(line);
+            }
+        }
+
+        createCyberLines();
+
+        let chartsInstance = {};
+        let allEvents = [];
+
+        async function fetchRealData() {
+            try {
+                const response = await fetch(STATS_ENDPOINT, {
+                    headers: {
+                        'Authorization': `Bearer ${SESSION_TOKEN}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('📊 Datos recibidos de Vercel:', data.length, 'eventos');
+                
+                allEvents = Array.isArray(data) ? data : [];
+                updateMetrics();
+                updateCharts();
+                updateEventsList();
+                
+            } catch (error) {
+                console.error('❌ Error conectando a Vercel:', error.message);
+                document.getElementById('eventsList').innerHTML = 
+                    `<p style="color: var(--red); text-align: center;">Error: ${error.message}</p>`;
+            }
+        }
+
+        function updateMetrics() {
+            const pageViews = allEvents.filter(e => e.event === 'page_view').length;
+            const clicks = allEvents.filter(e => e.event === 'click_cta').length;
+            const simulations = allEvents.filter(e => e.event === 'sim_scenario_play').length;
+            const total = pageViews + clicks + simulations;
+
+            console.log('📊 Métricas:', { total, pageViews, clicks, simulations });
+
+            document.getElementById('total-interactions').textContent = total;
+            document.getElementById('interactions-detail').textContent = 
+                `${total} eventos registrados`;
+            
+            document.getElementById('page-views').textContent = pageViews;
+            document.getElementById('views-detail').textContent = 
+                `${pageViews} vistas`;
+            
+            document.getElementById('total-clicks').textContent = clicks;
+            document.getElementById('clicks-detail').textContent = 
+                `${clicks} interacciones`;
+            
+            document.getElementById('simulations').textContent = simulations;
+            document.getElementById('sim-detail').textContent = 
+                `${simulations} simulaciones`;
+        }
+
+        if (typeof Chart !== 'undefined') {
+            Chart.defaults.color = '#cbd5e1';
+            Chart.defaults.font.family = "'Rajdhani', sans-serif";
+        }
+
+        function updateCharts() {
+            if (typeof Chart === 'undefined') {
+                console.warn('⚠️ Chart.js no se cargó correctamente. Omitiendo gráficos.');
+                return;
+            }
+
+            const pageViews = allEvents.filter(e => e.event === 'page_view').length;
+            const clicks = allEvents.filter(e => e.event === 'click_cta').length;
+            const simulations = allEvents.filter(e => e.event === 'sim_scenario_play').length;
+            const tabViews = allEvents.filter(e => e.event === 'tab_view').length;
+
+            // Gráfico de distribución
+            if (chartsInstance.dist) chartsInstance.dist.destroy();
+            
+            chartsInstance.dist = new Chart(document.getElementById('distributionChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Vistas', 'Clicks', 'Simulaciones', 'Tabs'],
+                    datasets: [{
+                        data: [pageViews, clicks, simulations, tabViews],
+                        backgroundColor: ['#00d9ff', '#10b981', '#1d4ed8', '#f59e0b'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    cutout: '75%',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+
+            // Gráfico temporal
+            if (chartsInstance.hourly) chartsInstance.hourly.destroy();
+
+            chartsInstance.hourly = new Chart(document.getElementById('hourlyChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Vistas', 'Clicks', 'Sim', 'Tabs'],
+                    datasets: [{
+                        label: 'Eventos',
+                        data: [pageViews, clicks, simulations, tabViews],
+                        borderColor: '#00d9ff',
+                        backgroundColor: 'rgba(0, 217, 255, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: 'rgba(0, 217, 255, 0.05)' } },
+                        x: { grid: { color: 'rgba(0, 217, 255, 0.05)' } }
+                    }
+                }
+            });
+        }
+
+        function updateEventsList() {
+            const list = document.getElementById('eventsList');
+            
+            if (allEvents.length === 0) {
+                list.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Sin eventos aún</p>';
+                return;
+            }
+
+            const recentEvents = allEvents.slice(0, 50).map(evt => {
+                const time = new Date(evt.timestamp).toLocaleTimeString('es-AR', { 
+                    hour: '2-digit', 
+                    minute: '2-digit', 
+                    second: '2-digit' 
+                });
+                
+                const eventType = evt.event || 'unknown';
+                const icon = {
+                    'page_view': '👁️',
+                    'click_cta': '🖱️',
+                    'sim_scenario_play': '🎮',
+                    'tab_view': '📑'
+                }[eventType] || '📊';
+
+                return `
+                    <div class="event-item">
+                        <div>
+                            <span style="font-size: 1.2rem; margin-right: 0.5rem;">${icon}</span>
+                            <span class="event-type">${eventType}</span>
+                        </div>
+                        <div class="event-time">${time}</div>
+                    </div>
+                `;
+            }).join('');
+
+            list.innerHTML = recentEvents;
+        }
+
+        async function initDashboard() {
+            cargarObservatorio();
+            console.log('🚀 Dashboard inicializando - Sincronizando con Vercel...');
+            
+            await fetchRealData();
+            
+            setInterval(fetchRealData, 5000);
+            
+            console.log('✅ Dashboard listo - Actualizando cada 5 segundos');
+        }
+
+        console.log('✅ Imagen del escudo CM configurada exitosamente.');
+    
+        // ===== PANEL OBSERVATORIO =====
+        const OBS_ENDPOINT = '/api/observatorio-stats';
+        let OBS_DATA = null;
+        let obsPeriodo = 'semanal';
+
+        function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+        async function cargarObservatorio(){
+            if (!SESSION_TOKEN) return;
+            try {
+                const r = await fetch(OBS_ENDPOINT, { headers:{ 'Authorization':`Bearer ${SESSION_TOKEN}` }});
+                if (!r.ok) throw new Error('HTTP '+r.status);
+                OBS_DATA = await r.json();
+                pintarObservatorio();
+            } catch(e){
+                document.getElementById('obs-periodos').innerHTML =
+                  '<p style="color:var(--text-muted);text-align:center;">No se pudieron cargar las métricas ('+esc(e.message)+'). El motor todavía puede no haber corrido.</p>';
+            }
+        }
+
+        function pintarObservatorio(){
+            if (!OBS_DATA) return;
+            const u = OBS_DATA.ultimo;
+            document.getElementById('obs-snaps').textContent = OBS_DATA.totalSnapshots || 0;
+            document.getElementById('obs-quar').textContent = (OBS_DATA.cuarentena||[]).length;
+            document.getElementById('obs-modal').textContent = u && u.top ? u.top.length : 0;
+            if (u && u.fecha){
+                const d = new Date(u.fecha);
+                document.getElementById('obs-last').textContent =
+                  ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+                const hs = Math.round((Date.now()-d.getTime())/3600000);
+                document.getElementById('obs-last-meta').textContent = 'Hace '+hs+' h';
+            } else {
+                document.getElementById('obs-last').textContent = '—';
+                document.getElementById('obs-last-meta').textContent = 'El motor aún no publicó';
+            }
+
+            // períodos
+            const arr = OBS_DATA[obsPeriodo] || [];
+            const cont = document.getElementById('obs-periodos');
+            if (!arr.length){ cont.innerHTML = '<p style="color:var(--text-muted);text-align:center;">Sin datos para este período todavía.</p>'; }
+            else {
+                cont.innerHTML = arr.map(function(p){
+                    const filas = (p.top||[]).map(function(t,i){
+                        return '<div class="obs-row"><span style="color:var(--text-muted);">'+(i+1)+'</span>'+
+                               '<span>'+esc(t.nombre)+'</span>'+
+                               '<span style="text-align:right;font-weight:700;color:var(--accent,#00e5ff);">'+t.actProm+'</span></div>';
+                    }).join('');
+                    const rg = p.riesgo||{};
+                    return '<div class="obs-per"><h4>'+esc(p.periodo)+' <span style="color:var(--text-muted);font-weight:400;font-size:.8rem;">('+
+                           p.snapshots+' corridas · alto '+(rg.alto||0)+' / medio '+(rg.medio||0)+' / bajo '+(rg.bajo||0)+')</span></h4>'+
+                           (filas||'<p style="color:var(--text-muted);">Sin modalidades.</p>')+'</div>';
+                }).join('');
+            }
+
+            // cuarentena
+            const q = OBS_DATA.cuarentena||[];
+            const qc = document.getElementById('obs-cuarentena');
+            qc.innerHTML = q.length ? q.slice().reverse().map(function(c){
+                const d = new Date(c.fecha);
+                return '<div class="obs-row"><span style="color:#ffb020;">⚠</span>'+
+                       '<span>'+esc(c.nombre||c.key||'(sin nombre)')+'</span>'+
+                       '<span style="text-align:right;color:var(--text-muted);font-size:.78rem;">'+
+                       ('0'+d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'</span></div>';
+            }).join('') : '<p style="color:var(--text-muted);text-align:center;">Sin elementos en cuarentena.</p>';
+        }
+
+        // wiring de secciones y períodos
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelectorAll('.secBtn').forEach(function(b){
+                b.addEventListener('click', function(){
+                    document.querySelectorAll('.secBtn').forEach(x=>x.classList.remove('active'));
+                    b.classList.add('active');
+                    const s = b.dataset.sec;
+                    document.getElementById('sec-analitica').style.display = (s==='analitica')?'':'none';
+                    document.getElementById('sec-observatorio').style.display = (s==='observatorio')?'':'none';
+                    if (s==='observatorio' && !OBS_DATA) cargarObservatorio();
+                });
+            });
+            document.querySelectorAll('.perBtn').forEach(function(b){
+                b.addEventListener('click', function(){
+                    document.querySelectorAll('.perBtn').forEach(x=>x.classList.remove('active'));
+                    b.classList.add('active');
+                    obsPeriodo = b.dataset.per;
+                    pintarObservatorio();
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
