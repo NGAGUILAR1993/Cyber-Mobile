@@ -1,13 +1,99 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-28T16:52:46.672Z",
+    "actualizado": "2026-08-28T16:54:55.525Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
   "top10": [
     {
       "pos": 1,
+      "nombre": "Phishing de servicios (luz, gas, agua)",
+      "canal": "REDES",
+      "act": 71,
+      "delta": 19,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Circula en redes un posteo falso que ofrece una \"tarjeta inteligente\" para viajar gratis en transporte público por 6 meses. Piden comprarla por $2200 y seguir un enlace sospechoso para robar datos bancarios.",
+      "detectar": "Posteo viral en redes sociales con oferta de transporte público gratuito a cambio de comprar una tarjeta y seguir un enlace sospechoso. Logos de empresas de transporte de Córdoba, Salta y Tucumán.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+          "medio": "Chequeado",
+          "titulo": "Alerta estafa: es falso el supuesto descuento de la empresa Ecogas para jubilados",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:50:43.368Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/es-falso-que-meta-ai-envie-este-mensaje-que-alerta-sobre-la-suspension-de-la-cuenta-se-trata-de-un-caso-de-phishing/",
+          "medio": "Chequeado",
+          "titulo": "Es falso que Meta AI envíe este mensaje que alerta sobre la suspensión de la cuenta: se trata de un caso de phishing",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:54:55.476Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/es-falso-el-link-que-circula-como-un-cuestionario-de-farmacity-para-ganar-300-mil-es-phishing/",
+          "medio": "Chequeado",
+          "titulo": "Es falso el link que circula como un cuestionario de Farmacity para ganar $ 300 mil: es un caso de phishing",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:54:55.476Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/no-el-transporte-publico-no-sera-gratuito-por-6-meses-como-afirma-este-posteo-viral-es-un-caso-de-phishing/",
+          "medio": "Chequeado",
+          "titulo": "No, el transporte público no “será gratuito por 6 meses” como afirma este posteo viral: es un caso de phishing",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:54:55.476Z"
+        }
+      ]
+    },
+    {
+      "pos": 2,
+      "nombre": "Phishing de ARCA",
+      "canal": "MAIL",
+      "act": 71,
+      "delta": 19,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Estafadores envían mails falsos de la AFIP (ahora ARCA) informando multas y pidiendo clickear un enlace para pagar, buscando robar datos personales y bancarios.",
+      "detectar": "Mail con remitente AFIP/ARCA solicitando pago de multa y un link; AFIP no envía mails directos ni solicita pagos por ese medio.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/cuidado-con-este-mail-para-renovar-la-clave-fiscal-que-simula-ser-de-arca-se-trata-de-una-estafa/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/cuidado-con-este-mail-para-renovar-la-clave-fiscal-que-simula-ser-de-arca-se-trata-de-una-estafa/",
+          "medio": "Chequeado",
+          "titulo": "Cuidado con este mail para renovar la clave fiscal que simula ser de ARCA: se trata de una estafa",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:50:43.368Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/no-arca-no-esta-enviando-mails-con-presuntas-multas-a-contribuyentes-se-trata-de-una-modalidad-de-estafa-conocida-como-phishing/",
+          "medio": "Chequeado",
+          "titulo": "No, ARCA no está enviando mails con presuntas multas a contribuyentes: se trata de una modalidad de estafa conocida como “phishing”",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:54:55.476Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/es-falso-que-arca-esta-enviando-mails-con-presuntas-multas-a-contribuyentes-es-phishing/",
+          "medio": "Chequeado",
+          "titulo": "Es falso que ARCA está enviando mails con presuntas multas a contribuyentes: es phishing",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:54:55.476Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/no-este-mail-con-presuntas-multas-a-contribuyentes-no-es-de-la-afip-se-trata-de-un-caso-de-phishing/",
+          "medio": "Chequeado",
+          "titulo": "No, este mail con presuntas multas a contribuyentes no es de la AFIP: se trata de un caso de phishing",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:54:55.476Z"
+        }
+      ]
+    },
+    {
+      "pos": 3,
       "nombre": "Plataforma de inversión falsa",
       "canal": "REDES",
       "act": 60,
@@ -36,7 +122,7 @@
       ]
     },
     {
-      "pos": 2,
+      "pos": 4,
       "nombre": "Deepfake de inversión con figuras públicas",
       "canal": "REDES",
       "act": 60,
@@ -65,7 +151,7 @@
       ]
     },
     {
-      "pos": 3,
+      "pos": 5,
       "nombre": "Falsa suscripción (streaming)",
       "canal": "REDES",
       "act": 52,
@@ -87,51 +173,29 @@
       ]
     },
     {
-      "pos": 4,
-      "nombre": "Phishing de servicios (luz, gas, agua)",
-      "canal": "REDES",
-      "act": 52,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Circula en redes un falso descuento del 40% en la factura de gas de Ecogas para jubilados. La estafa busca robar datos bancarios, redirigiendo a cuentas falsas de WhatsApp de la empresa.",
-      "detectar": "Publicidad en redes sociales con oferta de descuento, redirección a WhatsApp, solicitud de datos bancarios, perfil de 'humor, ironía y fake news' imitando medios, posible uso de IA.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
-          "medio": "Chequeado",
-          "titulo": "Alerta estafa: es falso el supuesto descuento de la empresa Ecogas para jubilados",
-          "anillo": 2,
-          "fecha": "2026-08-28T16:50:43.368Z"
-        }
-      ]
-    },
-    {
-      "pos": 5,
-      "nombre": "Phishing de ARCA",
-      "canal": "MAIL",
-      "act": 52,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Estafadores envían mails falsos de ARCA para renovar la clave fiscal, pidiendo DNI y video selfie. ARCA no solicita datos personales ni pagos por mail, solo notifica comunicaciones oficiales.",
-      "detectar": "Mail falso de ARCA con remitente no oficial, solicita DNI y video selfie para 'renovar clave fiscal'. ARCA no pide datos personales ni pagos por mail.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/cuidado-con-este-mail-para-renovar-la-clave-fiscal-que-simula-ser-de-arca-se-trata-de-una-estafa/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/ultimas-noticias/cuidado-con-este-mail-para-renovar-la-clave-fiscal-que-simula-ser-de-arca-se-trata-de-una-estafa/",
-          "medio": "Chequeado",
-          "titulo": "Cuidado con este mail para renovar la clave fiscal que simula ser de ARCA: se trata de una estafa",
-          "anillo": 2,
-          "fecha": "2026-08-28T16:50:43.368Z"
-        }
-      ]
-    },
-    {
       "pos": 6,
+      "nombre": "Falsa encomienda de Correo Argentino",
+      "canal": "WHATSAPP",
+      "act": 52,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Mensaje falso de Correo Argentino por WhatsApp que pide actualizar datos de envío en un link fraudulento para robar información personal y bancaria.",
+      "detectar": "Mensaje de Correo Argentino por WhatsApp con link para actualizar datos de envío; Correo Argentino nunca pide datos por SMS/WhatsApp.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/nota/no-este-mensaje-que-asegura-que-el-paquete-no-pudo-ser-entregado-no-es-del-correo-argentino-es-un-caso-de-phishing/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/nota/no-este-mensaje-que-asegura-que-el-paquete-no-pudo-ser-entregado-no-es-del-correo-argentino-es-un-caso-de-phishing/",
+          "medio": "Chequeado",
+          "titulo": "No, este mensaje que asegura que el paquete no pudo ser entregado no es del Correo Argentino: es un caso de phishing",
+          "anillo": 2,
+          "fecha": "2026-08-28T16:54:55.476Z"
+        }
+      ]
+    },
+    {
+      "pos": 7,
       "nombre": "Fraude en e-commerce",
       "canal": "REDES",
       "act": 50,
@@ -160,7 +224,7 @@
       ]
     },
     {
-      "pos": 7,
+      "pos": 8,
       "nombre": "QR fraudulento en pagos",
       "canal": "REDES",
       "act": 43,
@@ -186,21 +250,25 @@
   "dist": [
     {
       "label": "Redes",
-      "pct": 86
+      "pct": 73
     },
     {
       "label": "Mail",
-      "pct": 14
+      "pct": 15
+    },
+    {
+      "label": "WhatsApp",
+      "pct": 11
     }
   ],
   "kpi": {
-    "monit": 7,
+    "monit": 8,
     "emerg": 1,
-    "sube": 0,
+    "sube": 2,
     "baja": 0
   },
   "riesgo": {
-    "alto": 6,
+    "alto": 7,
     "medio": 1,
     "bajo": 0
   }
