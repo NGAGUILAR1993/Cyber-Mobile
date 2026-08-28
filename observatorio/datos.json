@@ -1,245 +1,209 @@
 {
   "meta": {
-    "mes": "Agosto 2026",
-    "actualizado": "2026-08-27T09:40:00-03:00",
+    "mes": "agosto de 2026",
+    "actualizado": "2026-08-28T14:03:50.204Z",
     "version_schema": 1,
-    "generado_por": "manual"
+    "generado_por": "n8n"
   },
   "top10": [
     {
       "pos": 1,
-      "nombre": "Phishing de ARCA (encomienda / deuda aduanera)",
-      "canal": "MAIL",
-      "act": 95,
-      "delta": 13,
+      "nombre": "phishing servicios",
+      "canal": "REDES",
+      "act": 71,
+      "delta": 19,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Correo que simula ser de ARCA por una encomienda internacional o deuda impositiva; incluye nombre, CUIL y detalle de conceptos, y exige pagar más de $248.000 más una foto del DNI.",
-      "detectar": "ARCA nunca pide pagos ni datos por mail. Verificá el dominio: usan variantes como arc4, arrca o arcca. Reportar a phishing@arca.gob.ar.",
-      "fuente": "ARCA / El Nueve",
-      "url": "https://www.elnueve.com/mendoza/alerta-por-una-nueva-estafa-que-circula-en-mendoza-el-falso-mail-de-arca-que-puede-vaciarte-la-cuenta_20260825/"
+      "como": "Circula en redes un posteo falso que promete transporte público gratuito por 6 meses en Córdoba, Salta y Tucumán a cambio de comprar una 'tarjeta inteligente'. El objetivo es robar datos personales y bancarios.",
+      "detectar": "Publicación en redes sociales con oferta de transporte público gratuito a cambio de comprar una tarjeta, solicitando datos personales y bancarios mediante un enlace sospechoso.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+          "medio": "Chequeado",
+          "titulo": "ALERTA ESTAFA: ES FALSO EL SUPUESTO DESCUENTO DE LA EMPRESA ECOGAS PARA\nJUBILADOS",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:01:40.752Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/es-falso-que-meta-ai-envie-este-mensaje-que-alerta-sobre-la-suspension-de-la-cuenta-se-trata-de-un-caso-de-phishing/",
+          "medio": "Chequeado",
+          "titulo": "ES FALSO QUE META AI ENVÍE ESTE MENSAJE QUE ALERTA SOBRE LA SUSPENSIÓN DE LA\nCUENTA: SE TRATA DE UN CASO DE PHISHING",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:03:50.164Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/es-falso-el-link-que-circula-como-un-cuestionario-de-farmacity-para-ganar-300-mil-es-phishing/",
+          "medio": "Chequeado",
+          "titulo": "ES FALSO EL LINK QUE CIRCULA COMO UN CUESTIONARIO DE FARMACITY PARA GANAR $ 300\nMIL: ES UN CASO DE PHISHING",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:03:50.164Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/no-el-transporte-publico-no-sera-gratuito-por-6-meses-como-afirma-este-posteo-viral-es-un-caso-de-phishing/",
+          "medio": "Chequeado",
+          "titulo": "NO, EL TRANSPORTE PÚBLICO NO “SERÁ GRATUITO POR 6 MESES” COMO AFIRMA ESTE POSTEO\nVIRAL: ES UN CASO DE PHISHING",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:03:50.164Z"
+        }
+      ]
     },
     {
       "pos": 2,
-      "nombre": "Deepfake de inversión con caras de famosos",
+      "nombre": "Criptoinversión automática",
       "canal": "REDES",
-      "act": 89,
-      "delta": 22,
+      "act": 66,
+      "delta": 0,
       "riesgo": "alto",
-      "emergente": true,
-      "como": "Videos con voz e imagen clonadas por IA de figuras públicas que promocionan plataformas de inversión con ganancias garantizadas.",
-      "detectar": "Ninguna figura pública ofrece inversiones por redes. Desconfiá de rendimientos garantizados y de la urgencia por depositar.",
-      "fuente": "Cuentas Claras Digital",
-      "url": "https://www.cuentasclarasdigital.org/2026/08/ia-y-videos-falsos-impulsan-una-nueva-ola-de-estafas-digitales-en-argentina/"
+      "emergente": false,
+      "como": "Estafadores usan la imagen de figuras públicas como Caputo y Wiñazki en X para promocionar inversiones falsas. Redirigen a webs que imitan medios y piden datos personales y depósitos para \"ganancias automáticas con IA\".",
+      "detectar": "Anuncios en X con imágenes de figuras públicas promocionando inversiones \"automáticas\", redirigiendo a sitios que imitan medios de comunicación y solicitando depósitos.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/cuidado-con-estos-sitios-que-usan-la-imagen-de-marcos-galperin-para-promocionar-una-nueva-plataforma-de-inversion-se-trata-de-una-estafa/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/cuidado-con-estos-sitios-que-usan-la-imagen-de-marcos-galperin-para-promocionar-una-nueva-plataforma-de-inversion-se-trata-de-una-estafa/",
+          "medio": "Chequeado",
+          "titulo": "CUIDADO CON ESTOS SITIOS QUE USAN LA IMAGEN DE MARCOS GALPERIN PARA PROMOCIONAR\nUNA NUEVA “PLATAFORMA DE INVERSIÓN”: SE TRATA DE UNA ESTAFA",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:01:40.751Z"
+        },
+        {
+          "url": "https://chequeado.com/investigaciones/laje-messi-y-la-falsa-plataforma-de-inversion-evo-plata-asi-funciona-la-estafa-que-circula-en-facebook/",
+          "medio": "Chequeado",
+          "titulo": "LAJE, MESSI Y LA FALSA PLATAFORMA DE INVERSIÓN “EVO PLATA”: ASÍ FUNCIONA LA\nESTAFA QUE CIRCULA EN FACEBOOK",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:01:40.751Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/estafas-en-x-como-usan-la-imagen-de-luis-caputo-y-nicolas-winazki-para-promocionar-falsas-inversiones/",
+          "medio": "Chequeado",
+          "titulo": "ESTAFAS EN X: CÓMO USAN LA IMAGEN DE LUIS CAPUTO Y NICOLÁS WIÑAZKI PARA\nPROMOCIONAR FALSAS INVERSIONES",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:01:40.751Z"
+        }
+      ]
     },
     {
       "pos": 3,
-      "nombre": "Phishing de TelePASE (actualización de datos)",
-      "canal": "MAIL",
-      "act": 82,
-      "delta": 19,
+      "nombre": "Fraude en e-commerce",
+      "canal": "REDES",
+      "act": 66,
+      "delta": 0,
       "riesgo": "alto",
-      "emergente": true,
-      "como": "Mail con asunto 'Actualizá tus datos para mantener tu TelePASE activo' que avisa de un rechazo de pago y lleva a una web falsa donde roban tarjeta y claves.",
-      "detectar": "El remitente usa dominios raros. No hagas clic: ingresá al sitio oficial escribiendo la dirección a mano.",
-      "fuente": "Perfil",
-      "url": "https://www.perfil.com/noticias/sociedad/alerta-por-phishing-una-nueva-estafa-virtual-con-el-telepase-busca-vaciar-cuentas-bancarias.phtml"
+      "emergente": false,
+      "como": "Estafas con la venta de álbumes y figuritas del Mundial 2026. Ofrecen productos a precios bajos en sitios web y redes sociales falsos. Tras el pago por transferencia, cortan el contacto y no envían la mercadería. También hay PDFs maliciosos.",
+      "detectar": "Ofertas de álbumes y figuritas del Mundial 2026 a precios irrisorios en redes sociales o sitios web no oficiales. Solicitud de pago por transferencia bancaria directa. Descarga de PDFs \"gratuitos\" de figuritas.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/el-explicador/terremotos-en-venezuela-recomendaciones-para-evitar-estafas-y-como-ayudar-a-los-damnificados-desde-argentina/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/el-explicador/terremotos-en-venezuela-recomendaciones-para-evitar-estafas-y-como-ayudar-a-los-damnificados-desde-argentina/",
+          "medio": "Chequeado",
+          "titulo": "TERREMOTOS EN VENEZUELA: RECOMENDACIONES PARA EVITAR ESTAFAS Y CÓMO AYUDAR A LOS\nDAMNIFICADOS DESDE ARGENTINA",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:01:40.751Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/mundial-2026-como-cuidarte-de-las-estafas-y-de-las-noticias-falsas/",
+          "medio": "Chequeado",
+          "titulo": "MUNDIAL 2026: CÓMO CUIDARTE DE LAS ESTAFAS Y DE LAS NOTICIAS FALSAS",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:01:40.751Z"
+        },
+        {
+          "url": "https://chequeado.com/el-explicador/estafas-con-el-album-y-las-figuritas-del-mundial-2026-en-que-consisten-y-como-evitarlas/",
+          "medio": "Chequeado",
+          "titulo": "ESTAFAS CON EL ÁLBUM Y LAS FIGURITAS DEL MUNDIAL 2026: EN QUÉ CONSISTEN Y CÓMO\nEVITARLAS",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:01:40.752Z"
+        }
+      ]
     },
     {
       "pos": 4,
-      "nombre": "Secuestro de cuenta de WhatsApp (código de 6 dígitos)",
-      "canal": "WHATSAPP",
-      "act": 78,
-      "delta": 6,
+      "nombre": "Phishing de ARCA",
+      "canal": "MAIL",
+      "act": 66,
+      "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Se hacen pasar por un contacto o entidad y piden el código de verificación de 6 dígitos. Con la cuenta tomada, piden plata a todos los contactos.",
-      "detectar": "El código de verificación NO se comparte con nadie, nunca. Activá la verificación en dos pasos en WhatsApp.",
-      "fuente": "Revista Mercado",
-      "url": "https://revistamercado.do/technology/alerta-whatsapp-cuatro-estafas-comunes-que-enganan-a-miles-de-personas-en-2026/"
+      "como": "Circula un mail falso de la AFIP (próxima ARCA) informando multas y solicitando clic en un enlace para pagar. El objetivo es robar datos personales y bancarios de los contribuyentes.",
+      "detectar": "Mail con remitente AFIP/ARCA solicitando pago de multa y un enlace. La AFIP no envía correos directos ni solicita pagos o datos por mail/WhatsApp.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/no-arca-no-esta-enviando-mails-con-presuntas-multas-a-contribuyentes-se-trata-de-una-modalidad-de-estafa-conocida-como-phishing/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/no-arca-no-esta-enviando-mails-con-presuntas-multas-a-contribuyentes-se-trata-de-una-modalidad-de-estafa-conocida-como-phishing/",
+          "medio": "Chequeado",
+          "titulo": "NO, ARCA NO ESTÁ ENVIANDO MAILS CON PRESUNTAS MULTAS A CONTRIBUYENTES: SE TRATA\nDE UNA MODALIDAD DE ESTAFA CONOCIDA COMO “PHISHING”",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:03:50.164Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/es-falso-que-arca-esta-enviando-mails-con-presuntas-multas-a-contribuyentes-es-phishing/",
+          "medio": "Chequeado",
+          "titulo": "ES FALSO QUE ARCA ESTÁ ENVIANDO MAILS CON PRESUNTAS MULTAS A CONTRIBUYENTES: ES\nPHISHING",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:03:50.164Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/no-este-mail-con-presuntas-multas-a-contribuyentes-no-es-de-la-afip-se-trata-de-un-caso-de-phishing/",
+          "medio": "Chequeado",
+          "titulo": "NO, ESTE MAIL CON PRESUNTAS MULTAS A CONTRIBUYENTES NO ES DE LA AFIP: SE TRATA\nDE UN CASO DE PHISHING",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:03:50.164Z"
+        }
+      ]
     },
     {
       "pos": 5,
       "nombre": "Falsa encomienda de Correo Argentino",
-      "canal": "MAIL",
-      "act": 71,
-      "delta": 11,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Mensaje que se hace pasar por Correo Argentino y exige pagar un canon para 'liberar' un envío del exterior por una supuesta diferencia de valor.",
-      "detectar": "Correo Argentino gestiona los envíos por su Portal de Envíos Internacionales, no por mail con links de pago. No pagues cánones por mensaje.",
-      "fuente": "Correo Argentino",
-      "url": "https://www.correoargentino.com.ar/"
-    },
-    {
-      "pos": 6,
-      "nombre": "Falso 'PAMI Previaje 2026' a jubilados",
-      "canal": "REDES",
-      "act": 64,
-      "delta": 14,
-      "riesgo": "alto",
-      "emergente": true,
-      "como": "Publicación que ofrece un viaje gratis de PAMI con un WhatsApp al pie; piden datos personales para robar identidad y pedir créditos a nombre de la víctima.",
-      "detectar": "Previaje no está vigente y PAMI no ofrece viajes por redes. No entregues datos ni escribas al WhatsApp del aviso.",
-      "fuente": "Difusión pública",
-      "url": "https://chequeado.com/"
-    },
-    {
-      "pos": 7,
-      "nombre": "Suplantación de banco (llamado del 'área de fraude')",
-      "canal": "TELÉFONO",
-      "act": 58,
+      "canal": "WHATSAPP",
+      "act": 52,
       "delta": 0,
-      "riesgo": "medio",
+      "riesgo": "alto",
       "emergente": false,
-      "como": "Llamado que dice ser del banco por un 'movimiento sospechoso' y guía a la víctima a transferir el dinero 'para protegerlo' o a dar sus claves.",
-      "detectar": "Cortá y llamá al banco por el número oficial del dorso de la tarjeta. El banco nunca pide transferir para proteger la cuenta.",
-      "fuente": "Perfil",
-      "url": "https://www.perfil.com/noticias/amp/opinion/estafas-digitales-ya-cai-ahora-que-hago.phtml"
-    },
-    {
-      "pos": 8,
-      "nombre": "Premios / sorteos con enlace ('ganaste')",
-      "canal": "WHATSAPP",
-      "act": 47,
-      "delta": 3,
-      "riesgo": "medio",
-      "emergente": false,
-      "como": "Mensajes que prometen premios o sorteos si hacés clic en un enlace, te unís a un grupo o respondés con datos personales.",
-      "detectar": "Si no participaste, no ganaste. Los premios reales no piden datos bancarios por adelantado.",
-      "fuente": "Revista Mercado",
-      "url": "https://revistamercado.do/technology/alerta-whatsapp-cuatro-estafas-comunes-que-enganan-a-miles-de-personas-en-2026/"
-    },
-    {
-      "pos": 9,
-      "nombre": "Fraude en e-commerce (vendedor/comprador falso)",
-      "canal": "REDES",
-      "act": 39,
-      "delta": 4,
-      "riesgo": "medio",
-      "emergente": false,
-      "como": "Publicaciones o compradores falsos que piden pagar o dar datos fuera de la plataforma para concretar la operación.",
-      "detectar": "Operá siempre dentro de la plataforma. Desconfiá de quien te apura a pagar por afuera o por transferencia directa.",
-      "fuente": "BioCatch / Medios Rioja",
-      "url": "https://mediosrioja.com.ar/fraude-digital-en-argentina-3-de-cada-4-usuarios-ya-fueron-victimas/"
-    },
-    {
-      "pos": 10,
-      "nombre": "Device takeover (apropiación del dispositivo)",
-      "canal": "WHATSAPP",
-      "act": 30,
-      "delta": 7,
-      "riesgo": "medio",
-      "emergente": true,
-      "como": "Apps o accesos maliciosos que toman control del dispositivo para operar en el homebanking en nombre de la víctima.",
-      "detectar": "No instales apps fuera de las tiendas oficiales ni des permisos de accesibilidad a apps desconocidas.",
-      "fuente": "BioCatch / Medios Rioja",
-      "url": "https://mediosrioja.com.ar/fraude-digital-en-argentina-3-de-cada-4-usuarios-ya-fueron-victimas/"
+      "como": "Circula un mensaje falso de Correo Argentino por WhatsApp, indicando que un paquete no pudo ser entregado por dirección incompleta y solicitando clickear un link para actualizar datos personales y bancarios en un sitio web fraudulento.",
+      "detectar": "Mensaje de Correo Argentino por WhatsApp pidiendo confirmar dirección y datos bancarios a través de un link, con errores de redacción y un dominio sospechoso.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/nota/no-este-mensaje-que-asegura-que-el-paquete-no-pudo-ser-entregado-no-es-del-correo-argentino-es-un-caso-de-phishing/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/nota/no-este-mensaje-que-asegura-que-el-paquete-no-pudo-ser-entregado-no-es-del-correo-argentino-es-un-caso-de-phishing/",
+          "medio": "Chequeado",
+          "titulo": "NO, ESTE MENSAJE QUE ASEGURA QUE EL PAQUETE NO PUDO SER ENTREGADO NO ES DEL\nCORREO ARGENTINO: ES UN CASO DE PHISHING",
+          "anillo": 2,
+          "fecha": "2026-08-28T14:03:50.164Z"
+        }
+      ]
     }
   ],
-  "watch": [
-    {
-      "pos": 11,
-      "nombre": "Phishing de servicios (Edesur / Edenor / Mi Argentina)",
-      "canal": "SMS",
-      "act": 27,
-      "delta": -6
-    },
-    {
-      "pos": 12,
-      "nombre": "Falso soporte técnico (Microsoft / Apple)",
-      "canal": "TELÉFONO",
-      "act": 25,
-      "delta": 2
-    },
-    {
-      "pos": 13,
-      "nombre": "Suplantación de paquetería (OCA / Andreani)",
-      "canal": "SMS",
-      "act": 24,
-      "delta": 5
-    },
-    {
-      "pos": 14,
-      "nombre": "Criptoinversión con 'sistema automático'",
-      "canal": "REDES",
-      "act": 22,
-      "delta": 3
-    },
-    {
-      "pos": 15,
-      "nombre": "Perfil romántico falso (romance scam)",
-      "canal": "REDES",
-      "act": 21,
-      "delta": -2
-    },
-    {
-      "pos": 16,
-      "nombre": "Falsa oferta laboral con pago por adelantado",
-      "canal": "WHATSAPP",
-      "act": 19,
-      "delta": 1
-    },
-    {
-      "pos": 17,
-      "nombre": "Cambio de CBU en factura de proveedor (BEC)",
-      "canal": "MAIL",
-      "act": 18,
-      "delta": 4
-    },
-    {
-      "pos": 18,
-      "nombre": "QR fraudulento en pagos",
-      "canal": "REDES",
-      "act": 16,
-      "delta": 6
-    },
-    {
-      "pos": 19,
-      "nombre": "Sextorsión (extorsión con supuesto material íntimo)",
-      "canal": "MAIL",
-      "act": 15,
-      "delta": -3
-    },
-    {
-      "pos": 20,
-      "nombre": "Falso reintegro de ANSES",
-      "canal": "SMS",
-      "act": 13,
-      "delta": -1
-    }
-  ],
+  "watch": [],
   "dist": [
     {
-      "label": "WhatsApp",
-      "pct": 20
+      "label": "Redes",
+      "pct": 63
     },
     {
       "label": "Mail",
-      "pct": 33
+      "pct": 21
     },
     {
-      "label": "Redes",
-      "pct": 29
-    },
-    {
-      "label": "SMS",
-      "pct": 8
-    },
-    {
-      "label": "Teléfono",
-      "pct": 10
+      "label": "WhatsApp",
+      "pct": 16
     }
   ],
   "kpi": {
-    "monit": 20,
-    "emerg": 4,
-    "sube": 15,
-    "baja": 4
+    "monit": 5,
+    "emerg": 0,
+    "sube": 1,
+    "baja": 0
   },
   "riesgo": {
-    "alto": 6,
-    "medio": 4,
+    "alto": 5,
+    "medio": 0,
     "bajo": 0
   }
 }
