@@ -1,160 +1,175 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-28T18:23:25.505Z",
+    "actualizado": "2026-08-28T18:23:39.694Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
   "top10": [
     {
       "pos": 1,
-      "nombre": "Phishing de servicios (luz, gas, agua)",
-      "canal": "REDES",
-      "act": 78,
+      "nombre": "Phishing de organismo oficial",
+      "canal": "WHATSAPP",
+      "act": 66,
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Circula en redes un falso descuento del 40% en la factura de gas de Ecogas para jubilados. La estafa busca robar datos bancarios, redirigiendo desde publicidades a cuentas falsas de WhatsApp.",
-      "detectar": "Publicidad en redes sociales con oferta de descuento irreal, redirección a WhatsApp falso, solicitud de datos bancarios, perfil de redes con inconsistencias visuales o generado por IA.",
+      "como": "Estafadores se hacen pasar por PAMI para ofrecer un falso subsidio de medicamentos, solicitando datos personales y bancarios a jubilados a través de un link malicioso enviado por WhatsApp.",
+      "detectar": "Mensajes de WhatsApp con links sospechosos que prometen subsidios de PAMI y solicitan datos personales/bancarios. PAMI nunca pide datos por esos medios.",
       "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/es-falso-que-meta-ai-envie-este-mensaje-que-alerta-sobre-la-suspension-de-la-cuenta-se-trata-de-un-caso-de-phishing/",
+      "url": "https://chequeado.com/ultimas-noticias/cuidado-con-el-bono-mujer-que-se-ofrece-en-redes-sociales-en-marzo-de-2025-se-trata-de-una-estafa-virtual/",
       "evidencias": [
         {
-          "url": "https://chequeado.com/ultimas-noticias/es-falso-que-meta-ai-envie-este-mensaje-que-alerta-sobre-la-suspension-de-la-cuenta-se-trata-de-un-caso-de-phishing/",
+          "url": "https://chequeado.com/ultimas-noticias/cuidado-con-el-bono-mujer-que-se-ofrece-en-redes-sociales-en-marzo-de-2025-se-trata-de-una-estafa-virtual/",
           "medio": "Chequeado",
-          "titulo": "Es falso que Meta AI envíe este mensaje que alerta sobre la suspensión de la cuenta: se trata de un caso de phishing",
+          "titulo": "Cuidado con el “Bono Mujer” que se ofrece en redes sociales en septiembre de 2025: se trata de una estafa virtual",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.462Z"
+          "fecha": "2026-08-28T18:23:39.646Z"
         },
         {
-          "url": "https://chequeado.com/ultimas-noticias/es-falso-el-link-que-circula-como-un-cuestionario-de-farmacity-para-ganar-300-mil-es-phishing/",
+          "url": "https://chequeado.com/ultimas-noticias/es-falsa-la-cadena-de-whatsapp-sobre-un-bono-mujer-que-sera-otorgado-por-el-gobierno-nacional-en-octubre-se-trata-de-una-estafa-virtual/",
           "medio": "Chequeado",
-          "titulo": "Es falso el link que circula como un cuestionario de Farmacity para ganar $ 300 mil: es un caso de phishing",
+          "titulo": "Es falsa la cadena de WhatsApp sobre un Bono Mujer que será otorgado por el Gobierno nacional en octubre: se trata de una estafa virtual",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.462Z"
+          "fecha": "2026-08-28T18:23:39.646Z"
         },
         {
-          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+          "url": "https://chequeado.com/ultimas-noticias/subsidios-a-medicamentos-el-pami-alerto-sobre-estafas-virtuales-a-sus-afiliados/",
           "medio": "Chequeado",
-          "titulo": "Alerta estafa: es falso el supuesto descuento de la empresa Ecogas para jubilados",
+          "titulo": "Subsidios a medicamentos: el PAMI alertó sobre estafas virtuales a sus afiliados",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.463Z"
-        },
-        {
-          "url": "https://chequeado.com/ultimas-noticias/no-el-transporte-publico-no-sera-gratuito-por-6-meses-como-afirma-este-posteo-viral-es-un-caso-de-phishing/",
-          "medio": "Chequeado",
-          "titulo": "No, el transporte público no “será gratuito por 6 meses” como afirma este posteo viral: es un caso de phishing",
-          "anillo": 3,
-          "fecha": "2026-08-28T18:23:25.462Z"
+          "fecha": "2026-08-28T18:23:39.646Z"
         }
       ]
     },
     {
       "pos": 2,
-      "nombre": "Phishing de ARCA",
-      "canal": "MAIL",
-      "act": 71,
+      "nombre": "Deepfake de inversión con figuras públicas",
+      "canal": "REDES",
+      "act": 65,
       "delta": 0,
       "riesgo": "alto",
-      "emergente": false,
-      "como": "Estafadores envían mails falsos de ARCA pidiendo renovar la clave fiscal y solicitando DNI y video selfie para robar datos personales. ARCA desmiente y aclara que no pide datos por mail.",
-      "detectar": "Mail falso de ARCA solicitando DNI y video selfie para renovar clave fiscal. La dirección de mail no es oficial y ARCA advierte que no solicita datos personales por este medio.",
+      "emergente": true,
+      "como": "Suplantan la identidad de figuras públicas con deepfakes (videos/audios generados con IA) para promocionar falsas inversiones o estafas, aprovechando la credibilidad de la celebridad.",
+      "detectar": "Videos o audios de figuras públicas promocionando inversiones inusuales o esquemas de dinero rápido, con posibles inconsistencias en la imagen o voz.",
       "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/no-arca-no-esta-enviando-mails-con-presuntas-multas-a-contribuyentes-se-trata-de-una-modalidad-de-estafa-conocida-como-phishing/",
+      "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-te-pueden-enganar-con-audios-o-videos-creados-con-inteligencia-artificial/",
       "evidencias": [
         {
-          "url": "https://chequeado.com/ultimas-noticias/no-arca-no-esta-enviando-mails-con-presuntas-multas-a-contribuyentes-se-trata-de-una-modalidad-de-estafa-conocida-como-phishing/",
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-te-pueden-enganar-con-audios-o-videos-creados-con-inteligencia-artificial/",
           "medio": "Chequeado",
-          "titulo": "No, ARCA no está enviando mails con presuntas multas a contribuyentes: se trata de una modalidad de estafa conocida como “phishing”",
+          "titulo": "Estafas virtuales: cómo te pueden engañar con audios o videos creados con inteligencia artificial",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.462Z"
+          "fecha": "2026-08-28T18:23:39.646Z"
         },
         {
-          "url": "https://chequeado.com/ultimas-noticias/es-falso-que-arca-esta-enviando-mails-con-presuntas-multas-a-contribuyentes-es-phishing/",
+          "url": "https://chequeado.com/ultimas-noticias/alertan-por-una-estafa-virtual-que-utiliza-la-imagen-de-luis-caputo-para-promocionar-una-supuesta-plataforma-de-inversion/",
           "medio": "Chequeado",
-          "titulo": "Es falso que ARCA está enviando mails con presuntas multas a contribuyentes: es phishing",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.462Z"
-        },
-        {
-          "url": "https://chequeado.com/ultimas-noticias/no-este-mail-con-presuntas-multas-a-contribuyentes-no-es-de-la-afip-se-trata-de-un-caso-de-phishing/",
-          "medio": "Chequeado",
-          "titulo": "No, este mail con presuntas multas a contribuyentes no es de la AFIP: se trata de un caso de phishing",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.463Z"
-        },
-        {
-          "url": "https://chequeado.com/ultimas-noticias/cuidado-con-este-mail-para-renovar-la-clave-fiscal-que-simula-ser-de-arca-se-trata-de-una-estafa/",
-          "medio": "Chequeado",
-          "titulo": "Cuidado con este mail para renovar la clave fiscal que simula ser de ARCA: se trata de una estafa",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.463Z"
+          "titulo": "Alertan por una estafa virtual que utiliza la imagen de Luis Caputo para promocionar una supuesta plataforma de inversión",
+          "anillo": 3,
+          "fecha": "2026-08-28T18:23:39.646Z"
         }
       ]
     },
     {
       "pos": 3,
-      "nombre": "Falsa encomienda de Correo Argentino",
+      "nombre": "Falsa oferta laboral",
       "canal": "WHATSAPP",
-      "act": 52,
+      "act": 65,
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Mensaje falso de Correo Argentino por WhatsApp que pide actualizar datos de envío en un link fraudulento para robar información personal y bancaria, simulando ser la web oficial.",
-      "detectar": "Mensaje de WhatsApp de Correo Argentino con link para actualizar datos de envío, solicitando información personal y bancaria en un sitio web que simula ser el oficial.",
+      "como": "Contactan por WhatsApp desde números extranjeros ofreciendo trabajos fáciles con pagos iniciales. Luego, piden invertir dinero para 'crecer' en el negocio, resultando en una estafa.",
+      "detectar": "Mensajes de WhatsApp de números extranjeros (+62) ofreciendo trabajo fácil y bien remunerado, con la excusa de Mercado Libre u otras empresas, y luego pidiendo inversión.",
       "fuente": "Chequeado",
-      "url": "https://chequeado.com/nota/no-este-mensaje-que-asegura-que-el-paquete-no-pudo-ser-entregado-no-es-del-correo-argentino-es-un-caso-de-phishing/",
+      "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
       "evidencias": [
         {
-          "url": "https://chequeado.com/nota/no-este-mensaje-que-asegura-que-el-paquete-no-pudo-ser-entregado-no-es-del-correo-argentino-es-un-caso-de-phishing/",
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
           "medio": "Chequeado",
-          "titulo": "No, este mensaje que asegura que el paquete no pudo ser entregado no es del Correo Argentino: es un caso de phishing",
+          "titulo": "Estafas virtuales: cómo pueden engañarte con mensajes de WhatsApp del extranjero que ofrecen trabajo y qué podés hacer para evitar caer en el engaño",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.463Z"
+          "fecha": "2026-08-28T18:23:39.646Z"
+        },
+        {
+          "url": "https://chequeado.com/el-explicador/las-5-estafas-virtuales-mas-comunes-de-2024-como-protegerse-de-cada-una/",
+          "medio": "Chequeado",
+          "titulo": "Las 5 estafas virtuales más comunes de 2024: cómo protegerse de cada una",
+          "anillo": 3,
+          "fecha": "2026-08-28T18:23:39.646Z"
         }
       ]
     },
     {
       "pos": 4,
-      "nombre": "Deepfake de inversión con figuras públicas",
-      "canal": "REDES",
-      "act": 52,
+      "nombre": "Apropiación del dispositivo",
+      "canal": "APP",
+      "act": 65,
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Circulan posteos en redes con la vicepresidenta Villarruel promocionando una falsa plataforma de inversión que promete ganancias rápidas, redirigiendo a sitios web fraudulentos que imitan medios de comunicación para robar datos.",
-      "detectar": "Posteos en redes con figuras públicas promocionando inversiones de alto rendimiento, URLs falsas que imitan medios, errores gramaticales, mención de organismos oficiales sin respaldo.",
+      "como": "Tras el robo de un celular, delincuentes acceden a la billetera virtual de la víctima, vacían su cuenta y solicitan préstamos a su nombre, aprovechando la verificación de identidad para recuperar la contraseña.",
+      "detectar": "Robo de celular seguido de acceso no autorizado a billeteras virtuales y solicitud de créditos. Menciones de SIM swapping como método para acceder a cuentas.",
       "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/no-victoria-villarruel-no-promociona-una-supuesta-plataforma-de-inversion-que-promete-ganancias-rapidas-es-una-estafa/",
+      "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
       "evidencias": [
         {
-          "url": "https://chequeado.com/ultimas-noticias/no-victoria-villarruel-no-promociona-una-supuesta-plataforma-de-inversion-que-promete-ganancias-rapidas-es-una-estafa/",
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
           "medio": "Chequeado",
-          "titulo": "No, Victoria Villarruel no promociona una supuesta “plataforma de inversión” que promete ganancias rápidas: es una estafa",
+          "titulo": "Estafas virtuales: ¿qué podés hacer si te robaron el celular o la cuenta de WhatsApp?",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.463Z"
+          "fecha": "2026-08-28T18:23:39.646Z"
+        },
+        {
+          "url": "https://chequeado.com/el-explicador/billeteras-virtuales-claves-para-evitar-estafas-y-que-hacer-si-se-cae-en-una/",
+          "medio": "Chequeado",
+          "titulo": "Billeteras virtuales: claves para evitar estafas y qué hacer si se cae en una",
+          "anillo": 3,
+          "fecha": "2026-08-28T18:23:39.646Z"
         }
       ]
     },
     {
       "pos": 5,
-      "nombre": "QR fraudulento en pagos",
-      "canal": "WHATSAPP",
-      "act": 43,
+      "nombre": "Plataforma de inversión falsa",
+      "canal": "REDES",
+      "act": 52,
       "delta": 0,
-      "riesgo": "medio",
+      "riesgo": "alto",
       "emergente": false,
-      "como": "Circulan mensajes en redes sociales alertando sobre un falso aviso de corte de Metrogas con QR malicioso, pero el aviso es real y el QR lleva al WhatsApp oficial de la empresa.",
-      "detectar": "Mensajes virales en redes sociales alertando sobre un QR fraudulento en un aviso de corte de Metrogas, que luego se verifica como legítimo.",
+      "como": "Circulan en redes sociales publicaciones falsas que prometen ganancias rápidas invirtiendo en YPF. Redirigen a sitios web que imitan a medios de comunicación para robar datos personales y bancarios.",
+      "detectar": "Publicaciones en redes sociales (Facebook, Instagram, WhatsApp) que prometen altas ganancias con YPF, redirigiendo a sitios web falsos que imitan a medios de comunicación.",
       "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/este-aviso-de-corte-de-servicio-de-metrogas-no-es-una-estafa-es-verdadero-y-el-qr-remite-a-su-linea-de-whatsapp-verificada/",
+      "url": "https://chequeado.com/ultimas-noticias/no-ypf-no-esta-promocionando-un-programa-de-inversion-que-promete-ganancias-rapidas-se-trata-de-una-estafa-virtual/",
       "evidencias": [
         {
-          "url": "https://chequeado.com/ultimas-noticias/este-aviso-de-corte-de-servicio-de-metrogas-no-es-una-estafa-es-verdadero-y-el-qr-remite-a-su-linea-de-whatsapp-verificada/",
+          "url": "https://chequeado.com/ultimas-noticias/no-ypf-no-esta-promocionando-un-programa-de-inversion-que-promete-ganancias-rapidas-se-trata-de-una-estafa-virtual/",
           "medio": "Chequeado",
-          "titulo": "Este aviso de corte de servicio de Metrogas no es una estafa: es verdadero y el QR remite a su línea de WhatsApp verificada",
+          "titulo": "No, YPF no está promocionando un “programa de inversión” que promete ganancias rápidas: se trata de una estafa virtual",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:25.463Z"
+          "fecha": "2026-08-28T18:23:39.646Z"
+        }
+      ]
+    },
+    {
+      "pos": 6,
+      "nombre": "Secuestro de cuenta de WhatsApp",
+      "canal": "WHATSAPP",
+      "act": 52,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "El estafador obtiene el código de verificación de WhatsApp de la víctima, haciéndose pasar por una entidad oficial o un conocido, para tomar control de su cuenta y acceder a sus contactos. También se menciona el SIM swapping.",
+      "detectar": "Mensaje o llamada inesperada pidiendo un código de verificación de WhatsApp; excusas como 'validar identidad' o 'recuperar cuenta por error'.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-por-whatsapp-y-que-podes-hacer-para-evitarlo/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-por-whatsapp-y-que-podes-hacer-para-evitarlo/",
+          "medio": "Chequeado",
+          "titulo": "Estafas virtuales: cómo pueden engañarte por WhatsApp y qué podés hacer para evitarlo",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:39.646Z"
         }
       ]
     }
@@ -162,27 +177,27 @@
   "watch": [],
   "dist": [
     {
-      "label": "Redes",
-      "pct": 44
-    },
-    {
-      "label": "Mail",
-      "pct": 24
-    },
-    {
       "label": "WhatsApp",
+      "pct": 50
+    },
+    {
+      "label": "Redes",
       "pct": 32
+    },
+    {
+      "label": "App",
+      "pct": 18
     }
   ],
   "kpi": {
-    "monit": 5,
-    "emerg": 0,
+    "monit": 6,
+    "emerg": 1,
     "sube": 0,
     "baja": 0
   },
   "riesgo": {
-    "alto": 4,
-    "medio": 1,
+    "alto": 6,
+    "medio": 0,
     "bajo": 0
   }
 }
