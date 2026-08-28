@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-28T16:59:10.402Z",
+    "actualizado": "2026-08-28T17:01:19.783Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
@@ -10,12 +10,12 @@
       "pos": 1,
       "nombre": "Deepfake de inversión con figuras públicas",
       "canal": "REDES",
-      "act": 71,
-      "delta": 11,
+      "act": 74,
+      "delta": 3,
       "riesgo": "alto",
       "emergente": true,
-      "como": "Suplantan la identidad de figuras públicas (Nati Jota, Tom Hanks, Shakira) usando deepfakes de video o audio para promocionar falsas inversiones o productos, aprovechando la credibilidad de la persona.",
-      "detectar": "Videos o audios de famosos promocionando inversiones o productos inusuales; voces de conocidos pidiendo dinero en situaciones urgentes, con tono o léxico ligeramente alterado.",
+      "como": "Usan videos deepfake de médicos reconocidos para vender tratamientos sin evidencia científica, aprovechando la confianza que generan para promocionar productos engañosos.",
+      "detectar": "Videos con sincronización labial y voz anómalas, movimientos poco naturales, cambios en rasgos, errores en el fondo, o mensajes que prometen curas milagrosas o teorías conspirativas.",
       "fuente": "Chequeado",
       "url": "https://chequeado.com/investigaciones/laje-messi-y-la-falsa-plataforma-de-inversion-evo-plata-asi-funciona-la-estafa-que-circula-en-facebook/",
       "evidencias": [
@@ -46,6 +46,13 @@
           "titulo": "Estafas virtuales: cómo te pueden engañar con audios o videos creados con inteligencia artificial",
           "anillo": 2,
           "fecha": "2026-08-28T16:59:10.337Z"
+        },
+        {
+          "url": "https://chequeado.com/ultimas-noticias/como-detectar-un-video-generado-con-ia-que-suplanta-la-identidad-de-un-medico/",
+          "medio": "Chequeado",
+          "titulo": "Cómo detectar un video generado con IA que suplanta la identidad de un médico",
+          "anillo": 2,
+          "fecha": "2026-08-28T17:01:19.707Z"
         }
       ]
     },
@@ -140,7 +147,7 @@
       "nombre": "Falsa oferta laboral",
       "canal": "WHATSAPP",
       "act": 69,
-      "delta": 27,
+      "delta": 0,
       "riesgo": "alto",
       "emergente": false,
       "como": "Contactan por WhatsApp desde números extranjeros ofreciendo trabajos fáciles (ej. reviews). Pagan al principio, pero luego piden invertir dinero para 'crecer' en el negocio, resultando en una estafa.",
@@ -176,7 +183,7 @@
       "nombre": "Plataforma de inversión falsa",
       "canal": "REDES",
       "act": 66,
-      "delta": 6,
+      "delta": 0,
       "riesgo": "alto",
       "emergente": false,
       "como": "Circulan en redes sociales publicaciones falsas que prometen ganancias rápidas invirtiendo en YPF. Redirigen a sitios web que imitan medios de comunicación para robar datos personales y bancarios.",
@@ -335,20 +342,27 @@
   "watch": [
     {
       "pos": 11,
+      "nombre": "Sextorsión",
+      "canal": "REDES",
+      "act": 52,
+      "delta": 0
+    },
+    {
+      "pos": 12,
       "nombre": "Fraude en e-commerce",
       "canal": "REDES",
       "act": 50,
       "delta": 0
     },
     {
-      "pos": 12,
+      "pos": 13,
       "nombre": "QR fraudulento en pagos",
       "canal": "REDES",
       "act": 43,
       "delta": 0
     },
     {
-      "pos": 13,
+      "pos": 14,
       "nombre": "Falso beneficio de PAMI",
       "canal": "WHATSAPP",
       "act": 42,
@@ -358,7 +372,7 @@
   "dist": [
     {
       "label": "Redes",
-      "pct": 46
+      "pct": 50
     },
     {
       "label": "Mail",
@@ -366,17 +380,17 @@
     },
     {
       "label": "WhatsApp",
-      "pct": 36
+      "pct": 34
     },
     {
       "label": "App",
-      "pct": 9
+      "pct": 8
     }
   ],
   "kpi": {
-    "monit": 13,
+    "monit": 14,
     "emerg": 2,
-    "sube": 3,
+    "sube": 1,
     "baja": 0
   },
   "riesgo": {
