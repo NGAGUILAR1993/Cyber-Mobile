@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-28T18:23:39.694Z",
+    "actualizado": "2026-08-28T18:23:58.881Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
@@ -10,157 +10,41 @@
       "pos": 1,
       "nombre": "Phishing de organismo oficial",
       "canal": "WHATSAPP",
-      "act": 66,
+      "act": 60,
       "delta": 0,
       "riesgo": "alto",
-      "emergente": false,
-      "como": "Estafadores se hacen pasar por PAMI para ofrecer un falso subsidio de medicamentos, solicitando datos personales y bancarios a jubilados a través de un link malicioso enviado por WhatsApp.",
-      "detectar": "Mensajes de WhatsApp con links sospechosos que prometen subsidios de PAMI y solicitan datos personales/bancarios. PAMI nunca pide datos por esos medios.",
+      "emergente": true,
+      "como": "Estafadores se hacen pasar por el Ministerio de Salud vía WhatsApp, ofreciendo turnos de vacunación contra el dengue y solicitando abrir un link para robar datos o cuentas.",
+      "detectar": "Mensajes de WhatsApp de supuestos organismos de salud ofreciendo turnos de vacunación y pidiendo abrir links o brindar información personal. El Ministerio de Salud no llama para turnos.",
       "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/cuidado-con-el-bono-mujer-que-se-ofrece-en-redes-sociales-en-marzo-de-2025-se-trata-de-una-estafa-virtual/",
+      "url": "https://chequeado.com/ultimas-noticias/es-falsa-la-cadena-de-whatsapp-sobre-un-bono-mujer-que-sera-otorgado-por-el-gobierno-nacional-en-octubre-se-trata-de-una-estafa-virtual/",
       "evidencias": [
-        {
-          "url": "https://chequeado.com/ultimas-noticias/cuidado-con-el-bono-mujer-que-se-ofrece-en-redes-sociales-en-marzo-de-2025-se-trata-de-una-estafa-virtual/",
-          "medio": "Chequeado",
-          "titulo": "Cuidado con el “Bono Mujer” que se ofrece en redes sociales en septiembre de 2025: se trata de una estafa virtual",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:39.646Z"
-        },
         {
           "url": "https://chequeado.com/ultimas-noticias/es-falsa-la-cadena-de-whatsapp-sobre-un-bono-mujer-que-sera-otorgado-por-el-gobierno-nacional-en-octubre-se-trata-de-una-estafa-virtual/",
           "medio": "Chequeado",
           "titulo": "Es falsa la cadena de WhatsApp sobre un Bono Mujer que será otorgado por el Gobierno nacional en octubre: se trata de una estafa virtual",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:39.646Z"
+          "fecha": "2026-08-28T18:23:58.789Z"
         },
         {
-          "url": "https://chequeado.com/ultimas-noticias/subsidios-a-medicamentos-el-pami-alerto-sobre-estafas-virtuales-a-sus-afiliados/",
+          "url": "https://chequeado.com/el-explicador/estafas-en-whatsapp-sobre-la-vacunacion-contra-el-dengue-como-prevenirlas/",
           "medio": "Chequeado",
-          "titulo": "Subsidios a medicamentos: el PAMI alertó sobre estafas virtuales a sus afiliados",
+          "titulo": "Estafas en WhatsApp sobre la vacunación contra el dengue: ¿cómo prevenirlas?",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:39.646Z"
+          "fecha": "2026-08-28T18:23:58.790Z"
         }
       ]
     },
     {
       "pos": 2,
-      "nombre": "Deepfake de inversión con figuras públicas",
-      "canal": "REDES",
-      "act": 65,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": true,
-      "como": "Suplantan la identidad de figuras públicas con deepfakes (videos/audios generados con IA) para promocionar falsas inversiones o estafas, aprovechando la credibilidad de la celebridad.",
-      "detectar": "Videos o audios de figuras públicas promocionando inversiones inusuales o esquemas de dinero rápido, con posibles inconsistencias en la imagen o voz.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-te-pueden-enganar-con-audios-o-videos-creados-con-inteligencia-artificial/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-te-pueden-enganar-con-audios-o-videos-creados-con-inteligencia-artificial/",
-          "medio": "Chequeado",
-          "titulo": "Estafas virtuales: cómo te pueden engañar con audios o videos creados con inteligencia artificial",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:39.646Z"
-        },
-        {
-          "url": "https://chequeado.com/ultimas-noticias/alertan-por-una-estafa-virtual-que-utiliza-la-imagen-de-luis-caputo-para-promocionar-una-supuesta-plataforma-de-inversion/",
-          "medio": "Chequeado",
-          "titulo": "Alertan por una estafa virtual que utiliza la imagen de Luis Caputo para promocionar una supuesta plataforma de inversión",
-          "anillo": 3,
-          "fecha": "2026-08-28T18:23:39.646Z"
-        }
-      ]
-    },
-    {
-      "pos": 3,
-      "nombre": "Falsa oferta laboral",
-      "canal": "WHATSAPP",
-      "act": 65,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Contactan por WhatsApp desde números extranjeros ofreciendo trabajos fáciles con pagos iniciales. Luego, piden invertir dinero para 'crecer' en el negocio, resultando en una estafa.",
-      "detectar": "Mensajes de WhatsApp de números extranjeros (+62) ofreciendo trabajo fácil y bien remunerado, con la excusa de Mercado Libre u otras empresas, y luego pidiendo inversión.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
-          "medio": "Chequeado",
-          "titulo": "Estafas virtuales: cómo pueden engañarte con mensajes de WhatsApp del extranjero que ofrecen trabajo y qué podés hacer para evitar caer en el engaño",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:39.646Z"
-        },
-        {
-          "url": "https://chequeado.com/el-explicador/las-5-estafas-virtuales-mas-comunes-de-2024-como-protegerse-de-cada-una/",
-          "medio": "Chequeado",
-          "titulo": "Las 5 estafas virtuales más comunes de 2024: cómo protegerse de cada una",
-          "anillo": 3,
-          "fecha": "2026-08-28T18:23:39.646Z"
-        }
-      ]
-    },
-    {
-      "pos": 4,
-      "nombre": "Apropiación del dispositivo",
-      "canal": "APP",
-      "act": 65,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Tras el robo de un celular, delincuentes acceden a la billetera virtual de la víctima, vacían su cuenta y solicitan préstamos a su nombre, aprovechando la verificación de identidad para recuperar la contraseña.",
-      "detectar": "Robo de celular seguido de acceso no autorizado a billeteras virtuales y solicitud de créditos. Menciones de SIM swapping como método para acceder a cuentas.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
-          "medio": "Chequeado",
-          "titulo": "Estafas virtuales: ¿qué podés hacer si te robaron el celular o la cuenta de WhatsApp?",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:39.646Z"
-        },
-        {
-          "url": "https://chequeado.com/el-explicador/billeteras-virtuales-claves-para-evitar-estafas-y-que-hacer-si-se-cae-en-una/",
-          "medio": "Chequeado",
-          "titulo": "Billeteras virtuales: claves para evitar estafas y qué hacer si se cae en una",
-          "anillo": 3,
-          "fecha": "2026-08-28T18:23:39.646Z"
-        }
-      ]
-    },
-    {
-      "pos": 5,
-      "nombre": "Plataforma de inversión falsa",
-      "canal": "REDES",
-      "act": 52,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Circulan en redes sociales publicaciones falsas que prometen ganancias rápidas invirtiendo en YPF. Redirigen a sitios web que imitan a medios de comunicación para robar datos personales y bancarios.",
-      "detectar": "Publicaciones en redes sociales (Facebook, Instagram, WhatsApp) que prometen altas ganancias con YPF, redirigiendo a sitios web falsos que imitan a medios de comunicación.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/no-ypf-no-esta-promocionando-un-programa-de-inversion-que-promete-ganancias-rapidas-se-trata-de-una-estafa-virtual/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/ultimas-noticias/no-ypf-no-esta-promocionando-un-programa-de-inversion-que-promete-ganancias-rapidas-se-trata-de-una-estafa-virtual/",
-          "medio": "Chequeado",
-          "titulo": "No, YPF no está promocionando un “programa de inversión” que promete ganancias rápidas: se trata de una estafa virtual",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:39.646Z"
-        }
-      ]
-    },
-    {
-      "pos": 6,
       "nombre": "Secuestro de cuenta de WhatsApp",
       "canal": "WHATSAPP",
-      "act": 52,
+      "act": 60,
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "El estafador obtiene el código de verificación de WhatsApp de la víctima, haciéndose pasar por una entidad oficial o un conocido, para tomar control de su cuenta y acceder a sus contactos. También se menciona el SIM swapping.",
-      "detectar": "Mensaje o llamada inesperada pidiendo un código de verificación de WhatsApp; excusas como 'validar identidad' o 'recuperar cuenta por error'.",
+      "como": "Estafadores se hacen pasar por personal del Gobierno de la Ciudad para reempadronar para la segunda dosis de la vacuna. Piden un código de verificación de WhatsApp, lo que les permite secuestrar la cuenta y contactar a los contactos de la víctima.",
+      "detectar": "Llamadas o mensajes de WhatsApp de supuestos organismos gubernamentales pidiendo códigos de verificación o clics en enlaces para temas de vacunación.",
       "fuente": "Chequeado",
       "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-por-whatsapp-y-que-podes-hacer-para-evitarlo/",
       "evidencias": [
@@ -169,7 +53,146 @@
           "medio": "Chequeado",
           "titulo": "Estafas virtuales: cómo pueden engañarte por WhatsApp y qué podés hacer para evitarlo",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:39.646Z"
+          "fecha": "2026-08-28T18:23:58.790Z"
+        },
+        {
+          "url": "https://chequeado.com/el-explicador/whatsapp-y-vacunas-como-evitar-las-estafas-electronicas-en-el-empadronamiento/",
+          "medio": "Chequeado",
+          "titulo": "WhatsApp y vacunas: ¿cómo evitar las estafas electrónicas en el empadronamiento?",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.790Z"
+        }
+      ]
+    },
+    {
+      "pos": 3,
+      "nombre": "Falsa oferta laboral",
+      "canal": "WHATSAPP",
+      "act": 52,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Contactan por WhatsApp desde números extranjeros ofreciendo trabajos fáciles (ej. reviews). Pagan al principio, pero luego piden invertir dinero para 'crecer' en el negocio, resultando en una estafa.",
+      "detectar": "Mensajes de WhatsApp de números extranjeros (+62) ofreciendo trabajos fáciles y bien remunerados, con la promesa de pagos iniciales y luego la solicitud de inversión de dinero.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
+          "medio": "Chequeado",
+          "titulo": "Estafas virtuales: cómo pueden engañarte con mensajes de WhatsApp del extranjero que ofrecen trabajo y qué podés hacer para evitar caer en el engaño",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.789Z"
+        }
+      ]
+    },
+    {
+      "pos": 4,
+      "nombre": "Phishing de servicios (luz, gas, agua)",
+      "canal": "REDES",
+      "act": 52,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Circula en redes un falso descuento del 40% en la factura de gas de Ecogas para jubilados. La estafa busca robar datos bancarios, redirigiendo a cuentas falsas de WhatsApp de la empresa.",
+      "detectar": "Publicidad en redes sociales con oferta de descuento irreal, redirección a WhatsApp no verificado, solicitud de datos bancarios, inconsistencias visuales en la publicación.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+          "medio": "Chequeado",
+          "titulo": "Alerta estafa: es falso el supuesto descuento de la empresa Ecogas para jubilados",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.790Z"
+        }
+      ]
+    },
+    {
+      "pos": 5,
+      "nombre": "QR fraudulento en pagos",
+      "canal": "REDES",
+      "act": 43,
+      "delta": 0,
+      "riesgo": "medio",
+      "emergente": false,
+      "como": "Circulan mensajes en redes sociales alertando sobre un falso aviso de corte de Metrogas con QR fraudulento. Se verifica que el aviso es real y el QR dirige al WhatsApp oficial de la empresa.",
+      "detectar": "Mensajes virales en redes sociales advirtiendo sobre un QR fraudulento en un aviso de corte de Metrogas, que luego se desmiente.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/este-aviso-de-corte-de-servicio-de-metrogas-no-es-una-estafa-es-verdadero-y-el-qr-remite-a-su-linea-de-whatsapp-verificada/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/este-aviso-de-corte-de-servicio-de-metrogas-no-es-una-estafa-es-verdadero-y-el-qr-remite-a-su-linea-de-whatsapp-verificada/",
+          "medio": "Chequeado",
+          "titulo": "Este aviso de corte de servicio de Metrogas no es una estafa: es verdadero y el QR remite a su línea de WhatsApp verificada",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.789Z"
+        }
+      ]
+    },
+    {
+      "pos": 6,
+      "nombre": "Apropiación del dispositivo",
+      "canal": "APP",
+      "act": 42,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "El robo del celular permite a los delincuentes acceder a apps bancarias, billeteras virtuales y redes sociales. También pueden intentar engañar a la víctima o sus contactos para obtener el PIN o desbloquear el dispositivo.",
+      "detectar": "Robo físico del celular, mensajes o llamadas pidiendo el PIN o desbloqueo del dispositivo, acceso no autorizado a apps bancarias o redes sociales.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
+          "medio": "Chequeado",
+          "titulo": "Estafas virtuales: ¿qué podés hacer si te robaron el celular o la cuenta de WhatsApp?",
+          "anillo": 3,
+          "fecha": "2026-08-28T18:23:58.789Z"
+        }
+      ]
+    },
+    {
+      "pos": 7,
+      "nombre": "Falsa suscripción (streaming)",
+      "canal": "REDES",
+      "act": 42,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": true,
+      "como": "Estafadores se aprovechan de tragedias como terremotos en Venezuela para crear campañas de donación falsas en redes sociales y WhatsApp, solicitando dinero a través de enlaces sospechosos o códigos QR manipulados.",
+      "detectar": "Pedidos de donaciones en redes/WhatsApp de perfiles no verificados, enlaces sospechosos, perfiles clonados, códigos QR manipulados, datos bancarios que no coinciden con la organización.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/el-explicador/terremotos-en-venezuela-recomendaciones-para-evitar-estafas-y-como-ayudar-a-los-damnificados-desde-argentina/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/el-explicador/terremotos-en-venezuela-recomendaciones-para-evitar-estafas-y-como-ayudar-a-los-damnificados-desde-argentina/",
+          "medio": "Chequeado",
+          "titulo": "Terremotos en Venezuela: recomendaciones para evitar estafas y cómo ayudar a los damnificados desde Argentina",
+          "anillo": 3,
+          "fecha": "2026-08-28T18:23:58.790Z"
+        }
+      ]
+    },
+    {
+      "pos": 8,
+      "nombre": "Fraude en e-commerce",
+      "canal": "REDES",
+      "act": 42,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Estafas relacionadas con el Mundial 2026, incluyendo la venta de entradas falsas, sitios web fraudulentos que simulan ser la FIFA y ofertas de trabajo engañosas para robar datos o dinero.",
+      "detectar": "Sitios web con nombres similares a los oficiales (typosquatting), precios de entradas muy bajos, presión para comprar rápido, pagos solo por transferencia, ofertas laborales con salarios muy atractivos y procesos rápidos.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/mundial-2026-como-cuidarte-de-las-estafas-y-de-las-noticias-falsas/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/mundial-2026-como-cuidarte-de-las-estafas-y-de-las-noticias-falsas/",
+          "medio": "Chequeado",
+          "titulo": "Mundial 2026: cómo cuidarte de las estafas y de las noticias falsas",
+          "anillo": 3,
+          "fecha": "2026-08-28T18:23:58.790Z"
         }
       ]
     }
@@ -178,26 +201,26 @@
   "dist": [
     {
       "label": "WhatsApp",
-      "pct": 50
+      "pct": 44
     },
     {
       "label": "Redes",
-      "pct": 32
+      "pct": 46
     },
     {
       "label": "App",
-      "pct": 18
+      "pct": 11
     }
   ],
   "kpi": {
-    "monit": 6,
-    "emerg": 1,
+    "monit": 8,
+    "emerg": 2,
     "sube": 0,
     "baja": 0
   },
   "riesgo": {
-    "alto": 6,
-    "medio": 0,
+    "alto": 7,
+    "medio": 1,
     "bajo": 0
   }
 }
