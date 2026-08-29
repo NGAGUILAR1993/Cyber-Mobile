@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-29T17:58:05.218Z",
+    "actualizado": "2026-08-29T18:00:07.940Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
@@ -9,13 +9,13 @@
     {
       "pos": 1,
       "nombre": "Phishing de organismo oficial",
-      "canal": "TELÉFONO",
-      "act": 73,
-      "delta": 13,
+      "canal": "WHATSAPP",
+      "act": 60,
+      "delta": 0,
       "riesgo": "alto",
-      "emergente": false,
-      "como": "Falsos funcionarios llaman en nombre del Ayuntamiento para robar datos bancarios a ciudadanos. Se hacen pasar por empleados municipales para obtener información sensible.",
-      "detectar": "Llamadas telefónicas inesperadas de supuestos funcionarios solicitando datos bancarios o personales, con excusas como trámites o beneficios.",
+      "emergente": true,
+      "como": "Estafadores se hacen pasar por el Ministerio de Salud vía WhatsApp, ofreciendo turnos de vacunación contra el dengue y solicitando abrir un link para robar datos o cuentas.",
+      "detectar": "Mensajes de WhatsApp de supuestos organismos de salud ofreciendo turnos de vacunación y pidiendo abrir links o brindar información personal. El Ministerio de Salud no llama para turnos.",
       "fuente": "Chequeado",
       "url": "https://chequeado.com/ultimas-noticias/es-falsa-la-cadena-de-whatsapp-sobre-un-bono-mujer-que-sera-otorgado-por-el-gobierno-nacional-en-octubre-se-trata-de-una-estafa-virtual/",
       "evidencias": [
@@ -32,47 +32,11 @@
           "titulo": "Estafas en WhatsApp sobre la vacunación contra el dengue: ¿cómo prevenirlas?",
           "anillo": 2,
           "fecha": "2026-08-28T18:23:58.790Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxObWI2eTM4bFZjdEZyZ2RDd3FuZnA0RUJPQW1RRnZPNVAzZGpxWWZxS2g1ZUN0Mm9lS2pjQ3laY0Qzc3QtXzBOX3NUYWwzNHBBRlAxNVExdEtuZmszZnBQZ2NQQXJpN3ByNlZsejdMNlM1QnpEdEYzYTNNV09YZG5jS3FzdFEwTUp5NVUwNGJUQ0JPUGx5M0tCUExYcENiY0hiNVIxMzAtX1VxWnBmRGlGYzRUY2ZGbmZ3UTI1YThuR2dqajJUVlJlUVlYeXlkbjRlTWRCVF82TTd3S3B2aDdZNlZ3ajBHelU?oc=5",
-          "medio": "News",
-          "titulo": "Alerta por estafa en Santa Eulària: falsos funcionarios llaman en nombre del Ayuntamiento para robar datos bancarios - Noudiari.es",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:58:05.191Z"
         }
       ]
     },
     {
       "pos": 2,
-      "nombre": "Phishing de servicios (luz, gas, agua)",
-      "canal": "MAIL",
-      "act": 65,
-      "delta": 13,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Estafadores envían mensajes falsos de Amazon para robar datos. Se hacen pasar por la empresa para engañar a los usuarios y obtener información personal o financiera.",
-      "detectar": "Mensajes de Amazon con errores gramaticales, links sospechosos, o solicitudes de información personal/financiera inusuales.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
-          "medio": "Chequeado",
-          "titulo": "Alerta estafa: es falso el supuesto descuento de la empresa Ecogas para jubilados",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:58.790Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPMkhpOXFseTVZckhDM2JXTHRmalZnckFJY0ZabmgzVy1BVmFaUkpTS0RBZ2Z5M3NsUzJ6dXhNVkR1THJpc2RRc1BJOFhCcFhfZ3M5QUxwQXRfQXdZZFM0cTE3UFBYWDM5VlNORjNSdFBnV0tWLUJfYWo0ajIzdFZsdHlzN1EzYUxtTFFFT19qSXFIZHJGcDg3ZFpRVnQ3cjNWZUNUMGcyckhIQlc0TWRxWndPbS13ZmJBRkliemxlT29Ydl94bzEtaEJxUdIB5gFBVV95cUxNSFR2cmRnSUZJdzRJY0RmOWtSYjhieDRVVDgzVWVLc29ZZVA5SjZQUkNjMWExbXhadWNuUGtSU0M5Zlc3aldPTVhObDdlQk9aX3lFWUxJSTVzX0E5b1g4YmhIeXFaTGhWcnVDX0lwY24zdkZqUE5fVHcyYmlGVnY0amk2a3VEclVwdzlvbC1fYklpbG1OeHp2bkpiZktudTl3OExTUG5mUmhaZFlZR3VlM0U3ZUVQRGVJUGlmTVM5SlNsbk1wNmQ3MVRQWTZMaVdaQTB1T0lxSXpfaV8zOTRlZHNEakFYdw?oc=5",
-          "medio": "News",
-          "titulo": "Mensaje falso de Amazon: 5 trucos para identificar una estafa de suplantación de identidad - Infobae",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:58:05.191Z"
-        }
-      ]
-    },
-    {
-      "pos": 3,
       "nombre": "Secuestro de cuenta de WhatsApp",
       "canal": "WHATSAPP",
       "act": 60,
@@ -101,7 +65,7 @@
       ]
     },
     {
-      "pos": 4,
+      "pos": 3,
       "nombre": "Falsa oferta laboral",
       "canal": "WHATSAPP",
       "act": 52,
@@ -119,6 +83,28 @@
           "titulo": "Estafas virtuales: cómo pueden engañarte con mensajes de WhatsApp del extranjero que ofrecen trabajo y qué podés hacer para evitar caer en el engaño",
           "anillo": 2,
           "fecha": "2026-08-28T18:23:58.789Z"
+        }
+      ]
+    },
+    {
+      "pos": 4,
+      "nombre": "Phishing de servicios (luz, gas, agua)",
+      "canal": "REDES",
+      "act": 52,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Circula en redes un falso descuento del 40% en la factura de gas de Ecogas para jubilados. La estafa busca robar datos bancarios, redirigiendo a cuentas falsas de WhatsApp de la empresa.",
+      "detectar": "Publicidad en redes sociales con oferta de descuento irreal, redirección a WhatsApp no verificado, solicitud de datos bancarios, inconsistencias visuales en la publicación.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+          "medio": "Chequeado",
+          "titulo": "Alerta estafa: es falso el supuesto descuento de la empresa Ecogas para jubilados",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.790Z"
         }
       ]
     },
@@ -209,61 +195,31 @@
           "fecha": "2026-08-28T18:23:58.790Z"
         }
       ]
-    },
-    {
-      "pos": 9,
-      "nombre": "nueva modalidad transporte",
-      "canal": "APP",
-      "act": 42,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": true,
-      "como": "Estafadores usan apps de transporte para engañar a usuarios, aprovechando la confianza en el servicio para cometer fraudes. Se debe estar atento a solicitudes inusuales o desvíos del proceso habitual.",
-      "detectar": "Solicitudes de pago fuera de la app, cambios de ruta inesperados, o mensajes sospechosos de supuestos conductores o pasajeros.",
-      "fuente": "News",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPWkp6WWFWRWwwOVZyZmJYRnFVLTdtNzJKMDBnVFVsTjNVVHEyX1hwZzF5eVFwd3dPQkpHdWZLTWUwYXRYejR6QVEzNnpkdllxTE5uMDJ5QmhPT2s3a0xTMHFxRmZjWjdfeHUxaWVyeWZOUUNDODhRVlpCRmcwTXh4LTZ2OENiMUo4MHhPYzNyUnRzRkk1Y3g4cy0zNmxSZjliUThwZFFTTmxGeFFjcFNtZ29n0gG3AUFVX3lxTE9zeHNqM2NKR1IyOEFEUmdZbTEtLWN5ZDZJby1KUG1SYzYwVWc1VEpIdk1PejlQU3hNX1dvNzFVdFhPTUIyQVVuYl9oUWl6LXNFRHBqZGRLeWd4dWM1YTJnS19KUHY5Nmt4Ti1nQ2pPZkRRblcyeDVYOGxHRlBqSERHN2JIcUwyVnVWVlJWaVFfaVk5N1hYUVNOLWctSnBJNXBQcG5XTnMxNjB6ZTZnVWJfOHRpVUxrdw?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPWkp6WWFWRWwwOVZyZmJYRnFVLTdtNzJKMDBnVFVsTjNVVHEyX1hwZzF5eVFwd3dPQkpHdWZLTWUwYXRYejR6QVEzNnpkdllxTE5uMDJ5QmhPT2s3a0xTMHFxRmZjWjdfeHUxaWVyeWZOUUNDODhRVlpCRmcwTXh4LTZ2OENiMUo4MHhPYzNyUnRzRkk1Y3g4cy0zNmxSZjliUThwZFFTTmxGeFFjcFNtZ29n0gG3AUFVX3lxTE9zeHNqM2NKR1IyOEFEUmdZbTEtLWN5ZDZJby1KUG1SYzYwVWc1VEpIdk1PejlQU3hNX1dvNzFVdFhPTUIyQVVuYl9oUWl6LXNFRHBqZGRLeWd4dWM1YTJnS19KUHY5Nmt4Ti1nQ2pPZkRRblcyeDVYOGxHRlBqSERHN2JIcUwyVnVWVlJWaVFfaVk5N1hYUVNOLWctSnBJNXBQcG5XTnMxNjB6ZTZnVWJfOHRpVUxrdw?oc=5",
-          "medio": "News",
-          "titulo": "La peligrosa estafa que usa las apps de transporte para engañar: cómo reconocerla - Lmneuquen.com",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:58:05.191Z"
-        }
-      ]
     }
   ],
   "watch": [],
   "dist": [
     {
-      "label": "Teléfono",
-      "pct": 16
-    },
-    {
-      "label": "Mail",
-      "pct": 14
-    },
-    {
       "label": "WhatsApp",
-      "pct": 24
+      "pct": 44
     },
     {
       "label": "Redes",
-      "pct": 28
+      "pct": 46
     },
     {
       "label": "App",
-      "pct": 18
+      "pct": 11
     }
   ],
   "kpi": {
-    "monit": 9,
+    "monit": 8,
     "emerg": 2,
-    "sube": 2,
+    "sube": 0,
     "baja": 0
   },
   "riesgo": {
-    "alto": 8,
+    "alto": 7,
     "medio": 1,
     "bajo": 0
   }
