@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-29T17:43:23.410Z",
+    "actualizado": "2026-08-29T17:45:26.678Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
@@ -195,31 +195,53 @@
           "fecha": "2026-08-28T18:23:58.790Z"
         }
       ]
+    },
+    {
+      "pos": 9,
+      "nombre": "Vendedor falso en marketplace",
+      "canal": "REDES",
+      "act": 42,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Estafadores publican ofertas falsas en Instagram Marketplace para engañar a compradores, que pagan por productos que nunca reciben o que son de calidad inferior.",
+      "detectar": "Ofertas demasiado buenas para ser verdad, perfiles de vendedor nuevos o con poca actividad, presión para concretar la compra fuera de la plataforma.",
+      "fuente": "News",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNNHZXRlFPRUVPeTlnMGxQWFllOTdiX3gxQ0syd1NiRE9fMGxuNEtpOUhTbHRLNm9UOW52V0ZXczlMdzdBSGdIdmd1OHEwQ3I2UzVxYTFUeTJKSjVQWFRmZy13Ukx0OGlSNTRHbjVXUGNSaWlaSzljamFyWW5Xb3BtYWhhY1VNNDlwZHZr?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNNHZXRlFPRUVPeTlnMGxQWFllOTdiX3gxQ0syd1NiRE9fMGxuNEtpOUhTbHRLNm9UOW52V0ZXczlMdzdBSGdIdmd1OHEwQ3I2UzVxYTFUeTJKSjVQWFRmZy13Ukx0OGlSNTRHbjVXUGNSaWlaSzljamFyWW5Xb3BtYWhhY1VNNDlwZHZr?oc=5",
+          "medio": "News",
+          "titulo": "Las estafas de Instagram Marketplace hacen que comprar en redes sociales sea más arriesgado - Bitdefender",
+          "anillo": 3,
+          "fecha": "2026-08-29T17:45:26.659Z"
+        }
+      ]
     }
   ],
   "watch": [],
   "dist": [
     {
       "label": "WhatsApp",
-      "pct": 44
+      "pct": 40
     },
     {
       "label": "Redes",
-      "pct": 46
+      "pct": 51
     },
     {
       "label": "App",
-      "pct": 11
+      "pct": 10
     }
   ],
   "kpi": {
-    "monit": 8,
+    "monit": 9,
     "emerg": 2,
     "sube": 0,
     "baja": 0
   },
   "riesgo": {
-    "alto": 7,
+    "alto": 8,
     "medio": 1,
     "bajo": 0
   }
