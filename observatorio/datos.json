@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-29T17:28:50.074Z",
+    "actualizado": "2026-08-29T17:30:52.753Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
@@ -9,23 +9,16 @@
     {
       "pos": 1,
       "nombre": "Phishing de organismo oficial",
-      "canal": "REDES",
-      "act": 79,
-      "delta": 19,
+      "canal": "WHATSAPP",
+      "act": 60,
+      "delta": 0,
       "riesgo": "alto",
-      "emergente": false,
-      "como": "Estafadores ofrecen turnos falsos para DNI o pasaporte a través de redes sociales, buscando obtener datos personales y dinero de las víctimas.",
-      "detectar": "Publicaciones en redes sociales que ofrecen turnos para RENAPER, a menudo con enlaces sospechosos o solicitudes de pago anticipado.",
-      "fuente": "News",
-      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPRnNRbGFFaW5uS19EWkZKdFcxUkhOTEMxUENmVlN4XzVwdklraElMaDFBTUVYcVc2dzg1OTRYcDVEUXVoV0pzZ0tWMHdMaGcxVW9LcGNmVmFkTmxsQTNpTkE5WmNCZ0ZZTFVhdUhTdWFkTnpqUUJtZXZFVkFNMXdfYVd3ZzRPZXlYejR6Si16X0dNU2E5T1hFb1hub0ptUmxnS3hNMkU5QTVKd2dDLUxaV0FPVTJpd0RQZEdOTzRqbzVzMlk5UTNPVQ?oc=5",
+      "emergente": true,
+      "como": "Estafadores se hacen pasar por el Ministerio de Salud vía WhatsApp, ofreciendo turnos de vacunación contra el dengue y solicitando abrir un link para robar datos o cuentas.",
+      "detectar": "Mensajes de WhatsApp de supuestos organismos de salud ofreciendo turnos de vacunación y pidiendo abrir links o brindar información personal. El Ministerio de Salud no llama para turnos.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/es-falsa-la-cadena-de-whatsapp-sobre-un-bono-mujer-que-sera-otorgado-por-el-gobierno-nacional-en-octubre-se-trata-de-una-estafa-virtual/",
       "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPRnNRbGFFaW5uS19EWkZKdFcxUkhOTEMxUENmVlN4XzVwdklraElMaDFBTUVYcVc2dzg1OTRYcDVEUXVoV0pzZ0tWMHdMaGcxVW9LcGNmVmFkTmxsQTNpTkE5WmNCZ0ZZTFVhdUhTdWFkTnpqUUJtZXZFVkFNMXdfYVd3ZzRPZXlYejR6Si16X0dNU2E5T1hFb1hub0ptUmxnS3hNMkU5QTVKd2dDLUxaV0FPVTJpd0RQZEdOTzRqbzVzMlk5UTNPVQ?oc=5",
-          "medio": "News",
-          "titulo": "Desde el RENAPER alertan sobre estafas en redes para sacar turnos por DNI o pasaporte - El diario de Tandil",
-          "anillo": 1,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        },
         {
           "url": "https://chequeado.com/ultimas-noticias/es-falsa-la-cadena-de-whatsapp-sobre-un-bono-mujer-que-sera-otorgado-por-el-gobierno-nacional-en-octubre-se-trata-de-una-estafa-virtual/",
           "medio": "Chequeado",
@@ -44,64 +37,14 @@
     },
     {
       "pos": 2,
-      "nombre": "Perfil romántico falso",
-      "canal": "REDES",
-      "act": 78,
+      "nombre": "Secuestro de cuenta de WhatsApp",
+      "canal": "WHATSAPP",
+      "act": 60,
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Una mujer creyó tener un novio virtual británico y le transfirió una gran suma de dinero para que viajara a Paraná, pero resultó ser una estafa.",
-      "detectar": "Solicitud de dinero por parte de un contacto virtual con el que no hay relación personal previa, excusas para viajar o problemas económicos.",
-      "fuente": "News",
-      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5",
-          "medio": "News",
-          "titulo": "Creyó que tenía un novio virtual británico, se endeudó por $30 millones y descubrió la peor estafa - 0223.com.ar",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPZHZVaTg2VUpzVkRlUFFRcEZicHkxNjYyYzl0dVdRSU1HLXRtU0cyM09ZdkFnRDZjODROYVViOUM2bGdDLWt1Wm1TZTZ3NFM3SW1tbVhldVVpVEszcnJkQVdBWjU0RGVQYmp2ZXFERFFKeWIwWElGemJyNkpqZXJ5bVprc0RlZ2xER1JndTVoOHpKOWpaNDhCUm9JVFI1NDlGSHhRaU9jMTZKZk1DbFBQTmRNRzRaSUdzSTB0cWhQY00zT3VaUWpNLVlKWjRnU3dPZnZaWG9ENTl6a0xkY1Awa0VUQm9qRzJ1UE13amFBLUltVWJRXzlj0gGSAkFVX3lxTE9lcFQ2bGdFSXBMLUp0VTA5S2FNdS0zQ0hBdUR4SGZSaDQzLXFHQ0pUUXQ0cFlBTkR4d0JXdVFveEFZWnYyODVNY1BEV0hoUFoyMlpraGJ0WUdDSjBTR2d3OXMwMVVieVdCOWhYMTBTV3N4MXU5cUJrTlNfajhFZjVuTnZESXdYNURoQXZ0UWZtWmZCTUhuX1RaX0xtMGk2Zk5yTmIyYldHeFVTMElIZ3J2M1o4UTF6czFkcGxYTUJhN1lVWl9VY2tldnVpS1RPSlBwdy1MRmRKQ2lKVDZ0b00wTnBPSjJ1NnpsdVR6c3c3bVgyWGFIS0ptdFRxQ2k3T2k4TXFpUEN1eVljMGdEWmJ0MFE?oc=5",
-          "medio": "News",
-          "titulo": "Pensó que tenía un novio virtual británico, le transfirió $30 millones para que viaje a Paraná, pero era una estafa - Infobae",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNYXZOUE1hbFgzZXN1Sl9SaThaeV9YS0lMWlBXQV93TE8yM0ZORFc3WmF0bVE0SVNXUVVuMVhEUndpdDViYnktNjZNU2FIdFlaYTJtQWhFV1RNa19KZFpwSTVTUFA4d2xhSW11MDAzc1o0ZlpmN1ZpNXhvaFBmaGh5eDE4dk5BelJCOF9ESDd5clZhNkJvVml6d3BxNE9abVVmaGw5Y2JwVlpHZllnZHB1ZnNrS3VMeVk4ZFpabGV2QjQ4MGVlNzVMUl9n0gHPAUFVX3lxTE1BTWJHMmU4cEhySWJPejIyU3hHaVBLU0dTMm1NS3ZsQnNyOXl2dWJ5LW12Q2tRZGIyTFZjcWl1N3FtakR5S092OTYycm5qejEza01uYmR1TldjaVMtaVVnTFpUWlBsT0YwTUtVNVhFMGt5RExYZmRyS1JFTTNGUFJIQ2Jiam51VEwzRkUxNTk2SC1sdHE4bUxCM1M2NHRmbTk3T0pBQi1sU0o4OG1KbmtWSUdQMnJOZU1GdFJmeEhlSnVyN0U2SVF0MmhoTy0xNA?oc=5",
-          "medio": "News",
-          "titulo": "Creyó que tenía un novio británico y le transfirió más de $30 millones: así fue la cruel estafa - Lmneuquen.com",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPb0NRdlBzS05KMnVBNE01QjRzdzgtVW84aFhBbXlzdTRUS1A2N3ltYXJTd3plU0VkMjlqS0IyS3ZRXzlpVWRpdVV6Z2RkNEV4aTNtRHFCdWxONFBOUF9xSmpJLVg0VG1Lb3U5MHpTOTRmZW92a1dkSFhVb1VDMlVSYzNPaUtxdk1iSzVOMDRqaHJIVVdEUUhkcHRHRDVmUExCZFF1TWdUaFhrbmEyNFIyVWozOEdVSW01NjY2ZGpMcm8yNXlFeG0tMlNJd3U5aTg2WDNZeTRfdHVWaGlVWldJeVhSRmcwZw?oc=5",
-          "medio": "News",
-          "titulo": "Estafa amorosa: creyó que su novio británico viajaría a Argentina y le transfirió casi $30 millones - La Opinión Austral",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxOX0UtSzJjWHVxWFNLS0ttWVctN2YxTDRKOWU3NXlhV3N5ajdlZDQ5NUpFRE9uSVFXVzZ2REcwMjktNmhnZ1lXaE0wM0otVHFFUnBKeEN3VHp6czh3MFZLdEowVWRpb2JjMU82SUM0aHZzT2ljaGJ5YkVLZU1PbV9DaG5zWDVkekExX1NfTHpFaTJ3R2kyeWV6U2x5NzBrTHRuT2FRTk5kbUJkaG13UkxKTVV5S2RhOFRkM29hQzU0d1B6Nkh2VWZZVTRWdm9VVEw2VEVIVjhIaXVNc3U1dU4wZUt3MWhwbHNLODNpc3ZBV1M3d3hNZWduVE1tX1BSTVRZN1NuWEdVa2ZHZWxzY0ItbtIBkAJBVV95cUxOX0UtSzJjWHVxWFNLS0ttWVctN2YxTDRKOWU3NXlhV3N5ajdlZDQ5NUpFRE9uSVFXVzZ2REcwMjktNmhnZ1lXaE0wM0otVHFFUnBKeEN3VHp6czh3MFZLdEowVWRpb2JjMU82SUM0aHZzT2ljaGJ5YkVLZU1PbV9DaG5zWDVkekExX1NfTHpFaTJ3R2kyeWV6U2x5NzBrTHRuT2FRTk5kbUJkaG13UkxKTVV5S2RhOFRkM29hQzU0d1B6Nkh2VWZZVTRWdm9VVEw2VEVIVjhIaXVNc3U1dU4wZUt3MWhwbHNLODNpc3ZBV1M3d3hNZWduVE1tX1BSTVRZN1NuWEdVa2ZHZWxzY0Itbg?oc=5",
-          "medio": "News",
-          "titulo": "Creyó que tenía un novio virtual británico, se endeudó para que viajara a Paraná y le transfirió casi $30 millones: era una estafa - TN",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        }
-      ]
-    },
-    {
-      "pos": 3,
-      "nombre": "Secuestro de cuenta de WhatsApp",
-      "canal": "WHATSAPP",
-      "act": 73,
-      "delta": 13,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Un famoso fue víctima de un intento de estafa donde le secuestraron su cuenta de WhatsApp para pedir dinero a sus contactos. Los estafadores se hicieron pasar por él y solicitaron transferencias urgentes.",
-      "detectar": "Contactos reciben mensajes desde un número conocido pidiendo dinero de forma inusual o urgente, con excusas como emergencias o problemas bancarios.",
+      "como": "Estafadores se hacen pasar por personal del Gobierno de la Ciudad para reempadronar para la segunda dosis de la vacuna. Piden un código de verificación de WhatsApp, lo que les permite secuestrar la cuenta y contactar a los contactos de la víctima.",
+      "detectar": "Llamadas o mensajes de WhatsApp de supuestos organismos gubernamentales pidiendo códigos de verificación o clics en enlaces para temas de vacunación.",
       "fuente": "Chequeado",
       "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-por-whatsapp-y-que-podes-hacer-para-evitarlo/",
       "evidencias": [
@@ -118,54 +61,11 @@
           "titulo": "WhatsApp y vacunas: ¿cómo evitar las estafas electrónicas en el empadronamiento?",
           "anillo": 2,
           "fecha": "2026-08-28T18:23:58.790Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPQlpYbVlMZzdWMlRqV2NESXU0TkFvc3lfQjMxY19ETF9JQ0NVRG5vVVR5TTRLV01WNUVNYW9pdFJlN2ZfMVBOc0RWRmJBTEVjd3pPMlNGSnNrOTRUVWZTVXRrR1lKR2hhODlyRzVfNkxuOWF3SldEd2NjRXhlRk9mWThCWTZlaEVDdk1NQ0NEOVN2eS0xcFc1T1pRLUQtVzI0TFhncVJPa3Z0UEUxajZYYm1qZjBEOUdZcHdwMkZmTnNWZVV4WERKZ0p4Nk1RaFRqUWJTOWRxQmswVG02eWNlX1FiNHlyLXRfZEHSAeoBQVVfeXFMT0JaWG1ZTGc3VjJUaldjREl1NE5Bb3N5X0IzMWNfRExfSUNDVURub1VUeU00S1dNVjVFTWFvaXRSZTdmXzFQTnNEVkZiQUxFY3d6TzJTRkpzazk0VFVmU1V0a0dZSkdoYTg5ckc1XzZMbjlhd0pXRHdjY0V4ZUZPZlk4Qlk2ZWhFQ3ZNTUNDRDlTdnktMXBXNU9aUS1ELVcyNExYZ3FST2t2dFBFMWo2WGJtamYwRDlHWXB3cDJGZk5zVmVVeFhESmdKeDZNUWhUalFiUzlkcUJrMFRtNnljZV9RYjR5ci10X2RB?oc=5",
-          "medio": "News",
-          "titulo": "La indignación de Sergio Lapegüe ante el intento de estafa que vivió: “Querían robarme todo” - Infobae",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
         }
       ]
     },
     {
-      "pos": 4,
-      "nombre": "Phishing de servicios (luz, gas, agua)",
-      "canal": "REDES",
-      "act": 69,
-      "delta": 17,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Ofertas falsas en redes sociales que redirigen a sitios fraudulentos para robar credenciales bancarias y vaciar cuentas.",
-      "detectar": "Promociones 'demasiado buenas para ser verdad' en redes, links sospechosos, y sitios web que imitan a marcas conocidas pero con URLs extrañas.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
-          "medio": "Chequeado",
-          "titulo": "Alerta estafa: es falso el supuesto descuento de la empresa Ecogas para jubilados",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:58.790Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOUVUwQXNzRUhxWGw3WXpqR240Q2xxQkZKM1pJNjFmcGNVd3pYSDZpUkVnTlVyYjIzVXVMSFlQeXhlVTNuaDVIMlF1a2ZZOWEtSGdWS01XQWQ4NXJMSEJLMlhGMEhMLTEwRVJOMVJteXF5VzhGTlZrUFZZUjEySjJqOG5SS3U0a3lhTlNWQzlXX28tVlNNazl2T0RERjFUY2xfOWczWEdXdDdibTdFVm1aYzlWSThPZ2wyTW1UbmMtc3daS0pPRnNJUmdla0txUDAyZUZkMnhVZVoxaVF1VWdyV3hmM0czQk5IVVpma0V30gGCAkFVX3lxTFA5cTFHOUtGRFdUY0hCQkg5VkdQekN2MjRtZ3J6NG1nT1VUUGRFSm5SZV9BcGxiS2RESXFKazdkNGQwa0E0VnZtN1c1M0dFSkZscHJwRU1pQ2trZndQaW9rM2xUaUpJMTlTdXJ0SEcxcHpuZk5jQXMwanJWTGx6bm0tRE13QS16THhDY3pCcmFtTDYzUWtEVVBaMGJ1OTM1U2JWLXJnSnQxNjMtMDBhSzFOVFprbjQzMjZKSElYMzI4eWJMbkRDNU9xeG5PcHFXSDcxYnk4VWNrZ2FVcmJEWjNMRDIxUXdqN2kwNGFzeW1hV1ZGaS1oNDFhUHpaRVhqYXZxdw?oc=5",
-          "medio": "News",
-          "titulo": "Cómo es la nueva estafa virtual en la que se hacen pasar por un supermercado y vacían tu cuenta bancaria en 5 segundos - TN",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNSHoyUDZhWXJUd2owVlQxVXJMMnN5aDB5S1N5eW1OVVdMc3oyS1pxYl84NWc2MmxZSVJ1WFNQMTc4R29DUlgtbS02QVQxZ0UwRkJ6eVc0d3JUdmZ0dmFlN09kQjZna0dHWFViN2xmQ1BhNkxPNG5xV2x3VXlzZUJFU3AtdGdaN09RcnZkYzUtb041enhZdWhOOXdyMUdQcDVLejZLUUZta3czbUhDQU930gG0AUFVX3lxTE9BLUxJQTRGTzhkWl92eWtqdWpoVS1VSEJHZkFBcGpVdldFbTZGUFk5cFZOQXB4M0p0RTJKZjdUZ2Jib1JleXU0X2w3RXVHVk8weWhlVlVmLW5ZNjFWVHF4TUN3VkFkR3FLWXBIbVBZZWNKYzRNQzNYQkVnNHhJZ2hkaFdvVzZvZS1fX29JSWUtUnVPTU9PVmVDdFl1Yk55M0ZxWHJxQXVHS2VudlF3bVZZakU3eg?oc=5",
-          "medio": "News",
-          "titulo": "Estafa virtual: La falsa promoción que puede vaciar tu cuenta - Urgente24",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        }
-      ]
-    },
-    {
-      "pos": 5,
+      "pos": 3,
       "nombre": "Falsa oferta laboral",
       "canal": "WHATSAPP",
       "act": 52,
@@ -187,7 +87,29 @@
       ]
     },
     {
-      "pos": 6,
+      "pos": 4,
+      "nombre": "Phishing de servicios (luz, gas, agua)",
+      "canal": "REDES",
+      "act": 52,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Circula en redes un falso descuento del 40% en la factura de gas de Ecogas para jubilados. La estafa busca robar datos bancarios, redirigiendo a cuentas falsas de WhatsApp de la empresa.",
+      "detectar": "Publicidad en redes sociales con oferta de descuento irreal, redirección a WhatsApp no verificado, solicitud de datos bancarios, inconsistencias visuales en la publicación.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
+          "medio": "Chequeado",
+          "titulo": "Alerta estafa: es falso el supuesto descuento de la empresa Ecogas para jubilados",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.790Z"
+        }
+      ]
+    },
+    {
+      "pos": 5,
       "nombre": "QR fraudulento en pagos",
       "canal": "REDES",
       "act": 43,
@@ -209,7 +131,7 @@
       ]
     },
     {
-      "pos": 7,
+      "pos": 6,
       "nombre": "Apropiación del dispositivo",
       "canal": "APP",
       "act": 42,
@@ -231,7 +153,7 @@
       ]
     },
     {
-      "pos": 8,
+      "pos": 7,
       "nombre": "Falsa suscripción (streaming)",
       "canal": "REDES",
       "act": 42,
@@ -253,7 +175,7 @@
       ]
     },
     {
-      "pos": 9,
+      "pos": 8,
       "nombre": "Fraude en e-commerce",
       "canal": "REDES",
       "act": 42,
@@ -273,105 +195,31 @@
           "fecha": "2026-08-28T18:23:58.790Z"
         }
       ]
-    },
-    {
-      "pos": 10,
-      "nombre": "Vendedor falso en marketplace",
-      "canal": "MARKETPLACE",
-      "act": 42,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "La víctima vendía un mueble en un marketplace y fue engañada para entregar sus credenciales bancarias, resultando en un préstamo fraudulento a su nombre.",
-      "detectar": "Solicitud de datos bancarios o credenciales fuera de la plataforma del marketplace para concretar una venta/compra.",
-      "fuente": "News",
-      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNWWdyRFBuMjVidkRsUl9mOEV1M1RZd2JQazBGXzZveGRGSXF5bmVqcnBEUXN3ZUxqc0dBQk83R2Z0NE52cDEzanIwQXdQVHRxbWI3aExpWjNLa3VwT2RZZWFTWlVmTGJHbXV4d3c0VjF4OTZ6N1hTVndDRjJHRTM4Qzh5OHZLM2twb3hFMTRTNzIxVnp6LS1UeWVtVFY4T1oyMjNCZm9zOWdTLTZ3THBabkRTeWc3N1BlaWVUXzY1SDJFTmFWQ090ZHpQaEZhbG1yWWNuZUZLb3pRd9IB3wFBVV95cUxPOS05dzZlV2RzdVh2R1pIVldHb1JWR2ROS0dvNEhCVHFSS3p5NERkVUxhZFFQdXVnbTJxM18wb0kxNHg0MDZkUU5YcDNrV0wzTG1qZHZ2SWwtdzlVZjZjeEhnZ2gzMVJQaXRGb2FQVWU5UFNMc09tNi1lX2dZU0NrV0gxOFJ4eE1FZ1ViZGRCbG96STNLdDJiczhEYTNEVDhzY1dMWGVRbkkyOFZpODhielY3MFJnLUItNTJLTUJvVURkSEUwcFJRUGV3eE9GRk9GUlZuWktCU0JaTUpLcU1R?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNWWdyRFBuMjVidkRsUl9mOEV1M1RZd2JQazBGXzZveGRGSXF5bmVqcnBEUXN3ZUxqc0dBQk83R2Z0NE52cDEzanIwQXdQVHRxbWI3aExpWjNLa3VwT2RZZWFTWlVmTGJHbXV4d3c0VjF4OTZ6N1hTVndDRjJHRTM4Qzh5OHZLM2twb3hFMTRTNzIxVnp6LS1UeWVtVFY4T1oyMjNCZm9zOWdTLTZ3THBabkRTeWc3N1BlaWVUXzY1SDJFTmFWQ090ZHpQaEZhbG1yWWNuZUZLb3pRd9IB3wFBVV95cUxPOS05dzZlV2RzdVh2R1pIVldHb1JWR2ROS0dvNEhCVHFSS3p5NERkVUxhZFFQdXVnbTJxM18wb0kxNHg0MDZkUU5YcDNrV0wzTG1qZHZ2SWwtdzlVZjZjeEhnZ2gzMVJQaXRGb2FQVWU5UFNMc09tNi1lX2dZU0NrV0gxOFJ4eE1FZ1ViZGRCbG96STNLdDJiczhEYTNEVDhzY1dMWGVRbkkyOFZpODhielY3MFJnLUItNTJLTUJvVURkSEUwcFJRUGV3eE9GRk9GUlZuWktCU0JaTUpLcU1R?oc=5",
-          "medio": "News",
-          "titulo": "Vendía un mueble, cayó en una estafa virtual y la Justicia declaró inválido el préstamo - alertadigital.ar",
-          "anillo": 3,
-          "fecha": "2026-08-29T17:28:50.053Z"
-        }
-      ]
     }
   ],
-  "watch": [
-    {
-      "pos": 11,
-      "nombre": "Falsa entrega de paquetería",
-      "canal": "SMS",
-      "act": 42,
-      "delta": 0
-    },
-    {
-      "pos": 12,
-      "nombre": "Suplantación de un contacto conocido",
-      "canal": "WHATSAPP",
-      "act": 42,
-      "delta": 0
-    },
-    {
-      "pos": 13,
-      "nombre": "SIM swapping",
-      "canal": "TELÉFONO",
-      "act": 42,
-      "delta": 0
-    },
-    {
-      "pos": 14,
-      "nombre": "Phishing de ARCA",
-      "canal": "MAIL",
-      "act": 42,
-      "delta": 0
-    },
-    {
-      "pos": 15,
-      "nombre": "Plataforma de inversión falsa",
-      "canal": "REDES",
-      "act": 42,
-      "delta": 0
-    }
-  ],
+  "watch": [],
   "dist": [
     {
-      "label": "Redes",
-      "pct": 51
+      "label": "WhatsApp",
+      "pct": 44
     },
     {
-      "label": "WhatsApp",
-      "pct": 22
+      "label": "Redes",
+      "pct": 46
     },
     {
       "label": "App",
-      "pct": 5
-    },
-    {
-      "label": "Marketplace",
-      "pct": 5
-    },
-    {
-      "label": "SMS",
-      "pct": 5
-    },
-    {
-      "label": "Teléfono",
-      "pct": 5
-    },
-    {
-      "label": "Mail",
-      "pct": 5
+      "pct": 11
     }
   ],
   "kpi": {
-    "monit": 15,
-    "emerg": 1,
-    "sube": 3,
+    "monit": 8,
+    "emerg": 2,
+    "sube": 0,
     "baja": 0
   },
   "riesgo": {
-    "alto": 9,
+    "alto": 7,
     "medio": 1,
     "bajo": 0
   }
