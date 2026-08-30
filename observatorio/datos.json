@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-30T16:30:05.764Z",
+    "actualizado": "2026-08-30T16:32:08.057Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
@@ -9,13 +9,13 @@
     {
       "pos": 1,
       "nombre": "Phishing de organismo oficial",
-      "canal": "TELÉFONO",
-      "act": 73,
-      "delta": 13,
+      "canal": "WHATSAPP",
+      "act": 60,
+      "delta": 0,
       "riesgo": "alto",
-      "emergente": false,
-      "como": "Falsos funcionarios se hacen pasar por empleados del Ayuntamiento de Santa Eulària para obtener datos bancarios de las víctimas mediante llamadas telefónicas.",
-      "detectar": "Llamadas telefónicas inesperadas de supuestos funcionarios solicitando datos bancarios o información personal sensible.",
+      "emergente": true,
+      "como": "Estafadores se hacen pasar por el Ministerio de Salud vía WhatsApp, ofreciendo turnos de vacunación contra el dengue y solicitando abrir un link para robar datos o cuentas.",
+      "detectar": "Mensajes de WhatsApp de supuestos organismos de salud ofreciendo turnos de vacunación y pidiendo abrir links o brindar información personal. El Ministerio de Salud no llama para turnos.",
       "fuente": "Chequeado",
       "url": "https://chequeado.com/ultimas-noticias/es-falsa-la-cadena-de-whatsapp-sobre-un-bono-mujer-que-sera-otorgado-por-el-gobierno-nacional-en-octubre-se-trata-de-una-estafa-virtual/",
       "evidencias": [
@@ -32,13 +32,6 @@
           "titulo": "Estafas en WhatsApp sobre la vacunación contra el dengue: ¿cómo prevenirlas?",
           "anillo": 2,
           "fecha": "2026-08-28T18:23:58.790Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxObWI2eTM4bFZjdEZyZ2RDd3FuZnA0RUJPQW1RRnZPNVAzZGpxWWZxS2g1ZUN0Mm9lS2pjQ3laY0Qzc3QtXzBOX3NUYWwzNHBBRlAxNVExdEtuZmszZnBQZ2NQQXJpN3ByNlZsejdMNlM1QnpEdEYzYTNNV09YZG5jS3FzdFEwTUp5NVUwNGJUQ0JPUGx5M0tCUExYcENiY0hiNVIxMzAtX1VxWnBmRGlGYzRUY2ZGbmZ3UTI1YThuR2dqajJUVlJlUVlYeXlkbjRlTWRCVF82TTd3S3B2aDdZNlZ3ajBHelU?oc=5",
-          "medio": "News",
-          "titulo": "Alerta por estafa en Santa Eulària: falsos funcionarios llaman en nombre del Ayuntamiento para robar datos bancarios - Noudiari.es",
-          "anillo": 3,
-          "fecha": "2026-08-30T16:30:05.752Z"
         }
       ]
     },
@@ -202,57 +195,31 @@
           "fecha": "2026-08-28T18:23:58.790Z"
         }
       ]
-    },
-    {
-      "pos": 9,
-      "nombre": "nueva modalidad",
-      "canal": "APP",
-      "act": 42,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": true,
-      "como": "Estafadores usan apps de transporte para engañar a usuarios, posiblemente con viajes falsos o cobros indebidos, aprovechando la confianza en la plataforma.",
-      "detectar": "Alertas sobre estafas en apps de transporte, noticias sobre engaños a usuarios de estas plataformas.",
-      "fuente": "News",
-      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPWkp6WWFWRWwwOVZyZmJYRnFVLTdtNzJKMDBnVFVsTjNVVHEyX1hwZzF5eVFwd3dPQkpHdWZLTWUwYXRYejR6QVEzNnpkdllxTE5uMDJ5QmhPT2s3a0xTMHFxRmZjWjdfeHUxaWVyeWZOUUNDODhRVlpCRmcwTXh4LTZ2OENiMUo4MHhPYzNyUnRzRkk1Y3g4cy0zNmxSZjliUThwZFFTTmxGeFFjcFNtZ29n0gG3AUFVX3lxTE9zeHNqM2NKR1IyOEFEUmdZbTEtLWN5ZDZJby1KUG1SYzYwVWc1VEpIdk1PejlQU3hNX1dvNzFVdFhPTUIyQVVuYl9oUWl6LXNFRHBqZGRLeWd4dWM1YTJnS19KUHY5Nmt4Ti1nQ2pPZkRRblcyeDVYOGxHRlBqSERHN2JIcUwyVnVWVlJWaVFfaVk5N1hYUVNOLWctSnBJNXBQcG5XTnMxNjB6ZTZnVWJfOHRpVUxrdw?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPWkp6WWFWRWwwOVZyZmJYRnFVLTdtNzJKMDBnVFVsTjNVVHEyX1hwZzF5eVFwd3dPQkpHdWZLTWUwYXRYejR6QVEzNnpkdllxTE5uMDJ5QmhPT2s3a0xTMHFxRmZjWjdfeHUxaWVyeWZOUUNDODhRVlpCRmcwTXh4LTZ2OENiMUo4MHhPYzNyUnRzRkk1Y3g4cy0zNmxSZjliUThwZFFTTmxGeFFjcFNtZ29n0gG3AUFVX3lxTE9zeHNqM2NKR1IyOEFEUmdZbTEtLWN5ZDZJby1KUG1SYzYwVWc1VEpIdk1PejlQU3hNX1dvNzFVdFhPTUIyQVVuYl9oUWl6LXNFRHBqZGRLeWd4dWM1YTJnS19KUHY5Nmt4Ti1nQ2pPZkRRblcyeDVYOGxHRlBqSERHN2JIcUwyVnVWVlJWaVFfaVk5N1hYUVNOLWctSnBJNXBQcG5XTnMxNjB6ZTZnVWJfOHRpVUxrdw?oc=5",
-          "medio": "News",
-          "titulo": "La peligrosa estafa que usa las apps de transporte para engañar: cómo reconocerla - Lmneuquen.com",
-          "anillo": 3,
-          "fecha": "2026-08-30T16:30:05.752Z"
-        }
-      ]
     }
   ],
   "watch": [],
   "dist": [
     {
-      "label": "Teléfono",
-      "pct": 16
-    },
-    {
       "label": "WhatsApp",
-      "pct": 25
+      "pct": 44
     },
     {
       "label": "Redes",
-      "pct": 40
+      "pct": 46
     },
     {
       "label": "App",
-      "pct": 19
+      "pct": 11
     }
   ],
   "kpi": {
-    "monit": 9,
+    "monit": 8,
     "emerg": 2,
-    "sube": 1,
+    "sube": 0,
     "baja": 0
   },
   "riesgo": {
-    "alto": 8,
+    "alto": 7,
     "medio": 1,
     "bajo": 0
   }
