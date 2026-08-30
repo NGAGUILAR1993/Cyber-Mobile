@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-30T16:11:19.382Z",
+    "actualizado": "2026-08-30T16:13:21.990Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
@@ -110,35 +110,6 @@
     },
     {
       "pos": 5,
-      "nombre": "Apropiación del dispositivo",
-      "canal": "APP",
-      "act": 50,
-      "delta": 8,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Un usuario sufrió el robo de $576.789 de su cuenta bancaria en Rivadavia, San Juan, mediante una estafa virtual que implicó el control de su dispositivo o cuenta.",
-      "detectar": "Noticia sobre un robo de dinero de una cuenta bancaria a través de una estafa virtual, sin detalles específicos del método inicial de engaño.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
-          "medio": "Chequeado",
-          "titulo": "Estafas virtuales: ¿qué podés hacer si te robaron el celular o la cuenta de WhatsApp?",
-          "anillo": 3,
-          "fecha": "2026-08-28T18:23:58.789Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQM3ByMDRRcm41MmkxUF83QWtORVItR292dFpyeU9vdnoxQU1MdUNGRFpUX3FLZTJrWmZ2LV9CNHEtYVVQQWUyQWJSUW40Nk0tT2FWOGk3c3lfX2lGYk1OV3kxX0txVVJEY0V4NFdBelkwREtEdlVDeU9vdkNqVE81WkVhd05vVjYzMHRhajEtaWlITkxfNnBOWkhTck5TUDMtSUV4d1pEd2tINjJxaEJZUkg5aEl5enR2NUg4?oc=5",
-          "medio": "News",
-          "titulo": "Rivadavia: investigan una estafa virtual por $576.789 en una cuenta bancaria - El Zonda",
-          "anillo": 3,
-          "fecha": "2026-08-30T16:11:19.372Z"
-        }
-      ]
-    },
-    {
-      "pos": 6,
       "nombre": "QR fraudulento en pagos",
       "canal": "REDES",
       "act": 43,
@@ -155,6 +126,28 @@
           "medio": "Chequeado",
           "titulo": "Este aviso de corte de servicio de Metrogas no es una estafa: es verdadero y el QR remite a su línea de WhatsApp verificada",
           "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.789Z"
+        }
+      ]
+    },
+    {
+      "pos": 6,
+      "nombre": "Apropiación del dispositivo",
+      "canal": "APP",
+      "act": 42,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "El robo del celular permite a los delincuentes acceder a apps bancarias, billeteras virtuales y redes sociales. También pueden intentar engañar a la víctima o sus contactos para obtener el PIN o desbloquear el dispositivo.",
+      "detectar": "Robo físico del celular, mensajes o llamadas pidiendo el PIN o desbloqueo del dispositivo, acceso no autorizado a apps bancarias o redes sociales.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-que-podes-hacer-si-te-robaron-el-celular-o-te-hackearon-la-cuenta-de-whatsapp/",
+          "medio": "Chequeado",
+          "titulo": "Estafas virtuales: ¿qué podés hacer si te robaron el celular o la cuenta de WhatsApp?",
+          "anillo": 3,
           "fecha": "2026-08-28T18:23:58.789Z"
         }
       ]
@@ -208,21 +201,21 @@
   "dist": [
     {
       "label": "WhatsApp",
-      "pct": 43
+      "pct": 44
     },
     {
       "label": "Redes",
-      "pct": 45
+      "pct": 46
     },
     {
       "label": "App",
-      "pct": 12
+      "pct": 11
     }
   ],
   "kpi": {
     "monit": 8,
     "emerg": 2,
-    "sube": 1,
+    "sube": 0,
     "baja": 0
   },
   "riesgo": {
