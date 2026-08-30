@@ -1,13 +1,35 @@
 {
   "meta": {
     "mes": "agosto de 2026",
-    "actualizado": "2026-08-30T16:07:12.610Z",
+    "actualizado": "2026-08-30T16:09:15.787Z",
     "version_schema": 1,
     "generado_por": "n8n"
   },
   "top10": [
     {
       "pos": 1,
+      "nombre": "Phishing de ARCA",
+      "canal": "MAIL",
+      "act": 62,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Estafadores envían correos electrónicos falsos suplantando a ARCA para engañar a usuarios y obtener información sensible o dinero.",
+      "detectar": "Correos electrónicos con remitente ARCA, pero con direcciones sospechosas o enlaces a sitios no oficiales.",
+      "fuente": "News",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQOW45S090QVpXNUpmdXREQURjNEdPZE5IbC1MSjV0VmVOd0JhdG1GMWlBNmR1Mm5zX3phQ19LWEZ3Y011azhkeklHZG9oYkRTMWpoVFBJUzVXNEhXdmxrUS1jSGZBcERDUmYtMmt0SUpMWXBaaGVCdVBndUY2X0wxbWRZa05NbUxQSVdFSmJlWnhLUkhVeFJ4UWZsS1dUYkE3TjF2WnhhaG83Z9IBrwFBVV95cUxQTFYwaVpkRmxrQzQtQVlXc0NXR0txeVBxb01PVURJQTYyVC1zWko4WjN0MlpkYlI0dVRud0c5T3IwdV8zUVFpd0pUaDA0NjRzMGpVdnNYSUNEYmNVcVlFUE5jbVI4QVYxemVEWFhGcEM3ZE5rMVlUQkdDUkVPTmlxZUZKbTl0bTdoRGhXa09YUGxiOFJEWTRBS2dkUGlib29wY25FUGZUWUlXaUZORFdZ?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQOW45S090QVpXNUpmdXREQURjNEdPZE5IbC1MSjV0VmVOd0JhdG1GMWlBNmR1Mm5zX3phQ19LWEZ3Y011azhkeklHZG9oYkRTMWpoVFBJUzVXNEhXdmxrUS1jSGZBcERDUmYtMmt0SUpMWXBaaGVCdVBndUY2X0wxbWRZa05NbUxQSVdFSmJlWnhLUkhVeFJ4UWZsS1dUYkE3TjF2WnhhaG83Z9IBrwFBVV95cUxQTFYwaVpkRmxrQzQtQVlXc0NXR0txeVBxb01PVURJQTYyVC1zWko4WjN0MlpkYlI0dVRud0c5T3IwdV8zUVFpd0pUaDA0NjRzMGpVdnNYSUNEYmNVcVlFUE5jbVI4QVYxemVEWFhGcEM3ZE5rMVlUQkdDUkVPTmlxZUZKbTl0bTdoRGhXa09YUGxiOFJEWTRBS2dkUGlib29wY25FUGZUWUlXaUZORFdZ?oc=5",
+          "medio": "News",
+          "titulo": "ARCA alertó por una nueva estafa con correos electrónicos falsos - Diario Mendoza",
+          "anillo": 1,
+          "fecha": "2026-08-30T16:09:15.777Z"
+        }
+      ]
+    },
+    {
+      "pos": 2,
       "nombre": "Phishing de organismo oficial",
       "canal": "WHATSAPP",
       "act": 60,
@@ -36,7 +58,7 @@
       ]
     },
     {
-      "pos": 2,
+      "pos": 3,
       "nombre": "Secuestro de cuenta de WhatsApp",
       "canal": "WHATSAPP",
       "act": 60,
@@ -65,7 +87,7 @@
       ]
     },
     {
-      "pos": 3,
+      "pos": 4,
       "nombre": "Falsa oferta laboral",
       "canal": "WHATSAPP",
       "act": 52,
@@ -87,7 +109,7 @@
       ]
     },
     {
-      "pos": 4,
+      "pos": 5,
       "nombre": "Phishing de servicios (luz, gas, agua)",
       "canal": "REDES",
       "act": 52,
@@ -109,7 +131,7 @@
       ]
     },
     {
-      "pos": 5,
+      "pos": 6,
       "nombre": "QR fraudulento en pagos",
       "canal": "REDES",
       "act": 43,
@@ -131,7 +153,7 @@
       ]
     },
     {
-      "pos": 6,
+      "pos": 7,
       "nombre": "Apropiación del dispositivo",
       "canal": "APP",
       "act": 42,
@@ -153,7 +175,7 @@
       ]
     },
     {
-      "pos": 7,
+      "pos": 8,
       "nombre": "Falsa suscripción (streaming)",
       "canal": "REDES",
       "act": 42,
@@ -175,7 +197,7 @@
       ]
     },
     {
-      "pos": 8,
+      "pos": 9,
       "nombre": "Fraude en e-commerce",
       "canal": "REDES",
       "act": 42,
@@ -195,43 +217,25 @@
           "fecha": "2026-08-28T18:23:58.790Z"
         }
       ]
-    },
-    {
-      "pos": 9,
-      "nombre": "Deepfake de inversión con figuras públicas",
-      "canal": "REDES",
-      "act": 42,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Ciberdelincuentes usan la imagen de famosos (deepfakes) para promocionar inversiones fraudulentas, engañando a las víctimas con promesas de altos retornos.",
-      "detectar": "Uso de deepfakes de celebridades en redes sociales o anuncios para promocionar esquemas de inversión sospechosos.",
-      "fuente": "News",
-      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPMlFiME03UW5qLUx2amxxemNJdVJiTlhvMlNDSk5CdkVGVVdUYm9qc3c1N2w5bXktUnlJQkF1R3ZOOEF1aTB1WlFBWXhrdlJjeXgxbE4xZTktUW9BTnhJaWYxeEZFci1PX1owa0JZMTNSenZWLXlnLUg3cFF2T0twel82SmhBVmtUNXNLOUtyRHBtUWpaeXZCX005QQ?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPMlFiME03UW5qLUx2amxxemNJdVJiTlhvMlNDSk5CdkVGVVdUYm9qc3c1N2w5bXktUnlJQkF1R3ZOOEF1aTB1WlFBWXhrdlJjeXgxbE4xZTktUW9BTnhJaWYxeEZFci1PX1owa0JZMTNSenZWLXlnLUg3cFF2T0twel82SmhBVmtUNXNLOUtyRHBtUWpaeXZCX005QQ?oc=5",
-          "medio": "News",
-          "titulo": "Celeb-Baiting: Cuando los ciberdelincuentes roban la cara de los famosos para estafarte - PabloYglesias",
-          "anillo": 3,
-          "fecha": "2026-08-30T16:07:12.596Z"
-        }
-      ]
     }
   ],
   "watch": [],
   "dist": [
     {
+      "label": "Mail",
+      "pct": 14
+    },
+    {
       "label": "WhatsApp",
-      "pct": 40
+      "pct": 38
     },
     {
       "label": "Redes",
-      "pct": 51
+      "pct": 39
     },
     {
       "label": "App",
-      "pct": 10
+      "pct": 9
     }
   ],
   "kpi": {
