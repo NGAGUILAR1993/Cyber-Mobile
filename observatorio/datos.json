@@ -1,7 +1,7 @@
 {
   "meta": {
-    "mes": "agosto de 2026",
-    "actualizado": "2026-08-31T16:56:39.231Z",
+    "mes": "septiembre de 2026",
+    "actualizado": "2026-09-01T12:35:36.033Z",
     "version_schema": 2,
     "generado_por": "n8n"
   },
@@ -11,12 +11,12 @@
       "key": "ecommerce_falso@intl",
       "nombre": "Tienda online falsa",
       "canal": "REDES",
-      "act": 88,
-      "delta": 21,
-      "riesgo": "alto",
+      "act": 60,
+      "delta": -28,
+      "riesgo": "medio",
       "emergente": false,
-      "como": "[España] En España, los delincuentes publican anuncios falsos en redes sociales y plataformas de compraventa, ofreciendo cachorros de raza a precios atractivos. Una vez que la víctima muestra interés, le solicitan un pago por adelantado para reservar el animal o cubrir supuestos gastos de envío. Tras recibir el dinero, los estafadores desaparecen sin entregar el cachorro, dejando a la persona sin su dinero y sin la mascota prometida.",
-      "detectar": "Desconfiar de ofertas de mascotas de raza a precios inusualmente bajos, especialmente si el vendedor exige pagos por adelantado sin permitir ver al animal o al criadero en persona.",
+      "como": "[España] Los estafadores publican anuncios falsos de adopción o venta de mascotas en redes sociales o sitios web. Una vez que la víctima muestra interés, le solicitan pagos por adelantado por conceptos como transporte, vacunas o trámites, que nunca se concretan. La mascota nunca llega y el dinero se pierde. También se mencionan estafas de 'raspe y gane' donde se pide dinero para liberar un premio inexistente.",
+      "detectar": "Desconfiar de ofertas de mascotas a precios irrisorios o adopciones que exigen pagos por adelantado. Verificar la reputación del vendedor y buscar reseñas. No pagar por premios de sorteos que no se participaron.",
       "fuente": "La Manchuela al Día (ES)",
       "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxNeVU5T193NDRmeFY2djVUTDdnMGtfb3NrT0RfWXlzSVpwMkVoa1dobWJtUXgtdXFrTEZYLVIwM2xobXRmWFd1U3hDQjQ5T3Z4T2N6V3NFd2dZY0xpMTQ5TDg2cGZDSVVjQ0xfVHdybGlKUWZfRGRwa21jU1NJNTJiMFY4YlBfWGZrV1A0YnlUWUxmUFlzejhEazRSUlc4WGROdmpwdEtlZExKeW8zWXplQi1MaUwwa1FBcnJhd0Q1ZmVGbmpUcWM5c2JzV0RLdW44SE9OeHFDTUVGMnB3X2xoVkJSaTVsdw?oc=5",
       "evidencias": [
@@ -49,14 +49,40 @@
     },
     {
       "pos": 2,
+      "key": "deepfake_inversion@intl",
+      "nombre": "Deepfake de inversion con figuras publicas",
+      "canal": "TELEFONO",
+      "act": 59,
+      "delta": -11,
+      "riesgo": "alto",
+      "emergente": true,
+      "como": "[España] Los estafadores contactan a dueños de mascotas perdidas, haciéndose pasar por alguien que encontró al animal. Utilizan inteligencia artificial para simular la voz de un veterinario o de un familiar, pidiendo dinero para supuestos tratamientos urgentes o para cubrir gastos de envío. La víctima, desesperada por recuperar a su mascota, realiza transferencias de dinero que nunca recupera.",
+      "detectar": "Desconfiar de solicitudes de dinero urgentes por supuestos tratamientos o envíos de mascotas perdidas, especialmente si la voz suena extraña o si no se permite verificar la identidad del interlocutor.",
+      "fuente": "65 y más (ES)",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUUl0N1VtYW1RNkt4d09BVXUzSVV4VllEVEUzM2pxQ2g1NlhsWXlQUTVkZFQ5OTgxUUVMMWFJdUh2MnRhZzJ0SE12OEpqTllrNWFhT2VHQjBqOGF3Szd6aXNBZ1pOc1lpWkY3ejJmcWtWc2RvNjdNUS1rd3BWMjBoVldhMjZQb3liODlVU0VJODdmUXlpVVpQbkZRbXZFYlhSWXlKd2lLNl9BVkpHR0o4LTBiaw?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUUl0N1VtYW1RNkt4d09BVXUzSVV4VllEVEUzM2pxQ2g1NlhsWXlQUTVkZFQ5OTgxUUVMMWFJdUh2MnRhZzJ0SE12OEpqTllrNWFhT2VHQjBqOGF3Szd6aXNBZ1pOc1lpWkY3ejJmcWtWc2RvNjdNUS1rd3BWMjBoVldhMjZQb3liODlVU0VJODdmUXlpVVpQbkZRbXZFYlhSWXlKd2lLNl9BVkpHR0o4LTBiaw?oc=5",
+          "medio": "65 y más",
+          "pais": "ES",
+          "titulo": "La Policía alerta de la estafa de las mascotas perdidas: usan IA para engañar a sus dueños - 65 y más",
+          "anillo": 1,
+          "fecha": "2026-08-31T13:10:43.758Z"
+        }
+      ],
+      "pais": "ES",
+      "provincias": []
+    },
+    {
+      "pos": 3,
       "key": "secuestro_whatsapp@intl",
       "nombre": "Secuestro de cuenta de WhatsApp",
       "canal": "TELEFONO",
-      "act": 76,
-      "delta": 6,
+      "act": 53,
+      "delta": -23,
       "riesgo": "alto",
       "emergente": true,
-      "como": "[España] En España, los delincuentes contactan a dueños de mascotas perdidas, haciéndose pasar por quienes las encontraron. Utilizan inteligencia artificial para simular la voz del dueño en llamadas a familiares, pidiendo dinero para supuestos gastos veterinarios o de rescate, consumando el fraude al recibir la transferencia.",
+      "como": "[España] Los delincuentes contactan a dueños de mascotas perdidas, haciéndose pasar por quienes las encontraron. Utilizan inteligencia artificial para simular la voz del dueño en llamadas a familiares, pidiendo dinero para supuestos gastos veterinarios o de rescate, consumando el fraude al recibir la transferencia.",
       "detectar": "Sospechar de cualquier solicitud de dinero urgente por una mascota perdida, especialmente si la voz suena extraña o si piden transferencias a cuentas desconocidas.",
       "fuente": "65 y más (ES)",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUUl0N1VtYW1RNkt4d09BVXUzSVV4VllEVEUzM2pxQ2g1NlhsWXlQUTVkZFQ5OTgxUUVMMWFJdUh2MnRhZzJ0SE12OEpqTllrNWFhT2VHQjBqOGF3Szd6aXNBZ1pOc1lpWkY3ejJmcWtWc2RvNjdNUS1rd3BWMjBoVldhMjZQb3liODlVU0VJODdmUXlpVVpQbkZRbXZFYlhSWXlKd2lLNl9BVkpHR0o4LTBiaw?oc=5",
@@ -74,16 +100,49 @@
       "provincias": []
     },
     {
-      "pos": 3,
-      "key": "alquiler_inexistente@intl",
-      "nombre": "Alquiler inexistente",
-      "canal": "REDES",
-      "act": 70,
-      "delta": 6,
+      "pos": 4,
+      "key": "phishing_banco@intl",
+      "nombre": "Phishing bancario",
+      "canal": "MAIL",
+      "act": 52,
+      "delta": 2,
       "riesgo": "alto",
       "emergente": false,
-      "como": "[Estados Unidos] En Estados Unidos, los delincuentes publican anuncios de alquiler falsos en redes sociales. Cuando un interesado contacta, le solicitan un depósito para un recorrido autoguiado de la propiedad, enviando un código de acceso a una caja de seguridad. La víctima paga, pero el código no funciona o la propiedad no está disponible para alquiler, perdiendo el dinero y sin poder contactar al supuesto arrendador.",
-      "detectar": "Desconfiar de solicitudes de pago para recorridos autoguiados o de propiedades con precios muy bajos. Siempre verificar la identidad del arrendador y la existencia real de la propiedad antes de realizar cualquier pago.",
+      "como": "[España] Los estafadores envían correos electrónicos o mensajes falsos que simulan ser del banco de la víctima. Estos mensajes suelen contener enlaces maliciosos que redirigen a páginas web fraudulentas, donde se solicitan credenciales bancarias, números de tarjeta o datos personales. Una vez obtenidos, los delincuentes acceden a las cuentas de la víctima para realizar transferencias o compras no autorizadas.",
+      "detectar": "Revisar el remitente del correo, buscar errores ortográficos o gramaticales, y verificar que la URL del enlace sea la oficial del banco antes de ingresar cualquier dato.",
+      "fuente": "galiciae.com (ES)",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQNEhINjktLUNOdWVDTHA4Sk9NLXQ1TXk5QzNURGhqcjNPSW40ZzFMaWtwVmRITFVOcGhTSURnY1pKN2lWU21oY1ZxQ21kMExSU1JDeE5ZdG84a2s1NWNWNkZpcTYyeUkwMXQwY1M3NG5OV3lvckM4M2ZQZlJkWlU4cTF5TFJMWjZqT1NOUERFbWJVVlVoaUUzNjFNdXkxc3RnZ0hJb0lHM0NJMkNsM296Q3BIZFRKRFdSMExEbnBXREJfTG83ZGk00gHMAUFVX3lxTE5UQVZQYkhfMEJHZGhGVzJXYlpVZHlLN05wNWJyaU9xd0FuV1N5cnNZQ2U0UlFMRmgwRklLZEVZdDE0ak00NmxDMGk3WEkyM3VCdk00NEh5a29ERVR2bGtOemotZXMxNlota2V6T0t2bDdINHRVQW94ZmtLMEl0dFd6VHdwaHR0WjlCckRoOExxNk8wRGhNQ1NlOU5QUkxsWkh4NEV5UFVoa2I0UWc1WUlaZEhwVE8xN0toY0g2TEtIcEcxemRoQnk3WUVxNg?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQNEhINjktLUNOdWVDTHA4Sk9NLXQ1TXk5QzNURGhqcjNPSW40ZzFMaWtwVmRITFVOcGhTSURnY1pKN2lWU21oY1ZxQ21kMExSU1JDeE5ZdG84a2s1NWNWNkZpcTYyeUkwMXQwY1M3NG5OV3lvckM4M2ZQZlJkWlU4cTF5TFJMWjZqT1NOUERFbWJVVlVoaUUzNjFNdXkxc3RnZ0hJb0lHM0NJMkNsM296Q3BIZFRKRFdSMExEbnBXREJfTG83ZGk00gHMAUFVX3lxTE5UQVZQYkhfMEJHZGhGVzJXYlpVZHlLN05wNWJyaU9xd0FuV1N5cnNZQ2U0UlFMRmgwRklLZEVZdDE0ak00NmxDMGk3WEkyM3VCdk00NEh5a29ERVR2bGtOemotZXMxNlota2V6T0t2bDdINHRVQW94ZmtLMEl0dFd6VHdwaHR0WjlCckRoOExxNk8wRGhNQ1NlOU5QUkxsWkh4NEV5UFVoa2I0UWc1WUlaZEhwVE8xN0toY0g2TEtIcEcxemRoQnk3WUVxNg?oc=5",
+          "medio": "galiciae.com",
+          "pais": "ES",
+          "titulo": "¿Cómo actuar ante estafas bancarias online? La Guardia Civil da las claves - galiciae.com",
+          "anillo": 1,
+          "fecha": "2026-09-01T11:31:22.610Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQWl9LN3pwSXJxWkRIVllOeGlyWGFtTzZJcEdKTWlyNTlURzJtTXZxV1RrbjRfdVRqU2VZbTktLVdPOUV4X2huX3ZQVTV1VThza19ackExQjR1RTBjQ3lxTDRDU2pENllTN0tpMmlubGdnYWItRnZMMWhCYWg3NXJ0NkZtVTA4eDVKM3liMTNFaW91a0lyTHhsaVVIcVIyOEZoc1ZhYmVBTERmYmlOWWctcmYyTGhfN2VibzB1WDZBRVZuM0ZzTHB6SWhkdVQzM0VaZS1nRkpKVGpFS1VFYVNpS2x0ZjVNNUIxNmtmT3k1MWQ?oc=5",
+          "medio": "radiouniversidad.com.ar",
+          "titulo": "Cesari Hernandez alertó sobre las nuevas modalidades de estafas: “Tenemos que cuidarnos unos a otros y estar siempre atentos” - radiouniversidad.com.ar",
+          "anillo": 3,
+          "fecha": "2026-08-31T13:02:13.056Z"
+        }
+      ],
+      "pais": "ES",
+      "provincias": []
+    },
+    {
+      "pos": 5,
+      "key": "alquiler_inexistente@intl",
+      "nombre": "Alquiler inexistente",
+      "canal": "MARKETPLACE",
+      "act": 49,
+      "delta": -21,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "[Estados Unidos] La víctima busca una propiedad en alquiler en un marketplace. Los estafadores publican un anuncio falso y, tras el contacto inicial, le ofrecen un recorrido autoguiado. Para acceder a la propiedad, le piden que pague una tarifa de solicitud y un depósito de seguridad, que la víctima transfiere. Una vez realizado el pago, los estafadores desaparecen y la propiedad resulta ser inexistente o no estar disponible para alquiler.",
+      "detectar": "Desconfiar de solicitudes de pago por adelantado para ver una propiedad o acceder a un recorrido autoguiado, especialmente si el contacto es solo online y no hay verificación de la identidad del supuesto propietario o agente inmobiliario.",
       "fuente": "Univision (US)",
       "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOWi1mTjY3UkotdVl5dFg3WF84Ni1PajlOWGlITTdzdjZZM1VjLVRhMmlILXFnVy1fQWViamlraVhzMVpIUTB3VEE4aFRHQUNma2VPei02NU1sdG05TC1KZWZ1bnpRTV9YTFIzaDh5cXljSm85YlJJVGxXS2xTTEVJbHNqQVg0QUpzN05QRmE2RGZBWkFIZnVXQ1ltNWFJVnBOQTVza3J6YmZYSTc1NkVleVBwdGlhZXVUUVl1WVNESGs3M3FhbER3c01Wdml2T0YyWXR0d2Z4RndMblpyRjVObGNB?oc=5",
       "evidencias": [
@@ -99,16 +158,16 @@
       "provincias": []
     },
     {
-      "pos": 4,
+      "pos": 6,
       "key": "suplantacion_banco@intl",
       "nombre": "Suplantacion de banco por telefono",
       "canal": "TELEFONO",
-      "act": 70,
-      "delta": 6,
+      "act": 49,
+      "delta": -21,
       "riesgo": "alto",
       "emergente": false,
-      "como": "[Chile] Los delincuentes realizan llamadas telefónicas, haciéndose pasar por empleados de un banco o entidad financiera. Durante la conversación, intentan obtener información confidencial del usuario, como claves bancarias o datos personales, con el pretexto de solucionar un problema o verificar una operación. Una vez que tienen los datos, acceden a las cuentas de la víctima y realizan transferencias o compras fraudulentas, vaciando sus fondos.",
-      "detectar": "Desconfiar de cualquier llamada que solicite datos bancarios o claves, incluso si dicen ser de tu banco. Los bancos nunca piden esta información por teléfono.",
+      "como": "[Chile] Los estafadores realizan llamadas telefónicas, haciéndose pasar por empleados de un banco o entidad financiera. Utilizan ingeniería social para engañar a la víctima, solicitándole datos sensibles como claves bancarias, números de tarjeta o códigos de seguridad, con el pretexto de solucionar un problema o verificar una operación. Una vez que obtienen la información, acceden a las cuentas bancarias de la persona y realizan transferencias o compras no autorizadas, vaciando sus fondos.",
+      "detectar": "Desconfiar de cualquier llamada que solicite datos bancarios o credenciales. Los bancos nunca piden esta información por teléfono. Verificar la identidad del llamante contactando directamente al banco a través de sus canales oficiales.",
       "fuente": "Medio digital El Zorro Nortino (CL)",
       "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOX09LenJ3OUhjcXdrbDZtVjJMb3RXRDJvRDkyQ3JoN3RzWXVDcVdLWnhYUXNTLXdNMTFpZFZKeFZ3SFpKMVh5ckgzQXZWWFlMV0pZaDA4ajgyUnJReDdDWVlKaEM1Vm0yMHI1YzF6Vmx2YjBsc0IzMkZ6ajZDemFRbTdnaWpoNV9JN2xuZFc3VjlHOGRlVENubEZJZDhKVXdDV0VrRU96cUpSdG9OcFdwcmF4Z3hxdEhmTWhJQjQ2SVAzenlNeWZZS0Z1bWM3QS1PT3V5aEhrblYyOVRTbGQ1blhrRkNNX0ZIVGc?oc=5",
       "evidencias": [
@@ -124,38 +183,37 @@
       "provincias": []
     },
     {
-      "pos": 5,
-      "key": "deepfake_inversion@intl",
-      "nombre": "Deepfake de inversion con figuras publicas",
+      "pos": 7,
+      "key": "suplantacion_contacto@intl",
+      "nombre": "Suplantacion de un contacto conocido",
       "canal": "TELEFONO",
-      "act": 70,
-      "delta": 0,
+      "act": 46,
+      "delta": -9,
       "riesgo": "alto",
       "emergente": true,
-      "como": "[España] Los estafadores contactan a dueños de mascotas perdidas, haciéndose pasar por alguien que encontró al animal. Utilizan inteligencia artificial para simular la voz del dueño o de un veterinario, generando confianza. Luego, solicitan dinero para supuestos gastos de rescate, atención veterinaria o envío, pidiendo transferencias o pagos a cuentas falsas, consumando así el fraude.",
-      "detectar": "Solicitudes de dinero inesperadas por la supuesta recuperación de una mascota, especialmente si piden transferencias a cuentas desconocidas o métodos de pago no habituales.",
+      "como": "[España] Los estafadores contactan a dueños de mascotas perdidas, haciéndose pasar por personas que encontraron al animal. Utilizan inteligencia artificial para simular la voz de un veterinario o de un familiar, pidiendo dinero para supuestos tratamientos o rescate. El engaño se consuma cuando la víctima realiza el pago, creyendo que está ayudando a su mascota.",
+      "detectar": "Desconfiar de solicitudes de dinero urgentes por supuestos tratamientos o rescates de mascotas perdidas, especialmente si la voz suena inusual o si se niegan a dar detalles verificables del animal.",
       "fuente": "65 y más (ES)",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUUl0N1VtYW1RNkt4d09BVXUzSVV4VllEVEUzM2pxQ2g1NlhsWXlQUTVkZFQ5OTgxUUVMMWFJdUh2MnRhZzJ0SE12OEpqTllrNWFhT2VHQjBqOGF3Szd6aXNBZ1pOc1lpWkY3ejJmcWtWc2RvNjdNUS1rd3BWMjBoVldhMjZQb3liODlVU0VJODdmUXlpVVpQbkZRbXZFYlhSWXlKd2lLNl9BVkpHR0o4LTBiaw?oc=5",
       "evidencias": [
         {
           "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUUl0N1VtYW1RNkt4d09BVXUzSVV4VllEVEUzM2pxQ2g1NlhsWXlQUTVkZFQ5OTgxUUVMMWFJdUh2MnRhZzJ0SE12OEpqTllrNWFhT2VHQjBqOGF3Szd6aXNBZ1pOc1lpWkY3ejJmcWtWc2RvNjdNUS1rd3BWMjBoVldhMjZQb3liODlVU0VJODdmUXlpVVpQbkZRbXZFYlhSWXlKd2lLNl9BVkpHR0o4LTBiaw?oc=5",
           "medio": "65 y más",
-          "pais": "ES",
           "titulo": "La Policía alerta de la estafa de las mascotas perdidas: usan IA para engañar a sus dueños - 65 y más",
           "anillo": 1,
-          "fecha": "2026-08-31T13:10:43.758Z"
+          "fecha": "2026-08-31T13:02:13.055Z"
         }
       ],
       "pais": "ES",
       "provincias": []
     },
     {
-      "pos": 6,
+      "pos": 8,
       "key": "premio_sorteo@intl",
       "nombre": "Premios y sorteos falsos",
       "canal": "REDES",
-      "act": 56,
-      "delta": 0,
+      "act": 36,
+      "delta": -20,
       "riesgo": "alto",
       "emergente": false,
       "como": "[Colombia] Los estafadores contactan a las víctimas a través de redes sociales o mensajes, ofreciéndoles la oportunidad de ganar premios instantáneos mediante un 'raspe y gane' falso. Para acceder al supuesto premio, solicitan datos personales y bancarios, o piden un pequeño pago por adelantado para cubrir 'gastos de envío' o 'impuestos', consumando así el fraude al robar la información o el dinero.",
@@ -175,16 +233,41 @@
       "provincias": []
     },
     {
-      "pos": 7,
+      "pos": 9,
+      "key": "inversion_falsa@intl",
+      "nombre": "Plataforma de inversion falsa",
+      "canal": "REDES",
+      "act": 27,
+      "delta": -15,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "[España] Los delincuentes contactan a las víctimas a través de redes sociales o plataformas de mensajería, ofreciéndoles oportunidades de inversión falsas con promesas de altos rendimientos en poco tiempo. Una vez que la víctima muestra interés, la guían para que realice transferencias de dinero a cuentas controladas por los estafadores, simulando que están invirtiendo en productos financieros inexistentes. El fraude se consuma cuando la víctima no puede retirar sus supuestas ganancias ni recuperar el capital invertido, y los estafadores desaparecen.",
+      "detectar": "Promesas de rendimientos extraordinariamente altos y rápidos en inversiones, presión para invertir grandes sumas de dinero, y la imposibilidad de retirar fondos o ganancias.",
+      "fuente": "Albaceteabierto (ES)",
+      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxObm8wSjMzY3Z0WVoyXy1NZ2U4NG51bERQRXpXcVhQTVV4V3g2NVpOMHVLeW1WN0VDTnh0MUdXUHhaMlR6WFFOZkxiYWlSMHFDT2VyakRYNzlxLUpuOE1FVHRHbm9MTmxkOUxQMG9RelEwaGlyYWNTSU9oSlB1alJKM3FabmM5b2RFT0RpVVZhUnhUMEJPd2Vveno4MlFiWGxKd3dEd3NhTU5WMXVFb0RPYWlLdkVONVhNTDl6OVBESkhPTXJoeFcwTFJiVTJZRjZzNzBqV2NYcVhYbUQwTktKT3gwTXZRNGJIS3hkOElUUmRkdw?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxObm8wSjMzY3Z0WVoyXy1NZ2U4NG51bERQRXpXcVhQTVV4V3g2NVpOMHVLeW1WN0VDTnh0MUdXUHhaMlR6WFFOZkxiYWlSMHFDT2VyakRYNzlxLUpuOE1FVHRHbm9MTmxkOUxQMG9RelEwaGlyYWNTSU9oSlB1alJKM3FabmM5b2RFT0RpVVZhUnhUMEJPd2Vveno4MlFiWGxKd3dEd3NhTU5WMXVFb0RPYWlLdkVONVhNTDl6OVBESkhPTXJoeFcwTFJiVTJZRjZzNzBqV2NYcVhYbUQwTktKT3gwTXZRNGJIS3hkOElUUmRkdw?oc=5",
+          "medio": "Albaceteabierto",
+          "titulo": "Estafa Online: Investigan Grupo Criminal en Castilla La Mancha - Albaceteabierto",
+          "anillo": 3,
+          "fecha": "2026-08-31T13:02:13.055Z"
+        }
+      ],
+      "pais": "ES",
+      "provincias": []
+    },
+    {
+      "pos": 10,
       "key": "entrada_falsa@intl",
       "nombre": "Venta de entradas falsas",
       "canal": "REDES",
-      "act": 56,
-      "delta": 14,
-      "riesgo": "alto",
+      "act": 27,
+      "delta": -29,
+      "riesgo": "medio",
       "emergente": false,
-      "como": "[España] En España, los delincuentes creaban perfiles falsos en redes sociales para vender entradas inexistentes para eventos deportivos y conciertos. Contactaban a las víctimas por estas plataformas, les solicitaban el pago por adelantado y, una vez recibido el dinero, desaparecían sin entregar las entradas, dejando a los compradores sin su dinero y sin acceso al evento.",
-      "detectar": "Desconfiar de perfiles de venta de entradas en redes sociales con poca antigüedad o seguidores, y verificar la autenticidad del vendedor y del evento antes de realizar cualquier pago.",
+      "como": "[España] Los delincuentes publicaban anuncios en redes sociales y plataformas de compraventa, ofreciendo entradas para eventos deportivos y conciertos a precios atractivos. Una vez que las víctimas realizaban el pago, los estafadores desaparecían sin entregar las entradas, dejando a los compradores sin su dinero y sin acceso al evento.",
+      "detectar": "Desconfiar de ofertas de entradas con precios muy por debajo del valor de mercado, especialmente si provienen de vendedores no oficiales o perfiles con poca reputación en redes sociales.",
       "fuente": "Albaceteabierto (ES)",
       "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxObm8wSjMzY3Z0WVoyXy1NZ2U4NG51bERQRXpXcVhQTVV4V3g2NVpOMHVLeW1WN0VDTnh0MUdXUHhaMlR6WFFOZkxiYWlSMHFDT2VyakRYNzlxLUpuOE1FVHRHbm9MTmxkOUxQMG9RelEwaGlyYWNTSU9oSlB1alJKM3FabmM5b2RFT0RpVVZhUnhUMEJPd2Vveno4MlFiWGxKd3dEd3NhTU5WMXVFb0RPYWlLdkVONVhNTDl6OVBESkhPTXJoeFcwTFJiVTJZRjZzNzBqV2NYcVhYbUQwTktKT3gwTXZRNGJIS3hkOElUUmRkdw?oc=5",
       "evidencias": [
@@ -199,73 +282,23 @@
       ],
       "pais": "ES",
       "provincias": []
-    },
-    {
-      "pos": 8,
-      "key": "phishing_banco@intl",
-      "nombre": "Phishing bancario",
-      "canal": "WHATSAPP",
-      "act": 50,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "[Internacional] Los estafadores contactan a las víctimas por WhatsApp, haciéndose pasar por empleados de un banco. Les informan sobre supuestos problemas con sus cuentas o tarjetas y les piden que ingresen a un link falso para 'solucionarlo'. Una vez que la víctima ingresa sus datos bancarios, los delincuentes los roban para vaciar sus cuentas.",
-      "detectar": "Mensajes de WhatsApp de supuestos bancos pidiendo datos o que ingreses a un link para solucionar problemas urgentes con tu cuenta o tarjeta.",
-      "fuente": "radiouniversidad.com.ar (INTL)",
-      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQWl9LN3pwSXJxWkRIVllOeGlyWGFtTzZJcEdKTWlyNTlURzJtTXZxV1RrbjRfdVRqU2VZbTktLVdPOUV4X2huX3ZQVTV1VThza19ackExQjR1RTBjQ3lxTDRDU2pENllTN0tpMmlubGdnYWItRnZMMWhCYWg3NXJ0NkZtVTA4eDVKM3liMTNFaW91a0lyTHhsaVVIcVIyOEZoc1ZhYmVBTERmYmlOWWctcmYyTGhfN2VibzB1WDZBRVZuM0ZzTHB6SWhkdVQzM0VaZS1nRkpKVGpFS1VFYVNpS2x0ZjVNNUIxNmtmT3k1MWQ?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQWl9LN3pwSXJxWkRIVllOeGlyWGFtTzZJcEdKTWlyNTlURzJtTXZxV1RrbjRfdVRqU2VZbTktLVdPOUV4X2huX3ZQVTV1VThza19ackExQjR1RTBjQ3lxTDRDU2pENllTN0tpMmlubGdnYWItRnZMMWhCYWg3NXJ0NkZtVTA4eDVKM3liMTNFaW91a0lyTHhsaVVIcVIyOEZoc1ZhYmVBTERmYmlOWWctcmYyTGhfN2VibzB1WDZBRVZuM0ZzTHB6SWhkdVQzM0VaZS1nRkpKVGpFS1VFYVNpS2x0ZjVNNUIxNmtmT3k1MWQ?oc=5",
-          "medio": "radiouniversidad.com.ar",
-          "titulo": "Cesari Hernandez alertó sobre las nuevas modalidades de estafas: “Tenemos que cuidarnos unos a otros y estar siempre atentos” - radiouniversidad.com.ar",
-          "anillo": 3,
-          "fecha": "2026-08-31T13:02:13.056Z"
-        }
-      ],
-      "pais": "INTL",
-      "provincias": []
-    },
-    {
-      "pos": 9,
-      "key": "inversion_falsa@intl",
-      "nombre": "Plataforma de inversion falsa",
-      "canal": "REDES",
-      "act": 42,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "[España] Un grupo criminal en Castilla La Mancha, España, engañaba a sus víctimas a través de redes sociales, haciéndoles creer que estaban invirtiendo en criptomonedas. Les prometían grandes ganancias y, una vez que las víctimas transferían el dinero, los estafadores desaparecían con los fondos, dejando a los inversores sin su capital y sin las supuestas ganancias.",
-      "detectar": "Promesas de ganancias exorbitantes y rápidas en inversiones, especialmente en criptomonedas, sin riesgo aparente y con presión para invertir rápidamente.",
-      "fuente": "Albaceteabierto (ES)",
-      "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxObm8wSjMzY3Z0WVoyXy1NZ2U4NG51bERQRXpXcVhQTVV4V3g2NVpOMHVLeW1WN0VDTnh0MUdXUHhaMlR6WFFOZkxiYWlSMHFDT2VyakRYNzlxLUpuOE1FVHRHbm9MTmxkOUxQMG9RelEwaGlyYWNTSU9oSlB1alJKM3FabmM5b2RFT0RpVVZhUnhUMEJPd2Vveno4MlFiWGxKd3dEd3NhTU5WMXVFb0RPYWlLdkVONVhNTDl6OVBESkhPTXJoeFcwTFJiVTJZRjZzNzBqV2NYcVhYbUQwTktKT3gwTXZRNGJIS3hkOElUUmRkdw?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxObm8wSjMzY3Z0WVoyXy1NZ2U4NG51bERQRXpXcVhQTVV4V3g2NVpOMHVLeW1WN0VDTnh0MUdXUHhaMlR6WFFOZkxiYWlSMHFDT2VyakRYNzlxLUpuOE1FVHRHbm9MTmxkOUxQMG9RelEwaGlyYWNTSU9oSlB1alJKM3FabmM5b2RFT0RpVVZhUnhUMEJPd2Vveno4MlFiWGxKd3dEd3NhTU5WMXVFb0RPYWlLdkVONVhNTDl6OVBESkhPTXJoeFcwTFJiVTJZRjZzNzBqV2NYcVhYbUQwTktKT3gwTXZRNGJIS3hkOElUUmRkdw?oc=5",
-          "medio": "Albaceteabierto",
-          "titulo": "Estafa Online: Investigan Grupo Criminal en Castilla La Mancha - Albaceteabierto",
-          "anillo": 3,
-          "fecha": "2026-08-31T13:02:13.055Z"
-        }
-      ],
-      "pais": "ES",
-      "provincias": []
     }
   ],
   "mapa": {
     "provincias": [
       {
         "nombre": "Entre Ríos",
-        "casos": 42,
+        "casos": 71,
         "modalidades": [
           "Plataforma de inversion falsa",
+          "Secuestro de cuenta de WhatsApp",
           "App de acceso remoto",
-          "Perfil romantico falso",
-          "Secuestro de cuenta de WhatsApp"
+          "Perfil romantico falso"
         ]
       },
       {
         "nombre": "Buenos Aires",
-        "casos": 19,
+        "casos": 31,
         "modalidades": [
           "Plataforma de inversion falsa",
           "App de acceso remoto",
@@ -275,28 +308,36 @@
       },
       {
         "nombre": "Catamarca",
-        "casos": 13,
+        "casos": 23,
         "modalidades": [
           "Secuestro de cuenta de WhatsApp",
-          "SIM swapping",
-          "Phishing de ARCA"
-        ]
-      },
-      {
-        "nombre": "Salta",
-        "casos": 12,
-        "modalidades": [
-          "Phishing bancario",
-          "Phishing de ANSES",
           "Phishing de ARCA",
-          "Phishing de PAMI"
+          "SIM swapping"
         ]
       },
       {
         "nombre": "Santiago del Estero",
-        "casos": 10,
+        "casos": 16,
         "modalidades": [
           "App de acceso remoto"
+        ]
+      },
+      {
+        "nombre": "Salta",
+        "casos": 14,
+        "modalidades": [
+          "Phishing bancario",
+          "Phishing de ARCA",
+          "Phishing de ANSES",
+          "Phishing de PAMI"
+        ]
+      },
+      {
+        "nombre": "San Luis",
+        "casos": 9,
+        "modalidades": [
+          "App de acceso remoto",
+          "Suplantacion de banco por telefono"
         ]
       },
       {
@@ -304,14 +345,6 @@
         "casos": 8,
         "modalidades": [
           "Phishing bancario",
-          "App de acceso remoto",
-          "Suplantacion de banco por telefono"
-        ]
-      },
-      {
-        "nombre": "San Luis",
-        "casos": 6,
-        "modalidades": [
           "App de acceso remoto",
           "Suplantacion de banco por telefono"
         ]
@@ -344,7 +377,7 @@
   "paisesIntl": [
     {
       "pais": "ES",
-      "n": 7
+      "n": 8
     },
     {
       "pais": "US",
@@ -357,10 +390,6 @@
     {
       "pais": "CO",
       "n": 1
-    },
-    {
-      "pais": "INTL",
-      "n": 1
     }
   ],
   "top10": [
@@ -369,12 +398,12 @@
       "key": "inversion_falsa",
       "nombre": "Plataforma de inversion falsa",
       "canal": "WHATSAPP",
-      "act": 100,
-      "delta": 0,
+      "act": 65,
+      "delta": -35,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Una mujer de Paraná fue contactada por WhatsApp con una propuesta de inversión que prometía altos rendimientos. Los estafadores la convencieron de transferir 30 millones de pesos a una cuenta, bajo la promesa de ganancias rápidas y seguras. Una vez realizada la transferencia, los delincuentes desaparecieron con el dinero, dejando a la víctima sin su capital ni las supuestas ganancias.",
-      "detectar": "Desconfiá de propuestas de inversión que prometen rendimientos extraordinariamente altos en poco tiempo, especialmente si te contactan por WhatsApp y te piden transferir dinero a cuentas desconocidas.",
+      "como": "La víctima fue contactada por WhatsApp con una propuesta de inversión en criptomonedas. Le prometieron grandes ganancias y la guiaron para instalar una aplicación y realizar transferencias de dinero. Inicialmente, vio retornos en la app, lo que la incentivó a invertir más, hasta que los estafadores desaparecieron con sus 30 millones de pesos.",
+      "detectar": "Desconfiar de ofertas de inversión con promesas de ganancias rápidas y exorbitantes, especialmente si requieren la instalación de apps desconocidas o transferencias a cuentas de terceros.",
       "fuente": "Chequeado",
       "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPMlNWSkVwbmRfMGpyNjJpcXp0cEFLNllfakNyay1sQmVvQ1EwdkR0WmRRaVRDTTU4QVFzSUs1dkZIT2dNazhSdlVxd1k5dU5oYzI2SEl2X3Nyd0F1SnJyaE4yVkVEaldlMkpTYWxCX2FaWDM1aFV0OWg3VnN2OHJJZU9QNVdxbm9FeFEybFJfYUdsUE9TcnlscVZmenB1WFhjRVZ1VnVCVW9CTFphenNxQmxNazBoVm40YWVFWG1VXzNnWXJDLXl6UXhHVzY0LUk0QmRfWmtjTzBxaEZ2VFF6QmROYzJmdUVLVl9HSkl6QTgyT2tpM2xDdld2ZU14UjBINzhLY2xybw?oc=5",
       "evidencias": [
@@ -419,231 +448,25 @@
       "provincias": [
         {
           "nombre": "Entre Ríos",
-          "n": 16
+          "n": 22
         },
         {
           "nombre": "Buenos Aires",
-          "n": 7
+          "n": 10
         }
       ]
     },
     {
       "pos": 2,
-      "key": "phishing_banco",
-      "nombre": "Phishing bancario",
-      "canal": "TELEFONO",
-      "act": 100,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Una mujer en Argentina perdió $9,5 millones al intentar activar su tarjeta de crédito. Recibió un llamado de un supuesto empleado bancario que le solicitó datos personales y la guio para instalar una aplicación de acceso remoto. Con esta app, los estafadores tomaron control de su cuenta y realizaron transferencias fraudulentas.",
-      "detectar": "Los bancos nunca solicitan datos sensibles ni la instalación de software de acceso remoto por teléfono para activar tarjetas o resolver problemas. Desconfiá de llamadas inesperadas que pidan esta información.",
-      "fuente": "Infobae",
-      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOcTdjZXhQN09fcjJ3Yzd1VlFxbFFSV0hhdVhQY3VBakpDbkRka2RwelpvYVg0eDBteExmRnN0OC1FOHFSc3J5MnpEZERMX1pFNnB2RlhUVU9aN2JMdXJIZXIzVnM2WFRZTFNCWTUyUWV0QkhmZ1FkbXRZdmFrMzhZUHFSWk1mUXR6czhzOWZBUk1pWXlnb29aQU95Zzd3bVhBWmRwcDlxS3hLRUxZaFdnVWZ3aUY3eUVOdkNqaHZTTEtsY2FzQjFiOTR6SUtEeDBGOTBfYS1VOG5Cbnh0Y3RpdmRDVlZicWxP0gGDAkFVX3lxTE5wN0NPaWpFejJOVHQ0aXpqT2ZDUThLY3R0a290UG1GVV9zTFY4S1NrVHhyM2NzdGFkOFVJeENNZzZVSlozMURzZDEwMDRwUHFfZ0NieXA4U2dFckNpYVN2LXB3QmxPNkZudlpGMFNQSWh4aHh1M1RsSUt6TWRvdjFMY0xnU284S3JUWVdkQkpjMVctX0Q4V3cwc1AxbVhHSnlxWVUtQkFBR09kamZBMm1uUlYtWnlLU3NyaS1mNmR3eEhldDdMRUZkd2oyUEV6cTVBU3U1Y29YZlFsRXlwdG1BQUlka2hXa29UXzVjajg3VU5vaklYRUJYeGViaGlGbWMyMjA?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOcTdjZXhQN09fcjJ3Yzd1VlFxbFFSV0hhdVhQY3VBakpDbkRka2RwelpvYVg0eDBteExmRnN0OC1FOHFSc3J5MnpEZERMX1pFNnB2RlhUVU9aN2JMdXJIZXIzVnM2WFRZTFNCWTUyUWV0QkhmZ1FkbXRZdmFrMzhZUHFSWk1mUXR6czhzOWZBUk1pWXlnb29aQU95Zzd3bVhBWmRwcDlxS3hLRUxZaFdnVWZ3aUY3eUVOdkNqaHZTTEtsY2FzQjFiOTR6SUtEeDBGOTBfYS1VOG5Cbnh0Y3RpdmRDVlZicWxP0gGDAkFVX3lxTE5wN0NPaWpFejJOVHQ0aXpqT2ZDUThLY3R0a290UG1GVV9zTFY4S1NrVHhyM2NzdGFkOFVJeENNZzZVSlozMURzZDEwMDRwUHFfZ0NieXA4U2dFckNpYVN2LXB3QmxPNkZudlpGMFNQSWh4aHh1M1RsSUt6TWRvdjFMY0xnU284S3JUWVdkQkpjMVctX0Q4V3cwc1AxbVhHSnlxWVUtQkFBR09kamZBMm1uUlYtWnlLU3NyaS1mNmR3eEhldDdMRUZkd2oyUEV6cTVBU3U1Y29YZlFsRXlwdG1BQUlka2hXa29UXzVjajg3VU5vaklYRUJYeGViaGlGbWMyMjA?oc=5",
-          "medio": "Infobae",
-          "titulo": "Alerta por una nueva estafa virtual: cómo es el engaño que usa la imagen del Banco Central para robar ahorros - Infobae",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNk41RzV4Z2l2ZVB2ekp4RWtXb1pRaV9neGdCSnhIVnNzVl9KdW81bU1Rd0FialRWUDU0UTRkb0tUQlFGTWV0VWtwb3p5WHBqajBhMWJZdFBUTk9EekpPX3plYnlZY3VjU3l6YmNyNE1xTDJDX05CamJ0eHhRU3NVX0NhQ241ZzNMSUJpZV92aUpQZDF1NUxnSWUxZjNpX0hfbVEtNjJiaE4xOS1WNXkwMTFmc3JYZHhya0Z6QWI5VndCYVUzVjZtVjkxaHljXzZyVlhoMFJwaDM0WEc5NHFrcUtJbzA1aWlpS3RnVzEwS2V3T2RYeTljcERQa29pVHB5bFlkQWg5TTIxWUVPbnJRVVpqSXpCVXlrRW53WVhVQTZ3eWk1OHU3UUl0a0RZVnJBaVFORFp2MUFkSEthY3ZVNG5seTI1ZjBEYWJXbmlWSWI3d9IB1wJBVV95cUxNLVpreUttUjJ5VndGa3B4MHhDdE14YW92ZW5kSm1GNm1vVTluaHp2aDBBRXY5dDBvLUFpZWJqTGxRVVpKOEhuZW1JZExtd2FBQ1FWMGtPVVIwRk1sbTJWazJtMVNjcTg5bXg2V2N6NWtmRGRUXzlFbV9OcVYtcXdiUHY3MFZRbkJMMXM2ZFVZMlN6ODBmclRtVks4NllRb3V0a1M1WDBrVU5jX2NuQ2wxN0UzOFVEQ0tUdVNxWXhoZjJXekRGdTJjWW03aGxEZnVsaUVqTXlHX2gwZHpfTEFZWld6WUNURjdBbFF0MGdNeE9JbmVuX1NocTlIT3hOM1FmYk9HSklybk9uTXpaXzBIdDhRVExVbjNTX3R5dlh1eXktYzJsT1oyTDJUVTBhb1ZDZHA5el9DTjNvdnh1TXRDOFZHRVJlMzhaNXlsQmNlN3BZcktjRVNR?oc=5",
-          "medio": "El Litoral",
-          "titulo": "Estafa virtual: advierten sobre un fraude que usa la imagen del Banco Central - El Litoral",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNWTlCdEJlVjhUa0ZDdHNqU1J1QTgta0M1by1QWW5Vc0UtQnRsOU1ZOU1qUjJzR1VTTF81aW1vVnRkbjVVLU9pb3lkT3ZzaUJ1dTFWOWZZWUd0amJrWW5ySmlPYlRHZno1RGRMLTdiSmdVTlkzRUYzaHhVb0RlWkItOTh0VElqLVN6TnZEVmFFZVZyZ1gtSy15QTdnbDZmZ3BJNW9iTDJaVjBHSFlvc0J5MWhZT2hDNjVqd2JkT0NNZDkxMDQ5aFlEc3dkUjVqaWw2aTF3OGhSbw?oc=5",
-          "medio": "Diario Río Negro",
-          "titulo": "Nueva estafa virtual: así es el modus operandi que suplanta la identidad del BCRA para engañar - Diario Río Negro",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQN1RzeEwxYmtNZEZPeTJZanpoVW5IdUF0b01kaTBiOTZKdVZJTUdGSHhEdHVqR1JDX0duS2EzYzRFeGY2YXZ4dURyNUI2V00wendLbGxyYWxjSFY5VUhjWWRwT2dyTVVoS3dRUktZaVZ6SHVLdjBydk9sdXE5WGVXeUJEYUVnMkp4Z2VWejZiTXF4VXNPNnhvOTNBQ1p3Y040ZGQ1Y3YyQkEzYl9SNC1yaFRQYjZpRXVsREhGVDZIdW3SAcABQVVfeXFMUDdUc3hMMWJrTWRGT3kyWWp6aFVuSHVBdG9NZGkwYjk2SnVWSU1HRkh4RHR1akdSQ19HbkthM2M0RXhmNmF2eHVEcjVCNldNMHp3S2xscmFsY0hWOVVIY1lkcE9nck1VaEt3UVJLWWlWekh1S3YwcnZPbHVxOVhlV3lCRGFFZzJKeGdlVno2Yk1xeFVzTzZ4bzkzQUNad2NONGRkNWN2MkJBM2JfUjQtcmhUUGI2aUV1bERIRlQ2SHVt?oc=5",
-          "medio": "Minutouno",
-          "titulo": "Estafa virtual: una mujer perdió $9,5 millones tras intentar activar su tarjeta de crédito - Minutouno",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOUVUwQXNzRUhxWGw3WXpqR240Q2xxQkZKM1pJNjFmcGNVd3pYSDZpUkVnTlVyYjIzVXVMSFlQeXhlVTNuaDVIMlF1a2ZZOWEtSGdWS01XQWQ4NXJMSEJLMlhGMEhMLTEwRVJOMVJteXF5VzhGTlZrUFZZUjEySjJqOG5SS3U0a3lhTlNWQzlXX28tVlNNazl2T0RERjFUY2xfOWczWEdXdDdibTdFVm1aYzlWSThPZ2wyTW1UbmMtc3daS0pPRnNJUmdla0txUDAyZUZkMnhVZVoxaVF1VWdyV3hmM0czQk5IVVpma0V30gGCAkFVX3lxTFA5cTFHOUtGRFdUY0hCQkg5VkdQekN2MjRtZ3J6NG1nT1VUUGRFSm5SZV9BcGxiS2RESXFKazdkNGQwa0E0VnZtN1c1M0dFSkZscHJwRU1pQ2trZndQaW9rM2xUaUpJMTlTdXJ0SEcxcHpuZk5jQXMwanJWTGx6bm0tRE13QS16THhDY3pCcmFtTDYzUWtEVVBaMGJ1OTM1U2JWLXJnSnQxNjMtMDBhSzFOVFprbjQzMjZKSElYMzI4eWJMbkRDNU9xeG5PcHFXSDcxYnk4VWNrZ2FVcmJEWjNMRDIxUXdqN2kwNGFzeW1hV1ZGaS1oNDFhUHpaRVhqYXZxdw?oc=5",
-          "medio": "TN",
-          "titulo": "Cómo es la nueva estafa virtual en la que se hacen pasar por un supermercado y vacían tu cuenta bancaria en 5 segundos - TN",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        }
-      ],
-      "pais": "AR",
-      "provincias": [
-        {
-          "nombre": "Salta",
-          "n": 3
-        },
-        {
-          "nombre": "Santa Fe",
-          "n": 1
-        },
-        {
-          "nombre": "Río Negro",
-          "n": 1
-        },
-        {
-          "nombre": "Jujuy",
-          "n": 1
-        }
-      ]
-    },
-    {
-      "pos": 3,
-      "key": "acceso_remoto_app",
-      "nombre": "App de acceso remoto",
-      "canal": "TELEFONO",
-      "act": 100,
-      "delta": 1,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los estafadores contactan a la víctima, generalmente un adulto mayor, por teléfono haciéndose pasar por personal del banco o de una entidad oficial. Con la excusa de solucionar un problema o realizar una gestión, solicitan a la persona que instale una aplicación de acceso remoto en su celular o computadora. Una vez instalada, toman control del dispositivo y realizan transferencias de dinero desde las cuentas bancarias de la víctima.",
-      "detectar": "Desconfiar de cualquier llamada que solicite instalar software de acceso remoto o compartir datos bancarios. Los bancos y organismos oficiales nunca pedirán instalar apps ni claves por teléfono.",
-      "fuente": "InfoCañuelas",
-      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQOUxibmZhcUVkSW85Q2h0UTF1bFBkZFBNWDgzSnFUalROLS1fTFU5b2oyMTVudXZQeDdLSHZIU3NWcEpsVnhTSHlhUkltTlZDcDFKd0pra0hkQWVUOEh3R1pRZ2prb2xRV3pJazBpSEhNT1h1SEFHLXlMYVc5empUSVpxSnNMVnBpN2xoLURoN25PWDBKT29VRlNNbE8ybUNOUUVIR3hTSGZTZ2xBRFRCdHBCUmNPSmJTMlczMFF5WGRxX1RSa1Jwbi1Tdkc?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQOUxibmZhcUVkSW85Q2h0UTF1bFBkZFBNWDgzSnFUalROLS1fTFU5b2oyMTVudXZQeDdLSHZIU3NWcEpsVnhTSHlhUkltTlZDcDFKd0pra0hkQWVUOEh3R1pRZ2prb2xRV3pJazBpSEhNT1h1SEFHLXlMYVc5empUSVpxSnNMVnBpN2xoLURoN25PWDBKT29VRlNNbE8ybUNOUUVIR3hTSGZTZ2xBRFRCdHBCUmNPSmJTMlczMFF5WGRxX1RSa1Jwbi1Tdkc?oc=5",
-          "medio": "InfoCañuelas",
-          "titulo": "Una profesora de danzas de Cañuelas sufrió una estafa virtual por más de 7 millones de pesos - InfoCañuelas",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOX3hXbXlwSUVqZTF1dUxfWHdvSGpmTjRncm1jNVd6YnAxbExRNVpBU0N3Y0FFQnpVdE96YTV3VHlSTnhqeWpaTElXMEhteC0tSFJJenoyVkU3bHQ1eHl0RDNuaHNrWWJqU1VQSDlmYVhuaThqQ1NOalpLYThRN013ODY2V1UtTnI4ZG41dVYwbW5YbG1zWmVpSzdPNVZWYWppT0JwWS1iS0FCOTQxQ1HSAbMBQVVfeXFMT2w3ZzNEMnU2NUFCV09iVWFVSXhfYkZXaVV5dV9fMkpEZTQyZmZZeG9nODBTc1BGSjRHSk0tejNTc2l2aERZNF9ZWWhKcjdsN0lJYU14UzNncVYtc01faVJZSUtzSXJVVW9oNVJoR3EwOTRTQ0VjTGFoOFJvWGZRbXN1SG4wRGF6dHd0bXVkanFqd3lhMW5tUVNIRzVfRjZPV2tuY3QyTlZSdEpQaW1vODR0N1E?oc=5",
-          "medio": "todojujuy.com",
-          "titulo": "Cómo actuar frente a una posible estafa virtual y dónde denunciar en Jujuy - todojujuy.com",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNYS1yUi16UG1yQTBxQWk1Q2RKRDJ4YUtaX2xnN04ybi1vNUVLb00xUUZ6Y0V2N2gxb0N5MmJ4RTY3d1JVYTQ3UnVZZzNoNHF3WlBSbmJ0cy1QRnNGcE1Gb0FiN2NSQ2RWaTM5bXF6WmhRXzVCaXlib0ZsRHd2bGwtemdpRm55bjhfV1hyV2NEYVhSRHkyOE1hY3N2T3p3M2RvX2VneUoyLVQ4WGE1eEt1TjliVkJXaWc3Z1ZjS1JBVkgzVXZrR2I2R2c5bGNXZUVqcEJWV0NyV2gwUdIB3wFBVV95cUxQS2hrLWpyOFZEcFIwMjJhZGVxcWhyc1pkMXBnd000M1hLTGJDQlB6QlpwSGRaN0l3YWN6R1lvMnJZekVPQ2ZfdFRmcVI2M2RyelVYbGlEa216LTRpcUN4WXp1a21fNHRrNjl3ejZlaUZUN3ByZkg5SnBvOEswZWFwckxsSnBUenRfVWthSzhoanhHYjhRU0FaWGliVTlBVF9POTJLSFMweGdPaU5STHZfbHh0Tm0tam9iQTIzVW9MZm9DT2pYYzIycVNyamxWa3JESloteElVQUNvdlpsNTdJ?oc=5",
-          "medio": "Crónica",
-          "titulo": "Le vaciaron las cuentas con una estafa virtual y la Justicia ordenó devolverle todo el dinero - Crónica",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVF9kcngwMzZlbVRMWGNSVGpjQUhndkFaY3BHOC1Jc19Kb0VXMzBxVUlRT29TYWNiTGxteDNQTjBtcThhUTZvaXRQTnZOWENpRUZBNEFVZ1pVYkpqNDlhZnR2ekM2TFFpQS1vNHVkOTN0ZWxTWVhnTXVVUFdaaEowSEdaQjFBdmtkU0FQNG9jQURtLXpqZDBfaUliMHJDYWVyXzlERGdtdHI5RlpTWVNlMDAxVW02eUVvQ0FGQzNhREMyQTZHcjdkc2tEZExjTEVwVWfSAdsBQVVfeXFMTl83LUpuQVNyMnZCQjdRQThuZXF2cmdxblZZa3BycUpxd3BQdERzMFF2ZE1DR1ozaUtaNjVyVm5ESndINGlheEZuMzcwTTVOZ3F5ODRwbUYzaWNaQVE4QWZRbnE5Wl9NMVd0QVE1NEY5Z1pQRE5HRmlEUm1lbHJRbmNOLVZSY0dVOXFtVS0zRUNzaF96Y1hWT090ejVweEZRSEZmZnRKWWRnN3cxTGpIYWFPS0RQWXhEZTQ2NEN2V3hTSklPT0xpUmNucWhHNEtrMzlkVEZ4WWN0NDEw?oc=5",
-          "medio": "El Liberal",
-          "titulo": "Indignación en La Banda: una pareja de jubilados fue víctima de una cruel estafa virtual - El Liberal",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQUmxodklucUpiQlFfdkkwN2YzSGttbE83UzlsWEZiWEkyVTZtZzNNZ0VoSEo0VVpQQzdNenVVSnJjZ1lVbTBXY21SU1Y3Zy1sZWZkajFaV2swbjMwNlZHMDlsYUJMSFd1Nll3VHV6azBPMHAyWE5wMlBydTZaMVJIRGpBekJJMThWU0c2NUJHRXlKcUZmZWJYbi03c2kxZzRpUHY5UdIBqgFBVV95cUxPWXgyeU5iZjdsSEdhUVlzdEdwQUZHUEVoWDk1YnBlU0hqS1RXaTVBNnctZkExZTRzLUMtMEVqaTAza3RGSmpzZnJKYnA5cEhVZWx5bHFNR01mS3RYeXcxS2xGNTltbHRqWXZ3NXFjc2gtT3RRYUNveHo5dER2VVVhX0FCbG5rRHhyTE1uUzBpVnJoeUpTbmY3SXA2WkF5WHhRb2NaQzBRdmxpZw?oc=5",
-          "medio": "Jujuy al día",
-          "titulo": "Jujuy: cayó en una estafa virtual y perdió un millón de pesos - Jujuy al día",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        }
-      ],
-      "pais": "AR",
-      "provincias": [
-        {
-          "nombre": "Buenos Aires",
-          "n": 10
-        },
-        {
-          "nombre": "Santiago del Estero",
-          "n": 10
-        },
-        {
-          "nombre": "Jujuy",
-          "n": 4
-        },
-        {
-          "nombre": "Entre Ríos",
-          "n": 3
-        },
-        {
-          "nombre": "San Luis",
-          "n": 2
-        }
-      ]
-    },
-    {
-      "pos": 4,
-      "key": "romance_scam",
-      "nombre": "Perfil romantico falso",
-      "canal": "REDES",
-      "act": 100,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Una mujer de Paraná conoció a un supuesto británico por redes sociales. Tras un tiempo de relación virtual, el estafador le pidió dinero para viajar a Argentina, argumentando problemas con la aduana y el pasaporte. La víctima, enamorada, se endeudó y le transfirió casi 30 millones de pesos en varias cuotas, creyendo que era para concretar el encuentro, pero nunca llegó.",
-      "detectar": "Sospechar de cualquier pedido de dinero, especialmente para viajes o emergencias, por parte de una persona que solo se conoce virtualmente y nunca se ha visto en persona.",
-      "fuente": "0223.com.ar",
-      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5",
-          "medio": "0223.com.ar",
-          "titulo": "Creyó que tenía un novio virtual británico, se endeudó por $30 millones y descubrió la peor estafa - 0223.com.ar",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQQ3NQeC1qYVJrS09BRlZVVXBpSi1Bb0d0ZWRRbUpsaVU4Yk5pSXozNnhoNm5oT0lubWt3ZlF5NTQ2OXdfZGRweUpWV2hOQVhPSTg5OVBjYklFTmFDQklaVGYxYkZaa0ozbXc0akhHQTlzZkZDV2c0Rl9HN3NpWkFPX0RUMnBORjItUG0xYWdXYXpvRnBOMGdUMjU1STFzSnZQT1BVT3dWTklCM2J0RkdGQ2xkOGpGRmZjbUpuMkJBVXMzSzBXOHBvMlMtdlRoMmhtWFduMjZzbWdBbDZoSmpJWUtVMVhnWFVYLTFwMGd1bmJYUlpLTkNUVTZnS3LSAZACQVVfeXFMTl9FLUsyY1h1cVhTS0tLbVlXLTdmMUw0SjllNzV5YVdzeWo3ZWQ0OTVKRURPbklRV1c2dkRHMDI5LTZoZ2dZV2hNMDNKLVRxRVJwSnhDd1R6enM4dzBWS3RKMFVkaW9iYzFPNklDNGh2c09pY2hieWJFS2VNT21fQ2huc1g1ZHpBMV9TX0x6RWkyd0dpMnllelNseTcwa0x0bk9hUU5OZG1CZGhtd1JMSk1VeUtkYThUZDNvYUM1NHdQejZIdlVmWVU0VnZvVVRMNlRFSFY4SGl1TXN1NXVOMGVLdzFocGxzSzgzaXN2QVdTN3d4TWVnblRNbV9QUk1UWTdTblhHVWtmR2Vsc2NCLW4?oc=5",
-          "medio": "TN",
-          "titulo": "Creyó que tenía un novio virtual británico, se endeudó para que viajara a Paraná y le transfirió casi $30 millones: era una estafa - TN",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPcU12UzhKRTN3X2JXVGwwZFFyTzRZdGR4NXd3RXFBbDZQX1NyN0NIaTBWcFZrSEhYcms4Um9CQUxVTS1rbDdpeFFQVnJaZTRZN1A3RzdlM3Zkc0ZmaHlxbkUwSUxITFlVZXR5cFVNQ2VNRUpVcVM4RXdyaE9PNHZSVVNrc0NYdkNyeDBuNVUzUVVFTkFTdk1lSkJlTWNLUndFbXd5UTQ0N212X3dJd25DVVN2cEliNVlnU0s5dDFISGxCVENfaGFYTndaeTJiTWY5bkHSAdcBQVVfeXFMTmx2ZlRFc2VxUjBwampZbjREU0NfTWxCRThmeW43N1BENWhnclQ1eFNaSGtjN2psS2RtVVFlWTU4U3RQaWJQb1ZvanZWVTI1Y0VsX3VRaFRRLXdaTEpZck90MF8xcTc0dmJFQ2NDX2tDVWpiR2pXdU5sdmZxem4zOTVRdTFaT3lnMFNqVU5XQ1BtUlVPNjlpOC1OSFhxYVFUSmxiczUzTkY3SU5KMUgxdWRRbnpjNFJXaktuajJZeXVKVFNjRE1iNEpUUzVSZFJsSVVoVWllam8?oc=5",
-          "medio": "El Litoral",
-          "titulo": "Creyó que tenía un novio de Reino Unido y perdió casi $30 millones en una estafa - El Litoral",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPcmx1bjZxZXMtVEE2X0R0dUZYcnl6TjVBbUN3Zlo2bUdCaW1ES3NyYjVrT3Z2UjR3UHpFRC1uV3hHM0Zlc25ZMkRRSVpSZTlEcFpxNnhFUHJFSDQ3UFJCazlqcjZVbHRzZlYtb2QyWjBSaXNIX0g2MmNMSmU0T043aTZKMWFDRklmYVhyMmV3YnRwSFhxVnlCbmh0bnh2TG9NVjA0NzZlN0N1MkdDc3R2dTEtM19LWkoxVkFSYTllLVRiODRIQ1RmYUpVVHdKWWdmWGsycTduVy12TlpfMU9XNExWWGx4QVZKc2RreGdKcGpfRk5GM3ZuOTBpS2hiMXVqVlpMRFNOMDI?oc=5",
-          "medio": "Diario Junio",
-          "titulo": "El mismo “novio”, la misma estafa millonaria: una nueva investigación vuelve a involucrar a la podóloga condenada por la Mutual de Músicos - Diario Junio",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPUmQ3aUhrX3hQNUdnRkVuT0lhZTh1ZUE2Zk5Qa0tWNzhwdjFnNWg0MGMxZHRtYmFEOTdHbTlHYTA3blJSYnkxcTdiMUxXMHBUMzh0TGZweXdWNzBSNnpLeWFMOUtsazBoNHozZEVTX19nSnlsNkpUajJSWGlQeDVIRGdzZ3FaNEJjNVFsQmpXVS1Id1FBZ0pnMjlqcktHZHgySjk3VkZHVXJicWRCdnFQUXZRVUpRT0tlWm8tcU9la9IBxAFBVV95cUxNR1NyRk1fdVV4djgtYldESVJwR1JJR1g5VDJOZDc4aU5mUGdDbF9sVVZZdjVUQ25xNWowSC1QLXUxbloyT0lrX0RPcGFRcHdNV201QUpjSjNZZTBvdWtUcW1FQVp1ZGFNaktkdDZpdGRYOFhOc3hwcmo2NjlHRUl2akNuQ1pqaVJRb1MzeHJ4VGtLalU1V3RKY2JTbkFkWXNDZXozblpMMkpVWUppSFFYLXBGMzliXzRBQk9tMzFrdDNWeWdi?oc=5",
-          "medio": "Big Bang! News",
-          "titulo": "Se enamoró de un supuesto británico por Facebook y perdió casi $30 millones: la trama de la estafa - Big Bang! News",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        }
-      ],
-      "pais": "AR",
-      "provincias": [
-        {
-          "nombre": "Entre Ríos",
-          "n": 19
-        },
-        {
-          "nombre": "Buenos Aires",
-          "n": 1
-        }
-      ]
-    },
-    {
-      "pos": 5,
       "key": "secuestro_whatsapp",
       "nombre": "Secuestro de cuenta de WhatsApp",
       "canal": "WHATSAPP",
-      "act": 98,
-      "delta": 4,
+      "act": 64,
+      "delta": -34,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los delincuentes, tras hackear el celular de un policía en Catamarca, se apoderaron de su cuenta de WhatsApp. Luego, se hicieron pasar por él para solicitar dinero a sus contactos, logrando estafar a varias personas por un total de 7 millones de pesos. El fraude se consuma cuando los contactos, confiando en la identidad del policía, transfieren el dinero a las cuentas indicadas por los estafadores.",
-      "detectar": "Mensajes de WhatsApp de un contacto conocido pidiendo dinero de forma urgente o inusual, con excusas poco creíbles o solicitando transferencias a cuentas desconocidas.",
+      "como": "Los estafadores acceden a la cuenta de WhatsApp de la víctima, generalmente a través de un engaño para obtener el código de verificación. Una vez dentro, se hacen pasar por la víctima y contactan a sus contactos pidiéndoles dinero con una excusa urgente, como una emergencia o un problema bancario, logrando que realicen transferencias a cuentas controladas por los delincuentes.",
+      "detectar": "Mensajes de contactos pidiendo dinero de forma inusual o urgente, o si te solicitan un código de verificación de WhatsApp que no pediste. Siempre verificá la identidad de quien te pide dinero por otro medio.",
       "fuente": "Chequeado",
       "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-por-whatsapp-y-que-podes-hacer-para-evitarlo/",
       "evidencias": [
@@ -687,57 +510,25 @@
       "provincias": [
         {
           "nombre": "Catamarca",
-          "n": 7
+          "n": 13
         },
         {
           "nombre": "Entre Ríos",
-          "n": 4
+          "n": 8
         }
       ]
     },
     {
-      "pos": 6,
-      "key": "oferta_laboral_falsa",
-      "nombre": "Falsa oferta laboral",
-      "canal": "REDES",
-      "act": 92,
-      "delta": 3,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los delincuentes publican ofertas de trabajo falsas en LinkedIn, a menudo con salarios muy atractivos o requisitos mínimos. Contactan a las víctimas, les piden datos personales y bancarios, o les solicitan un pago por supuestos cursos, materiales o trámites de contratación. Una vez que obtienen la información o el dinero, desaparecen, dejando a la víctima sin el empleo y con sus datos comprometidos.",
-      "detectar": "Sospechá de ofertas laborales con salarios excesivamente altos para el puesto, requisitos mínimos o que soliciten pagos por adelantado para \"trámites\" o \"capacitaciones\". Verificá la autenticidad de la empresa y el perfil del reclutador.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
-          "medio": "Chequeado",
-          "titulo": "Estafas virtuales: cómo pueden engañarte con mensajes de WhatsApp del extranjero que ofrecen trabajo y qué podés hacer para evitar caer en el engaño",
-          "anillo": 2,
-          "fecha": "2026-08-28T18:23:58.789Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPWnRnQ3dQSlhjWU5yMDJLX213V2hSRG84Y0Jsdk1VMlZYb09uWFJHc3R0TnJDX0NnZ1lDNUZzcTh1VElYa0oyMnZQNC12Vk1KRENkaVZJbWQxWllkMlQ0UXY1Tkwwb2tsQWY4ak5STTZ4bnZ3UUo5eXJ2eklScW9ZUlBrOUNjTTVmMWtwMXZYWmlNZllDYUdoMDdpRzdoTGtxTmpCNDE4SFU1bkJBOEFFbDBpbzJlTm8ySU5EUjJfUUprQTlLNHh4NEtzVHNnTDRYRFV4OXQ0UVE1X1VGSC04d1Y0UUxjNkNUWTFOSkdR0gGCAkFVX3lxTE95VG93TGVLZEZsN0E2WFBNZWJNYjVpU1FMeHRiR01LNFhjMS1kbDFmdDJXNnJJQWhienFkZHRmaE1LYVJOTkRLYWNQRUw1VGdab3UzcU90bi1GNDFsZC1FMEtCRE02V3NXY3N0VV81VmViQ1dHMVItSXczemR2VGYzX3d5T2M1NWdmbE5yQThuYUxfSkNwVzQ0RWpjN3Y2R2hNOGN2VWp3SEJkNTBFc2FGZ1pKckxEemprRHBvcHpqaFQ5TV9lS0N6NWM2RU40ZUMyZ0lCZWZLbE5HWkFGNC00dW5ScEZKTVNmZFBCMGZLZnBxWEYwODJxRmRDVlIweEZvQQ?oc=5",
-          "medio": "TN",
-          "titulo": "Alerta por estafas con falsas ofertas laborales en LinkedIn: cómo detectarlas y qué hacer en caso de haber caído en una - TN",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        }
-      ],
-      "pais": "AR",
-      "provincias": []
-    },
-    {
-      "pos": 7,
+      "pos": 3,
       "key": "phishing_servicios",
       "nombre": "Phishing de servicios (luz, gas, agua)",
       "canal": "WHATSAPP",
-      "act": 87,
-      "delta": 3,
+      "act": 60,
+      "delta": -27,
       "riesgo": "alto",
       "emergente": true,
-      "como": "Los delincuentes se hacen pasar por un supermercado conocido, contactando a las víctimas por WhatsApp con una oferta falsa o un premio. Envían un enlace que simula ser la página del supermercado, solicitando datos bancarios o de tarjeta de crédito. Una vez obtenidos, vacían la cuenta bancaria de la persona en cuestión de segundos. El engaño se basa en la urgencia y la credibilidad de la marca suplantada.",
-      "detectar": "Desconfiar de ofertas o premios inesperados por WhatsApp, especialmente si solicitan datos bancarios. Verificar siempre la URL del sitio web y buscar errores ortográficos o de diseño en la página.",
+      "como": "Los estafadores se hacen pasar por un supermercado conocido y contactan a las víctimas por WhatsApp, ofreciéndoles supuestos premios o beneficios. Para acceder a ellos, solicitan a los usuarios que ingresen a un enlace fraudulento y completen sus datos bancarios o credenciales de acceso, lo que les permite vaciar la cuenta bancaria de la víctima en cuestión de segundos.",
+      "detectar": "Mensajes de WhatsApp de números desconocidos que ofrecen premios o beneficios de supermercados, solicitando datos personales o bancarios a través de enlaces sospechosos.",
       "fuente": "Chequeado",
       "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/",
       "evidencias": [
@@ -760,16 +551,254 @@
       "provincias": []
     },
     {
+      "pos": 4,
+      "key": "oferta_laboral_falsa",
+      "nombre": "Falsa oferta laboral",
+      "canal": "REDES",
+      "act": 56,
+      "delta": -36,
+      "riesgo": "medio",
+      "emergente": false,
+      "como": "Los estafadores crean perfiles falsos en LinkedIn o contactan a usuarios con ofertas de trabajo inexistentes. Solicitan datos personales, información bancaria o incluso pagos por supuestos cursos o materiales, con la promesa de un empleo bien remunerado que nunca se concreta. El objetivo es robar información o dinero bajo el pretexto de una oportunidad laboral.",
+      "detectar": "Ofertas de trabajo demasiado buenas para ser verdad, solicitudes de datos personales o bancarios antes de una entrevista, o pedidos de dinero para 'gastos administrativos' o 'capacitación'.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/",
+          "medio": "Chequeado",
+          "titulo": "Estafas virtuales: cómo pueden engañarte con mensajes de WhatsApp del extranjero que ofrecen trabajo y qué podés hacer para evitar caer en el engaño",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.789Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPWnRnQ3dQSlhjWU5yMDJLX213V2hSRG84Y0Jsdk1VMlZYb09uWFJHc3R0TnJDX0NnZ1lDNUZzcTh1VElYa0oyMnZQNC12Vk1KRENkaVZJbWQxWllkMlQ0UXY1Tkwwb2tsQWY4ak5STTZ4bnZ3UUo5eXJ2eklScW9ZUlBrOUNjTTVmMWtwMXZYWmlNZllDYUdoMDdpRzdoTGtxTmpCNDE4SFU1bkJBOEFFbDBpbzJlTm8ySU5EUjJfUUprQTlLNHh4NEtzVHNnTDRYRFV4OXQ0UVE1X1VGSC04d1Y0UUxjNkNUWTFOSkdR0gGCAkFVX3lxTE95VG93TGVLZEZsN0E2WFBNZWJNYjVpU1FMeHRiR01LNFhjMS1kbDFmdDJXNnJJQWhienFkZHRmaE1LYVJOTkRLYWNQRUw1VGdab3UzcU90bi1GNDFsZC1FMEtCRE02V3NXY3N0VV81VmViQ1dHMVItSXczemR2VGYzX3d5T2M1NWdmbE5yQThuYUxfSkNwVzQ0RWpjN3Y2R2hNOGN2VWp3SEJkNTBFc2FGZ1pKckxEemprRHBvcHpqaFQ5TV9lS0N6NWM2RU40ZUMyZ0lCZWZLbE5HWkFGNC00dW5ScEZKTVNmZFBCMGZLZnBxWEYwODJxRmRDVlIweEZvQQ?oc=5",
+          "medio": "TN",
+          "titulo": "Alerta por estafas con falsas ofertas laborales en LinkedIn: cómo detectarlas y qué hacer en caso de haber caído en una - TN",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        }
+      ],
+      "pais": "AR",
+      "provincias": []
+    },
+    {
+      "pos": 5,
+      "key": "phishing_banco",
+      "nombre": "Phishing bancario",
+      "canal": "TELEFONO",
+      "act": 55,
+      "delta": -45,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Un estafador se hace pasar por un empleado bancario y llama a la víctima para informarle sobre supuestos movimientos sospechosos en su cuenta. Con la excusa de 'proteger' la cuenta, le solicita datos sensibles como claves bancarias o códigos de seguridad, buscando obtener acceso a su homebanking para realizar transferencias o vaciar sus fondos.",
+      "detectar": "Desconfiar de llamadas inesperadas de supuestos bancos que solicitan datos personales o claves. Los bancos nunca pedirán esta información por teléfono. Verificar la identidad del llamante y contactar al banco por canales oficiales.",
+      "fuente": "Infobae",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOcTdjZXhQN09fcjJ3Yzd1VlFxbFFSV0hhdVhQY3VBakpDbkRka2RwelpvYVg0eDBteExmRnN0OC1FOHFSc3J5MnpEZERMX1pFNnB2RlhUVU9aN2JMdXJIZXIzVnM2WFRZTFNCWTUyUWV0QkhmZ1FkbXRZdmFrMzhZUHFSWk1mUXR6czhzOWZBUk1pWXlnb29aQU95Zzd3bVhBWmRwcDlxS3hLRUxZaFdnVWZ3aUY3eUVOdkNqaHZTTEtsY2FzQjFiOTR6SUtEeDBGOTBfYS1VOG5Cbnh0Y3RpdmRDVlZicWxP0gGDAkFVX3lxTE5wN0NPaWpFejJOVHQ0aXpqT2ZDUThLY3R0a290UG1GVV9zTFY4S1NrVHhyM2NzdGFkOFVJeENNZzZVSlozMURzZDEwMDRwUHFfZ0NieXA4U2dFckNpYVN2LXB3QmxPNkZudlpGMFNQSWh4aHh1M1RsSUt6TWRvdjFMY0xnU284S3JUWVdkQkpjMVctX0Q4V3cwc1AxbVhHSnlxWVUtQkFBR09kamZBMm1uUlYtWnlLU3NyaS1mNmR3eEhldDdMRUZkd2oyUEV6cTVBU3U1Y29YZlFsRXlwdG1BQUlka2hXa29UXzVjajg3VU5vaklYRUJYeGViaGlGbWMyMjA?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOcTdjZXhQN09fcjJ3Yzd1VlFxbFFSV0hhdVhQY3VBakpDbkRka2RwelpvYVg0eDBteExmRnN0OC1FOHFSc3J5MnpEZERMX1pFNnB2RlhUVU9aN2JMdXJIZXIzVnM2WFRZTFNCWTUyUWV0QkhmZ1FkbXRZdmFrMzhZUHFSWk1mUXR6czhzOWZBUk1pWXlnb29aQU95Zzd3bVhBWmRwcDlxS3hLRUxZaFdnVWZ3aUY3eUVOdkNqaHZTTEtsY2FzQjFiOTR6SUtEeDBGOTBfYS1VOG5Cbnh0Y3RpdmRDVlZicWxP0gGDAkFVX3lxTE5wN0NPaWpFejJOVHQ0aXpqT2ZDUThLY3R0a290UG1GVV9zTFY4S1NrVHhyM2NzdGFkOFVJeENNZzZVSlozMURzZDEwMDRwUHFfZ0NieXA4U2dFckNpYVN2LXB3QmxPNkZudlpGMFNQSWh4aHh1M1RsSUt6TWRvdjFMY0xnU284S3JUWVdkQkpjMVctX0Q4V3cwc1AxbVhHSnlxWVUtQkFBR09kamZBMm1uUlYtWnlLU3NyaS1mNmR3eEhldDdMRUZkd2oyUEV6cTVBU3U1Y29YZlFsRXlwdG1BQUlka2hXa29UXzVjajg3VU5vaklYRUJYeGViaGlGbWMyMjA?oc=5",
+          "medio": "Infobae",
+          "titulo": "Alerta por una nueva estafa virtual: cómo es el engaño que usa la imagen del Banco Central para robar ahorros - Infobae",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNk41RzV4Z2l2ZVB2ekp4RWtXb1pRaV9neGdCSnhIVnNzVl9KdW81bU1Rd0FialRWUDU0UTRkb0tUQlFGTWV0VWtwb3p5WHBqajBhMWJZdFBUTk9EekpPX3plYnlZY3VjU3l6YmNyNE1xTDJDX05CamJ0eHhRU3NVX0NhQ241ZzNMSUJpZV92aUpQZDF1NUxnSWUxZjNpX0hfbVEtNjJiaE4xOS1WNXkwMTFmc3JYZHhya0Z6QWI5VndCYVUzVjZtVjkxaHljXzZyVlhoMFJwaDM0WEc5NHFrcUtJbzA1aWlpS3RnVzEwS2V3T2RYeTljcERQa29pVHB5bFlkQWg5TTIxWUVPbnJRVVpqSXpCVXlrRW53WVhVQTZ3eWk1OHU3UUl0a0RZVnJBaVFORFp2MUFkSEthY3ZVNG5seTI1ZjBEYWJXbmlWSWI3d9IB1wJBVV95cUxNLVpreUttUjJ5VndGa3B4MHhDdE14YW92ZW5kSm1GNm1vVTluaHp2aDBBRXY5dDBvLUFpZWJqTGxRVVpKOEhuZW1JZExtd2FBQ1FWMGtPVVIwRk1sbTJWazJtMVNjcTg5bXg2V2N6NWtmRGRUXzlFbV9OcVYtcXdiUHY3MFZRbkJMMXM2ZFVZMlN6ODBmclRtVks4NllRb3V0a1M1WDBrVU5jX2NuQ2wxN0UzOFVEQ0tUdVNxWXhoZjJXekRGdTJjWW03aGxEZnVsaUVqTXlHX2gwZHpfTEFZWld6WUNURjdBbFF0MGdNeE9JbmVuX1NocTlIT3hOM1FmYk9HSklybk9uTXpaXzBIdDhRVExVbjNTX3R5dlh1eXktYzJsT1oyTDJUVTBhb1ZDZHA5el9DTjNvdnh1TXRDOFZHRVJlMzhaNXlsQmNlN3BZcktjRVNR?oc=5",
+          "medio": "El Litoral",
+          "titulo": "Estafa virtual: advierten sobre un fraude que usa la imagen del Banco Central - El Litoral",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNWTlCdEJlVjhUa0ZDdHNqU1J1QTgta0M1by1QWW5Vc0UtQnRsOU1ZOU1qUjJzR1VTTF81aW1vVnRkbjVVLU9pb3lkT3ZzaUJ1dTFWOWZZWUd0amJrWW5ySmlPYlRHZno1RGRMLTdiSmdVTlkzRUYzaHhVb0RlWkItOTh0VElqLVN6TnZEVmFFZVZyZ1gtSy15QTdnbDZmZ3BJNW9iTDJaVjBHSFlvc0J5MWhZT2hDNjVqd2JkT0NNZDkxMDQ5aFlEc3dkUjVqaWw2aTF3OGhSbw?oc=5",
+          "medio": "Diario Río Negro",
+          "titulo": "Nueva estafa virtual: así es el modus operandi que suplanta la identidad del BCRA para engañar - Diario Río Negro",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQN1RzeEwxYmtNZEZPeTJZanpoVW5IdUF0b01kaTBiOTZKdVZJTUdGSHhEdHVqR1JDX0duS2EzYzRFeGY2YXZ4dURyNUI2V00wendLbGxyYWxjSFY5VUhjWWRwT2dyTVVoS3dRUktZaVZ6SHVLdjBydk9sdXE5WGVXeUJEYUVnMkp4Z2VWejZiTXF4VXNPNnhvOTNBQ1p3Y040ZGQ1Y3YyQkEzYl9SNC1yaFRQYjZpRXVsREhGVDZIdW3SAcABQVVfeXFMUDdUc3hMMWJrTWRGT3kyWWp6aFVuSHVBdG9NZGkwYjk2SnVWSU1HRkh4RHR1akdSQ19HbkthM2M0RXhmNmF2eHVEcjVCNldNMHp3S2xscmFsY0hWOVVIY1lkcE9nck1VaEt3UVJLWWlWekh1S3YwcnZPbHVxOVhlV3lCRGFFZzJKeGdlVno2Yk1xeFVzTzZ4bzkzQUNad2NONGRkNWN2MkJBM2JfUjQtcmhUUGI2aUV1bERIRlQ2SHVt?oc=5",
+          "medio": "Minutouno",
+          "titulo": "Estafa virtual: una mujer perdió $9,5 millones tras intentar activar su tarjeta de crédito - Minutouno",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOUVUwQXNzRUhxWGw3WXpqR240Q2xxQkZKM1pJNjFmcGNVd3pYSDZpUkVnTlVyYjIzVXVMSFlQeXhlVTNuaDVIMlF1a2ZZOWEtSGdWS01XQWQ4NXJMSEJLMlhGMEhMLTEwRVJOMVJteXF5VzhGTlZrUFZZUjEySjJqOG5SS3U0a3lhTlNWQzlXX28tVlNNazl2T0RERjFUY2xfOWczWEdXdDdibTdFVm1aYzlWSThPZ2wyTW1UbmMtc3daS0pPRnNJUmdla0txUDAyZUZkMnhVZVoxaVF1VWdyV3hmM0czQk5IVVpma0V30gGCAkFVX3lxTFA5cTFHOUtGRFdUY0hCQkg5VkdQekN2MjRtZ3J6NG1nT1VUUGRFSm5SZV9BcGxiS2RESXFKazdkNGQwa0E0VnZtN1c1M0dFSkZscHJwRU1pQ2trZndQaW9rM2xUaUpJMTlTdXJ0SEcxcHpuZk5jQXMwanJWTGx6bm0tRE13QS16THhDY3pCcmFtTDYzUWtEVVBaMGJ1OTM1U2JWLXJnSnQxNjMtMDBhSzFOVFprbjQzMjZKSElYMzI4eWJMbkRDNU9xeG5PcHFXSDcxYnk4VWNrZ2FVcmJEWjNMRDIxUXdqN2kwNGFzeW1hV1ZGaS1oNDFhUHpaRVhqYXZxdw?oc=5",
+          "medio": "TN",
+          "titulo": "Cómo es la nueva estafa virtual en la que se hacen pasar por un supermercado y vacían tu cuenta bancaria en 5 segundos - TN",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        }
+      ],
+      "pais": "AR",
+      "provincias": [
+        {
+          "nombre": "Salta",
+          "n": 4
+        },
+        {
+          "nombre": "Santa Fe",
+          "n": 1
+        },
+        {
+          "nombre": "Río Negro",
+          "n": 1
+        },
+        {
+          "nombre": "Jujuy",
+          "n": 1
+        }
+      ]
+    },
+    {
+      "pos": 6,
+      "key": "acceso_remoto_app",
+      "nombre": "App de acceso remoto",
+      "canal": "TELEFONO",
+      "act": 55,
+      "delta": -45,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Los estafadores contactan a la víctima por teléfono, haciéndose pasar por personal de soporte técnico o bancario. Con la excusa de solucionar un problema o realizar una verificación, convencen a la persona de instalar una aplicación de acceso remoto en su celular o computadora. Una vez que obtienen el control del dispositivo, acceden a las cuentas bancarias y realizan transferencias fraudulentas, vaciando las cuentas de la víctima.",
+      "detectar": "Desconfiar de cualquier llamada que solicite instalar software de acceso remoto o compartir datos bancarios. Los bancos y entidades legítimas nunca piden instalar aplicaciones para solucionar problemas o verificar cuentas.",
+      "fuente": "InfoCañuelas",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQOUxibmZhcUVkSW85Q2h0UTF1bFBkZFBNWDgzSnFUalROLS1fTFU5b2oyMTVudXZQeDdLSHZIU3NWcEpsVnhTSHlhUkltTlZDcDFKd0pra0hkQWVUOEh3R1pRZ2prb2xRV3pJazBpSEhNT1h1SEFHLXlMYVc5empUSVpxSnNMVnBpN2xoLURoN25PWDBKT29VRlNNbE8ybUNOUUVIR3hTSGZTZ2xBRFRCdHBCUmNPSmJTMlczMFF5WGRxX1RSa1Jwbi1Tdkc?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQOUxibmZhcUVkSW85Q2h0UTF1bFBkZFBNWDgzSnFUalROLS1fTFU5b2oyMTVudXZQeDdLSHZIU3NWcEpsVnhTSHlhUkltTlZDcDFKd0pra0hkQWVUOEh3R1pRZ2prb2xRV3pJazBpSEhNT1h1SEFHLXlMYVc5empUSVpxSnNMVnBpN2xoLURoN25PWDBKT29VRlNNbE8ybUNOUUVIR3hTSGZTZ2xBRFRCdHBCUmNPSmJTMlczMFF5WGRxX1RSa1Jwbi1Tdkc?oc=5",
+          "medio": "InfoCañuelas",
+          "titulo": "Una profesora de danzas de Cañuelas sufrió una estafa virtual por más de 7 millones de pesos - InfoCañuelas",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOX3hXbXlwSUVqZTF1dUxfWHdvSGpmTjRncm1jNVd6YnAxbExRNVpBU0N3Y0FFQnpVdE96YTV3VHlSTnhqeWpaTElXMEhteC0tSFJJenoyVkU3bHQ1eHl0RDNuaHNrWWJqU1VQSDlmYVhuaThqQ1NOalpLYThRN013ODY2V1UtTnI4ZG41dVYwbW5YbG1zWmVpSzdPNVZWYWppT0JwWS1iS0FCOTQxQ1HSAbMBQVVfeXFMT2w3ZzNEMnU2NUFCV09iVWFVSXhfYkZXaVV5dV9fMkpEZTQyZmZZeG9nODBTc1BGSjRHSk0tejNTc2l2aERZNF9ZWWhKcjdsN0lJYU14UzNncVYtc01faVJZSUtzSXJVVW9oNVJoR3EwOTRTQ0VjTGFoOFJvWGZRbXN1SG4wRGF6dHd0bXVkanFqd3lhMW5tUVNIRzVfRjZPV2tuY3QyTlZSdEpQaW1vODR0N1E?oc=5",
+          "medio": "todojujuy.com",
+          "titulo": "Cómo actuar frente a una posible estafa virtual y dónde denunciar en Jujuy - todojujuy.com",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNYS1yUi16UG1yQTBxQWk1Q2RKRDJ4YUtaX2xnN04ybi1vNUVLb00xUUZ6Y0V2N2gxb0N5MmJ4RTY3d1JVYTQ3UnVZZzNoNHF3WlBSbmJ0cy1QRnNGcE1Gb0FiN2NSQ2RWaTM5bXF6WmhRXzVCaXlib0ZsRHd2bGwtemdpRm55bjhfV1hyV2NEYVhSRHkyOE1hY3N2T3p3M2RvX2VneUoyLVQ4WGE1eEt1TjliVkJXaWc3Z1ZjS1JBVkgzVXZrR2I2R2c5bGNXZUVqcEJWV0NyV2gwUdIB3wFBVV95cUxQS2hrLWpyOFZEcFIwMjJhZGVxcWhyc1pkMXBnd000M1hLTGJDQlB6QlpwSGRaN0l3YWN6R1lvMnJZekVPQ2ZfdFRmcVI2M2RyelVYbGlEa216LTRpcUN4WXp1a21fNHRrNjl3ejZlaUZUN3ByZkg5SnBvOEswZWFwckxsSnBUenRfVWthSzhoanhHYjhRU0FaWGliVTlBVF9POTJLSFMweGdPaU5STHZfbHh0Tm0tam9iQTIzVW9MZm9DT2pYYzIycVNyamxWa3JESloteElVQUNvdlpsNTdJ?oc=5",
+          "medio": "Crónica",
+          "titulo": "Le vaciaron las cuentas con una estafa virtual y la Justicia ordenó devolverle todo el dinero - Crónica",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNVF9kcngwMzZlbVRMWGNSVGpjQUhndkFaY3BHOC1Jc19Kb0VXMzBxVUlRT29TYWNiTGxteDNQTjBtcThhUTZvaXRQTnZOWENpRUZBNEFVZ1pVYkpqNDlhZnR2ekM2TFFpQS1vNHVkOTN0ZWxTWVhnTXVVUFdaaEowSEdaQjFBdmtkU0FQNG9jQURtLXpqZDBfaUliMHJDYWVyXzlERGdtdHI5RlpTWVNlMDAxVW02eUVvQ0FGQzNhREMyQTZHcjdkc2tEZExjTEVwVWfSAdsBQVVfeXFMTl83LUpuQVNyMnZCQjdRQThuZXF2cmdxblZZa3BycUpxd3BQdERzMFF2ZE1DR1ozaUtaNjVyVm5ESndINGlheEZuMzcwTTVOZ3F5ODRwbUYzaWNaQVE4QWZRbnE5Wl9NMVd0QVE1NEY5Z1pQRE5HRmlEUm1lbHJRbmNOLVZSY0dVOXFtVS0zRUNzaF96Y1hWT090ejVweEZRSEZmZnRKWWRnN3cxTGpIYWFPS0RQWXhEZTQ2NEN2V3hTSklPT0xpUmNucWhHNEtrMzlkVEZ4WWN0NDEw?oc=5",
+          "medio": "El Liberal",
+          "titulo": "Indignación en La Banda: una pareja de jubilados fue víctima de una cruel estafa virtual - El Liberal",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:49:52.298Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQUmxodklucUpiQlFfdkkwN2YzSGttbE83UzlsWEZiWEkyVTZtZzNNZ0VoSEo0VVpQQzdNenVVSnJjZ1lVbTBXY21SU1Y3Zy1sZWZkajFaV2swbjMwNlZHMDlsYUJMSFd1Nll3VHV6azBPMHAyWE5wMlBydTZaMVJIRGpBekJJMThWU0c2NUJHRXlKcUZmZWJYbi03c2kxZzRpUHY5UdIBqgFBVV95cUxPWXgyeU5iZjdsSEdhUVlzdEdwQUZHUEVoWDk1YnBlU0hqS1RXaTVBNnctZkExZTRzLUMtMEVqaTAza3RGSmpzZnJKYnA5cEhVZWx5bHFNR01mS3RYeXcxS2xGNTltbHRqWXZ3NXFjc2gtT3RRYUNveHo5dER2VVVhX0FCbG5rRHhyTE1uUzBpVnJoeUpTbmY3SXA2WkF5WHhRb2NaQzBRdmxpZw?oc=5",
+          "medio": "Jujuy al día",
+          "titulo": "Jujuy: cayó en una estafa virtual y perdió un millón de pesos - Jujuy al día",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:49:52.298Z"
+        }
+      ],
+      "pais": "AR",
+      "provincias": [
+        {
+          "nombre": "Buenos Aires",
+          "n": 19
+        },
+        {
+          "nombre": "Santiago del Estero",
+          "n": 16
+        },
+        {
+          "nombre": "Entre Ríos",
+          "n": 10
+        },
+        {
+          "nombre": "Jujuy",
+          "n": 4
+        },
+        {
+          "nombre": "San Luis",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "pos": 7,
+      "key": "romance_scam",
+      "nombre": "Perfil romantico falso",
+      "canal": "REDES",
+      "act": 55,
+      "delta": -45,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "La víctima es contactada por un estafador que se hace pasar por un extranjero con intenciones románticas. Tras establecer un vínculo emocional, el estafador inventa una situación de emergencia o un viaje para conocer a la víctima, pidiéndole dinero para cubrir supuestos gastos de viaje, aduana o problemas económicos. La víctima, creyendo en la relación, realiza múltiples transferencias de dinero, endeudándose significativamente.",
+      "detectar": "Desconfiar de pedidos de dinero de personas que solo se conocen virtualmente, especialmente si son extranjeros y argumentan problemas económicos o de viaje para encontrarse.",
+      "fuente": "0223.com.ar",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5",
+          "medio": "0223.com.ar",
+          "titulo": "Creyó que tenía un novio virtual británico, se endeudó por $30 millones y descubrió la peor estafa - 0223.com.ar",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQQ3NQeC1qYVJrS09BRlZVVXBpSi1Bb0d0ZWRRbUpsaVU4Yk5pSXozNnhoNm5oT0lubWt3ZlF5NTQ2OXdfZGRweUpWV2hOQVhPSTg5OVBjYklFTmFDQklaVGYxYkZaa0ozbXc0akhHQTlzZkZDV2c0Rl9HN3NpWkFPX0RUMnBORjItUG0xYWdXYXpvRnBOMGdUMjU1STFzSnZQT1BVT3dWTklCM2J0RkdGQ2xkOGpGRmZjbUpuMkJBVXMzSzBXOHBvMlMtdlRoMmhtWFduMjZzbWdBbDZoSmpJWUtVMVhnWFVYLTFwMGd1bmJYUlpLTkNUVTZnS3LSAZACQVVfeXFMTl9FLUsyY1h1cVhTS0tLbVlXLTdmMUw0SjllNzV5YVdzeWo3ZWQ0OTVKRURPbklRV1c2dkRHMDI5LTZoZ2dZV2hNMDNKLVRxRVJwSnhDd1R6enM4dzBWS3RKMFVkaW9iYzFPNklDNGh2c09pY2hieWJFS2VNT21fQ2huc1g1ZHpBMV9TX0x6RWkyd0dpMnllelNseTcwa0x0bk9hUU5OZG1CZGhtd1JMSk1VeUtkYThUZDNvYUM1NHdQejZIdlVmWVU0VnZvVVRMNlRFSFY4SGl1TXN1NXVOMGVLdzFocGxzSzgzaXN2QVdTN3d4TWVnblRNbV9QUk1UWTdTblhHVWtmR2Vsc2NCLW4?oc=5",
+          "medio": "TN",
+          "titulo": "Creyó que tenía un novio virtual británico, se endeudó para que viajara a Paraná y le transfirió casi $30 millones: era una estafa - TN",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPcU12UzhKRTN3X2JXVGwwZFFyTzRZdGR4NXd3RXFBbDZQX1NyN0NIaTBWcFZrSEhYcms4Um9CQUxVTS1rbDdpeFFQVnJaZTRZN1A3RzdlM3Zkc0ZmaHlxbkUwSUxITFlVZXR5cFVNQ2VNRUpVcVM4RXdyaE9PNHZSVVNrc0NYdkNyeDBuNVUzUVVFTkFTdk1lSkJlTWNLUndFbXd5UTQ0N212X3dJd25DVVN2cEliNVlnU0s5dDFISGxCVENfaGFYTndaeTJiTWY5bkHSAdcBQVVfeXFMTmx2ZlRFc2VxUjBwampZbjREU0NfTWxCRThmeW43N1BENWhnclQ1eFNaSGtjN2psS2RtVVFlWTU4U3RQaWJQb1ZvanZWVTI1Y0VsX3VRaFRRLXdaTEpZck90MF8xcTc0dmJFQ2NDX2tDVWpiR2pXdU5sdmZxem4zOTVRdTFaT3lnMFNqVU5XQ1BtUlVPNjlpOC1OSFhxYVFUSmxiczUzTkY3SU5KMUgxdWRRbnpjNFJXaktuajJZeXVKVFNjRE1iNEpUUzVSZFJsSVVoVWllam8?oc=5",
+          "medio": "El Litoral",
+          "titulo": "Creyó que tenía un novio de Reino Unido y perdió casi $30 millones en una estafa - El Litoral",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:49:52.298Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPcmx1bjZxZXMtVEE2X0R0dUZYcnl6TjVBbUN3Zlo2bUdCaW1ES3NyYjVrT3Z2UjR3UHpFRC1uV3hHM0Zlc25ZMkRRSVpSZTlEcFpxNnhFUHJFSDQ3UFJCazlqcjZVbHRzZlYtb2QyWjBSaXNIX0g2MmNMSmU0T043aTZKMWFDRklmYVhyMmV3YnRwSFhxVnlCbmh0bnh2TG9NVjA0NzZlN0N1MkdDc3R2dTEtM19LWkoxVkFSYTllLVRiODRIQ1RmYUpVVHdKWWdmWGsycTduVy12TlpfMU9XNExWWGx4QVZKc2RreGdKcGpfRk5GM3ZuOTBpS2hiMXVqVlpMRFNOMDI?oc=5",
+          "medio": "Diario Junio",
+          "titulo": "El mismo “novio”, la misma estafa millonaria: una nueva investigación vuelve a involucrar a la podóloga condenada por la Mutual de Músicos - Diario Junio",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:49:52.298Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPUmQ3aUhrX3hQNUdnRkVuT0lhZTh1ZUE2Zk5Qa0tWNzhwdjFnNWg0MGMxZHRtYmFEOTdHbTlHYTA3blJSYnkxcTdiMUxXMHBUMzh0TGZweXdWNzBSNnpLeWFMOUtsazBoNHozZEVTX19nSnlsNkpUajJSWGlQeDVIRGdzZ3FaNEJjNVFsQmpXVS1Id1FBZ0pnMjlqcktHZHgySjk3VkZHVXJicWRCdnFQUXZRVUpRT0tlWm8tcU9la9IBxAFBVV95cUxNR1NyRk1fdVV4djgtYldESVJwR1JJR1g5VDJOZDc4aU5mUGdDbF9sVVZZdjVUQ25xNWowSC1QLXUxbloyT0lrX0RPcGFRcHdNV201QUpjSjNZZTBvdWtUcW1FQVp1ZGFNaktkdDZpdGRYOFhOc3hwcmo2NjlHRUl2akNuQ1pqaVJRb1MzeHJ4VGtLalU1V3RKY2JTbkFkWXNDZXozblpMMkpVWUppSFFYLXBGMzliXzRBQk9tMzFrdDNWeWdi?oc=5",
+          "medio": "Big Bang! News",
+          "titulo": "Se enamoró de un supuesto británico por Facebook y perdió casi $30 millones: la trama de la estafa - Big Bang! News",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:49:52.298Z"
+        }
+      ],
+      "pais": "AR",
+      "provincias": [
+        {
+          "nombre": "Entre Ríos",
+          "n": 31
+        },
+        {
+          "nombre": "Buenos Aires",
+          "n": 1
+        }
+      ]
+    },
+    {
       "pos": 8,
       "key": "marketplace_falso",
       "nombre": "Vendedor falso en marketplace",
       "canal": "MARKETPLACE",
-      "act": 80,
-      "delta": 4,
+      "act": 53,
+      "delta": -27,
       "riesgo": "alto",
       "emergente": false,
-      "como": "En Argentina, una persona que vendía un mueble en un marketplace fue contactada por un supuesto comprador. Este le solicitó un CBU para realizar el pago, pero en lugar de eso, le envió un link falso que simulaba ser de su banco. Al ingresar sus datos, los delincuentes accedieron a su cuenta y solicitaron un préstamo a su nombre, consumando el fraude y dejando a la víctima endeudada.",
-      "detectar": "Desconfiar de links enviados por supuestos compradores que solicitan datos bancarios o credenciales, especialmente si el pago no se realiza directamente a través de la plataforma del marketplace.",
+      "como": "La víctima, al vender un mueble en un marketplace, es contactada por un supuesto comprador que simula un pago. Para 'recibir el dinero', le solicitan sus credenciales bancarias o la redirigen a un sitio falso donde las ingresa, resultando en un préstamo fraudulento a su nombre o el vaciamiento de su cuenta.",
+      "detectar": "Desconfiar de compradores que insisten en métodos de pago complejos o piden datos bancarios sensibles fuera de la plataforma del marketplace. Verificar siempre la autenticidad de los enlaces de pago.",
       "fuente": "alertadigital.ar",
       "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNWWdyRFBuMjVidkRsUl9mOEV1M1RZd2JQazBGXzZveGRGSXF5bmVqcnBEUXN3ZUxqc0dBQk83R2Z0NE52cDEzanIwQXdQVHRxbWI3aExpWjNLa3VwT2RZZWFTWlVmTGJHbXV4d3c0VjF4OTZ6N1hTVndDRjJHRTM4Qzh5OHZLM2twb3hFMTRTNzIxVnp6LS1UeWVtVFY4T1oyMjNCZm9zOWdTLTZ3THBabkRTeWc3N1BlaWVUXzY1SDJFTmFWQ090ZHpQaEZhbG1yWWNuZUZLb3pRd9IB3wFBVV95cUxPOS05dzZlV2RzdVh2R1pIVldHb1JWR2ROS0dvNEhCVHFSS3p5NERkVUxhZFFQdXVnbTJxM18wb0kxNHg0MDZkUU5YcDNrV0wzTG1qZHZ2SWwtdzlVZjZjeEhnZ2gzMVJQaXRGb2FQVWU5UFNMc09tNi1lX2dZU0NrV0gxOFJ4eE1FZ1ViZGRCbG96STNLdDJiczhEYTNEVDhzY1dMWGVRbkkyOFZpODhielY3MFJnLUItNTJLTUJvVURkSEUwcFJRUGV3eE9GRk9GUlZuWktCU0JaTUpLcU1R?oc=5",
       "evidencias": [
@@ -793,11 +822,59 @@
     },
     {
       "pos": 9,
+      "key": "phishing_arca",
+      "nombre": "Phishing de ARCA",
+      "canal": "WHATSAPP",
+      "act": 49,
+      "delta": -23,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Los estafadores se hacen pasar por ARCA (Agencia de Recaudación de Catamarca) y envían mensajes de WhatsApp a las víctimas. Les solicitan una foto del DNI y un pago de dinero para supuestamente regularizar una situación fiscal o evitar una multa. El objetivo es obtener datos personales y bancarios para cometer fraudes posteriores o robar el dinero directamente.",
+      "detectar": "Mensajes de WhatsApp de ARCA que solicitan fotos del DNI o pagos de dinero para regularizar situaciones fiscales. ARCA nunca pide información sensible o pagos por WhatsApp.",
+      "fuente": "El Tintero de Salta",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQMm5NbTE0NUswaE5OazVocWNVSmlpWTFSXzdRYWw0MW83eVhiV2JMS0syZmhoNE9FWEloN3d2T2JFcmJLMWdob0hTeVJWWkNjLVg0bnRjb0lOMXFwMnp2SkVtTWpWbHBPRkNzSGxKcFZyZ0I4Tms5SmFfQWFPNWV2a3BFTHNRamh5MFNmdkdiRHZSZzBsSTlFcllrbTBlcGs5R1dsclN6aUlIc0FCTTluU25IczlLX0VCTlYtNVQxdm5GYmc?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQMm5NbTE0NUswaE5OazVocWNVSmlpWTFSXzdRYWw0MW83eVhiV2JMS0syZmhoNE9FWEloN3d2T2JFcmJLMWdob0hTeVJWWkNjLVg0bnRjb0lOMXFwMnp2SkVtTWpWbHBPRkNzSGxKcFZyZ0I4Tms5SmFfQWFPNWV2a3BFTHNRamh5MFNmdkdiRHZSZzBsSTlFcllrbTBlcGs5R1dsclN6aUlIc0FCTTluU25IczlLX0VCTlYtNVQxdm5GYmc?oc=5",
+          "medio": "El Tintero de Salta",
+          "titulo": "Nueva estafa virtual en Salta: usaron el nombre del IPS para engañar a un jubilado y robarle una millonaria suma - El Tintero de Salta",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:17:24.020Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQQUV5SDc3RHFmd0gzSGo0LVBWNVF1MHpoTmNFWHhTNXUwaGw5N2pGdXNxNWpBekNRY1FIZlBzdWdsTnlwQks4MFlkLTN6b1c0U21uZlhPVVlVa1RaRnBkUDNabFE1aGNjNE5tRnhhSm5tYTlsdHRha0FkN0s2UDVuOWpYMGlJWndPdmxWT0g1NHMxRzZtSmtpY0wtZ3hkNUV1WXNsSE5ISks4NUxV0gGyAUFVX3lxTE96Vi1KeHhyZnlHa21sQ285dm5ZVHpBaXhXNmNzME5adlFOUjdwTW0zeDJobk9yZ0JGUW84ZVJZWEd0T09VWXZ2dUJIVDdRMV9zUmRaUEE3ZWkwNEpDZlJob0g5TVFJZmNjelJPYmRoX3RfUU9Sc1M2OWJQM1FOd25xd3hrc250U3VPd3hZZTBUNmN6cGVzd1dyLVFqQ3NDZ3dyZDRpRnp3R1ltRHFzaTJPeUE?oc=5",
+          "medio": "Crónica",
+          "titulo": "ARCA alerta por estafa electrónica que exige foto del DNI y dinero - Crónica",
+          "anillo": 3,
+          "fecha": "2026-08-30T23:49:52.298Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPWEI0QTYwVVJRVkRMU3psLURuam5wMXJLTnZfTlF6OTBSdFA4N0xqd01jNWtoS1VrV1VDNjE5VjVEQlhBUnNZb0xpMWowMXdDczFjalBsV2E3S2Y1NloxSGdfSndnazNOWjV3V2tWQWxNem95enMtcTlNcjd6MzJyV2lJT24wcWNEM00zZnBYaVdQVkxkTHpWZjVMemEwb2I0ZmxYMtIBqgFBVV95cUxQSmlGUnRMd3JZekRlWlRKVGMtS3RJajN1dWJPeHctakV5SUVCSGRMcFZKUzRTWkdCNGx0MVItV0tLUEprZFpiNnMwLTRFUlcyMHA2aTluMkM3TURHSTBRWHRqelRxZTlkZURYSWlFT1djWTVlRE90OW5lRDJacl9pZnNmOVp4RVNkTmx3bnc2Z3BFNk9qaHdBMlE4ZmlXNVNXWGIxOXNwU2p2Zw?oc=5",
+          "medio": "MDZ Online",
+          "titulo": "ARCA: alertan por una nueva estafa digital y explican cómo protegerse - MDZ Online",
+          "anillo": 3,
+          "fecha": "2026-08-31T11:57:26.899Z"
+        }
+      ],
+      "pais": "AR",
+      "provincias": [
+        {
+          "nombre": "Catamarca",
+          "n": 5
+        },
+        {
+          "nombre": "Salta",
+          "n": 3
+        }
+      ]
+    },
+    {
+      "pos": 10,
       "key": "sim_swapping",
       "nombre": "SIM swapping",
       "canal": "TELEFONO",
-      "act": 76,
-      "delta": 0,
+      "act": 47,
+      "delta": -29,
       "riesgo": "alto",
       "emergente": false,
       "como": "Los estafadores obtienen un nuevo chip con el número de teléfono de la víctima, haciéndose pasar por ella ante la compañía telefónica. Una vez que tienen el control del número, acceden a cuentas bancarias y otras plataformas vinculadas, vaciando las cuentas en cuestión de segundos. La víctima pierde el servicio de su línea y el acceso a sus apps.",
@@ -838,14 +915,16 @@
           "n": 1
         }
       ]
-    },
+    }
+  ],
+  "watch": [
     {
-      "pos": 10,
+      "pos": 11,
       "key": "phishing_anses",
       "nombre": "Phishing de ANSES",
       "canal": "WHATSAPP",
-      "act": 75,
-      "delta": 0,
+      "act": 46,
+      "delta": -29,
       "riesgo": "alto",
       "emergente": false,
       "como": "Los estafadores contactan a jubilados por WhatsApp, haciéndose pasar por el IPS (Instituto de Previsión Social) de Salta. Les informan sobre un supuesto beneficio o retroactivo y les piden que sigan una serie de pasos, que incluyen la descarga de una aplicación de acceso remoto. Una vez instalada, los ciberdelincuentes toman control del dispositivo y realizan transferencias bancarias fraudulentas, vaciando las cuentas de las víctimas.",
@@ -900,68 +979,84 @@
           "n": 1
         }
       ]
-    }
-  ],
-  "watch": [
-    {
-      "pos": 11,
-      "key": "phishing_arca",
-      "nombre": "Phishing de ARCA",
-      "canal": "WHATSAPP",
-      "act": 72,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Un jubilado de Salta recibió un mensaje de WhatsApp de un número desconocido, haciéndose pasar por el IPS. Le informaron sobre un supuesto beneficio y lo guiaron para instalar una aplicación de acceso remoto. Una vez que el estafador tuvo control de su dispositivo, le vació la cuenta bancaria, robándole una suma millonaria.",
-      "detectar": "Mensajes de WhatsApp de números desconocidos que se hacen pasar por organismos oficiales (IPS, ANSES, PAMI) para ofrecer beneficios y pedir instalar apps o compartir datos bancarios.",
-      "fuente": "El Tintero de Salta",
-      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQMm5NbTE0NUswaE5OazVocWNVSmlpWTFSXzdRYWw0MW83eVhiV2JMS0syZmhoNE9FWEloN3d2T2JFcmJLMWdob0hTeVJWWkNjLVg0bnRjb0lOMXFwMnp2SkVtTWpWbHBPRkNzSGxKcFZyZ0I4Tms5SmFfQWFPNWV2a3BFTHNRamh5MFNmdkdiRHZSZzBsSTlFcllrbTBlcGs5R1dsclN6aUlIc0FCTTluU25IczlLX0VCTlYtNVQxdm5GYmc?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQMm5NbTE0NUswaE5OazVocWNVSmlpWTFSXzdRYWw0MW83eVhiV2JMS0syZmhoNE9FWEloN3d2T2JFcmJLMWdob0hTeVJWWkNjLVg0bnRjb0lOMXFwMnp2SkVtTWpWbHBPRkNzSGxKcFZyZ0I4Tms5SmFfQWFPNWV2a3BFTHNRamh5MFNmdkdiRHZSZzBsSTlFcllrbTBlcGs5R1dsclN6aUlIc0FCTTluU25IczlLX0VCTlYtNVQxdm5GYmc?oc=5",
-          "medio": "El Tintero de Salta",
-          "titulo": "Nueva estafa virtual en Salta: usaron el nombre del IPS para engañar a un jubilado y robarle una millonaria suma - El Tintero de Salta",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQQUV5SDc3RHFmd0gzSGo0LVBWNVF1MHpoTmNFWHhTNXUwaGw5N2pGdXNxNWpBekNRY1FIZlBzdWdsTnlwQks4MFlkLTN6b1c0U21uZlhPVVlVa1RaRnBkUDNabFE1aGNjNE5tRnhhSm5tYTlsdHRha0FkN0s2UDVuOWpYMGlJWndPdmxWT0g1NHMxRzZtSmtpY0wtZ3hkNUV1WXNsSE5ISks4NUxV0gGyAUFVX3lxTE96Vi1KeHhyZnlHa21sQ285dm5ZVHpBaXhXNmNzME5adlFOUjdwTW0zeDJobk9yZ0JGUW84ZVJZWEd0T09VWXZ2dUJIVDdRMV9zUmRaUEE3ZWkwNEpDZlJob0g5TVFJZmNjelJPYmRoX3RfUU9Sc1M2OWJQM1FOd25xd3hrc250U3VPd3hZZTBUNmN6cGVzd1dyLVFqQ3NDZ3dyZDRpRnp3R1ltRHFzaTJPeUE?oc=5",
-          "medio": "Crónica",
-          "titulo": "ARCA alerta por estafa electrónica que exige foto del DNI y dinero - Crónica",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPWEI0QTYwVVJRVkRMU3psLURuam5wMXJLTnZfTlF6OTBSdFA4N0xqd01jNWtoS1VrV1VDNjE5VjVEQlhBUnNZb0xpMWowMXdDczFjalBsV2E3S2Y1NloxSGdfSndnazNOWjV3V2tWQWxNem95enMtcTlNcjd6MzJyV2lJT24wcWNEM00zZnBYaVdQVkxkTHpWZjVMemEwb2I0ZmxYMtIBqgFBVV95cUxQSmlGUnRMd3JZekRlWlRKVGMtS3RJajN1dWJPeHctakV5SUVCSGRMcFZKUzRTWkdCNGx0MVItV0tLUEprZFpiNnMwLTRFUlcyMHA2aTluMkM3TURHSTBRWHRqelRxZTlkZURYSWlFT1djWTVlRE90OW5lRDJacl9pZnNmOVp4RVNkTmx3bnc2Z3BFNk9qaHdBMlE4ZmlXNVNXWGIxOXNwU2p2Zw?oc=5",
-          "medio": "MDZ Online",
-          "titulo": "ARCA: alertan por una nueva estafa digital y explican cómo protegerse - MDZ Online",
-          "anillo": 3,
-          "fecha": "2026-08-31T11:57:26.899Z"
-        }
-      ],
-      "pais": "AR",
-      "provincias": [
-        {
-          "nombre": "Salta",
-          "n": 3
-        },
-        {
-          "nombre": "Catamarca",
-          "n": 1
-        }
-      ]
     },
     {
       "pos": 12,
-      "key": "suplantacion_banco",
-      "nombre": "Suplantacion de banco por telefono",
-      "canal": "WHATSAPP",
-      "act": 72,
-      "delta": 8,
+      "key": "ecommerce_falso",
+      "nombre": "Tienda online falsa",
+      "canal": "REDES",
+      "act": 43,
+      "delta": -27,
+      "riesgo": "medio",
+      "emergente": false,
+      "como": "Los estafadores crean tiendas online o perfiles falsos en redes sociales, ofreciendo productos atractivos a precios muy bajos, especialmente en fechas especiales como el Día del Niño. Engañan a los usuarios para que realicen compras que nunca se entregan o son de calidad inferior, buscando obtener dinero o datos personales y bancarios.",
+      "detectar": "Precios excesivamente bajos, sitios web con errores de diseño o gramática, falta de información de contacto real, y la solicitud de datos sensibles fuera de pasarelas de pago seguras.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/mundial-2026-como-cuidarte-de-las-estafas-y-de-las-noticias-falsas/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/mundial-2026-como-cuidarte-de-las-estafas-y-de-las-noticias-falsas/",
+          "medio": "Chequeado",
+          "titulo": "Mundial 2026: cómo cuidarte de las estafas y de las noticias falsas",
+          "anillo": 3,
+          "fecha": "2026-08-28T18:23:58.790Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaUNGVlA4Y2lMT1BfQkk4eXRBc3ZVVjF4RVpmY21oNWVlV3lQWVdndE5MWUhZaHhQdUp1T0EwbmQzTEhpbUVHTUZBbEtXR1RjdXlyaGJTU1JlZ0ROZXhrTHNjSWhMZVoyZlFoQVEtREhPOWdYV3NIMVdHWkdETk1BdDJwQVl3RV9iZzRLNlNxMlYxSWsyM2F4MXo0ZFVrLW1vYUl3SXp3MGhjbGtaQWNEQWswQ1BJQjVxYWlDTS0tS2Y4ZWtOdVHSAdoBQVVfeXFMTVM1c21maFY2WUZucFo4dVc3bEt0Tl84X29CMkp5cWRSZlQwZzZ4Z2NEY2ljSk0yTG5uaUFfVWc5eFdTYU9NSlNTc3dQWFJXWXFQbk8zY0stcFhjZTE3Y2gwREUwai0xbThPS0R0a1dwR1dTTEpfVmh4LTJIMHR6U1VfTGM4eEtwbDcyQnJOd1BoT3hKNEFBYmhKQUZyY0lNN3pVSnQ1S0NWZ0JyZWkxOTJZb1lsWjlpQVg2ZXQwVmVVMWRMbnViMF9CVzctVVg4Tm1wenUwMmNTQ0E?oc=5",
+          "medio": "TN",
+          "titulo": "Día del Niño: 15 consejos para comprar el regalo online y estar a salvo de estafas - TN",
+          "anillo": 3,
+          "fecha": "2026-08-31T13:02:13.057Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWGxrbU9YLU8yclVsS0JXaEwza2hTV2VOdnp1MHRlbFpkdWdIUzVoTTh0S0ZWdUU2Uk53a2Rwc3VUY0tEZ3g5Nmt1WWMyWUdodEZYaTIyTS1pZ2U0UXhFcHI1U2lZZVRlbUYyMU1Bb1pnbDJ1dWNpejhFRkZVUmlDQzhjRVM5X3BhekFITVBWY0N1TkUzSERtUHZNNkF1VTRjb0E?oc=5",
+          "medio": "Orientese co",
+          "pais": "AR",
+          "titulo": "No te dejes estafar con la adopción y ventas de mascotas y con el «raspe y gane» - Orientese co",
+          "anillo": 3,
+          "fecha": "2026-08-31T16:59:26.069Z"
+        }
+      ],
+      "pais": "AR",
+      "provincias": []
+    },
+    {
+      "pos": 13,
+      "key": "deepfake_inversion",
+      "nombre": "Deepfake de inversion con figuras publicas",
+      "canal": "REDES",
+      "act": 41,
+      "delta": -19,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los delincuentes se hacen pasar por empleados bancarios a través de WhatsApp, utilizando perfiles falsos con logos de bancos. Contactan a las víctimas con excusas como problemas en la cuenta o promociones, solicitando datos personales, claves bancarias o la instalación de aplicaciones de acceso remoto para vaciar las cuentas.",
-      "detectar": "Desconfiar de mensajes de WhatsApp de supuestos bancos que solicitan datos personales o claves, o que piden instalar apps. Los bancos nunca piden información sensible por WhatsApp.",
+      "como": "Los delincuentes utilizan la imagen y voz de Marcos Galperin, fundador de Mercado Libre, mediante deepfakes en videos y publicidades en redes sociales. Promocionan una supuesta plataforma de inversión que promete altos rendimientos con poco esfuerzo. Engañan a las víctimas para que inviertan dinero en esta plataforma fraudulenta, que luego desaparece con los fondos, consumando la estafa.",
+      "detectar": "Desconfiar de publicidades en redes sociales que prometen ganancias extraordinarias con inversiones mínimas, especialmente si usan imágenes de figuras públicas para promocionar plataformas desconocidas.",
+      "fuente": "Chequeado",
+      "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPMlNWSkVwbmRfMGpyNjJpcXp0cEFLNllfakNyay1sQmVvQ1EwdkR0WmRRaVRDTTU4QVFzSUs1dkZIT2dNazhSdlVxd1k5dU5oYzI2SEl2X3Nyd0F1SnJyaE4yVkVEaldlMkpTYWxCX2FaWDM1aFV0OWg3VnN2OHJJZU9QNVdxbm9FeFEybFJfYUdsUE9TcnlscVZmenB1WFhjRVZ1VnVCVW9CTFphenNxQmxNazBoVm40YWVFWG1VXzNnWXJDLXl6UXhHVzY0LUk0QmRfWmtjTzBxaEZ2VFF6QmROYzJmdUVLVl9HSkl6QTgyT2tpM2xDdld2ZU14UjBINzhLY2xybw?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPMlNWSkVwbmRfMGpyNjJpcXp0cEFLNllfakNyay1sQmVvQ1EwdkR0WmRRaVRDTTU4QVFzSUs1dkZIT2dNazhSdlVxd1k5dU5oYzI2SEl2X3Nyd0F1SnJyaE4yVkVEaldlMkpTYWxCX2FaWDM1aFV0OWg3VnN2OHJJZU9QNVdxbm9FeFEybFJfYUdsUE9TcnlscVZmenB1WFhjRVZ1VnVCVW9CTFphenNxQmxNazBoVm40YWVFWG1VXzNnWXJDLXl6UXhHVzY0LUk0QmRfWmtjTzBxaEZ2VFF6QmROYzJmdUVLVl9HSkl6QTgyT2tpM2xDdld2ZU14UjBINzhLY2xybw?oc=5",
+          "medio": "Chequeado",
+          "pais": "AR",
+          "titulo": "Cuidado con estos sitios que usan la imagen de Marcos Galperin para promocionar una nueva “plataforma de inversión”: se trata de una estafa - Chequeado",
+          "anillo": 2,
+          "fecha": "2026-08-31T13:31:24.606Z"
+        }
+      ],
+      "pais": "AR",
+      "provincias": []
+    },
+    {
+      "pos": 14,
+      "key": "suplantacion_banco",
+      "nombre": "Suplantacion de banco por telefono",
+      "canal": "APP",
+      "act": 38,
+      "delta": -34,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Un usuario de San Luis fue víctima de un fraude digital donde delincuentes accedieron a su cuenta bancaria a través de la aplicación móvil del banco, realizando transferencias no autorizadas. La Justicia ratificó que el banco es responsable por la falta de seguridad en su plataforma, lo que permitió a los estafadores operar sin el consentimiento del cliente.",
+      "detectar": "Recibir notificaciones de movimientos o accesos a la cuenta bancaria que no fueron realizados por el titular. Es crucial revisar periódicamente los extractos y alertas del banco.",
       "fuente": "Agencia de Noticias San Luis",
       "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOLUdSOFBBSkRJOUx3eVNiNHc1UGhJdWNVU204VDVfdG5TaFM4QUFTamU2cGRZd0dUczN1MEdGYXZwRDhYbVdsa2JicE03enAxaVNYMV81bUtNdXNHMVVNS3RhOV9ZUldYSkVRUVNzdjdmRzM1SXlDaktJNjdxcUdnY2h6a3ZnelJOTGFQMlBZVTJSZUNsdHhNVTZQUkZwckRSeXFFTndlNHdTMzhiNUplTFRJR0pYR2d6Y1pKcG1GYw?oc=5",
       "evidencias": [
@@ -993,7 +1088,7 @@
       "provincias": [
         {
           "nombre": "San Luis",
-          "n": 4
+          "n": 7
         },
         {
           "nombre": "Jujuy",
@@ -1002,96 +1097,12 @@
       ]
     },
     {
-      "pos": 13,
-      "key": "ecommerce_falso",
-      "nombre": "Tienda online falsa",
-      "canal": "REDES",
-      "act": 70,
-      "delta": 3,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los delincuentes crean tiendas online falsas o perfiles fraudulentos en redes sociales, ofreciendo productos atractivos a precios muy bajos, especialmente en fechas especiales como el Día del Niño. Engañan a los usuarios para que realicen la compra y el pago, pero nunca envían el producto o entregan algo de menor valor. El fraude se consuma cuando el comprador paga y no recibe lo esperado.",
-      "detectar": "Desconfiar de ofertas demasiado buenas para ser verdad, verificar la reputación del vendedor y la URL del sitio web, y evitar hacer clic en enlaces sospechosos o realizar pagos por fuera de plataformas seguras.",
-      "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/mundial-2026-como-cuidarte-de-las-estafas-y-de-las-noticias-falsas/",
-      "evidencias": [
-        {
-          "url": "https://chequeado.com/ultimas-noticias/mundial-2026-como-cuidarte-de-las-estafas-y-de-las-noticias-falsas/",
-          "medio": "Chequeado",
-          "titulo": "Mundial 2026: cómo cuidarte de las estafas y de las noticias falsas",
-          "anillo": 3,
-          "fecha": "2026-08-28T18:23:58.790Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPaUNGVlA4Y2lMT1BfQkk4eXRBc3ZVVjF4RVpmY21oNWVlV3lQWVdndE5MWUhZaHhQdUp1T0EwbmQzTEhpbUVHTUZBbEtXR1RjdXlyaGJTU1JlZ0ROZXhrTHNjSWhMZVoyZlFoQVEtREhPOWdYV3NIMVdHWkdETk1BdDJwQVl3RV9iZzRLNlNxMlYxSWsyM2F4MXo0ZFVrLW1vYUl3SXp3MGhjbGtaQWNEQWswQ1BJQjVxYWlDTS0tS2Y4ZWtOdVHSAdoBQVVfeXFMTVM1c21maFY2WUZucFo4dVc3bEt0Tl84X29CMkp5cWRSZlQwZzZ4Z2NEY2ljSk0yTG5uaUFfVWc5eFdTYU9NSlNTc3dQWFJXWXFQbk8zY0stcFhjZTE3Y2gwREUwai0xbThPS0R0a1dwR1dTTEpfVmh4LTJIMHR6U1VfTGM4eEtwbDcyQnJOd1BoT3hKNEFBYmhKQUZyY0lNN3pVSnQ1S0NWZ0JyZWkxOTJZb1lsWjlpQVg2ZXQwVmVVMWRMbnViMF9CVzctVVg4Tm1wenUwMmNTQ0E?oc=5",
-          "medio": "TN",
-          "titulo": "Día del Niño: 15 consejos para comprar el regalo online y estar a salvo de estafas - TN",
-          "anillo": 3,
-          "fecha": "2026-08-31T13:02:13.057Z"
-        }
-      ],
-      "pais": "AR",
-      "provincias": []
-    },
-    {
-      "pos": 14,
-      "key": "suplantacion_contacto",
-      "nombre": "Suplantacion de un contacto conocido",
-      "canal": "TELEFONO",
-      "act": 61,
-      "delta": 11,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los delincuentes se hacen pasar por familiares o amigos de adultos mayores, generalmente por teléfono, para generar confianza y luego solicitarles dinero con alguna excusa urgente, como una emergencia médica o un problema legal. Una vez que la víctima transfiere el dinero o entrega objetos de valor, los estafadores desaparecen sin dejar rastro.",
-      "detectar": "Desconfiar de pedidos de dinero urgentes por parte de supuestos familiares o amigos, especialmente si la comunicación es inusual o si solicitan datos personales o bancarios.",
-      "fuente": "lagacetaonline.com.ar",
-      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNN3V1MWdTMjZsMFhMZGk2cERKczRkNDB3WXhKWlljZXkwa3NUdFFMMW16SW5FMFpTc2N0TnlrM3E1ZkRrRmtjWkxjbVliSE1TeTJ4TzZpMm8ySXRoN0dEZXR3QmpjdDd1ZV8tNFJJeWlQX0ozM2dZRzFMM0NMZGVwSEhGTDJfeFdYcjhfOXhpazJraHJHN1JNaFU5cXFIWFE?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNN3V1MWdTMjZsMFhMZGk2cERKczRkNDB3WXhKWlljZXkwa3NUdFFMMW16SW5FMFpTc2N0TnlrM3E1ZkRrRmtjWkxjbVliSE1TeTJ4TzZpMm8ySXRoN0dEZXR3QmpjdDd1ZV8tNFJJeWlQX0ozM2dZRzFMM0NMZGVwSEhGTDJfeFdYcjhfOXhpazJraHJHN1JNaFU5cXFIWFE?oc=5",
-          "medio": "lagacetaonline.com.ar",
-          "pais": "AR",
-          "titulo": "Nuevas estafas a adultos mayores: cómo prevenir el engaño - lagacetaonline.com.ar",
-          "anillo": 3,
-          "fecha": "2026-08-31T13:31:24.605Z"
-        }
-      ],
-      "pais": "AR",
-      "provincias": []
-    },
-    {
       "pos": 15,
-      "key": "deepfake_inversion",
-      "nombre": "Deepfake de inversion con figuras publicas",
-      "canal": "REDES",
-      "act": 60,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los delincuentes utilizan la imagen y voz de Marcos Galperin, fundador de Mercado Libre, mediante deepfakes en videos y publicidades en redes sociales. Promocionan una supuesta plataforma de inversión que promete altos rendimientos con poco esfuerzo. Engañan a las víctimas para que inviertan dinero en esta plataforma fraudulenta, que luego desaparece con los fondos, consumando la estafa.",
-      "detectar": "Desconfiar de publicidades en redes sociales que prometen ganancias extraordinarias con inversiones mínimas, especialmente si usan imágenes de figuras públicas para promocionar plataformas desconocidas.",
-      "fuente": "Chequeado",
-      "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPMlNWSkVwbmRfMGpyNjJpcXp0cEFLNllfakNyay1sQmVvQ1EwdkR0WmRRaVRDTTU4QVFzSUs1dkZIT2dNazhSdlVxd1k5dU5oYzI2SEl2X3Nyd0F1SnJyaE4yVkVEaldlMkpTYWxCX2FaWDM1aFV0OWg3VnN2OHJJZU9QNVdxbm9FeFEybFJfYUdsUE9TcnlscVZmenB1WFhjRVZ1VnVCVW9CTFphenNxQmxNazBoVm40YWVFWG1VXzNnWXJDLXl6UXhHVzY0LUk0QmRfWmtjTzBxaEZ2VFF6QmROYzJmdUVLVl9HSkl6QTgyT2tpM2xDdld2ZU14UjBINzhLY2xybw?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPMlNWSkVwbmRfMGpyNjJpcXp0cEFLNllfakNyay1sQmVvQ1EwdkR0WmRRaVRDTTU4QVFzSUs1dkZIT2dNazhSdlVxd1k5dU5oYzI2SEl2X3Nyd0F1SnJyaE4yVkVEaldlMkpTYWxCX2FaWDM1aFV0OWg3VnN2OHJJZU9QNVdxbm9FeFEybFJfYUdsUE9TcnlscVZmenB1WFhjRVZ1VnVCVW9CTFphenNxQmxNazBoVm40YWVFWG1VXzNnWXJDLXl6UXhHVzY0LUk0QmRfWmtjTzBxaEZ2VFF6QmROYzJmdUVLVl9HSkl6QTgyT2tpM2xDdld2ZU14UjBINzhLY2xybw?oc=5",
-          "medio": "Chequeado",
-          "pais": "AR",
-          "titulo": "Cuidado con estos sitios que usan la imagen de Marcos Galperin para promocionar una nueva “plataforma de inversión”: se trata de una estafa - Chequeado",
-          "anillo": 2,
-          "fecha": "2026-08-31T13:31:24.606Z"
-        }
-      ],
-      "pais": "AR",
-      "provincias": []
-    },
-    {
-      "pos": 16,
       "key": "premio_sorteo",
       "nombre": "Premios y sorteos falsos",
       "canal": "REDES",
-      "act": 56,
-      "delta": 6,
+      "act": 36,
+      "delta": -20,
       "riesgo": "alto",
       "emergente": false,
       "como": "Los delincuentes utilizan el \"raspe y gane\" como gancho para estafar a las personas. A través de redes sociales o mensajes, anuncian premios falsos que supuestamente se ganan al \"raspar\" una tarjeta virtual. Para acceder al premio, solicitan datos personales y bancarios, o exigen un pago por \"gastos de envío\" o \"impuestos\", consumando así el fraude.",
@@ -1112,12 +1123,12 @@
       "provincias": []
     },
     {
-      "pos": 17,
+      "pos": 16,
       "key": "prestamo_falso",
       "nombre": "Falso prestamo preaprobado",
       "canal": "TELEFONO",
-      "act": 50,
-      "delta": 0,
+      "act": 33,
+      "delta": -17,
       "riesgo": "alto",
       "emergente": false,
       "como": "Los estafadores se hacen pasar por ANSES y ofrecen falsos créditos o beneficios a través de llamadas telefónicas o redes sociales. Contactan a la víctima, le piden datos personales y bancarios con la excusa de gestionar el préstamo, y luego le solicitan transferencias de dinero o el acceso a sus cuentas para \"desbloquear\" el supuesto crédito, vaciando sus fondos.",
@@ -1144,16 +1155,41 @@
       "provincias": []
     },
     {
+      "pos": 17,
+      "key": "qr_fraudulento",
+      "nombre": "QR fraudulento en pagos",
+      "canal": "REDES",
+      "act": 32,
+      "delta": -11,
+      "riesgo": "medio",
+      "emergente": false,
+      "como": "Circulan mensajes en redes sociales alertando sobre un falso aviso de corte de Metrogas con QR fraudulento. Se verifica que el aviso es real y el QR dirige al WhatsApp oficial de la empresa.",
+      "detectar": "Mensajes virales en redes sociales advirtiendo sobre un QR fraudulento en un aviso de corte de Metrogas, que luego se desmiente.",
+      "fuente": "Chequeado",
+      "url": "https://chequeado.com/ultimas-noticias/este-aviso-de-corte-de-servicio-de-metrogas-no-es-una-estafa-es-verdadero-y-el-qr-remite-a-su-linea-de-whatsapp-verificada/",
+      "evidencias": [
+        {
+          "url": "https://chequeado.com/ultimas-noticias/este-aviso-de-corte-de-servicio-de-metrogas-no-es-una-estafa-es-verdadero-y-el-qr-remite-a-su-linea-de-whatsapp-verificada/",
+          "medio": "Chequeado",
+          "titulo": "Este aviso de corte de servicio de Metrogas no es una estafa: es verdadero y el QR remite a su línea de WhatsApp verificada",
+          "anillo": 2,
+          "fecha": "2026-08-28T18:23:58.789Z"
+        }
+      ],
+      "pais": "AR",
+      "provincias": []
+    },
+    {
       "pos": 18,
       "key": "phishing_pami",
       "nombre": "Phishing de PAMI",
       "canal": "TELEFONO",
-      "act": 46,
-      "delta": -10,
-      "riesgo": "ALTO",
+      "act": 32,
+      "delta": -14,
+      "riesgo": "alto",
       "emergente": false,
-      "como": "Los delincuentes contactan a jubilados por teléfono, haciéndose pasar por personal del IPS (Instituto de Previsión Social). Con la excusa de un supuesto beneficio o actualización de datos, solicitan información personal y bancaria, o inducen a la víctima a realizar transferencias de dinero, logrando así el robo de una suma millonaria.",
-      "detectar": "Desconfiar de llamadas que solicitan datos personales o bancarios, o que piden realizar transferencias, incluso si dicen ser de organismos oficiales. Verificar siempre la información a través de canales oficiales.",
+      "como": "Los delincuentes contactan a jubilados por teléfono, haciéndose pasar por personal de PAMI. Les ofrecen ayuda con trámites o beneficios inexistentes para obtener sus datos personales y bancarios. Una vez que la víctima entrega esta información, los estafadores acceden a sus cuentas y les vacían el dinero.",
+      "detectar": "Desconfiar de llamadas inesperadas que solicitan datos personales o bancarios, incluso si dicen ser de PAMI. PAMI nunca pide información sensible por teléfono.",
       "fuente": "El Cronista",
       "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxQMEFHTEkyNDY4ZjBlUk45VHBnRTRadWt6bUR4R0ljbVRLM1pTTDZVby1OS05IbXhId3JJY3JKS3VELW5YYXprQk1BMEVmYU56RW1KSzI0eElaTVVrUHpYdVJsNjdJVTAzM0pRVkgtbkhuYmhyUXRhYTJCaGZaTDhERXB2NV8yc1VKdDR6WjlxeV9WSHVMVUVOOHdfYlMzTFNFZ0xRQVNjN2V3MTY3S1o1MVhhRGw3Z3RFMm4wekdHWFBqd1hTVlMxZzR0bHNjNkloMlFUU1lNUWtmVGtYUHd6ZEo1TE5rSkttNGtHOFRKR3BaY0FxaTR2UXhUUHVtZVdaWE9sMdIBnwJBVV95cUxNcDQ5RDduX0lBWnR0RHJKdy00VVlvVFZfcHNPcF9WMDJrc1RGdXBMZnhLejlIVFlJWHo1a2pJekVtWUVLOG0tS2hUSURlcFVaZ2MwU1dYTFJHZDhBOV9PZmVKaHVPWkx0bnEwTEpzT0lVTXhpS2Z4RjNXd0lzX1pZcmFxaGl5T1IyNkpkdWVqWWJuSVpFYnk1NTVmVUFHYUJZc0JsR2lXMHR1bFRIU2REaThIb25PSXlVbFN5dWtlaDcyZGROUUx6SWRqVFp6MmhVNVk3SWRqa20zSHIwQXBmWVFIa2duWjNMRG9oazNCb2kwLUt1R1VBVTQ4ejF4QkV2ZHJ3TVg1Um5XQ1FLaUJTSGZtc2ZqeldJUHF1OU93MA?oc=5",
       "evidencias": [
@@ -1177,30 +1213,31 @@
       "provincias": [
         {
           "nombre": "Salta",
-          "n": 1
+          "n": 2
         }
       ]
     },
     {
       "pos": 19,
-      "key": "qr_fraudulento",
-      "nombre": "QR fraudulento en pagos",
+      "key": "phishing_mercadopago",
+      "nombre": "Phishing de billetera virtual",
       "canal": "REDES",
-      "act": 43,
-      "delta": 0,
+      "act": 32,
+      "delta": -11,
       "riesgo": "medio",
       "emergente": false,
-      "como": "Circulan mensajes en redes sociales alertando sobre un falso aviso de corte de Metrogas con QR fraudulento. Se verifica que el aviso es real y el QR dirige al WhatsApp oficial de la empresa.",
-      "detectar": "Mensajes virales en redes sociales advirtiendo sobre un QR fraudulento en un aviso de corte de Metrogas, que luego se desmiente.",
+      "como": "Circula en redes sociales una supuesta estafa que involucra la tarjeta prepaga de Mercado Pago. Los estafadores buscan generar pánico y confusión entre los usuarios, difundiendo información falsa sobre un supuesto fraude masivo. El objetivo es que los usuarios, preocupados, hagan clic en enlaces maliciosos o revelen sus datos personales y bancarios para 'protegerse' de la estafa inexistente.",
+      "detectar": "La señal de detección es la difusión de información alarmante y no verificada sobre estafas, especialmente si proviene de fuentes no oficiales o perfiles sospechosos en redes sociales.",
       "fuente": "Chequeado",
-      "url": "https://chequeado.com/ultimas-noticias/este-aviso-de-corte-de-servicio-de-metrogas-no-es-una-estafa-es-verdadero-y-el-qr-remite-a-su-linea-de-whatsapp-verificada/",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWnVLb0FnR29LdDMwR0xNaGZMUE5qVXctRnpSRHpfRXVwWmx5TkVTaWd1T09xc2JzS2tyUTVxYWlpNHV1UHlERFB6N29vdllKUWxMUV9oOUhIZlJwUWlkN2lkS2hlNmFrei04Tm5NM1ZkU2c1bUZGLW4tSFBia0U5dnVDN3BMeURZeXJ6YzFGNl9DLXJ6SVJQVnNDWTNVZ0ZrUUluUGh4NU9WLWZFWjVneU0yWG5aSVlROS1VTw?oc=5",
       "evidencias": [
         {
-          "url": "https://chequeado.com/ultimas-noticias/este-aviso-de-corte-de-servicio-de-metrogas-no-es-una-estafa-es-verdadero-y-el-qr-remite-a-su-linea-de-whatsapp-verificada/",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWnVLb0FnR29LdDMwR0xNaGZMUE5qVXctRnpSRHpfRXVwWmx5TkVTaWd1T09xc2JzS2tyUTVxYWlpNHV1UHlERFB6N29vdllKUWxMUV9oOUhIZlJwUWlkN2lkS2hlNmFrei04Tm5NM1ZkU2c1bUZGLW4tSFBia0U5dnVDN3BMeURZeXJ6YzFGNl9DLXJ6SVJQVnNDWTNVZ0ZrUUluUGh4NU9WLWZFWjVneU0yWG5aSVlROS1VTw?oc=5",
           "medio": "Chequeado",
-          "titulo": "Este aviso de corte de servicio de Metrogas no es una estafa: es verdadero y el QR remite a su línea de WhatsApp verificada",
+          "pais": "AR",
+          "titulo": "Es falso que haya una estafa con la tarjeta prepaga de Mercado Pago - Chequeado",
           "anillo": 2,
-          "fecha": "2026-08-28T18:23:58.789Z"
+          "fecha": "2026-08-31T13:20:56.233Z"
         }
       ],
       "pais": "AR",
@@ -1210,34 +1247,142 @@
   "dist": [
     {
       "label": "WhatsApp",
-      "pct": 35
-    },
-    {
-      "label": "TELEFONO",
-      "pct": 30
+      "pct": 32
     },
     {
       "label": "Redes",
-      "pct": 29
+      "pct": 33
+    },
+    {
+      "label": "TELEFONO",
+      "pct": 25
     },
     {
       "label": "Marketplace",
       "pct": 6
+    },
+    {
+      "label": "App",
+      "pct": 4
     }
   ],
   "kpi": {
     "monit": 30,
     "intl": 11,
     "emerg": 1,
-    "sube": 9,
-    "baja": 1
+    "sube": 0,
+    "baja": 19
   },
   "riesgo": {
-    "alto": 10,
-    "medio": 0,
+    "alto": 9,
+    "medio": 1,
     "bajo": 0
   },
   "informes": [
+    {
+      "id": "2026-09",
+      "mes": "septiembre de 2026",
+      "actualizado": "2026-09-01T12:35:36.070Z",
+      "totalModalidades": 19,
+      "internacionales": 10,
+      "riesgo": {
+        "alto": 9,
+        "medio": 1,
+        "bajo": 0
+      },
+      "top": [
+        {
+          "pos": 1,
+          "nombre": "Plataforma de inversion falsa",
+          "act": 65,
+          "riesgo": "alto",
+          "canal": "WHATSAPP",
+          "fuente": "Chequeado",
+          "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxPMlNWSkVwbmRfMGpyNjJpcXp0cEFLNllfakNyay1sQmVvQ1EwdkR0WmRRaVRDTTU4QVFzSUs1dkZIT2dNazhSdlVxd1k5dU5oYzI2SEl2X3Nyd0F1SnJyaE4yVkVEaldlMkpTYWxCX2FaWDM1aFV0OWg3VnN2OHJJZU9QNVdxbm9FeFEybFJfYUdsUE9TcnlscVZmenB1WFhjRVZ1VnVCVW9CTFphenNxQmxNazBoVm40YWVFWG1VXzNnWXJDLXl6UXhHVzY0LUk0QmRfWmtjTzBxaEZ2VFF6QmROYzJmdUVLVl9HSkl6QTgyT2tpM2xDdld2ZU14UjBINzhLY2xybw?oc=5"
+        },
+        {
+          "pos": 2,
+          "nombre": "Secuestro de cuenta de WhatsApp",
+          "act": 64,
+          "riesgo": "alto",
+          "canal": "WHATSAPP",
+          "fuente": "Chequeado",
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-por-whatsapp-y-que-podes-hacer-para-evitarlo/"
+        },
+        {
+          "pos": 3,
+          "nombre": "Phishing de servicios (luz, gas, agua)",
+          "act": 60,
+          "riesgo": "alto",
+          "canal": "WHATSAPP",
+          "fuente": "Chequeado",
+          "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/"
+        },
+        {
+          "pos": 4,
+          "nombre": "Falsa oferta laboral",
+          "act": 56,
+          "riesgo": "medio",
+          "canal": "REDES",
+          "fuente": "Chequeado",
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/"
+        },
+        {
+          "pos": 5,
+          "nombre": "Phishing bancario",
+          "act": 55,
+          "riesgo": "alto",
+          "canal": "TELEFONO",
+          "fuente": "Infobae",
+          "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOcTdjZXhQN09fcjJ3Yzd1VlFxbFFSV0hhdVhQY3VBakpDbkRka2RwelpvYVg0eDBteExmRnN0OC1FOHFSc3J5MnpEZERMX1pFNnB2RlhUVU9aN2JMdXJIZXIzVnM2WFRZTFNCWTUyUWV0QkhmZ1FkbXRZdmFrMzhZUHFSWk1mUXR6czhzOWZBUk1pWXlnb29aQU95Zzd3bVhBWmRwcDlxS3hLRUxZaFdnVWZ3aUY3eUVOdkNqaHZTTEtsY2FzQjFiOTR6SUtEeDBGOTBfYS1VOG5Cbnh0Y3RpdmRDVlZicWxP0gGDAkFVX3lxTE5wN0NPaWpFejJOVHQ0aXpqT2ZDUThLY3R0a290UG1GVV9zTFY4S1NrVHhyM2NzdGFkOFVJeENNZzZVSlozMURzZDEwMDRwUHFfZ0NieXA4U2dFckNpYVN2LXB3QmxPNkZudlpGMFNQSWh4aHh1M1RsSUt6TWRvdjFMY0xnU284S3JUWVdkQkpjMVctX0Q4V3cwc1AxbVhHSnlxWVUtQkFBR09kamZBMm1uUlYtWnlLU3NyaS1mNmR3eEhldDdMRUZkd2oyUEV6cTVBU3U1Y29YZlFsRXlwdG1BQUlka2hXa29UXzVjajg3VU5vaklYRUJYeGViaGlGbWMyMjA?oc=5"
+        },
+        {
+          "pos": 6,
+          "nombre": "App de acceso remoto",
+          "act": 55,
+          "riesgo": "alto",
+          "canal": "TELEFONO",
+          "fuente": "InfoCañuelas",
+          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQOUxibmZhcUVkSW85Q2h0UTF1bFBkZFBNWDgzSnFUalROLS1fTFU5b2oyMTVudXZQeDdLSHZIU3NWcEpsVnhTSHlhUkltTlZDcDFKd0pra0hkQWVUOEh3R1pRZ2prb2xRV3pJazBpSEhNT1h1SEFHLXlMYVc5empUSVpxSnNMVnBpN2xoLURoN25PWDBKT29VRlNNbE8ybUNOUUVIR3hTSGZTZ2xBRFRCdHBCUmNPSmJTMlczMFF5WGRxX1RSa1Jwbi1Tdkc?oc=5"
+        },
+        {
+          "pos": 7,
+          "nombre": "Perfil romantico falso",
+          "act": 55,
+          "riesgo": "alto",
+          "canal": "REDES",
+          "fuente": "0223.com.ar",
+          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5"
+        },
+        {
+          "pos": 8,
+          "nombre": "Vendedor falso en marketplace",
+          "act": 53,
+          "riesgo": "alto",
+          "canal": "MARKETPLACE",
+          "fuente": "alertadigital.ar",
+          "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNWWdyRFBuMjVidkRsUl9mOEV1M1RZd2JQazBGXzZveGRGSXF5bmVqcnBEUXN3ZUxqc0dBQk83R2Z0NE52cDEzanIwQXdQVHRxbWI3aExpWjNLa3VwT2RZZWFTWlVmTGJHbXV4d3c0VjF4OTZ6N1hTVndDRjJHRTM4Qzh5OHZLM2twb3hFMTRTNzIxVnp6LS1UeWVtVFY4T1oyMjNCZm9zOWdTLTZ3THBabkRTeWc3N1BlaWVUXzY1SDJFTmFWQ090ZHpQaEZhbG1yWWNuZUZLb3pRd9IB3wFBVV95cUxPOS05dzZlV2RzdVh2R1pIVldHb1JWR2ROS0dvNEhCVHFSS3p5NERkVUxhZFFQdXVnbTJxM18wb0kxNHg0MDZkUU5YcDNrV0wzTG1qZHZ2SWwtdzlVZjZjeEhnZ2gzMVJQaXRGb2FQVWU5UFNMc09tNi1lX2dZU0NrV0gxOFJ4eE1FZ1ViZGRCbG96STNLdDJiczhEYTNEVDhzY1dMWGVRbkkyOFZpODhielY3MFJnLUItNTJLTUJvVURkSEUwcFJRUGV3eE9GRk9GUlZuWktCU0JaTUpLcU1R?oc=5"
+        },
+        {
+          "pos": 9,
+          "nombre": "Phishing de ARCA",
+          "act": 49,
+          "riesgo": "alto",
+          "canal": "WHATSAPP",
+          "fuente": "El Tintero de Salta",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQMm5NbTE0NUswaE5OazVocWNVSmlpWTFSXzdRYWw0MW83eVhiV2JMS0syZmhoNE9FWEloN3d2T2JFcmJLMWdob0hTeVJWWkNjLVg0bnRjb0lOMXFwMnp2SkVtTWpWbHBPRkNzSGxKcFZyZ0I4Tms5SmFfQWFPNWV2a3BFTHNRamh5MFNmdkdiRHZSZzBsSTlFcllrbTBlcGs5R1dsclN6aUlIc0FCTTluU25IczlLX0VCTlYtNVQxdm5GYmc?oc=5"
+        },
+        {
+          "pos": 10,
+          "nombre": "SIM swapping",
+          "act": 47,
+          "riesgo": "alto",
+          "canal": "TELEFONO",
+          "fuente": "La Voz del Interior",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNLUFOeDVEQXE3QlJrZk9GUkRLUHRGLUxQQ05ZZUQtWVdKZDJQem5kVlRwTFhUYWJVelVlQkNLd2h2OGp2SjVrMjBhb2tUV3BjaWdTYk5wU2d2dDA5bmZ4dWdiR1VybWFuUllLSkxienV1RDRkYlFucDRrVUI1MXNBVV80aE44SjUyT2s3T3RKeDFIa3FUS2NqeTgyY2ZPU3NvUDNyZGhSRFpSOHFFdGZ3?oc=5"
+        }
+      ]
+    },
     {
       "id": "2026-08",
       "mes": "agosto de 2026",
