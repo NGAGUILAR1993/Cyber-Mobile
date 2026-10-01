@@ -87,6 +87,10 @@
   ],
   "rewrites": [
     {
+      "source": "/agente",
+      "destination": "/agente/index.html"
+    },
+    {
       "source": "/favicon.ico",
       "destination": "/favicon-48.png"
     },
@@ -108,6 +112,9 @@
     },
     "api/app/verificar.js": {
       "maxDuration": 30
+    },
+    "api/agente/consulta.js": {
+      "maxDuration": 60
     }
   }
 }

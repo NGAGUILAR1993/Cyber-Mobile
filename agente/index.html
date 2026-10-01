@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Vera, el agente antiestafas de Cyber Mobile</title>
+<meta name="description" content="Pegá el link, mensaje, CBU, teléfono o archivo que te llegó y Vera te dice si es una estafa. 2 consultas gratis, sin registrarte.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.cybermobile.com.ar/agente">
+<meta name="theme-color" content="#05070D">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+[hidden]{display:none!important}
+body{margin:0}
+/* Cyber Mobile · Agente web Vera.
+   Layout: portada tipo consola (pestañas + escáner) con un celular que analiza un mensaje a la derecha; al analizar, pasa a una vista de chat a pantalla completa. Estética oscura de la marca, un solo tema a propósito. */
+:root{
+  color-scheme:dark;
+  --bg:#05070D; --bg2:#0A0F1C; --panel:#0C1322; --line:rgba(148,163,184,.16); --line2:rgba(148,163,184,.28);
+  --txt:#E6EDF7; --txt2:#C3CEDD; --muted:#8C9AB0;
+  --acc:#22D3EE; --acc-d:rgba(34,211,238,.12); --ink:#04121A;
+  --warm:#FB923C; --alto:#F87171; --medio:#FBBF24; --bajo:#34D399;
+  --f-disp:'Space Grotesk',system-ui,sans-serif; --f-mono:'JetBrains Mono',ui-monospace,Menlo,monospace; --f-marca:'Orbitron','Space Grotesk',sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--txt);font-family:var(--f-disp);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:8px}
+.mono{font-family:var(--f-mono)}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+
+/* Barra superior */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(5,7,13,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;padding-block:12px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt)}
+.marca img{width:36px;height:36px;border-radius:9px;box-shadow:0 0 22px rgba(34,211,238,.35)}
+.marca b{font-family:var(--f-marca);letter-spacing:.14em;font-size:14px}
+.marca small{display:block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.18em;color:var(--acc)}
+.demo{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.16em;color:var(--warm);border:1px solid rgba(251,146,60,.5);border-radius:999px;padding:3px 9px}
+.cupo{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--txt2)}
+.cupo .pts{display:flex;gap:5px}
+.cupo .pts i{width:10px;height:10px;border-radius:50%;background:var(--acc);box-shadow:0 0 10px var(--acc)}
+.cupo .pts i.usado{background:transparent;border:1.5px solid var(--line2);box-shadow:none}
+.cupo .lbl b{color:var(--txt)}
+.cuenta{border:1px solid var(--line);background:transparent;color:var(--txt2);border-radius:999px;padding:5px 11px;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.cuenta:hover{color:var(--txt);border-color:var(--line2)}
+.cuenta:empty{display:none}
+.activo{color:var(--bajo);font-weight:600}
+
+/* Portada */
+#portada{position:relative;padding-block:28px 56px}
+.grid-portada{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:40px;align-items:start}
+.tabs{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:14px;background:var(--bg2);width:max-content;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;background:transparent;color:var(--muted);padding:9px 15px;border-radius:10px;cursor:pointer;font-weight:500;font-size:14.5px;white-space:nowrap;display:flex;align-items:center;gap:8px;transition:color .2s,background .2s}
+.tab:hover{color:var(--txt)}
+.tab[aria-selected="true"]{background:var(--acc-d);color:var(--acc);box-shadow:inset 0 0 0 1px rgba(34,211,238,.35)}
+.tab .n{font-family:var(--f-mono);font-size:10.5px;opacity:.7}
+.panel{margin-top:26px;animation:entra .35s ease both}
+@keyframes entra{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.2em;color:var(--acc);display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc);animation:late 1.6s ease-in-out infinite}
+@keyframes late{50%{opacity:.35}}
+h1{font-size:clamp(34px,5.4vw,60px);line-height:1.02;letter-spacing:-.035em;margin:14px 0 14px;text-wrap:balance;font-weight:700}
+h1 em{font-style:normal;color:var(--acc);position:relative;white-space:nowrap}
+h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.09em;background:linear-gradient(90deg,var(--acc),transparent);border-radius:2px}
+.bajada{color:var(--txt2);font-size:17.5px;max-width:52ch;margin:0}
+h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;margin:12px 0 10px;text-wrap:balance}
+
+/* Consola de verificación */
+.consola{margin-top:26px;border:1px solid var(--line2);border-radius:20px;background:linear-gradient(180deg,rgba(12,19,34,.95),rgba(8,12,22,.95));box-shadow:0 30px 80px -30px rgba(34,211,238,.25);overflow:hidden}
+.tipos{display:flex;gap:6px;padding:12px 12px 0;flex-wrap:wrap}
+.tipo{border:1px solid var(--line);background:transparent;color:var(--txt2);border-radius:999px;padding:6px 12px;font-size:13.5px;cursor:pointer;display:flex;align-items:center;gap:7px}
+.tipo svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tipo[aria-pressed="true"]{border-color:rgba(34,211,238,.55);color:var(--acc);background:var(--acc-d)}
+.campo{padding:12px}
+.campo textarea{width:100%;min-height:96px;resize:vertical;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:16px;line-height:1.45;color:var(--txt)}
+.campo textarea::placeholder{color:#6B7A91}
+.archivo{display:none;border:1.5px dashed var(--line2);border-radius:14px;padding:22px;text-align:center;color:var(--txt2);cursor:pointer;background:var(--bg)}
+.archivo b{color:var(--acc)}
+.archivo.drag{border-color:var(--acc);background:var(--acc-d)}
+.consola.es-archivo textarea{display:none}.consola.es-archivo .archivo{display:block}
+.acciones{display:flex;align-items:center;gap:12px;padding:0 12px 12px;flex-wrap:wrap}
+.ejemplos{display:flex;gap:6px;flex-wrap:wrap;flex:1;min-width:0}
+.ej{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:5px 9px;background:transparent;cursor:pointer;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ej:hover{color:var(--txt);border-color:var(--line2)}
+.btn{border:0;cursor:pointer;border-radius:12px;padding:12px 20px;font-weight:600;font-size:15.5px;display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.btn-p{background:var(--acc);color:var(--ink);box-shadow:0 10px 30px -10px rgba(34,211,238,.7)}
+.btn-p:hover{filter:brightness(1.08)}
+.btn-s{background:transparent;color:var(--txt);border:1px solid var(--line2)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pie-consola{display:flex;gap:18px;flex-wrap:wrap;padding:11px 14px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);font-family:var(--f-mono)}
+.pie-consola span{display:flex;align-items:center;gap:6px}
+.legal{margin:0;padding:0 14px 12px;font-size:12px;color:var(--muted)}
+.legal a{color:var(--txt2)}
+.pie-consola span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--bajo)}
+
+/* Vitrina: celular que analiza un mensaje real */
+.vis{display:flex;flex-direction:column;gap:12px;min-width:0}
+.escena{position:relative;border:1px solid var(--line);border-radius:24px;background:radial-gradient(60% 55% at 50% 40%,rgba(34,211,238,.12),transparent 70%),var(--bg2);overflow:hidden;padding:26px 20px;display:grid;place-items:center;min-height:540px}
+.escena::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(34,211,238,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.05) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(70% 60% at 50% 45%,#000,transparent);pointer-events:none}
+.tel{position:relative;width:min(300px,100%);border-radius:38px;padding:10px;background:linear-gradient(160deg,#1B2436,#0B1120);box-shadow:0 0 0 1px rgba(148,163,184,.22),0 40px 90px -30px rgba(34,211,238,.45)}
+.tel-pant{position:relative;border-radius:30px;overflow:hidden;background:#0B141A;min-height:470px;display:flex;flex-direction:column}
+.tel-isla{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:12px;background:#000;z-index:3}
+.tel-cab{display:flex;align-items:center;gap:10px;padding:38px 14px 10px;background:#1F2C34}
+.tel-av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#33424D;color:#E9EDEF;font-weight:600;font-size:14px;flex-shrink:0}
+.tel-cab b{display:block;font-size:14px;color:#E9EDEF;font-weight:600;line-height:1.2}
+.tel-cab small{display:block;font-size:11.5px;color:#8696A0}
+.tel-chat{flex:1;padding:14px 12px;display:flex;flex-direction:column;gap:10px;background:#0B141A}
+.burb{position:relative;align-self:flex-start;max-width:92%;background:#202C33;color:#E9EDEF;border-radius:4px 12px 12px 12px;padding:9px 11px 18px;font-size:14px;line-height:1.42;overflow:hidden;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
+.burb.ve{opacity:1;transform:none}
+.burb time{position:absolute;right:9px;bottom:4px;font-size:10.5px;color:#8696A0}
+.burb .s{border-radius:3px;transition:background .3s,box-shadow .3s}
+.burb .s.on{background:rgba(248,113,113,.22);box-shadow:0 0 0 1px rgba(248,113,113,.65)}
+.burb .lnk{color:#53BDEB;text-decoration:underline}
+.burb .barrido{position:absolute;left:0;right:0;top:-30%;height:30%;background:linear-gradient(180deg,transparent,rgba(34,211,238,.35),transparent);opacity:0;pointer-events:none}
+.burb.escaneando .barrido{animation:barre 1.3s ease-in-out;opacity:1}
+@keyframes barre{from{top:-30%}to{top:100%}}
+.hall{display:flex;flex-direction:column;gap:6px}
+.hall span{align-self:flex-start;display:flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:11.5px;color:#FCA5A5;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.4);border-radius:8px;padding:4px 8px;animation:entra .3s ease both}
+.hall span i{font-style:normal;width:16px;height:16px;border-radius:50%;background:var(--alto);color:#1A0606;display:grid;place-items:center;font-size:10px;font-weight:600}
+.estado{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11.5px;color:var(--acc);min-height:18px}
+.estado::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid rgba(34,211,238,.25);border-top-color:var(--acc);animation:gira .8s linear infinite}
+.estado:empty::before{display:none}
+.tel-ver{margin:0 10px 10px;border-radius:16px;padding:12px 13px;background:linear-gradient(140deg,rgba(248,113,113,.2),rgba(12,19,34,.96) 70%);border:1px solid rgba(248,113,113,.55);display:grid;grid-template-columns:auto minmax(0,1fr);gap:11px;align-items:center;transform:translateY(130%);transition:transform .45s cubic-bezier(.2,.9,.3,1.2)}
+.tel-ver.ve{transform:none}
+.tel-ver .sello{width:46px;height:46px;border-radius:12px;background:var(--alto);color:#1A0606;display:grid;place-items:center;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
+.tel-ver b{display:block;font-size:14.5px;color:#fff;line-height:1.2}
+.tel-ver small{display:block;font-size:11.5px;color:var(--txt2);margin-top:3px}
+.tel-ver .de{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;color:var(--alto)}
+.pista{position:absolute;left:18px;bottom:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--muted);display:flex;gap:6px;align-items:center}
+.pista i{width:18px;height:3px;border-radius:2px;background:var(--line2);transition:background .3s}
+.pista i.on{background:var(--acc)}
+.chip{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.c-alto{color:var(--alto)}.c-medio{color:var(--medio)}.c-bajo{color:var(--bajo)}
+
+/* Cómo funciona */
+.pasos3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+.paso{border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--bg2)}
+.paso .num{font-family:var(--f-mono);font-size:12px;color:var(--acc)}
+.paso h3{margin:6px 0 4px;font-size:17px}
+.paso p{margin:0;color:var(--txt2);font-size:14.5px}
+.comp{margin-top:20px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg2)}
+.comp table{width:100%;border-collapse:collapse;font-size:14.5px}
+.comp th,.comp td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.comp tr:last-child td{border-bottom:0}
+.comp thead th{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted);font-weight:500;background:rgba(5,7,13,.5)}
+.comp th:nth-child(n+2),.comp td:nth-child(n+2){text-align:center;width:96px}
+.comp td small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.comp .si{color:var(--acc);font-weight:700}
+.comp .no{color:var(--muted)}
+.comp .parcial{font-family:var(--f-mono);font-size:11px;color:var(--medio)}
+.comp tr.solo td:first-child b::after{content:"SOLO WHATSAPP";margin-left:8px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.12em;color:var(--bajo);border:1px solid rgba(52,211,153,.5);border-radius:999px;padding:2px 6px;vertical-align:2px;white-space:nowrap}
+.comp .sep td{background:rgba(52,211,153,.06);font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--bajo);padding:8px 14px}
+.wa-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;padding:14px 16px;border-radius:16px;border:1px solid rgba(52,211,153,.4);background:rgba(52,211,153,.07);font-size:14.5px}
+.wa-cta a{color:var(--bajo);font-weight:600;text-decoration:none;white-space:nowrap}
+.v-wa{border-top:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--txt2);background:rgba(52,211,153,.06)}
+.v-wa b{color:var(--txt)}
+.v-wa a{color:var(--bajo);white-space:nowrap;font-weight:600}
+.capas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:18px}
+.capa{display:flex;gap:11px;align-items:flex-start;padding:11px 12px;border-radius:12px;border:1px solid var(--line)}
+.capa svg{flex-shrink:0;width:20px;height:20px;stroke:var(--acc);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.capa b{display:block;font-size:14.5px}
+.capa span{color:var(--muted);font-size:13px}
+
+/* Planes */
+.planes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}
+.plan{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--bg2);display:flex;flex-direction:column;gap:12px}
+.plan.dest{border-color:rgba(34,211,238,.55);background:linear-gradient(160deg,rgba(34,211,238,.12),var(--bg2) 55%)}
+.plan h3{margin:0;font-size:18px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.precio{font-size:38px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1}
+.precio small{font-size:15px;color:var(--muted);font-weight:500;letter-spacing:0}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;color:var(--txt2);font-size:14.5px}
+.plan li{display:flex;gap:8px}
+.plan li::before{content:"✓";color:var(--acc);font-weight:700}
+.plan li b{color:var(--txt);font-weight:600}
+.plan .btn{justify-content:center;margin-top:auto}
+
+/* En vivo */
+.top3{display:grid;gap:10px;margin-top:20px}
+.fila{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:12px 14px;background:var(--bg2)}
+.fila .pos{font-family:var(--f-mono);font-size:26px;color:var(--acc);text-align:center}
+.fila b{display:block;font-size:16px}
+.fila small{color:var(--muted);font-size:13px}
+.barra{height:5px;border-radius:3px;background:var(--line);margin-top:8px;overflow:hidden}
+.barra i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--warm));border-radius:3px}
+.nota{font-size:12.5px;color:var(--muted);margin-top:12px;font-family:var(--f-mono)}
+
+/* Chat */
+#chat{height:calc(100% - 61px);display:flex;flex-direction:column}
+.chat-cab{border-bottom:1px solid var(--line);background:var(--bg2)}
+.chat-cab .wrap{display:flex;align-items:center;gap:12px;padding-block:10px;max-width:860px}
+.volver{border:1px solid var(--line);background:transparent;border-radius:10px;width:38px;height:38px;display:grid;place-items:center;cursor:pointer;color:var(--txt2)}
+.volver svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+.vera{display:flex;align-items:center;gap:11px}
+.avatar{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#67E8F9,#0E7490 70%);display:grid;place-items:center;font-family:var(--f-marca);font-size:14px;color:var(--ink);box-shadow:0 0 0 3px rgba(34,211,238,.18)}
+.vera b{display:block;font-size:15.5px}
+.vera small{color:var(--bajo);font-size:12.5px;display:flex;align-items:center;gap:6px}
+.vera small::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--bajo)}
+.mensajes{flex:1;overflow-y:auto;padding-block:22px}
+.mensajes .wrap{max-width:860px;display:flex;flex-direction:column;gap:14px}
+.msg{max-width:min(620px,88%);padding:12px 15px;border-radius:16px;font-size:15.5px;line-height:1.5;overflow-wrap:anywhere}
+.msg.yo{align-self:flex-end;background:var(--acc);color:var(--ink);border-bottom-right-radius:5px}
+.msg.yo .adj{font-family:var(--f-mono);font-size:13px}
+.msg.ella{align-self:flex-start;background:var(--panel);border:1px solid var(--line);border-bottom-left-radius:5px}
+.msg.ella p{margin:0 0 8px}.msg.ella p:last-child{margin:0}
+.pensando{display:grid;gap:6px;font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
+.pensando div{display:flex;align-items:center;gap:8px}
+.pensando div::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid var(--line2);border-top-color:var(--acc);animation:gira .8s linear infinite}
+.pensando div.ok{color:var(--txt2)}
+.pensando div.ok::before{border:0;width:12px;height:12px;background:var(--bajo);animation:none;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12l5 5 9-10' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12l5 5 9-10' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E") center/contain no-repeat}
+@keyframes gira{to{transform:rotate(360deg)}}
+.veredicto{align-self:flex-start;width:min(620px,100%);border:1px solid var(--line2);border-radius:18px;background:var(--panel);overflow:hidden}
+.v-cab{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;padding:16px}
+.medidor{width:76px;height:76px;position:relative}
+.medidor svg{width:100%;height:100%;transform:rotate(-90deg)}
+.medidor b{position:absolute;inset:0;display:grid;place-items:center;font-size:21px;font-variant-numeric:tabular-nums}
+.v-cab h3{margin:4px 0 2px;font-size:19px;line-height:1.2}
+.v-cab p{margin:0;color:var(--txt2);font-size:14px}
+.v-sec{border-top:1px solid var(--line);padding:13px 16px}
+.v-sec small{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.v-sec ul{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:7px;font-size:14.5px}
+.v-sec li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:8px}
+.v-sec li i{font-style:normal;font-family:var(--f-mono);font-size:12px;margin-top:2px}
+.v-sec .modal{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:14.5px}
+.v-sec .modal a{color:var(--acc);white-space:nowrap}
+.v-pie{padding:9px 16px;font-family:var(--f-mono);font-size:11px;color:var(--muted);border-top:1px solid var(--line);background:rgba(5,7,13,.5)}
+.composer{border-top:1px solid var(--line);background:var(--bg2);padding-bottom:env(safe-area-inset-bottom,0px)}
+.composer .wrap{max-width:860px;padding-block:12px;display:grid;gap:9px}
+.composer .tipos{padding:0}
+.caja{display:flex;gap:8px;align-items:flex-end}
+.caja textarea{flex:1;min-width:0;resize:none;height:48px;max-height:140px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:16px;color:var(--txt)}
+.icono{width:48px;height:48px;flex-shrink:0;border-radius:14px;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;cursor:pointer;color:var(--txt2)}
+.icono svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.icono.enviar{background:var(--acc);border-color:var(--acc);color:var(--ink)}
+.restan{font-size:12.5px;color:var(--muted);font-family:var(--f-mono)}
+.restan b{color:var(--acc);font-weight:500}
+
+/* Muro de suscripción */
+.velo{position:fixed;inset:0;z-index:40;background:rgba(2,4,9,.72);backdrop-filter:blur(6px);display:grid;place-items:end center;padding:16px}
+.hoja{width:min(520px,100%);border:1px solid rgba(34,211,238,.45);border-radius:24px;background:linear-gradient(170deg,rgba(34,211,238,.13),var(--bg2) 45%);padding:24px;box-shadow:0 40px 100px -20px rgba(0,0,0,.8);animation:sube .35s ease both;margin-bottom:max(8px,env(safe-area-inset-bottom,0px))}
+@keyframes sube{from{transform:translateY(30px);opacity:.3}to{transform:none;opacity:1}}
+.hoja h2{margin-top:6px}
+.hoja .plan{background:rgba(5,7,13,.6);margin-top:16px}
+.hoja .fila-b{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.hoja .fila-b .btn{flex:1;justify-content:center;min-width:200px}
+.aviso{font-size:13px;color:var(--muted);margin-top:12px}
+.link-btn{border:0;background:none;color:var(--acc);cursor:pointer;padding:0;font:inherit;text-decoration:underline}
+.codigo{margin-top:14px;border:1px dashed rgba(34,211,238,.6);border-radius:14px;padding:14px;text-align:center;background:rgba(5,7,13,.6)}
+.codigo small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.codigo b{display:block;font-family:var(--f-mono);font-size:28px;letter-spacing:.12em;color:var(--acc);margin-top:4px}
+.esperando{display:flex;align-items:center;gap:8px;justify-content:center;font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-top:10px}
+.esperando::before{content:"";width:12px;height:12px;border-radius:50%;border:2px solid var(--line2);border-top-color:var(--acc);animation:gira .8s linear infinite}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--txt);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;max-width:calc(100% - 32px)}
+
+@media (max-width:900px){
+  .grid-portada{grid-template-columns:minmax(0,1fr);gap:22px}
+  .escena{min-height:0;padding:18px 14px}
+}
+@media (max-width:620px){
+  .pasos3,.planes,.capas{grid-template-columns:minmax(0,1fr)}
+  .comp th,.comp td{padding:10px 10px}
+  .comp th:nth-child(n+2),.comp td:nth-child(n+2){width:62px}
+  .comp table{font-size:13.5px}
+  .comp thead th{font-size:10px;letter-spacing:.04em}
+  .comp th:nth-child(n+2),.comp td:nth-child(n+2){width:70px;padding-inline:4px}
+  .cupo .lbl{display:none}
+  .marca small{display:none}
+  .demo{display:none}
+  .bajada{font-size:16px}
+  .tabs{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+  .tab{padding:8px 4px;font-size:13px;justify-content:center;text-align:center;white-space:normal;line-height:1.2}
+  .tab .n{display:none}
+  .tel{width:100%;max-width:340px}
+  .tel-pant{min-height:400px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="marca" href="#" id="irPortada"><img src="/logo-cm.png" width="36" height="36" alt=""><div><b>CYBER MOBILE</b><small>AGENTE WEB</small></div></a>
+    <div class="cupo" aria-live="polite"><span class="pts" id="pts"></span><span class="lbl" id="cupoTxt"></span><button class="cuenta" id="cuenta" type="button"></button></div>
+</div></header>
+
+<main id="portada"><div class="wrap grid-portada">
+  <section>
+    <div class="tabs" role="tablist" aria-label="Secciones">
+      <button class="tab" role="tab" id="t-verificar" aria-controls="p-verificar" aria-selected="true"><span class="n">01</span>Verificar</button>
+      <button class="tab" role="tab" id="t-como" aria-controls="p-como" aria-selected="false"><span class="n">02</span>Cómo funciona</button>
+      <button class="tab" role="tab" id="t-vivo" aria-controls="p-vivo" aria-selected="false"><span class="n">03</span>En vivo</button>
+      <button class="tab" role="tab" id="t-planes" aria-controls="p-planes" aria-selected="false"><span class="n">04</span>Planes</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-verificar" aria-labelledby="t-verificar">
+      <div class="eyebrow">VERA ESTÁ EN LÍNEA</div>
+      <h1>¿Te llegó algo raro? <em>Pegalo acá.</em></h1>
+      <p class="bajada">Vera es el agente de Cyber Mobile. Analiza links, mensajes, CBU, teléfonos y archivos, y te dice si es una estafa antes de que respondas, hagas clic o transfieras.</p>
+      <div class="consola" id="consola">
+        <div class="tipos" id="tiposPortada" role="group" aria-label="Qué querés verificar"></div>
+        <div class="campo">
+          <label class="mono" for="entrada" style="position:absolute;left:-9999px">Contenido a verificar</label>
+          <textarea id="entrada" placeholder=""></textarea>
+          <label class="archivo" id="zonaArchivo" for="fArchivo"><input type="file" id="fArchivo" hidden accept=".pdf,.apk,.jpg,.jpeg,.png,.webp,.doc,.docx,.zip,.mp3,.ogg,.opus,.m4a"><span id="zonaTxt"><b>Elegí un archivo</b> o arrastralo acá<br><small>Captura, PDF o APK. Hasta 3 MB. Los audios se analizan en WhatsApp.</small></span></label>
+        </div>
+        <div class="acciones">
+          <div class="ejemplos" id="ejemplos"></div>
+          <button class="btn btn-p" id="analizar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Analizar</button>
+        </div>
+        <div class="pie-consola"><span>2 consultas gratis</span><span>sin registrarte</span><span>no guardamos lo que verificás</span></div>
+        <p class="legal">Al usar Vera aceptás la <a href="/privacidad.html">política de privacidad</a>. No pegues contraseñas ni códigos de verificación.</p>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-como" aria-labelledby="t-como" hidden>
+      <div class="eyebrow">WEB Y WHATSAPP</div>
+      <h2>Pegás, Vera investiga y te dice qué hacer</h2>
+      <div class="pasos3">
+        <div class="paso"><span class="num">PASO 1</span><h3>Pegás lo que te llegó</h3><p>Un link, el texto del mensaje, un CBU, un número o un archivo.</p></div>
+        <div class="paso"><span class="num">PASO 2</span><h3>Vera lo investiga</h3><p>Lo cruza con motores de seguridad y con el Observatorio de Fraude Digital.</p></div>
+        <div class="paso"><span class="num">PASO 3</span><h3>Te dice qué hacer</h3><p>Nivel de riesgo, por qué y los pasos concretos para protegerte.</p></div>
+      </div>
+      <div class="comp"><table>
+        <thead><tr><th>Qué podés verificar</th><th>Web</th><th>WhatsApp</th></tr></thead>
+        <tbody>
+          <tr><td><b>Links y sitios</b><small>70 motores de seguridad e imitación de marcas</small></td><td class="si">✓</td><td class="si">✓</td></tr>
+          <tr><td><b>CBU, CVU y alias</b><small>Validez, banco o billetera y denuncias</small></td><td class="si">✓</td><td class="si">✓</td></tr>
+          <tr><td><b>Teléfonos</b><small>Origen y reportes de fraude</small></td><td class="si">✓</td><td class="si">✓</td></tr>
+          <tr><td><b>Emails</b><small>Remitentes falsos y filtraciones de datos</small></td><td class="si">✓</td><td class="si">✓</td></tr>
+          <tr><td><b>Archivos, PDF y APK</b><small>Análisis antivirus</small></td><td class="si">✓</td><td class="si">✓</td></tr>
+          <tr><td><b>Capturas de pantalla</b><small>Lee la imagen y busca el engaño</small></td><td class="si">✓</td><td class="si">✓</td></tr>
+          <tr><td><b>Perfiles de redes</b><small>Cuentas falsas que imitan marcas</small></td><td class="si">✓</td><td class="si">✓</td></tr>
+          <tr><td><b>Texto de un mensaje</b><small>En la web, señales clásicas: urgencia, pedido de códigos, links</small></td><td class="parcial">Básico</td><td class="si">✓</td></tr>
+          <tr class="sep"><td colspan="3">EXCLUSIVO DEL CONTACTO DE WHATSAPP</td></tr>
+          <tr class="solo"><td><b>Análisis de patrones con IA</b><small>Entiende el contexto, detecta campañas activas y cruza tu caso con otros reportes</small></td><td class="no">—</td><td class="si">✓</td></tr>
+          <tr class="solo"><td><b>Audios y notas de voz</b><small>Transcribe y detecta voces que se hacen pasar por un familiar</small></td><td class="no">—</td><td class="si">✓</td></tr>
+          <tr class="solo"><td><b>Seguimiento del caso</b><small>Vera recuerda lo que le contaste si te vuelven a escribir</small></td><td class="no">—</td><td class="si">✓</td></tr>
+          <tr class="solo"><td><b>Reenviar sin copiar</b><small>Reenviás el mensaje tal cual te llegó</small></td><td class="no">—</td><td class="si">✓</td></tr>
+          <tr class="solo"><td><b>Alertas semanales</b><small>Cada jueves, la estafa que más está circulando</small></td><td class="no">—</td><td class="si">✓</td></tr>
+        </tbody></table></div>
+      <div class="wa-cta"><span>¿Querés el análisis completo con IA? Probá Vera en WhatsApp 7 días gratis.</span><a href="https://wa.me/5491170598505?text=Hola%20Vera%2C%20quiero%20probar%20los%207%20d%C3%ADas%20gratis" target="_blank" rel="noopener">Abrir WhatsApp →</a></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-vivo" aria-labelledby="t-vivo" hidden>
+      <div class="eyebrow" id="vivoMes">OBSERVATORIO DE FRAUDE DIGITAL</div>
+      <h2>Las estafas que más circulan hoy</h2>
+      <div class="top3" id="top3"></div>
+      <p class="nota">Índice de actividad 0–100. <a href="/observatorio" style="color:var(--acc)">Ver el ranking completo</a></p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-planes" aria-labelledby="t-planes" hidden>
+      <div class="eyebrow">EMPEZÁ GRATIS</div>
+      <h2>Una suscripción, dos canales</h2><p class="bajada" style="font-size:16px">Probá gratis donde prefieras. Con el plan Protección usás Vera en la web y en WhatsApp con la misma cuenta.</p>
+      <div class="planes">
+        <div class="plan"><h3>Prueba gratis</h3><div class="precio">$0</div><ul><li><span><b>Web:</b> 2 consultas, sin registrarte</span></li><li><span><b>WhatsApp:</b> 7 días con todas las funciones</span></li><li>Links, CBU, teléfonos, emails, archivos y capturas</li></ul><button class="btn btn-s" data-ir="verificar">Probar en la web</button></div>
+        <div class="plan dest"><h3>Protección <span class="chip" style="color:var(--acc)">Recomendado</span></h3><div class="precio">$12.000 <small>/ mes</small></div><ul><li>Consultas ilimitadas en la web y en WhatsApp</li><li>Análisis de patrones con IA en WhatsApp</li><li>Audios, seguimiento del caso y alertas semanales</li><li>Una sola cuenta: tu número de WhatsApp</li></ul><button class="btn btn-p" data-suscribir type="button">Suscribirme</button></div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="vis" aria-label="Así analiza Vera un mensaje">
+    <div class="escena" id="vCel">
+      <div class="tel"><div class="tel-pant">
+        <div class="tel-isla"></div>
+        <div class="tel-cab"><div class="tel-av" id="celAv">?</div><div style="min-width:0"><b id="celDe"></b><small id="celSub"></small></div></div>
+        <div class="tel-chat">
+          <div class="burb" id="celMsg"></div>
+          <div class="estado" id="celEstado"></div>
+          <div class="hall" id="celHall"></div>
+        </div>
+        <div class="tel-ver" id="celVer"></div>
+      </div></div>
+      <div class="pista" id="celPista"></div>
+    </div>
+  </aside>
+</div></main>
+
+<section id="chat" hidden>
+  <div class="chat-cab"><div class="wrap">
+    <button class="volver" id="volver" aria-label="Volver a la portada"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="vera"><div class="avatar">V</div><div><b>Vera · Cyber Mobile</b><small>En línea</small></div></div>
+  </div></div>
+  <div class="mensajes" id="mensajes"><div class="wrap" id="hilo"></div></div>
+  <div class="composer"><div class="wrap">
+    <div class="tipos" id="tiposChat" role="group" aria-label="Tipo de consulta"></div>
+    <div class="caja">
+      <label class="icono" for="fChat" title="Adjuntar archivo"><input type="file" id="fChat" hidden accept=".pdf,.apk,.jpg,.jpeg,.png,.webp,.doc,.docx,.zip,.mp3,.ogg,.opus,.m4a"><svg viewBox="0 0 24 24"><path d="M21 11.5l-8.5 8.5a5 5 0 01-7-7L14 4.5a3.3 3.3 0 014.7 4.7L10 18a1.7 1.7 0 01-2.4-2.4l7.8-7.8"/></svg></label>
+      <label for="entradaChat" style="position:absolute;left:-9999px">Mensaje para Vera</label>
+      <textarea id="entradaChat" placeholder="Pegá un link, un mensaje, un CBU o un número"></textarea>
+      <button class="icono enviar" id="enviar" aria-label="Enviar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+    <div class="restan" id="restan"></div>
+  </div></div>
+</section>
+
+<div class="velo" id="muro" hidden>
+  <div class="hoja" role="dialog" aria-modal="true" aria-labelledby="muroT">
+    <div class="eyebrow" id="muroEyebrow">USASTE TUS 2 CONSULTAS GRATIS</div>
+    <h2 id="muroT">Seguí protegido sin límite</h2>
+    <p class="bajada" style="font-size:15.5px">Con el plan Protección verificás todo lo que te llegue, en la web y en WhatsApp, con la misma cuenta: tu número de WhatsApp.</p>
+    <div class="plan dest"><h3>Protección</h3><div class="precio">$12.000 <small>/ mes</small></div><ul><li>Consultas ilimitadas en la web y en WhatsApp</li><li>Análisis de patrones con IA y audios en WhatsApp</li><li>Alertas semanales de estafas nuevas</li></ul></div>
+    <div id="muroPaso"></div>
+    <p class="aviso"><button type="button" class="link-btn" id="muroCerrar">Ahora no</button></p>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="/agente/agente.js" defer></script>
+</body>
+</html>
