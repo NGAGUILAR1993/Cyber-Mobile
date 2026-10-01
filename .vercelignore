@@ -1,6 +1,7 @@
 # No publicar en el sitio el código de la app, la documentación interna ni los scripts.
-app/
-docs/
-scripts/
-.github/
-README.md
+# La barra inicial limita cada regla a la raíz (sin ella, "app/" también excluiría api/app/).
+/app/
+/docs/
+/scripts/
+/.github/
+/README.md
