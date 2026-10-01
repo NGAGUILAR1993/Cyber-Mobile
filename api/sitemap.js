@@ -8,7 +8,8 @@ export default function handler(req, res) {
     const act = (d && d.meta && String(d.meta.actualizado || '').slice(0, 10)) || hoy;
     const urls = [
         { loc: `${SITIO}/`, lastmod: act, freq: 'weekly', pri: '1.0' },
-        { loc: `${SITIO}/observatorio`, lastmod: act, freq: 'daily', pri: '0.9' }
+        { loc: `${SITIO}/observatorio`, lastmod: act, freq: 'daily', pri: '0.9' },
+        { loc: `${SITIO}/privacidad.html`, lastmod: '2026-10-01', freq: 'yearly', pri: '0.3' }
     ];
     if (d) {
         for (const m of modalidades(d)) {
