@@ -153,7 +153,7 @@ if (tipo === 'ficha') {
     const pasos = m.pasos.map((p, i) => `${i + 1}️⃣ ${p}`).join('\n');
     const instagram = `🚨 ALERTA: ${titulo}\n\n${lugar}\n\n${m.como}\n\n✅ Cómo reconocerla: ${m.detectar}\n\nSi te llegó:\n${pasos}\n\n📲 ¿Te llegó algo así? Reenvialo a nuestro agente por WhatsApp y te decimos si es una estafa. 7 días de prueba gratuita.\n\n🔎 Ficha completa y ranking del mes: link en la bio.\n\nCompartilo con tu familia: así se corta la cadena.\n\n#CyberMobile ${m.tag} #FraudeDigital #Estafas #Ciberseguridad #SeguridadDigital #Argentina`;
     const whatsapp = `🚨 *ALERTA: ${titulo}*\n_${m.seccion === 'top' ? `#${m.pos} del ranking del Observatorio de Fraude Digital` : 'En vigilancia en el Observatorio de Fraude Digital'}_\n\n${m.como}\n\n✅ *Cómo reconocerla:* ${m.detectar}\n\n*Si te llegó:*\n${pasos}\n\n📲 *¿Te llegó algo así? Verificalo con nuestro agente:*\n${agente(`Hola, me llegó algo que parece "${m.nombre}" y quiero verificarlo`)}\n\n🔎 *Ficha completa:*\n${ficha}\n\n📊 *Ranking del mes:*\n${OBS}\n\n🌐 *Cyber Mobile:*\n${SITIO}\n\nReenviá este mensaje a tu familia 🙏`;
-    textos = { fecha, tipo, mes, titulo, modalidad: m.nombre, ficha, instagram, whatsapp };
+    textos = { fecha, tipo, mes, titulo, modalidad: m.nombre, slug: m.slug, clave: m.clave, resumen: m.como, ficha, instagram, whatsapp };
 } else {
     const top = lista.filter((m) => m.seccion === 'top').slice(0, 3);
     const emoji = { WhatsApp: '💬', Redes: '📈', 'Teléfono': '📞', SMS: '✉️', Email: '📧', Marketplace: '🛒' };
