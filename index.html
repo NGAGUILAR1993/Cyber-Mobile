@@ -3,1051 +3,921 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Mobile | Agente de Seguridad Digital</title>
-    
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
+    <title>Cyber Mobile | Verificá estafas digitales por WhatsApp</title>
+    <meta name="description" content="Cyber Mobile es un agente de seguridad digital por WhatsApp: verificá links, CBU/CVU, teléfonos, correos y archivos antes de responder, hacer clic o transferir. 7 días de prueba gratuita.">
+    <link rel="canonical" href="https://www.cybermobile.com.ar/">
+    <meta name="theme-color" content="#05070D">
 
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="Cyber Mobile">
+    <meta property="og:title" content="Cyber Mobile | ¿Te llegó algo sospechoso? Verificalo antes de responder">
+    <meta property="og:description" content="Agente de seguridad digital por WhatsApp. Links, CBU/CVU, teléfonos, correos y archivos analizados en minutos.">
+    <meta property="og:url" content="https://www.cybermobile.com.ar/">
+    <meta property="og:image" content="https://www.cybermobile.com.ar/Escudo%20CM.jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cyber Mobile",
+      "url": "https://www.cybermobile.com.ar/",
+      "logo": "https://www.cybermobile.com.ar/Escudo%20CM.jpeg",
+      "description": "Agente de seguridad digital por WhatsApp para verificar estafas digitales en Argentina.",
+      "email": "info@cybermobile.com.ar",
+      "sameAs": ["https://instagram.com/cybermobile.ai"],
+      "contactPoint": {"@type": "ContactPoint", "telephone": "+54 9 11 7059-8505", "contactType": "customer support", "areaServed": "AR", "availableLanguage": "es"}
+    }
+    </script>
 
     <style>
         :root {
-            /* Estética Cyber-Elegante */
-            --bg-dark: #03050a;
-            --bg-glass: rgba(12, 16, 28, 0.65);
-            --primary-cyan: #00f0ff;
-            --secondary-blue: #1d4ed8;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --danger-red: #ff2a5f;
-            --success-green: #00e676;
-            --warning-yellow: #ffc400;
-            --glass-border: rgba(0, 240, 255, 0.15);
+            --bg: #05070D;
+            --surface: #0A0F1C;
+            --line: rgba(148, 163, 184, .14);
+            --line-strong: rgba(148, 163, 184, .28);
+            --txt: #E6EDF7;
+            --txt2: #C3CEDD;
+            --muted: #9AA8BD;
+            --acc: #22D3EE;
+            --acc-ink: #04121A;
+            --alto: #FB923C;
+            --medio: #FACC15;
+            --ok: #34D399;
+            --info: #60A5FA;
+            --radius: 20px;
+            --pad: clamp(16px, 5.5vw, 80px);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
         body {
-            font-family: 'Rajdhani', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            line-height: 1.6;
+            margin: 0;
+            background: var(--bg);
+            color: var(--txt);
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
+        img { max-width: 100%; display: block; }
+        a { color: var(--acc); text-decoration: none; }
+        a:hover { color: #67E8F9; }
+        h1, h2, h3, h4 { margin: 0; letter-spacing: -.02em; }
+        p { margin: 0; }
+        :focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; border-radius: 6px; }
+        .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+        .wrap { max-width: 1440px; margin: 0 auto; padding: 0 var(--pad); }
+        .glow { position: absolute; pointer-events: none; border-radius: 50%; background: radial-gradient(closest-side, rgba(34,211,238,.16), rgba(34,211,238,0)); }
+        .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
-        h1, h2, h3, h4 {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
+        /* ---------- Barra superior ---------- */
+        .topbar {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(5, 7, 13, .78);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(148,163,184,.1);
         }
+        .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px; }
+        .brand { display: flex; align-items: center; gap: 12px; color: var(--txt); }
+        .brand:hover { color: var(--txt); }
+        .brand .icon { width: 28px; height: 28px; color: var(--acc); }
+        .brand span { font-family: Orbitron, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .14em; }
+        .menu { display: flex; gap: 32px; font-size: 15px; font-weight: 500; }
+        .menu a { color: var(--muted); display: flex; align-items: center; gap: 8px; }
+        .menu a:hover { color: var(--txt); }
+        .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 10px var(--acc); flex-shrink: 0; }
+        .dot.pulse { animation: pulse 1.9s ease-in-out infinite; }
+        @keyframes pulse { 50% { opacity: .35; } }
 
-        /* Fondo Animado Cyber-Elegante */
-        .cyber-grid {
-            position: fixed;
-            top: -50px; left: 0; width: 100vw; height: calc(100vh + 50px);
-            background-image: 
-                linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -3;
-            animation: panGrid 20s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes panGrid {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(40px); }
-        }
-
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: -2;
-            opacity: 0.3;
-            pointer-events: none;
-            animation: float 25s infinite ease-in-out alternate;
-        }
-
-        .orb-1 {
-            width: 450px; height: 450px;
-            background: rgba(0, 240, 255, 0.12);
-            top: -150px; left: -150px;
-        }
-
-        .orb-2 {
-            width: 550px; height: 550px;
-            background: rgba(29, 78, 216, 0.12);
-            bottom: -200px; right: -150px;
-            animation-duration: 30s;
-            animation-direction: alternate-reverse;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, 40px) scale(1.05); }
-        }
-
-        /* Navegación */
-        nav {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            background: rgba(3, 5, 10, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-cyan);
-            text-decoration: none;
-            letter-spacing: 3px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
-        }
-
-        .tab-nav {
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 0.4rem;
-            border-radius: 50px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            padding: 0.6rem 1.4rem;
-            border-radius: 40px;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-btn:hover {
-            color: var(--text-light);
-        }
-
-        .tab-btn.active {
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--primary-cyan);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
-        }
-
-        /* Cabecera */
-        header {
-            padding: 9rem 2rem 4rem 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-logo-img {
-            width: 250px;
-            height: auto;
-            margin-bottom: 2rem;
-            /* Efecto Holograma: Elimina el fondo negro y difumina los bordes para integrarlo */
-            mix-blend-mode: screen;
-            -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 75%);
-            mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 75%);
-            filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.4));
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .hero-logo-img:hover {
-            transform: scale(1.05) translateY(-5px);
-            filter: drop-shadow(0 0 50px rgba(0, 240, 255, 0.6));
-        }
-
-        h1 {
-            font-size: 3.2rem;
-            color: #ffffff;
-            letter-spacing: 4px;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto;
-            font-weight: 400;
-        }
-
-        .main-container {
-            flex-grow: 1;
-            max-width: 1250px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem 2rem;
-            width: 100%;
-            position: relative;
-            z-index: 10;
-        }
-
-        .tab-content {
-            display: none;
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeTab 0.5s forwards cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeTab {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .community-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .community-header p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .community-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            align-items: stretch;
-        }
-
-        .case-card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .case-card:hover {
-            border-color: rgba(0, 240, 255, 0.4);
-            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.1);
-            transform: translateY(-8px);
-        }
-
-        .case-img-wrapper {
-            width: 100%;
-            height: 380px;
-            overflow: hidden;
-            position: relative;
-            background: #000;
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .case-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.7s ease;
-        }
-
-        .case-card:hover .case-img-wrapper img {
-            transform: scale(1.06);
-        }
-
-        .case-content {
-            padding: 1.8rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .case-content h4 {
-            color: var(--text-light);
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .case-content p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .risk-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-top: auto;
-            width: fit-content;
-        }
-
-        .risk-high { background: rgba(255, 42, 95, 0.1); color: var(--danger-red); border: 1px solid rgba(255, 42, 95, 0.3); }
-        .risk-med { background: rgba(255, 196, 0, 0.1); color: var(--warning-yellow); border: 1px solid rgba(255, 196, 0, 0.3); }
-        .risk-low { background: rgba(0, 230, 118, 0.1); color: var(--success-green); border: 1px solid rgba(0, 230, 118, 0.3); }
-
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .card.interactive-card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card.interactive-card:hover {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(0, 240, 255, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-        .card-header h3 { color: var(--text-light); font-size: 1.15rem; display: flex; align-items: center; gap: 12px; margin-bottom: 0; }
-        .card-header h3 span { font-size: 1.4rem; opacity: 0.9; }
-
-        .toggle-icon {
-            width: 28px; height: 28px; border-radius: 50%;
-            background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;
-            color: var(--primary-cyan); font-size: 1.2rem; transition: all 0.4s ease; flex-shrink: 0;
-        }
-
-        .card.interactive-card:hover .toggle-icon { background: rgba(0, 240, 255, 0.15); }
-        .card-short { color: var(--text-muted); font-size: 1.05rem; font-weight: 400; }
-        .card-details { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        
-        .card-details p {
-            color: var(--text-light); font-size: 1rem; line-height: 1.6;
-            padding-top: 1.2rem; margin-top: 1.2rem; border-top: 1px solid var(--glass-border);
-        }
-
-        .card.interactive-card.expanded {
-            background: rgba(12, 16, 28, 0.8);
-            border-color: var(--primary-cyan);
-            box-shadow: 0 5px 25px rgba(0, 240, 255, 0.15);
-        }
-
-        .card.interactive-card.expanded .toggle-icon {
-            transform: rotate(45deg);
-            background: var(--primary-cyan);
-            color: var(--bg-dark);
-            box-shadow: 0 0 15px var(--primary-cyan);
-        }
-
-        .card.interactive-card.expanded .card-details { max-height: 500px; opacity: 1; }
-
-        .interactive-section {
-            display: flex; gap: 2rem; align-items: center; justify-content: center;
-            width: 100%; margin-top: 2rem;
-        }
-
-        .scenario-selector {
-            flex: 1; max-width: 450px; display: flex; flex-direction: column; gap: 12px;
-        }
-
-        .scenario-btn {
-            background: var(--bg-glass); border: 1px solid var(--glass-border);
-            color: var(--text-muted); padding: 1rem 1.2rem; border-radius: 12px;
-            text-align: left; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem;
-            cursor: pointer; transition: all 0.3s; display: flex;
-            justify-content: space-between; align-items: center;
-        }
-
-        .scenario-text { flex: 1; padding-right: 15px; }
-
-        .send-icon {
-            font-size: 1.2rem; color: var(--primary-cyan); opacity: 0.5; transition: all 0.3s;
-            display: flex; align-items: center; justify-content: center; width: 30px; height: 30px;
-            border-radius: 50%; background: rgba(0, 240, 255, 0.05);
-        }
-
-        .scenario-btn:hover {
-            color: var(--text-light); background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(0, 240, 255, 0.3);
-        }
-
-        .scenario-btn:hover .send-icon {
-            opacity: 1; transform: translateX(3px) scale(1.1); background: rgba(0, 240, 255, 0.15);
-        }
-
-        .scenario-btn.active {
-            background: rgba(0, 240, 255, 0.08); border-color: var(--primary-cyan);
-            color: var(--text-light); box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
-        }
-
-        .scenario-btn.active .send-icon {
-            opacity: 1; color: var(--bg-dark); background: var(--primary-cyan);
-            box-shadow: 0 0 15px var(--primary-cyan);
-        }
-
-        .vertical-connection { display: flex; justify-content: center; width: 40px; height: 550px; position: relative; }
-        .connection-line { width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, rgba(0,240,255,0.3), transparent); position: relative; }
-        .scanner-dot {
-            position: absolute; left: -2px; width: 6px; height: 40px; background: var(--primary-cyan);
-            border-radius: 4px; box-shadow: 0 0 15px var(--primary-cyan), 0 0 30px var(--primary-cyan);
-            animation: scanUpDown 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes scanUpDown { 0% { top: 5%; } 100% { top: 90%; } }
-
-        .phone-frame {
-            width: 330px; height: 650px; background: #010204; border-radius: 40px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.1);
-            padding: 10px; position: relative; display: flex; flex-direction: column; flex-shrink: 0;
-        }
-
-        .phone-screen {
-            background: #efeae2; width: 100%; height: 100%; border-radius: 30px; overflow: hidden;
-            display: flex; flex-direction: column;
-            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M20 20h60v60H20z" fill="rgba(0,0,0,0.03)"/></svg>');
-        }
-
-        .wa-header { background: #075e54; color: white; padding: 12px 15px; font-family: sans-serif; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .wa-header .avatar { width: 34px; height: 34px; background: var(--primary-cyan); color: var(--bg-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-family: 'Orbitron', sans-serif; font-weight: 700; }
-        .wa-chat { flex-grow: 1; padding: 15px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; scrollbar-width: none; }
-        .msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-family: sans-serif; font-size: 0.85rem; color: #1e293b; line-height: 1.4; box-shadow: 0 1px 2px rgba(0,0,0,0.1); animation: fadeInChat 0.3s ease forwards; }
-        .msg-user { background: #dcf8c6; align-self: flex-end; border-bottom-right-radius: 4px; }
-        .msg-agent { background: #ffffff; align-self: flex-start; border-bottom-left-radius: 4px; border-left: 3px solid var(--primary-cyan); }
-        
-        .msg-agent.safe { border-left-color: var(--success-green); }
-        .msg-agent.warning { border-left-color: var(--warning-yellow); }
-        .msg-agent.danger { border-left-color: var(--danger-red); }
-
-        .typing-indicator { display: flex; gap: 4px; padding: 12px 15px; background: #fff; align-self: flex-start; border-radius: 12px; border-bottom-left-radius: 4px; margin-bottom: 10px; }
-        .dot { width: 5px; height: 5px; background: #94a3b8; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
-        .dot:nth-child(1) { animation-delay: -0.32s; } .dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
-        @keyframes fadeInChat { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
+        /* ---------- Botones ---------- */
         .btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 0.9rem 1.8rem; font-size: 1.05rem; font-family: 'Orbitron', sans-serif; font-weight: 500;
-            color: var(--text-light); background: rgba(0, 240, 255, 0.1); text-decoration: none;
-            border-radius: 8px; border: 1px solid var(--primary-cyan); transition: all 0.3s ease; cursor: pointer;
+            min-height: 48px; padding: 14px 26px; border-radius: 14px;
+            font: 600 17px 'Space Grotesk', sans-serif; cursor: pointer; border: 1px solid transparent;
+            transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
         }
-        .btn:hover { background: var(--primary-cyan); color: var(--bg-dark); box-shadow: 0 0 25px rgba(0, 240, 255, 0.4); transform: translateY(-2px); }
-        .btn-outline { background: var(--bg-glass); border-color: var(--glass-border); }
-        .btn-outline:hover { background: rgba(255,255,255,0.08); color: var(--text-light); border-color: rgba(255,255,255,0.4); }
+        .btn-primary { background: var(--acc); color: var(--acc-ink); box-shadow: 0 10px 40px rgba(34,211,238,.22); }
+        .btn-primary:hover { color: var(--acc-ink); transform: translateY(-2px); box-shadow: 0 14px 48px rgba(34,211,238,.35); }
+        .btn-ghost { border-color: var(--line-strong); color: var(--txt); background: transparent; font-weight: 500; }
+        .btn-ghost:hover { color: var(--txt); border-color: var(--acc); }
+        .btn-sm { min-height: 44px; padding: 10px 20px; border-radius: 999px; font-size: 15px; }
 
-        .contact-box { text-align: center; padding: 2rem 0; }
-        .contact-actions { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
-
-        /* Modales Legales */
-        .modal-overlay { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); z-index: 2000; 
+        /* ---------- Portada ---------- */
+        .hero { position: relative; }
+        .hero .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: center; padding-top: 88px; padding-bottom: 72px; }
+        .kicker { display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .22em; color: var(--acc); text-transform: uppercase; }
+        .hero h1 { font-size: clamp(38px, 5vw, 66px); line-height: 1.04; font-weight: 700; letter-spacing: -.025em; margin: 26px 0 24px; }
+        .hero h1 em { font-style: normal; color: var(--acc); }
+        .lead { font-size: clamp(17px, 1.5vw, 20px); color: var(--muted); max-width: 560px; }
+        .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+        .trust { display: flex; gap: 10px 28px; flex-wrap: wrap; margin-top: 30px; font-size: 14px; color: var(--muted); }
+        .trust span { display: flex; align-items: center; gap: 8px; }
+        .trust .icon { width: 16px; height: 16px; color: var(--acc); stroke-width: 2.2; }
+        .hero-visual { position: relative; height: clamp(380px, 42vw, 580px); }
+        .hero-frame { position: absolute; inset: 0; border-radius: 32px; padding: 1px; background: linear-gradient(160deg, rgba(34,211,238,.6), rgba(34,211,238,0) 45%, rgba(96,165,250,.35)); }
+        .hero-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; border-radius: 31px; }
+        .float {
+            position: absolute; display: flex; gap: 12px; align-items: center;
+            padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line);
+            background: rgba(10,15,28,.9); box-shadow: 0 20px 60px rgba(0,0,0,.5);
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
         }
-        .modal { 
-            display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-            width: 90%; max-width: 700px; max-height: 85vh; background: var(--bg-dark); 
-            border: 1px solid var(--primary-cyan); border-radius: 16px; padding: 2.5rem; 
-            z-index: 2001; overflow-y: auto; box-shadow: 0 0 40px rgba(0, 240, 255, 0.2); 
-        }
-        .modal h2 { font-family: 'Orbitron', sans-serif; color: var(--primary-cyan); margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; }
-        .modal p, .modal li { margin-bottom: 1rem; font-size: 1.05rem; font-weight: 400; line-height: 1.6; color: var(--text-muted); }
-        .modal strong { color: var(--text-light); font-weight: 600; }
-        .modal ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
-        .close-modal { 
-            cursor: pointer; float: right; font-size: 2rem; color: var(--primary-cyan); 
-            line-height: 1; transition: 0.3s; 
-        }
-        .close-modal:hover { color: var(--danger-red); }
+        .float b { display: block; font-size: 15px; font-weight: 600; }
+        .float small { display: block; font-size: 13px; color: var(--muted); line-height: 1.4; }
+        .float-a { left: -40px; bottom: 60px; max-width: 310px; animation: bob 6s ease-in-out infinite; }
+        .float-b { right: -24px; top: 56px; animation: bob 6s ease-in-out 3s infinite; }
+        @keyframes bob { 50% { transform: translateY(-8px); } }
+        .badge-ico { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .badge-ico.alto { background: rgba(251,146,60,.14); color: var(--alto); }
+        .badge-ico.ok { background: rgba(34,211,238,.14); color: var(--acc); }
 
-        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--glass-border); margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); position: relative; z-index: 10; }
-        .legal-links { margin-top: 1rem; }
-        .legal-links a { color: var(--text-muted); font-size: 0.85rem; text-decoration: none; margin: 0 10px; transition: 0.3s; }
-        .legal-links a:hover { color: var(--primary-cyan); }
+        /* ---------- Secciones ---------- */
+        main { overflow-x: clip; }
+        section { position: relative; }
+        .sec { padding-top: clamp(80px, 9vw, 140px); }
+        .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 48px; flex-wrap: wrap; margin-bottom: 44px; }
+        .sec-head h2 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; font-weight: 700; margin-top: 14px; max-width: 680px; }
+        .sec-head p { max-width: 440px; font-size: 17px; color: var(--muted); }
+        .tile {
+            background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01));
+            border: 1px solid var(--line); border-radius: var(--radius);
+            transition: border-color .25s, transform .25s;
+        }
+        .tile:hover { border-color: rgba(34,211,238,.4); }
 
+        /* Franja del Observatorio */
+        .obs-strip {
+            margin-top: 8px; padding: clamp(24px, 3vw, 40px) clamp(20px, 3vw, 44px);
+            border-radius: 24px; border: 1px solid rgba(34,211,238,.22);
+            background: linear-gradient(120deg, rgba(34,211,238,.07), rgba(10,15,28,.6) 60%);
+        }
+        .obs-strip .sec-head { margin-bottom: 28px; }
+        .obs-strip .sec-head h2 { font-size: clamp(24px, 2.4vw, 32px); font-weight: 600; margin-top: 10px; }
+        .obs-link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; min-height: 44px; }
+        .top3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+        .t3 { padding: 24px; display: flex; flex-direction: column; gap: 18px; background: rgba(5,7,13,.6); color: var(--txt); }
+        .t3:hover { color: var(--txt); transform: translateY(-3px); }
+        .t3-head { display: flex; justify-content: space-between; align-items: center; }
+        .t3-pos { font-family: 'JetBrains Mono', monospace; font-size: 34px; color: var(--acc); line-height: 1; }
+        .chip { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--txt2); text-transform: uppercase; }
+        .t3-name { font-size: 20px; font-weight: 600; line-height: 1.25; }
+        .meter-lbl { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+        .meter-lbl span:last-child { font-family: 'JetBrains Mono', monospace; color: var(--txt); }
+        .meter { height: 6px; border-radius: 999px; background: rgba(148,163,184,.14); overflow: hidden; }
+        .meter i { display: block; height: 100%; border-radius: 999px; background: var(--alto); }
+        .skeleton { min-height: 170px; background: linear-gradient(90deg, rgba(255,255,255,.02), rgba(255,255,255,.05), rgba(255,255,255,.02)); background-size: 200% 100%; animation: shimmer 1.6s infinite; }
+        @keyframes shimmer { to { background-position: -200% 0; } }
+
+        /* Herramientas (bento) */
+        .bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: start; }
+        .tool { padding: 26px; }
+        .tool summary { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 14px; }
+        .tool summary::-webkit-details-marker { display: none; }
+        .tool-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+        .ico { width: 44px; height: 44px; border-radius: 12px; background: rgba(34,211,238,.1); border: 1px solid rgba(34,211,238,.25); display: flex; align-items: center; justify-content: center; color: var(--acc); flex-shrink: 0; }
+        .ico .icon { width: 22px; height: 22px; }
+        .plus { width: 32px; height: 32px; border-radius: 10px; border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: center; color: var(--txt2); transition: transform .3s, border-color .3s, color .3s; flex-shrink: 0; }
+        .plus .icon { width: 16px; height: 16px; stroke-width: 2.2; }
+        .tool[open] { border-color: rgba(34,211,238,.45); }
+        .tool[open] .plus { transform: rotate(45deg); color: var(--acc); border-color: rgba(34,211,238,.5); }
+        .tool h3 { font-size: 20px; font-weight: 600; }
+        .tool .short { font-size: 15px; color: var(--muted); }
+        .tool .more { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line-strong); font-size: 15.5px; color: var(--txt2); line-height: 1.65; }
+        .tool.feature { grid-column: span 2; grid-row: span 2; padding: 36px; background: radial-gradient(120% 90% at 100% 0%, rgba(34,211,238,.14), rgba(10,15,28,.4) 60%); border-color: rgba(34,211,238,.3); }
+        .tool.feature .ico { width: 56px; height: 56px; border-radius: 16px; }
+        .tool.feature .ico .icon { width: 26px; height: 26px; }
+        .tool.feature h3 { font-size: clamp(26px, 2.4vw, 34px); font-weight: 700; }
+        .tool.feature .short { font-size: 17px; max-width: 480px; }
+        .tool.wide { grid-column: span 2; }
+        .tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .18em; color: var(--acc); }
+        .demo-url { display: flex; align-items: center; gap: 10px; padding: 14px 16px; margin-top: 28px; border-radius: 14px; background: rgba(5,7,13,.75); border: 1px solid var(--line); }
+        .demo-url code { flex: 1; min-width: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #8391A7; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .pill-alto { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: rgba(251,146,60,.14); color: var(--alto); white-space: nowrap; }
+
+        /* Simulador */
+        .sim { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(40px, 6vw, 80px); align-items: center; }
+        .scen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+        .scen button {
+            all: unset; box-sizing: border-box; cursor: pointer; min-height: 64px;
+            display: flex; align-items: center; justify-content: space-between; gap: 14px;
+            padding: 16px 18px; border-radius: 16px; border: 1px solid var(--line);
+            font-size: 15.5px; font-weight: 500; color: var(--txt2); line-height: 1.35;
+            transition: border-color .2s, background .2s, color .2s;
+        }
+        .scen button:hover { border-color: var(--line-strong); color: var(--txt); }
+        .scen button[aria-pressed="true"] { border-color: rgba(34,211,238,.55); background: rgba(34,211,238,.08); color: var(--txt); }
+        .scen button .icon { width: 18px; height: 18px; color: #6B7A90; }
+        .scen button[aria-pressed="true"] .icon { color: var(--acc); }
+        .scen button:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+        .phone-wrap { display: flex; justify-content: center; position: relative; }
+        .phone { position: relative; width: 330px; max-width: 100%; height: 640px; border-radius: 46px; padding: 10px; background: #1A2233; box-shadow: 0 40px 100px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.08); }
+        .screen { width: 100%; height: 100%; border-radius: 38px; overflow: hidden; background: #0B141A; display: flex; flex-direction: column; }
+        .wa-head { display: flex; align-items: center; gap: 12px; padding: 38px 18px 14px; background: #111B21; border-bottom: 1px solid rgba(255,255,255,.06); }
+        .wa-ava { width: 36px; height: 36px; border-radius: 50%; background: var(--acc); color: var(--acc-ink); display: flex; align-items: center; justify-content: center; font-family: Orbitron, sans-serif; font-size: 12px; font-weight: 700; }
+        .wa-head b { display: block; font-size: 15px; }
+        .wa-head small { display: block; font-size: 12px; color: var(--acc); }
+        .chat { flex: 1; padding: 18px 14px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; scrollbar-width: none; font-size: 14px; line-height: 1.45; }
+        .msg { max-width: 86%; padding: 10px 13px; animation: msgIn .3s ease both; }
+        .msg-user { align-self: flex-end; background: #134D45; border-radius: 14px 14px 4px 14px; }
+        .msg-agent { align-self: flex-start; background: #1B2733; border-radius: 14px 14px 14px 4px; }
+        .msg-agent .verdict { display: flex; align-items: center; gap: 6px; font-weight: 600; margin-bottom: 6px; }
+        .msg-agent.danger .verdict { color: var(--alto); }
+        .msg-agent.warning .verdict { color: var(--medio); }
+        .msg-agent.safe .verdict { color: var(--ok); }
+        .msg-agent .verdict .icon { width: 15px; height: 15px; stroke-width: 2.2; }
+        .typing { align-self: flex-start; display: flex; gap: 4px; padding: 12px 14px; border-radius: 14px; background: #1B2733; }
+        .typing i { width: 6px; height: 6px; border-radius: 50%; background: #6B7A90; animation: bounce 1.4s infinite ease-in-out both; }
+        .typing i:nth-child(1) { animation-delay: -.32s; } .typing i:nth-child(2) { animation-delay: -.16s; }
+        @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+        @keyframes msgIn { from { opacity: 0; transform: translateY(6px); } }
+
+        /* Pasos */
+        .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+        .step { padding: 32px; }
+        .step .n { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--acc); }
+        .step h3 { font-size: 22px; font-weight: 600; margin: 14px 0 10px; }
+        .step p { color: var(--muted); font-size: 16px; }
+
+        /* Casos reales */
+        .cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+        .case { overflow: hidden; display: flex; flex-direction: column; }
+        .case-img { display: block; height: 260px; overflow: hidden; background: #0B141A; border-bottom: 1px solid var(--line); }
+        .case-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .5s; }
+        .case:hover .case-img img { transform: scale(1.04); }
+        .case-body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+        .case-body h3 { font-size: 18px; font-weight: 600; }
+        .case-body p { font-size: 14.5px; color: var(--muted); line-height: 1.6; flex: 1; }
+        .risk { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 5px 11px; border-radius: 999px; }
+        .risk.alto { background: rgba(251,146,60,.14); color: var(--alto); }
+        .risk.medio { background: rgba(250,204,21,.12); color: var(--medio); }
+        .risk.bajo { background: rgba(96,165,250,.14); color: var(--info); }
+
+        /* Contacto */
+        .cta {
+            padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 72px); border-radius: 32px; text-align: center;
+            background: radial-gradient(80% 120% at 50% 0%, rgba(34,211,238,.18), rgba(10,15,28,.9) 70%);
+            border: 1px solid rgba(34,211,238,.25); display: flex; flex-direction: column; align-items: center; gap: 22px;
+        }
+        .cta h2 { font-size: clamp(32px, 3.6vw, 50px); font-weight: 700; }
+        .cta p { font-size: 18px; color: var(--muted); max-width: 580px; }
+        .cta .actions { justify-content: center; margin-top: 6px; }
+        .channels { display: flex; gap: 10px 28px; flex-wrap: wrap; justify-content: center; margin-top: 10px; font-size: 15px; }
+        .channels a { display: inline-flex; align-items: center; gap: 8px; color: var(--txt2); min-height: 44px; }
+        .channels a:hover { color: var(--acc); }
+        .channels .icon { width: 18px; height: 18px; color: var(--acc); }
+
+        /* Pie */
+        footer { margin-top: clamp(64px, 8vw, 110px); border-top: 1px solid rgba(148,163,184,.1); }
+        footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px 32px; flex-wrap: wrap; padding-top: 32px; padding-bottom: 32px; font-size: 14px; color: #8391A7; }
+        footer .brandname { font-family: Orbitron, sans-serif; font-weight: 700; letter-spacing: .14em; color: var(--txt2); }
+        .legal { display: flex; gap: 24px; }
+        .legal button { all: unset; cursor: pointer; color: #8391A7; min-height: 44px; display: inline-flex; align-items: center; }
+        .legal button:hover { color: var(--acc); }
+        .legal button:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+
+        /* Modales legales */
+        dialog {
+            width: min(720px, calc(100vw - 32px)); max-height: 85vh; padding: 0; border-radius: 24px;
+            border: 1px solid rgba(34,211,238,.3); background: var(--surface); color: var(--txt);
+        }
+        dialog::backdrop { background: rgba(2,4,8,.75); backdrop-filter: blur(4px); }
+        .dlg { padding: clamp(24px, 4vw, 40px); }
+        .dlg-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+        .dlg h2 { font-size: 24px; }
+        .dlg p, .dlg li { color: var(--muted); font-size: 15.5px; line-height: 1.65; margin-bottom: 14px; }
+        .dlg strong { color: var(--txt); }
+        .dlg ul { padding-left: 22px; margin: 0 0 14px; }
+        .x { all: unset; cursor: pointer; width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line-strong); display: flex; align-items: center; justify-content: center; color: var(--txt2); flex-shrink: 0; }
+        .x:hover { color: var(--acc); border-color: var(--acc); }
+
+        /* Barra inferior (celular) */
+        .tabbar { display: none; }
+
+        /* Aparición al hacer scroll */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+        .reveal.in { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .reveal { opacity: 1; transform: none; }
+        }
+
+        @media (max-width: 1100px) {
+            .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .tool.feature { grid-row: auto; }
+            .sim { grid-template-columns: 1fr; }
+        }
         @media (max-width: 900px) {
-            nav { flex-direction: column; gap: 1rem; padding: 1rem; }
-            .tab-nav { width: 100%; justify-content: center; flex-wrap: wrap; border-radius: 16px; }
-            .tab-btn { flex: 1; text-align: center; font-size: 0.95rem; padding: 0.6rem 0.5rem; }
-            header { padding-top: 11rem; }
-            .interactive-section { flex-direction: column; }
-            .vertical-connection { display: none; }
-            .scenario-selector { width: 100%; max-width: 100%; }
+            .menu { display: none; }
+            .hero .wrap { grid-template-columns: 1fr; gap: 40px; padding-top: 48px; }
+            .float-a { left: 12px; right: 12px; bottom: 12px; max-width: none; animation: none; }
+            .float-b { display: none; }
+            .top3 { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
         }
-    
-        .nav-observatorio {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.6rem 1.3rem; border-radius: 40px;
-            background: rgba(0, 229, 255, 0.10);
-            border: 1px solid rgba(0, 229, 255, 0.45);
-            color: var(--accent, #00e5ff);
-            font-family: 'Rajdhani', sans-serif; font-size: 1.02rem; font-weight: 700;
-            text-decoration: none; white-space: nowrap; transition: all .25s ease;
+        @media (max-width: 640px) {
+            body { padding-bottom: 76px; }
+            .topbar .wrap { height: 64px; }
+            .brand span { font-size: 14px; }
+            .topbar .btn-sm span { display: none; }
+            .topbar .btn-sm { width: 44px; padding: 0; }
+            .actions .btn { width: 100%; }
+            .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+            .tool { padding: 18px; }
+            .tool.feature, .tool.wide { grid-column: span 2; padding: 22px; }
+            .tool .short { display: none; }
+            .tool.feature .short, .tool.wide .short { display: block; }
+            .tool h3 { font-size: 17px; }
+            .tool[open] { grid-column: span 2; }
+            .tool[open] .short { display: block; }
+            .demo-url { margin-top: 18px; }
+            .scen { grid-template-columns: 1fr; }
+            .phone { height: 560px; }
+            .cases { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 8px; scrollbar-width: none; }
+            .case { flex: 0 0 82%; scroll-snap-align: start; }
+            footer .wrap { flex-direction: column; text-align: center; }
+            .tabbar {
+                display: flex; justify-content: space-around; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+                padding: 8px 8px calc(10px + env(safe-area-inset-bottom));
+                background: rgba(10,15,28,.96); border-top: 1px solid var(--line);
+                backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            }
+            .tabbar a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-width: 64px; min-height: 48px; font-size: 11px; color: #8391A7; }
+            .tabbar a.on { color: var(--acc); }
+            .tabbar .icon { width: 22px; height: 22px; }
         }
-        .nav-observatorio:hover {
-            background: rgba(0, 229, 255, 0.20);
-            border-color: var(--accent, #00e5ff);
-            transform: translateY(-1px);
-        }
-        .obs-dot {
-            width: 8px; height: 8px; border-radius: 50%;
-            background: #22c55e; box-shadow: 0 0 8px #22c55e;
-            animation: obsPulse 1.9s ease-in-out infinite; flex-shrink: 0;
-        }
-        @keyframes obsPulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-        @media (max-width: 900px) {
-            .nav-observatorio { width: 100%; justify-content: center; }
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="cyber-grid"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></symbol>
+            <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+            <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+            <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+            <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+            <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+            <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></symbol>
+            <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+            <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+            <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 22h18"/><path d="M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2 20 7H4z"/></symbol>
+            <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+            <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+            <symbol id="i-file" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/></symbol>
+            <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+            <symbol id="i-store" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
+            <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+            <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></symbol>
+            <symbol id="i-insta" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+            <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+            <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+        </defs>
+    </svg>
 
-    <nav>
-        <a href="#" class="nav-logo">CYBER MOBILE</a>
-        <div class="tab-nav">
-            <button class="tab-btn active" data-tab="tab-herramientas">Herramientas</button>
-            <button class="tab-btn" data-tab="tab-comunidad">Comunidad Cyber Mobile</button>
-            <button class="tab-btn" data-tab="tab-simulador">Simulador Interactivo</button>
-            <button class="tab-btn" data-tab="tab-contacto">Contacto</button>
+    <header class="topbar">
+        <div class="wrap">
+            <a href="/" class="brand" aria-label="Cyber Mobile, inicio">
+                <svg class="icon"><use href="#i-shield"/></svg>
+                <span>CYBER MOBILE</span>
+            </a>
+            <nav class="menu" aria-label="Secciones">
+                <a href="#herramientas">Herramientas</a>
+                <a href="#simulador">Simulador</a>
+                <a href="#casos">Casos reales</a>
+                <a href="/observatorio"><span class="dot pulse"></span>Observatorio</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+            <a class="btn btn-primary btn-sm" href="https://wa.me/5491170598505?text=Hola%2C%20quiero%20probar%20Cyber%20Mobile" target="_blank" rel="noopener noreferrer" data-track="cta_whatsapp_nav" aria-label="Consultar por WhatsApp">
+                <svg class="icon"><use href="#i-chat"/></svg><span>Consultar por WhatsApp</span>
+            </a>
         </div>
-        <a href="/observatorio" class="nav-observatorio">
-            <span class="obs-dot"></span> Observatorio de Fraude
-        </a>
-    </nav>
-
-    <header>
-        <img src="Escudo CM.jpeg" alt="Escudo Cyber Mobile" class="hero-logo-img">
-        <h1>CYBER MOBILE</h1>
-        <p class="subtitle">Validá cada riesgo digital con un Experto en tu bolsillo. Protección y análisis en tiempo real para tu vida conectada.</p>
     </header>
 
-    <section style="max-width:1100px;margin:0 auto 2.5rem;padding:0 1.5rem;">
-      <a href="/observatorio" style="display:block;text-decoration:none;">
-        <div style="background:linear-gradient(135deg, rgba(0,229,255,.08), rgba(0,229,255,.02));
-                    border:1px solid rgba(0,229,255,.35);border-radius:18px;padding:1.8rem 2rem;
-                    display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;transition:all .25s;">
-          <div style="flex:1;min-width:260px;">
-            <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;">
-              <span style="width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;"></span>
-              <span style="font-family:'Rajdhani',sans-serif;font-size:.85rem;letter-spacing:.18em;
-                           color:#22c55e;font-weight:700;">MONITOREO ACTIVO</span>
-            </div>
-            <h3 style="margin:0 0 .5rem;font-size:1.6rem;color:var(--text-light,#fff);
-                       font-family:'Rajdhani',sans-serif;font-weight:700;">
-              Observatorio de Fraude Digital
-            </h3>
-            <p style="margin:0;color:var(--text-muted,#94a3b8);font-size:1.02rem;line-height:1.6;max-width:620px;">
-              Top 10 mensual de las estafas digitales que m&aacute;s circulan en Argentina, con su modo de
-              operar, c&oacute;mo detectarlas y la fuente que las respalda.
-            </p>
-          </div>
-          <div style="display:flex;align-items:center;gap:.6rem;padding:.9rem 1.6rem;border-radius:40px;
-                      background:rgba(0,229,255,.15);border:1px solid rgba(0,229,255,.5);
-                      color:#00e5ff;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.05rem;
-                      white-space:nowrap;">
-            Ver el informe &rarr;
-          </div>
-        </div>
-      </a>
-    </section>
-
-
-    <main class="main-container">
-        
-        <div id="tab-herramientas" class="tab-content active">
-            <p style="text-align: center; color: var(--text-muted); font-weight: 400; margin-bottom: 3rem; font-size: 1.1rem;">Navegá seguro. Tocá cualquier herramienta para conocer cómo interceptamos amenazas.</p>
-            
-            <div class="grid-cards">
-                <div class="card interactive-card">
-                    <div class="card-header">
-                        <h3><span>📧</span> Verificar Email</h3>
-                        <div class="toggle-icon">+</div>
+    <main id="inicio">
+        <section class="hero">
+            <div class="glow" style="top:-260px;left:50%;width:1100px;height:700px;margin-left:-550px"></div>
+            <div class="wrap">
+                <div>
+                    <div class="kicker"><span class="dot"></span>Agente de seguridad digital · Argentina</div>
+                    <h1>¿Te llegó algo sospechoso? <em>Verificalo antes de responder.</em></h1>
+                    <p class="lead">Mandanos el link, el CBU, el número o el archivo por WhatsApp. El agente de Cyber Mobile lo analiza y te dice si es seguro, en lenguaje claro y en minutos.</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="https://wa.me/5491170598505?text=Hola%2C%20quiero%20probar%20Cyber%20Mobile" target="_blank" rel="noopener noreferrer" data-track="cta_whatsapp_hero">
+                            Verificar ahora por WhatsApp <svg class="icon"><use href="#i-arrow"/></svg>
+                        </a>
+                        <a class="btn btn-ghost" href="#simulador">Ver cómo funciona</a>
                     </div>
-                    <p class="card-short">Auditoría de correos. Descubrí si tu email o contraseña han sido expuestos en filtraciones globales.</p>
-                    <div class="card-details">
-                        <p>¿Alguna vez hackearon una página donde estabas registrado? A veces, los delincuentes roban listas enormes de correos y contraseñas y las publican en internet. Al enviarnos tu email, buscamos en bases de datos de ciberseguridad para decirte si tu cuenta está en riesgo y si necesitás cambiar tu clave de inmediato para evitar que entren a tus redes o a tu banco.</p>
+                    <div class="trust">
+                        <span><svg class="icon"><use href="#i-check"/></svg>7 días de prueba gratuita</span>
+                        <span><svg class="icon"><use href="#i-check"/></svg>Sin instalar nada</span>
+                        <span><svg class="icon"><use href="#i-check"/></svg>Respuestas sin tecnicismos</span>
                     </div>
                 </div>
-
-                <div class="card interactive-card">
-                    <div class="card-header">
-                        <h3><span>🏦</span> Verificar CVU/CBU</h3>
-                        <div class="toggle-icon">+</div>
+                <div class="hero-visual">
+                    <div class="hero-frame">
+                        <img src="Escudo%20CM.jpeg" alt="Celular con el escudo de Cyber Mobile" width="720" height="1280" fetchpriority="high">
                     </div>
-                    <p class="card-short">Análisis riguroso de cuentas destino antes de realizar transferencias para evitar estafas financieras.</p>
-                    <div class="card-details">
-                        <p>Antes de transferir dinero para una seña, un alquiler o una compra por internet, envianos el CBU o CVU. El agente revisa si esa cuenta bancaria o billetera virtual tiene reportes previos por estafas, si es una cuenta muy reciente o si pertenece a una persona sospechosa. Es tu filtro de seguridad antes de soltar tu plata.</p>
+                    <div class="float float-a">
+                        <div class="badge-ico alto"><svg class="icon"><use href="#i-alert"/></svg></div>
+                        <div><b>Link sospechoso detectado</b><small>Imita a PAMI. No ingreses datos ni respondas el mensaje.</small></div>
                     </div>
-                </div>
-
-                <div class="card interactive-card">
-                    <div class="card-header">
-                        <h3><span>🔗</span> Verificar URL</h3>
-                        <div class="toggle-icon">+</div>
-                    </div>
-                    <p class="card-short">Análisis en tiempo real de enlaces recibidos por SMS o chat para detectar suplantación de identidad (Phishing).</p>
-                    <div class="card-details">
-                        <p>¿Te llegó un mensaje de texto del correo, del banco o de Netflix pidiendo que entres a un link urgente? Muchas veces son trampas visuales (sitios falsos idénticos a los reales). Si nos pasás el link antes de abrirlo, lo escaneamos para confirmarte si es la página oficial o si es una trampa diseñada para robarte los datos de la tarjeta.</p>
-                    </div>
-                </div>
-
-                <div class="card interactive-card">
-                    <div class="card-header">
-                        <h3><span>📁</span> Verificar Archivo</h3>
-                        <div class="toggle-icon">+</div>
-                    </div>
-                    <p class="card-short">Inspección de documentos PDF, Word o ejecutables sospechosos contra decenas de motores antivirus.</p>
-                    <div class="card-details">
-                        <p>A veces, un simple comprobante de pago en PDF o un archivo de Word pueden esconder virus invisibles que toman el control de tu celular. Reenviá ese archivo sospechoso a nuestro chat y lo pasaremos por decenas de motores antivirus al mismo tiempo. En segundos te diremos si es seguro abrirlo o si debés borrarlo ya mismo.</p>
-                    </div>
-                </div>
-
-                <div class="card interactive-card">
-                    <div class="card-header">
-                        <h3><span>🌐</span> Verificar IP</h3>
-                        <div class="toggle-icon">+</div>
-                    </div>
-                    <p class="card-short">Geolocalización y análisis de reputación de direcciones IP para identificar inicios de sesión inusuales.</p>
-                    <div class="card-details">
-                        <p>Si Instagram o Google te avisan que alguien inició sesión en tu cuenta desde una 'IP desconocida', pasanos ese número. Te diremos exactamente en qué ciudad o país está ese dispositivo y si proviene de redes usadas comúnmente por hackers. Esto te ayuda a saber si fue un error de tu propio celular o si realmente alguien más entró a tu cuenta.</p>
-                    </div>
-                </div>
-
-                <div class="card interactive-card">
-                    <div class="card-header">
-                        <h3><span>🏢</span> Verificar Org</h3>
-                        <div class="toggle-icon">+</div>
-                    </div>
-                    <p class="card-short">Investigación de perfiles de redes sociales o tiendas online para medir su nivel de confiabilidad.</p>
-                    <div class="card-details">
-                        <p>¿Encontraste una súper oferta en Instagram o Facebook pero la página no te da confianza? Analizamos el perfil: cuándo fue creado, si cambió de nombre muchas veces y si tiene patrones de fraude. Te damos un resumen claro para que sepas si es una tienda real o una estafa armada hace dos días.</p>
-                    </div>
-                </div>
-
-                <div class="card interactive-card">
-                    <div class="card-header">
-                        <h3><span>🎙️</span> Verificar Teléfono</h3>
-                        <div class="toggle-icon">+</div>
-                    </div>
-                    <p class="card-short">Cruce de datos de números desconocidos para identificar posibles estafas telefónicas o spam.</p>
-                    <div class="card-details">
-                        <p>Si te llaman sin parar de un número desconocido, o te escribe alguien por WhatsApp diciendo ser 'Soporte Técnico' o un familiar que cambió de número, consultanos. Cruzamos ese teléfono con reportes comunitarios para ver si otras personas ya lo denunciaron como fraude (cuento del tío) o simplemente como venta telefónica molesta (spam).</p>
-                    </div>
-                </div>
-
-                <div class="card interactive-card">
-                    <div class="card-header">
-                        <h3><span>🛡️</span> Asesoría General</h3>
-                        <div class="toggle-icon">+</div>
-                    </div>
-                    <p class="card-short">Consultoría experta, clara y sin tecnicismos sobre buenas prácticas de seguridad y privacidad.</p>
-                    <div class="card-details">
-                        <p>Si sospechás que alguien entró a tus redes sociales, si querés saber cómo crear contraseñas que sean imposibles de hackear, o si necesitás configurar tu cuenta bancaria de forma segura, preguntanos. Te damos el paso a paso exacto, fácil de entender y rápido para que mantengas el control de tu vida digital.</p>
+                    <div class="float float-b">
+                        <div class="badge-ico ok"><svg class="icon"><use href="#i-check"/></svg></div>
+                        <div><b>CBU verificado · seguro</b></div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="tab-comunidad" class="tab-content">
-            <div class="community-header">
-                <h2 style="font-size: 2.2rem; color: var(--primary-cyan); margin-bottom: 1rem;">Casos Reales, Prevención Real</h2>
-                <p>Nuestra comunidad utiliza a Cyber Mobile a diario para interceptar amenazas antes de que ocurran. Mirá cómo el Agente Inteligente analiza y expone diferentes tipos de fraudes en tiempo real directamente desde WhatsApp.</p>
-            </div>
-
-            <div class="community-grid">
-                <!-- Caso 1: Sextorsión -->
-                <div class="case-card">
-                    <div class="case-img-wrapper">
-                        <img src="1.jpeg" alt="Análisis de correo de Sextorsión">
+        <section id="observatorio-resumen" class="wrap reveal" aria-labelledby="obs-titulo">
+            <div class="obs-strip">
+                <div class="sec-head">
+                    <div>
+                        <div class="kicker"><span class="dot pulse"></span><span id="obs-kicker">Observatorio de Fraude Digital</span></div>
+                        <h2 id="obs-titulo">Las estafas que más circulan este mes</h2>
                     </div>
-                    <div class="case-content">
-                        <h4>📧 Intento de Sextorsión</h4>
-                        <p>El agente analiza un correo intimidatorio masivo. Detecta el patrón clásico de chantaje psicológico, el uso de caracteres alterados para evitar filtros de spam y la suplantación de identidad del remitente.</p>
-                        <span class="risk-badge risk-high">Riesgo Alto</span>
-                    </div>
+                    <a class="obs-link" href="/observatorio" data-track="obs_strip">Ver el ranking completo <svg class="icon"><use href="#i-arrow"/></svg></a>
                 </div>
-
-                <!-- Caso 2: Entrevista Falsa -->
-                <div class="case-card">
-                    <div class="case-img-wrapper">
-                        <img src="2.jpeg" alt="Alerta por entrevista laboral en domicilio falso">
-                    </div>
-                    <div class="case-content">
-                        <h4>🏢 Falsa Entrevista Laboral</h4>
-                        <p>Ante una duda sobre una citación en un domicilio particular, el sistema cruza información con foros de la comunidad argentina y alerta sobre un modus operandi recurrente utilizado para engaños físicos o robos.</p>
-                        <span class="risk-badge risk-med">Precaución</span>
-                    </div>
-                </div>
-
-                <!-- Caso 3: Smishing SMS -->
-                <div class="case-card">
-                    <div class="case-img-wrapper">
-                        <img src="3.jpeg" alt="Detección de SMS Fraudulento (Smishing)">
-                    </div>
-                    <div class="case-content">
-                        <h4>💬 Smishing (SMS Fraudulento)</h4>
-                        <p>El usuario reenvía una captura de un mensaje de texto exigiendo el pago de una supuesta deuda. Cyber Mobile identifica tácticas de urgencia y dominios maliciosos encubiertos (.bond, .online) usados para robar datos bancarios.</p>
-                        <span class="risk-badge risk-high">Riesgo Alto</span>
-                    </div>
-                </div>
-
-                <!-- Caso 4: PDF Malicioso -->
-                <div class="case-card">
-                    <div class="case-img-wrapper">
-                        <img src="4.jpeg" alt="Escaneo de documento PDF malicioso">
-                    </div>
-                    <div class="case-content">
-                        <h4>📁 PDF con Malware Oculto</h4>
-                        <p>Inspección técnica de un documento adjunto. El Agente evalúa el Hash criptográfico del archivo contra múltiples motores antivirus internacionales, advirtiendo al usuario sobre las consecuencias de abrir documentos no solicitados.</p>
-                        <span class="risk-badge risk-low">Preventivo</span>
-                    </div>
-                </div>
-
-                <!-- Caso 5: Número de Riesgo -->
-                <div class="case-card">
-                    <div class="case-img-wrapper">
-                        <img src="5.jpeg" alt="Verificación de número de teléfono peligroso">
-                    </div>
-                    <div class="case-content">
-                        <h4>🎙️ Número Telefónico Sospechoso</h4>
-                        <p>Búsqueda profunda de un número desconocido. Cyber Mobile rastrea la huella digital del número en internet y advierte que ha sido reportado previamente en bases de datos comunitarias por estafas y fraudes telefónicos.</p>
-                        <span class="risk-badge risk-med">Verificar Identidad</span>
-                    </div>
+                <div class="top3" id="top3">
+                    <div class="tile skeleton"></div><div class="tile skeleton"></div><div class="tile skeleton"></div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="tab-simulador" class="tab-content">
-            <p style="text-align: center; color: var(--text-muted); font-weight: 400; font-size: 1.1rem;">Experimentá la velocidad de respuesta. Hacé clic en cualquier escenario para simular el Agente.</p>
-            
-            <div class="interactive-section">
-                <div class="scenario-selector" id="scenario-buttons">
-                    <button class="scenario-btn active" data-scenario="email">
-                        <span class="scenario-text">¿Se filtró mi correo o contraseñas?</span>
-                        <span class="send-icon">➤</span>
-                    </button>
-                    <button class="scenario-btn" data-scenario="cvu">
-                        <span class="scenario-text">Validar este CVU para una transferencia</span>
-                        <span class="send-icon">➤</span>
-                    </button>
-                    <button class="scenario-btn" data-scenario="url">
-                        <span class="scenario-text">Me llegó este link por SMS, ¿es seguro?</span>
-                        <span class="send-icon">➤</span>
-                    </button>
-                    <button class="scenario-btn" data-scenario="archivo">
-                        <span class="scenario-text">Analizar PDF adjunto dudoso</span>
-                        <span class="send-icon">➤</span>
-                    </button>
-                    <button class="scenario-btn" data-scenario="ip">
-                        <span class="scenario-text">Alerta de inicio de sesión desde Rusia</span>
-                        <span class="send-icon">➤</span>
-                    </button>
-                    <button class="scenario-btn" data-scenario="usuario">
-                        <span class="scenario-text">¿Es seguro comprar en esta cuenta de IG?</span>
-                        <span class="send-icon">➤</span>
-                    </button>
-                    <button class="scenario-btn" data-scenario="telefono">
-                        <span class="scenario-text">Llamada perdida de un número raro</span>
-                        <span class="send-icon">➤</span>
-                    </button>
-                    <button class="scenario-btn" data-scenario="asesoria">
-                        <span class="scenario-text">Creo que entraron a mi Instagram</span>
-                        <span class="send-icon">➤</span>
-                    </button>
+        <section id="herramientas" class="sec wrap">
+            <div class="sec-head reveal">
+                <div>
+                    <div class="kicker">Herramientas</div>
+                    <h2>Ocho formas de saber si algo es una estafa</h2>
                 </div>
+                <p>Elegí qué te llegó y tocá la tarjeta para ver cómo lo analizamos. La respuesta te llega por WhatsApp.</p>
+            </div>
 
-                <div class="vertical-connection">
-                    <div class="connection-line">
-                        <div class="scanner-dot"></div>
+            <div class="bento reveal">
+                <details class="tile tool feature">
+                    <summary>
+                        <div class="tool-top">
+                            <div class="ico"><svg class="icon"><use href="#i-link"/></svg></div>
+                            <span class="plus"><svg class="icon"><use href="#i-plus"/></svg></span>
+                        </div>
+                        <span class="tag">LA MÁS USADA</span>
+                        <h3>Verificar un link</h3>
+                        <p class="short">Links que te llegan por SMS, WhatsApp o redes. Detectamos sitios que se hacen pasar por bancos, organismos o billeteras virtuales.</p>
+                        <div class="demo-url" aria-hidden="true">
+                            <svg class="icon" style="color:#9AA8BD"><use href="#i-search"/></svg>
+                            <code>pami-actualizacion-datos.com.ar/login</code>
+                            <span class="pill-alto">Riesgo alto</span>
+                        </div>
+                    </summary>
+                    <p class="more">¿Te llegó un mensaje de texto del correo, del banco o de Netflix pidiendo que entres a un link urgente? Muchas veces son trampas visuales: sitios falsos idénticos a los reales. Si nos pasás el link antes de abrirlo, lo escaneamos para confirmarte si es la página oficial o si es una trampa diseñada para robarte los datos de la tarjeta.</p>
+                </details>
+
+                <details class="tile tool wide">
+                    <summary>
+                        <div class="tool-top">
+                            <div class="ico"><svg class="icon"><use href="#i-bank"/></svg></div>
+                            <span class="plus"><svg class="icon"><use href="#i-plus"/></svg></span>
+                        </div>
+                        <h3>Verificar CVU / CBU</h3>
+                        <p class="short">Antes de transferir, revisamos que la cuenta destino no tenga reportes por estafas.</p>
+                    </summary>
+                    <p class="more">Antes de transferir dinero para una seña, un alquiler o una compra por internet, envianos el CBU o CVU. El agente revisa si esa cuenta bancaria o billetera virtual tiene reportes previos por estafas, si es una cuenta muy reciente o si pertenece a una persona sospechosa. Es tu filtro de seguridad antes de soltar tu plata.</p>
+                </details>
+
+                <details class="tile tool">
+                    <summary>
+                        <div class="tool-top">
+                            <div class="ico"><svg class="icon"><use href="#i-phone"/></svg></div>
+                            <span class="plus"><svg class="icon"><use href="#i-plus"/></svg></span>
+                        </div>
+                        <h3>Teléfono</h3>
+                        <p class="short">Números desconocidos que llaman o escriben.</p>
+                    </summary>
+                    <p class="more">Si te llaman sin parar de un número desconocido, o te escribe alguien por WhatsApp diciendo ser "Soporte Técnico" o un familiar que cambió de número, consultanos. Cruzamos ese teléfono con reportes comunitarios para ver si otras personas ya lo denunciaron como fraude o como venta telefónica molesta.</p>
+                </details>
+
+                <details class="tile tool">
+                    <summary>
+                        <div class="tool-top">
+                            <div class="ico"><svg class="icon"><use href="#i-mail"/></svg></div>
+                            <span class="plus"><svg class="icon"><use href="#i-plus"/></svg></span>
+                        </div>
+                        <h3>Email</h3>
+                        <p class="short">Si tu correo o contraseña se filtraron.</p>
+                    </summary>
+                    <p class="more">¿Alguna vez hackearon una página donde estabas registrado? A veces los delincuentes roban listas enormes de correos y contraseñas y las publican en internet. Buscamos tu email en bases de datos de ciberseguridad para decirte si tu cuenta está en riesgo y si necesitás cambiar tu clave de inmediato.</p>
+                </details>
+
+                <details class="tile tool">
+                    <summary>
+                        <div class="tool-top">
+                            <div class="ico"><svg class="icon"><use href="#i-file"/></svg></div>
+                            <span class="plus"><svg class="icon"><use href="#i-plus"/></svg></span>
+                        </div>
+                        <h3>Archivo</h3>
+                        <p class="short">PDF, Word o APK antes de abrirlos.</p>
+                    </summary>
+                    <p class="more">Un simple comprobante en PDF o un archivo de Word puede esconder virus que toman el control de tu celular. Reenviá ese archivo sospechoso al chat y lo pasamos por decenas de motores antivirus al mismo tiempo. Te decimos si es seguro abrirlo o si debés borrarlo ya mismo.</p>
+                </details>
+
+                <details class="tile tool">
+                    <summary>
+                        <div class="tool-top">
+                            <div class="ico"><svg class="icon"><use href="#i-globe"/></svg></div>
+                            <span class="plus"><svg class="icon"><use href="#i-plus"/></svg></span>
+                        </div>
+                        <h3>IP</h3>
+                        <p class="short">Inicios de sesión desde lugares raros.</p>
+                    </summary>
+                    <p class="more">Si Instagram o Google te avisan que alguien inició sesión desde una "IP desconocida", pasanos ese número. Te decimos en qué ciudad o país está ese dispositivo y si proviene de redes usadas comúnmente por atacantes, para saber si fuiste vos o si alguien más entró a tu cuenta.</p>
+                </details>
+
+                <details class="tile tool">
+                    <summary>
+                        <div class="tool-top">
+                            <div class="ico"><svg class="icon"><use href="#i-store"/></svg></div>
+                            <span class="plus"><svg class="icon"><use href="#i-plus"/></svg></span>
+                        </div>
+                        <h3>Tienda o perfil</h3>
+                        <p class="short">Si una tienda online o cuenta es confiable.</p>
+                    </summary>
+                    <p class="more">¿Encontraste una súper oferta en Instagram o Facebook pero la página no te da confianza? Analizamos el perfil: cuándo fue creado, si cambió de nombre muchas veces y si tiene patrones de fraude. Te damos un resumen claro para que sepas si es una tienda real o una estafa armada hace dos días.</p>
+                </details>
+
+                <details class="tile tool">
+                    <summary>
+                        <div class="tool-top">
+                            <div class="ico"><svg class="icon"><use href="#i-shield"/></svg></div>
+                            <span class="plus"><svg class="icon"><use href="#i-plus"/></svg></span>
+                        </div>
+                        <h3>Asesoría</h3>
+                        <p class="short">Dudas de seguridad, sin tecnicismos.</p>
+                    </summary>
+                    <p class="more">Si sospechás que alguien entró a tus redes, si querés crear contraseñas difíciles de adivinar o configurar tu cuenta bancaria de forma segura, preguntanos. Te damos el paso a paso exacto, fácil de entender, para que mantengas el control de tu vida digital.</p>
+                </details>
+            </div>
+        </section>
+
+        <section id="simulador" class="sec wrap">
+            <div class="glow" style="right:0;top:180px;width:520px;height:520px"></div>
+            <div class="sim">
+                <div class="reveal">
+                    <div class="sec-head" style="margin-bottom:32px">
+                        <div>
+                            <div class="kicker">Simulador interactivo</div>
+                            <h2>Probá cómo te responde el agente</h2>
+                        </div>
+                    </div>
+                    <div class="scen" id="scenarios" role="group" aria-label="Escenarios de ejemplo">
+                        <button type="button" data-scenario="email" aria-pressed="true">¿Se filtró mi correo o contraseña?<svg class="icon"><use href="#i-arrow"/></svg></button>
+                        <button type="button" data-scenario="cvu" aria-pressed="false">Validar un CVU antes de transferir<svg class="icon"><use href="#i-arrow"/></svg></button>
+                        <button type="button" data-scenario="url" aria-pressed="false">Me llegó este link por SMS, ¿es seguro?<svg class="icon"><use href="#i-arrow"/></svg></button>
+                        <button type="button" data-scenario="archivo" aria-pressed="false">Analizar un PDF adjunto dudoso<svg class="icon"><use href="#i-arrow"/></svg></button>
+                        <button type="button" data-scenario="ip" aria-pressed="false">Alerta de inicio de sesión desde Rusia<svg class="icon"><use href="#i-arrow"/></svg></button>
+                        <button type="button" data-scenario="usuario" aria-pressed="false">¿Es seguro comprar en esta cuenta de IG?<svg class="icon"><use href="#i-arrow"/></svg></button>
+                        <button type="button" data-scenario="telefono" aria-pressed="false">Llamadas perdidas de un número raro<svg class="icon"><use href="#i-arrow"/></svg></button>
+                        <button type="button" data-scenario="asesoria" aria-pressed="false">Creo que entraron a mi Instagram<svg class="icon"><use href="#i-arrow"/></svg></button>
                     </div>
                 </div>
-                
-                <div class="phone-frame">
-                    <div class="phone-screen">
-                        <div class="wa-header">
-                            <div class="avatar">CM</div>
-                            <div>
-                                <div style="font-size: 0.95rem;">Cyber Mobile Experto</div>
-                                <div style="font-size: 0.7rem; font-weight: normal; opacity: 0.8;">En línea</div>
+                <div class="phone-wrap reveal">
+                    <div class="phone">
+                        <div class="screen">
+                            <div class="wa-head">
+                                <div class="wa-ava">CM</div>
+                                <div><b>Cyber Mobile</b><small id="wa-status">en línea</small></div>
                             </div>
-                        </div>
-                        <div class="wa-chat" id="chat-window">
-                            <!-- Inyectado por JS -->
+                            <div class="chat" id="chat" aria-live="polite"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="tab-contacto" class="tab-content">
-            <div class="contact-box">
-                <h2 style="font-size: 2.5rem; color: var(--text-light); margin-bottom: 1rem;">Iniciá tu Tranquilidad Digital</h2>
-                <p style="font-size: 1.15rem; color: var(--text-muted); font-weight: 400; max-width: 600px; margin: 0 auto;">
-                    Escribinos y poné a prueba a tu Agente de Seguridad Digital. Resolvé tus dudas al instante y protegé tu vida digital.
-                </p>
-                
-                <div class="contact-actions">
-                    <a href="mailto:cybermobile.ai@gmail.com?subject=Solicitud%20Información%20Cyber%20Mobile" class="btn">
-                        ✉️ Enviar Correo Electrónico
-                    </a>
-                    <a href="https://instagram.com/cybermobile.ai" target="_blank" class="btn btn-outline">
-                        📷 Visitar Instagram
-                    </a>
+        <section class="sec wrap" aria-labelledby="pasos-titulo">
+            <div class="sec-head reveal" style="justify-content:center;text-align:center">
+                <div>
+                    <div class="kicker" style="justify-content:center">Cómo funciona</div>
+                    <h2 id="pasos-titulo">Tres pasos, sin instalar nada</h2>
                 </div>
             </div>
-        </div>
+            <div class="steps reveal">
+                <div class="tile step"><span class="n">01</span><h3>Nos reenviás lo que te llegó</h3><p>Captura, link, número o archivo, por WhatsApp. Como a cualquier contacto.</p></div>
+                <div class="tile step"><span class="n">02</span><h3>Lo analizamos</h3><p>Cruzamos bases de fraude, reputación y los casos del Observatorio de Fraude Digital.</p></div>
+                <div class="tile step"><span class="n">03</span><h3>Te decimos qué hacer</h3><p>Un veredicto claro y los pasos a seguir, sin tecnicismos.</p></div>
+            </div>
+        </section>
 
+        <section id="casos" class="sec wrap">
+            <div class="sec-head reveal">
+                <div>
+                    <div class="kicker">Comunidad Cyber Mobile</div>
+                    <h2>Casos reales, prevención real</h2>
+                </div>
+                <p>Así analiza el agente distintos fraudes que nos reenviaron por WhatsApp.</p>
+            </div>
+            <div class="cases reveal">
+                <article class="tile case">
+                    <a class="case-img" href="1.jpeg" target="_blank" rel="noopener"><img src="1.jpeg" alt="Análisis de un correo de sextorsión" loading="lazy" decoding="async"></a>
+                    <div class="case-body">
+                        <h3>Intento de sextorsión</h3>
+                        <p>Correo intimidatorio masivo. El agente detecta el patrón de chantaje, los caracteres alterados para evitar filtros y la suplantación del remitente.</p>
+                        <span class="risk alto">Riesgo alto</span>
+                    </div>
+                </article>
+                <article class="tile case">
+                    <a class="case-img" href="2.jpeg" target="_blank" rel="noopener"><img src="2.jpeg" alt="Alerta por una entrevista laboral en un domicilio falso" loading="lazy" decoding="async"></a>
+                    <div class="case-body">
+                        <h3>Falsa entrevista laboral</h3>
+                        <p>Una citación en un domicilio particular. El sistema cruza información con la comunidad y alerta sobre un modus operandi usado para engaños o robos.</p>
+                        <span class="risk medio">Precaución</span>
+                    </div>
+                </article>
+                <article class="tile case">
+                    <a class="case-img" href="3.jpeg" target="_blank" rel="noopener"><img src="3.jpeg" alt="Detección de un SMS fraudulento" loading="lazy" decoding="async"></a>
+                    <div class="case-body">
+                        <h3>Smishing (SMS fraudulento)</h3>
+                        <p>Un SMS que exige pagar una supuesta deuda. Cyber Mobile identifica la urgencia falsa y dominios maliciosos (.bond, .online) usados para robar datos bancarios.</p>
+                        <span class="risk alto">Riesgo alto</span>
+                    </div>
+                </article>
+                <article class="tile case">
+                    <a class="case-img" href="4.jpeg" target="_blank" rel="noopener"><img src="4.jpeg" alt="Escaneo de un documento PDF malicioso" loading="lazy" decoding="async"></a>
+                    <div class="case-body">
+                        <h3>PDF con malware oculto</h3>
+                        <p>El agente evalúa el hash del archivo contra múltiples motores antivirus y advierte sobre abrir documentos no solicitados.</p>
+                        <span class="risk bajo">Preventivo</span>
+                    </div>
+                </article>
+                <article class="tile case">
+                    <a class="case-img" href="5.jpeg" target="_blank" rel="noopener"><img src="5.jpeg" alt="Verificación de un número de teléfono reportado" loading="lazy" decoding="async"></a>
+                    <div class="case-body">
+                        <h3>Número telefónico sospechoso</h3>
+                        <p>Búsqueda de un número desconocido: estaba reportado en bases comunitarias por estafas y fraudes telefónicos.</p>
+                        <span class="risk medio">Verificar identidad</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contacto" class="sec wrap">
+            <div class="cta reveal">
+                <h2>Empezá tu tranquilidad digital</h2>
+                <p>Siete días de prueba gratuita. Si dudás de un mensaje, consultanos antes de responder, hacer clic o transferir.</p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="https://wa.me/5491170598505?text=Hola%2C%20quiero%20probar%20Cyber%20Mobile" target="_blank" rel="noopener noreferrer" data-track="cta_whatsapp_contacto">
+                        <svg class="icon"><use href="#i-chat"/></svg> Escribinos por WhatsApp
+                    </a>
+                    <a class="btn btn-ghost" href="portfolio_digital.pdf" target="_blank" rel="noopener" data-track="portfolio_pdf">
+                        <svg class="icon"><use href="#i-download"/></svg> Portfolio (PDF)
+                    </a>
+                </div>
+                <div class="channels">
+                    <a href="https://whatsapp.com/channel/0029VbDM2qq23n3cCDH5lx21" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-megaphone"/></svg>Canal de alertas</a>
+                    <a href="https://instagram.com/cybermobile.ai" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-insta"/></svg>@cybermobile.ai</a>
+                    <a href="mailto:info@cybermobile.com.ar"><svg class="icon"><use href="#i-mail"/></svg>info@cybermobile.com.ar</a>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
-    
-    <div id="termsModal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h2>Términos y Condiciones de Uso</h2>
-        <p><strong>1. Aceptación de los Términos</strong><br>Al acceder y utilizar la plataforma CYBER MOBILE, usted reconoce haber leído, comprendido y aceptado quedar sujeto a estos Términos y Condiciones. Si no está de acuerdo, por favor, absténgase de usar nuestros servicios.</p>
-        <p><strong>2. Naturaleza del Servicio</strong><br>CYBER MOBILE es una herramienta de asesoría y análisis de seguridad digital. Los resultados proporcionados (verificaciones de archivos, URLs, emails, etc.) son de carácter informativo. CYBER MOBILE no garantiza la invulnerabilidad de sistemas ni la eliminación absoluta de riesgos.</p>
-        <p><strong>3. Obligaciones del Usuario</strong><br>El usuario se compromete a:</p>
-        <ul>
-            <li>No utilizar los servicios para actividades ilegales o malintencionadas.</li>
-            <li>No realizar ingeniería inversa o intentos de vulneración sobre los sistemas de CYBER MOBILE.</li>
-            <li>Ser responsable de la veracidad de los datos que ingresa para su análisis.</li>
-        </ul>
-        <p><strong>4. Propiedad Intelectual</strong><br>Todo el contenido, diseño, código fuente, logotipos y gráficos presentes en esta plataforma son propiedad exclusiva de CYBER MOBILE o han sido licenciados para su uso. Está prohibida su reproducción sin autorización previa.</p>
-        <p><strong>5. Limitación de Responsabilidad</strong><br>CYBER MOBILE no será responsable por daños, pérdidas o incidentes derivados del uso o la imposibilidad de uso de la plataforma. La responsabilidad final sobre la seguridad de sus activos digitales recae exclusivamente en el usuario.</p>
-        <div style="text-align:center; margin-top: 2rem;">
-            <button class="btn" onclick="closeModal()">Entendido</button>
-        </div>
-    </div>
-
-    <div id="privacyModal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <h2>Política de Privacidad</h2>
-        <p><strong>1. Recopilación de Datos</strong><br>En CYBER MOBILE, valoramos su privacidad. Recopilamos únicamente la información necesaria para brindarle un análisis de seguridad eficaz:</p>
-        <ul>
-            <li><strong>Datos Técnicos:</strong> Dirección IP, tipo de dispositivo, navegador y tiempo de sesión.</li>
-            <li><strong>Datos de Análisis:</strong> Información enviada por usted para verificación (URLs, direcciones de correo, archivos adjuntos).</li>
-        </ul>
-        <p><strong>2. Uso de la Información</strong><br>Utilizamos sus datos con el único fin de procesar sus solicitudes de seguridad y mejorar la precisión de nuestros algoritmos. <strong>No comercializamos ni cedemos sus datos personales a terceros.</strong></p>
-        <p><strong>3. Periodo de Retención</strong><br>Para garantizar su seguridad, los datos técnicos y de análisis se retendrán durante un periodo de <strong>30 días</strong>, tras lo cual serán eliminados o anonimizados de forma irreversible de nuestros servidores.</p>
-        <p><strong>4. Seguridad y Cifrado</strong><br>Implementamos medidas técnicas y organizativas para proteger su información. Todas las comunicaciones con nuestra plataforma están protegidas por cifrado de extremo a extremo.</p>
-        <div style="text-align:center; margin-top: 2rem;">
-            <button class="btn" onclick="closeModal()">Entendido</button>
-        </div>
-    </div>
-
     <footer>
-        <p>&copy; 2026 Cyber Mobile. Todos los derechos reservados.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--glass-border);">Protección proactiva contra fraudes digitales.</p>
-        <div class="legal-links">
-            <a href="javascript:void(0)" onclick="openModal('termsModal')">Términos y Condiciones</a>
-            <span style="color: var(--glass-border)">|</span>
-            <a href="javascript:void(0)" onclick="openModal('privacyModal')">Política de Privacidad</a>
+        <div class="wrap">
+            <span class="brandname">CYBER MOBILE</span>
+            <span>© 2026 Cyber Mobile · Protección proactiva contra fraudes digitales</span>
+            <div class="legal">
+                <button type="button" data-open="termsModal">Términos</button>
+                <button type="button" data-open="privacyModal">Privacidad</button>
+            </div>
         </div>
     </footer>
 
+    <nav class="tabbar" aria-label="Navegación principal">
+        <a href="#inicio" class="on"><svg class="icon"><use href="#i-shield"/></svg>Inicio</a>
+        <a href="#herramientas"><svg class="icon"><use href="#i-search"/></svg>Verificar</a>
+        <a href="/observatorio"><svg class="icon"><use href="#i-chart"/></svg>Observatorio</a>
+        <a href="#contacto"><svg class="icon"><use href="#i-chat"/></svg>Contacto</a>
+    </nav>
+
+    <dialog id="termsModal" aria-labelledby="terms-title">
+        <div class="dlg">
+            <div class="dlg-head">
+                <h2 id="terms-title">Términos y Condiciones de Uso</h2>
+                <button type="button" class="x" data-close aria-label="Cerrar"><svg class="icon"><use href="#i-x"/></svg></button>
+            </div>
+            <p><strong>1. Aceptación de los Términos</strong><br>Al acceder y utilizar la plataforma CYBER MOBILE, usted reconoce haber leído, comprendido y aceptado quedar sujeto a estos Términos y Condiciones. Si no está de acuerdo, por favor, absténgase de usar nuestros servicios.</p>
+            <p><strong>2. Naturaleza del Servicio</strong><br>CYBER MOBILE es una herramienta de asesoría y análisis de seguridad digital. Los resultados proporcionados (verificaciones de archivos, URLs, emails, etc.) son de carácter informativo. CYBER MOBILE no garantiza la invulnerabilidad de sistemas ni la eliminación absoluta de riesgos.</p>
+            <p><strong>3. Obligaciones del Usuario</strong><br>El usuario se compromete a:</p>
+            <ul>
+                <li>No utilizar los servicios para actividades ilegales o malintencionadas.</li>
+                <li>No realizar ingeniería inversa o intentos de vulneración sobre los sistemas de CYBER MOBILE.</li>
+                <li>Ser responsable de la veracidad de los datos que ingresa para su análisis.</li>
+            </ul>
+            <p><strong>4. Propiedad Intelectual</strong><br>Todo el contenido, diseño, código fuente, logotipos y gráficos presentes en esta plataforma son propiedad exclusiva de CYBER MOBILE o han sido licenciados para su uso. Está prohibida su reproducción sin autorización previa.</p>
+            <p><strong>5. Limitación de Responsabilidad</strong><br>CYBER MOBILE no será responsable por daños, pérdidas o incidentes derivados del uso o la imposibilidad de uso de la plataforma. La responsabilidad final sobre la seguridad de sus activos digitales recae exclusivamente en el usuario.</p>
+            <div style="text-align:center;margin-top:24px"><button type="button" class="btn btn-primary" data-close>Entendido</button></div>
+        </div>
+    </dialog>
+
+    <dialog id="privacyModal" aria-labelledby="privacy-title">
+        <div class="dlg">
+            <div class="dlg-head">
+                <h2 id="privacy-title">Política de Privacidad</h2>
+                <button type="button" class="x" data-close aria-label="Cerrar"><svg class="icon"><use href="#i-x"/></svg></button>
+            </div>
+            <p><strong>1. Recopilación de Datos</strong><br>En CYBER MOBILE, valoramos su privacidad. Recopilamos únicamente la información necesaria para brindarle un análisis de seguridad eficaz:</p>
+            <ul>
+                <li><strong>Datos Técnicos:</strong> Dirección IP, tipo de dispositivo, navegador y tiempo de sesión.</li>
+                <li><strong>Datos de Análisis:</strong> Información enviada por usted para verificación (URLs, direcciones de correo, archivos adjuntos).</li>
+            </ul>
+            <p><strong>2. Uso de la Información</strong><br>Utilizamos sus datos con el único fin de procesar sus solicitudes de seguridad y mejorar la precisión de nuestros algoritmos. <strong>No comercializamos ni cedemos sus datos personales a terceros.</strong></p>
+            <p><strong>3. Periodo de Retención</strong><br>Para garantizar su seguridad, los datos técnicos y de análisis se retendrán durante un periodo de <strong>30 días</strong>, tras lo cual serán eliminados o anonimizados de forma irreversible de nuestros servidores.</p>
+            <p><strong>4. Seguridad y Cifrado</strong><br>Implementamos medidas técnicas y organizativas para proteger su información. Todas las comunicaciones con nuestra plataforma están protegidas por cifrado de extremo a extremo.</p>
+            <div style="text-align:center;margin-top:24px"><button type="button" class="btn btn-primary" data-close>Entendido</button></div>
+        </div>
+    </dialog>
+
     <script>
-        // --- Funciones de Modales ---
-        function openModal(id) { 
-            document.getElementById('modalOverlay').style.display = 'block'; 
-            document.getElementById(id).style.display = 'block'; 
-            document.body.style.overflow = 'hidden';
-        }
-        function closeModal() { 
-            document.getElementById('modalOverlay').style.display = 'none'; 
-            document.getElementById('termsModal').style.display = 'none'; 
-            document.getElementById('privacyModal').style.display = 'none'; 
-            document.body.style.overflow = 'auto';
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- Sistema de Navegación por Pestañas ---
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    btn.classList.add('active');
-                    const targetId = btn.getAttribute('data-tab');
-                    document.getElementById(targetId).classList.add('active');
-                    
-                    if (typeof trackEvent === 'function') {
-                        trackEvent('tab_view', { tab: targetId });
-                    }
-                });
-            });
-
-            // --- Lógica del Acordeón de Herramientas ---
-            const toolCards = document.querySelectorAll('.interactive-card');
-            toolCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    card.classList.toggle('expanded');
-                });
-            });
-
-            // --- Simulador Interactivo de Chat ---
-            const scenariosData = {
-                email: [
-                    { sender: 'user', text: 'Hola, me podrías verificar si mi correo personal (contacto@ejemplo.com) tuvo alguna filtración?' },
-                    { sender: 'agent', type: 'warning', text: '<strong>⚠️ AUDITORÍA DE PRIVACIDAD</strong><br>Encontramos tu correo en 2 filtraciones de bases de datos antiguas (2021). No hay contraseñas recientes expuestas, pero te sugiero activar la verificación en dos pasos (2FA) por precaución.' }
-                ],
-                cvu: [
-                    { sender: 'user', text: 'Me pasaron este CVU para señar un alquiler en la costa: 00000031000123456789. ¿Es seguro?' },
-                    { sender: 'agent', type: 'safe', text: '<strong>✅ VERIFICADO</strong><br>El CVU corresponde a una entidad bancaria registrada a nombre de una empresa legal. No posee reportes de fraude recientes. Podés avanzar con la transferencia.' }
-                ],
-                url: [
-                    { sender: 'user', text: 'Me llegó un SMS que dice que bloquearon mi paquete de Correo Argentino. Link: <i>seguimiento-paquete-arg.com</i>' },
-                    { sender: 'agent', type: 'danger', text: '<strong>🔴 ALERTA CRÍTICA</strong><br>Ese enlace es falso (Phishing). Está diseñado para robar los datos de tu tarjeta de crédito. <strong>No ingreses ningún dato.</strong> Bloqueá el número remitente.' }
-                ],
-                archivo: [
-                    { sender: 'user', text: 'Me enviaron un PDF adjunto que dice "Factura_vencida_Abril.pdf", pero yo no tengo deudas. Te lo reenvío.' },
-                    { sender: 'agent', type: 'danger', text: '<strong>🔴 ARCHIVO MALICIOSO</strong><br>Análisis completado: 12 motores de seguridad detectaron un troyano oculto en ese PDF. <strong>Eliminalo de tu dispositivo inmediatamente.</strong>' }
-                ],
-                ip: [
-                    { sender: 'user', text: 'Me llegó una alerta de inicio de sesión en mi cuenta desde la IP 185.15.xx.xx. Yo estoy en Buenos Aires.' },
-                    { sender: 'agent', type: 'warning', text: '<strong>⚠️ ALERTA DE UBICACIÓN</strong><br>Esa dirección IP pertenece a un servicio de VPN/Hosting ubicado en Rusia. Si no fuiste vos o alguien de tu equipo, alguien accedió a tu cuenta. Cambiá la clave ahora mismo.' }
-                ],
-                usuario: [
-                    { sender: 'user', text: '¿Podés verificar esta tienda de Instagram @superofertas_zapatillas? Venden muy barato.' },
-                    { sender: 'agent', type: 'warning', text: '<strong>⚠️ PRECAUCIÓN</strong><br>La cuenta fue creada hace solo 5 días, cambió de nombre de usuario 3 veces y los comentarios están desactivados. Es un patrón típico de tiendas fraudulentas. Desaconsejamos la compra.' }
-                ],
-                telefono: [
-                    { sender: 'user', text: 'Tengo varias llamadas perdidas de este número: +54 11 5000-XXXX' },
-                    { sender: 'agent', type: 'safe', text: '<strong>ℹ️ INFORMACIÓN</strong><br>Ese número está reportado en múltiples bases de datos comunitarias como Spam/Telemarketing (Venta de seguros). No es una amenaza directa, podés ignorarlo o bloquearlo.' }
-                ],
-                asesoria: [
-                    { sender: 'user', text: 'Me parece que alguien entró a mi Instagram porque veo mensajes que no mandé. ¿Qué hago?' },
-                    { sender: 'agent', type: 'safe', text: '<strong>🛡️ PROTOCOLO DE SEGURIDAD:</strong><br>1. Entrá a <i>Configuración > Centro de Cuentas > Contraseña y seguridad</i>.<br>2. Tocá "Dónde iniciaste sesión" y cerrá las sesiones desconocidas.<br>3. Cambiá tu clave y activá la Autenticación en dos pasos (2FA). Te guío con capturas si lo necesitás.' }
-                ]
-            };
-
-            const chatWindow = document.getElementById('chat-window');
-            const simButtons = document.querySelectorAll('.scenario-btn');
-
-            async function playScenario(scenarioKey) {
-                chatWindow.innerHTML = '';
-                const messages = scenariosData[scenarioKey];
-                
-                const userMsg = document.createElement('div');
-                userMsg.className = 'msg msg-user';
-                userMsg.innerHTML = messages[0].text;
-                chatWindow.appendChild(userMsg);
-
-                const typing = document.createElement('div');
-                typing.className = 'typing-indicator';
-                typing.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
-                chatWindow.appendChild(typing);
-
-                setTimeout(() => {
-                    chatWindow.removeChild(typing);
-                    const agentMsg = document.createElement('div');
-                    agentMsg.className = `msg msg-agent ${messages[1].type}`;
-                    agentMsg.innerHTML = messages[1].text;
-                    chatWindow.appendChild(agentMsg);
-                    chatWindow.scrollTo({ top: chatWindow.scrollHeight, behavior: 'smooth' });
-                }, 1200);
-            }
-
-            playScenario('email');
-
-            simButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    simButtons.forEach(b => b.classList.remove('active'));
-                    e.currentTarget.classList.add('active');
-                    playScenario(e.currentTarget.dataset.scenario);
-                    
-                    if (typeof trackEvent === 'function') {
-                        trackEvent('sim_scenario_play', { scenario: e.currentTarget.dataset.scenario });
-                    }
-                });
-            });
-        });
-
-        // --- Sistema de Analíticas ---
-        window.trackEvent = function(eventName, details = {}) {
+        // --- Analíticas propias ---
+        window.trackEvent = function (eventName, details) {
             fetch('/api/track', {
                 method: 'POST',
                 keepalive: true,
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    event: eventName, 
-                    path: window.location.pathname,
-                    details: details 
-                })
-            }).catch(() => {});
+                body: JSON.stringify({ event: eventName, path: window.location.pathname, details: details || {} })
+            }).catch(function () {});
         };
 
-        (function() {
-            const startTime = Date.now();
-            
-            window.addEventListener('load', () => {
-                trackEvent('page_view', { 
+        (function () {
+            var startTime = Date.now();
+            window.addEventListener('load', function () {
+                trackEvent('page_view', {
                     userAgent: navigator.userAgent,
                     idioma: navigator.language,
-                    referido: document.referrer || "Directo"
+                    referido: document.referrer || 'Directo'
                 });
             });
-
-            window.addEventListener('visibilitychange', () => {
+            window.addEventListener('visibilitychange', function () {
                 if (document.visibilityState === 'hidden') {
-                    const tiempoSegundos = Math.round((Date.now() - startTime) / 1000);
-                    trackEvent('time_spent', { segundos: tiempoSegundos });
+                    trackEvent('time_spent', { segundos: Math.round((Date.now() - startTime) / 1000) });
                 }
             });
         })();
+
+        function esc(s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // --- Clics en botones de contacto ---
+            document.querySelectorAll('[data-track]').forEach(function (el) {
+                el.addEventListener('click', function () { trackEvent(el.dataset.track); });
+            });
+
+            // --- Herramientas: registrar qué tarjeta se abre ---
+            document.querySelectorAll('.tool').forEach(function (d) {
+                d.addEventListener('toggle', function () {
+                    if (d.open) trackEvent('tool_open', { tool: d.querySelector('h3').textContent });
+                });
+            });
+
+            // --- Modales legales ---
+            document.querySelectorAll('[data-open]').forEach(function (b) {
+                b.addEventListener('click', function () {
+                    var dlg = document.getElementById(b.dataset.open);
+                    if (dlg && dlg.showModal) dlg.showModal();
+                });
+            });
+            document.querySelectorAll('dialog').forEach(function (dlg) {
+                dlg.addEventListener('click', function (e) {
+                    if (e.target === dlg || e.target.closest('[data-close]')) dlg.close();
+                });
+            });
+
+            // --- Aparición al hacer scroll ---
+            var items = document.querySelectorAll('.reveal');
+            if (reduce || !('IntersectionObserver' in window)) {
+                items.forEach(function (el) { el.classList.add('in'); });
+            } else {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (en) {
+                        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+                    });
+                }, { rootMargin: '0px 0px -8% 0px' });
+                items.forEach(function (el) { io.observe(el); });
+            }
+
+            // --- Barra inferior: marcar la sección visible ---
+            var tabs = document.querySelectorAll('.tabbar a[href^="#"]');
+            if ('IntersectionObserver' in window && tabs.length) {
+                var secIo = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (en) {
+                        if (!en.isIntersecting) return;
+                        tabs.forEach(function (t) { t.classList.toggle('on', t.getAttribute('href') === '#' + en.target.id); });
+                    });
+                }, { rootMargin: '-45% 0px -50% 0px' });
+                ['inicio', 'herramientas', 'contacto'].forEach(function (id) {
+                    var s = document.getElementById(id);
+                    if (s) secIo.observe(s);
+                });
+            }
+
+            // --- Top 3 del Observatorio (datos en vivo) ---
+            var CANAL = { WHATSAPP: 'WhatsApp', REDES: 'Redes', TELEFONO: 'Teléfono', 'TELÉFONO': 'Teléfono', SMS: 'SMS', MAIL: 'Email', MARKETPLACE: 'Marketplace', APP: 'App' };
+            fetch('/observatorio/datos.json', { cache: 'no-store' })
+                .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+                .then(function (d) {
+                    var top = (d.top10 || []).slice(0, 3);
+                    if (!top.length) throw new Error('vacío');
+                    if (d.meta && d.meta.mes) document.getElementById('obs-kicker').textContent = 'Observatorio de Fraude Digital · ' + d.meta.mes;
+                    document.getElementById('top3').innerHTML = top.map(function (t) {
+                        var act = Math.max(0, Math.min(100, Number(t.act) || 0));
+                        return '<a class="tile t3" href="/observatorio#e' + esc(t.pos) + '">' +
+                            '<div class="t3-head"><span class="t3-pos">' + ('0' + t.pos).slice(-2) + '</span>' +
+                            '<span class="chip">' + esc(CANAL[t.canal] || t.canal) + '</span></div>' +
+                            '<span class="t3-name">' + esc(t.nombre) + '</span>' +
+                            '<div><div class="meter-lbl"><span>Índice de actividad</span><span>' + act + '/100</span></div>' +
+                            '<div class="meter"><i style="width:' + act + '%"></i></div></div></a>';
+                    }).join('');
+                })
+                .catch(function () {
+                    var s = document.getElementById('observatorio-resumen');
+                    if (s) s.querySelector('.top3').innerHTML = '<p style="color:var(--muted)">Mirá el ranking actualizado de estafas en el <a href="/observatorio">Observatorio de Fraude Digital</a>.</p>';
+                });
+
+            // --- Simulador ---
+            var ICON = { danger: 'i-alert', warning: 'i-alert', safe: 'i-check' };
+            var escenarios = {
+                email: ['Hola, ¿me podrías verificar si mi correo personal (contacto@ejemplo.com) tuvo alguna filtración?',
+                    'warning', 'Auditoría de privacidad', 'Encontramos tu correo en 2 filtraciones de bases de datos antiguas (2021). No hay contraseñas recientes expuestas, pero te sugiero activar la verificación en dos pasos (2FA) por precaución.'],
+                cvu: ['Me pasaron este CVU para señar un alquiler en la costa: 00000031000123456789. ¿Es seguro?',
+                    'safe', 'Verificado', 'El CVU corresponde a una entidad registrada a nombre de una empresa legal. No posee reportes de fraude recientes. Podés avanzar con la transferencia.'],
+                url: ['Me llegó un SMS que dice que bloquearon mi paquete de Correo Argentino. Link: seguimiento-paquete-arg.com',
+                    'danger', 'Alerta crítica', 'Ese enlace es falso (phishing). Está diseñado para robar los datos de tu tarjeta. No ingreses ningún dato y bloqueá el número remitente.'],
+                archivo: ['Me enviaron un PDF que dice "Factura_vencida_Abril.pdf", pero yo no tengo deudas. Te lo reenvío.',
+                    'danger', 'Archivo malicioso', '12 motores de seguridad detectaron un troyano oculto en ese PDF. Eliminalo de tu dispositivo inmediatamente.'],
+                ip: ['Me llegó una alerta de inicio de sesión desde la IP 185.15.xx.xx. Yo estoy en Buenos Aires.',
+                    'warning', 'Alerta de ubicación', 'Esa IP pertenece a un servicio de VPN/hosting ubicado en Rusia. Si no fuiste vos, alguien accedió a tu cuenta. Cambiá la clave ahora mismo.'],
+                usuario: ['¿Podés verificar esta tienda de Instagram @superofertas_zapatillas? Venden muy barato.',
+                    'warning', 'Precaución', 'La cuenta fue creada hace 5 días, cambió de nombre 3 veces y los comentarios están desactivados. Es un patrón típico de tiendas fraudulentas. Desaconsejamos la compra.'],
+                telefono: ['Tengo varias llamadas perdidas de este número: +54 11 5000-XXXX',
+                    'safe', 'Información', 'Ese número está reportado en bases comunitarias como spam o telemarketing (venta de seguros). No es una amenaza directa: podés ignorarlo o bloquearlo.'],
+                asesoria: ['Me parece que alguien entró a mi Instagram porque veo mensajes que no mandé. ¿Qué hago?',
+                    'safe', 'Protocolo de seguridad', '1. Entrá a Configuración › Centro de cuentas › Contraseña y seguridad.\n2. Tocá "Dónde iniciaste sesión" y cerrá las sesiones desconocidas.\n3. Cambiá tu clave y activá la verificación en dos pasos.']
+            };
+            var chat = document.getElementById('chat');
+            var status = document.getElementById('wa-status');
+            var timer = null;
+
+            function play(key) {
+                var s = escenarios[key];
+                if (!s) return;
+                clearTimeout(timer);
+                chat.innerHTML = '';
+                var u = document.createElement('div');
+                u.className = 'msg msg-user';
+                u.textContent = s[0];
+                chat.appendChild(u);
+                var typing = document.createElement('div');
+                typing.className = 'typing';
+                typing.innerHTML = '<i></i><i></i><i></i>';
+                chat.appendChild(typing);
+                status.textContent = 'analizando…';
+                timer = setTimeout(function () {
+                    typing.remove();
+                    var a = document.createElement('div');
+                    a.className = 'msg msg-agent ' + s[1];
+                    a.innerHTML = '<div class="verdict"><svg class="icon"><use href="#' + ICON[s[1]] + '"/></svg>' + esc(s[2]) + '</div>' +
+                        '<div style="white-space:pre-line">' + esc(s[3]) + '</div>';
+                    chat.appendChild(a);
+                    status.textContent = 'en línea';
+                }, reduce ? 0 : 1200);
+            }
+
+            var btns = document.querySelectorAll('#scenarios button');
+            btns.forEach(function (b) {
+                b.addEventListener('click', function () {
+                    btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+                    play(b.dataset.scenario);
+                    trackEvent('sim_scenario_play', { scenario: b.dataset.scenario });
+                });
+            });
+            play('email');
+        });
     </script>
 </body>
 </html>
