@@ -351,10 +351,21 @@ function paisesIntl(){
   }).join('') + '</div>';
 }
 
+// Mes actual según la hora de Argentina (AAAA-MM), igual que la tarea que genera los PDF.
+function mesActualAR(){
+  try {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Argentina/Buenos_Aires', year: 'numeric', month: '2-digit' }).format(new Date());
+  } catch (e) {
+    var h = new Date(Date.now() - 3 * 3600 * 1000);
+    return h.getUTCFullYear() + '-' + ('0' + (h.getUTCMonth() + 1)).slice(-2);
+  }
+}
 function mesCerrado(id){
-  var hoy = new Date();
-  var actual = hoy.getFullYear() + '-' + ('0' + (hoy.getMonth() + 1)).slice(-2);
-  return String(id) < actual;   // solo los meses ya terminados
+  return String(id) < mesActualAR();   // solo los meses ya terminados en Argentina
+}
+// Un mes que todavía no empezó en Argentina no se muestra (n8n puede adelantarse por zona horaria).
+function mesIniciado(id){
+  return String(id) <= mesActualAR();
 }
 
 function informeHTML(i){
@@ -400,7 +411,7 @@ function descargar(p) {
   document.body.appendChild(a); a.click(); a.remove();
 }
 function informesPublicables() {
-  return (D && D.informes || []).filter(function (i) { return INFORMES_EXCLUIDOS.indexOf(i.id) === -1; })
+  return (D && D.informes || []).filter(function (i) { return INFORMES_EXCLUIDOS.indexOf(i.id) === -1 && mesIniciado(i.id); })
     .slice().sort(function (a, b) { return a.id < b.id ? 1 : -1; });
 }
 // Botón del encabezado y tarjeta destacada del último informe cerrado.
@@ -437,9 +448,7 @@ function pintarInforme() {
 }
 
 function listaInformes(){
-  var inf = (D.informes || []).filter(function(i){
-    return INFORMES_EXCLUIDOS.indexOf(i.id) === -1;
-  });
+  var inf = informesPublicables();
   if(!inf.length){
     return '<p class="vac">Todav\u00eda no hay informes publicados. El primer informe mensual corresponde a septiembre de 2026 y estar\u00e1 disponible al cierre del mes. Las semanas anteriores fueron el per\u00edodo de puesta a punto del sistema.</p>';
   }
@@ -453,7 +462,7 @@ function listaInformes(){
         '<a class="encurso" href="/observatorio/informe-observatorio.html?mes='+esc(i.id)+'" target="_blank" rel="noopener">Ver en l\u00ednea \u2197</a>'
       : '<span class="encurso">Mes en curso \u00b7 disponible al cierre</span>';
     return '<article class="inf">'+
-      '<div class="infh"><span class="infm">'+esc(i.mes)+'</span>'+
+      '<div class="infh"><span class="infm">'+esc(String(i.mes).charAt(0).toUpperCase()+String(i.mes).slice(1))+'</span>'+
         '<span class="infacc">' + accion + '</span></div>'+
       '<div class="infb">'+
         '<span><strong>'+i.totalModalidades+'</strong> modalidades nacionales</span>'+
@@ -491,11 +500,7 @@ function copiarCita(btn){
 }
 
 // ===== Descarga del informe mensual (solo meses ya cerrados) =====
-function mesCerrado(id){
-  var hoy = new Date();
-  var actual = hoy.getFullYear() + '-' + ('0' + (hoy.getMonth() + 1)).slice(-2);
-  return String(id) < actual;   // '2026-09' < '2026-10'
-}
+
 
 
 
