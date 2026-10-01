@@ -1,0 +1,52 @@
+name: Publicación diaria para redes
+
+# Todos los días a las 17:15 (Argentina) genera la pieza del día en redes/<fecha>/:
+# lunes, reel del Top 3; resto de los días, la ficha de una estafa.
+on:
+  schedule:
+    - cron: '15 20 * * *'   # 17:15 en Argentina
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: 'Fecha AAAA-MM-DD (vacío = hoy en Argentina)'
+        type: string
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: redes
+  cancel-in-progress: false
+
+jobs:
+  redes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar Playwright, Chromium y ffmpeg
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          npm install --no-save --no-package-lock playwright@1
+          npx playwright install --with-deps chromium
+      - name: Generar la pieza del día
+        env:
+          FECHA: ${{ inputs.fecha }}
+        run: node scripts/redes/generar.mjs ${FECHA:+--fecha "$FECHA"}
+      - name: Guardar en el repositorio
+        run: |
+          git add -A redes
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Redes: publicación del día"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            sleep 5
+          done
