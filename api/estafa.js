@@ -63,7 +63,7 @@ a{color:var(--acc);text-decoration:none}a:hover{color:#67E8F9}
 .top{position:sticky;top:0;z-index:50;background:rgba(5,7,13,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(148,163,184,.1)}
 .top .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .brand{display:flex;align-items:center;gap:12px;color:var(--txt)}.brand:hover{color:var(--txt)}
-.brand .i{width:28px;height:28px;color:var(--acc);stroke-width:1.8}
+.brand img{width:38px;height:38px;border-radius:10px}
 .brand b{font-family:Orbitron,sans-serif;font-size:16px;letter-spacing:.14em}
 .menu{display:flex;gap:28px;font-size:15px;font-weight:500}.menu a{color:var(--muted)}.menu a:hover{color:var(--txt)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:14px;font-weight:600;font-size:16px}
@@ -133,7 +133,7 @@ footer .wrap{padding-top:28px;padding-bottom:28px;display:flex;justify-content:s
 
 function cabecera() {
     return `<header class="top"><div class="wrap">
-<a class="brand" href="/" aria-label="Cyber Mobile, inicio">${svg('shield', 28)}<b>CYBER MOBILE</b></a>
+<a class="brand" href="/" aria-label="Cyber Mobile, inicio"><img src="/logo-cm.png" alt="" width="38" height="38"><b>CYBER MOBILE</b></a>
 <nav class="menu" aria-label="Sitio"><a href="/#herramientas">Herramientas</a><a href="/#simulador">Simulador</a><a href="/observatorio">Observatorio</a><a href="/#contacto">Contacto</a></nav>
 <a class="btn btn-p pill" href="${WA}${encodeURIComponent('Hola, quiero probar Cyber Mobile')}" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">${svg('chat', 18)}<span>Consultar por WhatsApp</span></a>
 </div></header>`;
@@ -144,7 +144,6 @@ function documento({ title, description, canonical, jsonld, body, status }) {
 <html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
