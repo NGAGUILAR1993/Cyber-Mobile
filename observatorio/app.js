@@ -407,7 +407,10 @@ function pdfDe(id) { return PDFS.filter(function (p) { return p.id === id; })[0]
 function descargar(p) {
   var a = document.createElement('a');
   a.href = p.url;
-  a.download = 'Observatorio-Fraude-Digital-Cyber-Mobile-' + p.id + '.pdf';
+  // Nombre legible: "Informe del Observatorio de Fraude Digital Set26.pdf"
+  var MES_CORTO = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Set', 'Oct', 'Nov', 'Dic'];
+  var partes = String(p.id).split('-');
+  a.download = 'Informe del Observatorio de Fraude Digital ' + MES_CORTO[Number(partes[1]) - 1] + partes[0].slice(2) + '.pdf';
   document.body.appendChild(a); a.click(); a.remove();
 }
 function informesPublicables() {
