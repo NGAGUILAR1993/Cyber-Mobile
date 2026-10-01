@@ -1,0 +1,49 @@
+name: Informe mensual en PDF
+
+# El día 1 de cada mes (y el 2, por si n8n cerró tarde) genera el PDF del
+# informe del mes anterior a partir de observatorio/datos.json.
+on:
+  schedule:
+    - cron: '30 6 1,2 * *'   # 03:30 en Argentina
+  workflow_dispatch:
+    inputs:
+      forzar:
+        description: 'Regenerar también los PDF que ya existen'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: informe-pdf
+  cancel-in-progress: false
+
+jobs:
+  pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Instalar Playwright y Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1
+          npx playwright install --with-deps chromium
+      - name: Generar PDF pendientes
+        run: node scripts/generar-informes-pdf.mjs ${{ inputs.forzar && '--forzar' || '' }}
+      - name: Guardar en el repositorio
+        run: |
+          git add observatorio/informes
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Observatorio: informe mensual en PDF"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            sleep 5
+          done

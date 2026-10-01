@@ -144,6 +144,9 @@
   @media print {
     html, body { background: #fff; }
     .hoja { margin: 0; box-shadow: none; width: 210mm; min-height: 297mm; }
+    .portada { padding: 18mm 22mm 14mm; }
+    .seccion { padding-top: 18px; }
+    table.rk td { padding: 6px 0; }
   }
 </style>
 </head>
@@ -160,33 +163,22 @@
       <h1>Observatorio de<br>Fraude Digital</h1>
       <div class="subrayado"></div>
       <div class="bajada">Informe mensual de estafas digitales en Argentina</div>
-      <div class="periodo" data-periodo>Septiembre 2026</div>
+      <div class="periodo" data-periodo></div>
     </div>
 
     <div class="seccion">
       <div class="rotulo">RESUMEN DEL PERÍODO</div>
       <div class="kpis">
-        <div class="kpi"><div class="n" data-kpi-monit>20</div><div class="l">modalidades<br>monitoreadas</div></div>
-        <div class="kpi"><div class="n" data-kpi-emerg>4</div><div class="l">emergentes<br>este mes</div></div>
-        <div class="kpi alto"><div class="n" data-kpi-alto>7</div><div class="l">de riesgo<br>alto</div></div>
+        <div class="kpi"><div class="n" data-kpi-monit>—</div><div class="l">modalidades<br>monitoreadas</div></div>
+        <div class="kpi"><div class="n" data-kpi-emerg>—</div><div class="l">emergentes<br>este mes</div></div>
+        <div class="kpi alto"><div class="n" data-kpi-alto>—</div><div class="l">de riesgo<br>alto</div></div>
       </div>
-      <p class="texto" data-resumen>Durante septiembre, el phishing que suplanta a organismos del Estado concentró la mayor actividad, encabezado por las campañas en nombre de ARCA. Las estafas de inversión con video deepfake mostraron el mayor crecimiento del período, mientras el canal de WhatsApp se consolidó como la principal vía de contacto.</p>
+      <p class="texto" data-resumen></p>
     </div>
 
     <div class="seccion">
       <div class="rotulo">TOP 10 NACIONAL</div>
-      <table class="rk" data-tabla-top>
-        <tr><td class="pos">1</td><td>Phishing de ARCA</td><td class="canal">MAIL</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:88%;background:var(--alto)"></div></div><span class="val">88</span></div></td></tr>
-        <tr><td class="pos">2</td><td>Deepfake de inversión con figuras públicas</td><td class="canal">REDES</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:76%;background:var(--alto)"></div></div><span class="val">76</span></div></td></tr>
-        <tr><td class="pos">3</td><td>Secuestro de cuenta de WhatsApp</td><td class="canal">WSP</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:68%;background:var(--alto)"></div></div><span class="val">68</span></div></td></tr>
-        <tr><td class="pos">4</td><td>Suplantación de banco por teléfono</td><td class="canal">TEL</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:61%;background:var(--medio)"></div></div><span class="val">61</span></div></td></tr>
-        <tr><td class="pos">5</td><td>Falsa encomienda de Correo Argentino</td><td class="canal">MAIL</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:55%;background:var(--medio)"></div></div><span class="val">55</span></div></td></tr>
-        <tr><td class="pos">6</td><td>Falso PAMI Previaje a jubilados</td><td class="canal">SMS</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:49%;background:var(--medio)"></div></div><span class="val">49</span></div></td></tr>
-        <tr><td class="pos">7</td><td>Falsa oferta laboral con pago adelantado</td><td class="canal">REDES</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:44%;background:var(--medio)"></div></div><span class="val">44</span></div></td></tr>
-        <tr><td class="pos">8</td><td>QR fraudulento en pagos</td><td class="canal">MKT</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:38%;background:var(--bajo)"></div></div><span class="val">38</span></div></td></tr>
-        <tr><td class="pos">9</td><td>Perfil romántico falso</td><td class="canal">REDES</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:33%;background:var(--bajo)"></div></div><span class="val">33</span></div></td></tr>
-        <tr><td class="pos">10</td><td>Falso soporte técnico</td><td class="canal">TEL</td><td class="barcell"><div class="bar"><div class="track"><div class="fill" style="width:27%;background:var(--bajo)"></div></div><span class="val">27</span></div></td></tr>
-      </table>
+      <table class="rk" data-tabla-top></table>
     </div>
   </div>
   <div class="pie"><span>OBSERVATORIO DE FRAUDE DIGITAL · CYBER MOBILE</span><span>Página 1 de 4</span></div>
@@ -200,15 +192,15 @@
       <div class="subtitulo">La estafa con mayor índice de actividad del período</div>
       <div class="ficha" data-ficha>
         <div class="cab">
-          <div class="nom">Phishing de ARCA</div>
-          <div class="act"><div class="num">88</div><div class="lbl">ÍNDICE ACT</div></div>
+          <div class="nom"></div>
+          <div class="act"><div class="num"></div><div class="lbl">ÍNDICE ACT</div></div>
         </div>
         <div class="etiquetas">
-          <span class="etq canal2">MAIL</span>
-          <span class="etq riesgo">RIESGO ALTO</span>
+          <span class="etq canal2"></span>
+          <span class="etq riesgo"></span>
         </div>
-        <p><span class="dt">Modus operandi.</span> Un correo que simula ser de ARCA reclama el pago de una encomienda retenida. Incluye nombre y CUIL reales de la víctima para dar credibilidad, y exige una foto del DNI junto con una transferencia inmediata.</p>
-        <p><span class="dt verde">Cómo reconocerla.</span> ARCA nunca solicita pagos ni documentación por correo. El remitente utiliza variantes del dominio oficial para simular legitimidad.</p>
+        <p></p>
+        <p></p>
       </div>
     </div>
 
@@ -218,33 +210,15 @@
         <div class="metrica">
           <div class="h">Distribución por canal de contacto</div>
           <div class="dona-fila">
-            <svg viewBox="0 0 120 120" width="110" height="110" data-dona>
-              <circle cx="60" cy="60" r="46" fill="none" stroke="var(--verde)" stroke-width="16" stroke-dasharray="92 197" transform="rotate(-90 60 60)"/>
-              <circle cx="60" cy="60" r="46" fill="none" stroke="var(--oro)" stroke-width="16" stroke-dasharray="58 231" stroke-dashoffset="-92" transform="rotate(-90 60 60)"/>
-              <circle cx="60" cy="60" r="46" fill="none" stroke="var(--bajo)" stroke-width="16" stroke-dasharray="82 207" stroke-dashoffset="-150" transform="rotate(-90 60 60)"/>
-              <circle cx="60" cy="60" r="46" fill="none" stroke="var(--medio)" stroke-width="16" stroke-dasharray="57 232" stroke-dashoffset="-232" transform="rotate(-90 60 60)"/>
-            </svg>
-            <div class="leyenda" data-leyenda-canal>
-              <div><span class="pt" style="background:var(--verde)"></span>WhatsApp 32%</div>
-              <div><span class="pt" style="background:var(--oro)"></span>Teléfono 20%</div>
-              <div><span class="pt" style="background:var(--bajo)"></span>Redes 28%</div>
-              <div><span class="pt" style="background:var(--medio)"></span>Mail 20%</div>
-            </div>
+            <svg viewBox="0 0 120 120" width="110" height="110" data-dona></svg>
+            <div class="leyenda" data-leyenda-canal></div>
           </div>
         </div>
         <div class="metrica">
           <div class="h">Nivel de riesgo en el ranking</div>
-          <div data-riesgo>
-            <div class="riesgo-fila"><span class="et">Alto</span><div class="track"><div class="fill" style="width:70%;background:var(--alto)"></div></div><span class="v">7</span></div>
-            <div class="riesgo-fila"><span class="et">Medio</span><div class="track"><div class="fill" style="width:30%;background:var(--medio)"></div></div><span class="v">3</span></div>
-            <div class="riesgo-fila"><span class="et">Bajo</span><div class="track"><div class="fill" style="width:10%;background:var(--bajo)"></div></div><span class="v">1</span></div>
-          </div>
+          <div data-riesgo></div>
           <div class="h" style="margin-top:18px">Mayores movimientos</div>
-          <div class="movs" data-movs>
-            <div class="fila"><span>Deepfake de inversión</span><span class="up">+22</span></div>
-            <div class="fila"><span>Falso PAMI Previaje</span><span class="up">+14</span></div>
-            <div class="fila"><span>Secuestro de WhatsApp</span><span class="dn">−6</span></div>
-          </div>
+          <div class="movs" data-movs></div>
         </div>
       </div>
     </div>
@@ -263,39 +237,17 @@
       <div class="titulo">Ranking completo del mes</div>
       <div class="subtitulo">Las veinte modalidades activas, ordenadas por índice de actividad</div>
       <div class="rotulo">TOP 10 · ARGENTINA</div>
-      <table class="rk" data-tabla-completa>
-        <tr><td class="pos">1</td><td>Phishing de ARCA</td><td class="canal">MAIL</td><td style="width:34px;text-align:right;font-family:var(--serif);color:var(--alto)">88</td></tr>
-        <tr><td class="pos">2</td><td>Deepfake de inversión con figuras públicas</td><td class="canal">REDES</td><td style="text-align:right;font-family:var(--serif);color:var(--alto)">76</td></tr>
-        <tr><td class="pos">3</td><td>Secuestro de cuenta de WhatsApp</td><td class="canal">WSP</td><td style="text-align:right;font-family:var(--serif);color:var(--alto)">68</td></tr>
-        <tr><td class="pos">4</td><td>Suplantación de banco por teléfono</td><td class="canal">TEL</td><td style="text-align:right;font-family:var(--serif);color:var(--medio)">61</td></tr>
-        <tr><td class="pos">5</td><td>Falsa encomienda de Correo Argentino</td><td class="canal">MAIL</td><td style="text-align:right;font-family:var(--serif);color:var(--medio)">55</td></tr>
-        <tr><td class="pos">6</td><td>Falso PAMI Previaje a jubilados</td><td class="canal">SMS</td><td style="text-align:right;font-family:var(--serif);color:var(--medio)">49</td></tr>
-        <tr><td class="pos">7</td><td>Falsa oferta laboral con pago adelantado</td><td class="canal">REDES</td><td style="text-align:right;font-family:var(--serif);color:var(--medio)">44</td></tr>
-        <tr><td class="pos">8</td><td>QR fraudulento en pagos</td><td class="canal">MKT</td><td style="text-align:right;font-family:var(--serif);color:var(--bajo)">38</td></tr>
-        <tr><td class="pos">9</td><td>Perfil romántico falso</td><td class="canal">REDES</td><td style="text-align:right;font-family:var(--serif);color:var(--bajo)">33</td></tr>
-        <tr><td class="pos">10</td><td>Falso soporte técnico</td><td class="canal">TEL</td><td style="text-align:right;font-family:var(--serif);color:var(--bajo)">27</td></tr>
-      </table>
+      <table class="rk" data-tabla-completa></table>
     </div>
     <div class="seccion">
       <div class="dos-col">
         <div class="col">
           <div class="rotulo">EN VIGILANCIA · 11 A 20</div>
-          <div class="lista-min" data-vigilancia>
-            <div class="fila"><span>11 · SIM swapping</span><span class="v">24</span></div>
-            <div class="fila"><span>12 · Phishing de ANSES</span><span class="v">22</span></div>
-            <div class="fila"><span>13 · Tienda online falsa</span><span class="v">20</span></div>
-            <div class="fila"><span>14 · Cambio de CBU en factura</span><span class="v">18</span></div>
-            <div class="mas">y seis modalidades más</div>
-          </div>
+          <div class="lista-min" data-vigilancia></div>
         </div>
         <div class="col">
           <div class="rotulo">INTERNACIONAL</div>
-          <div class="lista-min" data-internacional>
-            <div class="fila"><span>Phishing bancario</span><span class="v">España</span></div>
-            <div class="fila"><span>Estafa de voz con IA</span><span class="v">EE.UU.</span></div>
-            <div class="fila"><span>Golpe del falso empleo</span><span class="v">Brasil</span></div>
-            <div class="fila"><span>Fraude en compras online</span><span class="v">México</span></div>
-          </div>
+          <div class="lista-min" data-internacional></div>
           <p class="aclara">Modalidades del exterior con potencial de llegar al país.</p>
         </div>
       </div>
@@ -311,38 +263,15 @@
       <div class="titulo">Evolución reciente</div>
       <div class="subtitulo">Índice de actividad de las modalidades principales en el trimestre</div>
       <div class="grafico">
-        <svg viewBox="0 0 520 150" width="100%" style="max-width:520px;display:block" data-grafico>
-          <line x1="40" y1="10" x2="40" y2="120" stroke="var(--linea)" stroke-width="1"/>
-          <line x1="40" y1="120" x2="510" y2="120" stroke="var(--linea)" stroke-width="1"/>
-          <line x1="40" y1="65" x2="510" y2="65" stroke="#efe9dc" stroke-width="1"/>
-          <text x="32" y="14" text-anchor="end" font-family="monospace" font-size="8" fill="#b0a794">100</text>
-          <text x="32" y="68" text-anchor="end" font-family="monospace" font-size="8" fill="#b0a794">50</text>
-          <text x="32" y="122" text-anchor="end" font-family="monospace" font-size="8" fill="#b0a794">0</text>
-          <text x="105" y="134" text-anchor="middle" font-family="monospace" font-size="8" fill="#8c8377">JULIO</text>
-          <text x="275" y="134" text-anchor="middle" font-family="monospace" font-size="8" fill="#8c8377">AGOSTO</text>
-          <text x="445" y="134" text-anchor="middle" font-family="monospace" font-size="8" fill="#8c8377">SEPTIEMBRE</text>
-          <polyline points="105,52 275,38 445,15" fill="none" stroke="var(--alto)" stroke-width="2"/>
-          <polyline points="105,88 275,60 445,42" fill="none" stroke="var(--verde)" stroke-width="2"/>
-          <polyline points="105,70 275,72 445,55" fill="none" stroke="var(--oro)" stroke-width="2"/>
-          <polyline points="105,100 275,92 445,82" fill="none" stroke="var(--bajo)" stroke-width="2"/>
-          <circle cx="445" cy="15" r="3" fill="var(--alto)"/>
-          <circle cx="445" cy="42" r="3" fill="var(--verde)"/>
-          <circle cx="445" cy="55" r="3" fill="var(--oro)"/>
-          <circle cx="445" cy="82" r="3" fill="var(--bajo)"/>
-        </svg>
+        <svg viewBox="0 0 520 150" width="100%" style="max-width:520px;display:block" data-grafico></svg>
       </div>
-      <div class="grafico-leyenda">
-        <span><span class="ln" style="background:var(--alto)"></span>Phishing de ARCA</span>
-        <span><span class="ln" style="background:var(--verde)"></span>Deepfake de inversión</span>
-        <span><span class="ln" style="background:var(--oro)"></span>Secuestro de WhatsApp</span>
-        <span><span class="ln" style="background:var(--bajo)"></span>Suplantación de banco</span>
-      </div>
+      <div class="grafico-leyenda"></div>
     </div>
 
     <div class="seccion lectura">
       <div class="rotulo">LECTURA DEL PERÍODO</div>
-      <p data-lectura-1>El trimestre confirma una tendencia sostenida al alza en las modalidades que suplantan a organismos del Estado. El phishing de ARCA no solo encabeza el ranking sino que registra el crecimiento más consistente de la serie, en línea con los vencimientos impositivos del período.</p>
-      <p data-lectura-2>El dato más significativo es la irrupción del deepfake de inversión, que en tres meses pasó de la vigilancia al segundo puesto. Su avance sugiere una adopción creciente de herramientas de inteligencia artificial por parte de las redes de fraude, un fenómeno que los organismos internacionales relevados ya documentan como emergente.</p>
+      <p data-lectura-1></p>
+      <p data-lectura-2></p>
     </div>
   </div>
   <div class="nota">
@@ -350,137 +279,13 @@
     <p>Elaboración propia a partir del monitoreo automatizado de fuentes públicas: alertas de organismos oficiales, verificadores periodísticos y medios de referencia nacionales e internacionales. El índice de actividad pondera la cantidad de fuentes independientes que reportan cada modalidad y la autoridad de cada una.</p>
   </div>
   <div class="pie cita">
-    <div class="ref">Aguilar, N. G. (<span data-anio>2026</span>). <em>Observatorio de Fraude Digital: estafas digitales en Argentina, edición <span data-edicion>septiembre 2026</span>.</em> Cyber Mobile.</div>
+    <div class="ref">Aguilar, N. G. (<span data-anio>2026</span>). <em>Observatorio de Fraude Digital: estafas digitales en Argentina, edición <span data-edicion></span>.</em> Cyber Mobile.</div>
     <div class="linea2"><span>cybermobile.com.ar/observatorio</span><span>Página 4 de 4</span></div>
   </div>
 </section>
 
 
-<script>
-(function(){
-  // El informe se abre como  informe-observatorio.html?mes=2026-09
-  function param(n){ var m=new RegExp('[?&]'+n+'=([^&]+)').exec(location.search); return m?decodeURIComponent(m[1]):''; }
-  var mesId = param('mes');
-
-  var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto',
-               'septiembre','octubre','noviembre','diciembre'];
-  var PAISES = {AR:'Argentina',ES:'España',MX:'México',CL:'Chile',CO:'Colombia',PE:'Perú',
-                UY:'Uruguay',BR:'Brasil',US:'EE.UU.',GB:'Reino Unido'};
-  var CANAL = {MAIL:'MAIL',WHATSAPP:'WSP',SMS:'SMS',REDES:'REDES',TELEFONO:'TEL',MARKETPLACE:'MKT',APP:'APP'};
-  var RC = {alto:'var(--alto)',medio:'var(--medio)',bajo:'var(--bajo)'};
-
-  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,function(c){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-  function set(sel, txt){ var e=document.querySelector(sel); if(e) e.textContent=txt; }
-  function nombreMes(id){
-    if(!id) return '';
-    var p=id.split('-'); var m=parseInt(p[1],10)-1;
-    return (MESES[m]||'') + ' ' + p[0];
-  }
-  function capitaliza(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
-
-  function pintar(inf){
-    var mesTxt = capitaliza(nombreMes(inf.id));
-    set('[data-periodo]', mesTxt);
-    var ed = document.querySelector('[data-edicion]'); if(ed) ed.textContent = nombreMes(inf.id);
-    var an = document.querySelector('[data-anio]'); if(an) an.textContent = inf.id.split('-')[0];
-
-    set('[data-kpi-monit]', inf.totalModalidades!=null?inf.totalModalidades:(inf.top?inf.top.length:0));
-    set('[data-kpi-emerg]', inf.emergentes!=null?inf.emergentes:'—');
-    set('[data-kpi-alto]', inf.riesgo?inf.riesgo.alto:0);
-    if(inf.resumen) set('[data-resumen]', inf.resumen);
-
-    var top = inf.top||[];
-    // Tabla portada (con barras)
-    var t1=document.querySelector('[data-tabla-top]');
-    if(t1 && top.length){
-      var max = Math.max.apply(null, top.map(function(x){return x.act;}))||100;
-      t1.innerHTML = top.map(function(x){
-        return '<tr><td class="pos">'+x.pos+'</td><td>'+esc(x.nombre)+'</td>'+
-          '<td class="canal">'+(CANAL[x.canal]||x.canal)+'</td>'+
-          '<td class="barcell"><div class="bar"><div class="track">'+
-          '<div class="fill" style="width:'+Math.round(x.act/max*100)+'%;background:'+(RC[x.riesgo]||'var(--bajo)')+'"></div>'+
-          '</div><span class="val">'+x.act+'</span></div></td></tr>';
-      }).join('');
-    }
-    // Tabla completa pág 3
-    var t2=document.querySelector('[data-tabla-completa]');
-    if(t2 && top.length){
-      t2.innerHTML = top.map(function(x){
-        return '<tr><td class="pos">'+x.pos+'</td><td>'+esc(x.nombre)+'</td>'+
-          '<td class="canal">'+(CANAL[x.canal]||x.canal)+'</td>'+
-          '<td style="width:34px;text-align:right;font-family:var(--serif);color:'+(RC[x.riesgo]||'var(--bajo)')+'">'+x.act+'</td></tr>';
-      }).join('');
-    }
-    // Ficha de la modalidad top
-    if(top[0]){
-      var f=top[0], fi=document.querySelector('[data-ficha]');
-      if(fi){
-        fi.querySelector('.nom').textContent=f.nombre;
-        fi.querySelector('.act .num').textContent=f.act;
-        var etq=fi.querySelectorAll('.etq');
-        if(etq[0]) etq[0].textContent=(CANAL[f.canal]||f.canal);
-        if(etq[1]) etq[1].textContent='RIESGO '+String(f.riesgo||'').toUpperCase();
-        var ps=fi.querySelectorAll('p');
-        if(f.como && ps[0]) ps[0].innerHTML='<span class="dt">Modus operandi.</span> '+esc(f.como);
-        if(f.detectar && ps[1]) ps[1].innerHTML='<span class="dt verde">Cómo reconocerla.</span> '+esc(f.detectar);
-      }
-    }
-    // Riesgo
-    if(inf.riesgo){
-      var r=inf.riesgo, tot=(r.alto+r.medio+r.bajo)||1, cont=document.querySelector('[data-riesgo]');
-      if(cont){
-        cont.innerHTML =
-          fila('Alto', r.alto, tot, 'var(--alto)')+
-          fila('Medio', r.medio, tot, 'var(--medio)')+
-          fila('Bajo', r.bajo, tot, 'var(--bajo)');
-      }
-    }
-    // Vigilancia
-    var vig=inf.watch||[];
-    var cv=document.querySelector('[data-vigilancia]');
-    if(cv){
-      if(vig.length){
-        cv.innerHTML = vig.slice(0,4).map(function(x){
-          return '<div class="fila"><span>'+x.pos+' · '+esc(x.nombre)+'</span><span class="v">'+x.act+'</span></div>';
-        }).join('') + (vig.length>4?'<div class="mas">y '+(vig.length-4)+' modalidades más</div>':'');
-      } else {
-        cv.innerHTML = '<div class="mas">Sin modalidades en vigilancia este período.</div>';
-      }
-    }
-    // Internacional
-    var intl=inf.internacional||[];
-    var ci=document.querySelector('[data-internacional]');
-    if(ci){
-      if(intl.length){
-        ci.innerHTML = intl.slice(0,6).map(function(x){
-          var p = PAISES[x.pais]||x.pais||'Exterior';
-          return '<div class="fila"><span>'+esc(x.nombre)+'</span><span class="v">'+esc(p)+'</span></div>';
-        }).join('');
-      } else {
-        ci.innerHTML = '<div class="fila"><span>Sin modalidades del exterior este período.</span></div>';
-      }
-    }
-  }
-  function fila(et,val,tot,col){
-    return '<div class="riesgo-fila"><span class="et">'+et+'</span>'+
-      '<div class="track"><div class="fill" style="width:'+Math.round((val/tot)*100)+'%;background:'+col+'"></div></div>'+
-      '<span class="v">'+val+'</span></div>';
-  }
-
-  // Cargar datos.json y buscar el mes pedido
-  fetch('datos.json', {cache:'no-store'})
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      var informes = d.informes || [];
-      var inf = mesId ? informes.filter(function(i){return i.id===mesId;})[0] : informes[0];
-      if(inf) pintar(inf);
-      else document.body.insertAdjacentHTML('afterbegin',
-        '<div style="padding:20px;font-family:sans-serif;color:#a3342b">Informe no disponible para el período solicitado.</div>');
-    })
-    .catch(function(){ /* si no hay datos.json, quedan los valores de ejemplo */ });
-})();
-</script>
+<script src="informe.js"></script>
 
 </body>
 </html>
