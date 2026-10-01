@@ -62,6 +62,17 @@ h1{font-size:clamp(36px,5vw,60px);line-height:1.05;font-weight:700;letter-spacin
 #err{display:none;margin:16px 0;padding:14px 18px;border-radius:14px;border:1px solid var(--alto);font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--alto)}
 
 /* Resumen */
+.icard{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:22px 26px;margin-bottom:14px;border-radius:20px;border:1px solid var(--chipBd);background:linear-gradient(120deg,var(--chipBg),transparent 70%)}
+.icard[hidden]{display:none}
+.ic-t{display:flex;flex-direction:column;gap:4px;min-width:240px;flex:1}
+.ic-t b{font-size:22px;font-weight:600;color:var(--txt)}
+.ic-t span:last-child{font-size:15px;color:var(--txt2)}
+.ic-a{display:flex;gap:10px;flex-wrap:wrap}
+.ic-a a{text-decoration:none}
+.ic-a .cta{border:0;cursor:pointer;font-family:inherit}
+button.verinf{border:0;cursor:pointer;font-family:inherit}
+a.encurso{text-decoration:none;color:var(--acc);border-style:solid;border-color:var(--chipBd)}
+[data-act="pdf"][hidden]{display:none}
 .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .kt,.chart,.ent,.caja,.inf,.nota,.agente,.perfil,.citaBox,.ctc a,.cap .c{background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));border:1px solid var(--line);border-radius:20px}
 .kt{padding:22px 24px;display:flex;flex-direction:column;gap:4px}
@@ -295,6 +306,7 @@ footer{margin-top:56px;padding:28px 0 8px;border-top:1px solid var(--line);displ
  .ent-g{grid-template-columns:1fr}
 }
 @media(max-width:640px){
+ [data-act="pdf"]{display:none}
  .ent-acc{width:100%}.ficha{width:100%;justify-content:center}
  .topbar .in{height:64px}
  .brand span{font-size:13px}
@@ -342,16 +354,18 @@ footer{margin-top:56px;padding:28px 0 8px;border-top:1px solid var(--line);displ
  <div>
   <div class="kick"><span class="dot"></span><span id="stamp">Monitoreo activo</span></div>
   <h1>Observatorio de Fraude Digital</h1>
-  <div class="sub">Informe mensual · <span data-mes></span> · Argentina</div>
+  <div class="sub">Ranking en curso · <span data-mes></span> · Argentina</div>
   <span id="cnt"></span>
  </div>
  <div class="btns noprint">
   <button class="b" data-act="modo"><span id="modoLbl">Modo claro</span></button>
-  <button class="b bp" data-act="pdf"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Descargar PDF</button>
+  <button class="b bp" data-act="pdf" hidden><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>Descargar PDF</span></button>
  </div>
 </header>
 
 <div id="err" role="alert"></div>
+
+<section id="informeCard" class="icard noprint" hidden aria-label="Informe mensual"></section>
 
 <div id="resumen"></div>
 

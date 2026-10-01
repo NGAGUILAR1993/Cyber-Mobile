@@ -390,6 +390,52 @@ function informeHTML(i){
 // Meses que fueron periodo de prueba y NO se publican como informe
 var INFORMES_EXCLUIDOS = ['2026-08'];
 
+// PDF de informes cerrados, generados por la tarea mensual (scripts/generar-informes-pdf.mjs).
+var PDFS = [];
+function pdfDe(id) { return PDFS.filter(function (p) { return p.id === id; })[0] || null; }
+function descargar(p) {
+  var a = document.createElement('a');
+  a.href = p.url;
+  a.download = 'Observatorio-Fraude-Digital-Cyber-Mobile-' + p.id + '.pdf';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+function informesPublicables() {
+  return (D && D.informes || []).filter(function (i) { return INFORMES_EXCLUIDOS.indexOf(i.id) === -1; })
+    .slice().sort(function (a, b) { return a.id < b.id ? 1 : -1; });
+}
+// Botón del encabezado y tarjeta destacada del último informe cerrado.
+function pintarInforme() {
+  var btn = document.querySelector('[data-act="pdf"]');
+  var card = document.getElementById('informeCard');
+  var pubs = informesPublicables();
+  var cerrado = pubs.filter(function (i) { return mesCerrado(i.id); })[0] || null;
+  var primero = pubs.length ? pubs[pubs.length - 1] : null;
+  var pdf = cerrado ? pdfDe(cerrado.id) : null;
+  if (btn) {
+    btn.hidden = !pdf;
+    var lbl = btn.querySelector('span');
+    if (pdf && lbl) lbl.textContent = 'Informe de ' + cerrado.mes.replace(/ de \d{4}$/, '') + ' (PDF)';
+  }
+  if (!card) return;
+  if (cerrado) {
+    var esPrimero = primero && primero.id === cerrado.id;
+    card.innerHTML = '<div class="ic-t"><span class="kick">' + (esPrimero ? 'Primer informe mensual' : '\u00daltimo informe mensual') + '</span>' +
+      '<b>Informe de ' + esc(cerrado.mes) + '</b>' +
+      '<span>Ranking cerrado del mes con el an\u00e1lisis de las ' + esc(cerrado.totalModalidades) + ' modalidades seguidas.</span></div>' +
+      '<div class="ic-a">' +
+      (pdf ? '<button type="button" class="cta" data-pdf="' + esc(pdf.id) + '">Descargar PDF</button>' : '') +
+      '<a class="b" href="/observatorio/informe-observatorio.html?mes=' + esc(cerrado.id) + '" target="_blank" rel="noopener">Ver en l\u00ednea \u2197</a></div>';
+    card.hidden = false;
+  } else if (primero) {
+    card.innerHTML = '<div class="ic-t"><span class="kick">Primer informe mensual</span>' +
+      '<b>Informe de ' + esc(primero.mes) + '</b>' +
+      '<span>Estar\u00e1 disponible para descargar al cierre del mes. Mientras tanto, el ranking se actualiza en vivo.</span></div>';
+    card.hidden = false;
+  } else {
+    card.hidden = true;
+  }
+}
+
 function listaInformes(){
   var inf = (D.informes || []).filter(function(i){
     return INFORMES_EXCLUIDOS.indexOf(i.id) === -1;
@@ -401,8 +447,10 @@ function listaInformes(){
     var f = new Date(i.actualizado);
     var top3 = (i.top||[]).slice(0,3).map(function(t){ return t.pos+'. '+esc(t.nombre); }).join(' &middot; ');
     var cerrado = mesCerrado(i.id);
+    var pdf = pdfDe(i.id);
     var accion = cerrado
-      ? '<a class="verinf" href="/observatorio/informe-observatorio.html?mes='+esc(i.id)+'" target="_blank" rel="noopener">Ver informe \u2197</a>'
+      ? (pdf ? '<button type="button" class="verinf" data-pdf="'+esc(i.id)+'">Descargar PDF</button>' : '') +
+        '<a class="encurso" href="/observatorio/informe-observatorio.html?mes='+esc(i.id)+'" target="_blank" rel="noopener">Ver en l\u00ednea \u2197</a>'
       : '<span class="encurso">Mes en curso \u00b7 disponible al cierre</span>';
     return '<article class="inf">'+
       '<div class="infh"><span class="infm">'+esc(i.mes)+'</span>'+
@@ -524,6 +572,7 @@ function render() {
   h = document.getElementById('tRiesgo'); if (h) h.innerHTML = 'NIVEL DE RIESGO EN EL RANKING' + tip(T.riesgo);
 
   const c = C();
+  pintarInforme();
   var rs = document.getElementById('resumen');
   if (rs) rs.innerHTML = resumenHTML();
   pintarTop();
@@ -601,7 +650,14 @@ window.addEventListener('hashchange', function () {
 function setTab(t) {
   document.querySelectorAll('.tab').forEach(function (b) { b.classList.toggle('on', b.dataset.val === t); });
   document.querySelectorAll('.pane').forEach(function (p) { p.classList.toggle('on', p.dataset.pane === t); });
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Lleva la vista al inicio del contenido de la pestaña (debajo de la barra fija).
+  var nav = document.querySelector('nav.tabs');
+  if (nav) {
+    var barra = document.querySelector('.topbar');
+    var y = nav.getBoundingClientRect().top + window.pageYOffset - (barra ? barra.offsetHeight : 0) - 8;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+  }
 }
 
 function copiarCita(btn){
@@ -638,10 +694,21 @@ function boot() {
     el.addEventListener('click', function () {
       const a = el.dataset.act;
       if (a === 'modo') toggleModo();
-      else if (a === 'pdf') window.print();
+      else if (a === 'pdf' && PDFS[0]) descargar(PDFS[0]);
       else if (a === 'tab') setTab(el.dataset.val);
     });
   });
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest ? ev.target.closest('[data-pdf]') : null;
+    if (!b) return;
+    var p = pdfDe(b.dataset.pdf);
+    if (p) descargar(p);
+  });
+  fetch('/observatorio/informes/index.json', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.json() : { informes: [] }; })
+    .then(function (j) { PDFS = j.informes || []; if (D) { pintarInforme(); var il = document.getElementById('informesList'); if (il) il.innerHTML = listaInformes(); } })
+    .catch(function () {});
+
   // Tarjetas desplegables del ranking
   document.addEventListener('click', function (ev) {
     var h = ev.target.closest ? ev.target.closest('.ent-h') : null;
