@@ -124,13 +124,19 @@ try {
 
 // ---------- Video del reel (sin voz; la música se agrega en Instagram) ----------
 if (tipo === 'reel') {
-    const dur = [3.5, 7.5, 7.5, 8.5, 7];
+    // ~20 s en total: los reels cortos se miran completos y se repiten (más alcance).
+    const dur = [2.5, 5, 5, 5.5, 3.5], tr = 0.4;
     const ent = dur.flatMap((t, i) => ['-framerate', '30', '-loop', '1', '-t', String(t), '-i', path.join(salida, `pantalla-${i + 1}.jpg`)]);
-    const filtro = '[0:v]format=yuv420p,setsar=1[v0];[1:v]format=yuv420p,setsar=1[v1];[2:v]format=yuv420p,setsar=1[v2];[3:v]format=yuv420p,setsar=1[v3];[4:v]format=yuv420p,setsar=1[v4];' +
-        '[v0][v1]xfade=transition=slideleft:duration=0.4:offset=3.1[a1];[a1][v2]xfade=transition=slideleft:duration=0.4:offset=10.2[a2];' +
-        '[a2][v3]xfade=transition=slideleft:duration=0.4:offset=17.3[a3];[a3][v4]xfade=transition=fade:duration=0.5:offset=25.3[out]';
-    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...ent, '-f', 'lavfi', '-t', '33', '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100',
-        '-filter_complex', filtro, '-map', '[out]', '-map', '5:a', '-shortest', '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
+    let filtro = dur.map((_, i) => `[${i}:v]format=yuv420p,setsar=1[v${i}];`).join('');
+    let previo = 'v0', fin = dur[0];
+    for (let i = 1; i < dur.length; i++) {
+        const nombre = i === dur.length - 1 ? 'out' : `a${i}`;
+        filtro += `[${previo}][v${i}]xfade=transition=${i === dur.length - 1 ? 'fade' : 'slideleft'}:duration=${tr}:offset=${(fin - tr).toFixed(2)}[${nombre}];`;
+        fin += dur[i] - tr; previo = nombre;
+    }
+    filtro = filtro.slice(0, -1);
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...ent, '-f', 'lavfi', '-t', String(Math.ceil(fin)), '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100',
+        '-filter_complex', filtro, '-map', '[out]', '-map', `${dur.length}:a`, '-shortest', '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
         '-r', '30', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', '-crf', '20', path.join(salida, 'reel.mp4')]);
     archivos.unshift('reel.mp4');
 }
