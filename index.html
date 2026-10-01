@@ -846,7 +846,9 @@
                     if (d.meta && d.meta.mes) document.getElementById('obs-kicker').textContent = 'Observatorio de Fraude Digital · ' + d.meta.mes;
                     document.getElementById('top3').innerHTML = top.map(function (t) {
                         var act = Math.max(0, Math.min(100, Number(t.act) || 0));
-                        return '<a class="tile t3" href="/observatorio#e' + esc(t.pos) + '">' +
+                        var slug = String(t.key || '').split('@')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                        var href = slug ? '/observatorio/' + slug : '/observatorio#e' + t.pos;
+                        return '<a class="tile t3" href="' + esc(href) + '">' +
                             '<div class="t3-head"><span class="t3-pos">' + ('0' + t.pos).slice(-2) + '</span>' +
                             '<span class="chip">' + esc(CANAL[t.canal] || t.canal) + '</span></div>' +
                             '<span class="t3-name">' + esc(t.nombre) + '</span>' +

@@ -150,6 +150,9 @@ nav.tabs{display:flex;gap:6px;margin:44px 0 8px;padding-bottom:12px;border-botto
 .ax{font-size:13px;line-height:1.55;color:var(--txt3);margin:0;max-width:520px}
 .share{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:12px;background:var(--acc);color:var(--accInk);font-weight:600;font-size:15px;text-decoration:none}
 .share:hover{opacity:.9}
+.ent-acc{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.ficha{display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border-radius:12px;border:1px solid var(--chipBd);color:var(--acc);font-weight:600;font-size:15px;text-decoration:none}
+.ficha:hover{background:var(--chipBg)}
 
 /* Mini ranking lateral */
 .mini{position:sticky;top:96px;padding:18px 18px 8px;border:1px solid var(--line);border-radius:20px}
@@ -288,6 +291,7 @@ footer{margin-top:56px;padding:28px 0 8px;border-top:1px solid var(--line);displ
  .ent-g{grid-template-columns:1fr}
 }
 @media(max-width:640px){
+ .ent-acc{width:100%}.ficha{width:100%;justify-content:center}
  .topbar .in{height:64px}
  .brand span{font-size:13px}
  .wabtn span{display:none}.wabtn{width:44px;padding:0;justify-content:center}

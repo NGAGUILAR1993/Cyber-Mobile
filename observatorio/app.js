@@ -123,6 +123,11 @@ var SITIO = 'https://www.cybermobile.com.ar/observatorio';
 var ABIERTA = null;   // id de la tarjeta desplegada
 
 function idEntrada(s, esIntl) { return (esIntl ? 'i' : 'e') + s.pos; }
+// Misma regla que api/_lib/observatorio.js: la clave define la URL de la ficha.
+function slugDe(key) {
+  return String(key || '').split('@')[0].toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
 
 function compartirHref(s, id) {
   var txt = 'Alerta de estafa: ' + s.nombre + '.\n\nCómo reconocerla: ' + (s.detectar || '') +
@@ -159,9 +164,11 @@ function entrada(s, esIntl) {
       origenHTML(s, esIntl) +
       fuentesHTML(s) +
       '<div class="ent-f noprint"><p class="ax">' + nota + '</p>' +
+        '<span class="ent-acc">' +
+        (!esIntl && slugDe(s.key) ? '<a class="ficha" href="/observatorio/' + slugDe(s.key) + '">Ver ficha completa \u2192</a>' : '') +
         '<a class="share" href="' + esc(compartirHref(s, id)) + '" target="_blank" rel="noopener noreferrer">' +
         '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/></g></svg>' +
-        'Avisar a mi familia por WhatsApp</a></div>' +
+        'Avisar a mi familia por WhatsApp</a></span></div>' +
     '</div>' +
   '</article>';
 }
