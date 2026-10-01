@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -93,7 +92,7 @@
         .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 76px; }
         .brand { display: flex; align-items: center; gap: 12px; color: var(--txt); }
         .brand:hover { color: var(--txt); }
-        .brand .icon { width: 28px; height: 28px; color: var(--acc); }
+        .brand-logo { width: 40px; height: 40px; border-radius: 10px; }
         .brand span { font-family: Orbitron, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .14em; }
         .menu { display: flex; gap: 32px; font-size: 15px; font-weight: 500; }
         .menu a { color: var(--muted); display: flex; align-items: center; gap: 8px; }
@@ -392,7 +391,7 @@
     <header class="topbar">
         <div class="wrap">
             <a href="/" class="brand" aria-label="Cyber Mobile, inicio">
-                <svg class="icon"><use href="#i-shield"/></svg>
+                <img class="brand-logo" src="/logo-cm.png" alt="" width="40" height="40">
                 <span>CYBER MOBILE</span>
             </a>
             <nav class="menu" aria-label="Secciones">

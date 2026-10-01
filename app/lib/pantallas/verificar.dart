@@ -100,7 +100,10 @@ class VerificarState extends State<Verificar> {
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 32),
       children: [
         Row(children: [
-          const Icon(Icons.shield_outlined, color: Marca.acento, size: 26),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset('assets/logo-cm.png', width: 34, height: 34),
+          ),
           const SizedBox(width: 10),
           Text('CYBER MOBILE', style: t.titleMedium?.copyWith(letterSpacing: 2.4, fontSize: 15)),
         ]),
