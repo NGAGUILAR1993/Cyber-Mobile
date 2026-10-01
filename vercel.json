@@ -1,6 +1,15 @@
 {
   "headers": [
     {
+      "source": "/redes/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
       "source": "/observatorio/(.*)",
       "headers": [
         {

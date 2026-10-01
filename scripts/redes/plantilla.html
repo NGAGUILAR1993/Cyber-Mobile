@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- Plantilla de piezas para redes. generar.mjs la abre con ?modo=...&datos=... y saca capturas. -->
+<style>
+@font-face{font-family:SG;src:url(../../observatorio/fuentes/SpaceGrotesk.ttf);font-weight:300 700}
+@font-face{font-family:JB;src:url(../../observatorio/fuentes/JetBrainsMono.ttf);font-weight:100 800}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:SG,sans-serif;color:#E6EDF7;background:#05070D;overflow:hidden}
+.c{position:relative;width:1080px;height:var(--h);padding:var(--pad);display:flex;flex-direction:column;
+ background:radial-gradient(90% 50% at 100% 0%,rgba(34,211,238,.22),transparent 60%),radial-gradient(70% 38% at 0% 100%,rgba(251,146,60,.10),transparent 60%),#05070D}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(34,211,238,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(180deg,#000,transparent 55%);pointer-events:none}
+.top{display:flex;align-items:center;gap:20px;position:relative}
+.top img{width:var(--logo);height:var(--logo);border-radius:18px;box-shadow:0 0 36px rgba(34,211,238,.35)}
+.top b{display:block;font-family:JB;font-size:22px;letter-spacing:.26em;color:#22D3EE;font-weight:500}
+.top span{display:block;font-size:24px;color:#9AA8BD;margin-top:6px}
+.alerta{margin-top:var(--g1);display:inline-flex;align-self:flex-start;align-items:center;gap:14px;font-family:JB;font-size:24px;letter-spacing:.16em;color:#FB923C;border:2px solid rgba(251,146,60,.6);background:rgba(251,146,60,.1);padding:12px 22px;border-radius:999px}
+.alerta i{width:14px;height:14px;border-radius:50%;background:#FB923C;box-shadow:0 0 16px #FB923C}
+h1{margin-top:var(--g3);font-size:calc(var(--h1) * var(--z));line-height:1.03;letter-spacing:-.03em;font-weight:700;color:#fff}
+h1 em{font-style:normal;color:#22D3EE}
+.chips{margin-top:var(--g3);display:flex;gap:14px;flex-wrap:wrap}
+.chip{font-family:JB;font-size:var(--chip);letter-spacing:.12em;padding:8px 18px;border-radius:999px;border:2px solid rgba(148,163,184,.38);color:#C3CEDD;text-transform:uppercase}
+.chip.r{border-color:rgba(251,146,60,.6);color:#FB923C}
+.clave{margin-top:var(--g2);padding:var(--cp);border-radius:28px;border:2px solid rgba(34,211,238,.5);background:linear-gradient(120deg,rgba(34,211,238,.14),rgba(10,15,28,.6) 70%)}
+.clave small{display:block;font-family:JB;font-size:20px;letter-spacing:.2em;color:#22D3EE;margin-bottom:12px}
+.clave p{font-size:calc(var(--pk) * var(--z));line-height:1.28;font-weight:650;color:#fff}
+.pasos{margin-top:var(--g2);display:flex;flex-direction:column;gap:var(--g4)}
+.pasos small{font-family:JB;font-size:20px;letter-spacing:.2em;color:#9AA8BD}
+.paso{display:flex;gap:20px;align-items:center;font-size:calc(var(--pp) * var(--z));line-height:1.3}
+.paso b{flex-shrink:0;width:var(--ico);height:var(--ico);border-radius:14px;border:2px solid rgba(34,211,238,.45);background:rgba(34,211,238,.1);color:#22D3EE;font-family:JB;font-size:24px;display:flex;align-items:center;justify-content:center;font-weight:500}
+.cta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:var(--cp);border-radius:26px;background:#22D3EE;color:#04121A}
+.cta strong{display:block;font-size:var(--pc);line-height:1.15;font-weight:700}
+.cta span{display:block;font-size:22px;margin-top:6px;font-weight:500}
+.cta .w{flex-shrink:0;width:var(--logo);height:var(--logo);border-radius:50%;background:#04121A;display:flex;align-items:center;justify-content:center}
+.pie{margin-top:var(--g4);display:flex;justify-content:space-between;font-family:JB;font-size:21px;color:#8391A7;letter-spacing:.06em}
+.pie b{color:#C3CEDD;font-weight:500}
+/* Reel (1080x1920): margen superior e inferior libres para la interfaz de Instagram */
+.reel{justify-content:center;padding:260px 84px 440px}
+.reel .marca{position:absolute;top:150px;left:84px;display:flex;align-items:center;gap:18px}
+.reel .marca img{width:72px;height:72px;border-radius:16px;box-shadow:0 0 30px rgba(34,211,238,.35)}
+.reel .marca b{font-family:JB;font-size:22px;letter-spacing:.26em;color:#22D3EE;font-weight:500}
+.reel .kick{font-family:JB;font-size:30px;letter-spacing:.18em;color:#22D3EE}
+.reel h1{font-size:calc(108px * var(--z));margin-top:28px}
+.reel .sub{font-size:40px;color:#C3CEDD;margin-top:34px;line-height:1.35}
+.reel .num{font-family:JB;font-size:250px;line-height:.9;color:#22D3EE;font-weight:500;text-shadow:0 0 60px rgba(34,211,238,.45)}
+.reel .tit{font-size:calc(88px * var(--z));line-height:1.05;letter-spacing:-.025em;font-weight:700;color:#fff;margin-top:22px}
+.reel .chips{margin-top:30px}.reel .chip{font-size:28px;padding:12px 24px}
+.reel .clave{margin-top:46px;padding:36px 40px;border-width:3px}
+.reel .clave small{font-size:26px;margin-bottom:16px}
+.reel .clave p{font-size:calc(52px * var(--z))}
+.reel .cta{margin-top:50px;padding:40px;display:block}
+.reel .cta strong{font-size:56px}.reel .cta span{font-size:34px;margin-top:14px}
+.reel .links{margin-top:40px;display:flex;flex-direction:column;gap:20px;font-size:38px;color:#C3CEDD}
+.reel .links b{font-family:JB;font-size:34px;color:#fff;font-weight:500}
+</style></head><body><div id="raiz"></div>
+<script>
+const P = new URLSearchParams(location.search);
+const modo = P.get('modo');            // ficha-ig | ficha-wa | reel-0 ... reel-4
+const D = JSON.parse(P.get('datos'));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LOGO = '../../logo-cm.png';
+const WA = '<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>';
+const VARS = {
+  'ficha-ig': '--h:1350px;--pad:64px 72px 52px;--logo:84px;--g1:44px;--g2:32px;--g3:22px;--g4:14px;--h1:96px;--chip:21px;--cp:26px 30px;--pk:40px;--pp:31px;--ico:48px;--pc:33px',
+  'ficha-wa': '--h:1080px;--pad:48px 64px 40px;--logo:68px;--g1:26px;--g2:20px;--g3:16px;--g4:10px;--h1:74px;--chip:18px;--cp:20px 26px;--pk:31px;--pp:25px;--ico:40px;--pc:27px'
+};
+function ficha(m) {
+  return `<div class="grid"></div>
+  <div class="top"><img src="${LOGO}" alt=""><div><b>CYBER MOBILE</b><span>Observatorio de Fraude Digital</span></div></div>
+  <div class="alerta"><i></i>${esc(m.etiqueta)}</div>
+  <h1>${m.tituloHtml}</h1>
+  <div class="chips"><span class="chip">${esc(m.canal)}</span><span class="chip r">RIESGO ${esc(m.riesgo)}</span><span class="chip">ÍNDICE ${m.indice}/100</span></div>
+  <div class="clave"><small>CÓMO RECONOCERLA</small><p>${esc(m.clave)}</p></div>
+  <div class="pasos"><small>SI TE LLEGÓ</small>${m.pasos.map((p, i) => `<div class="paso"><b>${i + 1}</b>${esc(p)}</div>`).join('')}</div>
+  <div class="cta"><div><strong>¿Te llegó un mensaje así?<br>Verificalo antes de responder.</strong><span>Agente de Cyber Mobile por WhatsApp · 7 días gratis</span></div><div class="w">${WA}</div></div>
+  <div class="pie"><b>cybermobile.com.ar/observatorio</b><span>Datos: ${esc(D.mes)}</span></div>`;
+}
+function reel(i) {
+  const marca = t => `<div class="grid"></div><div class="marca"><img src="${LOGO}" alt=""><b>${t}</b></div>`;
+  if (i === 0) return marca('OBSERVATORIO DE FRAUDE DIGITAL') +
+    `<div class="kick">● RANKING DE ${esc(D.mes.toUpperCase())}</div><h1>Las <em>3 estafas</em> que más circulan en Argentina</h1><p class="sub">${esc(D.gancho)}</p>`;
+  if (i === 4) return marca('CYBER MOBILE') +
+    `<h1 style="font-size:96px">¿Te llegó algo así?</h1><div class="cta"><strong>Verificalo antes de responder.</strong><span>Reenvialo a nuestro agente por WhatsApp · 7 días gratis</span></div>
+     <div class="links"><span>Ranking completo y fichas:</span><b>cybermobile.com.ar/observatorio</b><span style="margin-top:20px">📌 Guardalo y mandáselo a tu familia</span></div>`;
+  const m = D.top[3 - i];   // pantalla 1 = #3, 2 = #2, 3 = #1
+  return marca('OBSERVATORIO DE FRAUDE DIGITAL') +
+    `<div class="num">#${m.pos}</div><div class="tit">${esc(m.tituloCorto)}</div>
+     <div class="chips"><span class="chip">${esc(m.canal)}</span><span class="chip r">RIESGO ${esc(m.riesgo)}</span></div>
+     <div class="clave"><small>CÓMO RECONOCERLA</small><p>${esc(m.clave)}</p></div>`;
+}
+const raiz = document.getElementById('raiz');
+const c = document.createElement('div');
+if (modo.startsWith('ficha')) {
+  c.className = 'c'; c.setAttribute('style', VARS[modo] + ';--z:1'); c.innerHTML = ficha(D.ficha);
+  document.body.style.width = '1080px'; document.body.style.height = modo === 'ficha-ig' ? '1350px' : '1080px';
+} else {
+  c.className = 'c reel'; c.setAttribute('style', '--h:1920px;--z:1'); c.innerHTML = reel(Number(modo.split('-')[1]));
+  document.body.style.width = '1080px'; document.body.style.height = '1920px';
+}
+raiz.appendChild(c);
+// Ajuste automático: si el texto no entra, achica los textos largos de a 4 %.
+document.fonts.ready.then(() => {
+  let z = 1;
+  const desborda = () => c.scrollHeight > c.clientHeight + 1 || [...c.querySelectorAll('.clave p,h1,.tit')].some(e => e.scrollWidth > e.clientWidth + 1);
+  while (desborda() && z > 0.6) { z -= 0.04; c.style.setProperty('--z', z.toFixed(2)); }
+  document.documentElement.setAttribute('data-listo', desborda() ? 'desborda' : '1');
+});
+</script>
+</body></html>
