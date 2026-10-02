@@ -1,8 +1,14 @@
 // Genera la publicación diaria para redes a partir de observatorio/datos.json.
-//   Lunes: reel con el Top 3 (5 pantallas + video MP4 sin voz).
-//   Martes a domingo: ficha de una estafa (Instagram 1080x1350 y WhatsApp 1080x1080),
-//   rotando por el Top 10 y las modalidades en vigilancia.
-// Salida: redes/AAAA-MM-DD/ con las imágenes, el video y textos.json (textos listos para copiar).
+// Calendario semanal (pensado para alcance: ganchos en pregunta, carruseles que se guardan y reels cortos):
+//   Lunes      Reel "Top 3 del mes" (~17 s)                 20:00
+//   Martes     Carrusel de 5 placas "¿Te llegó…?"            19:30
+//   Miércoles  Historia "¿Estafa o no?" (encuesta)           13:00
+//   Jueves     Carrusel de 5 placas "¿Te llegó…?"            19:30
+//   Viernes    Reel "FALSO" de una estafa (~12 s)            20:30
+//   Sábado     Carrusel "Dato del Observatorio" (3 placas)   12:30
+//   Domingo    Historia "¿Estafa o no?" (encuesta)           19:00
+// Todos los días se genera además una historia de encuesta y la imagen cuadrada para el canal de WhatsApp.
+// Salida: redes/AAAA-MM-DD/ con las imágenes, el video y textos.json (textos e instrucciones listos para copiar).
 // Uso: node scripts/redes/generar.mjs [--fecha AAAA-MM-DD]
 // Requiere Playwright (Chromium) y ffmpeg.
 import fs from 'node:fs';
@@ -42,6 +48,8 @@ const escHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<'
 
 // Frases cortas curadas por clave (scripts/redes/claves.json); si no hay, se usa el texto del Observatorio.
 const CLAVES = JSON.parse(fs.readFileSync(path.join(RAIZ, 'scripts', 'redes', 'claves.json'), 'utf8'));
+// Mensaje de ejemplo, gancho y señales por modalidad (scripts/redes/ejemplos.json).
+const EJEMPLOS = JSON.parse(fs.readFileSync(path.join(RAIZ, 'scripts', 'redes', 'ejemplos.json'), 'utf8'));
 const norm = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 // Frase corta para la tarjeta: la primera oración de "cómo reconocerla" si el texto completo es largo.
@@ -51,6 +59,22 @@ function claveDe(detectar) {
     const primera = t.split(/(?<=\.)\s/)[0];
     if (primera.length <= 190) return primera;
     return t.slice(0, t.lastIndexOf(' ', 180)) + '…';
+}
+
+function cortar(t, max) {
+    t = String(t || '').replace(/\s+/g, ' ').trim();
+    if (t.length <= max) return t;
+    const oraciones = t.split(/(?<=\.)\s/);
+    let r = '';
+    for (const o of oraciones) { if ((r + ' ' + o).trim().length > max) break; r = (r + ' ' + o).trim(); }
+    return r || t.slice(0, t.lastIndexOf(' ', max)) + '…';
+}
+const APP = { WHATSAPP: 'whatsapp', REDES: 'instagram', TELEFONO: 'llamada', 'TELÉFONO': 'llamada', SMS: 'sms', MAIL: 'email', MARKETPLACE: 'instagram' };
+function ejemploDe(x, c, clave, nombre) {
+    const e = EJEMPLOS[String(x.key || '').split('@')[0]];
+    if (e) return e;
+    return { gancho: `¿Te llegó algo así ${c.frase || 'hoy'}?`, app: APP[String(x.canal || '').toUpperCase()] || 'whatsapp', remitente: 'Número desconocido',
+        mensaje: cortar(tildes(x.como), 160), senales: ['Te escribe alguien que no conocés', 'Te apura o te asusta', clave] };
 }
 
 function modalidad(x, seccion) {
@@ -64,7 +88,8 @@ function modalidad(x, seccion) {
         canal: c.lbl, frase: c.frase, tag: c.tag, pasos: c.pasos,
         indice: Math.max(0, Math.min(100, Number(x.act) || 0)),
         riesgo: String(x.riesgo || 'medio').toUpperCase(),
-        detectar: tildes(x.detectar), como: tildes(x.como), clave,
+        detectar: tildes(x.detectar), como: tildes(x.como), comoCorto: cortar(tildes(x.como), 260), clave,
+        ejemplo: ejemploDe(x, c0, clave, nombre),
         etiqueta: seccion === 'top' ? `ALERTA · #${x.pos} DEL RANKING` : 'ALERTA · EN VIGILANCIA',
         tituloHtml: `${escHtml(nombre)}${c.frase ? `<br><em>${escHtml(c.frase)}</em>` : ''}`,
         tituloCorto: nombre
@@ -78,17 +103,41 @@ const lista = [...(datos.top10 || []).map((x) => modalidad(x, 'top')), ...(datos
     .filter((m, i, a) => m.slug && a.findIndex((o) => o.slug === m.slug) === i);
 if (!lista.length) throw new Error('datos.json no tiene modalidades');
 
-const diaSemana = new Date(fecha + 'T12:00:00Z').getUTCDay();   // 1 = lunes
-const tipo = diaSemana === 1 ? 'reel' : 'ficha';
-let elegida = null;
-if (tipo === 'ficha') {
-    // Cuenta los días que no son lunes desde el inicio: cada día toca la siguiente modalidad.
-    let n = 0;
-    for (let d = new Date(INICIO_ROTACION + 'T12:00:00Z'); d.toISOString().slice(0, 10) < fecha; d.setUTCDate(d.getUTCDate() + 1)) {
-        if (d.getUTCDay() !== 1) n++;
-    }
-    elegida = lista[((n % lista.length) + lista.length) % lista.length];
+const diaSemana = new Date(fecha + 'T12:00:00Z').getUTCDay();   // 0 = domingo, 1 = lunes
+const PLAN = {
+    1: { tipo: 'reel', formato: 'reel-top3', horario: '20:00' },
+    2: { tipo: 'ficha', formato: 'carrusel', horario: '19:30' },
+    3: { tipo: 'historia', formato: 'historia', horario: '13:00' },
+    4: { tipo: 'ficha', formato: 'carrusel', horario: '19:30' },
+    5: { tipo: 'reel', formato: 'reel-falso', horario: '20:30' },
+    6: { tipo: 'dato', formato: 'dato', horario: '12:30' },
+    0: { tipo: 'historia', formato: 'historia', horario: '19:00' }
+};
+const { tipo, formato, horario } = PLAN[diaSemana];
+
+// Rotación: cada carrusel o reel "FALSO" toma la siguiente modalidad; la historia del día usa otra distinta.
+let nFeed = 0, nDias = 0;
+for (let d = new Date(INICIO_ROTACION + 'T12:00:00Z'); d.toISOString().slice(0, 10) < fecha; d.setUTCDate(d.getUTCDate() + 1)) {
+    nDias++;
+    if ([2, 4, 5].includes(d.getUTCDay())) nFeed++;
 }
+const idx = (n) => ((n % lista.length) + lista.length) % lista.length;
+const elegida = lista[idx(nFeed)];
+const deHistoria = lista[idx(nFeed + 1 + (nDias % 4))] === elegida ? lista[idx(nFeed + 1)] : lista[idx(nFeed + 1 + (nDias % 4))];
+const enHistoria = deHistoria;
+
+// Dato del sábado: rota entre cuatro datos reales del Observatorio.
+const ETQ = { WHATSAPP: 'WhatsApp', REDES: 'Redes sociales', TELEFONO: 'Teléfono', 'TELÉFONO': 'Teléfono', SMS: 'SMS', MAIL: 'Email', EMAIL: 'Email', MARKETPLACE: 'Marketplace' };
+const barras = (datos.dist || []).map((b) => ({ label: ETQ[String(b.label).toUpperCase()] || b.label, pct: Number(b.pct) || 0 })).sort((a, b) => b.pct - a.pct);
+const kpi = datos.kpi || {};
+const altos = (datos.top10 || []).filter((x) => String(x.riesgo).toLowerCase() === 'alto').length;
+const DATOS_SABADO = [
+    barras[0] && { numero: barras[0].pct + '%', frase: `de las estafas del mes llegan por *${barras[0].label.toLowerCase()}*` },
+    altos && { numero: `${altos} de ${(datos.top10 || []).length}`, frase: 'estafas más activas del mes son de *riesgo alto*' },
+    kpi.sube && { numero: String(kpi.sube), frase: 'modalidades de estafa *crecieron* este mes' },
+    kpi.monit && { numero: String(kpi.monit), frase: 'modalidades de estafa *vigiladas* este mes en Argentina' }
+].filter(Boolean);
+const dato = DATOS_SABADO.length ? { ...DATOS_SABADO[Math.floor(nDias / 7) % DATOS_SABADO.length], barras, top: lista[0] ? lista[0].nombre : '' } : null;
 
 const salida = path.join(RAIZ, 'redes', fecha);
 fs.rmSync(salida, { recursive: true, force: true });
@@ -108,60 +157,103 @@ async function captura(modo, datosPagina, archivo, alto) {
     return archivo;
 }
 
+const base = (m) => ({ mes, m, e: m.ejemplo });
 const archivos = [];
 try {
-    if (tipo === 'ficha') {
-        archivos.push(await captura('ficha-ig', { mes, ficha: elegida }, 'instagram.jpg', 1350));
-        archivos.push(await captura('ficha-wa', { mes, ficha: elegida }, 'whatsapp.jpg', 1080));
+    if (formato === 'carrusel') {
+        for (let i = 1; i <= 5; i++) archivos.push(await captura(`car-${i}`, base(elegida), `carrusel-${i}.jpg`, 1350));
+        archivos.push(await captura('cuad', base(elegida), 'whatsapp.jpg', 1080));
+    } else if (formato === 'reel-falso') {
+        for (let i = 1; i <= 4; i++) await captura(`rf-${i}`, base(elegida), `pantalla-${i}.jpg`, 1920);
+        archivos.push(await captura('cuad', base(elegida), 'whatsapp.jpg', 1080));
+    } else if (formato === 'reel-top3') {
+        const top = lista.filter((m) => m.seccion === 'top').slice(0, 3).map((m) => ({ m, e: m.ejemplo }));
+        for (let i = 0; i < 5; i++) await captura(`rt-${i}`, { mes, top }, `pantalla-${i + 1}.jpg`, 1920);
+        archivos.push(await captura('cuad', base(lista[0]), 'whatsapp.jpg', 1080));
+    } else if (formato === 'dato') {
+        for (let i = 1; i <= 3; i++) archivos.push(await captura(`dato-${i}`, { mes, dato }, `dato-${i}.jpg`, 1350));
+        fs.copyFileSync(path.join(salida, 'dato-1.jpg'), path.join(salida, 'whatsapp.jpg')); archivos.push('whatsapp.jpg');
     } else {
-        const top = lista.filter((m) => m.seccion === 'top').slice(0, 3);
-        const d = { mes, top, gancho: `La #1 llega ${top[0].frase || 'por mensaje'}.` };
-        for (let i = 0; i < 5; i++) archivos.push(await captura(`reel-${i}`, d, `pantalla-${i + 1}.jpg`, 1920));
+        archivos.push(await captura('cuad', base(enHistoria), 'whatsapp.jpg', 1080));
     }
+    archivos.push(await captura('historia', base(enHistoria), 'historia.jpg', 1920));
 } finally {
     await browser.close();
 }
 
-// ---------- Video del reel (sin voz; la música se agrega en Instagram) ----------
-if (tipo === 'reel') {
-    // ~20 s en total: los reels cortos se miran completos y se repiten (más alcance).
-    const dur = [2.5, 5, 5, 5.5, 3.5], tr = 0.4;
+// ---------- Video de los reels (sin voz; la música se agrega en Instagram) ----------
+function video(dur, transiciones) {
+    const tr = 0.35;
     const ent = dur.flatMap((t, i) => ['-framerate', '30', '-loop', '1', '-t', String(t), '-i', path.join(salida, `pantalla-${i + 1}.jpg`)]);
     let filtro = dur.map((_, i) => `[${i}:v]format=yuv420p,setsar=1[v${i}];`).join('');
     let previo = 'v0', fin = dur[0];
     for (let i = 1; i < dur.length; i++) {
         const nombre = i === dur.length - 1 ? 'out' : `a${i}`;
-        filtro += `[${previo}][v${i}]xfade=transition=${i === dur.length - 1 ? 'fade' : 'slideleft'}:duration=${tr}:offset=${(fin - tr).toFixed(2)}[${nombre}];`;
+        filtro += `[${previo}][v${i}]xfade=transition=${transiciones[i - 1]}:duration=${tr}:offset=${(fin - tr).toFixed(2)}[${nombre}];`;
         fin += dur[i] - tr; previo = nombre;
     }
     filtro = filtro.slice(0, -1);
     execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...ent, '-f', 'lavfi', '-t', String(Math.ceil(fin)), '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100',
         '-filter_complex', filtro, '-map', '[out]', '-map', `${dur.length}:a`, '-shortest', '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
         '-r', '30', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', '-crf', '20', path.join(salida, 'reel.mp4')]);
-    archivos.unshift('reel.mp4');
+    fs.renameSync(path.join(salida, 'pantalla-1.jpg'), path.join(salida, 'portada.jpg'));
+    for (let i = 2; i <= dur.length; i++) fs.rmSync(path.join(salida, `pantalla-${i}.jpg`));
+    archivos.unshift('reel.mp4', 'portada.jpg');
 }
+if (formato === 'reel-falso') video([2.6, 2.2, 4.6, 3.2], ['zoomin', 'slideleft', 'fade']);
+if (formato === 'reel-top3') video([2.6, 3.6, 3.6, 3.8, 3.2], ['slideleft', 'slideleft', 'slideleft', 'fade']);
 
 // ---------- Textos ----------
 const agente = (texto) => `https://wa.me/${WA_AGENTE}?text=${encodeURIComponent(texto)}`;
 const OBS = `${SITIO}/observatorio`;
+const sinMarcas = (t) => String(t).replace(/\*/g, '');
+const HASH = '#Estafas #FraudeDigital #Ciberseguridad #SeguridadDigital #Argentina #CyberMobile';
+const m = formato === 'historia' ? enHistoria : elegida, e = m.ejemplo, ficha = `${SITIO}/observatorio/${m.slug}`;
+const senales = e.senales.map((x, i) => `${i + 1}. ${x}`).join('\n');
+const pasos = m.pasos.map((p, i) => `${i + 1}️⃣ ${p}`).join('\n');
+const waFicha = `🚨 *${sinMarcas(e.gancho)}*\n\n${m.comoCorto}\n\n🚩 *Señales:*\n${senales}\n\n✅ *${m.clave}*\n\n*Si te llegó:*\n${pasos}\n\n📲 *¿Dudás? Verificalo con Vera:*\n${agente(`Hola, me llegó algo que parece "${m.nombre}" y quiero verificarlo`)}\n\n🔎 *Ficha completa:*\n${ficha}\n\nReenviá este mensaje a tu familia 🙏`;
+const historia = enHistoria.ejemplo;
+const instHistoria = `Historia (13:00 o cuando quieras): subí historia.jpg, agregá el sticker de ENCUESTA sobre el recuadro punteado con "ESTAFA 🚩" / "NO ES ✅" y un sticker de enlace a cybermobile.com.ar/agente. Es "${enHistoria.nombre}": si votan "No es", respondé por mensaje con la ficha ${SITIO}/observatorio/${enHistoria.slug}`;
 let textos;
-if (tipo === 'ficha') {
-    const m = elegida;
-    const ficha = `${SITIO}/observatorio/${m.slug}`;
-    const titulo = `${m.nombre}${m.frase ? ' ' + m.frase : ''}`;
-    const lugar = m.seccion === 'top' ? `Es la estafa #${m.pos} del ranking de ${mes} del Observatorio de Fraude Digital de Cyber Mobile.` : `Está en vigilancia en el Observatorio de Fraude Digital de Cyber Mobile (${mes}).`;
-    const pasos = m.pasos.map((p, i) => `${i + 1}️⃣ ${p}`).join('\n');
-    const instagram = `🚨 ALERTA: ${titulo}\n\n${lugar}\n\n${m.como}\n\n✅ Cómo reconocerla: ${m.detectar}\n\nSi te llegó:\n${pasos}\n\n📲 ¿Te llegó algo así? Reenvialo a nuestro agente por WhatsApp y te decimos si es una estafa. 7 días de prueba gratuita.\n\n🔎 Ficha completa y ranking del mes: link en la bio.\n\nCompartilo con tu familia: así se corta la cadena.\n\n#CyberMobile ${m.tag} #FraudeDigital #Estafas #Ciberseguridad #SeguridadDigital #Argentina`;
-    const whatsapp = `🚨 *ALERTA: ${titulo}*\n_${m.seccion === 'top' ? `#${m.pos} del ranking del Observatorio de Fraude Digital` : 'En vigilancia en el Observatorio de Fraude Digital'}_\n\n${m.como}\n\n✅ *Cómo reconocerla:* ${m.detectar}\n\n*Si te llegó:*\n${pasos}\n\n📲 *¿Te llegó algo así? Verificalo con nuestro agente:*\n${agente(`Hola, me llegó algo que parece "${m.nombre}" y quiero verificarlo`)}\n\n🔎 *Ficha completa:*\n${ficha}\n\n📊 *Ranking del mes:*\n${OBS}\n\n🌐 *Cyber Mobile:*\n${SITIO}\n\nReenviá este mensaje a tu familia 🙏`;
-    textos = { fecha, tipo, mes, titulo, modalidad: m.nombre, slug: m.slug, clave: m.clave, resumen: m.como, ficha, instagram, whatsapp };
+if (formato === 'carrusel') {
+    textos = {
+        titulo: sinMarcas(e.gancho), modalidad: m.nombre,
+        instagram: `${sinMarcas(e.gancho)} 👀\n\n${m.comoCorto}\n\n🚩 Cómo darte cuenta:\n${senales}\n\n✅ ${m.clave}\n\n📌 Guardalo y mandáselo a quien siempre cae.\n💬 ¿Te llegó algo así? Contanos en los comentarios.\n\n🔗 ¿Dudás de un mensaje? Verificalo con Vera: link en la bio.\n\n${m.tag} ${HASH}`,
+        whatsapp: waFicha,
+        instrucciones: ['Publicá las 5 placas como carrusel, en orden (carrusel-1 a carrusel-5).', 'Agregá una canción en tendencia a volumen bajo: los carruseles con música aparecen también en Reels.', 'Respondé todos los comentarios en la primera hora.', instHistoria]
+    };
+} else if (formato === 'reel-falso') {
+    textos = {
+        titulo: `Reel: ${sinMarcas(e.gancho)}`, modalidad: m.nombre,
+        instagram: `${sinMarcas(e.gancho)} 🚩 Es una estafa.\n\nMirá las 3 señales para darte cuenta a tiempo 👆\n\n✅ ${m.clave}\n\n📌 Guardalo y mandáselo a tu familia.\n🔗 Verificá cualquier mensaje con Vera: link en la bio.\n\n${m.tag} ${HASH}`,
+        whatsapp: waFicha,
+        instrucciones: ['Subí reel.mp4 como Reel y elegí portada.jpg como portada.', 'Agregá audio en tendencia (volumen bajo) y activá "Compartir en el feed".', 'En el texto de la portada ya está el gancho: no agregues otro título.', instHistoria]
+    };
+} else if (formato === 'reel-top3') {
+    const top = lista.filter((x) => x.seccion === 'top').slice(0, 3);
+    const linea = (x) => `#${x.pos} ${x.nombre}: ${x.clave}`;
+    textos = {
+        titulo: `Reel: Top 3 de ${mes}`, modalidad: top.map((x) => x.nombre).join(' · '),
+        instagram: `Las 3 estafas que más circulan en Argentina (${mes}) 🚨\n\n${[top[2], top[1], top[0]].map(linea).join('\n\n')}\n\n📌 Guardalo y mandáselo a tus papás y abuelos.\n🔗 Ranking completo y cómo reconocer cada una: link en la bio.\n\n${HASH}`,
+        whatsapp: `🚨 *Las 3 estafas que más circulan en Argentina* (${mes})\n\n${[top[2], top[1], top[0]].map((x) => `*${linea(x)}*\n${SITIO}/observatorio/${x.slug}`).join('\n\n')}\n\n📲 *¿Te llegó algo así? Verificalo con Vera:*\n${agente('Hola, me llegó un mensaje sospechoso y quiero verificarlo')}\n\nReenviá este mensaje a tu familia 🙏`,
+        instrucciones: ['Subí reel.mp4 como Reel y elegí portada.jpg como portada.', 'Agregá audio en tendencia (volumen bajo).', instHistoria]
+    };
+} else if (formato === 'dato') {
+    textos = {
+        titulo: `Dato: ${dato.numero} ${sinMarcas(dato.frase)}`, modalidad: 'Dato del Observatorio',
+        instagram: `${dato.numero} ${sinMarcas(dato.frase)} 📊\n\nEs uno de los datos de ${mes} del Observatorio de Fraude Digital de Cyber Mobile. La más activa: ${dato.top}.\n\n¿Vos sabías por dónde llegan? Deslizá 👉\n\n📌 Guardalo y compartilo: la información es la mejor defensa.\n🔗 Ranking completo: link en la bio.\n\n${HASH}`,
+        whatsapp: `📊 *Dato del Observatorio de Fraude Digital* (${mes})\n\n*${dato.numero} ${sinMarcas(dato.frase)}.*\n\nLa más activa del mes: ${dato.top}.\n\nConocé el ranking y cómo reconocer cada estafa:\n${OBS}\n\n¿Te llegó algo raro? Verificalo con Vera:\n${SITIO}/agente\n\nReenviá este mensaje a tu familia 🙏`,
+        instrucciones: ['Publicá las 3 placas como carrusel, en orden.', 'Agregá una canción en tendencia a volumen bajo.', instHistoria]
+    };
 } else {
-    const top = lista.filter((m) => m.seccion === 'top').slice(0, 3);
-    const emoji = { WhatsApp: '💬', Redes: '📈', 'Teléfono': '📞', SMS: '✉️', Email: '📧', Marketplace: '🛒' };
-    const linea = (m) => `#${m.pos} ${emoji[m.canal] || '⚠️'} ${m.nombre}: ${m.clave}`;
-    const instagram = `Las 3 estafas que más circulan en Argentina (${mes}) 🚨\n\n${[top[2], top[1], top[0]].map(linea).join('\n\n')}\n\n¿Te llegó algo así? Reenvialo a nuestro agente antes de responder 👉 link en la bio\nRanking completo y cómo reconocer cada estafa: cybermobile.com.ar/observatorio\n\n📌 Guardalo y mandáselo a tus papás y abuelos.\n\n#CyberMobile #Estafas #FraudeDigital #Ciberseguridad #EstafasWhatsApp #Argentina #SeguridadDigital`;
-    const whatsapp = `🚨 *Las 3 estafas que más circulan en Argentina* (${mes})\n\n${[top[2], top[1], top[0]].map((m) => `*${linea(m)}*\n${SITIO}/observatorio/${m.slug}`).join('\n\n')}\n\n📲 *¿Te llegó algo así? Verificalo con nuestro agente:*\n${agente('Hola, me llegó un mensaje sospechoso y quiero verificarlo')}\n\n📊 *Ranking completo:*\n${OBS}\n\n🌐 *Cyber Mobile:*\n${SITIO}\n\nReenviá este mensaje a tu familia 🙏`;
-    textos = { fecha, tipo, mes, titulo: `Top 3 de ${mes}`, modalidad: top.map((m) => m.nombre).join(' · '), instagram, whatsapp };
+    textos = {
+        titulo: `Historia: ¿Estafa o no? (${m.nombre})`, modalidad: m.nombre,
+        instagram: 'Hoy no hay publicación en el feed: solo la historia con encuesta.',
+        whatsapp: `🚩 *¿Estafa o no?*\n\nEste mensaje está circulando:\n\n_"${historia.mensaje}"_\n\nEs *una estafa* (${m.nombre}).\n\n🚩 *Señales:*\n${historia.senales.map((x, i) => `${i + 1}. ${x}`).join('\n')}\n\n✅ *${m.clave}*\n\n🔎 Más info: ${SITIO}/observatorio/${m.slug}\n\nReenviá este mensaje a tu familia 🙏`,
+        instrucciones: [instHistoria.replace('Historia (13:00 o cuando quieras)', `Historia (${horario})`), 'Al día siguiente, compartí el resultado de la encuesta en otra historia con la respuesta: "Era una estafa 🚩".']
+    };
 }
+textos = { fecha, tipo, formato, horario, mes, ...textos, slug: m.slug, clave: m.clave, resumen: m.comoCorto, ficha };
 textos.archivos = archivos.map((a) => ({ nombre: a, url: `${SITIO}/redes/${fecha}/${a}` }));
 fs.writeFileSync(path.join(salida, 'textos.json'), JSON.stringify(textos, null, 2) + '\n');
 fs.writeFileSync(path.join(salida, 'instagram.txt'), textos.instagram + '\n');
@@ -173,4 +265,4 @@ limite.setUTCDate(limite.getUTCDate() - DIAS_QUE_SE_CONSERVAN);
 for (const d of fs.readdirSync(path.join(RAIZ, 'redes'))) {
     if (/^\d{4}-\d{2}-\d{2}$/.test(d) && d < limite.toISOString().slice(0, 10)) fs.rmSync(path.join(RAIZ, 'redes', d), { recursive: true, force: true });
 }
-console.log(`${fecha} · ${tipo} · ${textos.modalidad} · ${archivos.join(', ')}`);
+console.log(`${fecha} · ${formato} · ${textos.modalidad} · ${archivos.join(', ')}`);
