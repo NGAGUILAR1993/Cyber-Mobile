@@ -1,107 +1,207 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8">
-<!-- Plantilla de piezas para redes. generar.mjs la abre con ?modo=...&datos=... y saca capturas. -->
+<!-- Plantilla de las piezas para redes. generar.mjs la abre con ?modo=...&datos=JSON y saca capturas.
+     Estilo: gancho en pregunta, letra condensada grande, celular con el mensaje falso y sello FALSO. -->
 <style>
+@font-face{font-family:Anton;src:url(fuentes/Anton-Regular.ttf)}
 @font-face{font-family:SG;src:url(../../observatorio/fuentes/SpaceGrotesk.ttf);font-weight:300 700}
 @font-face{font-family:JB;src:url(../../observatorio/fuentes/JetBrainsMono.ttf);font-weight:100 800}
+:root{--rojo:#FF3B3B;--cian:#22D3EE;--verde:#34D399;--fondo:#07080C;--txt:#F2F5FA;--gris:#9AA6B8}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:SG,sans-serif;color:#E6EDF7;background:#05070D;overflow:hidden}
-.c{position:relative;width:1080px;height:var(--h);padding:var(--pad);display:flex;flex-direction:column;
- background:radial-gradient(90% 50% at 100% 0%,rgba(34,211,238,.22),transparent 60%),radial-gradient(70% 38% at 0% 100%,rgba(251,146,60,.10),transparent 60%),#05070D}
-.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(34,211,238,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(180deg,#000,transparent 55%);pointer-events:none}
-.top{display:flex;align-items:center;gap:20px;position:relative}
-.top img{width:var(--logo);height:var(--logo);border-radius:18px;box-shadow:0 0 36px rgba(34,211,238,.35)}
-.top b{display:block;font-family:JB;font-size:22px;letter-spacing:.26em;color:#22D3EE;font-weight:500}
-.top span{display:block;font-size:24px;color:#9AA8BD;margin-top:6px}
-.alerta{margin-top:var(--g1);display:inline-flex;align-self:flex-start;align-items:center;gap:14px;font-family:JB;font-size:24px;letter-spacing:.16em;color:#FB923C;border:2px solid rgba(251,146,60,.6);background:rgba(251,146,60,.1);padding:12px 22px;border-radius:999px}
-.alerta i{width:14px;height:14px;border-radius:50%;background:#FB923C;box-shadow:0 0 16px #FB923C}
-h1{margin-top:var(--g3);font-size:calc(var(--h1) * var(--z));line-height:1.03;letter-spacing:-.03em;font-weight:700;color:#fff}
-h1 em{font-style:normal;color:#22D3EE}
-.chips{margin-top:var(--g3);display:flex;gap:14px;flex-wrap:wrap}
-.chip{font-family:JB;font-size:var(--chip);letter-spacing:.12em;padding:8px 18px;border-radius:999px;border:2px solid rgba(148,163,184,.38);color:#C3CEDD;text-transform:uppercase}
-.chip.r{border-color:rgba(251,146,60,.6);color:#FB923C}
-.clave{margin-top:var(--g2);padding:var(--cp);border-radius:28px;border:2px solid rgba(34,211,238,.5);background:linear-gradient(120deg,rgba(34,211,238,.14),rgba(10,15,28,.6) 70%)}
-.clave small{display:block;font-family:JB;font-size:20px;letter-spacing:.2em;color:#22D3EE;margin-bottom:12px}
-.clave p{font-size:calc(var(--pk) * var(--z));line-height:1.28;font-weight:650;color:#fff}
-.pasos{margin-top:var(--g2);display:flex;flex-direction:column;gap:var(--g4)}
-.pasos small{font-family:JB;font-size:20px;letter-spacing:.2em;color:#9AA8BD}
-.paso{display:flex;gap:20px;align-items:center;font-size:calc(var(--pp) * var(--z));line-height:1.3}
-.paso b{flex-shrink:0;width:var(--ico);height:var(--ico);border-radius:14px;border:2px solid rgba(34,211,238,.45);background:rgba(34,211,238,.1);color:#22D3EE;font-family:JB;font-size:24px;display:flex;align-items:center;justify-content:center;font-weight:500}
-.cta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:var(--cp);border-radius:26px;background:#22D3EE;color:#04121A}
-.cta strong{display:block;font-size:var(--pc);line-height:1.15;font-weight:700}
-.cta span{display:block;font-size:22px;margin-top:6px;font-weight:500}
-.cta .w{flex-shrink:0;width:var(--logo);height:var(--logo);border-radius:50%;background:#04121A;display:flex;align-items:center;justify-content:center}
-.pie{margin-top:var(--g4);display:flex;justify-content:space-between;font-family:JB;font-size:21px;color:#8391A7;letter-spacing:.06em}
-.pie b{color:#C3CEDD;font-weight:500}
-/* Reel (1080x1920): margen superior e inferior libres para la interfaz de Instagram */
-.reel{justify-content:center;padding:260px 84px 440px}
-.reel .marca{position:absolute;top:150px;left:84px;display:flex;align-items:center;gap:18px}
-.reel .marca img{width:72px;height:72px;border-radius:16px;box-shadow:0 0 30px rgba(34,211,238,.35)}
-.reel .marca b{font-family:JB;font-size:22px;letter-spacing:.26em;color:#22D3EE;font-weight:500}
-.reel .kick{font-family:JB;font-size:30px;letter-spacing:.18em;color:#22D3EE}
-.reel h1{font-size:calc(108px * var(--z));margin-top:28px}
-.reel .sub{font-size:40px;color:#C3CEDD;margin-top:34px;line-height:1.35}
-.reel .num{font-family:JB;font-size:250px;line-height:.9;color:#22D3EE;font-weight:500;text-shadow:0 0 60px rgba(34,211,238,.45)}
-.reel .tit{font-size:calc(88px * var(--z));line-height:1.05;letter-spacing:-.025em;font-weight:700;color:#fff;margin-top:22px}
-.reel .chips{margin-top:30px}.reel .chip{font-size:28px;padding:12px 24px}
-.reel .clave{margin-top:46px;padding:36px 40px;border-width:3px}
-.reel .clave small{font-size:26px;margin-bottom:16px}
-.reel .clave p{font-size:calc(52px * var(--z))}
-.reel .cta{margin-top:50px;padding:40px;display:block}
-.reel .cta strong{font-size:56px}.reel .cta span{font-size:34px;margin-top:14px}
-.reel .links{margin-top:40px;display:flex;flex-direction:column;gap:20px;font-size:38px;color:#C3CEDD}
-.reel .links b{font-family:JB;font-size:34px;color:#fff;font-weight:500}
+body{font-family:SG,sans-serif;color:var(--txt);background:var(--fondo);overflow:hidden}
+.c{position:relative;width:1080px;height:var(--h);overflow:hidden;display:flex;flex-direction:column;padding:var(--pad);
+  background:radial-gradient(70% 45% at 85% 8%,rgba(255,59,59,.20),transparent 65%),radial-gradient(60% 40% at 0% 100%,rgba(34,211,238,.12),transparent 65%),var(--fondo)}
+.ruido{position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px)}
+/* Encabezado de marca */
+.marca{display:flex;align-items:center;gap:14px;position:relative;z-index:3}
+.marca img{width:54px;height:54px;border-radius:12px;box-shadow:0 0 26px rgba(34,211,238,.35)}
+.marca b{font-family:JB;font-size:19px;letter-spacing:.24em;color:var(--cian);font-weight:500}
+.marca .num{margin-left:auto;font-family:JB;font-size:20px;color:var(--gris);letter-spacing:.1em}
+.alerta{display:inline-flex;align-items:center;gap:10px;font-family:JB;font-size:21px;letter-spacing:.18em;color:#fff;background:var(--rojo);padding:8px 16px;border-radius:6px;align-self:flex-start;font-weight:600}
+.alerta i{width:11px;height:11px;border-radius:50%;background:#fff;animation:none}
+/* Títulos */
+.t{font-family:Anton,Impact,sans-serif;text-transform:uppercase;line-height:.98;letter-spacing:.005em;color:#fff;font-size:calc(var(--t) * var(--z,1))}
+.t em{font-style:normal;color:var(--rojo)}
+.t .cian{color:var(--cian)}
+.sub{font-size:var(--sub);color:#C9D2DF;line-height:1.32}
+.sub b{color:#fff}
+/* Celular */
+.tel{position:relative;width:var(--telw);border-radius:52px;padding:14px;background:linear-gradient(150deg,#2A3346,#0D1322);box-shadow:0 0 0 2px rgba(255,255,255,.08),0 50px 120px -30px rgba(0,0,0,.9),0 0 80px -20px rgba(255,59,59,.35)}
+.pant{position:relative;border-radius:40px;overflow:hidden;min-height:var(--telh);display:flex;flex-direction:column;background:#0B141A}
+.isla{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:120px;height:32px;border-radius:18px;background:#000;z-index:4}
+.cab{display:flex;align-items:center;gap:14px;padding:58px 22px 16px;background:#1F2C34}
+.av{width:52px;height:52px;border-radius:50%;background:#3B4A54;display:grid;place-items:center;color:#E9EDEF;font-weight:700;font-size:22px;flex-shrink:0}
+.cab b{display:block;font-size:24px;color:#E9EDEF;font-weight:600;line-height:1.15}
+.cab small{display:block;font-size:17px;color:#8696A0}
+.chat{flex:1;padding:22px 18px;display:flex;flex-direction:column;gap:12px}
+.bur{align-self:flex-start;max-width:94%;border-radius:6px 20px 20px 20px;padding:16px 18px 30px;font-size:var(--msg);line-height:1.36;position:relative;background:#202C33;color:#E9EDEF}
+.bur time{position:absolute;right:14px;bottom:8px;font-size:15px;color:#8696A0}
+.bur u{color:#53BDEB;text-decoration:underline}
+/* variantes por app */
+.app-sms .pant{background:#101114}.app-sms .cab{background:#18191D;justify-content:center;flex-direction:column;gap:6px;padding-top:62px}
+.app-sms .bur{background:#2C2C30;border-radius:20px 20px 20px 6px}
+.app-instagram .pant{background:#000}.app-instagram .cab{background:#000;border-bottom:1px solid #222}
+.app-instagram .av{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF)}
+.app-instagram .bur{background:#262626;border-radius:22px}
+.app-email .pant{background:#121418}.app-email .cab{background:#1A1D23}
+.app-email .bur{background:#1E2229;border-radius:14px;max-width:100%}
+.app-llamada .pant{background:linear-gradient(180deg,#1B2533,#0A0F17)}
+.llam{display:flex;flex-direction:column;align-items:center;gap:10px;padding:80px 20px 20px;text-align:center}
+.llam .av{width:110px;height:110px;font-size:44px}
+.llam b{font-size:32px;color:#fff}.llam small{font-size:19px;color:#9AA6B8}
+.llam .bur{align-self:stretch;margin-top:18px;border-radius:20px;background:rgba(255,255,255,.08);font-style:italic}
+.botones{display:flex;justify-content:space-around;padding:10px 40px 34px;margin-top:auto}
+.botones i{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:30px}
+.botones .no{background:#E5484D}.botones .si{background:#30A46C}
+/* Sello FALSO */
+.sello{position:absolute;z-index:5;font-family:Anton,Impact,sans-serif;color:var(--rojo);border:10px solid var(--rojo);border-radius:18px;padding:4px 30px 0;font-size:var(--sello);letter-spacing:.06em;transform:rotate(-14deg);background:rgba(7,8,12,.55);box-shadow:0 0 60px rgba(255,59,59,.45);line-height:1.08}
+/* Listas grandes */
+.lista{display:flex;flex-direction:column;gap:var(--gl)}
+.it{display:flex;gap:26px;align-items:center;padding:var(--pi);border-radius:22px;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.08)}
+.it .n{flex-shrink:0;width:var(--nw);height:var(--nw);border-radius:16px;display:grid;place-items:center;font-family:Anton;font-size:calc(var(--nw) * .6);color:#fff}
+.it.mal .n{background:var(--rojo)}.it.bien .n{background:var(--verde);color:#04140D}
+.it p{font-size:calc(var(--li) * var(--z,1));line-height:1.25;font-weight:600}
+.v{justify-content:center}
+.v .marca{position:absolute;top:var(--mt,120px);left:var(--ml,72px);right:var(--ml,72px)}
+.v .pie{position:absolute;bottom:var(--pb,48px);left:var(--ml,72px);right:var(--ml,72px);margin:0}
+.v > :not(.marca):not(.pie):not(.ruido){margin-top:0}
+.v{gap:var(--vg,34px)}
+.v .encuesta{flex-shrink:0}
+.pie{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-family:JB;font-size:20px;color:var(--gris);position:relative;z-index:3}
+.pie b{color:#fff;font-weight:500}
+.desliza{font-family:Anton;font-size:30px;letter-spacing:.06em;color:#fff;display:flex;align-items:center;gap:12px}
+.desliza i{font-style:normal;color:var(--rojo);font-size:40px}
+.chip{font-family:JB;font-size:20px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:2px solid rgba(255,255,255,.25);color:#DCE3EC;align-self:flex-start;text-transform:uppercase}
+/* Cierre */
+.cta{border-radius:26px;padding:30px 32px;background:var(--cian);color:#04121A}
+.cta b{display:block;font-family:Anton;font-size:44px;text-transform:uppercase;line-height:1.05}
+.cta span{display:block;font-size:24px;margin-top:8px;font-weight:600}
+.links{display:flex;flex-direction:column;gap:10px;font-family:JB;font-size:24px;color:#fff}
+.links span{color:var(--gris);font-family:SG;font-size:22px}
+/* Barras del dato */
+.barras{display:flex;flex-direction:column;gap:22px}
+.barra b{display:flex;justify-content:space-between;font-size:30px;margin-bottom:10px}
+.barra i{display:block;height:26px;border-radius:13px;background:rgba(255,255,255,.08);overflow:hidden}
+.barra i s{display:block;height:100%;background:linear-gradient(90deg,var(--rojo),#FF8A3D);border-radius:13px}
+.gigante{white-space:nowrap;font-family:Anton;font-size:calc(var(--gig) * var(--z,1));line-height:.85;color:var(--rojo);text-shadow:0 0 80px rgba(255,59,59,.45)}
+.encuesta{border:3px dashed rgba(255,255,255,.35);border-radius:28px;height:220px;display:grid;place-items:center;font-family:JB;font-size:24px;color:var(--gris);text-align:center;line-height:1.5}
 </style></head><body><div id="raiz"></div>
 <script>
 const P = new URLSearchParams(location.search);
-const modo = P.get('modo');            // ficha-ig | ficha-wa | reel-0 ... reel-4
+const modo = P.get('modo');
 const D = JSON.parse(P.get('datos'));
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rojo = s => esc(s).replace(/\*([^*]+)\*/g, '<em>$1</em>');
 const LOGO = '../../logo-cm.png';
-const WA = '<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>';
-const VARS = {
-  'ficha-ig': '--h:1350px;--pad:64px 72px 52px;--logo:84px;--g1:44px;--g2:32px;--g3:22px;--g4:14px;--h1:96px;--chip:21px;--cp:26px 30px;--pk:40px;--pp:31px;--ico:48px;--pc:33px',
-  'ficha-wa': '--h:1080px;--pad:48px 64px 40px;--logo:68px;--g1:26px;--g2:20px;--g3:16px;--g4:10px;--h1:74px;--chip:18px;--cp:20px 26px;--pk:31px;--pp:25px;--ico:40px;--pc:27px'
+const IG = '@cybermobile.ai';
+const TAM = {
+  '1350': '--mt:56px;--ml:64px;--pb:48px;--h:1350px;--pad:56px 64px 48px;--t:116px;--sub:36px;--telw:600px;--telh:440px;--msg:29px;--sello:124px;--gl:26px;--pi:30px 30px;--nw:88px;--li:40px;--gig:330px',
+  '1080': '--h:1080px;--pad:46px 56px 40px;--t:92px;--sub:28px;--telw:470px;--telh:400px;--msg:25px;--sello:104px;--gl:16px;--pi:18px 22px;--nw:62px;--li:29px;--gig:260px',
+  '1920': '--h:1920px;--pad:230px 72px 330px;--t:150px;--sub:42px;--telw:800px;--telh:560px;--msg:38px;--sello:170px;--gl:30px;--pi:36px 34px;--nw:104px;--li:48px;--gig:420px'
 };
-function ficha(m) {
-  return `<div class="grid"></div>
-  <div class="top"><img src="${LOGO}" alt=""><div><b>CYBER MOBILE</b><span>Observatorio de Fraude Digital</span></div></div>
-  <div class="alerta"><i></i>${esc(m.etiqueta)}</div>
-  <h1>${m.tituloHtml}</h1>
-  <div class="chips"><span class="chip">${esc(m.canal)}</span><span class="chip r">RIESGO ${esc(m.riesgo)}</span><span class="chip">ÍNDICE ${m.indice}/100</span></div>
-  <div class="clave"><small>CÓMO RECONOCERLA</small><p>${esc(m.clave)}</p></div>
-  <div class="pasos"><small>SI TE LLEGÓ</small>${m.pasos.map((p, i) => `<div class="paso"><b>${i + 1}</b>${esc(p)}</div>`).join('')}</div>
-  <div class="cta"><div><strong>¿Te llegó un mensaje así?<br>Verificalo antes de responder.</strong><span>Agente de Cyber Mobile por WhatsApp · 7 días gratis</span></div><div class="w">${WA}</div></div>
-  <div class="pie"><b>cybermobile.com.ar/observatorio</b><span>Datos: ${esc(D.mes)}</span></div>`;
+function marca(n) { return `<div class="ruido"></div><div class="marca"><img src="${LOGO}" alt=""><b>CYBER MOBILE</b>${n ? `<span class="num">${n}</span>` : ''}</div>`; }
+function telefono(e) {
+  const ini = esc((e.remitente || '?').replace(/[^A-Za-zÁÉÍÓÚÑ0-9+]/g, '').charAt(0) || '?');
+  const msg = esc(e.mensaje).replace(/(\b[a-z0-9-]+\.(?:online|com|ar|net|xyz|site)(?:\.[a-z]{2})?(?:\/\S*)?)/gi, '<u>$1</u>');
+  if (e.app === 'llamada') return `<div class="tel app-llamada"><div class="pant"><div class="isla"></div>
+    <div class="llam"><div class="av">${ini}</div><b>${esc(e.remitente)}</b><small>Llamada entrante…</small><div class="bur">“${msg}”</div></div>
+    <div class="botones"><i class="no">✆</i><i class="si">✆</i></div></div></div>`;
+  const sub = { whatsapp: 'en línea', sms: 'Mensaje de texto', instagram: 'Mensaje directo', email: 'Recibido ahora' }[e.app] || '';
+  return `<div class="tel app-${esc(e.app)}"><div class="pant"><div class="isla"></div>
+    <div class="cab"><div class="av">${ini}</div><div><b>${esc(e.remitente)}</b><small>${sub}</small></div></div>
+    <div class="chat"><div class="bur">${msg}<time>${esc(D.hora || '19:42')}</time></div></div></div></div>`;
 }
-function reel(i) {
-  const marca = t => `<div class="grid"></div><div class="marca"><img src="${LOGO}" alt=""><b>${t}</b></div>`;
-  if (i === 0) return marca('OBSERVATORIO DE FRAUDE DIGITAL') +
-    `<div class="kick">● RANKING DE ${esc(D.mes.toUpperCase())}</div><h1>Las <em>3 estafas</em> que más circulan en Argentina</h1><p class="sub">${esc(D.gancho)}</p>`;
-  if (i === 4) return marca('CYBER MOBILE') +
-    `<h1 style="font-size:96px">¿Te llegó algo así?</h1><div class="cta"><strong>Verificalo antes de responder.</strong><span>Reenvialo a nuestro agente por WhatsApp · 7 días gratis</span></div>
-     <div class="links"><span>Ranking completo y fichas:</span><b>cybermobile.com.ar/observatorio</b><span style="margin-top:20px">📌 Guardalo y mandáselo a tu familia</span></div>`;
-  const m = D.top[3 - i];   // pantalla 1 = #3, 2 = #2, 3 = #1
-  return marca('OBSERVATORIO DE FRAUDE DIGITAL') +
-    `<div class="num">#${m.pos}</div><div class="tit">${esc(m.tituloCorto)}</div>
-     <div class="chips"><span class="chip">${esc(m.canal)}</span><span class="chip r">RIESGO ${esc(m.riesgo)}</span></div>
-     <div class="clave"><small>CÓMO RECONOCERLA</small><p>${esc(m.clave)}</p></div>`;
-}
+function sello(top, left) { return `<div class="sello" style="top:${top};left:${left}">FALSO</div>`; }
+
+const M = {};
+// ---------- Carrusel de una estafa (5 placas 1080x1350) ----------
+M['car-1'] = () => `${marca('1/5')}
+  <div style="margin-top:34px" class="alerta"><i></i>ALERTA DE ESTAFA</div>
+  <h1 class="t" style="margin-top:22px">${rojo(D.e.gancho)}</h1>
+  <div style="position:relative;margin-top:34px;align-self:center">${telefono(D.e)}${sello('46%', '-6%')}</div>
+  <div class="pie"><span class="desliza">DESLIZÁ PARA SABER CÓMO DETECTARLA <i>→</i></span></div>`;
+M['car-2'] = () => `${marca('2/5')}
+  <span class="chip" style="margin-top:40px">${esc(D.m.canal)} · riesgo ${esc(D.m.riesgo)}</span>
+  <h2 class="t" style="margin-top:22px">Así te <em>engañan</em></h2>
+  <p class="sub" style="margin-top:26px;font-size:40px">${esc(D.m.comoCorto || D.m.como)}</p>
+  <div style="margin-top:34px;padding:28px 30px;border-radius:24px;border:3px solid var(--rojo);background:rgba(255,59,59,.08)">
+    <p style="font-family:JB;font-size:20px;letter-spacing:.18em;color:var(--rojo);margin-bottom:10px">LA TRAMPA</p>
+    <p style="font-size:34px;font-weight:700;line-height:1.25">${esc(D.e.senales[1])}</p></div>
+  <div class="pie"><span>Estafa <b>#${esc(D.m.pos || '—')}</b> del Observatorio · ${esc(D.mes)}</span></div>`;
+M['car-3'] = () => `${marca('3/5')}
+  <h2 class="t" style="margin-top:44px">3 señales para <em>detectarla</em></h2>
+  <div class="lista" style="margin-top:44px">${D.e.senales.map((s, i) => `<div class="it mal"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>
+  <div style="margin-top:34px;font-size:32px;line-height:1.3;color:#fff;font-weight:600">✅ ${esc(D.m.clave)}</div>
+  <div class="pie"><span>Guardá esta placa 📌</span></div>`;
+M['car-4'] = () => `${marca('4/5')}
+  <h2 class="t" style="margin-top:44px">Si te <em>llegó</em>, hacé esto</h2>
+  <div class="lista" style="margin-top:44px">${D.m.pasos.map((s, i) => `<div class="it bien"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>
+  <p class="sub" style="margin-top:34px">Y si ya diste datos o transferiste, llamá ya a tu banco y hacé la denuncia.</p>
+  <div class="pie"><span>Compartilo con tu familia 🙏</span></div>`;
+M['car-5'] = () => `${marca('5/5')}
+  <h2 class="t" style="margin-top:44px;--t:128px">📌 Guardalo.<br><em>Mandáselo</em> a quien siempre cae.</h2>
+  <div class="cta" style="margin-top:50px"><b>¿Te llegó algo raro?</b><span>Verificalo con Vera antes de responder, hacer clic o transferir.</span></div>
+  <div class="links" style="margin-top:34px"><span>Web</span>cybermobile.com.ar/agente<span style="margin-top:10px">WhatsApp</span>+54 9 11 7059-8505</div>
+  <div class="pie"><span>Seguinos: <b>${IG}</b></span><span>Observatorio de Fraude Digital</span></div>`;
+// ---------- Portada cuadrada para el canal de WhatsApp (1080x1080) ----------
+M['cuad'] = () => `${marca('')}
+  <div style="display:grid;grid-template-columns:1fr 470px;gap:30px;margin-top:30px;align-items:center;flex:1">
+    <div style="display:flex;flex-direction:column;gap:22px"><div class="alerta"><i></i>ALERTA</div><h1 class="t">${rojo(D.e.gancho)}</h1>
+      <p class="sub">✅ ${esc(D.m.clave)}</p></div>
+    <div style="position:relative">${telefono(D.e)}${sello('44%', '-12%')}</div></div>
+  <div class="pie"><b>cybermobile.com.ar/observatorio</b><span>${IG}</span></div>`;
+// ---------- Historia: ¿Estafa o no? (1080x1920) ----------
+M['historia'] = () => `${marca('')}
+  <h1 class="t" style="--t:190px">¿Estafa<br><em>o no?</em></h1>
+  <p class="sub" style="margin-top:24px">Este mensaje está circulando. ¿Vos qué hacés?</p>
+  <div style="margin-top:44px;align-self:center">${telefono(D.e)}</div>
+  <div class="encuesta" style="margin-top:46px">Espacio para el sticker de encuesta<br>ESTAFA 🚩 / NO ES ✅</div>`;
+// ---------- Dato del Observatorio (3 placas 1080x1350) ----------
+M['dato-1'] = () => `${marca('1/3')}
+  <div class="alerta" style="margin-top:40px"><i></i>DATO DEL OBSERVATORIO · ${esc(D.mes.toUpperCase())}</div>
+  <div class="gigante" style="margin-top:40px;${String(D.dato.numero).length > 4 ? '--gig:230px' : ''}">${esc(D.dato.numero)}</div>
+  <h1 class="t" style="margin-top:30px;--t:96px">${rojo(D.dato.frase)}</h1>
+  <div class="pie"><span class="desliza">¿SOS PARTE? DESLIZÁ <i>→</i></span></div>`;
+M['dato-2'] = () => `${marca('2/3')}
+  <h2 class="t" style="margin-top:44px;--t:100px">Por dónde <em>llegan</em> las estafas</h2>
+  <div class="barras" style="margin-top:50px">${D.dato.barras.map(b => `<div class="barra"><b><span>${esc(b.label)}</span><span>${b.pct}%</span></b><i><s style="width:${b.pct}%"></s></i></div>`).join('')}</div>
+  <div style="margin-top:46px;padding:26px 30px;border-radius:24px;background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.1)">
+    <p style="font-family:JB;font-size:20px;letter-spacing:.18em;color:var(--rojo);margin-bottom:10px">LA MÁS ACTIVA DEL MES</p>
+    <p style="font-size:38px;font-weight:700">${esc(D.dato.top)}</p></div>
+  <div class="pie"><span>Fuente: Observatorio de Fraude Digital · Cyber Mobile</span></div>`;
+M['dato-3'] = M['car-5'];
+// ---------- Reel "FALSO" (1080x1920, 4 pantallas) ----------
+M['rf-1'] = () => `${marca('')}<div class="alerta" style="margin-top:30px"><i></i>ALERTA DE ESTAFA</div>
+  <h1 class="t" style="margin-top:26px">${rojo(D.e.gancho)}</h1><div style="margin-top:50px;align-self:center">${telefono(D.e)}</div>`;
+M['rf-2'] = () => `${marca('')}<h1 class="t" style="margin-top:30px">Es una <em>estafa</em></h1>
+  <div style="position:relative;margin-top:50px;align-self:center">${telefono(D.e)}${sello('40%', '-4%')}</div>`;
+M['rf-3'] = () => `${marca('')}<h2 class="t" style="margin-top:30px">Cómo <em>darte cuenta</em></h2>
+  <div class="lista" style="margin-top:60px">${D.e.senales.map((s, i) => `<div class="it mal"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>`;
+M['rf-4'] = () => `${marca('')}<h2 class="t" style="margin-top:30px">📌 Guardalo y <em>mandáselo</em> a tu familia</h2>
+  <div class="cta" style="margin-top:60px"><b>¿Te llegó algo raro?</b><span>Verificalo con Vera: cybermobile.com.ar/agente</span></div>
+  <div class="links" style="margin-top:40px"><span>WhatsApp</span>+54 9 11 7059-8505<span style="margin-top:10px">Instagram</span>${IG}</div>`;
+// ---------- Reel del lunes: Top 3 (1080x1920, 5 pantallas) ----------
+M['rt-0'] = () => `${marca('')}<div class="alerta" style="margin-top:30px"><i></i>RANKING · ${esc(D.mes.toUpperCase())}</div>
+  <h1 class="t" style="margin-top:30px;--t:150px">Las 3 estafas que <em>más circulan</em> en Argentina</h1>
+  <p class="sub" style="margin-top:40px">La #1 te puede llegar hoy. Mirá hasta el final 👀</p>`;
+for (const i of [1, 2, 3]) M['rt-' + i] = () => { const x = D.top[3 - i]; return `${marca('')}
+  <div class="gigante" style="margin-top:20px;font-size:260px">#${x.m.pos}</div>
+  <h2 class="t" style="margin-top:10px;--t:96px">${esc(x.m.nombre)}</h2>
+  <div style="margin-top:40px;align-self:center;transform:scale(.86);transform-origin:top center">${telefono(x.e)}</div>`; };
+M['rt-4'] = M['rf-4'];
+
 const raiz = document.getElementById('raiz');
 const c = document.createElement('div');
-if (modo.startsWith('ficha')) {
-  c.className = 'c'; c.setAttribute('style', VARS[modo] + ';--z:1'); c.innerHTML = ficha(D.ficha);
-  document.body.style.width = '1080px'; document.body.style.height = modo === 'ficha-ig' ? '1350px' : '1080px';
-} else {
-  c.className = 'c reel'; c.setAttribute('style', '--h:1920px;--z:1'); c.innerHTML = reel(Number(modo.split('-')[1]));
-  document.body.style.width = '1080px'; document.body.style.height = '1920px';
-}
+const alto = modo.startsWith('cuad') ? '1080' : (modo === 'historia' || modo.startsWith('rf-') || modo.startsWith('rt-')) ? '1920' : '1350';
+const centrado = alto === '1920' || /^(car-[2-5]|dato-[23])$/.test(modo);
+c.className = centrado ? 'c v' : 'c'; c.setAttribute('style', TAM[alto] + ';--z:1'); c.innerHTML = M[modo]();
+document.body.style.width = '1080px'; document.body.style.height = alto + 'px';
 raiz.appendChild(c);
-// Ajuste automático: si el texto no entra, achica los textos largos de a 4 %.
+// Si el texto no entra, achica títulos y listas de a 3 %.
 document.fonts.ready.then(() => {
   let z = 1;
-  const desborda = () => c.scrollHeight > c.clientHeight + 1 || [...c.querySelectorAll('.clave p,h1,.tit')].some(e => e.scrollWidth > e.clientWidth + 1);
-  while (desborda() && z > 0.6) { z -= 0.04; c.style.setProperty('--z', z.toFixed(2)); }
+  const desborda = () => c.scrollHeight > c.clientHeight + 1 || [...c.querySelectorAll('.t,.gigante')].some(e => e.scrollWidth > e.clientWidth + 1);
+  while (desborda() && z > 0.55) { z -= 0.03; c.style.setProperty('--z', z.toFixed(2)); }
   document.documentElement.setAttribute('data-listo', desborda() ? 'desborda' : '1');
 });
 </script>
