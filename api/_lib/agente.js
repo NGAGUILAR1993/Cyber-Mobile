@@ -61,10 +61,11 @@ function claveCookie() {
 function firmar(texto) {
     return crypto.createHmac('sha256', claveCookie()).update(texto).digest('base64url');
 }
-export function leerSesion(req) {
-    const crudo = String(req.headers.cookie || '').split(/;\s*/).find((c) => c.startsWith(COOKIE + '='));
-    if (!crudo || !secreto()) return null;
-    const [datos, firma] = crudo.slice(COOKIE.length + 1).split('.');
+// La sesión viaja en la cookie y, como respaldo, en la cabecera X-CM-Sesion que la página
+// guarda en el navegador (algunos navegadores o extensiones descartan la cookie).
+function sesionDeToken(token) {
+    if (!token || !secreto()) return null;
+    const [datos, firma] = String(token).split('.');
     if (!datos || !firma) return null;
     const esperada = firmar(datos);
     if (firma.length !== esperada.length || !crypto.timingSafeEqual(Buffer.from(firma), Buffer.from(esperada))) return null;
@@ -75,12 +76,19 @@ export function leerSesion(req) {
         return { id: s.id, tel: s.tel || '' };
     } catch { return null; }
 }
+export function leerSesion(req) {
+    const crudo = String(req.headers.cookie || '').split(/;\s*/).find((c) => c.startsWith(COOKIE + '='));
+    return sesionDeToken(crudo && crudo.slice(COOKIE.length + 1)) || sesionDeToken(req.headers['x-cm-sesion']);
+}
 export function nuevaSesion() {
     return { id: crypto.randomBytes(16).toString('hex'), tel: '' };
 }
-export function guardarSesion(res, s) {
+export function tokenSesion(s) {
     const datos = b64u(JSON.stringify({ id: s.id, tel: s.tel || undefined }));
-    const valor = `${datos}.${firmar(datos)}`;
+    return `${datos}.${firmar(datos)}`;
+}
+export function guardarSesion(res, s) {
+    const valor = tokenSesion(s);
     const seguro = process.env.AGENTE_COOKIE_INSEGURA ? '' : '; Secure';
     res.setHeader('Set-Cookie', `${COOKIE}=${valor}; Path=/api/agente; HttpOnly; SameSite=Lax; Max-Age=${COOKIE_DIAS * 86400}${seguro}`);
 }
@@ -130,7 +138,8 @@ export async function estadoSuscripcion(r, tel) {
 export async function guardarEstado(r, tel, estado) {
     if (!tel) return;
     const e = String(estado || '').toLowerCase().slice(0, 20);
-    await r.set(`cm_agente:sus:${tel}`, e || 'ninguno', 'EX', 6 * 3600);
+    // n8n lo vuelve a confirmar en cada consulta de un número vinculado.
+    await r.set(`cm_agente:sus:${tel}`, e || 'ninguno', 'EX', 30 * 86400);
 }
 export function telefonoOculto(tel) {
     if (!tel) return '';
