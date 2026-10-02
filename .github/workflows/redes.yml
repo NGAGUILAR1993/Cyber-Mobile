@@ -1,10 +1,11 @@
 name: Publicación diaria para redes
 
-# Todos los días a las 08:15 (Argentina) genera la pieza del día en redes/<fecha>/:
+# Todos los días a las 08:15 (Argentina; con un respaldo a las 10:40) genera la pieza del día en redes/<fecha>/:
 # lunes, reel del Top 3; resto de los días, la ficha de una estafa.
 on:
   schedule:
     - cron: '15 11 * * *'   # 08:15 en Argentina (lista antes del envío de n8n de las 12)
+    - cron: '40 13 * * *'   # 10:40, respaldo por si GitHub no disparó el anterior
   workflow_dispatch:
     inputs:
       fecha:
@@ -35,7 +36,14 @@ jobs:
       - name: Generar la pieza del día
         env:
           FECHA: ${{ inputs.fecha }}
-        run: node scripts/redes/generar.mjs ${FECHA:+--fecha "$FECHA"}
+        run: |
+          # En los disparos automáticos no se pisa una pieza que ya existe (por ejemplo, una especial cargada a mano).
+          HOY=$(TZ=America/Argentina/Buenos_Aires date +%F)
+          if [ -z "$FECHA" ] && [ -f "redes/$HOY/textos.json" ]; then
+            echo "La pieza de $HOY ya existe"
+            exit 0
+          fi
+          node scripts/redes/generar.mjs ${FECHA:+--fecha "$FECHA"}
       - name: Guardar en el repositorio
         run: |
           git add -A redes
