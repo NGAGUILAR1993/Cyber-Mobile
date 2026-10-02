@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Vera, el agente antiestafas de Cyber Mobile</title>
-<meta name="description" content="Pegá el link, mensaje, CBU, teléfono o archivo que te llegó y Vera te dice si es una estafa. 2 consultas gratis, sin registrarte.">
+<meta name="description" content="Pegá el link, mensaje, CBU, teléfono o archivo que te llegó y Vera te dice si es una estafa, en segundos. Consultas sin límite con el plan Protección.">
 <link rel="canonical" href="https://www.cybermobile.com.ar/agente">
 <meta name="theme-color" content="#05070D">
 <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
@@ -250,6 +250,11 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;margi
 .hoja .fila-b{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 .hoja .fila-b .btn{flex:1;justify-content:center;min-width:200px}
 .aviso{font-size:13px;color:var(--muted);margin-top:12px}
+.servicios{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.servicios small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--acc);margin-bottom:6px}
+.servicios ul{font-size:14px}
+.plan h3 .precio{white-space:nowrap}
+.hoja{max-height:calc(100% - 16px);overflow-y:auto}
 .link-btn{border:0;background:none;color:var(--acc);cursor:pointer;padding:0;font:inherit;text-decoration:underline}
 .codigo{margin-top:14px;border:1px dashed rgba(34,211,238,.6);border-radius:14px;padding:14px;text-align:center;background:rgba(5,7,13,.6)}
 .codigo small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;color:var(--muted)}
@@ -313,7 +318,7 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;margi
           <div class="ejemplos" id="ejemplos"></div>
           <button class="btn btn-p" id="analizar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Analizar</button>
         </div>
-        <div class="pie-consola"><span>2 consultas gratis</span><span>sin registrarte</span><span>no guardamos lo que verificás</span></div>
+        <div class="pie-consola"><span>resultado en segundos</span><span>links, CBU, teléfonos y archivos</span><span>no guardamos lo que verificás</span></div>
         <p class="legal">Al usar Vera aceptás la <a href="/privacidad.html">política de privacidad</a>. No pegues contraseñas ni códigos de verificación.</p>
       </div>
     </div>
@@ -355,10 +360,10 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;margi
     </div>
 
     <div class="panel" role="tabpanel" id="p-planes" aria-labelledby="t-planes" hidden>
-      <div class="eyebrow">EMPEZÁ GRATIS</div>
-      <h2>Una suscripción, dos canales</h2><p class="bajada" style="font-size:16px">Probá gratis donde prefieras. Con el plan Protección usás Vera en la web y en WhatsApp con la misma cuenta.</p>
+      <div class="eyebrow">PLAN PROTECCIÓN</div>
+      <h2>Una suscripción, dos canales</h2><p class="bajada" style="font-size:16px">Con el plan Protección usás Vera sin límite en la web y en WhatsApp, con la misma cuenta: tu número de WhatsApp.</p>
       <div class="planes">
-        <div class="plan"><h3>Prueba gratis</h3><div class="precio">$0</div><ul><li><span><b>Web:</b> 2 consultas, sin registrarte</span></li><li><span><b>WhatsApp:</b> 7 días con todas las funciones</span></li><li>Links, CBU, teléfonos, emails, archivos y capturas</li></ul><button class="btn btn-s" data-ir="verificar">Probar en la web</button></div>
+        <div class="plan"><h3>Probalo en WhatsApp</h3><div class="precio">7 días <small>gratis</small></div><ul><li>Todas las funciones del agente</li><li>Análisis con IA, audios y seguimiento</li><li>Después elegís si seguís con el plan</li></ul><a class="btn btn-s" href="https://wa.me/5491170598505?text=Hola%20Vera%2C%20quiero%20probar%20los%207%20d%C3%ADas%20gratis" target="_blank" rel="noopener">Probar en WhatsApp</a></div>
         <div class="plan dest"><h3>Protección <span class="chip" style="color:var(--acc)">Recomendado</span></h3><div class="precio">$12.000 <small>/ mes</small></div><ul><li>Consultas ilimitadas en la web y en WhatsApp</li><li>Análisis de patrones con IA en WhatsApp</li><li>Audios, seguimiento del caso y alertas semanales</li><li>Una sola cuenta: tu número de WhatsApp</li></ul><button class="btn btn-p" data-suscribir type="button">Suscribirme</button></div>
       </div>
     </div>
@@ -401,10 +406,14 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;margi
 
 <div class="velo" id="muro" hidden>
   <div class="hoja" role="dialog" aria-modal="true" aria-labelledby="muroT">
-    <div class="eyebrow" id="muroEyebrow">USASTE TUS 2 CONSULTAS GRATIS</div>
-    <h2 id="muroT">Seguí protegido sin límite</h2>
-    <p class="bajada" style="font-size:15.5px">Con el plan Protección verificás todo lo que te llegue, en la web y en WhatsApp, con la misma cuenta: tu número de WhatsApp.</p>
-    <div class="plan dest"><h3>Protección</h3><div class="precio">$12.000 <small>/ mes</small></div><ul><li>Consultas ilimitadas en la web y en WhatsApp</li><li>Análisis de patrones con IA y audios en WhatsApp</li><li>Alertas semanales de estafas nuevas</li></ul></div>
+    <div class="eyebrow" id="muroEyebrow">PLAN PROTECCIÓN</div>
+    <h2 id="muroT">Para seguir verificando, activá tu plan</h2>
+    <p class="bajada" style="font-size:15.5px">Con el plan Protección verificás todo lo que te llegue, sin límite, en la web y en WhatsApp. Tu cuenta es tu número de WhatsApp.</p>
+    <div class="plan dest"><h3>Protección <span class="precio" style="font-size:26px">$12.000 <small>/ mes</small></span></h3>
+      <div class="servicios">
+        <div><small>EN LA WEB</small><ul><li>Consultas sin límite</li><li>Links y sitios web</li><li>CBU, CVU y alias</li><li>Teléfonos y emails</li><li>Capturas, PDF y APK</li></ul></div>
+        <div><small>EN WHATSAPP</small><ul><li>Todo lo de la web</li><li>Análisis de patrones con IA</li><li>Audios y notas de voz</li><li>Seguimiento de tu caso</li><li>Alertas semanales</li></ul></div>
+      </div></div>
     <div id="muroPaso"></div>
     <p class="aviso"><button type="button" class="link-btn" id="muroCerrar">Ahora no</button></p>
   </div>
