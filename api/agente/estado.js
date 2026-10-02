@@ -1,5 +1,5 @@
 // Estado del visitante en /agente: consultas gratis que le quedan y si vinculó su WhatsApp.
-import { redis, configurado, responder, sesionOCrear, gratisUsadas, estadoSuscripcion, telefonoOculto, ESTADOS_CON_ACCESO, GRATIS, WA_AGENTE } from '../_lib/agente.js';
+import { redis, configurado, responder, sesionOCrear, gratisUsadas, estadoSuscripcion, telefonoOculto, tokenSesion, ESTADOS_CON_ACCESO, GRATIS, WA_AGENTE } from '../_lib/agente.js';
 
 export default async function handler(req, res) {
     if (req.method !== 'GET') { res.setHeader('Allow', 'GET'); return responder(res, 405, { error: 'Método no permitido' }); }
@@ -16,7 +16,8 @@ export default async function handler(req, res) {
             vinculado: Boolean(s.tel),
             telefono: telefonoOculto(s.tel),
             suscripto: ESTADOS_CON_ACCESO.includes(estado),
-            whatsapp: WA_AGENTE
+            whatsapp: WA_AGENTE,
+            sesion: tokenSesion(s)
         });
     } catch (e) {
         console.error('agente/estado:', e.message);

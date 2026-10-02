@@ -40,9 +40,16 @@ function pintarCupo(){
   }
   $('#cuenta').textContent = est.vinculado ? `${est.telefono} · Salir` : (est.configurado ? 'Ya soy suscriptor' : '');
 }
+// La sesión viaja en una cookie; además se guarda una copia firmada en el navegador
+// por si alguna extensión o configuración descarta la cookie al recargar.
+function leerToken(){ try { return localStorage.getItem('cm_sesion') || ''; } catch (e) { return ''; } }
+function guardarToken(t){ try { if (t) localStorage.setItem('cm_sesion', t); } catch (e) {} }
 async function api(ruta, opciones){
-  const r = await fetch('/api/agente/' + ruta, Object.assign({ credentials: 'same-origin', headers: { 'Content-Type': 'application/json' } }, opciones || {}));
+  const headers = { 'Content-Type': 'application/json' };
+  const t = leerToken(); if (t) headers['X-CM-Sesion'] = t;
+  const r = await fetch('/api/agente/' + ruta, Object.assign({ credentials: 'same-origin', cache: 'no-store', headers }, opciones || {}));
   let j = {}; try { j = await r.json(); } catch (e) {}
+  if (j && j.sesion) guardarToken(j.sesion);
   return { status: r.status, ...j };
 }
 async function cargarEstado(){
