@@ -28,16 +28,9 @@ const waLink = t => `https://wa.me/${WA_NUM}?text=${encodeURIComponent(t)}`;
 const WA_URL = waLink('Hola Vera, quiero probar los 7 días gratis');
 const est = { configurado: true, gratis: 2, restantes: 2, vinculado: false, telefono: '', suscripto: false };
 function pintarCupo(){
-  const quedan = est.restantes, g = est.gratis;
-  if (est.suscripto) {
-    $('#pts').innerHTML = '';
-    $('#cupoTxt').innerHTML = '<span class="activo">Plan Protección activo</span>';
-    $('#restan').innerHTML = 'Plan Protección activo · consultas ilimitadas';
-  } else {
-    $('#pts').innerHTML = Array.from({length:g}, (_, i) => `<i class="${i >= quedan ? 'usado' : ''}"></i>`).join('');
-    $('#cupoTxt').innerHTML = quedan > 0 ? `<b>${quedan}</b> ${quedan === 1 ? 'consulta gratis' : 'consultas gratis'}` : 'Sin consultas gratis';
-    $('#restan').innerHTML = quedan > 0 ? `Te ${quedan === 1 ? 'queda' : 'quedan'} <b>${quedan}</b> ${quedan === 1 ? 'consulta gratis' : 'consultas gratis'}` : 'Usaste tus consultas gratis · <b>Suscribite</b> para seguir';
-  }
+  $('#pts').innerHTML = '';
+  $('#cupoTxt').innerHTML = est.suscripto ? '<span class="activo">Plan Protección activo</span>' : '';
+  $('#restan').innerHTML = est.suscripto ? 'Plan Protección activo · consultas sin límite' : '';
   $('#cuenta').textContent = est.vinculado ? `${est.telefono} · Salir` : (est.configurado ? 'Ya soy suscriptor' : '');
 }
 // La sesión viaja en una cookie; además se guarda una copia firmada en el navegador
@@ -205,12 +198,9 @@ async function consultar(tipoElegido, texto, archivo){
     tarjeta(resp.resultado);
     if (resp.modo === 'gratis') { est.restantes = resp.restantes; pintarCupo(); }
     if (resp.modo === 'suscripcion' && !est.suscripto) { est.suscripto = true; pintarCupo(); }
-    await espera(400);
-    if (!est.suscripto) burbuja('ella', est.restantes > 0 ? `<p>Te queda <b>${est.restantes}</b> consulta gratis. ¿Querés verificar otra cosa?</p>` : '<p>Esa fue tu última consulta gratis. Si te llega algo más, suscribite y seguimos sin límite, acá o por WhatsApp.</p>');
-    if (!est.suscripto && est.restantes <= 0) setTimeout(() => abrirMuro(), 1600);
     return;
   }
-  if (resp.status === 402) { est.restantes = 0; pintarCupo(); burbuja('ella', '<p>Ya usaste tus consultas gratis. Suscribite para seguir verificando sin límite.</p>'); abrirMuro(); return; }
+  if (resp.status === 402) { est.restantes = 0; pintarCupo(); burbuja('ella', '<p>Para seguir verificando necesitás el <b>plan Protección</b>. Te muestro qué incluye.</p>'); abrirMuro(); return; }
   if (resp.codigo === 'solo_whatsapp') { burbuja('ella', `<p>${esc(resp.error)}</p><p><a href="${WA_URL}" target="_blank" rel="noopener" style="color:var(--bajo);font-weight:600">Abrir WhatsApp →</a></p>`); return; }
   if (resp.codigo === 'no_configurado') { burbuja('ella', `<p>${esc(resp.error)}</p><p><a href="${WA_URL}" target="_blank" rel="noopener" style="color:var(--bajo);font-weight:600">Escribirle a Vera por WhatsApp →</a></p>`); return; }
   burbuja('ella', `<p>${esc(resp.error || 'No pude completar el análisis. Revisá tu conexión y probá de nuevo.')}</p>${resp.status >= 500 || !resp.status ? '<p style="color:var(--muted);font-size:13.5px">Esta consulta no se descontó.</p>' : ''}`);
@@ -275,7 +265,7 @@ async function iniciarVinculo(){
   }, 3000);
 }
 function abrirMuro(modo){
-  $('#muroEyebrow').textContent = modo === 'vincular' ? 'VINCULÁ TU WHATSAPP' : (est.restantes > 0 ? 'PLAN PROTECCIÓN' : 'USASTE TUS 2 CONSULTAS GRATIS');
+  $('#muroEyebrow').textContent = modo === 'vincular' ? 'VINCULÁ TU WHATSAPP' : 'PLAN PROTECCIÓN';
   $('#muro').hidden = false;
   if (modo === 'vincular' && !est.vinculado) iniciarVinculo(); else pasoMuro();
 }
