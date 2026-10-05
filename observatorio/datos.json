@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "octubre de 2026",
-    "actualizado": "2026-10-04T14:00:22.252Z",
+    "actualizado": "2026-10-05T00:00:20.818Z",
     "version_schema": 3,
     "generado_por": "n8n"
   },
@@ -11,12 +11,12 @@
       "key": "secuestro_whatsapp@intl",
       "nombre": "Secuestro de cuenta de WhatsApp",
       "canal": "WHATSAPP",
-      "act": 83,
-      "delta": 0,
+      "act": 84,
+      "delta": 1,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores contactan a la víctima por WhatsApp, haciéndose pasar por un contacto conocido que necesita un código de verificación. Una vez que la víctima proporciona el código, los delincuentes toman el control de su cuenta de WhatsApp, utilizándola para pedir dinero a sus contactos o cometer otras estafas. Es un engaño que busca el acceso a la cuenta para suplantar la identidad.",
-      "detectar": "Alerta de la Policía Nacional sobre una nueva estafa por WhatsApp donde se solicita un código de verificación, lo que indica un intento de secuestro de la cuenta.",
+      "como": "Los estafadores contactan a la víctima por WhatsApp, haciéndose pasar por un contacto conocido que necesita un código de verificación. Una vez que la víctima proporciona el código, los delincuentes toman el control de su cuenta de WhatsApp, utilizándola para pedir dinero a sus contactos o cometer otras estafas. Es un engaño que busca el acceso no autorizado a la cuenta.",
+      "detectar": "La Policía Nacional de España alerta sobre mensajes de WhatsApp donde un contacto pide un código de verificación, lo que indica un intento de secuestro de la cuenta.",
       "fuente": "65 y más (España)",
       "origen": "España",
       "pais": "España",
@@ -74,8 +74,8 @@
       "delta": 0,
       "riesgo": "alto",
       "emergente": true,
-      "como": "Los estafadores operan en marketplaces, publicando productos a precios muy bajos. Cuando un comprador se interesa, le piden que transfiera el dinero a una cuenta. Simultáneamente, contactan a un tercero, haciéndose pasar por un comprador interesado en un producto de este último, y le envían el comprobante de la transferencia que hizo la primera víctima. Así, el estafador se queda con el producto del tercero sin pagar.",
-      "detectar": "Precios excesivamente bajos en marketplaces, solicitudes de transferencia directa a cuentas desconocidas y la complejidad de la operación que involucra a un tercero inocente.",
+      "como": "Los estafadores operan en marketplaces, publicando productos a precios atractivos. Cuando un comprador se interesa, el estafador le pide que transfiera el dinero a una cuenta de un tercero, alegando un error. Luego, el estafador contacta a una víctima inocente, haciéndole creer que le hizo una transferencia errónea y pidiéndole que devuelva el dinero a otra cuenta, que es la del estafador. Así, el estafador se queda con el dinero del comprador y la víctima inocente pierde su propio dinero al devolver una transferencia que nunca recibió.",
+      "detectar": "Alertas sobre transferencias erróneas que no corresponden a movimientos propios, o solicitudes de devolución de dinero por supuestos errores en transacciones de terceros. Precios demasiado buenos en marketplaces.",
       "fuente": "Mediotiempo",
       "origen": "Exterior",
       "pais": "Exterior",
@@ -130,11 +130,11 @@
       "nombre": "Falsa oferta laboral",
       "canal": "REDES",
       "act": 81,
-      "delta": 1,
+      "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores ofrecen cursos online falsos o de baja calidad, a menudo prometiendo salidas laborales rápidas y bien remuneradas. Engañan a las víctimas para que paguen por estos cursos, que luego resultan ser inútiles o inexistentes, dejando a las personas sin el dinero invertido y sin la capacitación prometida. A veces, usan la información personal para otros fraudes.",
-      "detectar": "Alertas de asociaciones de consumidores sobre cursos online que prometen empleo fácil y rápido, o que solicitan pagos por adelantado con ofertas demasiado buenas para ser verdad.",
+      "como": "Los estafadores ofrecen cursos online falsos o de baja calidad, a menudo prometiendo salidas laborales inexistentes o muy bien remuneradas. Enganchan a las víctimas con publicidad engañosa en redes sociales o plataformas, solicitando pagos por adelantado por la formación o materiales, y luego desaparecen o entregan un producto sin valor real, dejando a la persona sin el dinero y sin la capacitación prometida.",
+      "detectar": "Alertas de asociaciones de consumidores sobre cursos online que prometen empleo fácil o salarios altos, y que solicitan pagos por adelantado sin garantías claras.",
       "fuente": "Cadena SER (España)",
       "origen": "España",
       "pais": "España",
@@ -236,6 +236,33 @@
     },
     {
       "pos": 5,
+      "key": "soporte_tecnico_falso@intl",
+      "nombre": "Falso soporte tecnico",
+      "canal": "TELEFONO",
+      "act": 64,
+      "delta": 2,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Los estafadores se hacen pasar por soporte técnico de empresas conocidas o agencias gubernamentales, llamando a las víctimas para informarles sobre un problema inexistente en su computadora o cuenta. Luego, solicitan acceso remoto a los dispositivos o piden información personal y financiera, con el objetivo de robar datos o instalar software malicioso.",
+      "detectar": "Llamadas inesperadas de supuestos técnicos que piden acceso remoto o información personal. La presión para actuar rápido y las amenazas de problemas graves son señales de alerta.",
+      "fuente": "Canton Repository (Estados Unidos)",
+      "origen": "Estados Unidos",
+      "pais": "Estados Unidos",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOd01JcXk2c2dTbzZWeEpmME40XzlRZkpRWVZvQWRSZm91aW0zd2JsckFCSko1SkI0Ul9tNVBGdldvZHFhdWU1ZWNtcWtxM2NNUHJFdndnX2Vhb29pdkM2ejF6TmZlZzlSSW5nTlgtU1hZc21sUnJnMTJHVWw0b1dLMWtzV1VxaHpHZHdWb2w3U0prZkExMWRqMXY4bzVPaXhzdl9yMnhVWDZrMDR5X0swSmpXMFdWZkR3TkhJ?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOd01JcXk2c2dTbzZWeEpmME40XzlRZkpRWVZvQWRSZm91aW0zd2JsckFCSko1SkI0Ul9tNVBGdldvZHFhdWU1ZWNtcWtxM2NNUHJFdndnX2Vhb29pdkM2ejF6TmZlZzlSSW5nTlgtU1hZc21sUnJnMTJHVWw0b1dLMWtzV1VxaHpHZHdWb2w3U0prZkExMWRqMXY4bzVPaXhzdl9yMnhVWDZrMDR5X0swSmpXMFdWZkR3TkhJ?oc=5",
+          "medio": "Canton Repository",
+          "pais": "Estados Unidos",
+          "titulo": "5 ways to outsmart phone scams | BBB Scam Alert - Canton Repository",
+          "anillo": 2,
+          "fecha": "2026-09-14T04:00:28.395Z"
+        }
+      ],
+      "provincias": []
+    },
+    {
+      "pos": 6,
       "key": "inversion_falsa@intl",
       "nombre": "Plataforma de inversion falsa",
       "canal": "REDES",
@@ -289,33 +316,6 @@
           "titulo": "Prometían dinero rápido con apuestas ‘online’: la Policía alerta de una estafa con la que tres ciberdelincu... - OkDiario",
           "anillo": 3,
           "fecha": "2026-09-23T16:00:30.356Z"
-        }
-      ],
-      "provincias": []
-    },
-    {
-      "pos": 6,
-      "key": "soporte_tecnico_falso@intl",
-      "nombre": "Falso soporte tecnico",
-      "canal": "TELEFONO",
-      "act": 62,
-      "delta": 3,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los estafadores llaman a las víctimas haciéndose pasar por soporte técnico de empresas conocidas, como Microsoft o Apple. Convencen a la persona de que tiene un problema grave en su computadora o dispositivo móvil y la persuaden para que les dé acceso remoto o instale software malicioso. Una vez dentro, roban información personal, bancaria o exigen un pago por un servicio inexistente.",
-      "detectar": "Llamadas inesperadas de supuestos soportes técnicos que solicitan acceso remoto a dispositivos o información personal, o que piden pagos por servicios no solicitados.",
-      "fuente": "Canton Repository (Estados Unidos)",
-      "origen": "Estados Unidos",
-      "pais": "Estados Unidos",
-      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOd01JcXk2c2dTbzZWeEpmME40XzlRZkpRWVZvQWRSZm91aW0zd2JsckFCSko1SkI0Ul9tNVBGdldvZHFhdWU1ZWNtcWtxM2NNUHJFdndnX2Vhb29pdkM2ejF6TmZlZzlSSW5nTlgtU1hZc21sUnJnMTJHVWw0b1dLMWtzV1VxaHpHZHdWb2w3U0prZkExMWRqMXY4bzVPaXhzdl9yMnhVWDZrMDR5X0swSmpXMFdWZkR3TkhJ?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOd01JcXk2c2dTbzZWeEpmME40XzlRZkpRWVZvQWRSZm91aW0zd2JsckFCSko1SkI0Ul9tNVBGdldvZHFhdWU1ZWNtcWtxM2NNUHJFdndnX2Vhb29pdkM2ejF6TmZlZzlSSW5nTlgtU1hZc21sUnJnMTJHVWw0b1dLMWtzV1VxaHpHZHdWb2w3U0prZkExMWRqMXY4bzVPaXhzdl9yMnhVWDZrMDR5X0swSmpXMFdWZkR3TkhJ?oc=5",
-          "medio": "Canton Repository",
-          "pais": "Estados Unidos",
-          "titulo": "5 ways to outsmart phone scams | BBB Scam Alert - Canton Repository",
-          "anillo": 2,
-          "fecha": "2026-09-14T04:00:28.395Z"
         }
       ],
       "provincias": []
@@ -486,12 +486,12 @@
       "key": "acceso_remoto_app@intl",
       "nombre": "App de acceso remoto",
       "canal": "TELEFONO",
-      "act": 66,
-      "delta": 1,
+      "act": 73,
+      "delta": 7,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores se hacen pasar por personal de un banco y contactan a la víctima por teléfono. Con la excusa de solucionar un problema o realizar una verificación, solicitan instalar una aplicación de acceso remoto en el celular. Una vez instalada, toman el control del dispositivo y realizan transferencias bancarias, vaciando las cuentas de la víctima.",
-      "detectar": "Llamadas telefónicas inesperadas de supuestos bancos que solicitan instalar software de acceso remoto o compartir datos sensibles para solucionar problemas inexistentes.",
+      "como": "Los estafadores contactan a la víctima por teléfono, haciéndose pasar por personal de soporte técnico o bancario. Con excusas como problemas de seguridad o actualizaciones, convencen a la persona de instalar una aplicación de acceso remoto en su celular. Una vez instalada, toman control del dispositivo y realizan transferencias bancarias o acceden a información sensible, vaciando las cuentas de la víctima.",
+      "detectar": "La alerta se detecta por el testimonio de una víctima que sufrió el robo de sus ahorros tras ser contactado telefónicamente y persuadido de instalar una app de acceso remoto, lo que permitió a los estafadores vaciar sus cuentas.",
       "fuente": "segre.com",
       "origen": "Exterior",
       "pais": "Exterior",
@@ -545,31 +545,19 @@
     "provincias": [
       {
         "nombre": "Buenos Aires",
-        "casos": 274,
+        "casos": 270,
         "modalidades": [
           "Phishing de PAMI",
           "Plataforma de inversion falsa",
           "Phishing de servicios (luz, gas, agua)",
           "Phishing de ARCA",
           "App de acceso remoto",
-          "Secuestro de cuenta de WhatsApp"
-        ]
-      },
-      {
-        "nombre": "Entre Ríos",
-        "casos": 251,
-        "modalidades": [
-          "Plataforma de inversion falsa",
-          "Phishing de servicios (luz, gas, agua)",
-          "App de acceso remoto",
-          "Phishing de billetera virtual",
-          "Secuestro de cuenta de WhatsApp",
-          "Tienda online falsa"
+          "Vendedor falso en marketplace"
         ]
       },
       {
         "nombre": "Catamarca",
-        "casos": 163,
+        "casos": 166,
         "modalidades": [
           "Phishing de PAMI",
           "Falsa oferta laboral",
@@ -580,15 +568,15 @@
         ]
       },
       {
-        "nombre": "Santa Fe",
-        "casos": 71,
+        "nombre": "Entre Ríos",
+        "casos": 146,
         "modalidades": [
           "Plataforma de inversion falsa",
+          "Phishing de servicios (luz, gas, agua)",
           "App de acceso remoto",
           "Phishing de billetera virtual",
-          "Phishing bancario",
-          "Suplantacion de banco por telefono",
-          "Perfil romantico falso"
+          "Secuestro de cuenta de WhatsApp",
+          "Tienda online falsa"
         ]
       },
       {
@@ -601,14 +589,14 @@
       },
       {
         "nombre": "Córdoba",
-        "casos": 55,
+        "casos": 56,
         "modalidades": [
           "App de acceso remoto"
         ]
       },
       {
         "nombre": "Jujuy",
-        "casos": 46,
+        "casos": 47,
         "modalidades": [
           "App de acceso remoto",
           "Vendedor falso en marketplace",
@@ -618,12 +606,22 @@
         ]
       },
       {
+        "nombre": "Santa Fe",
+        "casos": 45,
+        "modalidades": [
+          "Plataforma de inversion falsa",
+          "App de acceso remoto",
+          "Phishing de billetera virtual",
+          "Phishing bancario",
+          "Suplantacion de banco por telefono"
+        ]
+      },
+      {
         "nombre": "San Luis",
-        "casos": 33,
+        "casos": 31,
         "modalidades": [
           "App de acceso remoto",
-          "Suplantacion de banco por telefono",
-          "Perfil romantico falso"
+          "Suplantacion de banco por telefono"
         ]
       },
       {
@@ -658,8 +656,8 @@
         "modalidades": [
           "Phishing de PAMI",
           "Phishing de ARCA",
-          "Phishing de ANSES",
-          "Phishing bancario"
+          "Phishing bancario",
+          "Phishing de ANSES"
         ]
       },
       {
@@ -696,13 +694,6 @@
         ]
       },
       {
-        "nombre": "Corrientes",
-        "casos": 2,
-        "modalidades": [
-          "Perfil romantico falso"
-        ]
-      },
-      {
         "nombre": "Ciudad Autónoma de Buenos Aires",
         "casos": 1,
         "modalidades": [
@@ -710,8 +701,8 @@
         ]
       }
     ],
-    "geolocalizadas": 19,
-    "sinGeolocalizar": 5
+    "geolocalizadas": 18,
+    "sinGeolocalizar": 4
   },
   "paisesIntl": [],
   "top10": [
@@ -724,8 +715,8 @@
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores se hacen pasar por PAMI, contactando a las víctimas por WhatsApp para ofrecerles supuestos beneficios o turnos. Solicitan datos personales y bancarios, o piden que hagan clic en enlaces maliciosos que redirigen a sitios falsos, con el objetivo de robar información o instalar software malicioso en los dispositivos de los damnificados.",
-      "detectar": "Alertas de PAMI y expertos sobre mensajes de WhatsApp que solicitan datos personales o bancarios, o que dirigen a enlaces sospechosos para acceder a supuestos beneficios o turnos.",
+      "como": "Los estafadores se hacen pasar por PAMI, contactando a las víctimas por WhatsApp para ofrecer supuestos beneficios o turnos. Solicitan datos personales y bancarios, o piden descargar aplicaciones maliciosas para acceder a las cuentas de los jubilados. El objetivo es robar información sensible o dinero.",
+      "detectar": "Mensajes de WhatsApp de PAMI solicitando datos personales o bancarios, o pidiendo descargar apps. PAMI nunca se comunica por WhatsApp para pedir información sensible.",
       "fuente": "Diario Inforama - Catamarca",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -775,7 +766,7 @@
       "provincias": [
         {
           "nombre": "Buenos Aires",
-          "n": 31
+          "n": 32
         },
         {
           "nombre": "Catamarca",
@@ -796,8 +787,8 @@
       "delta": 0,
       "riesgo": "alto",
       "emergente": true,
-      "como": "Los estafadores se hacen pasar por asesores de inversión del Banco Provincia en redes sociales, ofreciendo oportunidades de inversión con altos rendimientos. Contactan a las víctimas, las convencen de transferir dinero a cuentas de terceros y luego desaparecen con los fondos, dejando a las personas sin su capital.",
-      "detectar": "Alertas del Banco Provincia sobre falsos asesores de inversión en redes sociales que prometen rendimientos extraordinarios y solicitan transferencias a cuentas de terceros.",
+      "como": "Los estafadores se hacen pasar por asesores de inversión del Banco Provincia en redes sociales, ofreciendo oportunidades de inversión falsas. Contactan a las víctimas, las convencen de transferir dinero a cuentas de terceros y luego desaparecen con los fondos. Utilizan la reputación del banco para generar confianza y engañar a los usuarios.",
+      "detectar": "Alertas del Banco Provincia sobre perfiles falsos en redes sociales que ofrecen inversiones. Contactos no solicitados de supuestos asesores de inversión que piden transferencias a cuentas desconocidas.",
       "fuente": "0221",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -851,11 +842,11 @@
         },
         {
           "nombre": "Buenos Aires",
-          "n": 43
+          "n": 44
         },
         {
           "nombre": "Santa Fe",
-          "n": 13
+          "n": 14
         },
         {
           "nombre": "La Rioja",
@@ -872,8 +863,8 @@
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores se hacen pasar por personal del banco y contactan a la víctima por teléfono. Con la excusa de un problema en la cuenta o una compra sospechosa, convencen a la persona de instalar una aplicación de acceso remoto en su celular. Una vez que tienen control del dispositivo, realizan transferencias de dinero desde la cuenta de la víctima a otras cuentas, vaciando sus ahorros.",
-      "detectar": "Llamadas telefónicas inesperadas de supuestos bancos pidiendo instalar apps o compartir datos. Siempre desconfiar de solicitudes de acceso remoto a dispositivos.",
+      "como": "Los estafadores contactan a la víctima por teléfono, haciéndose pasar por personal del banco. Con la excusa de solucionar un problema de seguridad o una compra no reconocida, convencen a la persona de instalar una aplicación de acceso remoto en su celular. Una vez que tienen control del dispositivo, acceden a la banca móvil y realizan transferencias de dinero, vaciando las cuentas de la víctima.",
+      "detectar": "Llamadas telefónicas inesperadas de supuestos bancos pidiendo instalar apps o compartir datos sensibles. Siempre desconfiar de solicitudes de acceso remoto a dispositivos.",
       "fuente": "Defensoria Santa Fe",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -923,11 +914,11 @@
       "provincias": [
         {
           "nombre": "Buenos Aires",
-          "n": 98
+          "n": 99
         },
         {
           "nombre": "Córdoba",
-          "n": 55
+          "n": 56
         },
         {
           "nombre": "Santiago del Estero",
@@ -981,15 +972,50 @@
     },
     {
       "pos": 4,
-      "key": "oferta_laboral_falsa",
-      "nombre": "Falsa oferta laboral",
-      "canal": "WHATSAPP",
-      "act": 77,
-      "delta": 4,
+      "key": "premio_sorteo",
+      "nombre": "Premios y sorteos falsos",
+      "canal": "REDES",
+      "act": 78,
+      "delta": 3,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores contactan a la víctima por WhatsApp ofreciendo un trabajo fácil de dar 'likes' a videos de YouTube o TikTok para ganar dinero. Inicialmente, pagan pequeñas comisiones para generar confianza. Luego, solicitan una inversión mayor para acceder a tareas más rentables, prometiendo altos retornos. Una vez que la víctima invierte una suma considerable, los delincuentes desaparecen con el dinero.",
-      "detectar": "Ofertas de trabajo que prometen dinero fácil por tareas mínimas como dar 'likes' en redes sociales, especialmente si solicitan una inversión inicial para acceder a supuestas ganancias mayores.",
+      "como": "Los estafadores atraen a usuarios de Roblox, especialmente menores, con promesas de Robux gratis. Utilizan sitios web falsos, aplicaciones maliciosas o enlaces de phishing que solicitan credenciales de la cuenta o información personal, buscando robar las cuentas o datos de las víctimas. A veces, también pueden pedir pagos por supuestas 'tarifas de gestión' para liberar los Robux.",
+      "detectar": "Alertas sobre ofertas de Robux gratis que requieren datos personales o pagos, o que dirigen a sitios web sospechosos fuera de la plataforma oficial de Roblox.",
+      "fuente": "WeLiveSecurity",
+      "origen": "Argentina",
+      "pais": "Argentina",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbFpzblRuLWh2X1pCbDljM1NEbTEyYXpvY29OZG9aS3d6emNuMWJDUUMydE1mWUZmdk9wMV9FLWRBcUh1Y25FY05janRVdjlVY2x3bVQyOE1SZXlNeDhRd1Y1TDFidEpjSWx1Nkw1U3l0ZjJQa29kc2ZzQVFnVmJtY0RRRkl1X1E?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbFpzblRuLWh2X1pCbDljM1NEbTEyYXpvY29OZG9aS3d6emNuMWJDUUMydE1mWUZmdk9wMV9FLWRBcUh1Y25FY05janRVdjlVY2x3bVQyOE1SZXlNeDhRd1Y1TDFidEpjSWx1Nkw1U3l0ZjJQa29kc2ZzQVFnVmJtY0RRRkl1X1E?oc=5",
+          "medio": "WeLiveSecurity",
+          "pais": "Argentina",
+          "titulo": "¿Buscas Robux gratis? La verdad detrás de las ofertas y las estafas - WeLiveSecurity",
+          "anillo": 2,
+          "fecha": "2026-09-25T16:00:31.164Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWGxrbU9YLU8yclVsS0JXaEwza2hTV2VOdnp1MHRlbFpkdWdIUzVoTTh0S0ZWdUU2Uk53a2Rwc3VUY0tEZ3g5Nmt1WWMyWUdodEZYaTIyTS1pZ2U0UXhFcHI1U2lZZVRlbUYyMU1Bb1pnbDJ1dWNpejhFRkZVUmlDQzhjRVM5X3BhekFITVBWY0N1TkUzSERtUHZNNkF1VTRjb0E?oc=5",
+          "medio": "Orientese co",
+          "pais": "Argentina",
+          "titulo": "No te dejes estafar con la adopción y ventas de mascotas y con el «raspe y gane» - Orientese co",
+          "anillo": 3,
+          "fecha": "2026-08-31T13:31:24.605Z"
+        }
+      ],
+      "provincias": []
+    },
+    {
+      "pos": 5,
+      "key": "oferta_laboral_falsa",
+      "nombre": "Falsa oferta laboral",
+      "canal": "REDES",
+      "act": 77,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Los estafadores publican ofertas de trabajo falsas en redes sociales, atrayendo a personas que buscan empleo. Una vez que la víctima muestra interés, le solicitan datos personales y, en algunos casos, dinero bajo la excusa de gastos administrativos, cursos de capacitación o materiales de trabajo, para luego desaparecer sin ofrecer el puesto prometido.",
+      "detectar": "Alertas de prensa sobre ofertas de empleo demasiado buenas para ser verdad en redes sociales, que solicitan dinero o datos sensibles antes de una entrevista o contratación.",
       "fuente": "Chequeado",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1039,56 +1065,21 @@
       "provincias": [
         {
           "nombre": "Catamarca",
-          "n": 24
+          "n": 26
         }
       ]
-    },
-    {
-      "pos": 5,
-      "key": "premio_sorteo",
-      "nombre": "Premios y sorteos falsos",
-      "canal": "REDES",
-      "act": 75,
-      "delta": 2,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los estafadores atraen a usuarios de Roblox, especialmente menores, con promesas de Robux gratis. Utilizan sitios web falsos, aplicaciones maliciosas o enlaces en redes sociales que solicitan datos personales o credenciales de la cuenta, o incluso la descarga de software no deseado, para robar información o acceder a las cuentas de las víctimas.",
-      "detectar": "Ofertas de Robux gratis que requieren clics en enlaces sospechosos, descarga de apps de terceros o ingreso de datos personales/credenciales de Roblox en sitios no oficiales.",
-      "fuente": "WeLiveSecurity",
-      "origen": "Argentina",
-      "pais": "Argentina",
-      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbFpzblRuLWh2X1pCbDljM1NEbTEyYXpvY29OZG9aS3d6emNuMWJDUUMydE1mWUZmdk9wMV9FLWRBcUh1Y25FY05janRVdjlVY2x3bVQyOE1SZXlNeDhRd1Y1TDFidEpjSWx1Nkw1U3l0ZjJQa29kc2ZzQVFnVmJtY0RRRkl1X1E?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbFpzblRuLWh2X1pCbDljM1NEbTEyYXpvY29OZG9aS3d6emNuMWJDUUMydE1mWUZmdk9wMV9FLWRBcUh1Y25FY05janRVdjlVY2x3bVQyOE1SZXlNeDhRd1Y1TDFidEpjSWx1Nkw1U3l0ZjJQa29kc2ZzQVFnVmJtY0RRRkl1X1E?oc=5",
-          "medio": "WeLiveSecurity",
-          "pais": "Argentina",
-          "titulo": "¿Buscas Robux gratis? La verdad detrás de las ofertas y las estafas - WeLiveSecurity",
-          "anillo": 2,
-          "fecha": "2026-09-25T16:00:31.164Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQWGxrbU9YLU8yclVsS0JXaEwza2hTV2VOdnp1MHRlbFpkdWdIUzVoTTh0S0ZWdUU2Uk53a2Rwc3VUY0tEZ3g5Nmt1WWMyWUdodEZYaTIyTS1pZ2U0UXhFcHI1U2lZZVRlbUYyMU1Bb1pnbDJ1dWNpejhFRkZVUmlDQzhjRVM5X3BhekFITVBWY0N1TkUzSERtUHZNNkF1VTRjb0E?oc=5",
-          "medio": "Orientese co",
-          "pais": "Argentina",
-          "titulo": "No te dejes estafar con la adopción y ventas de mascotas y con el «raspe y gane» - Orientese co",
-          "anillo": 3,
-          "fecha": "2026-08-31T13:31:24.605Z"
-        }
-      ],
-      "provincias": []
     },
     {
       "pos": 6,
       "key": "secuestro_whatsapp",
       "nombre": "Secuestro de cuenta de WhatsApp",
       "canal": "WHATSAPP",
-      "act": 70,
+      "act": 71,
       "delta": 1,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores se hacen pasar por un contacto conocido de la víctima, solicitando un código de verificación de WhatsApp. Una vez obtenido, secuestran la cuenta de WhatsApp de la víctima y luego se comunican con sus contactos pidiendo dinero urgente, simulando una emergencia. En este caso, la víctima perdió sus ahorros por esta doble estafa.",
-      "detectar": "Solicitud inesperada de códigos de verificación de WhatsApp por parte de contactos conocidos, o mensajes de contactos pidiendo dinero de forma inusual o urgente.",
+      "como": "Los estafadores se hacen pasar por un contacto conocido de la víctima, solicitando un código de verificación de WhatsApp. Una vez obtenido, secuestran la cuenta de la víctima y la utilizan para pedir dinero a sus contactos, alegando una emergencia. En este caso, la víctima fue engañada dos veces, perdiendo sus ahorros.",
+      "detectar": "Contactos de la víctima reciben mensajes pidiendo dinero de su número de WhatsApp, mientras la víctima pierde el acceso a su cuenta. La solicitud de códigos de verificación es una señal clave.",
       "fuente": "Chequeado",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1238,13 +1229,13 @@
       "pos": 8,
       "key": "phishing_arca",
       "nombre": "Phishing de ARCA",
-      "canal": "SMS",
-      "act": 59,
-      "delta": 1,
+      "canal": "MAIL",
+      "act": 62,
+      "delta": 3,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores envían SMS (smishing) suplantando a la Seguridad Social. El mensaje suele contener un enlace malicioso que redirige a una página falsa, donde se solicita a la víctima que ingrese datos personales y bancarios con la excusa de un trámite o beneficio, robando así su información.",
-      "detectar": "Alerta de la Seguridad Social sobre un nuevo fraude de smishing que suplanta su identidad, pidiendo a los ciudadanos que estén atentos a mensajes sospechosos con enlaces maliciosos.",
+      "como": "Los estafadores envían correos electrónicos falsos que simulan ser de ARCA (Agencia de Recaudación de Catamarca) para engañar a las víctimas. Estos mails suelen contener enlaces maliciosos que, al ser clickeados, redirigen a sitios web fraudulentos donde se solicitan datos personales y financieros, con el objetivo de robar información y cometer fraudes económicos.",
+      "detectar": "La alerta se detecta por la difusión de noticias que advierten sobre correos electrónicos falsos de ARCA, destacando la importancia de verificar la autenticidad del remitente y los enlaces antes de interactuar con ellos.",
       "fuente": "diariomendoza.com.ar",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1294,7 +1285,7 @@
       "provincias": [
         {
           "nombre": "Catamarca",
-          "n": 19
+          "n": 20
         },
         {
           "nombre": "Salta",
@@ -1319,12 +1310,12 @@
       "key": "phishing_mercadopago",
       "nombre": "Phishing de billetera virtual",
       "canal": "TELEFONO",
-      "act": 50,
-      "delta": 2,
+      "act": 51,
+      "delta": 1,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores se hacen pasar por personal de una billetera virtual, contactan a la víctima por teléfono y, bajo el pretexto de una supuesta compra o problema de seguridad, la guían para que instale una aplicación de acceso remoto o comparta datos sensibles, logrando así vaciar sus cuentas bancarias o realizar transferencias fraudulentas.",
-      "detectar": "Llamadas inesperadas de supuestos representantes de billeteras virtuales que solicitan instalar apps o compartir información personal/financiera. Siempre desconfiar de estas solicitudes.",
+      "como": "Los estafadores se hacen pasar por personal de una billetera virtual, contactando a la víctima por teléfono. Con la excusa de una supuesta compra o problema en la cuenta, solicitan datos personales y bancarios, o inducen a la víctima a realizar transferencias o autorizar operaciones, vaciando sus cuentas. En este caso, lograron robar más de $8 millones.",
+      "detectar": "Llamadas telefónicas inesperadas de supuestos representantes de billeteras virtuales que solicitan datos sensibles o la realización de operaciones bajo pretexto de solucionar un problema o anular una compra.",
       "fuente": "Chequeado",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1366,7 +1357,7 @@
       "provincias": [
         {
           "nombre": "Entre Ríos",
-          "n": 10
+          "n": 11
         },
         {
           "nombre": "Santa Fe",
@@ -1429,12 +1420,12 @@
       "key": "marketplace_falso",
       "nombre": "Vendedor falso en marketplace",
       "canal": "WHATSAPP",
-      "act": 46,
-      "delta": 3,
+      "act": 50,
+      "delta": 4,
       "riesgo": "alto",
       "emergente": true,
-      "como": "Los estafadores contactan a vendedores de autos en plataformas online, solicitan una videollamada para \"ver\" el vehículo y, durante la misma, graban la cara del vendedor. Luego, usan esa imagen para crear un perfil falso en Mercado Pago y pedir un préstamo a nombre de la víctima, intentando que esta autorice la operación con un código que le envían.",
-      "detectar": "Solicitud de videollamada para \"ver\" un producto en venta, seguida de un pedido de autorización de un código o transacción en Mercado Pago o similar, sin una compra real de por medio.",
+      "como": "Los estafadores contactan a vendedores de vehículos en plataformas online, solicitan una videollamada para \"ver\" el auto y, durante la misma, graban la cara del vendedor. Luego, utilizan esa grabación para suplantar su identidad en bancos o billeteras virtuales, realizando transferencias fraudulentas o pidiendo préstamos a nombre de la víctima. Es una nueva vuelta de tuerca a la suplantación de identidad.",
+      "detectar": "Contacto por WhatsApp para la venta de un auto, solicitud de videollamada para \"ver\" el vehículo y posterior intento de suplantación de identidad usando la imagen grabada del vendedor.",
       "fuente": "alertadigital.ar",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1488,7 +1479,7 @@
         },
         {
           "nombre": "Jujuy",
-          "n": 3
+          "n": 4
         }
       ]
     },
@@ -1497,12 +1488,12 @@
       "key": "phishing_banco",
       "nombre": "Phishing bancario",
       "canal": "TELEFONO",
-      "act": 45,
-      "delta": 2,
+      "act": 46,
+      "delta": 1,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Dos jubiladas de La Plata fueron víctimas de una estafa telefónica. Recibieron llamadas de supuestos empleados bancarios que, con la excusa de un problema con su cuenta o tarjeta, las convencieron de instalar una aplicación de acceso remoto en sus celulares. Una vez instalada, los estafadores tomaron el control de los dispositivos y realizaron transferencias millonarias desde sus cuentas bancarias.",
-      "detectar": "Llamadas telefónicas inesperadas de supuestos bancos solicitando instalar software o acceder a cuentas para solucionar problemas urgentes. Siempre desconfiar de estas solicitudes.",
+      "como": "Dos jubiladas de La Plata fueron víctimas de una estafa telefónica. Recibieron llamadas de supuestos empleados bancarios que, con la excusa de un problema con su cuenta o tarjeta, las convencieron de instalar una aplicación de acceso remoto. Una vez que tuvieron control de sus dispositivos, los estafadores realizaron transferencias millonarias desde sus cuentas bancarias.",
+      "detectar": "Llamadas telefónicas inesperadas de supuestos bancos solicitando instalar aplicaciones o brindar datos sensibles para solucionar problemas urgentes con cuentas o tarjetas.",
       "fuente": "Diario El Día de La Plata",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1552,7 +1543,7 @@
       "provincias": [
         {
           "nombre": "Buenos Aires",
-          "n": 35
+          "n": 36
         },
         {
           "nombre": "Salta",
@@ -1578,11 +1569,83 @@
     },
     {
       "pos": 13,
+      "key": "suplantacion_banco",
+      "nombre": "Suplantacion de banco por telefono",
+      "canal": "TELEFONO",
+      "act": 41,
+      "delta": 2,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Los estafadores se hacen pasar por personal de seguridad de una billetera virtual y contactan a la víctima por teléfono. Con la excusa de una supuesta actividad sospechosa en la cuenta, la convencen de instalar una aplicación de acceso remoto en su celular. Una vez que obtienen el control, realizan transferencias de dinero desde la cuenta de la víctima, vaciándola por completo.",
+      "detectar": "Llamadas telefónicas inesperadas de supuestos 'agentes de seguridad' de billeteras virtuales que solicitan instalar apps o compartir datos sensibles. Siempre desconfiar de estas solicitudes.",
+      "fuente": "Agencia de Noticias San Luis",
+      "origen": "Argentina",
+      "pais": "Argentina",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOLUdSOFBBSkRJOUx3eVNiNHc1UGhJdWNVU204VDVfdG5TaFM4QUFTamU2cGRZd0dUczN1MEdGYXZwRDhYbVdsa2JicE03enAxaVNYMV81bUtNdXNHMVVNS3RhOV9ZUldYSkVRUVNzdjdmRzM1SXlDaktJNjdxcUdnY2h6a3ZnelJOTGFQMlBZVTJSZUNsdHhNVTZQUkZwckRSeXFFTndlNHdTMzhiNUplTFRJR0pYR2d6Y1pKcG1GYw?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOLUdSOFBBSkRJOUx3eVNiNHc1UGhJdWNVU204VDVfdG5TaFM4QUFTamU2cGRZd0dUczN1MEdGYXZwRDhYbVdsa2JicE03enAxaVNYMV81bUtNdXNHMVVNS3RhOV9ZUldYSkVRUVNzdjdmRzM1SXlDaktJNjdxcUdnY2h6a3ZnelJOTGFQMlBZVTJSZUNsdHhNVTZQUkZwckRSeXFFTndlNHdTMzhiNUplTFRJR0pYR2d6Y1pKcG1GYw?oc=5",
+          "medio": "Agencia de Noticias San Luis",
+          "pais": "Argentina",
+          "titulo": "La Justicia ratificó un fallo provincial contra un banco por fraude digital - Agencia de Noticias San Luis",
+          "anillo": 3,
+          "fecha": "2026-08-31T13:02:13.056Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOX3hXbXlwSUVqZTF1dUxfWHdvSGpmTjRncm1jNVd6YnAxbExRNVpBU0N3Y0FFQnpVdE96YTV3VHlSTnhqeWpaTElXMEhteC0tSFJJenoyVkU3bHQ1eHl0RDNuaHNrWWJqU1VQSDlmYVhuaThqQ1NOalpLYThRN013ODY2V1UtTnI4ZG41dVYwbW5YbG1zWmVpSzdPNVZWYWppT0JwWS1iS0FCOTQxQ1HSAbMBQVVfeXFMT2w3ZzNEMnU2NUFCV09iVWFVSXhfYkZXaVV5dV9fMkpEZTQyZmZZeG9nODBTc1BGSjRHSk0tejNTc2l2aERZNF9ZWWhKcjdsN0lJYU14UzNncVYtc01faVJZSUtzSXJVVW9oNVJoR3EwOTRTQ0VjTGFoOFJvWGZRbXN1SG4wRGF6dHd0bXVkanFqd3lhMW5tUVNIRzVfRjZPV2tuY3QyTlZSdEpQaW1vODR0N1E?oc=5",
+          "medio": "todojujuy.com",
+          "pais": "Argentina",
+          "titulo": "Cómo actuar frente a una posible estafa virtual y dónde denunciar en Jujuy - todojujuy.com",
+          "anillo": 3,
+          "fecha": "2026-08-31T13:31:24.606Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNk41RzV4Z2l2ZVB2ekp4RWtXb1pRaV9neGdCSnhIVnNzVl9KdW81bU1Rd0FialRWUDU0UTRkb0tUQlFGTWV0VWtwb3p5WHBqajBhMWJZdFBUTk9EekpPX3plYnlZY3VjU3l6YmNyNE1xTDJDX05CamJ0eHhRU3NVX0NhQ241ZzNMSUJpZV92aUpQZDF1NUxnSWUxZjNpX0hfbVEtNjJiaE4xOS1WNXkwMTFmc3JYZHhya0Z6QWI5VndCYVUzVjZtVjkxaHljXzZyVlhoMFJwaDM0WEc5NHFrcUtJbzA1aWlpS3RnVzEwS2V3T2RYeTljcERQa29pVHB5bFlkQWg5TTIxWUVPbnJRVVpqSXpCVXlrRW53WVhVQTZ3eWk1OHU3UUl0a0RZVnJBaVFORFp2MUFkSEthY3ZVNG5seTI1ZjBEYWJXbmlWSWI3d9IB1wJBVV95cUxNLVpreUttUjJ5VndGa3B4MHhDdE14YW92ZW5kSm1GNm1vVTluaHp2aDBBRXY5dDBvLUFpZWJqTGxRVVpKOEhuZW1JZExtd2FBQ1FWMGtPVVIwRk1sbTJWazJtMVNjcTg5bXg2V2N6NWtmRGRUXzlFbV9OcVYtcXdiUHY3MFZRbkJMMXM2ZFVZMlN6ODBmclRtVks4NllRb3V0a1M1WDBrVU5jX2NuQ2wxN0UzOFVEQ0tUdVNxWXhoZjJXekRGdTJjWW03aGxEZnVsaUVqTXlHX2gwZHpfTEFZWld6WUNURjdBbFF0MGdNeE9JbmVuX1NocTlIT3hOM1FmYk9HSklybk9uTXpaXzBIdDhRVExVbjNTX3R5dlh1eXktYzJsT1oyTDJUVTBhb1ZDZHA5el9DTjNvdnh1TXRDOFZHRVJlMzhaNXlsQmNlN3BZcktjRVNR?oc=5",
+          "medio": "El Litoral",
+          "pais": "Argentina",
+          "titulo": "Estafa virtual: advierten sobre un fraude que usa la imagen del Banco Central - El Litoral",
+          "anillo": 3,
+          "fecha": "2026-08-31T16:56:39.205Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOZzJyRVN5YXZfRjdLSk96bWtCdHRRWDdRZGY4aVVRTHp5ejQ5UmUySDhNVE5URUE4NHIwWWVtUUJYanFnZkNfZ1g1YkE5Q245NXNzQ0RSeWdkdHhzNXotU1dsQ2ZvVzJGeXBDSDVXeFQ5MDBRNjZyWUVkY3Mza0x0MzZ1M3pFdVN3UXdsTnRQQTcxT3dYZkxmMElkcjhfelBEOVZwa1hiZ1dOQ2xETWJqeDV4bmlVbURTaGFHd09xQUtfWEctcnY2N29Yc2tmTDDSAeoBQVVfeXFMT0JaWG1ZTGc3VjJUaldjREl1NE5Bb3N5X0IzMWNfRExfSUNDVURub1VUeU00S1dNVjVFTWFvaXRSZTdmXzFQTnNEVkZiQUxFY3d6TzJTRkpzazk0VFVmU1V0a0dZSkdoYTg5ckc1XzZMbjlhd0pXRHdjY0V4ZUZPZlk4Qlk2ZWhFQ3ZNTUNDRDlTdnktMXBXNU9aUS1ELVcyNExYZ3FST2t2dFBFMWo2WGJtamYwRDlHWXB3cDJGZk5zVmVVeFhESmdKeDZNUWhUalFiUzlkcUJrMFRtNnljZV9RYjR5ci10X2RB?oc=5",
+          "medio": "infobae.com",
+          "pais": "Argentina",
+          "titulo": "La indignación de Sergio Lapegüe ante el intento de estafa que vivió: “Querían robarme todo” - infobae.com",
+          "anillo": 3,
+          "fecha": "2026-09-01T12:53:55.944Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOaGtwSmtyVFRpNV9tZVRabEFQTjB3N2YzNkUzT010QWxNMUFTc1pmcGZUbWNKNVdTT1NySkR6Z0pnSDczMDRfUTBJRGItSWdqb21hSWRwWjRjcTB0amgxTjRyYVY1VlNteU1MR04yNkh0ZXdsSEN2al82cXJtaU52d1lQRXRGZ1BKeHR5QUxHMEdoQ2VlV0FJdld6QnFsM0dZT2hPdmhnLXRvZmhBR1YwYzktOVEzbk8wSkl6WVVpNHZ0bjEyOW1fa0FmNElXUjExeVVTaVJ2Q200OUhWNFBqVnY5UkFLQVpaSUZTcmRR?oc=5",
+          "medio": "Aire de Santa Fe",
+          "pais": "Argentina",
+          "titulo": "Estafa en San Justo: fingieron ser del área de seguridad de una billetera virtual y le robaron más de 8 millones de pesos - Aire de Santa Fe",
+          "anillo": 3,
+          "fecha": "2026-10-01T00:00:37.186Z"
+        }
+      ],
+      "provincias": [
+        {
+          "nombre": "Jujuy",
+          "n": 33
+        },
+        {
+          "nombre": "San Luis",
+          "n": 27
+        },
+        {
+          "nombre": "Santa Fe",
+          "n": 2
+        }
+      ]
+    },
+    {
+      "pos": 14,
       "key": "phishing_anses",
       "nombre": "Phishing de ANSES",
       "canal": "WHATSAPP",
-      "act": 41,
-      "delta": 0,
+      "act": 39,
+      "delta": -2,
       "riesgo": "alto",
       "emergente": true,
       "como": "Los estafadores se hacen pasar por el Insssep a través de WhatsApp, enviando mensajes con un enlace malicioso. El objetivo es robar datos personales y bancarios de jubilados y pensionados, prometiendo beneficios o trámites inexistentes. Al hacer clic en el enlace, las víctimas son redirigidas a un sitio falso que simula ser el organismo, donde se les solicita información sensible.",
@@ -1653,78 +1716,6 @@
         {
           "nombre": "Buenos Aires",
           "n": 4
-        }
-      ]
-    },
-    {
-      "pos": 14,
-      "key": "suplantacion_banco",
-      "nombre": "Suplantacion de banco por telefono",
-      "canal": "TELEFONO",
-      "act": 39,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los estafadores se hacen pasar por personal de seguridad de una billetera virtual y contactan a la víctima por teléfono. Con la excusa de una supuesta compra o actividad sospechosa, la convencen de que les brinde datos sensibles o realice acciones que les permiten acceder a su cuenta y robarle dinero. En este caso, le sustrajeron más de 8 millones de pesos.",
-      "detectar": "Llamadas telefónicas inesperadas de supuestos 'bancos' o 'billeteras virtuales' que piden datos personales o acciones urgentes para 'resolver' problemas de seguridad en la cuenta.",
-      "fuente": "Agencia de Noticias San Luis",
-      "origen": "Argentina",
-      "pais": "Argentina",
-      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOLUdSOFBBSkRJOUx3eVNiNHc1UGhJdWNVU204VDVfdG5TaFM4QUFTamU2cGRZd0dUczN1MEdGYXZwRDhYbVdsa2JicE03enAxaVNYMV81bUtNdXNHMVVNS3RhOV9ZUldYSkVRUVNzdjdmRzM1SXlDaktJNjdxcUdnY2h6a3ZnelJOTGFQMlBZVTJSZUNsdHhNVTZQUkZwckRSeXFFTndlNHdTMzhiNUplTFRJR0pYR2d6Y1pKcG1GYw?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOLUdSOFBBSkRJOUx3eVNiNHc1UGhJdWNVU204VDVfdG5TaFM4QUFTamU2cGRZd0dUczN1MEdGYXZwRDhYbVdsa2JicE03enAxaVNYMV81bUtNdXNHMVVNS3RhOV9ZUldYSkVRUVNzdjdmRzM1SXlDaktJNjdxcUdnY2h6a3ZnelJOTGFQMlBZVTJSZUNsdHhNVTZQUkZwckRSeXFFTndlNHdTMzhiNUplTFRJR0pYR2d6Y1pKcG1GYw?oc=5",
-          "medio": "Agencia de Noticias San Luis",
-          "pais": "Argentina",
-          "titulo": "La Justicia ratificó un fallo provincial contra un banco por fraude digital - Agencia de Noticias San Luis",
-          "anillo": 3,
-          "fecha": "2026-08-31T13:02:13.056Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOX3hXbXlwSUVqZTF1dUxfWHdvSGpmTjRncm1jNVd6YnAxbExRNVpBU0N3Y0FFQnpVdE96YTV3VHlSTnhqeWpaTElXMEhteC0tSFJJenoyVkU3bHQ1eHl0RDNuaHNrWWJqU1VQSDlmYVhuaThqQ1NOalpLYThRN013ODY2V1UtTnI4ZG41dVYwbW5YbG1zWmVpSzdPNVZWYWppT0JwWS1iS0FCOTQxQ1HSAbMBQVVfeXFMT2w3ZzNEMnU2NUFCV09iVWFVSXhfYkZXaVV5dV9fMkpEZTQyZmZZeG9nODBTc1BGSjRHSk0tejNTc2l2aERZNF9ZWWhKcjdsN0lJYU14UzNncVYtc01faVJZSUtzSXJVVW9oNVJoR3EwOTRTQ0VjTGFoOFJvWGZRbXN1SG4wRGF6dHd0bXVkanFqd3lhMW5tUVNIRzVfRjZPV2tuY3QyTlZSdEpQaW1vODR0N1E?oc=5",
-          "medio": "todojujuy.com",
-          "pais": "Argentina",
-          "titulo": "Cómo actuar frente a una posible estafa virtual y dónde denunciar en Jujuy - todojujuy.com",
-          "anillo": 3,
-          "fecha": "2026-08-31T13:31:24.606Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNk41RzV4Z2l2ZVB2ekp4RWtXb1pRaV9neGdCSnhIVnNzVl9KdW81bU1Rd0FialRWUDU0UTRkb0tUQlFGTWV0VWtwb3p5WHBqajBhMWJZdFBUTk9EekpPX3plYnlZY3VjU3l6YmNyNE1xTDJDX05CamJ0eHhRU3NVX0NhQ241ZzNMSUJpZV92aUpQZDF1NUxnSWUxZjNpX0hfbVEtNjJiaE4xOS1WNXkwMTFmc3JYZHhya0Z6QWI5VndCYVUzVjZtVjkxaHljXzZyVlhoMFJwaDM0WEc5NHFrcUtJbzA1aWlpS3RnVzEwS2V3T2RYeTljcERQa29pVHB5bFlkQWg5TTIxWUVPbnJRVVpqSXpCVXlrRW53WVhVQTZ3eWk1OHU3UUl0a0RZVnJBaVFORFp2MUFkSEthY3ZVNG5seTI1ZjBEYWJXbmlWSWI3d9IB1wJBVV95cUxNLVpreUttUjJ5VndGa3B4MHhDdE14YW92ZW5kSm1GNm1vVTluaHp2aDBBRXY5dDBvLUFpZWJqTGxRVVpKOEhuZW1JZExtd2FBQ1FWMGtPVVIwRk1sbTJWazJtMVNjcTg5bXg2V2N6NWtmRGRUXzlFbV9OcVYtcXdiUHY3MFZRbkJMMXM2ZFVZMlN6ODBmclRtVks4NllRb3V0a1M1WDBrVU5jX2NuQ2wxN0UzOFVEQ0tUdVNxWXhoZjJXekRGdTJjWW03aGxEZnVsaUVqTXlHX2gwZHpfTEFZWld6WUNURjdBbFF0MGdNeE9JbmVuX1NocTlIT3hOM1FmYk9HSklybk9uTXpaXzBIdDhRVExVbjNTX3R5dlh1eXktYzJsT1oyTDJUVTBhb1ZDZHA5el9DTjNvdnh1TXRDOFZHRVJlMzhaNXlsQmNlN3BZcktjRVNR?oc=5",
-          "medio": "El Litoral",
-          "pais": "Argentina",
-          "titulo": "Estafa virtual: advierten sobre un fraude que usa la imagen del Banco Central - El Litoral",
-          "anillo": 3,
-          "fecha": "2026-08-31T16:56:39.205Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOZzJyRVN5YXZfRjdLSk96bWtCdHRRWDdRZGY4aVVRTHp5ejQ5UmUySDhNVE5URUE4NHIwWWVtUUJYanFnZkNfZ1g1YkE5Q245NXNzQ0RSeWdkdHhzNXotU1dsQ2ZvVzJGeXBDSDVXeFQ5MDBRNjZyWUVkY3Mza0x0MzZ1M3pFdVN3UXdsTnRQQTcxT3dYZkxmMElkcjhfelBEOVZwa1hiZ1dOQ2xETWJqeDV4bmlVbURTaGFHd09xQUtfWEctcnY2N29Yc2tmTDDSAeoBQVVfeXFMT0JaWG1ZTGc3VjJUaldjREl1NE5Bb3N5X0IzMWNfRExfSUNDVURub1VUeU00S1dNVjVFTWFvaXRSZTdmXzFQTnNEVkZiQUxFY3d6TzJTRkpzazk0VFVmU1V0a0dZSkdoYTg5ckc1XzZMbjlhd0pXRHdjY0V4ZUZPZlk4Qlk2ZWhFQ3ZNTUNDRDlTdnktMXBXNU9aUS1ELVcyNExYZ3FST2t2dFBFMWo2WGJtamYwRDlHWXB3cDJGZk5zVmVVeFhESmdKeDZNUWhUalFiUzlkcUJrMFRtNnljZV9RYjR5ci10X2RB?oc=5",
-          "medio": "infobae.com",
-          "pais": "Argentina",
-          "titulo": "La indignación de Sergio Lapegüe ante el intento de estafa que vivió: “Querían robarme todo” - infobae.com",
-          "anillo": 3,
-          "fecha": "2026-09-01T12:53:55.944Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOaGtwSmtyVFRpNV9tZVRabEFQTjB3N2YzNkUzT010QWxNMUFTc1pmcGZUbWNKNVdTT1NySkR6Z0pnSDczMDRfUTBJRGItSWdqb21hSWRwWjRjcTB0amgxTjRyYVY1VlNteU1MR04yNkh0ZXdsSEN2al82cXJtaU52d1lQRXRGZ1BKeHR5QUxHMEdoQ2VlV0FJdld6QnFsM0dZT2hPdmhnLXRvZmhBR1YwYzktOVEzbk8wSkl6WVVpNHZ0bjEyOW1fa0FmNElXUjExeVVTaVJ2Q200OUhWNFBqVnY5UkFLQVpaSUZTcmRR?oc=5",
-          "medio": "Aire de Santa Fe",
-          "pais": "Argentina",
-          "titulo": "Estafa en San Justo: fingieron ser del área de seguridad de una billetera virtual y le robaron más de 8 millones de pesos - Aire de Santa Fe",
-          "anillo": 3,
-          "fecha": "2026-10-01T00:00:37.186Z"
-        }
-      ],
-      "provincias": [
-        {
-          "nombre": "Jujuy",
-          "n": 33
-        },
-        {
-          "nombre": "San Luis",
-          "n": 27
-        },
-        {
-          "nombre": "Santa Fe",
-          "n": 1
         }
       ]
     },
@@ -1802,41 +1793,6 @@
     },
     {
       "pos": 16,
-      "key": "prestamo_falso",
-      "nombre": "Falso prestamo preaprobado",
-      "canal": "TELEFONO",
-      "act": 36,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Los estafadores se hacen pasar por ANSES y ofrecen falsos créditos o beneficios a través de llamadas telefónicas o redes sociales. Contactan a la víctima, le piden datos personales y bancarios con la excusa de gestionar el préstamo, y luego le solicitan transferencias de dinero o el acceso a sus cuentas para \"desbloquear\" el supuesto crédito, vaciando sus fondos.",
-      "detectar": "Desconfiar de cualquier oferta de crédito o beneficio de ANSES que llegue por canales no oficiales o que solicite datos bancarios o transferencias de dinero para su gestión.",
-      "fuente": "News",
-      "origen": "Argentina",
-      "pais": "Argentina",
-      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNemdVa0pPQVBRTHdjVl9vRFkyTTBhWWFkZE9YY282SGlmM3lFSVVWTERUM2FlV2ZFUjNMYVZPYzJEZWNQb0Z0V1YtdTJsWGx1cnBlT3NrMGJwWHktOW1FbDJKaUlzWGVWM0h3VXdtM25aSEhEX2ZRMFh6UU5RRTRCZTBvNmNwb1ZIcEQ5ZEJGc0hzLXBEZm9jakd1Y2pwZ1VraUdZdXdvRndoMDQzaldFc3BSSdIBuAFBVV95cUxPV19sOEI5TnZ1Nlp1d3hmZ2FzZ0drMm5saDhZS3htelNZQlNsczFTMGlGT3dyNkJkeWhwa0xRN1lsTXVqU0MzVGlrV2ptNWtFY3kwMHl2SThWWWZEdFRDRl9qSVJGNkh0MGRqQjBDNktzVGZ1ZzJBTTVvazUtMXRrRkFzSWlJajhjTXFvWGxhdkN3OWR5eWVtOWdGSjBYazZ3bl9yTVVkR2JQS1h0Qm42SDFhVGtyVElR?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNemdVa0pPQVBRTHdjVl9vRFkyTTBhWWFkZE9YY282SGlmM3lFSVVWTERUM2FlV2ZFUjNMYVZPYzJEZWNQb0Z0V1YtdTJsWGx1cnBlT3NrMGJwWHktOW1FbDJKaUlzWGVWM0h3VXdtM25aSEhEX2ZRMFh6UU5RRTRCZTBvNmNwb1ZIcEQ5ZEJGc0hzLXBEZm9jakd1Y2pwZ1VraUdZdXdvRndoMDQzaldFc3BSSdIBuAFBVV95cUxPV19sOEI5TnZ1Nlp1d3hmZ2FzZ0drMm5saDhZS3htelNZQlNsczFTMGlGT3dyNkJkeWhwa0xRN1lsTXVqU0MzVGlrV2ptNWtFY3kwMHl2SThWWWZEdFRDRl9qSVJGNkh0MGRqQjBDNktzVGZ1ZzJBTTVvazUtMXRrRkFzSWlJajhjTXFvWGxhdkN3OWR5eWVtOWdGSjBYazZ3bl9yTVVkR2JQS1h0Qm42SDFhVGtyVElR?oc=5",
-          "medio": "News",
-          "pais": "Argentina",
-          "titulo": "Cómo operan las estafas a jubilados con falsos préstamos y qué hacer - iProfesional",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:05:11.866Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNN25DdEhOUm96MkxtN2U0TzJ0RmdwazBYajMxMG14OTQtTzFDZ3JpSFpDd25xWlBoZWtvTHBTMjg3S19hLTEzQUpneWcwbGQzazRWalN3SEFLcHhET3ZJdS1TRS0wcFpDVDVFV2tBZzMzUHNaaFVBY0xKbFlweVJnZExNSWplaGFkcDBYa2M4Sl9zQW5yRGpGbUxuNUZrS0ZHVklVWjlqZURacHhMb2VxSWxwTTMxM2NZRHJKUkNnNFpsd0tzdk5VadIBzgFBVV95cUxNUGpQUEdRNW9kMk9ULU14SHRSaFppS253V1Q4TkR0dzFHeGdSdnkxUHFhNDMwM0FJbWQ5OVNTMmZoNDF3UkpHdDI4VlJiQklldmNJbWlFYnlNWGs5a2ZJSVlQdXdrZmJlME40dVMtTXFmWWw3OEEzam5ZbFk4LUxaV3QxSU5qSko3OFNnazBQQ3pYbDBMQzlsb1pwdUozTjk1TWVpS3Z1UXhhVW1lQ3dNNWxQY0Zick4wTXJTanFPaWx3UVJkUGV0Q01EYXE2Zw?oc=5",
-          "medio": "News",
-          "pais": "Argentina",
-          "titulo": "Alerta por falsos créditos de ANSES: cómo identificar las estafas telefónicas y en redes - Ambito",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:05:11.866Z"
-        }
-      ],
-      "provincias": []
-    },
-    {
-      "pos": 17,
       "key": "sim_swapping",
       "nombre": "SIM swapping",
       "canal": "TELEFONO",
@@ -1888,87 +1844,7 @@
       ]
     },
     {
-      "pos": 18,
-      "key": "romance_scam",
-      "nombre": "Perfil romantico falso",
-      "canal": "REDES",
-      "act": 36,
-      "delta": 0,
-      "riesgo": "alto",
-      "emergente": false,
-      "como": "Una mujer fue contactada por un supuesto novio virtual británico a través de redes sociales. Tras establecer una relación de confianza, el estafador le pidió dinero con diversas excusas, logrando que la víctima se endeudara por 30 millones de pesos. La estafa se descubrió cuando las exigencias de dinero se volvieron insostenibles y la mujer no pudo contactar más al supuesto novio.",
-      "detectar": "La señal de detección es la solicitud de dinero por parte de una persona conocida únicamente en el ámbito virtual, especialmente cuando las excusas son variadas y las sumas solicitadas son elevadas.",
-      "fuente": "0223.com.ar",
-      "origen": "Argentina",
-      "pais": "Argentina",
-      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNcjdwWS15S0VtQ05JTnhwRXB0NVdtNkFldlZJd3RjSmVPQ1RNY1JTM21lU1Bhb01wUmNCYUNPS01vYjY0MlNuVFBhWENISEV4cV9lOHo5WTZZSHR4djFRMVI5VVVnbHBsaXkyNjlFbHZhTWdrdXVBOE16Z1FDc2UxTkEwSkxocmc2WFNvZjdGYVFYWEp6RUZpWWdkRGFLZGFZcndEMjlJcEZSTGtKTWlGN0U2VjVaUVlkV0FHeVJhVFpDeTBCX013Y3hSNHZraHRXQWNJM19kc2tCWnM?oc=5",
-          "medio": "0223.com.ar",
-          "pais": "Argentina",
-          "titulo": "Creyó que tenía un novio virtual británico, se endeudó por $30 millones y descubrió la peor estafa - 0223.com.ar",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQQ3NQeC1qYVJrS09BRlZVVXBpSi1Bb0d0ZWRRbUpsaVU4Yk5pSXozNnhoNm5oT0lubWt3ZlF5NTQ2OXdfZGRweUpWV2hOQVhPSTg5OVBjYklFTmFDQklaVGYxYkZaa0ozbXc0akhHQTlzZkZDV2c0Rl9HN3NpWkFPX0RUMnBORjItUG0xYWdXYXpvRnBOMGdUMjU1STFzSnZQT1BVT3dWTklCM2J0RkdGQ2xkOGpGRmZjbUpuMkJBVXMzSzBXOHBvMlMtdlRoMmhtWFduMjZzbWdBbDZoSmpJWUtVMVhnWFVYLTFwMGd1bmJYUlpLTkNUVTZnS3LSAZACQVVfeXFMTl9FLUsyY1h1cVhTS0tLbVlXLTdmMUw0SjllNzV5YVdzeWo3ZWQ0OTVKRURPbklRV1c2dkRHMDI5LTZoZ2dZV2hNMDNKLVRxRVJwSnhDd1R6enM4dzBWS3RKMFVkaW9iYzFPNklDNGh2c09pY2hieWJFS2VNT21fQ2huc1g1ZHpBMV9TX0x6RWkyd0dpMnllelNseTcwa0x0bk9hUU5OZG1CZGhtd1JMSk1VeUtkYThUZDNvYUM1NHdQejZIdlVmWVU0VnZvVVRMNlRFSFY4SGl1TXN1NXVOMGVLdzFocGxzSzgzaXN2QVdTN3d4TWVnblRNbV9QUk1UWTdTblhHVWtmR2Vsc2NCLW4?oc=5",
-          "medio": "TN",
-          "pais": "Argentina",
-          "titulo": "Creyó que tenía un novio virtual británico, se endeudó para que viajara a Paraná y le transfirió casi $30 millones: era una estafa - TN",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:17:24.020Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPcU12UzhKRTN3X2JXVGwwZFFyTzRZdGR4NXd3RXFBbDZQX1NyN0NIaTBWcFZrSEhYcms4Um9CQUxVTS1rbDdpeFFQVnJaZTRZN1A3RzdlM3Zkc0ZmaHlxbkUwSUxITFlVZXR5cFVNQ2VNRUpVcVM4RXdyaE9PNHZSVVNrc0NYdkNyeDBuNVUzUVVFTkFTdk1lSkJlTWNLUndFbXd5UTQ0N212X3dJd25DVVN2cEliNVlnU0s5dDFISGxCVENfaGFYTndaeTJiTWY5bkHSAdcBQVVfeXFMTmx2ZlRFc2VxUjBwampZbjREU0NfTWxCRThmeW43N1BENWhnclQ1eFNaSGtjN2psS2RtVVFlWTU4U3RQaWJQb1ZvanZWVTI1Y0VsX3VRaFRRLXdaTEpZck90MF8xcTc0dmJFQ2NDX2tDVWpiR2pXdU5sdmZxem4zOTVRdTFaT3lnMFNqVU5XQ1BtUlVPNjlpOC1OSFhxYVFUSmxiczUzTkY3SU5KMUgxdWRRbnpjNFJXaktuajJZeXVKVFNjRE1iNEpUUzVSZFJsSVVoVWllam8?oc=5",
-          "medio": "El Litoral",
-          "pais": "Argentina",
-          "titulo": "Creyó que tenía un novio de Reino Unido y perdió casi $30 millones en una estafa - El Litoral",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPcmx1bjZxZXMtVEE2X0R0dUZYcnl6TjVBbUN3Zlo2bUdCaW1ES3NyYjVrT3Z2UjR3UHpFRC1uV3hHM0Zlc25ZMkRRSVpSZTlEcFpxNnhFUHJFSDQ3UFJCazlqcjZVbHRzZlYtb2QyWjBSaXNIX0g2MmNMSmU0T043aTZKMWFDRklmYVhyMmV3YnRwSFhxVnlCbmh0bnh2TG9NVjA0NzZlN0N1MkdDc3R2dTEtM19LWkoxVkFSYTllLVRiODRIQ1RmYUpVVHdKWWdmWGsycTduVy12TlpfMU9XNExWWGx4QVZKc2RreGdKcGpfRk5GM3ZuOTBpS2hiMXVqVlpMRFNOMDI?oc=5",
-          "medio": "Diario Junio",
-          "pais": "Argentina",
-          "titulo": "El mismo “novio”, la misma estafa millonaria: una nueva investigación vuelve a involucrar a la podóloga condenada por la Mutual de Músicos - Diario Junio",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        },
-        {
-          "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPUmQ3aUhrX3hQNUdnRkVuT0lhZTh1ZUE2Zk5Qa0tWNzhwdjFnNWg0MGMxZHRtYmFEOTdHbTlHYTA3blJSYnkxcTdiMUxXMHBUMzh0TGZweXdWNzBSNnpLeWFMOUtsazBoNHozZEVTX19nSnlsNkpUajJSWGlQeDVIRGdzZ3FaNEJjNVFsQmpXVS1Id1FBZ0pnMjlqcktHZHgySjk3VkZHVXJicWRCdnFQUXZRVUpRT0tlWm8tcU9la9IBxAFBVV95cUxNR1NyRk1fdVV4djgtYldESVJwR1JJR1g5VDJOZDc4aU5mUGdDbF9sVVZZdjVUQ25xNWowSC1QLXUxbloyT0lrX0RPcGFRcHdNV201QUpjSjNZZTBvdWtUcW1FQVp1ZGFNaktkdDZpdGRYOFhOc3hwcmo2NjlHRUl2akNuQ1pqaVJRb1MzeHJ4VGtLalU1V3RKY2JTbkFkWXNDZXozblpMMkpVWUppSFFYLXBGMzliXzRBQk9tMzFrdDNWeWdi?oc=5",
-          "medio": "Big Bang! News",
-          "pais": "Argentina",
-          "titulo": "Se enamoró de un supuesto británico por Facebook y perdió casi $30 millones: la trama de la estafa - Big Bang! News",
-          "anillo": 3,
-          "fecha": "2026-08-30T23:49:52.298Z"
-        }
-      ],
-      "provincias": [
-        {
-          "nombre": "Entre Ríos",
-          "n": 106
-        },
-        {
-          "nombre": "Santa Fe",
-          "n": 28
-        },
-        {
-          "nombre": "Buenos Aires",
-          "n": 8
-        },
-        {
-          "nombre": "San Luis",
-          "n": 2
-        },
-        {
-          "nombre": "Corrientes",
-          "n": 2
-        }
-      ]
-    },
-    {
-      "pos": 19,
+      "pos": 17,
       "key": "suplantacion_contacto",
       "nombre": "Suplantacion de un contacto conocido",
       "canal": "WHATSAPP",
@@ -2011,7 +1887,7 @@
       "provincias": []
     },
     {
-      "pos": 20,
+      "pos": 18,
       "key": "deepfake_inversion",
       "nombre": "Deepfake de inversion con figuras publicas",
       "canal": "REDES",
@@ -2044,24 +1920,92 @@
         }
       ],
       "provincias": []
+    },
+    {
+      "pos": 19,
+      "key": "falsa_multa",
+      "nombre": "Falsa multa o infraccion",
+      "canal": "SMS",
+      "act": 36,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Los estafadores envían un SMS a la víctima, haciéndose pasar por una entidad de tránsito, informando sobre una supuesta multa de tránsito impaga. El mensaje incluye un enlace malicioso que, al ser clickeado, redirige a una página falsa donde se solicitan datos personales y bancarios para realizar el pago, vaciando las cuentas de la víctima.",
+      "detectar": "SMS con supuestas multas de tránsito y un enlace para pagar. La URL suele ser sospechosa y no corresponde a un sitio oficial. Solicitud de datos bancarios en un sitio no seguro.",
+      "fuente": "neuqueninforma.gob.ar",
+      "origen": "Argentina",
+      "pais": "Argentina",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPdnJ1NHJyZnpyUjJEVDg5b1g3alJKU3J3aGlkWmUtS25tMHhJZDgtNm1jZFNXYUVlNGw3ckpOdlp0YXp5NVB1ZG5mX1FxUU5MNURZUXFqYm5OSmxrcm55VUhkaWp4MkNabGZaaS1FaWVRY09aQ1BqMDZUdUllbnRHVGVCdGQxT1Q1RkxQbk1WX3BoOHRWQk5fZVJmOExRenZTZV9xbjF1MUw5ZnduZ2RqN3hLZFkwdFhWZzNZWmRqY0lPTG1JOS1kYdIBzgFBVV95cUxOUHRMZ0tsaVpGTHdOei04YU1XUzBLdmhHOTY3Z0YxMjFXTE1JUFF0OFBOUk55QUZGaDc0UG4wb3VKek5IbHFyazFwSC1vcEJYclpHRmhCUVdsenJSbFVDYm5zUnUydTQtdXE1NmlhYWVVWWZXaDZvRWJiMXpKbXVFY0Q3UWczazVZY0MwOGZRcWhZY043cFJBYmxyV1Y5NkF4S2paUEhua1R0ZkhhU0RpSjFKSEU1LXdWUHJ6UEZvTXBWNmpHV1NKY0lKSEwyZw?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPdnJ1NHJyZnpyUjJEVDg5b1g3alJKU3J3aGlkWmUtS25tMHhJZDgtNm1jZFNXYUVlNGw3ckpOdlp0YXp5NVB1ZG5mX1FxUU5MNURZUXFqYm5OSmxrcm55VUhkaWp4MkNabGZaaS1FaWVRY09aQ1BqMDZUdUllbnRHVGVCdGQxT1Q1RkxQbk1WX3BoOHRWQk5fZVJmOExRenZTZV9xbjF1MUw5ZnduZ2RqN3hLZFkwdFhWZzNZWmRqY0lPTG1JOS1kYdIBzgFBVV95cUxOUHRMZ0tsaVpGTHdOei04YU1XUzBLdmhHOTY3Z0YxMjFXTE1JUFF0OFBOUk55QUZGaDc0UG4wb3VKek5IbHFyazFwSC1vcEJYclpHRmhCUVdsenJSbFVDYm5zUnUydTQtdXE1NmlhYWVVWWZXaDZvRWJiMXpKbXVFY0Q3UWczazVZY0MwOGZRcWhZY043cFJBYmxyV1Y5NkF4S2paUEhua1R0ZkhhU0RpSjFKSEU1LXdWUHJ6UEZvTXBWNmpHV1NKY0lKSEwyZw?oc=5",
+          "medio": "neuqueninforma.gob.ar",
+          "pais": "Argentina",
+          "titulo": "Estafas virtuales: cuidado los viernes y ojo con el “cuento de la grúa” - neuqueninforma.gob.ar",
+          "anillo": 1,
+          "fecha": "2026-09-11T04:00:28.375Z"
+        }
+      ],
+      "provincias": [
+        {
+          "nombre": "Neuquén",
+          "n": 1
+        }
+      ]
+    },
+    {
+      "pos": 20,
+      "key": "cbu_falso",
+      "nombre": "Cambio de CBU en factura",
+      "canal": "REDES",
+      "act": 36,
+      "delta": 0,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Una madre lanzó una campaña solidaria en redes sociales para recaudar fondos para el tratamiento de su hijo. Un estafador se hizo pasar por un donante, solicitó el CBU de la mujer y, bajo el pretexto de una supuesta transferencia errónea, la engañó para que realizara una serie de transferencias de dinero desde su cuenta bancaria, vaciándole los fondos destinados a la campaña.",
+      "detectar": "La víctima fue contactada por un supuesto donante que, tras pedirle el CBU, la manipuló para que hiciera transferencias de dinero desde su propia cuenta, alegando errores en la operación.",
+      "fuente": "catamarcaya.com.ar",
+      "origen": "Argentina",
+      "pais": "Argentina",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQM0Y3MkhZR0ZNRkJOS0xfU25oVVlZN3YzaGZOM0RyaGEwQ2VXRW5kSFJNXzVGVTBMV3hVVXNrX0RHX2FnUVliS001NkZza2FvWHNyZEY2V0puZWZqMlVNckhGcVFTSTE1Z1BvSDgxRGVrVnFYc3dQakZCMTF0aFZiaWE2UG9QZWt2RVRyZTRrNXotWUt0Z3NkeVVGQTlXMVpYSzFCN0VmY1hsNXN2LWc?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQM0Y3MkhZR0ZNRkJOS0xfU25oVVlZN3YzaGZOM0RyaGEwQ2VXRW5kSFJNXzVGVTBMV3hVVXNrX0RHX2FnUVliS001NkZza2FvWHNyZEY2V0puZWZqMlVNckhGcVFTSTE1Z1BvSDgxRGVrVnFYc3dQakZCMTF0aFZiaWE2UG9QZWt2RVRyZTRrNXotWUt0Z3NkeVVGQTlXMVpYSzFCN0VmY1hsNXN2LWc?oc=5",
+          "medio": "catamarcaya.com.ar",
+          "pais": "Argentina",
+          "titulo": "Necesita juntar US$37.000 para el tratamiento de su hijo con autismo, lanzó una campaña solidaria y un estafador le robó - catamarcaya.com.ar",
+          "anillo": 3,
+          "fecha": "2026-09-12T16:05:31.052Z"
+        }
+      ],
+      "provincias": [
+        {
+          "nombre": "Catamarca",
+          "n": 8
+        }
+      ]
     }
   ],
   "dist": [
     {
       "label": "WhatsApp",
-      "pct": 39
+      "pct": 32
     },
     {
       "label": "Redes",
-      "pct": 29
+      "pct": 36
     },
     {
       "label": "TELEFONO",
-      "pct": 26
+      "pct": 23
+    },
+    {
+      "label": "Mail",
+      "pct": 6
     },
     {
       "label": "SMS",
-      "pct": 5
+      "pct": 3
     }
   ],
   "kpi": {
@@ -2069,7 +2013,7 @@
     "intl": 15,
     "emerg": 2,
     "sube": 7,
-    "baja": 0
+    "baja": 1
   },
   "riesgo": {
     "alto": 10,
@@ -2080,7 +2024,7 @@
     {
       "id": "2026-10",
       "mes": "octubre de 2026",
-      "actualizado": "2026-10-04T14:00:22.320Z",
+      "actualizado": "2026-10-05T00:00:20.887Z",
       "totalModalidades": 20,
       "internacionales": 10,
       "riesgo": {
@@ -2118,26 +2062,26 @@
         },
         {
           "pos": 4,
-          "nombre": "Falsa oferta laboral",
-          "act": 77,
-          "riesgo": "alto",
-          "canal": "WHATSAPP",
-          "fuente": "Chequeado",
-          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/"
-        },
-        {
-          "pos": 5,
           "nombre": "Premios y sorteos falsos",
-          "act": 75,
+          "act": 78,
           "riesgo": "alto",
           "canal": "REDES",
           "fuente": "WeLiveSecurity",
           "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbFpzblRuLWh2X1pCbDljM1NEbTEyYXpvY29OZG9aS3d6emNuMWJDUUMydE1mWUZmdk9wMV9FLWRBcUh1Y25FY05janRVdjlVY2x3bVQyOE1SZXlNeDhRd1Y1TDFidEpjSWx1Nkw1U3l0ZjJQa29kc2ZzQVFnVmJtY0RRRkl1X1E?oc=5"
         },
         {
+          "pos": 5,
+          "nombre": "Falsa oferta laboral",
+          "act": 77,
+          "riesgo": "alto",
+          "canal": "REDES",
+          "fuente": "Chequeado",
+          "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/"
+        },
+        {
           "pos": 6,
           "nombre": "Secuestro de cuenta de WhatsApp",
-          "act": 70,
+          "act": 71,
           "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "Chequeado",
@@ -2155,16 +2099,16 @@
         {
           "pos": 8,
           "nombre": "Phishing de ARCA",
-          "act": 59,
+          "act": 62,
           "riesgo": "alto",
-          "canal": "SMS",
+          "canal": "MAIL",
           "fuente": "diariomendoza.com.ar",
           "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOc3RKQnJ3MUpXbi1aU2llTlUtb3ZVUVJVNlhWQTZETWpnblZZUjZEMkxGZ3dPVXJxb0RiZC16SXo0U2RXSDhDMU9ySERfZ1hIZWNfZmhLUGpJeVlYOWM4VGo1MlFvWlZMczV0YUtXa1k4QU5HeDg5cmtUaUU1RTJXU2d1b0xnaWpHMGh5X1F6bmxZMGlpZG00aDMxaEVtcDVpMzdBRHdVeDNJd2NtY0tLa3dDRFN6aE83ZW0wM2VESnpVTFRVblJEeNIBzgFBVV95cUxNbTJGb210cndmc3hKeXZwdFg5enktbXhXeTJSSG53cGgyNWZvck9URk1JcTlUQWpSQ3pfQWYwVlZEbWtRaHRvaFc4TjBLcHJaaGJHWk5fS3JCM0ZhV0tUSWh1WFN1WmNZSXZrUkpDZmdpVFI2YVYwT3Z0RWZDM3ktN0pNRWJVVzNGUHh0MmxLOUhRQzduS2FQWDRpOVZmRTFkb2I4a3l0Q25tcXI3TUpWVFI1dlhGZW1JZ3JKYThhWjE0Q29KNTJIMnhXMlhJUQ?oc=5"
         },
         {
           "pos": 9,
           "nombre": "Phishing de billetera virtual",
-          "act": 50,
+          "act": 51,
           "riesgo": "alto",
           "canal": "TELEFONO",
           "fuente": "Chequeado",
