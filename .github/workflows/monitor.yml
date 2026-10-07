@@ -1,0 +1,33 @@
+name: Monitor
+
+# Revisa cada 30 minutos el sitio, el agente web, n8n y WhatsApp.
+# Avisa por correo solo cuando algo se cae o se recupera (ver scripts/monitor/chequear.py).
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  chequear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: scripts/monitor
+      - name: Revisar servicios
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SMTP_USER: ${{ secrets.MONITOR_SMTP_USER }}
+          SMTP_PASS: ${{ secrets.MONITOR_SMTP_PASS }}
+          AVISO_A: cybermobile.ai@gmail.com
+          EVOLUTION_APIKEY: ${{ secrets.EVOLUTION_APIKEY }}
+        run: python3 scripts/monitor/chequear.py
