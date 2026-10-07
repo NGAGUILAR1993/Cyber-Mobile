@@ -213,19 +213,19 @@ const senales = e.senales.map((x, i) => `${i + 1}. ${x}`).join('\n');
 const pasos = m.pasos.map((p, i) => `${i + 1}️⃣ ${p}`).join('\n');
 const waFicha = `🚨 *${sinMarcas(e.gancho)}*\n\n${m.comoCorto}\n\n🚩 *Señales:*\n${senales}\n\n✅ *${m.clave}*\n\n*Si te llegó:*\n${pasos}\n\n📲 *¿Dudás? Verificalo con Vera:*\n${agente(`Hola, me llegó algo que parece "${m.nombre}" y quiero verificarlo`)}\n\n🔎 *Ficha completa:*\n${ficha}\n\nReenviá este mensaje a tu familia 🙏`;
 const historia = enHistoria.ejemplo;
-const instHistoria = `Historia (13:00 o cuando quieras): subí historia.jpg, agregá el sticker de ENCUESTA sobre el recuadro punteado con "ESTAFA 🚩" / "NO ES ✅" y un sticker de enlace a cybermobile.com.ar/agente. Es "${enHistoria.nombre}": si votan "No es", respondé por mensaje con la ficha ${SITIO}/observatorio/${enHistoria.slug}`;
+const instHistoria = `Historia (13:00 o cuando quieras): subí historia.jpg, agregá el sticker de ENCUESTA sobre el recuadro punteado con "ESTAFA 🚩" / "NO ES ✅" y un sticker de enlace a cybermobile.com.ar/vera?o=historia (abre el chat con Vera directo). Es "${enHistoria.nombre}": si votan "No es", respondé por mensaje con la ficha ${SITIO}/observatorio/${enHistoria.slug}`;
 let textos;
 if (formato === 'carrusel') {
     textos = {
         titulo: sinMarcas(e.gancho), modalidad: m.nombre,
-        instagram: `${sinMarcas(e.gancho)} 👀\n\n${m.comoCorto}\n\n🚩 Cómo darte cuenta:\n${senales}\n\n✅ ${m.clave}\n\n📌 Guardalo y mandáselo a quien siempre cae.\n💬 ¿Te llegó algo así? Contanos en los comentarios.\n\n🔗 ¿Dudás de un mensaje? Verificalo con Vera: link en la bio.\n\n${m.tag} ${HASH}`,
+        instagram: `${sinMarcas(e.gancho)} 👀\n\n${m.comoCorto}\n\n🚩 Cómo darte cuenta:\n${senales}\n\n✅ ${m.clave}\n\n📌 Guardalo y mandáselo a quien siempre cae.\n💬 ¿Te llegó algo así? Contanos en los comentarios.\n\n🛡️ ¿Dudás de un mensaje? Comentá VERA y te mando el link directo al chat (7 días gratis), o entrá a cybermobile.com.ar/vera.\n\n${m.tag} ${HASH}`,
         whatsapp: waFicha,
         instrucciones: ['Publicá las 5 placas como carrusel, en orden (carrusel-1 a carrusel-5).', 'Agregá una canción en tendencia a volumen bajo: los carruseles con música aparecen también en Reels.', 'Respondé todos los comentarios en la primera hora.', instHistoria]
     };
 } else if (formato === 'reel-falso') {
     textos = {
         titulo: `Reel: ${sinMarcas(e.gancho)}`, modalidad: m.nombre,
-        instagram: `${sinMarcas(e.gancho)} 🚩 Es una estafa.\n\nMirá las 3 señales para darte cuenta a tiempo 👆\n\n✅ ${m.clave}\n\n📌 Guardalo y mandáselo a tu familia.\n🔗 Verificá cualquier mensaje con Vera: link en la bio.\n\n${m.tag} ${HASH}`,
+        instagram: `${sinMarcas(e.gancho)} 🚩 Es una estafa.\n\nMirá las 3 señales para darte cuenta a tiempo 👆\n\n✅ ${m.clave}\n\n📌 Guardalo y mandáselo a tu familia.\n🛡️ ¿Te llegó uno parecido? Comentá VERA y te mando el link directo al chat (7 días gratis), o entrá a cybermobile.com.ar/vera.\n\n${m.tag} ${HASH}`,
         whatsapp: waFicha,
         instrucciones: ['Subí reel.mp4 como Reel y elegí portada.jpg como portada.', 'Agregá audio en tendencia (volumen bajo) y activá "Compartir en el feed".', 'En el texto de la portada ya está el gancho: no agregues otro título.', instHistoria]
     };
@@ -234,14 +234,14 @@ if (formato === 'carrusel') {
     const linea = (x) => `#${x.pos} ${x.nombre}: ${x.clave}`;
     textos = {
         titulo: `Reel: Top 3 de ${mes}`, modalidad: top.map((x) => x.nombre).join(' · '),
-        instagram: `Las 3 estafas que más circulan en Argentina (${mes}) 🚨\n\n${[top[2], top[1], top[0]].map(linea).join('\n\n')}\n\n📌 Guardalo y mandáselo a tus papás y abuelos.\n🔗 Ranking completo y cómo reconocer cada una: link en la bio.\n\n${HASH}`,
+        instagram: `Las 3 estafas que más circulan en Argentina (${mes}) 🚨\n\n${[top[2], top[1], top[0]].map(linea).join('\n\n')}\n\n📌 Guardalo y mandáselo a tus papás y abuelos.\n🔗 Ranking completo: link en la bio.\n💬 Comentá VERA y te mando el link directo al chat (7 días gratis), o entrá a cybermobile.com.ar/vera.\n\n${HASH}`,
         whatsapp: `🚨 *Las 3 estafas que más circulan en Argentina* (${mes})\n\n${[top[2], top[1], top[0]].map((x) => `*${linea(x)}*\n${SITIO}/observatorio/${x.slug}`).join('\n\n')}\n\n📲 *¿Te llegó algo así? Verificalo con Vera:*\n${agente('Hola, me llegó un mensaje sospechoso y quiero verificarlo')}\n\nReenviá este mensaje a tu familia 🙏`,
         instrucciones: ['Subí reel.mp4 como Reel y elegí portada.jpg como portada.', 'Agregá audio en tendencia (volumen bajo).', instHistoria]
     };
 } else if (formato === 'dato') {
     textos = {
         titulo: `Dato: ${dato.numero} ${sinMarcas(dato.frase)}`, modalidad: 'Dato del Observatorio',
-        instagram: `${dato.numero} ${sinMarcas(dato.frase)} 📊\n\nEs uno de los datos de ${mes} del Observatorio de Fraude Digital de Cyber Mobile. La más activa: ${dato.top}.\n\n¿Vos sabías por dónde llegan? Deslizá 👉\n\n📌 Guardalo y compartilo: la información es la mejor defensa.\n🔗 Ranking completo: link en la bio.\n\n${HASH}`,
+        instagram: `${dato.numero} ${sinMarcas(dato.frase)} 📊\n\nEs uno de los datos de ${mes} del Observatorio de Fraude Digital de Cyber Mobile. La más activa: ${dato.top}.\n\n¿Vos sabías por dónde llegan? Deslizá 👉\n\n📌 Guardalo y compartilo: la información es la mejor defensa.\n🔗 Ranking completo: link en la bio.\n💬 Comentá VERA y te mando el link directo al chat (7 días gratis), o entrá a cybermobile.com.ar/vera.\n\n${HASH}`,
         whatsapp: `📊 *Dato del Observatorio de Fraude Digital* (${mes})\n\n*${dato.numero} ${sinMarcas(dato.frase)}.*\n\nLa más activa del mes: ${dato.top}.\n\nConocé el ranking y cómo reconocer cada estafa:\n${OBS}\n\n¿Te llegó algo raro? Verificalo con Vera:\n${SITIO}/agente\n\nReenviá este mensaje a tu familia 🙏`,
         instrucciones: ['Publicá las 3 placas como carrusel, en orden.', 'Agregá una canción en tendencia a volumen bajo.', instHistoria]
     };
