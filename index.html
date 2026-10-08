@@ -250,6 +250,23 @@
         .step h3 { font-size: 22px; font-weight: 600; margin: 14px 0 10px; }
         .step p { color: var(--muted); font-size: 16px; }
 
+        /* Planes */
+        .plans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+        .plan { padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; position: relative; }
+        .plan.dest { border-color: rgba(34,211,238,.55); box-shadow: 0 0 0 1px rgba(34,211,238,.25), 0 20px 60px -30px rgba(34,211,238,.45); }
+        .plan .tag { align-self: flex-start; }
+        .plan h3 { font-size: 21px; font-weight: 600; }
+        .plan .precio { font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 500; color: var(--txt); line-height: 1.1; }
+        .plan .precio small { font-size: 14px; color: var(--muted); font-family: 'Space Grotesk', sans-serif; }
+        .plan .xp { font-size: 13.5px; color: var(--acc); }
+        .plan ul { list-style: none; padding: 0; margin: 4px 0 8px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+        .plan li { font-size: 14.5px; color: var(--muted); padding-left: 22px; position: relative; line-height: 1.45; }
+        .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--acc); font-weight: 700; }
+        .plan .btn { justify-content: center; text-align: center; }
+        .plans-nota { margin-top: 18px; text-align: center; font-size: 14px; color: var(--muted); }
+        @media (max-width: 1100px) { .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 640px) { .plans { grid-template-columns: minmax(0, 1fr); } }
+
         /* Casos reales */
         .cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
         .case { overflow: hidden; display: flex; flex-direction: column; }
@@ -398,6 +415,7 @@
                 <a href="#herramientas">Herramientas</a>
                 <a href="#simulador">Simulador</a>
                 <a href="#casos">Casos reales</a>
+                <a href="#planes">Planes</a>
                 <a href="/agente" data-track="nav_agente_web">Vera web</a>
                 <a href="/observatorio"><span class="dot pulse"></span>Observatorio</a>
                 <a href="#contacto">Contacto</a>
@@ -620,6 +638,50 @@
                 <div class="tile step"><span class="n">02</span><h3>Lo analizamos</h3><p>Cruzamos bases de fraude, reputación y los casos del Observatorio de Fraude Digital.</p></div>
                 <div class="tile step"><span class="n">03</span><h3>Te decimos qué hacer</h3><p>Un veredicto claro y los pasos a seguir, sin tecnicismos.</p></div>
             </div>
+        </section>
+
+        <section id="planes" class="sec wrap" aria-labelledby="planes-titulo">
+            <div class="sec-head reveal" style="justify-content:center;text-align:center">
+                <div>
+                    <div class="kicker" style="justify-content:center">Planes</div>
+                    <h2 id="planes-titulo">Protegé a los tuyos, no solo a vos</h2>
+                </div>
+            </div>
+            <div class="plans reveal">
+                <div class="tile plan">
+                    <span class="tag">INDIVIDUAL</span>
+                    <h3>Plan Individual</h3>
+                    <div class="precio">$12.000 <small>/ mes</small></div>
+                    <div class="xp">1 persona</div>
+                    <ul><li>Consultas ilimitadas por WhatsApp y en la web</li><li>Links, CBU, teléfonos, capturas, audios y archivos</li><li>Alertas semanales de estafas</li></ul>
+                    <a class="btn btn-ghost" href="https://wa.me/5491170598505?text=Quiero%20suscribirme" target="_blank" rel="noopener noreferrer" data-track="plan_individual">Suscribirme</a>
+                </div>
+                <div class="tile plan dest">
+                    <span class="tag">MÁS ELEGIDO</span>
+                    <h3>Pack Padres</h3>
+                    <div class="precio">$20.000 <small>/ mes</small></div>
+                    <div class="xp">3 personas · $6.667 c/u</div>
+                    <ul><li>Vos y tus papás (o quien elijas)</li><li>Cada uno con Vera en su propio WhatsApp</li><li>Los sumás con un código: un toque y listo</li></ul>
+                    <a class="btn btn-primary" href="https://wa.me/5491170598505?text=Quiero%20el%20pack%20padres" target="_blank" rel="noopener noreferrer" data-track="plan_padres">Quiero el Pack Padres</a>
+                </div>
+                <div class="tile plan">
+                    <span class="tag">FAMILIA</span>
+                    <h3>Pack Familiar</h3>
+                    <div class="precio">$40.000 <small>/ mes</small></div>
+                    <div class="xp">5 personas · $8.000 c/u</div>
+                    <ul><li>Toda la familia protegida</li><li>Ideal para abuelos, hijos y hermanos</li><li>Alertas semanales para todos</li></ul>
+                    <a class="btn btn-ghost" href="https://wa.me/5491170598505?text=Quiero%20el%20pack%20familiar" target="_blank" rel="noopener noreferrer" data-track="plan_familiar">Quiero el Pack Familiar</a>
+                </div>
+                <div class="tile plan">
+                    <span class="tag">EMPRESAS</span>
+                    <h3>Empresas</h3>
+                    <div class="precio">$60.000 <small>/ mes</small></div>
+                    <div class="xp">Hasta 10 empleados · 25 por $125.000</div>
+                    <ul><li>Protección para todo tu equipo</li><li>Reporte mensual de amenazas detectadas</li><li>Charla mensual sobre estafas actuales (plan 25)</li></ul>
+                    <a class="btn btn-ghost" href="mailto:cybermobile.ai@gmail.com?subject=Plan%20Empresas%20-%20Cyber%20Mobile" data-track="plan_empresas">Pedir propuesta</a>
+                </div>
+            </div>
+            <p class="plans-nota">Probá Vera <b>7 días gratis</b> antes de elegir tu plan. Débito automático mensual por Mercado Pago: cancelás cuando quieras desde la app de Mercado Pago → Suscripciones.</p>
         </section>
 
         <section id="casos" class="sec wrap">
