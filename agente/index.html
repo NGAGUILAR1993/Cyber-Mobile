@@ -181,6 +181,15 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;margi
 .plan li::before{content:"✓";color:var(--acc);font-weight:700}
 .plan li b{color:var(--txt);font-weight:600}
 .plan .btn{justify-content:center;margin-top:auto}
+.planes3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.planes3 .plan{padding:16px;gap:10px}
+.planes3 .precio{font-size:30px}
+.planes3 .precio small{display:block;margin-top:4px;font-size:13px}
+.planes3 ul{font-size:13.5px}
+.planes3 .btn{padding-inline:10px;text-align:center}
+.plan .xp{font-size:13.5px;color:var(--acc);margin-top:-4px}
+.prueba7{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;padding:14px 16px;border:1px dashed var(--line2);border-radius:14px;color:var(--txt2);font-size:14.5px}
+.prueba7 b{color:var(--txt)}
 
 /* En vivo */
 .top3{display:grid;gap:10px;margin-top:20px}
@@ -269,7 +278,7 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;margi
   .escena{min-height:0;padding:18px 14px}
 }
 @media (max-width:620px){
-  .pasos3,.planes,.capas{grid-template-columns:minmax(0,1fr)}
+  .pasos3,.planes,.planes3,.capas{grid-template-columns:minmax(0,1fr)}
   .comp th,.comp td{padding:10px 10px}
   .comp th:nth-child(n+2),.comp td:nth-child(n+2){width:62px}
   .comp table{font-size:13.5px}
@@ -361,13 +370,14 @@ h2{font-size:clamp(26px,3.4vw,36px);line-height:1.1;letter-spacing:-.025em;margi
     </div>
 
     <div class="panel" role="tabpanel" id="p-planes" aria-labelledby="t-planes" hidden>
-      <div class="eyebrow">PLAN PROTECCIÓN</div>
-      <h2>Una suscripción, dos canales</h2><p class="bajada" style="font-size:16px">Con el plan Protección usás Vera sin límite en la web y en WhatsApp, con la misma cuenta: tu número de WhatsApp.</p>
-      <div class="planes">
-        <div class="plan"><h3>Probalo en WhatsApp</h3><div class="precio">7 días <small>gratis</small></div><ul><li>Todas las funciones del agente</li><li>Análisis con IA, audios y seguimiento</li><li>Después elegís si seguís con el plan</li></ul><a class="btn btn-s" href="https://wa.me/5491170598505?text=Hola%20Vera%2C%20quiero%20probar%20los%207%20d%C3%ADas%20gratis" target="_blank" rel="noopener">Probar en WhatsApp</a></div>
-        <div class="plan dest"><h3>Protección <span class="chip" style="color:var(--acc)">Recomendado</span></h3><div class="precio">$12.000 <small>/ mes</small></div><ul><li>Consultas ilimitadas en la web y en WhatsApp</li><li>Análisis de patrones con IA en WhatsApp</li><li>Audios, seguimiento del caso y alertas semanales</li><li>Una sola cuenta: tu número de WhatsApp</li></ul><button class="btn btn-p" data-suscribir type="button">Suscribirme</button></div>
+      <div class="eyebrow">PLANES</div>
+      <h2>Protegé a los tuyos, no solo a vos</h2><p class="bajada" style="font-size:16px">Cada persona tiene a Vera en su propio WhatsApp. Débito automático mensual por Mercado Pago: cancelás cuando quieras desde la app.</p>
+      <div class="planes planes3">
+        <div class="plan"><h3>Individual</h3><div class="precio">$12.000 <small>/ mes</small></div><div class="xp">1 persona</div><ul><li>Consultas ilimitadas en la web y en WhatsApp</li><li>Links, CBU, teléfonos, capturas, audios y archivos</li><li>Análisis de patrones con IA y alertas semanales</li><li>Una sola cuenta: tu número de WhatsApp</li></ul><button class="btn btn-s" data-suscribir type="button">Suscribirme</button></div>
+        <div class="plan dest"><span class="chip" style="color:var(--acc);align-self:flex-start">Más elegido</span><h3>Pack Padres</h3><div class="precio">$20.000 <small>/ mes</small></div><div class="xp">3 personas · $6.667 c/u</div><ul><li>Consultas ilimitadas en la web y en WhatsApp</li><li>Links, CBU, teléfonos, capturas, audios y archivos</li><li>Análisis de patrones con IA y alertas semanales</li><li><span><b>Vos y tus papás</b> (o quien elijas)</span></li><li>Los sumás con un código: un toque y listo</li></ul><a class="btn btn-p" href="https://wa.me/5491170598505?text=Quiero%20el%20pack%20padres" target="_blank" rel="noopener">Quiero el Pack Padres</a></div>
+        <div class="plan"><h3>Pack Familiar</h3><div class="precio">$40.000 <small>/ mes</small></div><div class="xp">5 personas · $8.000 c/u</div><ul><li>Consultas ilimitadas en la web y en WhatsApp</li><li>Links, CBU, teléfonos, capturas, audios y archivos</li><li>Análisis de patrones con IA y alertas semanales</li><li><span><b>Toda la familia</b>: abuelos, hijos y hermanos</span></li><li>Los sumás con un código: un toque y listo</li></ul><a class="btn btn-s" href="https://wa.me/5491170598505?text=Quiero%20el%20pack%20familiar" target="_blank" rel="noopener">Quiero el Pack Familiar</a></div>
       </div>
-      <p class="bajada" style="font-size:15px;margin-top:16px">👨‍👩‍👧 <b>¿Para tu familia?</b> <a href="https://wa.me/5491170598505?text=Quiero%20el%20pack%20padres" target="_blank" rel="noopener">Pack Padres: 3 personas por $20.000/mes</a> · <a href="https://wa.me/5491170598505?text=Quiero%20el%20pack%20familiar" target="_blank" rel="noopener">Pack Familiar: 5 personas por $40.000/mes</a>. Débito automático por Mercado Pago; cancelás cuando quieras desde la app.</p>
+      <div class="prueba7"><span>🎁 <b>¿Primero querés probar?</b> 7 días gratis en WhatsApp, con todas las funciones.</span><a class="btn btn-s" href="https://wa.me/5491170598505?text=Hola%20Vera%2C%20quiero%20probar%20los%207%20d%C3%ADas%20gratis" target="_blank" rel="noopener">Probar gratis</a></div>
     </div>
   </section>
 
