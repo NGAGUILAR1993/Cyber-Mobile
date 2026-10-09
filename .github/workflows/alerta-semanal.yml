@@ -1,0 +1,55 @@
+name: Alerta semanal (lunes)
+
+# Los lunes antes del mediodía arma la ficha del #1 del ranking del Observatorio en redes/alerta-semanal/.
+# n8n la envía por WhatsApp los lunes a las 12 (nodo "Trigger Alerta Lunes 12hs").
+on:
+  schedule:
+    - cron: '20 10 * * 1'   # 07:20 en Argentina
+    - cron: '10 13 * * 1'   # 10:10, respaldo por si GitHub no disparó el anterior
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: redes
+  cancel-in-progress: false
+
+jobs:
+  alerta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Revisar si ya está la de hoy
+        id: hoy
+        run: |
+          HOY=$(TZ=America/Argentina/Buenos_Aires date +%F)
+          if [ "${{ github.event_name }}" = "schedule" ] && grep -q "\"fecha\": \"$HOY\"" redes/alerta-semanal/textos.json 2>/dev/null; then
+            echo "listo=1" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Instalar Playwright y Chromium
+        if: steps.hoy.outputs.listo != '1'
+        run: |
+          npm install --no-save --no-package-lock playwright@1
+          npx playwright install --with-deps chromium
+      - name: Generar la ficha del #1
+        if: steps.hoy.outputs.listo != '1'
+        run: node scripts/alerta-semanal/generar.mjs
+      - name: Guardar en el repositorio
+        if: steps.hoy.outputs.listo != '1'
+        run: |
+          git add -A redes/alerta-semanal
+          if git diff --cached --quiet; then
+            echo "Sin cambios"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Redes: alerta semanal del lunes"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            sleep 5
+          done
