@@ -1,7 +1,8 @@
 name: Publicación diaria para redes
 
-# Todos los días a las 08:15 (Argentina; con un respaldo a las 10:40) genera la pieza del día en redes/<fecha>/:
-# lunes, reel del Top 3; resto de los días, la ficha de una estafa.
+# Todos los días a las 08:15 (Argentina; con un respaldo a las 10:40) genera la pieza del día en redes/<fecha>/
+# según la grilla de scripts/redes/generar.mjs: lun reel "Se lo mandé a Vera", mar carrusel, mié reel "¿Estafa o real?",
+# jue historia de planes, vie reel (tutorial / IA general vs Vera), sáb carrusel (IA vs Vera / familia), dom libre.
 on:
   schedule:
     - cron: '15 11 * * *'   # 08:15 en Argentina (lista antes del envío de n8n de las 12)
