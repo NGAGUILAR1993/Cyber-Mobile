@@ -85,6 +85,36 @@ body{font-family:SG,sans-serif;color:var(--txt);background:var(--fondo);overflow
 .barra i s{display:block;height:100%;background:linear-gradient(90deg,var(--rojo),#FF8A3D);border-radius:13px}
 .gigante{white-space:nowrap;font-family:Anton;font-size:calc(var(--gig) * var(--z,1));line-height:.85;color:var(--rojo);text-shadow:0 0 80px rgba(255,59,59,.45)}
 .encuesta{border:3px dashed rgba(255,255,255,.35);border-radius:28px;height:220px;display:grid;place-items:center;font-family:JB;font-size:24px;color:var(--gris);text-align:center;line-height:1.5}
+/* Captura real de Vera recortada */
+.shot{position:relative;align-self:center;flex-shrink:0;overflow:hidden;border-radius:30px;transform:rotate(var(--r,0deg));
+  box-shadow:0 0 0 3px rgba(34,211,238,.5),0 40px 110px -20px rgba(0,0,0,.9),0 0 90px -10px rgba(34,211,238,.35)}
+.shot img{display:block;position:absolute;left:0;top:0}
+.sticker{position:relative;z-index:4;align-self:center;white-space:nowrap;font-family:Anton;font-size:calc(var(--stk,54px) * var(--z,1));text-transform:uppercase;padding:16px 32px;border-radius:18px;background:var(--rojo);color:#fff;transform:rotate(-2deg);box-shadow:0 20px 60px -10px rgba(255,59,59,.6)}
+.sticker.cian{background:var(--cian);color:#04121A;box-shadow:0 20px 60px -10px rgba(34,211,238,.6)}
+.sticker.gris{background:#2A3142;color:#fff;box-shadow:none}
+/* Comparación IA general vs Vera */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.vs > div{border-radius:26px;padding:30px 28px;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.1)}
+.vs > div.vera{background:rgba(34,211,238,.08);border:3px solid var(--cian)}
+.vs i{display:block;font-style:normal;font-size:70px;line-height:1}
+.vs b{display:block;font-family:Anton;font-size:calc(46px * var(--z,1));text-transform:uppercase;margin-top:14px;line-height:1.02}
+.vs span{display:block;font-size:calc(27px * var(--z,1));color:#C9D2DF;margin-top:10px;line-height:1.3}
+.tabla{display:grid;grid-template-columns:1.05fr 1fr 1.15fr;border-radius:24px;overflow:hidden;border:2px solid rgba(255,255,255,.1);font-size:calc(var(--tb,26px) * var(--z,1));line-height:1.25}
+.tabla > div{padding:calc(18px * var(--z,1)) 18px;border-top:1px solid rgba(255,255,255,.08)}
+.tabla .h{font-family:JB;font-size:calc(19px * var(--z,1));letter-spacing:.12em;text-transform:uppercase;border-top:0;background:rgba(255,255,255,.05);color:var(--gris)}
+.tabla .h.vera{color:var(--cian)}
+.tabla .q{font-weight:700;color:#fff}.tabla .g{color:#AEB8C7}.tabla .vv{color:#fff;font-weight:600;background:rgba(34,211,238,.07)}
+.nota{font-size:24px;color:var(--gris);line-height:1.35}
+/* Planes */
+.plan{display:flex;align-items:center;gap:24px;border-radius:24px;padding:26px 30px;background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.1)}
+.plan.top{border:3px solid var(--cian);background:rgba(34,211,238,.08)}
+.plan i{font-style:normal;font-size:60px}
+.plan b{display:block;font-family:Anton;font-size:46px;text-transform:uppercase;line-height:1}
+.plan span{display:block;font-size:26px;color:#C9D2DF;margin-top:6px}
+.plan strong{margin-left:auto;font-family:Anton;font-size:52px;white-space:nowrap}
+.plan small{display:block;font-family:SG;font-size:20px;color:var(--gris);text-align:right;font-weight:400}
+.pill{align-self:flex-start;font-family:JB;font-size:22px;letter-spacing:.14em;padding:10px 18px;border-radius:999px;background:var(--cian);color:#04121A;font-weight:600;text-transform:uppercase}
+.pill.rojo{background:var(--rojo);color:#fff}
 </style></head><body><div id="raiz"></div>
 <script>
 const P = new URLSearchParams(location.search);
@@ -140,8 +170,8 @@ M['car-4'] = () => `${marca('4/5')}
   <div class="pie"><span>Compartilo con tu familia 🙏</span></div>`;
 M['car-5'] = () => `${marca('5/5')}
   <h2 class="t" style="margin-top:44px;--t:128px">📌 Guardalo.<br><em>Mandáselo</em> a quien siempre cae.</h2>
-  <div class="cta" style="margin-top:50px"><b>¿Te llegó algo raro?</b><span>Verificalo con Vera antes de responder, hacer clic o transferir.</span></div>
-  <div class="links" style="margin-top:34px"><span>Web</span>cybermobile.com.ar/agente<span style="margin-top:10px">WhatsApp</span>+54 9 11 7059-8505</div>
+  <div class="cta" style="margin-top:50px"><b>¿Te llegó algo raro? Comentá VERA</b><span>y te mando el link directo al chat. 7 días gratis, en tu WhatsApp.</span></div>
+  <div class="links" style="margin-top:34px"><span>O entrá a</span>cybermobile.com.ar/vera</div>
   <div class="pie"><span>Seguinos: <b>${IG}</b></span><span>Observatorio de Fraude Digital</span></div>`;
 // ---------- Portada cuadrada para el canal de WhatsApp (1080x1080) ----------
 M['cuad'] = () => `${marca('')}
@@ -149,7 +179,7 @@ M['cuad'] = () => `${marca('')}
     <div style="display:flex;flex-direction:column;gap:22px"><div class="alerta"><i></i>ALERTA</div><h1 class="t">${rojo(D.e.gancho)}</h1>
       <p class="sub">✅ ${esc(D.m.clave)}</p></div>
     <div style="position:relative">${telefono(D.e)}${sello('44%', '-12%')}</div></div>
-  <div class="pie"><b>cybermobile.com.ar/observatorio</b><span>${IG}</span></div>`;
+  <div class="pie"><b>cybermobile.com.ar/vera</b><span>${IG}</span></div>`;
 // ---------- Historia: ¿Estafa o no? (1080x1920) ----------
 M['historia'] = () => `${marca('')}
   <h1 class="t" style="--t:190px">¿Estafa<br><em>o no?</em></h1>
@@ -178,8 +208,8 @@ M['rf-2'] = () => `${marca('')}<h1 class="t" style="margin-top:30px">Es una <em>
 M['rf-3'] = () => `${marca('')}<h2 class="t" style="margin-top:30px">Cómo <em>darte cuenta</em></h2>
   <div class="lista" style="margin-top:60px">${D.e.senales.map((s, i) => `<div class="it mal"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>`;
 M['rf-4'] = () => `${marca('')}<h2 class="t" style="margin-top:30px">📌 Guardalo y <em>mandáselo</em> a tu familia</h2>
-  <div class="cta" style="margin-top:60px"><b>¿Te llegó algo raro?</b><span>Verificalo con Vera: cybermobile.com.ar/agente</span></div>
-  <div class="links" style="margin-top:40px"><span>WhatsApp</span>+54 9 11 7059-8505<span style="margin-top:10px">Instagram</span>${IG}</div>`;
+  <div class="cta" style="margin-top:60px"><b>¿Te llegó algo raro? Comentá VERA</b><span>y te mando el link directo al chat. 7 días gratis.</span></div>
+  <div class="links" style="margin-top:40px"><span>O entrá a</span>cybermobile.com.ar/vera<span style="margin-top:10px">Instagram</span>${IG}</div>`;
 // ---------- Reel del lunes: Top 3 (1080x1920, 5 pantallas) ----------
 M['rt-0'] = () => `${marca('')}<div class="alerta" style="margin-top:30px"><i></i>RANKING · ${esc(D.mes.toUpperCase())}</div>
   <h1 class="t" style="margin-top:30px;--t:150px">Las 3 estafas que <em>más circulan</em> en Argentina</h1>
@@ -190,10 +220,116 @@ for (const i of [1, 2, 3]) M['rt-' + i] = () => { const x = D.top[3 - i]; return
   <div style="margin-top:40px;align-self:center;transform:scale(.86);transform-origin:top center">${telefono(x.e)}</div>`; };
 M['rt-4'] = M['rf-4'];
 
+// ---------- Bloques comunes de la nueva grilla ----------
+// Recorte de una captura real de Vera: c = caso de casos.json, reg = 'llego' | 'veredicto', ancho y alto máximo en px.
+function recorte(c, reg, ancho, maxAlto, r) {
+  const [y0, y1] = c[reg]; let k = ancho / c.w;
+  if (maxAlto && (y1 - y0) * k > maxAlto) k = maxAlto / (y1 - y0);
+  return `<div class="shot" style="width:${Math.round(c.w * k)}px;height:${Math.round((y1 - y0) * k)}px;--r:${r || 0}deg"><img src="casos/${esc(c.archivo)}" style="width:${Math.round(c.w * k)}px;top:${Math.round(-y0 * k)}px"></div>`;
+}
+const comenta = (sub) => `<div style="text-align:center;align-self:stretch">
+    <div class="t" style="--t:92px;color:#C9D2DF">Comentá</div>
+    <div class="t" style="--t:300px;color:var(--cian);text-shadow:0 0 90px rgba(34,211,238,.55)">VERA</div>
+    <div class="t" style="--t:80px;margin-top:10px">y te mando<br>el link 📲</div>
+    <p class="sub" style="margin-top:36px">${sub || '7 días gratis · sin instalar nada · en tu WhatsApp'}</p></div>
+  <div class="links" style="align-self:center;text-align:center;margin-top:20px"><span>o entrá a</span>cybermobile.com.ar/vera</div>`;
+const COMP = [
+  ['Para qué está hecha', 'Para todo un poco', 'Solo para estafas y ciberseguridad'],
+  ['Un link sospechoso', 'Te da una opinión general', 'Lo revisan decenas de antivirus (VirusTotal)'],
+  ['¿Tu mail se filtró?', 'Te explica cómo averiguarlo', 'Lo busca en bases de filtraciones'],
+  ['Estafas de Argentina', 'Conocimiento general', 'Ranking del mes del Observatorio'],
+  ['Dónde la usás', 'Otra app, otra cuenta', 'En tu WhatsApp: reenviás y listo'],
+  ['Cómo responde', 'Texto largo', 'Semáforo 🔴🟡🟢 y qué hacer']
+];
+const tabla = (filas) => `<div class="tabla"><div class="h"></div><div class="h">IA general</div><div class="h vera">Vera 🛡️</div>
+  ${filas.map(f => `<div class="q">${esc(f[0])}</div><div class="g">${esc(f[1])}</div><div class="vv">${esc(f[2])}</div>`).join('')}</div>`;
+const vs = () => `<div class="vs"><div><i>🤖</i><b>IA general</b><span>Sabe un poco de todo: recetas, tareas, mails, código…</span></div>
+  <div class="vera"><i>🛡️</i><b style="color:var(--cian)">Vera</b><span>Entrenada para una sola cosa: detectar estafas.</span></div></div>`;
+const clinico = () => `<h2 class="t" style="--t:118px">Al clínico no le pedís que te <em>opere del corazón</em> 🫀</h2>
+  <p class="sub" style="margin-top:34px;font-size:40px">Una IA general es como un buen clínico: sabe de todo. Pero para una estafa necesitás un <b>especialista</b>: alguien que <b>verifica</b>, no que opina.</p>`;
+
+// ---------- Reel del lunes: "Se lo mandé a Vera" (1080x1920, 4 pantallas) ----------
+M['sv-1'] = () => `${marca('')}<span class="pill rojo">Caso real · ${esc(D.c.tipo)}</span>
+  <h1 class="t" style="--t:120px">Me llegó esto 👇</h1><p class="sub" style="font-size:44px">${rojo(D.c.gancho).replace(/<em>/g, '<b style="color:var(--rojo)">').replace(/<\/em>/g, '</b>')}</p>
+  ${recorte(D.c, 'llego', 860, 760, -1.5)}<div class="sticker gris">¿Vos lo abrías? 🤔</div>`;
+M['sv-2'] = () => `${marca('')}<h1 class="t" style="--t:120px">Se lo mandé a <span class="cian">Vera</span></h1>
+  ${recorte(D.c, 'veredicto', 860, 1040, 1)}<div class="sticker">${esc(D.c.chip)}</div>`;
+M['sv-3'] = () => `${marca('')}<h2 class="t" style="--t:120px">Lo que <span class="cian">vio Vera</span> en segundos</h2>
+  <div class="lista">${D.c.evidencias.map((s, i) => `<div class="it mal"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>
+  <p class="sub" style="font-size:44px">Vos no tenés que saber todo esto. <b>Se lo mandás y listo.</b></p>`;
+M['sv-4'] = () => `${marca('')}${comenta()}`;
+
+// ---------- Reel del viernes A: "Vera te enseña en 15 segundos" (4 pantallas) ----------
+M['tu-1'] = () => `${marca('')}<span class="pill">Vera te enseña · 15 s</span>
+  <h1 class="t" style="--t:150px">${rojo(D.tu.titulo)}</h1><p class="sub" style="font-size:46px">Sin instalar nada. Desde tu WhatsApp. 👇</p>`;
+M['tu-2'] = () => `${marca('')}<h2 class="t" style="--t:130px">Así de <span class="cian">fácil</span></h2>
+  <div class="lista">${D.tu.pasos.map((s, i) => `<div class="it bien"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>`;
+M['tu-3'] = () => `${marca('')}<h2 class="t" style="--t:110px">Respuesta <span class="cian">real</span> de Vera</h2>
+  ${recorte(D.c, 'veredicto', 860, 1080, -1)}<div class="sticker">${esc(D.tu.chip)}</div>`;
+M['tu-4'] = M['sv-4'];
+
+// ---------- Reel del viernes B: IA general vs Vera (5 pantallas) ----------
+M['vr-1'] = () => `${marca('')}<span class="pill">IA general vs IA especialista</span>
+  <h1 class="t" style="--t:140px">¿Le preguntás a <em>cualquier IA</em> si un mensaje es estafa?</h1>
+  <p class="sub" style="font-size:46px">Mirá la diferencia 👇</p>`;
+M['vr-2'] = () => `${marca('')}${clinico()}${vs()}`;
+M['vr-3'] = () => `${marca('')}<h2 class="t" style="--t:110px">No es lo <span class="cian">mismo</span></h2><div style="--tb:33px">${tabla(COMP)}</div>`;
+M['vr-4'] = () => `${marca('')}<h2 class="t" style="--t:104px">No cambia de idea <span class="cian">si insistís</span></h2>
+  ${recorte(D.ip, 'veredicto', 840, 1000, 1)}<div class="sticker cian">3 veces la misma pregunta: mismo veredicto</div>`;
+M['vr-5'] = M['sv-4'];
+
+// ---------- Carrusel del sábado A: IA general vs Vera (6 placas 1080x1350) ----------
+M['cmp-1'] = () => `${marca('1/6')}<span class="pill" style="margin-top:36px">IA general vs IA especialista</span>
+  <h1 class="t" style="margin-top:24px;--t:108px">¿Le preguntás a <em>cualquier IA</em> si un mensaje es estafa?</h1>
+  <div style="margin-top:40px">${vs()}</div>
+  <div class="pie"><span class="desliza">DESLIZÁ Y MIRÁ LA DIFERENCIA <i>→</i></span></div>`;
+M['cmp-2'] = () => `${marca('2/6')}${clinico()}<div class="pie"><span>Cyber Mobile · Observatorio de Fraude Digital</span></div>`;
+M['cmp-3'] = () => `${marca('3/6')}<h2 class="t" style="--t:96px">Cara a cara</h2>${tabla(COMP)}
+  <p class="nota">Las IA generales son muy útiles para muchas cosas. Para estafas, conviene una especialista.</p>`;
+M['cmp-4'] = () => `${marca('4/6')}<h2 class="t" style="--t:92px">No opina: <span class="cian">verifica</span> 🔎</h2>
+  ${recorte(D.sms, 'veredicto', 760, 900, -1)}<div class="pie"><span>Respuesta real de Vera a un SMS de "puntos que vencen"</span></div>`;
+M['cmp-5'] = () => `${marca('5/6')}<h2 class="t" style="--t:92px">Le preguntamos <span class="cian">3 veces</span> lo mismo</h2>
+  ${recorte(D.ip, 'veredicto', 760, 860, 1)}<div class="pie"><span>Mismo veredicto las 3 veces: no se deja convencer</span></div>`;
+M['cmp-6'] = () => `${marca('6/6')}${comenta('Tu IA especialista en estafas · 7 días gratis')}<div class="pie"><span>Seguinos: <b>${IG}</b></span><span>📌 Guardalo</span></div>`;
+
+// ---------- Carrusel del sábado B: "Guardalo para tu familia" (4 placas) ----------
+const fila = (x) => `<div class="it mal"><span class="n">${x.pos}</span><p><b style="font-family:Anton;font-weight:400;text-transform:uppercase;font-size:1.1em">${esc(x.nombre)}</b><br><span style="font-weight:500;color:#C9D2DF">${esc(x.clave)}</span></p></div>`;
+M['fam-1'] = () => `${marca('1/4')}<span class="pill" style="margin-top:36px">📌 Guardalo para tu familia</span>
+  <h1 class="t" style="margin-top:26px;--t:124px">Las 5 estafas que <em>más circulan</em> este mes</h1>
+  <p class="sub" style="margin-top:30px;font-size:40px">Y la frase que las frena a cada una. Mandáselo a tus papás, abuelos y a quien siempre cae. 🙏</p>
+  <div class="pie"><span class="desliza">DESLIZÁ <i>→</i></span><span>${esc(D.mes)}</span></div>`;
+M['fam-2'] = () => `${marca('2/4')}<h2 class="t" style="--t:96px">Las <em>más activas</em></h2><div class="lista" style="--li:31px;--nw:76px">${D.top.slice(0, 3).map(fila).join('')}</div>
+  <div class="pie"><span>Fuente: Observatorio de Fraude Digital · Cyber Mobile</span></div>`;
+M['fam-3'] = () => `${marca('3/4')}<div class="lista" style="--li:31px;--nw:76px">${D.top.slice(3, 5).map(fila).join('')}</div>
+  <div class="cta" style="background:var(--rojo);color:#fff"><b style="font-size:60px">La regla de oro</b><span style="font-size:34px;line-height:1.3">Ante la duda: no respondas, no toques el link, no transfieras. Preguntale primero a Vera.</span></div>
+  <div class="pie"><span>Ranking completo: cybermobile.com.ar/observatorio</span></div>`;
+M['fam-4'] = () => `${marca('4/4')}${comenta()}<div class="pie"><span>Seguinos: <b>${IG}</b></span><span>📌 Guardalo</span></div>`;
+
+// ---------- Historias (1080x1920) ----------
+M['hist-alerta'] = () => `${marca('')}<div class="alerta"><i></i>ALERTA DE LA SEMANA</div>
+  <h1 class="t" style="--t:118px">${esc(D.m.nombre)}${D.m.frase ? `<br><em>${esc(D.m.frase)}</em>` : ''}</h1>
+  <p class="sub" style="font-size:36px">#1 del ranking del Observatorio · ${esc(D.mes)}</p>
+  <div style="align-self:center;--telw:700px;--telh:420px;--msg:34px">${telefono(D.e)}</div>
+  <p class="sub" style="font-size:38px">✅ <b>${esc(D.m.clave)}</b></p>
+  <div class="sticker cian" style="--stk:44px">¿Te llegó? Preguntale a Vera 👇</div>`;
+M['hist-planes'] = () => `${marca('')}<span class="pill">Probalo 7 días gratis</span>
+  <h1 class="t" style="--t:128px">Cuidá a <span class="cian">toda tu familia</span> de las estafas</h1>
+  ${D.promo ? `<p class="sub" style="font-size:40px">💐 <b>Día de la Madre:</b> regalale tranquilidad a mamá.</p>` : ''}
+  <div class="lista" style="--gl:22px">
+    <div class="plan"><i>👤</i><div><b>Individual</b><span>Para vos</span></div><strong>$12.000<small>por mes</small></strong></div>
+    <div class="plan top"><i>👨‍👩‍👦</i><div><b>Pack Padres</b><span>3 personas · el más elegido</span></div><strong>$20.000<small>por mes</small></strong></div>
+    <div class="plan"><i>🏡</i><div><b>Pack Familiar</b><span>5 personas</span></div><strong>$40.000<small>por mes</small></strong></div></div>
+  <p class="sub" style="font-size:34px">Débito automático por Mercado Pago. Lo cancelás cuando quieras desde la app.</p>
+  <div class="encuesta" style="height:160px">Sticker de enlace:<br>cybermobile.com.ar/vera?o=historia</div>`;
+M['hist-preguntas'] = () => `${marca('')}<span class="pill">Sábado de preguntas</span>
+  <h1 class="t" style="--t:150px">¿Qué querés saber de <em>estafas</em>?</h1>
+  <p class="sub" style="font-size:44px">Preguntá lo que quieras: lo respondemos con Vera en las historias. 🛡️</p>
+  <div class="encuesta" style="height:420px">Espacio para el sticker<br>de PREGUNTAS</div>`;
+
 const raiz = document.getElementById('raiz');
 const c = document.createElement('div');
-const alto = modo.startsWith('cuad') ? '1080' : (modo === 'historia' || modo.startsWith('rf-') || modo.startsWith('rt-')) ? '1920' : '1350';
-const centrado = alto === '1920' || /^(car-[2-5]|dato-[23])$/.test(modo);
+const alto = modo.startsWith('cuad') ? '1080' : /^(historia|hist-|rf-|rt-|sv-|tu-|vr-)/.test(modo) ? '1920' : '1350';
+const centrado = alto === '1920' || /^(car-[2-5]|dato-[23]|cmp-[2-6]|fam-[2-4])$/.test(modo);
 c.className = centrado ? 'c v' : 'c'; c.setAttribute('style', TAM[alto] + ';--z:1'); c.innerHTML = M[modo]();
 document.body.style.width = '1080px'; document.body.style.height = alto + 'px';
 raiz.appendChild(c);
