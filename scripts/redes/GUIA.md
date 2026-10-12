@@ -22,5 +22,6 @@ Cada pieza (carrusel, reel o historia) sigue cuatro pasos. `generar.mjs` y `plan
 - Pedir una sola acción principal; guardar y compartir van como apoyo.
 
 ## Reglas que no cambian
+- **Todos los videos duran 20 segundos**, reels e historias: transiciones lentas (0,8 s) para que se pueda leer.
 - Tapar siempre mails, nombres, números, caras y chats ajenos en las capturas.
 - Datos y afirmaciones verificables (Observatorio, capturas reales). Al comparar con otras IA, ser justos: "son útiles para muchas cosas; para estafas conviene una especialista".
