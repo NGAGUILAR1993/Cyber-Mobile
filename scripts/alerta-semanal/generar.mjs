@@ -1,5 +1,5 @@
 // Alerta semanal de los lunes: ficha del #1 del ranking del Observatorio (imagen 1080x1080) y su texto
-// para WhatsApp. n8n la lee de redes/alerta-semanal/textos.json y la envía los lunes a las 12.
+// para WhatsApp. n8n la lee de redes/alerta-semanal/textos.json y la envía los lunes a las 19.
 // Uso: node scripts/alerta-semanal/generar.mjs [--fecha AAAA-MM-DD]
 // Requiere Playwright (Chromium).
 import fs from 'node:fs';

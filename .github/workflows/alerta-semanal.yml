@@ -1,7 +1,7 @@
 name: Alerta semanal (lunes)
 
 # Los lunes antes del mediodía arma la ficha del #1 del ranking del Observatorio en redes/alerta-semanal/.
-# n8n la envía por WhatsApp los lunes a las 12 (nodo "Trigger Alerta Lunes 12hs").
+# n8n la envía por WhatsApp los lunes a las 19 (nodo "Trigger Alerta Lunes 19hs").
 on:
   schedule:
     - cron: '20 10 * * 1'   # 07:20 en Argentina

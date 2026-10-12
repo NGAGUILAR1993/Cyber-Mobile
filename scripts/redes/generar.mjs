@@ -253,7 +253,7 @@ if (formato === 'carrusel') {
         titulo: `Reel Se lo mandé a Vera: ${g}`, modalidad: `Caso real: ${c.id}`,
         instagram: `Me llegó ${gMin}… y en vez de tocar nada, se lo mandé a Vera 🛡️\n\nEn segundos: ${c.chip}\n\n🚩 Lo que vio:\n${ev}\n\nNo tenés que saber de ciberseguridad: se lo mandás y listo.\n\n${CTA_IG}\n📌 Guardalo y mandáselo a tu familia.\n\n#SeLoMandéAVera ${HASH}`,
         whatsapp: `🛡️ *Caso real: se lo mandé a Vera*\n\nNos llegó ${gMin}. Antes de tocar nada, se lo reenviamos a Vera.\n\n*Veredicto:* ${c.chip}\n\n🚩 *Lo que vio:*\n${ev}\n\n📲 *¿Te llegó algo parecido? Mandáselo vos también:*\n${VERA}?o=canal\n\nReenviá este mensaje a tu familia 🙏`,
-        instrucciones: ['Subí reel.mp4 como Reel y elegí portada.jpg como portada.', 'Audio en tendencia a volumen bajo. Fijá un comentario: "¿Vos lo abrías? 👇"', 'Canal de WhatsApp: hoy n8n manda solo la alerta de la semana a las 12. El texto de "whatsapp" es opcional (podés mandarlo a la tarde).', `Historia (12:00): subí historia.jpg (alerta de la semana: ${lista[0].nombre}) y poné ${sticker} sobre el recuadro punteado.`]
+        instrucciones: ['Subí reel.mp4 como Reel y elegí portada.jpg como portada.', 'Audio en tendencia a volumen bajo. Fijá un comentario: "¿Vos lo abrías? 👇"', 'Canal de WhatsApp: hoy n8n manda la alerta de la semana a las 19 (a suscriptos y staff). El texto de "whatsapp" es opcional (podés mandarlo a la tarde).', `Historia (12:00): subí historia.jpg (alerta de la semana: ${lista[0].nombre}) y poné ${sticker} sobre el recuadro punteado.`]
     };
 } else if (formato === 'reel-tutorial') {
     const ps = tutorial.pasos.map((p, i) => `${i + 1}️⃣ ${p}`).join('\n');
