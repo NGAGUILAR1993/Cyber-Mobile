@@ -45,6 +45,13 @@ jobs:
             exit 0
           fi
           node scripts/redes/generar.mjs ${FECHA:+--fecha "$FECHA"}
+      - name: Alerta semanal de los lunes (respaldo de alerta-semanal.yml)
+        run: |
+          # n8n la envía los lunes a las 12; si el workflow propio no corrió, se genera acá.
+          HOY=$(TZ=America/Argentina/Buenos_Aires date +%F)
+          if [ "$(TZ=America/Argentina/Buenos_Aires date +%u)" = "1" ] && ! grep -q "\"fecha\": \"$HOY\"" redes/alerta-semanal/textos.json 2>/dev/null; then
+            node scripts/alerta-semanal/generar.mjs
+          fi
       - name: Guardar en el repositorio
         run: |
           git add -A redes
