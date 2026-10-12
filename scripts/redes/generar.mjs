@@ -170,7 +170,7 @@ try {
         archivos.push(await captura('cuad', base(elegida), 'whatsapp.jpg', 1080));
         archivos.push(await captura('historia', base(enHistoria), 'historia.jpg', 1920));
     } else if (formato === 'reel-caso') {
-        for (let i = 1; i <= 4; i++) await captura(`sv-${i}`, { mes, c: casoSemana }, `pantalla-${i}.jpg`, 1920);
+        for (let i = 0; i <= 4; i++) await captura(`sv-${i}`, { mes, c: casoSemana }, `pantalla-${i + 1}.jpg`, 1920);
         archivos.push(await captura('hist-alerta', base(lista[0]), 'historia.jpg', 1920));
     } else if (formato === 'reel-tutorial') {
         for (let i = 1; i <= 4; i++) await captura(`tu-${i}`, { mes, tu: tutorial, c: casoTutorial }, `pantalla-${i}.jpg`, 1920);
@@ -190,26 +190,34 @@ try {
 }
 
 // ---------- Video de los reels (sin voz; la música se agrega en Instagram) ----------
-function video(dur, transiciones) {
-    const tr = 0.4;
-    const ent = dur.flatMap((t, i) => ['-framerate', '30', '-loop', '1', '-t', String(t), '-i', path.join(salida, `pantalla-${i + 1}.jpg`)]);
-    let filtro = dur.map((_, i) => `[${i}:v]format=yuv420p,setsar=1[v${i}];`).join('');
+// Todos los reels duran DURACION_REEL segundos: las pantallas se reparten el tiempo según su peso, con
+// transiciones lentas y un zoom suave para que se puedan leer con calma.
+const DURACION_REEL = 20;
+function video(pesos, transiciones) {
+    const tr = 0.8, n = pesos.length;
+    const k = (DURACION_REEL + tr * (n - 1)) / pesos.reduce((a, b) => a + b, 0);
+    const dur = pesos.map((p) => Math.round(p * k * 100) / 100);
+    const ent = dur.flatMap((_, i) => ['-i', path.join(salida, `pantalla-${i + 1}.jpg`)]);
+    let filtro = dur.map((t, i) => {
+        const f = Math.round(t * 30);
+        return `[${i}:v]scale=1080:1920,zoompan=z='min(1+0.0004*on,1.05)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${f}:s=1080x1920:fps=30,format=yuv420p,setsar=1[v${i}];`;
+    }).join('');
     let previo = 'v0', fin = dur[0];
-    for (let i = 1; i < dur.length; i++) {
-        const nombre = i === dur.length - 1 ? 'out' : `a${i}`;
+    for (let i = 1; i < n; i++) {
+        const nombre = i === n - 1 ? 'out' : `a${i}`;
         filtro += `[${previo}][v${i}]xfade=transition=${transiciones[i - 1]}:duration=${tr}:offset=${(fin - tr).toFixed(2)}[${nombre}];`;
         fin += dur[i] - tr; previo = nombre;
     }
     filtro = filtro.slice(0, -1);
-    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...ent, '-f', 'lavfi', '-t', String(Math.ceil(fin)), '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100',
-        '-filter_complex', filtro, '-map', '[out]', '-map', `${dur.length}:a`, '-shortest', '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', ...ent, '-f', 'lavfi', '-t', String(DURACION_REEL), '-i', 'anullsrc=channel_layout=stereo:sample_rate=44100',
+        '-filter_complex', filtro, '-map', '[out]', '-map', `${n}:a`, '-t', String(DURACION_REEL), '-c:v', 'libx264', '-profile:v', 'high', '-pix_fmt', 'yuv420p',
         '-r', '30', '-c:a', 'aac', '-b:a', '128k', '-movflags', '+faststart', '-crf', '20', path.join(salida, 'reel.mp4')]);
     fs.renameSync(path.join(salida, 'pantalla-1.jpg'), path.join(salida, 'portada.jpg'));
-    for (let i = 2; i <= dur.length; i++) fs.rmSync(path.join(salida, `pantalla-${i}.jpg`));
+    for (let i = 2; i <= n; i++) fs.rmSync(path.join(salida, `pantalla-${i}.jpg`));
     archivos.unshift('reel.mp4', 'portada.jpg');
 }
 if (formato === 'reel-falso') video([2.8, 2.6, 5.0, 3.4], ['zoomin', 'slideleft', 'fade']);
-if (formato === 'reel-caso') video([3.6, 5.2, 4.8, 3.6], ['slideup', 'slideleft', 'fadeblack']);
+if (formato === 'reel-caso') video([3, 4, 5.5, 4.5, 3.5], ['fadeblack', 'slideup', 'slideleft', 'fadeblack']);
 if (formato === 'reel-tutorial') video([3.2, 4.6, 5.2, 3.6], ['slideup', 'slideleft', 'fadeblack']);
 if (formato === 'reel-comparacion') video([3.2, 5.6, 6.4, 5.0, 3.6], ['slideup', 'slideleft', 'slideleft', 'fadeblack']);
 

@@ -248,14 +248,17 @@ const clinico = () => `<h2 class="t" style="--t:118px">Al clínico no le pedís 
   <p class="sub" style="margin-top:34px;font-size:40px">Una IA general es como un buen clínico: sabe de todo. Pero para una estafa necesitás un <b>especialista</b>: alguien que <b>verifica</b>, no que opina.</p>`;
 
 // ---------- Reel del lunes: "Se lo mandé a Vera" (1080x1920, 4 pantallas) ----------
-M['sv-1'] = () => `${marca('')}<span class="pill rojo">Caso real · ${esc(D.c.tipo)}</span>
-  <h1 class="t" style="--t:120px">Me llegó esto 👇</h1><p class="sub" style="font-size:44px">${rojo(D.c.gancho).replace(/<em>/g, '<b style="color:var(--rojo)">').replace(/<\/em>/g, '</b>')}</p>
-  ${recorte(D.c, 'llego', 860, 760, -1.5)}<div class="sticker gris">¿Vos lo abrías? 🤔</div>`;
+M['sv-0'] = () => `${marca('')}<span class="pill rojo">Caso real · ${esc(D.c.tipo)}</span>
+  <h1 class="t" style="--t:150px">${rojo(D.c.hook || D.c.gancho)}</h1>
+  <p class="sub" style="font-size:46px">Se lo mandamos a una IA especialista en estafas. Mirá lo que encontró 👀</p>`;
+M['sv-1'] = () => `${marca('')}<h1 class="t" style="--t:120px">Llegó esto 👇</h1>
+  ${recorte(D.c, 'llego', 860, 900, -1.5)}<div class="sticker gris">¿Vos lo abrías? 🤔</div>`;
 M['sv-2'] = () => `${marca('')}<h1 class="t" style="--t:120px">Se lo mandé a <span class="cian">Vera</span></h1>
   ${recorte(D.c, 'veredicto', 860, 1040, 1)}<div class="sticker">${esc(D.c.chip)}</div>`;
-M['sv-3'] = () => `${marca('')}<h2 class="t" style="--t:120px">Lo que <span class="cian">vio Vera</span> en segundos</h2>
-  <div class="lista">${D.c.evidencias.map((s, i) => `<div class="it mal"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>
-  <p class="sub" style="font-size:44px">Vos no tenés que saber todo esto. <b>Se lo mandás y listo.</b></p>`;
+M['sv-3'] = () => `${marca('')}<div class="sticker" style="--stk:64px;align-self:flex-start;transform:rotate(-3deg)">🔴 Riesgo alto</div>
+  <h2 class="t" style="--t:118px">${esc(D.c.dato || D.c.chip)}</h2>
+  <div class="lista" style="--li:40px;--nw:84px">${D.c.evidencias.map((s, i) => `<div class="it mal"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>
+  <p class="sub" style="font-size:42px">Vos no tenés que saber todo esto. <b>Se lo mandás y listo.</b></p>`;
 M['sv-4'] = () => `${marca('')}${comenta()}`;
 
 // ---------- Reel del viernes A: "Vera te enseña en 15 segundos" (4 pantallas) ----------

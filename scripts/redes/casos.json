@@ -1,71 +1,229 @@
 {
-  "_nota": "Casos reales analizados por Vera (capturas en scripts/redes/casos/, con datos personales ya tapados). llego y veredicto son los recortes [y0, y1] en píxeles de la imagen. 'semana' = entra en la rotación del reel de los lunes 'Se lo mandé a Vera'. Agregá casos nuevos al final: siempre tapando mails, nombres, números y caras.",
+  "_nota": "Casos reales analizados por Vera (capturas en scripts/redes/casos/, con datos personales ya tapados). llego y veredicto son los recortes [y0, y1] en píxeles de la imagen. 'semana' = entra en la rotación del reel de los lunes 'Se lo mandé a Vera'. Agregá casos nuevos al final: siempre tapando mails, nombres, números y caras. hook: pregunta de la portada del reel (abre la incógnita). dato: la frase grande del veredicto.",
   "casos": [
     {
-      "id": "sms-puntos", "archivo": "sms-puntos.jpg", "w": 720, "llego": [5, 430], "veredicto": [440, 1285], "semana": true,
+      "id": "sms-puntos",
+      "archivo": "sms-puntos.jpg",
+      "w": 720,
+      "llego": [
+        5,
+        430
+      ],
+      "veredicto": [
+        440,
+        1285
+      ],
+      "semana": true,
       "gancho": "Un SMS con *9.088 puntos* que vencen",
+      "hook": "¿9.088 puntos *gratis*… o te vacían la cuenta?",
+      "dato": "16 de 89 antivirus marcan el link como peligroso",
       "chip": "🔴 Smishing: no toques el link",
-      "evidencias": ["Te apura: los puntos \"caducan\"", "Link acortado que no es oficial", "16 de 89 antivirus marcan el sitio como peligroso"],
+      "evidencias": [
+        "Te apura: los puntos \"caducan\"",
+        "Link acortado que no es oficial",
+        "Faltan tildes: no lo escribió una empresa real"
+      ],
       "tipo": "SMS"
     },
     {
-      "id": "visa-falso", "archivo": "visa-falso.jpg", "w": 720, "llego": [0, 575], "veredicto": [580, 1272], "semana": true,
+      "id": "visa-falso",
+      "archivo": "visa-falso.jpg",
+      "w": 720,
+      "llego": [
+        0,
+        575
+      ],
+      "veredicto": [
+        580,
+        1272
+      ],
+      "semana": true,
       "gancho": "Un mail de *VISA* por una compra que no hice",
+      "hook": "¿Una compra de *$855.733* que no hiciste?",
+      "dato": "El número para \"anularla\" es un celular particular",
       "chip": "🔴 Vishing: no llames a ese número",
-      "evidencias": ["Usa el logo de VISA y Prisma para dar confianza", "Una compra enorme para que entres en pánico", "Te hace llamar a un celular particular, no a un canal oficial"],
+      "evidencias": [
+        "Usa el logo de VISA y Prisma para dar confianza",
+        "Una compra enorme para que entres en pánico",
+        "Te hace llamar a un celular particular, no a un canal oficial"
+      ],
       "tipo": "Email"
     },
     {
-      "id": "zip-malicioso", "archivo": "zip-malicioso.jpg", "w": 720, "llego": [0, 270], "veredicto": [280, 1150], "semana": true,
+      "id": "zip-malicioso",
+      "archivo": "zip-malicioso.jpg",
+      "w": 720,
+      "llego": [
+        0,
+        270
+      ],
+      "veredicto": [
+        280,
+        1150
+      ],
+      "semana": true,
       "gancho": "Un *.zip* que reenvían en un grupo",
+      "hook": "¿Abrirías un archivo que mandaron *al grupo*?",
+      "dato": "40 de 68 antivirus lo detectan como malicioso",
       "chip": "🔴 40 antivirus: malicioso",
-      "evidencias": ["Archivo comprimido que nadie pidió", "40 de 68 motores lo detectan como malicioso", "Se usa para robar datos o instalar virus"],
+      "evidencias": [
+        "Archivo comprimido que nadie pidió",
+        "40 de 68 motores lo detectan como malicioso",
+        "Se usa para robar datos o instalar virus"
+      ],
       "tipo": "WhatsApp"
     },
     {
-      "id": "sms-saldo", "archivo": "sms-saldo.jpg", "w": 720, "llego": [10, 540], "veredicto": [555, 1285], "semana": true,
+      "id": "sms-saldo",
+      "archivo": "sms-saldo.jpg",
+      "w": 720,
+      "llego": [
+        10,
+        540
+      ],
+      "veredicto": [
+        555,
+        1285
+      ],
+      "semana": true,
       "gancho": "Una *deuda* que no tenía y un descuento del 40%",
+      "hook": "¿Una deuda que no tenés… con *40% de descuento*?",
+      "dato": "Dos links falsos: .bond y .online",
       "chip": "🔴 Smishing: no pagues nada",
-      "evidencias": ["Amenaza con suspender tu servicio", "Links .bond y .online que no son oficiales", "Un \"descuento\" sobre una deuda que no existe"],
+      "evidencias": [
+        "Amenaza con suspender tu servicio",
+        "Links .bond y .online que no son oficiales",
+        "Un \"descuento\" sobre una deuda que no existe"
+      ],
       "tipo": "SMS"
     },
     {
-      "id": "aduana", "archivo": "aduana.jpg", "w": 720, "llego": [0, 525], "veredicto": [535, 1262], "semana": true,
+      "id": "aduana",
+      "archivo": "aduana.jpg",
+      "w": 720,
+      "llego": [
+        0,
+        525
+      ],
+      "veredicto": [
+        535,
+        1262
+      ],
+      "semana": true,
       "gancho": "Un *paquete retenido* en la Aduana",
+      "hook": "¿Tu paquete quedó *retenido* en la Aduana?",
+      "dato": "Ningún organismo te cobra aranceles por mail",
       "chip": "🔴 Suplantación: no pagues aranceles",
-      "evidencias": ["Se hace pasar por la Aduana o el Correo", "Te pide plata para \"liberar\" un paquete", "Te pide fotos y documentos"],
+      "evidencias": [
+        "Se hace pasar por la Aduana o el Correo",
+        "Te pide plata para \"liberar\" un paquete",
+        "Te pide fotos y documentos"
+      ],
       "tipo": "Email"
     },
     {
-      "id": "mail-chantaje", "archivo": "mail-chantaje.jpg", "w": 720, "llego": [0, 680], "veredicto": [690, 1290], "semana": true,
+      "id": "mail-chantaje",
+      "archivo": "mail-chantaje.jpg",
+      "w": 720,
+      "llego": [
+        0,
+        680
+      ],
+      "veredicto": [
+        690,
+        1290
+      ],
+      "semana": true,
       "gancho": "Un mail que dice que *me hackearon* el celular",
+      "hook": "¿Un mail que dice que te *hackearon* el celular?",
+      "dato": "Es un mail masivo: le llegó igual a miles",
       "chip": "🔴 Chantaje falso: no pagues",
-      "evidencias": ["Es un mail masivo: le llega a miles", "Te amenaza para que pagues rápido", "Usa trucos para esquivar el filtro de spam"],
+      "evidencias": [
+        "Es un mail masivo: le llega a miles",
+        "Te amenaza para que pagues rápido",
+        "Usa trucos para esquivar el filtro de spam"
+      ],
       "tipo": "Email"
     },
     {
-      "id": "link-phishing", "archivo": "link-phishing.jpg", "w": 720, "llego": [0, 60], "veredicto": [60, 900],
+      "id": "link-phishing",
+      "archivo": "link-phishing.jpg",
+      "w": 720,
+      "llego": [
+        0,
+        60
+      ],
+      "veredicto": [
+        60,
+        900
+      ],
       "gancho": "Un link de un *seguro* que parece real",
+      "hook": "¿Ese link es *seguro*?",
+      "dato": "92 sistemas de seguridad lo revisaron",
       "chip": "🔴 Phishing: roba tus datos",
-      "evidencias": ["Lo revisaron 92 sistemas de seguridad", "Imita una página real y confiable", "Te pide datos personales o bancarios"],
+      "evidencias": [
+        "Lo revisaron 92 sistemas de seguridad",
+        "Imita una página real y confiable",
+        "Te pide datos personales o bancarios"
+      ],
       "tipo": "Link"
     },
     {
-      "id": "mail-filtrado", "archivo": "mail-filtrado.jpg", "w": 720, "llego": [0, 60], "veredicto": [65, 690],
+      "id": "mail-filtrado",
+      "archivo": "mail-filtrado.jpg",
+      "w": 720,
+      "llego": [
+        0,
+        60
+      ],
+      "veredicto": [
+        65,
+        690
+      ],
       "gancho": "¿Mi *mail* se filtró?",
+      "hook": "¿Tu mail *se filtró*?",
+      "dato": "Apareció en una filtración de 2020",
       "chip": "🔴 Filtrado: cambiá la clave",
-      "evidencias": ["Te dice en qué filtración apareció", "Qué datos se expusieron", "Qué hacer primero, paso a paso"],
+      "evidencias": [
+        "Te dice en qué filtración apareció",
+        "Qué datos se expusieron",
+        "Qué hacer primero, paso a paso"
+      ],
       "tipo": "Email"
     },
     {
-      "id": "ip-maliciosa", "archivo": "ip-maliciosa.jpg", "w": 720, "llego": [0, 60], "veredicto": [0, 965],
+      "id": "ip-maliciosa",
+      "archivo": "ip-maliciosa.jpg",
+      "w": 720,
+      "llego": [
+        0,
+        60
+      ],
+      "veredicto": [
+        0,
+        965
+      ],
       "gancho": "La misma pregunta, *tres veces*",
       "chip": "Mismo veredicto, las 3 veces",
-      "evidencias": ["Consulta VirusTotal", "Te dice de dónde es y qué riesgo tiene", "No cambia de opinión si insistís"],
+      "evidencias": [
+        "Consulta VirusTotal",
+        "Te dice de dónde es y qué riesgo tiene",
+        "No cambia de opinión si insistís"
+      ],
       "tipo": "IP"
     },
     {
-      "id": "capacidades", "archivo": "capacidades.jpg", "w": 600, "llego": [0, 734], "veredicto": [0, 734],
+      "id": "capacidades",
+      "archivo": "capacidades.jpg",
+      "w": 600,
+      "llego": [
+        0,
+        734
+      ],
+      "veredicto": [
+        0,
+        734
+      ],
       "gancho": "Todo lo que *Vera* puede revisar",
       "chip": "Links · CBU · mails · archivos · audios",
       "evidencias": [],
@@ -76,25 +234,41 @@
     {
       "caso": "mail-filtrado",
       "titulo": "¿Tu *mail* se filtró? Averigualo en 15 segundos",
-      "pasos": ["Abrí el chat de Vera en WhatsApp", "Mandale tu mail, nada más", "Te dice si se filtró y qué hacer"],
+      "pasos": [
+        "Abrí el chat de Vera en WhatsApp",
+        "Mandale tu mail, nada más",
+        "Te dice si se filtró y qué hacer"
+      ],
       "chip": "Así te responde 👇"
     },
     {
       "caso": "link-phishing",
       "titulo": "¿Ese *link* es trampa? Sabelo antes de tocarlo",
-      "pasos": ["Mantené apretado el link y copialo", "Pegalo en el chat de Vera", "Lo revisan decenas de antivirus en segundos"],
+      "pasos": [
+        "Mantené apretado el link y copialo",
+        "Pegalo en el chat de Vera",
+        "Lo revisan decenas de antivirus en segundos"
+      ],
       "chip": "92 sistemas lo revisaron 👇"
     },
     {
       "caso": "sms-puntos",
       "titulo": "¿Te llegó un *SMS* raro? No lo abras: sacale captura",
-      "pasos": ["Sacale captura al mensaje", "Mandásela a Vera (sirve también para mails)", "Te responde con un semáforo 🔴🟡🟢"],
+      "pasos": [
+        "Sacale captura al mensaje",
+        "Mandásela a Vera (sirve también para mails)",
+        "Te responde con un semáforo 🔴🟡🟢"
+      ],
       "chip": "Riesgo alto en segundos 👇"
     },
     {
       "caso": "zip-malicioso",
       "titulo": "¿Te mandaron un *archivo*? Revisalo antes de abrirlo",
-      "pasos": ["No lo abras: reenviáselo a Vera", "Lo revisan decenas de motores antivirus", "Si es malicioso, te dice qué hacer"],
+      "pasos": [
+        "No lo abras: reenviáselo a Vera",
+        "Lo revisan decenas de motores antivirus",
+        "Si es malicioso, te dice qué hacer"
+      ],
       "chip": "40 antivirus lo detectaron 👇"
     }
   ]
