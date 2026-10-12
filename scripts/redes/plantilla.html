@@ -146,18 +146,18 @@ function sello(top, left) { return `<div class="sello" style="top:${top};left:${
 const M = {};
 // ---------- Carrusel de una estafa (5 placas 1080x1350) ----------
 M['car-1'] = () => `${marca('1/5')}
-  <div style="margin-top:34px" class="alerta"><i></i>ALERTA DE ESTAFA</div>
+  <div style="margin-top:34px" class="alerta"><i></i>¿ESTAFA O REAL?</div>
   <h1 class="t" style="margin-top:22px">${rojo(D.e.gancho)}</h1>
-  <div style="position:relative;margin-top:34px;align-self:center">${telefono(D.e)}${sello('46%', '-6%')}</div>
-  <div class="pie"><span class="desliza">DESLIZÁ PARA SABER CÓMO DETECTARLA <i>→</i></span></div>`;
+  <div style="position:relative;margin-top:34px;align-self:center">${telefono(D.e)}</div>
+  <div class="pie"><span class="desliza">HAY 3 SEÑALES. ¿CUÁNTAS VES? <i>→</i></span></div>`;
 M['car-2'] = () => `${marca('2/5')}
-  <span class="chip" style="margin-top:40px">${esc(D.m.canal)} · riesgo ${esc(D.m.riesgo)}</span>
-  <h2 class="t" style="margin-top:22px">Así te <em>engañan</em></h2>
+  <span class="chip" style="margin-top:40px">#${esc(D.m.pos || '—')} del Observatorio · riesgo ${esc(D.m.riesgo)}</span>
+  <h2 class="t" style="margin-top:22px">¿Por qué <em>cae</em> tanta gente?</h2>
   <p class="sub" style="margin-top:26px;font-size:40px">${esc(D.m.comoCorto || D.m.como)}</p>
   <div style="margin-top:34px;padding:28px 30px;border-radius:24px;border:3px solid var(--rojo);background:rgba(255,59,59,.08)">
     <p style="font-family:JB;font-size:20px;letter-spacing:.18em;color:var(--rojo);margin-bottom:10px">LA TRAMPA</p>
     <p style="font-size:34px;font-weight:700;line-height:1.25">${esc(D.e.senales[1])}</p></div>
-  <div class="pie"><span>Estafa <b>#${esc(D.m.pos || '—')}</b> del Observatorio · ${esc(D.mes)}</span></div>`;
+  <div class="pie"><span>Observatorio de Fraude Digital · ${esc(D.mes)}</span><span class="desliza">CÓMO DARTE CUENTA <i>→</i></span></div>`;
 M['car-3'] = () => `${marca('3/5')}
   <h2 class="t" style="margin-top:44px">3 señales para <em>detectarla</em></h2>
   <div class="lista" style="margin-top:44px">${D.e.senales.map((s, i) => `<div class="it mal"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>
@@ -169,9 +169,8 @@ M['car-4'] = () => `${marca('4/5')}
   <p class="sub" style="margin-top:34px">Y si ya diste datos o transferiste, llamá ya a tu banco y hacé la denuncia.</p>
   <div class="pie"><span>Compartilo con tu familia 🙏</span></div>`;
 M['car-5'] = () => `${marca('5/5')}
-  <h2 class="t" style="margin-top:44px;--t:128px">📌 Guardalo.<br><em>Mandáselo</em> a quien siempre cae.</h2>
-  <div class="cta" style="margin-top:50px"><b>¿Te llegó algo raro? Comentá VERA</b><span>y te mando el link directo al chat. 7 días gratis, en tu WhatsApp.</span></div>
-  <div class="links" style="margin-top:34px"><span>O entrá a</span>cybermobile.com.ar/vera</div>
+  <p class="sub" style="text-align:center;font-size:38px">📌 Guardalo y mandáselo a quien siempre cae.</p>
+  ${comenta()}
   <div class="pie"><span>Seguinos: <b>${IG}</b></span><span>Observatorio de Fraude Digital</span></div>`;
 // ---------- Portada cuadrada para el canal de WhatsApp (1080x1080) ----------
 M['cuad'] = () => `${marca('')}
@@ -201,14 +200,14 @@ M['dato-2'] = () => `${marca('2/3')}
   <div class="pie"><span>Fuente: Observatorio de Fraude Digital · Cyber Mobile</span></div>`;
 M['dato-3'] = M['car-5'];
 // ---------- Reel "FALSO" (1080x1920, 4 pantallas) ----------
-M['rf-1'] = () => `${marca('')}<div class="alerta" style="margin-top:30px"><i></i>ALERTA DE ESTAFA</div>
+M['rf-1'] = () => `${marca('')}<div class="alerta" style="margin-top:30px"><i></i>¿ESTAFA O REAL?</div>
   <h1 class="t" style="margin-top:26px">${rojo(D.e.gancho)}</h1><div style="margin-top:50px;align-self:center">${telefono(D.e)}</div>`;
 M['rf-2'] = () => `${marca('')}<h1 class="t" style="margin-top:30px">Es una <em>estafa</em></h1>
   <div style="position:relative;margin-top:50px;align-self:center">${telefono(D.e)}${sello('40%', '-4%')}</div>`;
 M['rf-3'] = () => `${marca('')}<h2 class="t" style="margin-top:30px">Cómo <em>darte cuenta</em></h2>
   <div class="lista" style="margin-top:60px">${D.e.senales.map((s, i) => `<div class="it mal"><span class="n">${i + 1}</span><p>${esc(s)}</p></div>`).join('')}</div>`;
 M['rf-4'] = () => `${marca('')}<h2 class="t" style="margin-top:30px">📌 Guardalo y <em>mandáselo</em> a tu familia</h2>
-  <div class="cta" style="margin-top:60px"><b>¿Te llegó algo raro? Comentá VERA</b><span>y te mando el link directo al chat. 7 días gratis.</span></div>
+  <div class="cta" style="margin-top:60px"><b>Comentá "VERA"</b><span>y te envío por mensaje privado el link para probarla 7 días gratis.</span></div>
   <div class="links" style="margin-top:40px"><span>O entrá a</span>cybermobile.com.ar/vera<span style="margin-top:10px">Instagram</span>${IG}</div>`;
 // ---------- Reel del lunes: Top 3 (1080x1920, 5 pantallas) ----------
 M['rt-0'] = () => `${marca('')}<div class="alerta" style="margin-top:30px"><i></i>RANKING · ${esc(D.mes.toUpperCase())}</div>
@@ -230,8 +229,8 @@ function recorte(c, reg, ancho, maxAlto, r) {
 const comenta = (sub) => `<div style="text-align:center;align-self:stretch">
     <div class="t" style="--t:92px;color:#C9D2DF">Comentá</div>
     <div class="t" style="--t:300px;color:var(--cian);text-shadow:0 0 90px rgba(34,211,238,.55)">VERA</div>
-    <div class="t" style="--t:80px;margin-top:10px">y te mando<br>el link 📲</div>
-    <p class="sub" style="margin-top:36px">${sub || '7 días gratis · sin instalar nada · en tu WhatsApp'}</p></div>
+    <div class="t" style="--t:80px;margin-top:10px">y te envío el link<br>por privado 📲</div>
+    <p class="sub" style="margin-top:36px">${sub || 'Probala 7 días gratis · sin instalar nada · en tu WhatsApp'}</p></div>
   <div class="links" style="align-self:center;text-align:center;margin-top:20px"><span>o entrá a</span>cybermobile.com.ar/vera</div>`;
 const COMP = [
   ['Para qué está hecha', 'Para todo un poco', 'Solo para estafas y ciberseguridad'],
@@ -296,7 +295,7 @@ M['cmp-6'] = () => `${marca('6/6')}${comenta('Tu IA especialista en estafas · 7
 const fila = (x) => `<div class="it mal"><span class="n">${x.pos}</span><p><b style="font-family:Anton;font-weight:400;text-transform:uppercase;font-size:1.1em">${esc(x.nombre)}</b><br><span style="font-weight:500;color:#C9D2DF">${esc(x.clave)}</span></p></div>`;
 M['fam-1'] = () => `${marca('1/4')}<span class="pill" style="margin-top:36px">📌 Guardalo para tu familia</span>
   <h1 class="t" style="margin-top:26px;--t:124px">Las 5 estafas que <em>más circulan</em> este mes</h1>
-  <p class="sub" style="margin-top:30px;font-size:40px">Y la frase que las frena a cada una. Mandáselo a tus papás, abuelos y a quien siempre cae. 🙏</p>
+  <p class="sub" style="margin-top:30px;font-size:40px">¿Sabés cuál es la #1? Deslizá, fijate si te llegó alguna y mandáselo a tu familia. 👉</p>
   <div class="pie"><span class="desliza">DESLIZÁ <i>→</i></span><span>${esc(D.mes)}</span></div>`;
 M['fam-2'] = () => `${marca('2/4')}<h2 class="t" style="--t:96px">Las <em>más activas</em></h2><div class="lista" style="--li:31px;--nw:76px">${D.top.slice(0, 3).map(fila).join('')}</div>
   <div class="pie"><span>Fuente: Observatorio de Fraude Digital · Cyber Mobile</span></div>`;
