@@ -52,9 +52,11 @@ jobs:
           if [ "$(TZ=America/Argentina/Buenos_Aires date +%u)" = "1" ] && ! grep -q "\"fecha\": \"$HOY\"" redes/alerta-semanal/textos.json 2>/dev/null; then
             node scripts/alerta-semanal/generar.mjs
           fi
+      - name: Guías (actualiza los links a las estafas vigentes del Observatorio)
+        run: node scripts/guias/generar.mjs
       - name: Guardar en el repositorio
         run: |
-          git add -A redes
+          git add -A redes guias
           if git diff --cached --quiet; then
             echo "Sin cambios"
             exit 0

@@ -4,7 +4,7 @@
 import Redis from 'ioredis';
 
 const WA = 'https://wa.me/5491170598505?text=' + encodeURIComponent('Hola Vera, quiero probar 7 días gratis');
-const ORIGENES = ['ig', 'bio', 'comentario', 'tarjeta', 'qr', 'web', 'canal', 'historia'];
+const ORIGENES = ['ig', 'bio', 'comentario', 'tarjeta', 'qr', 'web', 'canal', 'historia', 'guia', 'alerta'];
 
 let redisClient;
 function redis() {
