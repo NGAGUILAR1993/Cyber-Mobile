@@ -8,7 +8,8 @@
 //   Sábado     Carrusel: "IA general vs Vera" / "Guardalo para tu familia" (semana por medio)  12:00  + historia de preguntas
 //   Domingo    Día libre
 // Salida: redes/AAAA-MM-DD/ con las imágenes, el video y textos.json (textos e instrucciones listos para copiar).
-// Uso: node scripts/redes/generar.mjs [--fecha AAAA-MM-DD]
+// Uso: node scripts/redes/generar.mjs [--fecha AAAA-MM-DD] [--caso <id de casos.json>]
+//   --caso arma ese día un reel "Se lo mandé a Vera" con el caso indicado (por ejemplo, uno nuevo y urgente).
 // Requiere Playwright (Chromium) y ffmpeg.
 // Estructura de cada pieza (scripts/redes/GUIA.md): portada que abre una incógnita, puente que amplía el problema,
 // entrega que se guarda o comparte, y CTA con un siguiente paso concreto (Comentá VERA → link por privado).
@@ -121,7 +122,9 @@ const PLAN = {
     6: par ? { tipo: 'carrusel', formato: 'carrusel-comparacion', horario: '12:00' } : { tipo: 'carrusel', formato: 'carrusel-familia', horario: '12:00' },
     0: { tipo: 'libre', formato: 'libre', horario: '' }
 };
-const { tipo, formato, horario } = PLAN[diaSemana];
+const argCaso = process.argv.indexOf('--caso');
+const casoForzado = argCaso > -1 ? process.argv[argCaso + 1] : '';
+const { tipo, formato, horario } = casoForzado ? { tipo: 'reel', formato: 'reel-caso', horario: '20:00' } : PLAN[diaSemana];
 
 // Rotación: el carrusel del martes y el reel del miércoles toman la siguiente modalidad; la encuesta usa otra distinta.
 let nFeed = 0, nDias = 0;
@@ -134,7 +137,8 @@ const elegida = lista[idx(nFeed)];
 const deHistoria = lista[idx(nFeed + 1 + (nDias % 4))] === elegida ? lista[idx(nFeed + 1)] : lista[idx(nFeed + 1 + (nDias % 4))];
 const enHistoria = deHistoria;
 const rot = (arr, n) => arr[((n % arr.length) + arr.length) % arr.length];
-const casoSemana = rot(CASOS.casos.filter((c) => c.semana), semana);
+const casoSemana = casoForzado ? caso(casoForzado) : rot(CASOS.casos.filter((c) => c.semana), semana);
+if (!casoSemana) throw new Error('No existe el caso ' + casoForzado);
 const tutorial = rot(CASOS.tutoriales, Math.floor(semana / 2));
 const casoTutorial = caso(tutorial.caso);
 const promo = fecha <= FIN_PROMO_MADRE;
@@ -171,7 +175,7 @@ try {
         archivos.push(await captura('historia', base(enHistoria), 'historia.jpg', 1920));
     } else if (formato === 'reel-caso') {
         for (let i = 0; i <= 4; i++) await captura(`sv-${i}`, { mes, c: casoSemana }, `pantalla-${i + 1}.jpg`, 1920);
-        archivos.push(await captura('hist-alerta', base(lista[0]), 'historia.jpg', 1920));
+        if (diaSemana === 1) archivos.push(await captura('hist-alerta', base(lista[0]), 'historia.jpg', 1920));
     } else if (formato === 'reel-tutorial') {
         for (let i = 1; i <= 4; i++) await captura(`tu-${i}`, { mes, tu: tutorial, c: casoTutorial }, `pantalla-${i}.jpg`, 1920);
     } else if (formato === 'reel-comparacion') {
@@ -261,7 +265,9 @@ if (formato === 'carrusel') {
         titulo: `Reel Se lo mandé a Vera: ${g}`, modalidad: `Caso real: ${c.id}`,
         instagram: `Me llegó ${gMin}… y en vez de tocar nada, se lo mandé a Vera 🛡️\n\nEn segundos: ${c.chip}\n\n🚩 Lo que vio:\n${ev}\n\nNo tenés que saber de ciberseguridad: se lo mandás y listo.\n\n${CTA_IG}\n📌 Guardalo y mandáselo a tu familia.\n\n#SeLoMandéAVera ${HASH}`,
         whatsapp: `🛡️ *Caso real: se lo mandé a Vera*\n\nNos llegó ${gMin}. Antes de tocar nada, se lo reenviamos a Vera.\n\n*Veredicto:* ${c.chip}\n\n🚩 *Lo que vio:*\n${ev}\n\n📲 *¿Te llegó algo parecido? Mandáselo vos también:*\n${VERA}?o=canal\n\nReenviá este mensaje a tu familia 🙏`,
-        instrucciones: ['Subí reel.mp4 como Reel y elegí portada.jpg como portada.', 'Audio en tendencia a volumen bajo. Fijá un comentario: "¿Vos lo abrías? 👇"', 'Canal de WhatsApp: hoy n8n manda la alerta de la semana a las 19 (a suscriptos y staff). El texto de "whatsapp" es opcional (podés mandarlo a la tarde).', `Historia (12:00): subí historia.jpg (alerta de la semana: ${lista[0].nombre}) y poné ${sticker} sobre el recuadro punteado.`]
+        instrucciones: ['Subí reel.mp4 como Reel y elegí portada.jpg como portada.', 'Audio en tendencia a volumen bajo. Fijá un comentario: "¿Vos lo abrías? 👇"'].concat(diaSemana === 1
+            ? ['Canal de WhatsApp: hoy n8n manda la alerta de la semana a las 19 (a suscriptos y staff). El texto de "whatsapp" es opcional (podés mandarlo a la tarde).', `Historia (12:00): subí historia.jpg (alerta de la semana: ${lista[0].nombre}) y poné ${sticker} sobre el recuadro punteado.`]
+            : ['Canal de WhatsApp: mandá el texto de "whatsapp".', 'Historia: compartí el reel en tu historia con un sticker de enlace a cybermobile.com.ar/vera?o=historia.'])
     };
 } else if (formato === 'reel-tutorial') {
     const ps = tutorial.pasos.map((p, i) => `${i + 1}️⃣ ${p}`).join('\n');
