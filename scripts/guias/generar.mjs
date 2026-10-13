@@ -194,5 +194,13 @@ for (const g of guias) {
     fs.mkdirSync(path.join(salida, g.slug), { recursive: true });
     fs.writeFileSync(path.join(salida, g.slug, 'index.html'), paginaGuia(g));
 }
+// Bloque "Guías" de la portada (entre las marcas guias:inicio y guias:fin): las 3 más recientes.
+const portada = path.join(RAIZ, 'index.html');
+const html = fs.readFileSync(portada, 'utf8');
+const marca = /(<!-- guias:inicio[^>]*-->)[\s\S]*?(\s*<!-- guias:fin -->)/;
+if (!marca.test(html)) throw new Error('index.html no tiene las marcas guias:inicio / guias:fin');
+const recientes = [...guias].sort((a, b) => (b.actualizada || b.publicada).localeCompare(a.actualizada || a.publicada)).slice(0, 3);
+const bloque = `\n            <div class="guias-home reveal">\n${recientes.map((g) => `                <a class="tile guia-card" href="/guias/${g.slug}" data-track="home_guia"><b>${esc(g.h1)}</b><span>${esc(g.descripcion)}</span><em>Leer la guía →</em></a>`).join('\n')}\n            </div>`;
+fs.writeFileSync(portada, html.replace(marca, (m, a, b) => a + bloque + b));
 fs.writeFileSync(path.join(salida, 'lista.json'), JSON.stringify(guias.map((g) => ({ slug: g.slug, fecha: g.actualizada || g.publicada })), null, 1) + '\n');
 console.log(`Guías generadas: ${guias.length} (${guias.map((g) => g.slug).join(', ')})`);
