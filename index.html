@@ -25,7 +25,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Las fuentes cargan sin bloquear el primer render (mejora la velocidad en celular). -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 
     <script type="application/ld+json">
     {
@@ -300,7 +302,9 @@
         footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px 32px; flex-wrap: wrap; padding-top: 32px; padding-bottom: 32px; font-size: 14px; color: #8391A7; }
         footer .brandname { font-family: Orbitron, sans-serif; font-weight: 700; letter-spacing: .14em; color: var(--txt2); }
         .legal { display: flex; gap: 24px; }
-        .legal button { all: unset; cursor: pointer; color: #8391A7; min-height: 44px; display: inline-flex; align-items: center; }
+        .legal button, .legal a { all: unset; cursor: pointer; color: #8391A7; min-height: 44px; display: inline-flex; align-items: center; }
+        .legal { flex-wrap: wrap; }
+        .legal a:hover { color: var(--acc); }
         .legal button:hover { color: var(--acc); }
         .legal button:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
 
@@ -413,8 +417,8 @@
             </a>
             <nav class="menu" aria-label="Secciones">
                 <a href="#herramientas">Herramientas</a>
-                <a href="#simulador">Simulador</a>
                 <a href="#casos">Casos reales</a>
+                <a href="/guias">Guías</a>
                 <a href="#planes">Planes</a>
                 <a href="/agente" data-track="nav_agente_web">Vera web</a>
                 <a href="/observatorio"><span class="dot pulse"></span>Observatorio</a>
@@ -762,6 +766,8 @@
             <span class="brandname">CYBER MOBILE</span>
             <span>© 2026 Cyber Mobile · Protección proactiva contra fraudes digitales</span>
             <div class="legal">
+                <a href="/guias">Guías</a>
+                <a href="/observatorio">Observatorio</a>
                 <button type="button" data-open="termsModal">Términos</button>
                 <button type="button" data-open="privacyModal">Privacidad</button>
             </div>

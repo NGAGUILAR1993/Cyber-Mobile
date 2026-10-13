@@ -1,0 +1,172 @@
+{
+  "_nota": "Contenido de las guías de cybermobile.com.ar/guias. scripts/guias/generar.mjs arma las páginas estáticas (guias/<slug>/index.html). Todo el texto se escapa al generar: no pegar HTML. **negrita** está permitido.",
+  "guias": [
+    {
+      "slug": "verificar-estafa-whatsapp",
+      "publicada": "2026-10-13",
+      "titulo": "Cómo verificar si un mensaje de WhatsApp es una estafa (Argentina, 2026)",
+      "h1": "Cómo verificar si un mensaje de WhatsApp es una estafa",
+      "descripcion": "Guía paso a paso para saber si un mensaje, link o pedido de plata por WhatsApp es una estafa en Argentina: señales, cómo verificarlo y qué hacer si ya respondiste.",
+      "busqueda": "verificar estafa whatsapp argentina",
+      "resumen": "Un mensaje de WhatsApp es probablemente una estafa si llega de un número que no tenés agendado, te apura (\"hoy vence\", \"tu cuenta será bloqueada\") y te pide un dato, un código, un clic o una transferencia. Antes de responder: no toques el link, verificá por un canal oficial y, si tenés dudas, reenviáselo a un verificador como Vera.",
+      "secciones": [
+        {
+          "h2": "Las 6 señales de una estafa por WhatsApp",
+          "lista": [
+            "**Número desconocido o foto robada:** se hacen pasar por tu banco, PAMI, ANSES, una empresa o un familiar con \"número nuevo\".",
+            "**Urgencia:** \"vence hoy\", \"último aviso\", \"si no respondés se bloquea\". La prisa es para que no pienses.",
+            "**Te piden un código de 6 dígitos:** ese código es para entrar a tu WhatsApp o a tu banco. Nunca se comparte.",
+            "**Links raros:** dominios que imitan al real (con letras cambiadas, terminados en .online, .site, .xyz) o acortados.",
+            "**Plata de por medio:** transferencias, \"pagos para liberar\" un premio o un paquete, inversiones con ganancias seguras.",
+            "**Errores y tono extraño:** faltas de ortografía, saludos genéricos o un trato que no es el de esa persona."
+          ]
+        },
+        {
+          "h2": "Cómo verificarlo paso a paso",
+          "numerada": [
+            "**No respondas ni toques el link.** Abrirlo puede bastar para que te pidan datos o descargues algo.",
+            "**Verificá por otro canal.** Llamá al número oficial de la empresa (el que figura en su web o al dorso de tu tarjeta) o al familiar a su número de siempre.",
+            "**Mirá el link sin abrirlo.** Mantenelo apretado y copialo: si el dominio no es exactamente el oficial, es falso.",
+            "**Buscá el texto en Google.** Si es una estafa conocida, suele aparecer en noticias o en el ranking del Observatorio.",
+            "**Reenviáselo a un verificador.** Vera revisa el link con decenas de antivirus, el número y la captura, y te responde en segundos."
+          ]
+        },
+        {
+          "h2": "Qué hacer si ya respondiste o pagaste",
+          "numerada": [
+            "**Si diste un código de WhatsApp:** entrá a Ajustes > Cuenta > Verificación en dos pasos y activala. Avisá a tus contactos que no respondan pedidos de plata desde tu número.",
+            "**Si diste datos bancarios o transferiste:** llamá ya a tu banco o billetera por sus canales oficiales para bloquear y desconocer operaciones.",
+            "**Cambiá tus claves,** empezando por la del mail, y activá el segundo factor de autenticación.",
+            "**Hacé la denuncia** en la comisaría o fiscalía más cercana, o ante la UFECI (Unidad Fiscal Especializada en Ciberdelincuencia del Ministerio Público Fiscal). Guardá capturas de todo.",
+            "**Bloqueá y reportá el número** desde el chat: tocá el nombre > Bloquear > Reportar."
+          ]
+        }
+      ],
+      "caso": {
+        "imagen": "sms-puntos.jpg",
+        "alt": "Respuesta real de Vera a un mensaje de puntos que vencen: riesgo alto, smishing, 16 de 89 antivirus marcan el link como peligroso",
+        "texto": "Le reenviaron a Vera un mensaje de \"9.088 puntos que vencen\". En segundos respondió: riesgo alto, es smishing, el link es acortado y no oficial, y 16 de 89 motores antivirus lo marcan como peligroso."
+      },
+      "faq": [
+        { "q": "¿Cómo sé si un número de WhatsApp es de una empresa real?", "a": "Las empresas verificadas muestran su nombre con una insignia, pero eso no alcanza: verificá siempre llamando al número oficial que figura en su web o en tu tarjeta. Ningún banco te pide claves ni códigos por WhatsApp." },
+        { "q": "¿Abrir un link de una estafa ya me compromete?", "a": "Abrirlo no siempre alcanza para robarte, pero es el primer paso: la página falsa te va a pedir datos o que descargues algo. Si lo abriste, no completes nada, cerrala y revisá tu teléfono con un antivirus." },
+        { "q": "¿Qué hago si un familiar me escribe desde un número nuevo pidiendo plata?", "a": "Llamalo a su número de siempre antes de transferir. El \"cambié de número\" con un pedido urgente de plata es una de las estafas más comunes en Argentina." },
+        { "q": "¿Dónde denuncio una estafa por WhatsApp en Argentina?", "a": "En la comisaría o fiscalía más cercana, o ante la UFECI del Ministerio Público Fiscal. Si hubo plata de por medio, avisá antes a tu banco. Guardá capturas de los mensajes, el número y los comprobantes." }
+      ],
+      "relacionadas": ["que-es-phishing", "verificar-numero-desconocido"],
+      "fichas": ["phishing-pami", "acceso-remoto-app", "premio-sorteo"]
+    },
+    {
+      "slug": "que-es-phishing",
+      "publicada": "2026-10-13",
+      "titulo": "Qué es el phishing y cómo protegerte (con ejemplos reales de Argentina)",
+      "h1": "Qué es el phishing y cómo protegerte",
+      "descripcion": "Qué es el phishing, cómo funciona por mail, SMS y WhatsApp, ejemplos reales que circulan en Argentina y qué hacer para no caer o si ya caíste.",
+      "busqueda": "que es phishing",
+      "resumen": "El phishing es una estafa en la que alguien se hace pasar por una empresa, un banco o un organismo para que le entregues tus datos: claves, códigos, datos de tarjeta. Llega por mail, SMS (smishing), WhatsApp o llamadas (vishing), casi siempre con un link a una página falsa idéntica a la real.",
+      "secciones": [
+        {
+          "h2": "Cómo funciona",
+          "numerada": [
+            "**El anzuelo:** un mensaje que parece oficial (\"tu cuenta fue suspendida\", \"tenés un paquete retenido\", \"ganaste un premio\").",
+            "**La urgencia:** un plazo corto para que actúes sin pensar.",
+            "**La página falsa:** un link a una web que copia el logo y los colores de la real, con una dirección parecida pero distinta.",
+            "**El robo:** lo que escribís ahí (usuario, clave, tarjeta, código) llega directo al estafador, que lo usa en minutos."
+          ]
+        },
+        {
+          "h2": "Los tipos más comunes",
+          "lista": [
+            "**Phishing por mail:** falsos avisos de bancos, tiendas, AFIP/ARCA o servicios de streaming.",
+            "**Smishing (SMS):** \"tus puntos vencen\", \"deuda pendiente\", \"paquete en espera\" con un link acortado.",
+            "**Por WhatsApp:** perfiles con el logo de PAMI, ANSES o tu banco que piden \"actualizar datos\".",
+            "**Vishing (llamada):** un supuesto empleado del banco que te pide un código o que instales una app."
+          ]
+        },
+        {
+          "h2": "Cómo protegerte",
+          "lista": [
+            "**Nunca entres a tu banco desde un link:** escribí la dirección vos o usá la app oficial.",
+            "**Mirá el dominio con lupa:** banco-nacion-seguro.online no es el Banco Nación.",
+            "**Activá el segundo factor** en tu mail, tu banco y tus redes.",
+            "**No compartas códigos** que te llegan por SMS o WhatsApp, aunque te los pida \"el banco\".",
+            "**Ante la duda, verificá antes:** reenviá el mensaje o el link a Vera y te dice si es seguro."
+          ]
+        },
+        {
+          "h2": "Si ya caíste",
+          "numerada": [
+            "**Llamá a tu banco** por el número oficial para bloquear tarjetas y desconocer operaciones.",
+            "**Cambiá la clave** de la cuenta afectada y la de tu mail, que es la llave de todas las demás.",
+            "**Revisá si tu mail se filtró:** Vera te dice en qué filtraciones apareció y qué cambiar primero.",
+            "**Hacé la denuncia** en la fiscalía, la comisaría o ante la UFECI, con capturas y comprobantes."
+          ]
+        }
+      ],
+      "caso": {
+        "imagen": "link-phishing.jpg",
+        "alt": "Respuesta real de Vera analizando un link de phishing: lo revisaron 92 sistemas de seguridad",
+        "texto": "Un link de un supuesto seguro que parecía real. Vera lo revisó con 92 sistemas de seguridad, detectó que imita una página confiable para robar datos y recomendó no abrirlo."
+      },
+      "faq": [
+        { "q": "¿Qué diferencia hay entre phishing, smishing y vishing?", "a": "Es la misma estafa por distintos canales: phishing suele referirse al mail, smishing al SMS y vishing a la llamada telefónica. En todos te engañan para que entregues datos o plata." },
+        { "q": "¿Cómo sé si una página es falsa?", "a": "Mirá la dirección completa: tiene que ser exactamente la oficial. Desconfiá de letras cambiadas, guiones de más o terminaciones raras. El candadito no alcanza: las páginas falsas también lo tienen." },
+        { "q": "¿El banco me puede pedir la clave por mail o WhatsApp?", "a": "No. Ningún banco ni organismo te pide claves, códigos ni datos de tarjeta por mail, SMS, WhatsApp o llamada." },
+        { "q": "¿Cómo reviso si un link es seguro antes de abrirlo?", "a": "Mantenelo apretado, copialo y pegalo en el chat de Vera: lo revisan decenas de motores antivirus en segundos y te responde con un semáforo." }
+      ],
+      "relacionadas": ["verificar-estafa-whatsapp", "verificar-numero-desconocido"],
+      "fichas": ["phishing-pami", "phishing-banco"]
+    },
+    {
+      "slug": "verificar-numero-desconocido",
+      "publicada": "2026-10-13",
+      "titulo": "Cómo verificar un número de teléfono desconocido antes de responder",
+      "h1": "Cómo verificar un número de teléfono desconocido",
+      "descripcion": "Te llamó o te escribió un número que no conocés: cómo averiguar si es una estafa antes de atender o responder, qué señales mirar y qué hacer.",
+      "busqueda": "verificar numero de telefono desconocido",
+      "resumen": "Para verificar un número desconocido: no atiendas ni respondas con datos, buscá el número completo en Google y entre comillas, mirá su perfil de WhatsApp (sin escribirle) y desconfiá si dice ser de un banco u organismo. La forma más segura es cortar y llamar vos al número oficial de esa empresa.",
+      "secciones": [
+        {
+          "h2": "Cómo averiguar de quién es",
+          "numerada": [
+            "**Buscalo en Google** entre comillas, con y sin el 0 y el 15. Si otros lo denunciaron, suele aparecer.",
+            "**Mirá el perfil de WhatsApp** sin escribirle: foto, nombre e información. Un logo de banco en un número común es una señal de alarma.",
+            "**Fijate la característica:** una llamada \"del banco\" desde un celular o desde otra provincia no es normal.",
+            "**Preguntale a Vera:** mandale el número y te dice si tiene reportes o señales de riesgo."
+          ]
+        },
+        {
+          "h2": "Señales de que es una estafa",
+          "lista": [
+            "**Dice ser de tu banco, PAMI, ANSES o una empresa** y te pide datos, códigos o que instales una app.",
+            "**Te ofrece algo demasiado bueno:** un premio, un préstamo aprobado sin pedirlo o un trabajo con mucha plata.",
+            "**Te apura o te asusta:** \"detectamos un movimiento sospechoso\", \"tu cuenta será bloqueada\".",
+            "**Te pide compartir pantalla o instalar una app** de \"soporte\": es la estafa número uno del ranking del Observatorio."
+          ]
+        },
+        {
+          "h2": "Qué hacer",
+          "lista": [
+            "**Cortá y llamá vos** al número oficial que figura en la web de la empresa o en tu tarjeta.",
+            "**Nunca dictes códigos** que te llegan por SMS: sirven para entrar a tus cuentas.",
+            "**Bloqueá y reportá** el número desde el teléfono y desde WhatsApp.",
+            "**Anotate en el Registro Nacional No Llame** para reducir las llamadas comerciales; los estafadores no lo respetan, así que nunca bajes la guardia."
+          ]
+        }
+      ],
+      "caso": {
+        "imagen": "capacidades.jpg",
+        "alt": "Mensaje de Vera con todo lo que puede revisar: links, CBU, mails filtrados, teléfonos, imágenes, documentos, perfiles y notas de voz",
+        "texto": "Además de números de teléfono, Vera revisa links, CBU/CVU, mails filtrados, capturas, documentos, perfiles de redes y notas de voz, todo desde WhatsApp."
+      },
+      "faq": [
+        { "q": "¿Es peligroso atender una llamada de un número desconocido?", "a": "Atender no es peligroso en sí. El riesgo está en lo que te piden: no des datos, códigos ni instales apps. Si dice ser de una empresa, cortá y llamá vos al número oficial." },
+        { "q": "¿Pueden falsificar el número que aparece en la pantalla?", "a": "Sí, existe la falsificación del identificador de llamadas. Por eso, aunque el número parezca el del banco, no des datos: cortá y llamá vos." },
+        { "q": "¿Cómo denuncio un número que intentó estafarme?", "a": "Bloquealo y reportalo en WhatsApp, guardá capturas y hacé la denuncia en la comisaría, la fiscalía o ante la UFECI. También podés avisar a tu banco si se hicieron pasar por él." },
+        { "q": "¿Vera me dice de quién es un número?", "a": "Vera analiza el número y te dice si tiene reportes o señales de estafa. No revela datos personales del titular: su objetivo es decirte si es seguro responder." }
+      ],
+      "relacionadas": ["verificar-estafa-whatsapp", "que-es-phishing"],
+      "fichas": ["acceso-remoto-app", "phishing-banco"]
+    }
+  ]
+}

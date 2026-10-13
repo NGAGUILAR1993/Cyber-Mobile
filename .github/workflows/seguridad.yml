@@ -1,0 +1,48 @@
+name: Seguridad
+
+# DevSecOps: corre en cada push a main y en cada pull request.
+#  - Gitleaks: que no se suba ninguna clave ni token (binario fijo y verificado con SHA-256).
+#  - Controles propios (scripts/seguridad/revisar.mjs): páginas sin JavaScript ni recursos externos,
+#    vercel.json válido con CSP y HSTS, sin exportaciones de n8n en el repo.
+#  - Las guías publicadas coinciden con su fuente (guias/guias.json).
+#  - npm audit de las dependencias de producción.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  seguridad:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Buscar claves filtradas (gitleaks)
+        env:
+          VERSION: 8.21.2
+          SHA256: 5bc41815076e6ed6ef8fbecc9d9b75bcae31f39029ceb55da08086315316e3ba
+        run: |
+          curl -sSL -o gl.tgz "https://github.com/gitleaks/gitleaks/releases/download/v${VERSION}/gitleaks_${VERSION}_linux_x64.tar.gz"
+          echo "${SHA256}  gl.tgz" | sha256sum -c -
+          tar xzf gl.tgz gitleaks
+          ./gitleaks git --redact --no-banner --exit-code 1 .
+      - name: Controles propios
+        run: node scripts/seguridad/revisar.mjs
+      - name: Las guías coinciden con su fuente
+        run: |
+          node scripts/guias/generar.mjs
+          git diff --exit-code -- guias || (echo "Las guías no están regeneradas: corré node scripts/guias/generar.mjs" && exit 1)
+      - name: Dependencias (npm audit)
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm audit --omit=dev --audit-level=high
