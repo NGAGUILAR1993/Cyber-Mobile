@@ -56,7 +56,7 @@ jobs:
         run: node scripts/guias/generar.mjs
       - name: Guardar en el repositorio
         run: |
-          git add -A redes guias
+          git add -A redes guias index.html
           if git diff --cached --quiet; then
             echo "Sin cambios"
             exit 0

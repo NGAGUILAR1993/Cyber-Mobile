@@ -41,7 +41,7 @@ jobs:
       - name: Las guías coinciden con su fuente
         run: |
           node scripts/guias/generar.mjs
-          git diff --exit-code -- guias || (echo "Las guías no están regeneradas: corré node scripts/guias/generar.mjs" && exit 1)
+          git diff --exit-code -- guias index.html || (echo "Las guías no están regeneradas: corré node scripts/guias/generar.mjs" && exit 1)
       - name: Dependencias (npm audit)
         run: |
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
