@@ -1,15 +1,10 @@
 name: Alerta semanal por WhatsApp (envío)
 
 # Envía la alerta semanal (redes/alerta-semanal) por WhatsApp con Evolution, sin depender de n8n.
-# Lunes 19:00 (Argentina) con dos respaldos (no se repite si ya salió) y control los martes 12:00:
-# si el lunes no salió, la envía en ese momento. El resultado llega por mail y queda en redes/alerta-semanal/envios/.
+# Respaldo manual (workflow_dispatch). El resultado llega por mail y queda en redes/alerta-semanal/envios/.
 # Secretos: EVOLUTION_APIKEY, ALERTA_DESTINOS (números del staff separados por coma), SMTP_USER, SMTP_PASS.
 on:
-  schedule:
-    - cron: '0 22 * * 1'    # lunes 19:00
-    - cron: '40 22 * * 1'   # lunes 19:40, respaldo
-    - cron: '30 23 * * 1'   # lunes 20:30, respaldo
-    - cron: '0 15 * * 2'    # martes 12:00, control
+  # Sin horario: el envío semanal lo hace n8n. Queda como respaldo manual.
   workflow_dispatch:
     inputs:
       modo:
@@ -52,7 +47,7 @@ jobs:
           SMTP_PASS: ${{ secrets.MONITOR_SMTP_PASS }}
           AVISO_A: cybermobile.ai@gmail.com
           FORZAR: ${{ inputs.modo == 'forzar' && '1' || '0' }}
-          CONTROL: ${{ (github.event.schedule == '0 15 * * 2' || inputs.modo == 'control') && '1' || '0' }}
+          CONTROL: ${{ inputs.modo == 'control' && '1' || '0' }}
         run: node scripts/alerta-semanal/enviar.mjs
       - name: Guardar el resultado
         if: always()
