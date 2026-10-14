@@ -71,6 +71,16 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 7. **No pedirle que cargue cosas técnicas** (secretos, importar JSON): quiere que salga solo. Si algo es indispensable de su lado (por ejemplo, la plantilla de Meta), explicar el paso exacto.
 8. **Mandar los entregables por mail** a cybermobile.ai@gmail.com cuando lo pida, con el conector de Gmail.
 
+## Skills de Instagram (`.claude/skills/ig-*`)
+- Paquete de terceros revisado y fijado a una versión (ver `.claude/skills/README-instagram-agent-skill.md`).
+- Sirven para:
+  - puntuar ganchos de reels (`ig-reel`, `hookscore.py`);
+  - revisar captions antes del corte "… más" (`ig-caption`);
+  - auditar el perfil (`ig-profile`) y las métricas (`ig-audit`);
+  - responder comentarios (`ig-reply`) y DMs (`ig-dm`);
+  - investigar qué funciona en el nicho (`ig-viral`).
+- Las reglas de este archivo tienen prioridad sobre las de las skills.
+
 ## Seguridad (DevSecOps)
 - **Nunca** commitear exportaciones de n8n ni claves. Los JSON del flujo tienen claves de API en vivo; el control `scripts/seguridad/revisar.mjs` lo bloquea.
 - **Antes de pedir merge,** `seguridad.yml` tiene que estar en verde:
