@@ -42,19 +42,6 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 
 Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor corre cada ~8 h en lugar de cada 30 min. No confiar en ellos para envíos a hora exacta: lo exacto va en n8n.
 
-## Panel del staff por WhatsApp
-- Desde el mismo chat de Vera, **solo los números del staff** pueden mandar comandos:
-  - `/publi` (o `/publi mañana`, `/publi AAAA-MM-DD`): manda el video o las imágenes del día, el texto para Instagram, el del canal y los pasos.
-  - `/numeros`: clics a `/vera` de 7 días por origen, pruebas y pagos nuevos, personas por estado y consultas analizadas (sin datos personales).
-  - `/alerta`: último envío del lunes (a cuántos llegó y fallos) y el próximo.
-  - `/estado`: web, agente web, Observatorio, pieza del día, flyer, contador de clics, Evolution y n8n.
-  - `/ayuda`: el menú.
-- **En n8n:** "¿Activa Regalo Mamá?" (falso) → **"¿Comando Staff?"** → "Panel Suscripciones" → "Panel Inicios" → "Panel Casos" → **"Panel Staff"** (Code). Si no es comando de staff, sigue a "¿Prueba Pack Staff?" como siempre.
-- **Lista del staff:** está repetida en "¿Comando Staff?", "Panel Staff" y los nodos de la alerta; si cambia, actualizarla en todos (compara los últimos 10 dígitos).
-- **Pruebas nuevas:** desde el 14/10, "Guardar Inicio Prueba" (después de "Marcar Prueba Iniciada") guarda `prueba_inicio:<num>` con la fecha. `suscripcion_inicio:*` solo existe para quien pagó. En Redis hay personas duplicadas (con y sin 9, o con salto de línea): el panel agrupa por los últimos 10 dígitos.
-- **"Registrar Alerta"** (después de "Enviar Alerta WhatsApp") guarda `ultimaAlerta` en la memoria del flujo para `/alerta`.
-- **Clics:** `api/panel.js` (GET `/api/panel?dias=7`) los lee del Redis de Vercel. Exige `Authorization: Bearer <N8N_SHARED_SECRET>`, que es el mismo `CM_SHARED_SECRET` de "Config Secretos". Solo devuelve conteos.
-
 ## Grilla de redes (`scripts/redes/generar.mjs`, guía en `scripts/redes/GUIA.md`)
 | Día | Pieza | Hora |
 |---|---|---|
