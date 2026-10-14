@@ -173,6 +173,14 @@
     {
       "source": "/tarjetas/caso/:d([A-Za-z0-9_-]+).:s([a-f0-9]{32}).png",
       "destination": "/api/tarjeta?modo=caso&d=:d&s=:s"
+    },
+    {
+      "source": "/api/alerta-semanal",
+      "destination": "/api/tarjeta?modo=alerta"
+    },
+    {
+      "source": "/api/stats",
+      "destination": "/api/observatorio-stats?vista=eventos"
     }
   ],
   "functions": {
@@ -191,9 +199,6 @@
     "api/tarjeta.js": {
       "includeFiles": "{observatorio/datos.json,scripts/redes/claves.json,logo-cm.png,tarjetas/img/*.png,tarjetas/fuentes/*.ttf,scripts/redes/fuentes/Anton-Regular.ttf}",
       "maxDuration": 20
-    },
-    "api/alerta-semanal.js": {
-      "includeFiles": "{observatorio/datos.json,scripts/redes/claves.json}"
     }
   }
 }

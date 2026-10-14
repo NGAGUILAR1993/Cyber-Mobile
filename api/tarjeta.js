@@ -1,6 +1,8 @@
 // Tarjetas para WhatsApp (PNG 1080x1350), armadas en el momento:
 //   /tarjetas/semana-AAAAMMDD.png        → alerta del lunes: el #1 del ranking del Observatorio.
 //   /tarjetas/caso/<datos>.<firma>.png   → "Estafa detectada": tipo y señales que encontró Vera.
+//   /api/alerta-semanal                  → JSON para n8n: texto de WhatsApp de la alerta y link a su tarjeta.
+// (Todo en una sola función: el plan de Vercel permite 12.)
 // La de caso solo la puede pedir n8n: <datos> va firmado con N8N_SHARED_SECRET (el CM_SHARED_SECRET
 // de n8n), así nadie puede fabricar una tarjeta con el nombre de Cyber Mobile y un texto inventado.
 // El texto se limpia otra vez acá: sin links, sin números largos, sin mails ni @usuarios.
@@ -8,7 +10,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { ImageResponse } from '@vercel/og';
-import { alertaSemanal, recortar } from './_lib/alerta.js';
+import { alertaSemanal, recortar, textoWhatsApp, SITIO } from './_lib/alerta.js';
 
 const RAIZ = process.cwd();
 const leer = (p) => fs.readFileSync(path.join(RAIZ, p));
@@ -159,6 +161,18 @@ export default async function handler(req, res) {
     const q = req.query || {};
     try {
         let png;
+        if (q.modo === 'alerta') {
+            const a = observatorio();
+            if (!a) return res.status(404).json({ error: 'Sin ranking' });
+            const fecha = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' }).format(new Date());
+            res.setHeader('Cache-Control', 'no-store');
+            return res.status(200).json({
+                tipo: 'alerta-semanal', fecha, mes: a.mes, slug: a.slug, nombre: a.nombre,
+                whatsapp: textoWhatsApp(a),
+                ficha: `${SITIO}/observatorio/${a.slug}`,
+                imagen: `${SITIO}/tarjetas/semana-${fecha.replace(/-/g, '')}.png`
+            });
+        }
         if (q.modo === 'semana') {
             const a = observatorio();
             if (!a) return res.status(404).end();
