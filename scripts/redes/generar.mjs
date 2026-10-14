@@ -50,8 +50,8 @@ const tildes = (t) => TILDES.reduce((s, [re, r]) => s.replace(re, r), String(t |
 const slugDe = (k) => String(k || '').split('@')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const escHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-// Frases cortas curadas por clave (scripts/redes/claves.json); si no hay, se usa el texto del Observatorio.
-const CLAVES = JSON.parse(fs.readFileSync(path.join(RAIZ, 'scripts', 'redes', 'claves.json'), 'utf8'));
+// Frases cortas curadas por clave (observatorio/claves.json); si no hay, se usa el texto del Observatorio.
+const CLAVES = JSON.parse(fs.readFileSync(path.join(RAIZ, 'observatorio', 'claves.json'), 'utf8'));
 // Mensaje de ejemplo, gancho y señales por modalidad (scripts/redes/ejemplos.json).
 const EJEMPLOS = JSON.parse(fs.readFileSync(path.join(RAIZ, 'scripts', 'redes', 'ejemplos.json'), 'utf8'));
 // Casos reales analizados por Vera y tutoriales (scripts/redes/casos.json; capturas en scripts/redes/casos/).
