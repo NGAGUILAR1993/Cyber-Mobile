@@ -44,6 +44,8 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 | Control de la alerta del lunes (revisa en n8n, reenvía si falló, manda mail) | Routine "Control alerta semanal (martes 12 h)", ligada a la sesión original | Martes 11:52 AR |
 | Monitor de caídas (sitio, agente, n8n, Evolution; mail solo si cambia el estado) | `monitor.yml` | Cada 30 min (GitHub suele atrasarlo) |
 | Controles de seguridad | `seguridad.yml` | Cada push a main y cada PR |
+| Mail a cybermobile.ai@gmail.com cada vez que sale una tarjeta de la red (tipo, señales, imagen; cliente con los últimos 4 dígitos) | n8n, "Preparar Mail Tarjeta" → "Mail Tarjeta Enviada" (SMTP de info@cybermobile.com.ar) | Cada tarjeta |
+| Mail con el resumen de la alerta del lunes (a cuántos salió, fallos, tarjeta) | n8n, "Preparar Mail Alerta" → "Mail Alerta Enviada" | Lunes, después del envío |
 | Envío de la alerta por GitHub (solo respaldo **manual**) | `alerta-envio.yml` | A mano (requiere los secretos EVOLUTION_APIKEY y ALERTA_DESTINOS, hoy no cargados) |
 
 Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor corre cada ~8 h en lugar de cada 30 min. No confiar en ellos para envíos a hora exacta: lo exacto va en n8n.
@@ -117,7 +119,8 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - **Search Console:** es una propiedad de dominio, así que el sitemap se envía con la URL completa `https://www.cybermobile.com.ar/sitemap.xml`. Hay una entrada vieja mal cargada (`sitemap.xml](...`) que conviene borrar.
 
 ## Pendientes
-- **Plantilla de Meta `alerta_semanal`** (imagen + cuerpo con {{1}} y {{2}} + botón "Ver el ranking"):
+- **Plantilla de Meta `alerta_semanal`** (Marketing, español de Argentina; encabezado de imagen = la tarjeta del lunes; cuerpo con {{1}} = nombre de la estafa y {{2}} = cómo reconocerla, sin saltos de línea; pie "Cyber Mobile · Observatorio de Fraude Digital"; botones "Ver el ranking" → /observatorio y baja de marketing):
+  - Solo la necesita la alerta del lunes. La tarjeta del caso no: sale como respuesta dentro de las 24 h.
   - El dueño la crea en WhatsApp Manager.
   - Cuando esté aprobada, cambiar "Enviar Alerta WhatsApp" para mandar con la plantilla (`/message/sendTemplate`) y dejar el mensaje libre como respaldo.
   - Sin la plantilla, la alerta no le llega a quien no escribió en 24 h (por ejemplo, staff que no usa Vera seguido).
