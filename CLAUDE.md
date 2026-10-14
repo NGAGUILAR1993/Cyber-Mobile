@@ -37,8 +37,8 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 ## Automatizaciones (qué corre solo)
 | Qué | Dónde | Cuándo |
 |---|---|---|
-| Alerta semanal (flyer del #1 del ranking) a suscriptos + staff por WhatsApp | n8n, nodo "Trigger Alerta Lunes 19hs" → "Enviar Alerta WhatsApp" | Lunes 19:00 AR |
-| Flyer de la alerta semanal (`redes/alerta-semanal/`) | `alerta-semanal.yml` (lunes) + respaldo en `redes.yml` | Lunes a la mañana |
+| Alerta semanal (tarjeta del #1 del ranking, armada en el momento por `api/tarjeta.js`; flyer de GitHub de respaldo) a suscriptos + staff por WhatsApp | n8n, nodo "Trigger Alerta Lunes 19hs" → "Enviar Alerta WhatsApp" | Lunes 19:00 AR |
+| Flyer de la alerta semanal (`redes/alerta-semanal/`, hoy solo respaldo e historia de Instagram) | `alerta-semanal.yml` (lunes) + respaldo en `redes.yml` | Lunes a la mañana |
 | Pieza diaria para redes (`redes/<fecha>/`) | `redes.yml` → `scripts/redes/generar.mjs` | Todos los días 08:15 AR |
 | Mail diario con la pieza del día a cybermobile.ai@gmail.com | Routine de claude.ai | 11:22 AR |
 | Control de la alerta del lunes (revisa en n8n, reenvía si falló, manda mail) | Routine "Control alerta semanal (martes 12 h)", ligada a la sesión original | Martes 11:52 AR |
