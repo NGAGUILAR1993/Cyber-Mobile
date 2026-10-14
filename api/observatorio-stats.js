@@ -54,6 +54,18 @@ export default async function handler(req, res) {
   }
   if (req.method !== 'GET') return res.status(405).json({ error: 'Método no permitido' });
 
+  // /api/stats (vercel.json lo reescribe a ?vista=eventos): últimos 1000 eventos de la web para el admin.
+  // Va en esta misma función para no pasar el límite de funciones de Vercel.
+  if (req.query && req.query.vista === 'eventos') {
+    try {
+      const rawItems = await getRedisClient().lrange('cyber_events', 0, 1000);
+      return res.status(200).json(rawItems.map(item => { try { return JSON.parse(item); } catch { return null; } }).filter(Boolean));
+    } catch (error) {
+      console.error('observatorio-stats (eventos):', error.message);
+      return res.status(500).json({ error: 'Error leyendo datos' });
+    }
+  }
+
   try {
     const redis = getRedisClient();
 

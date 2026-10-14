@@ -165,6 +165,22 @@
     {
       "source": "/observatorio/:slug([a-z0-9-]+)",
       "destination": "/api/estafa?slug=:slug"
+    },
+    {
+      "source": "/tarjetas/semana-:fecha(\\d{8}).png",
+      "destination": "/api/tarjeta?modo=semana"
+    },
+    {
+      "source": "/tarjetas/caso/:d([A-Za-z0-9_-]+).:s([a-f0-9]{32}).png",
+      "destination": "/api/tarjeta?modo=caso&d=:d&s=:s"
+    },
+    {
+      "source": "/api/alerta-semanal",
+      "destination": "/api/tarjeta?modo=alerta"
+    },
+    {
+      "source": "/api/stats",
+      "destination": "/api/observatorio-stats?vista=eventos"
     }
   ],
   "functions": {
@@ -179,6 +195,10 @@
     },
     "api/agente/consulta.js": {
       "maxDuration": 60
+    },
+    "api/tarjeta.js": {
+      "includeFiles": "{observatorio/datos.json,scripts/redes/claves.json,logo-cm.png,tarjetas/img/*.png,tarjetas/fuentes/*.ttf,scripts/redes/fuentes/Anton-Regular.ttf}",
+      "maxDuration": 20
     }
   }
 }
