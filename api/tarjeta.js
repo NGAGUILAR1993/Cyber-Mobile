@@ -36,8 +36,8 @@ export function limpiarTexto(t, max) {
         .replace(/https?:\/\/\S+/gi, '')
         .replace(/\b[\w.+-]+@[\w-]+\.[\w.]+\b/g, 'un mail')
         .replace(/@[A-Za-z0-9_.]{2,}/g, 'una cuenta')
-        .replace(/\b(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:com|net|org|ar|io|app|info|xyz|buzz|top|online|site|shop|store|link|club|me|co|cc|bond|live|lat|vip)(?:\.[a-z]{2})?\b\S*/gi, 'un link')
-        .replace(/[\d][\d\s().-]{4,}\d/g, (m) => (m.replace(/\D/g, '').length >= 6 ? 'un número' : m))
+        .replace(/\b(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:com|net|org|ar|io|app|info|xyz|buzz|top|online|site|shop|store|link|club|me|co|cc|bond|live|lat|vip)(?:\.[a-z]{2})?\b[^\s)\]]*/gi, 'un link')
+        .replace(/(\$\s?)?\+?\d[\d\s().-]{5,}\d/g, (m, pesos) => (!pesos && m.replace(/\D/g, '').length >= 8 ? 'un número' : m))
         .replace(/[*_~`]/g, '')
         .replace(/\s+/g, ' ')
         .trim();
