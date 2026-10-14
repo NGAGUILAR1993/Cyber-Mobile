@@ -32,7 +32,7 @@ const tildes = (t) => TILDES.reduce((s, [re, r]) => s.replace(re, r), String(t |
 const slugDe = (k) => String(k || '').split('@')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const escHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-const CLAVES = JSON.parse(fs.readFileSync(path.join(RAIZ, 'scripts', 'redes', 'claves.json'), 'utf8'));
+const CLAVES = JSON.parse(fs.readFileSync(path.join(RAIZ, 'observatorio', 'claves.json'), 'utf8'));
 
 function claveDe(detectar) {
     const t = tildes(detectar).replace(/\s+/g, ' ').trim();

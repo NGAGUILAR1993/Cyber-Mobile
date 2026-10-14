@@ -29,6 +29,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 - **Tarjetas para WhatsApp** (`api/tarjeta.js`, PNG 1080x1350, se arman en el momento):
   - `/tarjetas/semana-AAAAMMDD.png`: alerta del lunes con el #1 del ranking de `observatorio/datos.json` (ya no depende del flyer que arma GitHub). El texto lo da `/api/alerta-semanal` (reescrito a `api/tarjeta.js?modo=alerta`).
   - `/tarjetas/caso/<datos>.<firma>.png`: "Estafa detectada" con el tipo y hasta 3 señales que encontró Vera. Solo la genera n8n: va firmada con HMAC (`N8N_SHARED_SECRET` = `CM_SHARED_SECRET`). El texto se limpia dos veces (n8n y la web): sin links, números largos, mails ni @usuarios.
+  - Lo que lee una función tiene que estar fuera de `/scripts/`, `/app/` y `/docs/` (`.vercelignore` no los publica): por eso la tipografía Anton está copiada en `tarjetas/fuentes/` y las frases cortas viven en `observatorio/claves.json`.
   - Si la tarjeta nueva no responde, n8n usa la fija `tarjetas/alerta-red.jpg` (caso) o el flyer de GitHub (lunes).
 - **Límite de Vercel: 12 funciones** en `api/` (sin contar `_lib`). Hoy hay 12: para sumar una, juntarla con otra y usar un rewrite (como `/api/stats` → `api/observatorio-stats.js?vista=eventos`). Si se pasa, el deploy falla al instante y las rutas nuevas dan 404.
 - **Link corto:** `/vera?o=<origen>` → wa.me con texto armado. Cuenta los clics por origen en Redis (`cm:vera:clics:<fecha>`). Orígenes: ig, bio, comentario, tarjeta, qr, web, canal, historia, guia, alerta.

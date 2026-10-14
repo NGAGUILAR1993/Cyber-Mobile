@@ -20,7 +20,7 @@ function cargar() {
     const png = (p) => 'data:image/png;base64,' + leer(p).toString('base64');
     recursos = {
         fuentes: [
-            { name: 'Anton', data: leer('scripts/redes/fuentes/Anton-Regular.ttf'), weight: 400, style: 'normal' },
+            { name: 'Anton', data: leer('tarjetas/fuentes/Anton-Regular.ttf'), weight: 400, style: 'normal' },
             { name: 'Grotesk', data: leer('tarjetas/fuentes/SpaceGrotesk-Regular.ttf'), weight: 400, style: 'normal' },
             { name: 'Grotesk', data: leer('tarjetas/fuentes/SpaceGrotesk-Bold.ttf'), weight: 700, style: 'normal' },
             { name: 'Mono', data: leer('tarjetas/fuentes/JetBrainsMono-Medium.ttf'), weight: 400, style: 'normal' }
@@ -148,7 +148,7 @@ function observatorio() {
     if (!datosObs) {
         const datos = JSON.parse(leer('observatorio/datos.json').toString('utf8'));
         let claves = {};
-        try { claves = JSON.parse(leer('scripts/redes/claves.json').toString('utf8')); } catch { /* sin claves */ }
+        try { claves = JSON.parse(leer('observatorio/claves.json').toString('utf8')); } catch { /* sin claves */ }
         datosObs = alertaSemanal(datos, claves);
     }
     return datosObs;
