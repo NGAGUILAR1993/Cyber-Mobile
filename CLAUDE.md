@@ -24,7 +24,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - Hay un **conector de n8n** en claude.ai: con él se ven ejecuciones y se edita y publica el flujo directamente (`update_workflow` + `publish_workflow`). **No hace falta mandarle JSON al usuario para importar.**
 - **WhatsApp:** Evolution API (`evolution-api-production-bf51.up.railway.app`), instancia "Agente Ciber". Es la **API oficial de WhatsApp Business (Meta)**:
   - Solo se pueden mandar mensajes libres a quien escribió en las **últimas 24 h**.
-  - Para los demás hace falta una **plantilla aprobada por Meta** (ver Pendientes).
+  - Para los demás haría falta una plantilla de Meta, que es paga: el dueño decidió no usarla (ver Pendientes).
   - `/chat/whatsappNumbers` no existe en esta API (devuelve 400).
 - **Tarjetas para WhatsApp** (`api/tarjeta.js`, PNG 1080x1350, se arman en el momento):
   - `/tarjetas/semana-AAAAMMDD.png`: alerta del lunes con el #1 del ranking de `observatorio/datos.json` (ya no depende del flyer que arma GitHub). El texto lo da `/api/alerta-semanal` (reescrito a `api/tarjeta.js?modo=alerta`).
@@ -119,11 +119,9 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - **Search Console:** es una propiedad de dominio, así que el sitemap se envía con la URL completa `https://www.cybermobile.com.ar/sitemap.xml`. Hay una entrada vieja mal cargada (`sitemap.xml](...`) que conviene borrar.
 
 ## Pendientes
-- **Plantilla de Meta `alerta_semanal`** (Marketing, español de Argentina; encabezado de imagen = la tarjeta del lunes; cuerpo con {{1}} = nombre de la estafa y {{2}} = cómo reconocerla, sin saltos de línea; pie "Cyber Mobile · Observatorio de Fraude Digital"; botones "Ver el ranking" → /observatorio y baja de marketing):
-  - Solo la necesita la alerta del lunes. La tarjeta del caso no: sale como respuesta dentro de las 24 h.
-  - El dueño la crea en WhatsApp Manager.
-  - Cuando esté aprobada, cambiar "Enviar Alerta WhatsApp" para mandar con la plantilla (`/message/sendTemplate`) y dejar el mensaje libre como respaldo.
-  - Sin la plantilla, la alerta no le llega a quien no escribió en 24 h (por ejemplo, staff que no usa Vera seguido).
+- **Sin plantillas pagas de Meta (decisión del dueño, 14/10):** no se crean plantillas porque Meta cobra cada mensaje con plantilla y hoy no hay clientes pagos.
+  - Todo lo que manda Vera es gratis: respuestas y tarjetas dentro de las 24 h desde que el cliente escribió.
+  - La alerta del lunes también es gratis, pero solo le llega a quien le escribió a Vera en las últimas 24 h. No volver a proponer la plantilla hasta que haya clientes pagos.
 - **Clientes:** hoy no hay suscriptos pagos. Prioridad comercial:
   - conseguir las primeras 30 personas que prueben Vera;
   - charlas en centros de jubilados y bibliotecas;
