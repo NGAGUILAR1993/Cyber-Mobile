@@ -32,13 +32,18 @@ function cargar() {
 }
 
 // ---------- Texto seguro ----------
+// Dominios oficiales de marcas: se pueden mostrar (son la marca imitada, no un dato personal ni el link falso).
+const MARCAS_OFICIALES = ['amazon.com', 'mercadolibre.com.ar', 'mercadopago.com.ar', 'mercadopago.com', 'google.com', 'whatsapp.com',
+    'instagram.com', 'facebook.com', 'afip.gob.ar', 'arca.gob.ar', 'anses.gob.ar', 'correoargentino.com.ar', 'paypal.com',
+    'netflix.com', 'apple.com', 'microsoft.com'];
 export function limpiarTexto(t, max) {
     let s = String(t || '')
         .replace(/[\u0000-\u001f\u007f\u200b-\u200f\u2028-\u202e\u2060-\u206f\ufeff]/g, ' ')
         .replace(/https?:\/\/\S+/gi, '')
         .replace(/\b[\w.+-]+@[\w-]+\.[\w.]+\b/g, 'un mail')
         .replace(/@[A-Za-z0-9_.]{2,}/g, 'una cuenta')
-        .replace(/\b(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:com|net|org|ar|io|app|info|xyz|buzz|top|online|site|shop|store|link|club|me|co|cc|bond|live|lat|vip)(?:\.[a-z]{2})?\b[^\s)\]]*/gi, 'un link')
+        .replace(/\b(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:com|net|org|ar|io|app|info|xyz|buzz|top|online|site|shop|store|link|club|me|co|cc|bond|live|lat|vip)(?:\.[a-z]{2})?\b[^\s)\]]*/gi,
+            (m) => (MARCAS_OFICIALES.includes(m.toLowerCase().replace(/^www\./, '')) ? m : 'un link'))
         .replace(/(\$\s?)?\+?\d[\d\s().-]{5,}\d/g, (m, pesos) => (!pesos && m.replace(/\D/g, '').length >= 8 ? 'un número' : m))
         .replace(/[*_~`]/g, '')
         .replace(/\s+/g, ' ')
@@ -62,7 +67,7 @@ function leerCaso(d, s, secreto) {
         const c = JSON.parse(Buffer.from(d, 'base64url').toString('utf8'));
         const fecha = /^\d{4}-\d{2}-\d{2}$/.test(c.f || '') ? c.f : '';
         const tipo = limpiarTexto(c.t, 70) || 'Mensaje sospechoso';
-        const senales = (Array.isArray(c.s) ? c.s : []).map((x) => limpiarTexto(x, 95)).filter((x) => x.length > 8).slice(0, 3);
+        const senales = (Array.isArray(c.s) ? c.s : []).map((x) => limpiarTexto(x, 200)).filter((x) => x.length > 8).slice(0, 3);
         return { fecha, tipo, senales };
     } catch { return null; }
 }
@@ -96,11 +101,13 @@ const etiqueta = (t) => h('div', { fontFamily: 'Mono', fontSize: 22, letterSpaci
 
 function tarjetaCaso(r, caso) {
     const fecha = caso.fecha ? ' · ' + caso.fecha.slice(8, 10) + '/' + caso.fecha.slice(5, 7) : '';
-    const tam = caso.senales.length >= 3 ? 30 : 33;
+    const largo = caso.senales.join('').length;
+    const tam = largo > 450 ? 26 : largo > 330 ? 28 : largo > 180 ? 31 : 34;
+    const titulo = largo > 330 ? 100 : 124;
     const cuerpo = [
         h('div', { flexDirection: 'column', marginTop: 18, fontFamily: 'Anton', lineHeight: 1 },
-            h('div', { fontSize: 124, color: C.blanco }, 'ESTAFA'),
-            h('div', { fontSize: 124, color: C.rojo }, 'DETECTADA')),
+            h('div', { fontSize: titulo, color: C.blanco }, 'ESTAFA'),
+            h('div', { fontSize: titulo, color: C.rojo }, 'DETECTADA')),
         h('div', { marginTop: 18, fontSize: 42, fontWeight: 700, color: C.blanco, lineHeight: 1.2 }, caso.tipo),
         caso.senales.length ? h('div', { flexDirection: 'column', marginTop: 24, padding: '22px 28px', borderRadius: 22, backgroundColor: C.caja, border: '2px solid rgba(255,255,255,0.08)' },
             etiqueta('LO QUE ENCONTRÓ VERA'),
