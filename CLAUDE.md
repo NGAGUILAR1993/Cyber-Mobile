@@ -82,7 +82,9 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 ## TikTok
 - Guía completa en `scripts/redes/TIKTOK.md`: perfil, público, estilo, series y frecuencia (lunes, miércoles y viernes 20:00).
 - CTA propio: "Link en el perfil · 7 días gratis" (en TikTok no hay ManyChat). Link del perfil: `/vera?o=tiktok`.
-- Se publica con el conector de Higgsfield (`tiktok_prepare_publish`): el video tiene que estar subido a Higgsfield y el dueño confirma en el formulario.
+- Se publica con el conector de Higgsfield (cuenta conectada el 15/10). El dueño confirma en el formulario.
+  - El sandbox no llega a `upload.higgsfield.ai`. Por eso el video se sube primero al repo (`redes/<fecha>/<nombre>/`) y, después del merge, se importa desde la web con `media_import_url` (usar `?v=N` si dio 404 antes del deploy).
+  - El link de Higgsfield es `https://d2ol7oe51mr4n9.cloudfront.net/user_3Hhk6wBXukaieqWmzGUm4XH7K22/<media_id>.mp4`. Después se llama a `tiktok_prepare_publish`.
 
 ## Skills de Instagram (`.claude/skills/ig-*`)
 - Paquete de terceros revisado y fijado a una versión (ver `.claude/skills/README-instagram-agent-skill.md`).
