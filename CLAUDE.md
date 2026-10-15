@@ -67,7 +67,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - Los videos especiales se suben a `redes/<fecha>/<nombre>/` para poder mandar el link por mail. Los archivos de más de ~7 MB no se adjuntan: se mandan links a la web y a GitHub.
 
 ## Reglas del dueño (respetar siempre)
-1. **Todos los videos duran 23 segundos** (reels e historias), con transiciones lentas, para que se puedan leer.
+1. **Todos los videos duran 23 segundos** (reels e historias), con transiciones lentas, para que se puedan leer. **Excepción: TikTok dura 26 segundos** (pedido del dueño, 15/10: con 23 no llegaba a leer los mensajes).
 2. **Estructura de cada pieza:**
    - **Portada:** abre una incógnita y no revela la respuesta.
    - **Puente:** amplía el problema.

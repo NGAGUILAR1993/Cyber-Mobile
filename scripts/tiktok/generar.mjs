@@ -1,4 +1,4 @@
-// Arma el video de TikTok "¿Estafa o real?" (1080x1920, 23 s) con el próximo episodio de episodios.json.
+// Arma el video de TikTok "¿Estafa o real?" (1080x1920, 26 s) con el próximo episodio de episodios.json.
 //
 //   node scripts/tiktok/generar.mjs                 → próximo episodio sin publicar, fecha de hoy (AR)
 //   node scripts/tiktok/generar.mjs --episodio <id> --fecha AAAA-MM-DD
@@ -13,9 +13,10 @@ import { pathToFileURL } from 'node:url';
 const DIR = path.dirname(new URL(import.meta.url).pathname);
 const RAIZ = path.resolve(DIR, '..', '..');
 const ARCHIVO = path.join(DIR, 'episodios.json');
-const DURACION = 23, TRANSICION = 0.8;
+// 26 s (3 más que los reels de Instagram): el dueño pidió más tiempo para leer los mensajes.
+const DURACION = 26, TRANSICION = 0.8;
 // Segundos relativos de cada pantalla: portada, 3 mensajes, respuestas, cierre.
-const PESOS = [2.8, 3.8, 3.8, 3.4, 5.4, 3.8];
+const PESOS = [2.8, 4.6, 4.6, 4.2, 6.0, 3.8];
 const TRANSICIONES = ['fadeblack', 'slideleft', 'slideleft', 'fadeblack', 'fadeblack'];
 
 const arg = (n) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : undefined; };
@@ -54,7 +55,7 @@ for (const modo of modos) {
 }
 await browser.close();
 
-// Video: zoom lento en cada pantalla y fundidos de 0,8 s; dura exactamente 23 s.
+// Video: zoom lento en cada pantalla y fundidos de 0,8 s; dura exactamente DURACION segundos.
 const k = (DURACION + TRANSICION * (imagenes.length - 1)) / PESOS.reduce((a, b) => a + b, 0);
 const dur = PESOS.map((p) => Math.round(p * k * 100) / 100);
 let filtro = '';
@@ -80,7 +81,7 @@ const comentario = '¿Cuántas acertaste? 1, 2 o las 3 👇 Si te llegó uno par
 fs.writeFileSync(path.join(salida, 'tiktok.txt'), `TÍTULO (máx. 150)\n${ep.titulo}\n\nDESCRIPCIÓN\n${descripcion}\n\nCOMENTARIO PARA FIJAR\n${comentario}\n`);
 const web = `https://www.cybermobile.com.ar/redes/${fecha}/tiktok-${ep.id}/`;
 fs.writeFileSync(path.join(salida, 'textos.json'), JSON.stringify({
-    fecha, formato: 'TikTok 1080x1920, 23 s', serie: '¿Estafa o real?', episodio: ep.id, horario: '20:00',
+    fecha, formato: `TikTok 1080x1920, ${DURACION} s`, serie: '¿Estafa o real?', episodio: ep.id, horario: '20:00',
     titulo: ep.titulo, descripcion, comentario,
     video: web + 'video.mp4', portada: web + 'portada.jpg',
     nota: 'Mensajes recreados: números tapados, sin datos de personas reales.'
