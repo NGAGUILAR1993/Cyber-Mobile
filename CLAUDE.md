@@ -46,6 +46,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 | Controles de seguridad | `seguridad.yml` | Cada push a main y cada PR |
 | Mail a cybermobile.ai@gmail.com cada vez que sale una tarjeta de la red (tipo, señales, imagen; cliente con los últimos 4 dígitos) | n8n, "Preparar Mail Tarjeta" → "Mail Tarjeta Enviada" (SMTP de info@cybermobile.com.ar) | Cada tarjeta |
 | Mail con el resumen de la alerta del lunes (a cuántos salió, fallos, tarjeta) | n8n, "Preparar Mail Alerta" → "Mail Alerta Enviada" | Lunes, después del envío |
+| Video de TikTok "¿Estafa o real?" (genera, publica en la web, prepara la subida a TikTok y avisa por mail) | Tarea programada "TikTok automático" de claude.ai | Lun, mié y vie 18:10 AR |
 | Envío de la alerta por GitHub (solo respaldo **manual**) | `alerta-envio.yml` | A mano (requiere los secretos EVOLUTION_APIKEY y ALERTA_DESTINOS, hoy no cargados) |
 
 Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor corre cada ~8 h en lugar de cada 30 min. No confiar en ellos para envíos a hora exacta: lo exacto va en n8n.
@@ -82,6 +83,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 ## TikTok
 - Guía completa en `scripts/redes/TIKTOK.md`: perfil, público, estilo, series y frecuencia (lunes, miércoles y viernes 20:00).
 - CTA propio: "Link en el perfil · 7 días gratis" (en TikTok no hay ManyChat). Link del perfil: `/vera?o=tiktok`.
+- **Automático:** tarea programada "TikTok automático" (lun, mié y vie 18:10 AR) → `scripts/tiktok/generar.mjs` (serie "¿Estafa o real?", episodios en `scripts/tiktok/episodios.json`) → web → TikTok. Germán solo confirma el formulario: TikTok no deja publicar sin su aprobación.
 - Se publica con el conector de Higgsfield (cuenta conectada el 15/10). El dueño confirma en el formulario.
   - El sandbox no llega a `upload.higgsfield.ai`. Por eso el video se sube primero al repo (`redes/<fecha>/<nombre>/`) y, después del merge, se importa desde la web con `media_import_url` (usar `?v=N` si dio 404 antes del deploy).
   - El link de Higgsfield es `https://d2ol7oe51mr4n9.cloudfront.net/user_3Hhk6wBXukaieqWmzGUm4XH7K22/<media_id>.mp4`. Después se llama a `tiktok_prepare_publish`.

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<!-- Plantilla de los videos de TikTok "¿Estafa o real?" (1080x1920). La usa scripts/tiktok/generar.mjs. -->
+<style>
+@font-face{font-family:Anton;src:url(../../tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(../../tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:G;font-weight:700;src:url(../../tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:M;src:url(../../tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:G;color:#fff;background:#06080d;background-image:radial-gradient(circle at 85% 6%,rgba(255,59,59,.30),rgba(6,8,13,0) 45%),radial-gradient(circle at 5% 90%,rgba(51,198,232,.18),rgba(6,8,13,0) 45%),linear-gradient(180deg,#0c1018,#06080d)}
+/* Zona segura de TikTok: arriba la barra, a la derecha los botones, abajo el texto de la publicación */
+.pag{position:absolute;left:70px;right:170px;top:200px;bottom:440px;display:flex;flex-direction:column}
+.marca{display:flex;align-items:center;gap:18px;font-family:M;font-size:28px;letter-spacing:8px;color:#33c6e8}
+.marca img{width:62px;height:62px;border-radius:12px}
+.cuerpo{flex:1;display:flex;flex-direction:column;justify-content:center}
+.h{font-family:Anton;line-height:1.02;text-transform:uppercase}
+.rojo{color:#ff3b3b}.cian{color:#33c6e8}.verde{color:#25d366}.gris{color:#b9c0cc}
+.txt{font-size:50px;line-height:1.28}
+.chip{align-self:flex-start;background:#ff3b3b;border-radius:10px;padding:10px 22px;font-family:M;font-size:28px;letter-spacing:4px}
+.nro{font-family:Anton;font-size:120px;line-height:1;color:#33c6e8}
+.tel{border-radius:34px;overflow:hidden;background:#0b141a;box-shadow:0 18px 60px rgba(0,0,0,.6);margin-top:26px;border:2px solid #1f2c33}
+.cab{display:flex;align-items:center;gap:20px;background:#1f2c33;padding:24px 28px;font-family:'Liberation Sans',Arial,sans-serif}
+.av{width:70px;height:70px;border-radius:35px;background:#6b7c85;display:flex;align-items:center;justify-content:center;font-size:38px}
+.cab b{font-size:36px;display:block}.cab small{font-size:26px;color:#8696a0}
+.fondo{padding:34px 26px 40px;background:#0b141a}
+.burb{background:#202c33;border-radius:0 26px 26px 26px;padding:24px 28px 16px;font-family:'Liberation Sans',Arial,sans-serif;font-size:40px;line-height:1.32;color:#e9edef;max-width:96%}
+.burb .hora{display:block;text-align:right;font-size:24px;color:#8696a0;margin-top:6px}
+.lnk{color:#53bdeb;text-decoration:underline}
+.preg{margin-top:34px;font-family:Anton;font-size:76px;text-align:center}
+.preg span{padding:0 10px}
+.res div{display:flex;gap:22px;align-items:flex-start;margin-top:30px;font-size:40px;line-height:1.25}
+.res .n{flex:0 0 64px;height:64px;border-radius:32px;display:flex;align-items:center;justify-content:center;font-family:Anton;font-size:38px}
+.res b{font-family:Anton;font-weight:400;font-size:52px;letter-spacing:1px;display:block}
+.cta{margin-top:34px;border:4px solid #33c6e8;border-radius:28px;padding:30px 34px;background:rgba(8,24,32,.88)}
+.cta .t{font-family:Anton;font-size:62px;line-height:1.05}
+.cta .s{font-family:M;font-size:34px;color:#33c6e8;margin-top:12px}
+.nota{font-size:24px;color:#8a93a3;margin-top:22px}
+</style></head>
+<body><div id="raiz"></div>
+<script>
+// generar.mjs llama a pintar(modo, episodio) y espera html[data-listo].
+const esc = (t) => String(t ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const marca = '<div class="marca"><img src="../../logo-cm.png">CYBER MOBILE</div>';
+const preg = '<div class="preg"><span class="rojo">¿ESTAFA</span> O <span class="verde">REAL?</span></div>';
+const COLORES = ['', 'cian', '', 'verde'];
+function chat(m) {
+  const link = m.link ? ` <span class="lnk">${esc(m.link)}</span>` : '';
+  return `<div class="tel"><div class="cab"><div class="av">${esc(m.icono)}</div><div><b>${esc(m.nombre)}</b><small>${esc(m.sub)}</small></div></div>
+    <div class="fondo"><div class="burb">${esc(m.texto)}${link}<span class="hora">${esc(m.hora)}</span></div></div></div>`;
+}
+function pintar(modo, ep) {
+  let h;
+  if (modo === 'portada') {
+    const lineas = ep.portada.map((l, i) => `<span class="${COLORES[i] || ''}">${esc(l)}</span>`).join('<br>');
+    h = `<div class="chip">●  TEST DE 20 SEGUNDOS</div>
+      <div class="h" style="font-size:118px;margin-top:40px">${lineas}</div>
+      <div class="txt gris" style="margin-top:44px">¿Lo encontrás antes que <b style="color:#fff">Vera</b>? 👀</div>
+      <div class="nota">Mensajes recreados de casos reales en Argentina</div>`;
+  } else if (modo.startsWith('m')) {
+    const i = Number(modo.slice(1));
+    h = `<div class="nro">${i + 1}</div>${chat(ep.mensajes[i])}${preg}`;
+  } else if (modo === 'respuestas') {
+    h = `<div class="h" style="font-size:96px">LAS <span class="cian">RESPUESTAS</span></div><div class="res">` +
+      ep.respuestas.map((r, i) => `<div><span class="n" style="background:${r.real ? '#25d366' : '#ff3b3b'}">${i + 1}</span><span><b class="${r.real ? 'verde' : 'rojo'}">${r.real ? '🟢' : '🔴'} ${esc(r.titulo)}</b>${esc(r.texto)}</span></div>`).join('') + '</div>';
+  } else {
+    h = `<div class="h" style="font-size:104px">¿TE LLEGÓ ALGO <span class="rojo">RARO</span>?</div>
+      <div class="txt" style="margin-top:30px">Mandáselo a <b class="cian">Vera</b> por WhatsApp y en segundos te dice si es estafa. 🔴🟡🟢</div>
+      <div class="cta"><div class="t">PROBALA <span class="cian">7 DÍAS GRATIS</span></div><div class="s">cybermobile.com.ar/vera</div></div>
+      <div class="txt gris" style="margin-top:26px;font-size:40px">Link en el perfil 👆 · Comentá cuántas acertaste</div>`;
+  }
+  delete document.documentElement.dataset.listo;
+  document.getElementById('raiz').innerHTML = `<div class="pag">${marca}<div class="cuerpo">${h}</div></div>`;
+  return document.fonts.ready.then(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {})))).then(() => { document.documentElement.dataset.listo = '1'; });
+}
+</script></body></html>
