@@ -89,6 +89,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - El link de Higgsfield es `https://d2ol7oe51mr4n9.cloudfront.net/user_3Hhk6wBXukaieqWmzGUm4XH7K22/<media_id>.mp4`. Después se llama a `tiktok_prepare_publish`.
 
 ## Equipo de agentes (`.claude/agents/`)
+- **marketing:** la estratega. Decide qué hacer y cómo se mide (embudo, campañas, pruebas, métricas) y reparte el trabajo entre redes, seo-guias y comercial.
 - **redes:** reels, historias, carruseles y TikTok con las reglas del dueño.
 - **seguridad:** revisa cada PR (claves, CSP, funciones de `api/`). Solo lee, no edita.
 - **vera-n8n:** diagnostica y corrige el flujo de Vera con el conector de n8n.
