@@ -32,7 +32,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - Lo que lee una función tiene que estar fuera de `/scripts/`, `/app/` y `/docs/` (`.vercelignore` no los publica): por eso la tipografía Anton está copiada en `tarjetas/fuentes/` y las frases cortas viven en `observatorio/claves.json`.
   - Si la tarjeta nueva no responde, n8n usa la fija `tarjetas/alerta-red.jpg` (caso) o el flyer de GitHub (lunes).
 - **Límite de Vercel: 12 funciones** en `api/` (sin contar `_lib`). Hoy hay 12: para sumar una, juntarla con otra y usar un rewrite (como `/api/stats` → `api/observatorio-stats.js?vista=eventos`). Si se pasa, el deploy falla al instante y las rutas nuevas dan 404.
-- **Link corto:** `/vera?o=<origen>` → wa.me con texto armado. Cuenta los clics por origen en Redis (`cm:vera:clics:<fecha>`). Orígenes: ig, bio, comentario, tarjeta, qr, web, canal, historia, guia, alerta, tiktok.
+- **Link corto:** `/vera?o=<origen>` → wa.me con texto armado. Cuenta los clics por origen en Redis (`cm:vera:clics:<fecha>`). Orígenes: ig, bio, comentario, tarjeta, qr, web, canal, historia, guia, alerta, tiktok, estado.
 
 ## Automatizaciones (qué corre solo)
 | Qué | Dónde | Cuándo |
@@ -46,12 +46,17 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 | Controles de seguridad | `seguridad.yml` | Cada push a main y cada PR |
 | Mail a cybermobile.ai@gmail.com cada vez que sale una tarjeta de la red (tipo, señales, imagen; cliente con los últimos 4 dígitos) | n8n, "Preparar Mail Tarjeta" → "Mail Tarjeta Enviada" (SMTP de info@cybermobile.com.ar) | Cada tarjeta |
 | Mail con el resumen de la alerta del lunes (a cuántos salió, fallos, tarjeta) | n8n, "Preparar Mail Alerta" → "Mail Alerta Enviada" | Lunes, después del envío |
-| Video de TikTok "¿Estafa o real?" (genera, publica en la web, prepara la subida a TikTok y avisa por mail) | Tarea programada "TikTok automático" de claude.ai | Lun, mié y vie 18:10 AR |
+| Video de TikTok "¿Estafa o real?" (genera, publica en la web, prepara la subida a TikTok y avisa por mail) | Tarea programada "TikTok automático", ligada a la sesión original (así tiene Gmail y Higgsfield) | Lun, mié y vie 18:10 AR |
 | Envío de la alerta por GitHub (solo respaldo **manual**) | `alerta-envio.yml` | A mano (requiere los secretos EVOLUTION_APIKEY y ALERTA_DESTINOS, hoy no cargados) |
 
 Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor corre cada ~8 h en lugar de cada 30 min. No confiar en ellos para envíos a hora exacta: lo exacto va en n8n.
 
-## Grilla de redes (`scripts/redes/generar.mjs`, guía en `scripts/redes/GUIA.md`)
+## Plan de redes nuevo (aprobado por el dueño el 16/10)
+- Plan completo en `scripts/redes/PLAN-2026-10.md` (diagnóstico, grilla nueva, interacción diaria, perfil, medición a los 7 y 14 días).
+- **Estilo nuevo:** fondo claro, chats de WhatsApp en modo claro, notas blancas arriba, Vera respondiendo con el semáforo dentro del chat y cierre "Mandale este video a tu vieja". Se dejan las placas oscuras de alerta. Primer reel: `redes/2026-10-16/reel-pov-mama/`. TikTok ya usa este estilo.
+- **Pendiente:** pasar `scripts/redes/generar.mjs` (pieza diaria) al estilo y la grilla nuevos; hasta entonces esas piezas salen con el estilo viejo.
+
+## Grilla de redes vieja (`scripts/redes/generar.mjs`, guía en `scripts/redes/GUIA.md`)
 | Día | Pieza | Hora |
 |---|---|---|
 | Lun | Reel "Se lo mandé a Vera" (caso real) + historia de la alerta de la semana | 20:00 |
@@ -87,6 +92,16 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - Se publica con el conector de Higgsfield (cuenta conectada el 15/10). El dueño confirma en el formulario.
   - El sandbox no llega a `upload.higgsfield.ai`. Por eso el video se sube primero al repo (`redes/<fecha>/<nombre>/`) y, después del merge, se importa desde la web con `media_import_url` (usar `?v=N` si dio 404 antes del deploy).
   - El link de Higgsfield es `https://d2ol7oe51mr4n9.cloudfront.net/user_3Hhk6wBXukaieqWmzGUm4XH7K22/<media_id>.mp4`. Después se llama a `tiktok_prepare_publish`.
+
+## Equipo de agentes (`.claude/agents/`)
+- **marketing:** la estratega. Decide qué hacer y cómo se mide (embudo, campañas, pruebas, métricas) y reparte el trabajo entre redes, seo-guias, comercial y relaciones.
+- **redes:** reels, historias, carruseles y TikTok con las reglas del dueño.
+- **seguridad:** revisa cada PR (claves, CSP, funciones de `api/`). Solo lee, no edita.
+- **vera-n8n:** diagnostica y corrige el flujo de Vera con el conector de n8n.
+- **seo-guias:** escribe y publica las guías de `/guias`.
+- **comercial:** ventas directas (PyMEs, LinkedIn, seguimiento de pruebas) para la meta del 15/11.
+- **relaciones:** prensa, alianzas, influencers, campañas por fecha, sorteos y reputación de la firma.
+- Se usan pidiéndolos por nombre ("usá el agente seguridad") o con `/agents`. `.claude/` no se publica en la web (`.vercelignore`).
 
 ## Skills de Instagram (`.claude/skills/ig-*`)
 - Paquete de terceros revisado y fijado a una versión (ver `.claude/skills/README-instagram-agent-skill.md`).

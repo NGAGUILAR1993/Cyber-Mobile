@@ -22,7 +22,7 @@ Guía para la cuenta de TikTok. Las reglas de `CLAUDE.md` siguen valiendo, salvo
 
 ## Estilo
 - **Lo que nos diferencia:** no hacemos videos de "cuidado con esta estafa", que hay miles. Cada video es un **juego o una prueba** que el público responde en los comentarios, y Vera aparece como la herramienta que lo resuelve en segundos.
-- **Estética:** fondo oscuro, rojo y cian de la marca, chats que parecen reales (con los datos tapados) y letra grande. El primer segundo tiene que tener texto en pantalla.
+- **Estética (desde el 16/10):** el estilo claro del plan nuevo: fondo crema, chats de WhatsApp en modo claro (con los datos tapados) y notas blancas con letra grande. El primer segundo tiene que tener texto en pantalla.
 - **Zona segura:** nada importante en los 200 px de arriba, los 170 px de la derecha ni los 440 px de abajo (ahí van los botones y el texto de TikTok).
 - **Sonido:** un tema en tendencia de la biblioteca comercial de TikTok (las cuentas de empresa solo pueden usar esa). Se elige al publicar.
 
