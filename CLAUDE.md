@@ -88,6 +88,14 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - El sandbox no llega a `upload.higgsfield.ai`. Por eso el video se sube primero al repo (`redes/<fecha>/<nombre>/`) y, después del merge, se importa desde la web con `media_import_url` (usar `?v=N` si dio 404 antes del deploy).
   - El link de Higgsfield es `https://d2ol7oe51mr4n9.cloudfront.net/user_3Hhk6wBXukaieqWmzGUm4XH7K22/<media_id>.mp4`. Después se llama a `tiktok_prepare_publish`.
 
+## Equipo de agentes (`.claude/agents/`)
+- **redes:** reels, historias, carruseles y TikTok con las reglas del dueño.
+- **seguridad:** revisa cada PR (claves, CSP, funciones de `api/`). Solo lee, no edita.
+- **vera-n8n:** diagnostica y corrige el flujo de Vera con el conector de n8n.
+- **seo-guias:** escribe y publica las guías de `/guias`.
+- **comercial:** propuestas, mails a medios y LinkedIn para la meta del 15/11.
+- Se usan pidiéndolos por nombre ("usá el agente seguridad") o con `/agents`. `.claude/` no se publica en la web (`.vercelignore`).
+
 ## Skills de Instagram (`.claude/skills/ig-*`)
 - Paquete de terceros revisado y fijado a una versión (ver `.claude/skills/README-instagram-agent-skill.md`).
 - Sirven para:
