@@ -129,9 +129,9 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - Fuente: `guias/guias.json`. Generador: `scripts/guias/generar.mjs`.
   - Salida estática: `guias/<slug>/index.html`, `guias/lista.json` y el bloque de la portada entre las marcas `guias:inicio` y `guias:fin`.
   - El sitemap (`api/sitemap.js`) las incluye solas.
-- **Publicadas (13/10):** verificar-estafa-whatsapp, que-es-phishing, verificar-numero-desconocido.
+- **Publicadas:** verificar-estafa-whatsapp, que-es-phishing, verificar-numero-desconocido (13/10); de-quien-es-un-cbu (17/10).
+- **Automático:** tarea programada "Guía SEO automática" (martes y jueves 10:10 AR, ligada a la sesión original): publica la próxima de "Faltan" y manda un mail con el link para pedir la indexación en Search Console.
 - **Faltan** (2 o 3 por semana, de más a menos búsquedas):
-  - de quién es un CBU (720);
   - cómo saber si es estafa (480);
   - denunciar estafa por WhatsApp (480);
   - cómo saber si un email es falso (320);
