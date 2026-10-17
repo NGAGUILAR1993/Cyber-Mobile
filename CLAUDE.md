@@ -1,5 +1,7 @@
 # Cyber Mobile: memoria del proyecto
 
+> **Objetivo vigente:** 100 clientes pagos de Vera al 31/12/2026 y viralidad. Ver `scripts/OBJETIVO.md`.
+
 Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona cada automatización, las reglas que pidió el dueño y lo que quedó pendiente. Mantenelo al día cuando algo cambie.
 
 ## Qué es
@@ -104,6 +106,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - **seo-guias:** escribe y publica las guías de `/guias`.
 - **comercial:** ventas directas (PyMEs, LinkedIn, seguimiento de pruebas) para la meta del 15/11.
 - **relaciones:** prensa, alianzas, influencers, campañas por fecha, sorteos y reputación de la firma.
+- Cada agente tiene trabajo fijo con tareas programadas ligadas a la sesión original (ver la tabla de `scripts/OBJETIVO.md`).
 - Se usan pidiéndolos por nombre ("usá el agente seguridad") o con `/agents`. `.claude/` no se publica en la web (`.vercelignore`).
 
 ## Skills de Instagram (`.claude/skills/ig-*`)
@@ -155,5 +158,5 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - mail mensual del Observatorio a medios de Córdoba;
   - propuesta para PyMEs (documento "Propuesta Cyber Mobile para PyMEs" en Claude Docs);
   - contacto con Verisure y Prosegur por LinkedIn (textos ya entregados).
-- **Meta de decisión:** al 15/11, 50 personas que hayan probado Vera y 5 que paguen.
+- **OBJETIVO (17/10): 100 clientes pagos al 31/12/2026 y que Cyber Mobile se haga viral.** Plan y trabajo fijo de cada agente en `scripts/OBJETIVO.md`. Hito intermedio: al 15/11, 50 personas que hayan probado Vera y 5 que paguen.
 - **Bienvenida de Vera:** el número del staff no ve el flujo real. Las pruebas de primer mensaje las hace un número que nunca escribió.
