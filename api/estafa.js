@@ -193,7 +193,14 @@ export default function handler(req, res) {
     }
     const lista = modalidades(d);
     const s = lista.find((x) => x.slug === slug);
-    if (!s) return noEncontrada(res);
+    // Las fichas que salen del ranking mensual llevan al ranking actual (301) en vez de dar 404,
+    // así Google no las cuenta como errores y no se pierden las visitas que llegan desde links viejos.
+    if (!s) {
+        res.statusCode = 301;
+        res.setHeader('Location', '/observatorio');
+        res.setHeader('Cache-Control', 'public, s-maxage=600');
+        return res.end();
+    }
 
     const mes = (d.meta && d.meta.mes) || '';
     const mesCap = mes.charAt(0).toUpperCase() + mes.slice(1);
