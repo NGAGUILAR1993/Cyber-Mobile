@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:G;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:G;font-weight:700;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:G;color:#111b21;background:#f4efe6}
+.pag{position:absolute;left:70px;right:70px;top:150px;bottom:300px;display:flex;flex-direction:column;justify-content:center}
+.nota{background:#fff;border-radius:28px;padding:34px 40px;font-size:62px;line-height:1.15;font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.nota small{display:block;font-size:34px;font-weight:400;color:#54656f;margin-top:12px;line-height:1.3}
+.rojo{color:#e02424}.verde{color:#128c4a}.cian{color:#0a8fb0}
+.wa{margin-top:34px;border-radius:30px;overflow:hidden;box-shadow:0 14px 50px rgba(0,0,0,.14);font-family:'Liberation Sans',Arial,sans-serif}
+.cab{background:#008069;color:#fff;display:flex;align-items:center;gap:20px;padding:22px 26px}
+.av{width:70px;height:70px;border-radius:35px;background:#dfe5e7;display:flex;align-items:center;justify-content:center;font-size:38px}
+.av.vera{background:#06080d}
+.av img{width:56px;height:56px;border-radius:12px}
+.cab b{font-size:36px;display:block}.cab small{font-size:26px;opacity:.85}
+.fondo{background:#efeae2;padding:28px 24px 34px;display:flex;flex-direction:column;gap:16px}
+.b{max-width:88%;background:#fff;border-radius:0 22px 22px 22px;padding:22px 26px 12px;font-size:42px;line-height:1.3;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.b.yo{align-self:flex-end;background:#d9fdd3;border-radius:22px 0 22px 22px}
+.b .h{display:block;text-align:right;font-size:22px;color:#667781;margin-top:4px}
+.b .fw{display:block;font-size:24px;color:#667781;font-style:italic;margin-bottom:6px}
+.b .cita{display:block;border-left:6px solid #06cf9c;background:rgba(0,0,0,.04);border-radius:8px;padding:10px 14px;font-size:30px;color:#3b4a54;margin-bottom:10px}
+.sem{display:inline-block;background:#e02424;color:#fff;border-radius:12px;padding:6px 16px;font-weight:700;font-size:34px;margin-bottom:8px}
+.lista{margin-top:30px;display:flex;flex-direction:column;gap:22px}
+.lista div{background:#fff;border-radius:24px;padding:26px 30px;font-size:46px;line-height:1.2;font-weight:700;display:flex;gap:22px;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+.lista span.n{flex:0 0 72px;height:72px;border-radius:36px;background:#e02424;color:#fff;display:flex;align-items:center;justify-content:center;font-size:40px}
+.etq{font-size:26px;color:#667781;margin-top:18px;text-align:center}
+.cta{margin-top:40px;background:#06080d;color:#fff;border-radius:30px;padding:36px 40px}
+.cta .t{font-size:64px;font-weight:700;line-height:1.1}
+.cta .t span{color:#33c6e8}
+.cta .s{font-size:36px;color:#b9c0cc;margin-top:12px}
+.marca{display:flex;align-items:center;gap:14px;font-size:28px;color:#54656f;font-weight:700;margin-top:24px}
+.marca img{width:46px;height:46px;border-radius:10px}
+</style></head>
+<body><div id="raiz"></div>
+<script>
+const p = new URLSearchParams(location.search), modo = p.get('modo'), canal = p.get('canal') || 'ig';
+const LOGO = '/home/user/Cyber-Mobile/logo-cm.png';
+const marca = `<div class="marca"><img src="${LOGO}">Cyber Mobile · Vera</div>`;
+const chatHijo = (extra = '') => `<div class="wa"><div class="cab"><div class="av">👤</div><div><b>+54 9 11 •••• ••••</b><small>en línea</small></div></div>
+  <div class="fondo"><div class="b">Hola ma, cambié de número, agendame este 🙏<span class="h">10:12</span></div>
+  <div class="b">Necesito que me hagas una transferencia urgente de $80.000, después te explico. No me llames que no puedo hablar<span class="h">10:13</span></div>${extra}</div></div>`;
+const P = {
+  1: `<div class="nota">POV: a tu vieja le llega este mensaje 👇<small>¿Vos te darías cuenta? Ella casi transfiere.</small></div>${chatHijo()}`,
+  2: `<div class="nota">Tres señales en <span class="rojo">dos mensajes</span><small>Número nuevo + plata urgente + "no me llames".</small></div>${chatHijo('<div class="b yo">Ay hijo, ¿qué pasó? Ahora te transfiero<span class="h">10:15 ✓✓</span></div>')}`,
+  3: `<div class="nota">Antes de transferir, se lo reenvió a <span class="cian">Vera</span> 👇</div>
+    <div class="wa"><div class="cab"><div class="av vera"><img src="${LOGO}"></div><div><b>Vera · Antiestafas</b><small>en línea</small></div></div>
+    <div class="fondo"><div class="b yo"><span class="fw">↪ Reenviado</span>Necesito que me hagas una transferencia urgente de $80.000, después te explico. No me llames que no puedo hablar<span class="h">10:16 ✓✓</span></div>
+    <div class="b"><span class="sem">🔴 ESTAFA</span><br>Es el cuento del "cambié de número". No transfieras. Llamá a tu hijo al número de siempre y preguntale.<span class="h">10:16</span></div></div></div>
+    <div class="etq">Chat recreado con un caso típico · números tapados</div>`,
+  4: `<div class="nota">Guardalo y pasáselo a tu familia 📌<small>Antes de transferir, preguntate:</small></div>
+    <div class="lista"><div><span class="n">1</span>¿Me escribe de un número nuevo?</div><div><span class="n">2</span>¿Me apura o me pide no llamar?</div><div><span class="n">3</span>¿Me pide plata o un código?</div></div>
+    <div class="nota" style="margin-top:30px;font-size:50px">Si hay un sí: <span class="verde">llamá al número de siempre.</span></div>`,
+  5: `<div class="nota">Vera vive en tu WhatsApp.<small>Le reenviás lo raro y en segundos te dice si es estafa 🔴🟡🟢</small></div>
+    <div class="nota" style="margin-top:26px;font-size:48px">📲 Mandale este video a tu vieja</div>
+    ${canal === 'wa'
+      ? '<div class="cta"><div class="t">Probala <span>7 días gratis</span></div><div class="s">cybermobile.com.ar/vera</div></div>'
+      : '<div class="cta"><div class="t">Comentá <span>VERA</span></div><div class="s">y te envío el link por privado · 7 días gratis</div></div>'}${marca}`
+};
+document.getElementById('raiz').innerHTML = `<div class="pag">${P[modo]}</div>`;
+document.fonts.ready.then(() => Promise.all([...document.images].map(i => i.decode().catch(() => {})))).then(() => document.documentElement.dataset.listo = '1');
+</script></body></html>

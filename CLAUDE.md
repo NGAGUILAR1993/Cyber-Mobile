@@ -47,6 +47,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 | Mail a cybermobile.ai@gmail.com cada vez que sale una tarjeta de la red (tipo, señales, imagen; cliente con los últimos 4 dígitos) | n8n, "Preparar Mail Tarjeta" → "Mail Tarjeta Enviada" (SMTP de info@cybermobile.com.ar) | Cada tarjeta |
 | Mail con el resumen de la alerta del lunes (a cuántos salió, fallos, tarjeta) | n8n, "Preparar Mail Alerta" → "Mail Alerta Enviada" | Lunes, después del envío |
 | Video de TikTok "¿Estafa o real?" (genera, publica en la web, prepara la subida a TikTok y avisa por mail) | Tarea programada "TikTok automático", ligada a la sesión original (así tiene Gmail y Higgsfield) | Lun, mié y vie 18:10 AR |
+| Pieza diaria de redes en el estilo claro, sin repetir (reemplaza a la de `redes.yml`) | Tarea programada "Redes diario", ligada a la sesión original | Todos los días 07:40 AR |
 | Envío de la alerta por GitHub (solo respaldo **manual**) | `alerta-envio.yml` | A mano (requiere los secretos EVOLUTION_APIKEY y ALERTA_DESTINOS, hoy no cargados) |
 
 Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor corre cada ~8 h en lugar de cada 30 min. No confiar en ellos para envíos a hora exacta: lo exacto va en n8n.
@@ -54,7 +55,9 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 ## Plan de redes nuevo (aprobado por el dueño el 16/10)
 - Plan completo en `scripts/redes/PLAN-2026-10.md` (diagnóstico, grilla nueva, interacción diaria, perfil, medición a los 7 y 14 días).
 - **Estilo nuevo:** fondo claro, chats de WhatsApp en modo claro, notas blancas arriba, Vera respondiendo con el semáforo dentro del chat y cierre "Mandale este video a tu vieja". Se dejan las placas oscuras de alerta. Primer reel: `redes/2026-10-16/reel-pov-mama/`. TikTok ya usa este estilo.
-- **Pendiente:** pasar `scripts/redes/generar.mjs` (pieza diaria) al estilo y la grilla nuevos; hasta entonces esas piezas salen con el estilo viejo.
+- **Plantillas del estilo claro:** `scripts/redes/estilo-claro/` (carrusel juego "5 trampas" y reel POV).
+- **Pieza diaria creativa:** tarea programada "Redes diario" (07:40 AR, ligada a la sesión original). Arma la pieza del día en el estilo claro, sin repetir formato ni tema de los últimos 30 días, y la publica antes de que corra `redes.yml` (08:15), que la saltea porque ya existe `textos.json`.
+- **Por qué:** `scripts/redes/generar.mjs` tiene piezas fijas que se repiten (por ejemplo, "IA general vs Vera" sale igual cada dos sábados; el 17/10 se repitió). Queda solo como respaldo.
 
 ## Grilla de redes vieja (`scripts/redes/generar.mjs`, guía en `scripts/redes/GUIA.md`)
 | Día | Pieza | Hora |
