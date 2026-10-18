@@ -34,6 +34,11 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - Lo que lee una función tiene que estar fuera de `/scripts/`, `/app/` y `/docs/` (`.vercelignore` no los publica): por eso la tipografía Anton está copiada en `tarjetas/fuentes/` y las frases cortas viven en `observatorio/claves.json`.
   - Si la tarjeta nueva no responde, n8n usa la fija `tarjetas/alerta-red.jpg` (caso) o el flyer de GitHub (lunes).
 - **Límite de Vercel: 12 funciones** en `api/` (sin contar `_lib`). Hoy hay 12: para sumar una, juntarla con otra y usar un rewrite (como `/api/stats` → `api/observatorio-stats.js?vista=eventos`). Si se pasa, el deploy falla al instante y las rutas nuevas dan 404.
+- **Consumo de Vercel (plan gratis, 18/10 avisó 75%):**
+  - `ignoreCommand` en `vercel.json`: no se hace deploy si el commit solo toca `scripts/`, `app/`, `docs/`, `.github/`, `.claude/`, `CLAUDE.md` o `README.md` (no cambian el sitio).
+  - La rama `claude/...` no genera vistas previas (`git.deploymentEnabled`): solo se publica al hacer merge a main.
+  - `admin.html` consulta `/api/stats` cada 60 s y solo con la pestaña a la vista (antes, cada 5 s siempre).
+  - `/redes/` lleva caché de un día en el navegador.
 - **Link corto:** `/vera?o=<origen>` → wa.me con texto armado. Cuenta los clics por origen en Redis (`cm:vera:clics:<fecha>`). Orígenes: ig, bio, comentario, tarjeta, qr, web, canal, historia, guia, alerta, tiktok, estado.
 
 ## Automatizaciones (qué corre solo)
