@@ -140,15 +140,15 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - Fuente: `guias/guias.json`. Generador: `scripts/guias/generar.mjs`.
   - Salida estática: `guias/<slug>/index.html`, `guias/lista.json` y el bloque de la portada entre las marcas `guias:inicio` y `guias:fin`.
   - El sitemap (`api/sitemap.js`) las incluye solas.
-- **Publicadas:** verificar-estafa-whatsapp, que-es-phishing, verificar-numero-desconocido (13/10); de-quien-es-un-cbu (17/10).
+- **Publicadas:** verificar-estafa-whatsapp, que-es-phishing, verificar-numero-desconocido (13/10); de-quien-es-un-cbu (17/10); como-saber-si-es-estafa (18/10, incluye la sección "Las estafas por WhatsApp más comunes en Argentina").
+- **Títulos y descripciones (18/10):** se reescribieron para subir el CTR (título ≤60, descripción ≤155, palabra buscada adelante, "gratis"/2026/Argentina cuando aplica) en las guías, `/guias`, la portada y `/observatorio`. Mantener esos largos en las guías nuevas.
 - **Automático:** tarea programada "Guía SEO automática" (martes y jueves 10:10 AR, ligada a la sesión original): publica la próxima de "Faltan" y manda un mail con el link para pedir la indexación en Search Console.
 - **Faltan** (2 o 3 por semana, de más a menos búsquedas):
-  - cómo saber si es estafa (480);
+  - estafas por WhatsApp más comunes (1.000): guía aparte, lista larga de modalidades con un ejemplo y qué hacer en cada una; que enlace a como-saber-si-es-estafa, que ya tiene una sección corta con ese subtítulo.
   - denunciar estafa por WhatsApp (480);
   - cómo saber si un email es falso (320);
   - cómo saber si un link es seguro (140);
   - cómo saber si una cuenta bancaria es confiable (140);
-  - estafas por WhatsApp más comunes (1.000; puede combinarse con la guía 1).
 - **Competencia:** mediavox.co (puesto 18) y detect.ar (puesto 14) para "verificar estafa whatsapp argentina".
 - **Base de comparación:** SEO 71, visibilidad en IA 55, velocidad en celular 73. Volver a correr el análisis gratis de Bunzy unas 3 semanas después del 13/10.
 - **Search Console:** es una propiedad de dominio, así que el sitemap se envía con la URL completa `https://www.cybermobile.com.ar/sitemap.xml`. Hay una entrada vieja mal cargada (`sitemap.xml](...`) que conviene borrar.
