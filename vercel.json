@@ -1,4 +1,11 @@
 {
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)scripts' ':(exclude)app' ':(exclude)docs' ':(exclude).github' ':(exclude).claude' ':(exclude)CLAUDE.md' ':(exclude)README.md'",
+  "git": {
+    "deploymentEnabled": {
+      "claude/*": false,
+      "claude/web-improvements-cyber-app-kq7rww": false
+    }
+  },
   "headers": [
     {
       "source": "/(.*)\\.(ttf|woff2?)",
@@ -24,6 +31,10 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
         }
       ]
     },

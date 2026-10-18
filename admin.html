@@ -903,9 +903,11 @@
             
             await fetchRealData();
             
-            setInterval(fetchRealData, 5000);
+            // Cada 60 s y solo con la pestaña a la vista: cada consulta es una ejecución de función en Vercel.
+            setInterval(function () { if (!document.hidden) fetchRealData(); }, 60000);
+            document.addEventListener('visibilitychange', function () { if (!document.hidden) fetchRealData(); });
             
-            console.log('✅ Dashboard listo - Actualizando cada 5 segundos');
+            console.log('✅ Dashboard listo - Actualizando cada 60 segundos');
         }
 
         console.log('✅ Imagen del escudo CM configurada exitosamente.');
