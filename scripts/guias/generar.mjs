@@ -180,7 +180,7 @@ function paginaIndice() {
 <div style="margin-top:36px;max-width:760px">${veraBox('Tu verificador antiestafas en WhatsApp')}</div>`;
     const jsonld = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Guías de ciberseguridad · Cyber Mobile', url, inLanguage: 'es-AR',
         hasPart: guias.map((g) => ({ '@type': 'Article', headline: g.h1, url: `${SITIO}/guias/${g.slug}` })) }];
-    return documento({ titulo: 'Guías: cómo detectar estafas por WhatsApp, links y llamadas · Cyber Mobile',
+    return documento({ titulo: 'Guías para detectar estafas en Argentina 2026 · Cyber Mobile',
         descripcion: 'Guías prácticas para verificar si un mensaje, link, número o cuenta es una estafa en Argentina, con casos reales y qué hacer si ya caíste.', url, jsonld, cuerpo, tipo: 'website' });
 }
 
