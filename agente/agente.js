@@ -25,7 +25,7 @@ const TIPOS = [
 // --- Estado del visitante (lo decide el servidor) ---
 const WA_NUM = '5491170598505';
 const waLink = t => `https://wa.me/${WA_NUM}?text=${encodeURIComponent(t)}`;
-const WA_URL = waLink('Hola Vera, quiero probar los 7 días gratis');
+const WA_URL = '/vera?o=web'; // link medido: cuenta el clic y redirige a WhatsApp
 const est = { configurado: true, gratis: 2, restantes: 2, vinculado: false, telefono: '', suscripto: false };
 function pintarCupo(){
   $('#pts').innerHTML = '';
