@@ -22,6 +22,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 - **Web:** sitio estático en Vercel con funciones en `api/` (ESM) y Redis (ioredis). Rutas y encabezados de seguridad en `vercel.json`. Dominio: www.cybermobile.com.ar.
 - **n8n** (Railway, `primary-production-3c8ba.up.railway.app`):
   - Flujo principal **activo: "CYBER MOBILE 2026_10 - V38"** (id `fFoGJZEQRy0g6Dt1`).
+    - Versión publicada el 19/10: **V39b**. Vera solo cita dominios que se ven escritos en la captura e ignora los servidores de imágenes. Detecta apps falsas dentro de Google Play o App Store por el desarrollador y las descargas (patrón `app_falsa_tienda`, con tarjeta propia) y contesta la pregunta que viene con la foto. Pendiente menor en `analizar_imagen`, `numDescargas`: "500 mil" se lee como 500 millones; corregir el orden del regex a `(milm|mil|mm|b|m|k)` la próxima vez que se edite ese nodo.
   - También: "CYBER MOBILE - Agente Web" y "Notificaciones MercadoPago".
   - Hay un **conector de n8n** en claude.ai: con él se ven ejecuciones y se edita y publica el flujo directamente (`update_workflow` + `publish_workflow`). **No hace falta mandarle JSON al usuario para importar.**
 - **WhatsApp:** Evolution API (`evolution-api-production-bf51.up.railway.app`), instancia "Agente Ciber". Es la **API oficial de WhatsApp Business (Meta)**:
