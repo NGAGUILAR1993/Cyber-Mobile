@@ -56,6 +56,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 | Mail con el resumen de la alerta del lunes (a cuántos salió, fallos, tarjeta) | n8n, "Preparar Mail Alerta" → "Mail Alerta Enviada" | Lunes, después del envío |
 | Video de TikTok "¿Estafa o real?" (genera, publica en la web, prepara la subida a TikTok y avisa por mail) | Tarea programada "TikTok automático", ligada a la sesión original (así tiene Gmail y Higgsfield) | Lun, mié y vie 18:10 AR |
 | Pieza diaria de redes en el estilo claro, sin repetir (reemplaza a la de `redes.yml`) | Tarea programada "Redes diario" (la idea la pone el agente redes), ligada a la sesión original | Todos los días 06:40 AR |
+| Equipo libre: jefa (prioridades), SEO, comercial y relaciones, con registro en el tablero | Tareas programadas "Marketing: jefa del equipo", "SEO: libre", "Comercial: libre" y "Relaciones: libre", ligadas a la sesión original | Lun a vie 08:10, 10:10, 12:40 y 15:10 AR |
 | Envío de la alerta por GitHub (solo respaldo **manual**) | `alerta-envio.yml` | A mano (requiere los secretos EVOLUTION_APIKEY y ALERTA_DESTINOS, hoy no cargados) |
 
 Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor corre cada ~8 h en lugar de cada 30 min. No confiar en ellos para envíos a hora exacta: lo exacto va en n8n.
@@ -112,7 +113,8 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - **seo-guias:** escribe y publica las guías de `/guias`.
 - **comercial:** ventas directas (PyMEs, LinkedIn, seguimiento de pruebas) para la meta del 15/11.
 - **relaciones:** prensa, alianzas, influencers, campañas por fecha, sorteos y reputación de la firma.
-- Cada agente tiene trabajo fijo con tareas programadas ligadas a la sesión original (ver la tabla de `scripts/OBJETIVO.md`).
+- **Autonomía (pedido del dueño, 19/10):** marketing (jefa del equipo), seo-guias, comercial y relaciones trabajan solos de lunes a viernes. La jefa a las 08:10 fija las prioridades y reparte; después SEO (10:10), comercial (12:40) y relaciones (15:10). Redes y vera-n8n mantienen su tarea fija. Horarios y límites en `scripts/OBJETIVO.md`.
+- **Tablero del equipo** (Claude Docs, https://claude.ai/code/artifact/21ab2d66-13c8-49a4-82bc-ca9030235d8a; doc `21ab2d66-13c8-49a4-82bc-ca9030235d8a`, cuerpo `b9e506b6-e787`): todo lo que hace cada agente, con orden del dueño o sin ella, va a la Bitácora. Las aprobaciones van a "Necesita a Germán" y las organizaciones y empresas a "Oportunidades". Los mails a terceros quedan como borradores en Gmail. Cuando se haga algo a pedido del dueño en esta sesión, sumar también la fila en la Bitácora.
 - Se usan pidiéndolos por nombre ("usá el agente seguridad") o con `/agents`. `.claude/` no se publica en la web (`.vercelignore`).
 
 ## Skills de Instagram (`.claude/skills/ig-*`)
@@ -143,7 +145,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - El sitemap (`api/sitemap.js`) las incluye solas.
 - **Publicadas:** verificar-estafa-whatsapp, que-es-phishing, verificar-numero-desconocido (13/10); de-quien-es-un-cbu (17/10); como-saber-si-es-estafa (18/10, incluye la sección "Las estafas por WhatsApp más comunes en Argentina").
 - **Títulos y descripciones (18/10):** se reescribieron para subir el CTR (título ≤60, descripción ≤155, palabra buscada adelante, "gratis"/2026/Argentina cuando aplica) en las guías, `/guias`, la portada y `/observatorio`. Mantener esos largos en las guías nuevas.
-- **Automático:** tarea programada "Guía SEO automática" (martes y jueves 10:10 AR, ligada a la sesión original): publica la próxima de "Faltan" y manda un mail con el link para pedir la indexación en Search Console.
+- **Automático:** tarea programada "SEO: libre" (lunes a viernes 10:10 AR, ligada a la sesión original). Martes y jueves publica la próxima de "Faltan" y manda un mail con el link para pedir la indexación en Search Console; los otros días hace mejoras de SEO.
 - **Faltan** (2 o 3 por semana, de más a menos búsquedas):
   - estafas por WhatsApp más comunes (1.000): guía aparte, lista larga de modalidades con un ejemplo y qué hacer en cada una; que enlace a como-saber-si-es-estafa, que ya tiene una sección corta con ese subtítulo.
   - denunciar estafa por WhatsApp (480);
