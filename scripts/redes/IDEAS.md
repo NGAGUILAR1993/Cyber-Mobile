@@ -2,6 +2,8 @@
 
 Lo mantiene el agente redes: antes de cada pieza tira al menos 10 ideas, anota acá las mejores y marca cuál se usó. Sirve para no repetir y para volver a ideas buenas que quedaron afuera.
 
+**Devolución del dueño (19/10) sobre el reel "¿Le das match?":** "No me gustan esas publi que armó, quiero que sea más real y con impacto visual." No volver al estilo maqueta (placas planas tipo diapositiva, perfiles armados como tarjeta). Las piezas tienen que parecer grabadas de un celular real: grabación de pantalla con barra de estado, dedo que toca, scroll, zoom rápido al detalle clave, sacudida y flash en la señal de alerta, notificación que baja, chat real en modo claro; movimiento constante, cortes con ritmo y texto grande y corto arriba. Plantilla: `scripts/redes/grabacion/`.
+
 | Fecha | Idea | Formato | Por qué podría funcionar | Estado |
 |---|---|---|---|---|
 | 16/10 | "POV: a tu vieja le llega este mensaje" (cambio de número) | Reel POV | Identificación + "mandáselo a tu vieja" | Publicada |
@@ -29,3 +31,8 @@ Lo mantiene el agente redes: antes de cada pieza tira al menos 10 ideas, anota a
 | 19/10 | "Cosas que la tienda de apps no te dice" (5 datos) | Reel lista | Guardable | Descartada (formato de tips de todos) |
 | 19/10 | Dúo con cuentas de tecnología grandes: "¿le harías match a esta app?" | Colaboración | Alcance prestado | Propuesta (no se ejecuta sin el dueño) |
 | 19/10 | Desafío "Etiquetá a quien instala todo sin leer los permisos" | Desafío etiquetar | Etiquetas = alcance | Guardada para la historia de mañana |
+| 19/10 (rehecha) | "No toques Instalar": grabación de pantalla de un Android en la tienda; el dedo va a Instalar, se frena, zoom al desarrollador, a las descargas y a los permisos con flash rojo; captura, se la manda a Vera y baja la notificación "No la instales" (app y chat recreados) | Reel grabación de pantalla | Parece real, tiene tensión (el dedo sobre Instalar) y cada señal se ve en movimiento; reemplaza la maqueta que el dueño rechazó | Elegida (reemplaza a "¿Le das match?") |
+| 19/10 (rehecha) | "Le di Instalar": la misma grabación, pero el dedo sí toca y la app pide Accesibilidad; corte a negro y "así empieza" | Reel suspenso | Miedo real, final abierto | Descartada (muestra el error sin la salida hasta muy tarde) |
+| 19/10 (rehecha) | Pantalla dividida: app real vs. app falsa scrolleando en paralelo, y el público adivina cuál es | Reel juego en movimiento | Juego + realismo | Guardada (necesita mostrar una app real: cuidado con marcas) |
+| 19/10 (rehecha) | "Mi viejo instalando el home banking" grabado como pantalla con zoom a cada duda (letra chica, permisos) | Reel humor POV | Identificación con el padre | Descartada (repite protagonista de padres de la semana) |
+| 19/10 (rehecha) | Cámara lenta del dedo sobre Instalar con cuenta regresiva y las 3 señales que aparecen antes de que llegue | Reel cuenta regresiva | Tensión pura en 1 segundo | Guardada como variante de gancho |
