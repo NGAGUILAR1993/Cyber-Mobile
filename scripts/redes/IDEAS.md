@@ -13,8 +13,19 @@ Lo mantiene el agente redes: antes de cada pieza tira al menos 10 ideas, anota a
 | 18/10 | "El regalo que tu vieja no va a abrir": unboxing de una caja vacía que trae 3 meses de Vera | Reel promo | Cierra la promo del día | Descartada (demasiado vendedor) |
 | 18/10 | "Hoy a tu mamá le van a llegar 3 felicitaciones: una es tuya y dos son trampas (sorteos de ramos, cupones)" | Carrusel juego | Usa la fecha y el ranking (#6 sorteos falsos) | Descartada (repite el juego de detectar del 17/10) |
 | 18/10 | "Los 3 superpoderes de las madres" (saben cuándo mentís, encuentran todo, cuarto: no transfieren sin llamar) | Reel ranking | Emotivo y compartible | Descartada (tono de tarjeta, poco gancho) |
-| 18/10 | Serie "La Vieja Invicta": una madre que cada semana le gana a un estafador distinto | Serie semanal con personaje | Las series crean seguidores, personaje querible | Guardada para serie (arrancar un lunes) |
+| 18/10 | Serie "La Vieja Invicta": una madre que cada semana le gana a un estafador distinto | Serie semanal con personaje | Las series crean seguidores, personaje querible | Rechazada por el dueño (19/10, tablero): no usar el personaje ni la serie |
 | 18/10 | "Antes y después del WhatsApp de tu vieja": 47 grupos y cadenas → Vera fijada arriba | Reel antes/después | Visual, identificación | Descartada por hoy |
 | 18/10 | Historia encuesta "¿Tu vieja abre los links de 'ganaste'?" | Historia encuesta | Interacción rápida | Descartada (chica para el día de más movimiento) |
-| 18/10 | Concurso "Etiquetá a la madre más desconfiada que conozcas" (premio: 3 meses de Vera) | Concurso | Etiquetas = alcance nuevo | Propuesta al dueño (necesita bases y aprobación) |
+| 18/10 | Concurso "Etiquetá a la madre más desconfiada que conozcas" (premio: 3 meses de Vera) | Concurso | Etiquetas = alcance nuevo | Rechazada por el dueño (19/10, tablero) |
 | 18/10 | Respuesta a cuentas grandes de humor de madres con un dúo "¿y si le pedís la palabra secreta?" | Colaboración | Alcance prestado | Propuesta (no se ejecuta sin el dueño) |
+| 19/10 | "4 días en la tienda de apps y ya quiere tu clave. ¿Le das match?": una app falsa con perfil de citas; 3 red flags (desarrollador, 500 descargas y 4 días, pide Accesibilidad) y Vera la marca 🔴 (chat recreado, app inventada) | Reel parodia de app de citas + red flags | El formato "red flag" y la parodia de Tinder se comparten solos; muestra la capacidad nueva de Vera (apps falsas dentro de la tienda) y se cruza con el #1 del ranking (acceso remoto). Nadie del nicho lo hizo así | Elegida |
+| 19/10 | "La app falsa en una entrevista de trabajo" (¿experiencia? 4 días. ¿referencias? 500 descargas) | Reel diálogo humor | Mismo humor, personaje | Descartada (el perfil de citas es más visual y más compartido) |
+| 19/10 | "Reaccionando a las reseñas de 5 estrellas de una app falsa" ("Excelente app 10/10" ×40) | Reel reacción | Risa + enseña a leer reseñas | Guardada (segunda entrega de apps falsas) |
+| 19/10 | "Nadie: / La app 'oficial' de tu banco con 500 descargas:" | Meme | Rápido de consumir | Descartada (meme suelto, poca entrega) |
+| 19/10 | "Tu vieja confía en el Play Store como en el cura del barrio" | Reel POV | Identificación | Descartada (repite POV mamá del 16/10) |
+| 19/10 | "Una de estas dos apps es falsa. Las dos están en la tienda" | Carrusel juego | Obliga a deslizar | Descartada (repite el juego de detectar del 17/10) |
+| 19/10 | Serie "La estafa del lunes" cap. 1 con apps falsas | Serie semanal | Crea cita fija | Guardada sin el personaje: "La Vieja Invicta" fue rechazada por el dueño (19/10) |
+| 19/10 | "Antes y después: tu celular con la app falsa" (pantalla que se toca sola) | Reel antes/después | Suspenso | Descartada (difícil mostrarlo sin inventar) |
+| 19/10 | "Cosas que la tienda de apps no te dice" (5 datos) | Reel lista | Guardable | Descartada (formato de tips de todos) |
+| 19/10 | Dúo con cuentas de tecnología grandes: "¿le harías match a esta app?" | Colaboración | Alcance prestado | Propuesta (no se ejecuta sin el dueño) |
+| 19/10 | Desafío "Etiquetá a quien instala todo sin leer los permisos" | Desafío etiquetar | Etiquetas = alcance | Guardada para la historia de mañana |
