@@ -135,7 +135,7 @@ function cabecera() {
     return `<header class="top"><div class="wrap">
 <a class="brand" href="/" aria-label="Cyber Mobile, inicio"><img src="/logo-cm.png" alt="" width="38" height="38"><b>CYBER MOBILE</b></a>
 <nav class="menu" aria-label="Sitio"><a href="/#herramientas">Herramientas</a><a href="/#simulador">Simulador</a><a href="/observatorio">Observatorio</a><a href="/#contacto">Contacto</a></nav>
-<a class="btn btn-p pill" href="${WA}${encodeURIComponent('Hola, quiero probar Cyber Mobile')}" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">${svg('chat', 18)}<span>Consultar por WhatsApp</span></a>
+<a class="btn btn-p pill" href="/vera?o=web" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">${svg('chat', 18)}<span>Consultar por WhatsApp</span></a>
 </div></header>`;
 }
 
@@ -170,7 +170,7 @@ function noEncontrada(res) {
 <div class="kick">Observatorio de Fraude Digital</div>
 <h1>Esta estafa no está en el ranking actual</h1>
 <p class="p">Puede que haya dejado de circular con fuerza este mes. Mirá el ranking actualizado o consultanos si te llegó algo sospechoso.</p>
-<p style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="btn btn-p" href="/observatorio">Ver el Observatorio</a><a class="btn btn-g" href="${WA}${encodeURIComponent('Hola, quiero probar Cyber Mobile')}" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a></p>
+<p style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="btn btn-p" href="/observatorio">Ver el Observatorio</a><a class="btn btn-g" href="/vera?o=web" target="_blank" rel="noopener noreferrer">Consultar por WhatsApp</a></p>
 </div>`;
     res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
