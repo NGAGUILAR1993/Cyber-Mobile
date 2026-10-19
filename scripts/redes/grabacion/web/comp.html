@@ -1,0 +1,168 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:A;src:url(/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:G;font-weight:700;src:url(/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:"Liberation Sans",Arial,"Noto Color Emoji",sans-serif}
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;will-change:transform;transform-origin:0 0}
+#phone{position:absolute;inset:0;background:#05070D;overflow:hidden}
+.sb{position:absolute;left:0;right:0;top:0;height:78px;display:flex;align-items:center;padding:0 40px;font-size:33px;font-weight:700;color:#fff;background:#05070D;z-index:30}
+.sb .rec{width:28px;height:28px;border-radius:50%;background:#e53935;margin-left:18px;box-shadow:0 0 0 5px rgba(229,57,53,.3)}
+.sb .der{margin-left:auto;display:flex;gap:18px;align-items:center}
+.bat{width:54px;height:27px;border:3px solid currentColor;border-radius:6px;position:relative;padding:3px}
+.bat i{display:block;height:100%;width:72%;background:currentColor;border-radius:2px}
+.bat:after{content:"";position:absolute;right:-9px;top:6px;width:5px;height:10px;background:currentColor;border-radius:0 2px 2px 0}
+.sig{display:flex;gap:4px;align-items:flex-end;height:28px}.sig b{width:7px;background:currentColor;border-radius:2px}
+.ub{position:absolute;left:0;right:0;top:78px;height:150px;background:#1b1d22;display:flex;align-items:center;gap:26px;padding:0 30px;z-index:29}
+.ub .pill{flex:1;height:96px;border-radius:48px;background:#2e3036;display:flex;align-items:center;gap:22px;padding:0 34px;color:#e8eaed;font-size:38px;white-space:nowrap;overflow:hidden}
+.ub .pill svg{width:34px;height:34px;flex:none}
+.ub .pill .gr{color:#9aa0a6}
+.ub .tabs{width:54px;height:54px;border:4px solid #e8eaed;border-radius:12px;color:#e8eaed;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.ub .dots{display:flex;flex-direction:column;gap:8px}.ub .dots i{width:9px;height:9px;border-radius:50%;background:#e8eaed}
+.prog{position:absolute;left:0;bottom:0;height:7px;background:#8ab4f8;width:0}
+#vp{position:absolute;left:0;top:228px;width:1080px;height:1692px;overflow:hidden;background:#05070D}
+#vp iframe{position:absolute;left:0;top:0;width:360px;height:564px;border:0;transform:scale(3);transform-origin:0 0;visibility:hidden;background:#05070D}
+#tap{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:rgba(255,255,255,.42);border:4px solid rgba(255,255,255,.75);box-shadow:0 0 0 3px rgba(0,0,0,.25);z-index:60;opacity:0;pointer-events:none}
+#rip{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;border:6px solid rgba(255,255,255,.9);z-index:60;opacity:0}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:90;pointer-events:none}
+/* textos arriba */
+#tit{position:absolute;left:60px;right:60px;top:300px;z-index:80;text-align:center;opacity:0}
+#tit .l{display:inline;background:#fff;color:#0b0f1a;font-family:G,'Noto Color Emoji';font-weight:700;font-size:66px;line-height:1.42;padding:6px 22px;border-radius:16px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#tit .s{display:inline-block;margin-top:22px;background:#22D3EE;color:#04121A;font-family:G;font-weight:700;font-size:44px;padding:8px 22px;border-radius:14px}
+#tit .r{color:#e11d48}
+#lab{position:absolute;left:50%;top:1450px;transform:translateX(-50%);z-index:80;background:rgba(0,0,0,.72);color:#fff;font-size:34px;font-weight:700;padding:12px 26px;border-radius:30px;white-space:nowrap;opacity:0;border:2px solid rgba(255,255,255,.4)}
+/* WhatsApp recreado */
+#wa{position:absolute;left:0;right:0;top:78px;bottom:0;background:#efeae2;z-index:40;transform:translateX(100%)}
+#wa .wh{height:160px;background:#fff;display:flex;align-items:center;gap:24px;padding:0 30px;border-bottom:1px solid #e5e5e5}
+#wa .wh .ar{font-size:54px;color:#1f1f1f}
+#wa .wh img{width:100px;height:100px;border-radius:50%;object-fit:cover;background:#0b0f1a}
+#wa .wh b{font-size:42px;display:block;color:#111}#wa .wh small{font-size:30px;color:#008069}
+#wa .bd{position:absolute;left:0;right:0;top:160px;bottom:150px;padding:250px 34px 30px;overflow:hidden}
+#wa .m{max-width:84%;border-radius:22px;padding:18px 24px 14px;font-size:40px;line-height:1.32;color:#111;margin-bottom:20px;position:relative;box-shadow:0 1px 1px rgba(0,0,0,.12);opacity:0}
+#wa .m.yo{background:#d9fdd3;margin-left:auto}
+#wa .m.el{background:#fff}
+#wa .m .h{display:block;text-align:right;font-size:26px;color:#667781;margin-top:4px}
+#wa .cap{background:#0b0f1a;border-radius:16px;padding:24px;width:640px;color:#e8eaed;font-size:30px}
+#wa .cap .n{display:flex;align-items:center;gap:16px;margin-bottom:18px;color:#9aa0a6;font-size:28px}
+#wa .cap .n i{display:inline-block;width:250px;height:30px;border-radius:8px;background:#5f6368;filter:blur(3px)}
+#wa .cap .bub{background:#2b2f36;border-radius:18px;padding:18px 22px;line-height:1.35}
+#wa .cap u{color:#8ab4f8}
+#wa .in{position:absolute;left:20px;right:20px;bottom:24px;height:110px;border-radius:55px;background:#fff;font-size:36px;color:#8696a0;display:flex;align-items:center;padding:0 40px}
+#wa .esc{font-size:34px;color:#667781;font-style:italic}
+/* cierre */
+#cta{position:absolute;inset:0;z-index:85;opacity:0;background:rgba(5,7,13,.86);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 70px;color:#fff}
+#cta img{width:170px;height:170px;border-radius:40px;margin-bottom:46px;box-shadow:0 0 60px rgba(34,211,238,.45)}
+#cta .a{font-family:A;font-size:150px;line-height:1.02;color:#22D3EE;text-transform:uppercase}
+#cta .b{font-family:G;font-weight:700;font-size:58px;line-height:1.25;margin-top:30px}
+#cta .c{display:inline-block;margin-top:44px;background:#fff;color:#0b0f1a;font-family:G;font-weight:700;font-size:50px;padding:14px 36px;border-radius:20px}
+#cta .d{font-family:G;font-size:42px;color:#C3CEDD;margin-top:36px;line-height:1.4}
+</style></head><body>
+<div id="cam"><div id="phone">
+  <div class="sb"><span id="hora">20:14</span><span class="rec"></span><div class="der">
+    <div class="sig"><b style="height:9px"></b><b style="height:15px"></b><b style="height:21px"></b><b style="height:28px"></b></div>
+    <span style="font-size:28px">5G</span><span style="font-size:30px">78%</span><div class="bat"><i></i></div></div></div>
+  <div class="ub">
+    <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#e8eaed" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><span id="url">cybermobile.com.ar</span></div>
+    <div class="tabs">3</div><div class="dots"><i></i><i></i><i></i></div>
+    <div class="prog" id="prog"></div>
+  </div>
+  <div id="vp"></div>
+  <div id="wa">
+    <div class="wh"><span class="ar">&#8592;</span><img src="/cyber_agent_logo.png"><div><b>Vera · Cyber Mobile</b><small id="waEst">en línea</small></div></div>
+    <div class="bd" id="waBd"></div>
+    <div class="in">Mensaje</div>
+  </div>
+  <div id="tap"></div><div id="rip"></div>
+</div></div>
+<div id="tit"></div>
+<div id="lab"></div>
+<div id="cta"></div>
+<div id="flash"></div>
+<script>
+const q=new URLSearchParams(location.search), CANAL=q.get('canal')||'ig', DIA=q.get('dia')||'1';
+const S=3, TOP=228;
+const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ez=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eo=x=>1-Math.pow(1-x,3);
+const lerp=(a,b,x)=>a+(b-a)*x;
+const FR={};
+function frame(n){return FR[n]}
+function doc(n){return FR[n].contentDocument}
+function el(n,sel,idx){const L=doc(n).querySelectorAll(sel);return L[idx||0]}
+// posición en el documento (px CSS) de un selector
+function docY(n,spec){
+  if(typeof spec==='number')return spec;
+  const e=typeof spec.sel==='function'?spec.sel(doc(n)):el(n,spec.sel,spec.i);
+  if(!e)return 0;
+  const w=FR[n].contentWindow;
+  return e.getBoundingClientRect().top+w.scrollY-(spec.off||0);
+}
+// centro en pantalla (px de 1080x1920) de un elemento
+function scr(n,sel,i){
+  const e=typeof sel==='function'?sel(doc(n)):el(n,sel,i); if(!e)return [540,960];
+  const r=e.getBoundingClientRect(); return [(r.left+r.width/2)*S, TOP+(r.top+r.height/2)*S];
+}
+// interpolación de una lista [[t,valor],...]
+function track(list,t,f){
+  if(t<=list[0][0])return f(list[0][1]);
+  for(let k=0;k<list.length-1;k++){const a=list[k],b=list[k+1];
+    if(t<=b[0]){const x=ez((t-a[0])/(b[0]-a[0]));return lerp(f(a[1]),f(b[1]),x);}}
+  return f(list[list.length-1][1]);
+}
+let C; // configuración del día
+const done=new Set();
+function render(t){
+  // escena activa
+  const sc=C.scenes.find(s=>t>=s.from&&t<s.to)||C.scenes[C.scenes.length-1];
+  for(const n in FR)FR[n].style.visibility=n===sc.frame?'visible':'hidden';
+  document.getElementById('url').innerHTML=sc.url;
+  const pg=cl((t-sc.from)/.45,0,1); document.getElementById('prog').style.width=(pg<1&&sc.load?pg*100:0)+'%';
+  if(sc.scroll){const y=track(sc.scroll,t,v=>docY(sc.frame,v));FR[sc.frame].contentWindow.scrollTo({top:Math.max(0,y),behavior:'instant'});}
+  // cámara
+  let s=1,cx=540,cy=960;
+  if(C.cam){s=track(C.cam,t,v=>v[0]);cx=track(C.cam,t,v=>v[1]);cy=track(C.cam,t,v=>v[2]);}
+  let sx=0,sy=0;for(const h of (C.hits||[])){const d=t-h;if(d>=0&&d<.3){const a=(1-d/.3)*16;sx+=Math.sin(d*90)*a;sy+=Math.cos(d*77)*a;}}
+  // mano: leve movimiento de celular en mano
+  const hx=Math.sin(t*1.3)*4+Math.sin(t*2.9)*2, hy=Math.cos(t*1.1)*4, hr=Math.sin(t*.9)*.25;
+  const tx=cx-cx*s, ty=cy-cy*s;
+  document.getElementById('cam').style.transform=`translate(${tx+sx+hx}px,${ty+sy+hy}px) scale(${s}) rotate(${hr}deg)`;
+  // toques
+  const tap=document.getElementById('tap'),rip=document.getElementById('rip');
+  tap.style.opacity=0;rip.style.opacity=0;
+  for(const tp of (C.taps||[])){const d=t-tp.t;
+    if(d>-.55&&d<.35){let p=tp.pos?tp.pos:scr(tp.frame,tp.sel,tp.i);if(d<0||!tp.c)tp.c=p;else p=tp.c;
+      tap.style.left=p[0]+'px';tap.style.top=p[1]+'px';
+      tap.style.opacity=d<0?cl((d+.55)/.2,0,1):cl(1-(d-.15)/.2,0,1);
+      tap.style.transform=`scale(${d>=0&&d<.15?.82:1})`;
+      if(d>=0&&d<.35){rip.style.left=p[0]+'px';rip.style.top=p[1]+'px';rip.style.opacity=1-d/.35;rip.style.transform=`scale(${1+d*4})`;}
+    }}
+  // títulos
+  const tit=document.getElementById('tit');let on=null;
+  for(const T of C.tits){if(t>=T[0]&&t<T[1]){on=T;break}}
+  if(on){if(tit.dataset.k!==on[2]){tit.innerHTML=on[2];tit.dataset.k=on[2];}
+    const a=cl((t-on[0])/.18,0,1),b=cl((on[1]-t)/.15,0,1);tit.style.opacity=Math.min(a,b);
+    tit.style.transform=`scale(${.82+.18*eo(a)})`;tit.style.top=(on[3]||300)+'px';}
+  else tit.style.opacity=0;
+  // rótulo
+  const lab=document.getElementById('lab');let lo=null;for(const L of (C.labs||[])){if(t>=L[0]&&t<L[1]){lo=L;break}}
+  if(lo){lab.textContent=lo[2];lab.style.opacity=1;lab.style.top=(lo[3]||1450)+'px'}else lab.style.opacity=0;
+  // flash
+  let fl=0;for(const f of (C.flashes||[])){const d=t-f;if(d>=0&&d<.25)fl=Math.max(fl,.55*(1-d/.25));}
+  document.getElementById('flash').style.opacity=fl;
+  if(C.extra)C.extra(t);
+  // cierre
+  const cta=document.getElementById('cta');const c0=C.ctaFrom;
+  if(t>=c0){if(!cta.dataset.on){cta.innerHTML='<div>'+CTA[CANAL]+'</div>';cta.dataset.on=1}cta.style.opacity=cl((t-c0)/.35,0,1);
+    const k=cl((t-c0)/.5,0,1);cta.firstElementChild.style.transform=`scale(${.7+.3*eo(k)})`;}
+  else cta.style.opacity=0;
+}
+// eventos que corren una sola vez (los dispara el grabador en orden)
+function eventos(t){for(const [et,fn] of (C.ev||[])){const k=et+'';if(t>=et&&!done.has(k)){done.add(k);fn();}}}
+const CTA={
+  ig:`<img src="/cyber_agent_logo.png"><div class="a">Comentá<br>VERA</div><div class="b">y te envío el link<br>por privado</div><div class="c">7 días gratis</div>`,
+  wa:`<img src="/cyber_agent_logo.png"><div class="a">Probala<br>7 días gratis</div><div class="b">Vera por WhatsApp<br>+54 9 11 7059-8505</div><div class="d">cybermobile.com.ar</div>`,
+  tt:`<img src="/cyber_agent_logo.png"><div class="a">Link en<br>el perfil</div><div class="c">7 días gratis</div><div class="d">Vera, el agente antiestafas<br>por WhatsApp</div>`
+};
+const s=document.createElement('script');s.src='/comp/dia'+DIA+'.js';document.body.appendChild(s);
+</script>
+</body></html>
