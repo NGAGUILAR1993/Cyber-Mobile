@@ -29,7 +29,13 @@ C={
     [17.7,19.55,L('¿Te llegó algo así?<br>Consultá a Vera'),262]
   ],
   labs:[],
-  ctaFrom:19.6
+  ctaFrom:19.6,
+  // Cierre pedido por el dueño (20/10): invitar a escribirle a Vera, con los 7 días gratis.
+  cta:{
+    ig:`<img src="/cyber_agent_logo.png"><div class="a">Animate a<br>escribirle</div><div class="b">Mandale a Vera ese mensaje<br>que te hizo dudar</div><div class="c">7 días gratis</div><div class="d">Comentá VERA y te paso el link</div>`,
+    wa:`<img src="/cyber_agent_logo.png"><div class="a">Animate a<br>escribirle</div><div class="b">Vera por WhatsApp<br>+54 9 11 7059-8505</div><div class="c">7 días gratis</div>`,
+    tt:`<img src="/cyber_agent_logo.png"><div class="a">Animate a<br>escribirle</div><div class="b">Mandale a Vera ese mensaje<br>que te hizo dudar</div><div class="c">7 días gratis</div><div class="d">Link en el perfil</div>`
+  }
 };
 (async()=>{
   await Promise.all([mk('O','/observatorio'),mk('F','/observatorio/acceso-remoto-app')]);
