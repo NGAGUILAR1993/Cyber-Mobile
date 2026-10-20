@@ -2,7 +2,7 @@
 import { chromium } from '/opt/node22/lib/node_modules/playwright/index.mjs';
 import fs from 'node:fs';
 const [dia, canal, out, prueba, desde] = process.argv.slice(2); const D0 = +(desde || 0), D1 = +(process.argv[7] || 1e9);
-const T = canal === 'tt' ? 26 : 23, K = 23 / T, N = T * 30;
+const T = 30, K = 23 / T, N = T * 30;
 fs.mkdirSync(out, { recursive: true });
 const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium', args: ['--ignore-certificate-errors', '--proxy-server=' + process.env.HTTPS_PROXY, '--proxy-bypass-list=127.0.0.1;localhost', '--hide-scrollbars'] });
 const ctx = await b.newContext({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });

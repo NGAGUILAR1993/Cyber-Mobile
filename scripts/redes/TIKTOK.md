@@ -1,6 +1,6 @@
 # TikTok de Cyber Mobile
 
-Guía para la cuenta de TikTok. Las reglas de `CLAUDE.md` siguen valiendo, salvo la duración: en TikTok los videos duran **26 segundos** para que se lleguen a leer los mensajes. También valen portada que abre una incógnita, datos personales tapados y marcas de otras IA solo en el texto.
+Guía para la cuenta de TikTok. Las reglas de `CLAUDE.md` siguen valiendo, incluida la duración: los videos duran **30 segundos**, como todos los reels (regla del dueño desde el 20/10). También valen portada que abre una incógnita, datos personales tapados y marcas de otras IA solo en el texto.
 
 ## Cuenta
 - **Tipo:** cuenta de empresa (Configuración → Cuenta → Cambiar a cuenta de empresa), categoría "Ciencia y tecnología". Da estadísticas y permite el link en el perfil.
@@ -39,7 +39,7 @@ Guía para la cuenta de TikTok. Las reglas de `CLAUDE.md` siguen valiendo, salvo
 Lunes, miércoles y viernes a las 20:00. Se pueden reusar los reels de Instagram cambiando el cierre por "Link en el perfil".
 
 ## Automático
-- **Generador:** `node scripts/tiktok/generar.mjs` arma el próximo episodio de `scripts/tiktok/episodios.json` en `redes/<fecha>/tiktok-<id>/` (video de 26 s, portada, textos) y lo marca como publicado.
+- **Generador:** `node scripts/tiktok/generar.mjs` arma el próximo episodio de `scripts/tiktok/episodios.json` en `redes/<fecha>/tiktok-<id>/` (video de 30 s, portada, textos) y lo marca como publicado.
 - **Tarea programada "TikTok automático"** (lunes, miércoles y viernes 18:10 AR): genera el video, lo publica en la web, lo sube a TikTok con el conector de Higgsfield y deja el formulario listo. Germán recibe un aviso y un mail, abre la sesión y confirma. TikTok exige que el dueño de la cuenta apruebe cada publicación.
 - **Episodios nuevos:** cuando quedan 2 o menos sin usar, la tarea escribe 3 más con casos reales de Argentina (mensajes recreados, números tapados, una sola respuesta real).
 

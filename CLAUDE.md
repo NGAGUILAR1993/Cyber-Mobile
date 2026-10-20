@@ -84,7 +84,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - Los videos especiales se suben a `redes/<fecha>/<nombre>/` para poder mandar el link por mail. Los archivos de más de ~7 MB no se adjuntan: se mandan links a la web y a GitHub.
 
 ## Reglas del dueño (respetar siempre)
-1. **Los videos de Instagram y del canal de WhatsApp duran 25 segundos** (regla del dueño desde el 19/10: más lentos, para que se puedan leer; antes eran 23). **TikTok dura 26 segundos.** Transiciones lentas y textos con tiempo para leerse.
+1. **Todos los reels y videos duran 30 segundos:** Instagram, canal de WhatsApp y TikTok (regla del dueño desde el 20/10, para que se puedan leer bien; antes eran 25 y 26). Transiciones lentas y textos con tiempo para leerse.
 2. **Estructura de cada pieza:**
    - **Portada:** abre una incógnita y no revela la respuesta.
    - **Puente:** amplía el problema.
@@ -95,7 +95,8 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 5. **Mensaje de marca:** "No somos otra cuenta de alertas: creamos una herramienta para que te enteres primero, en tu teléfono." Detrás de Vera hay ciberseguridad, IA entrenada, automatizaciones y herramientas especializadas.
 6. **Comparaciones con otras IA:** ser justos ("son útiles para muchas cosas; para estafas conviene una especialista"). Las marcas (ChatGPT, Gemini) van solo en el texto de la publicación, nunca en las imágenes.
 7. **No pedirle que cargue cosas técnicas** (secretos, importar JSON): quiere que salga solo. Si algo es indispensable de su lado (por ejemplo, la plantilla de Meta), explicar el paso exacto.
-8. **Mandar los entregables por mail** a cybermobile.ai@gmail.com cuando lo pida, con el conector de Gmail.
+8. **Mandar los entregables por mail** a cybermobile.ai@gmail.com cuando lo pida.
+9. **Todo mail a terceros (medios, empresas, clientes) sale desde info@cybermobile.com.ar**, la cuenta institucional de Zoho (conector de Zoho Mail, cuenta `7816472000000008002`), nunca desde Gmail (pedido del dueño, 20/10). Los borradores para aprobar también van en Zoho (`ZohoMail_sendEmail` con `mode: "draft"`).
 
 ## TikTok
 - Guía completa en `scripts/redes/TIKTOK.md`: perfil, público, estilo, series y frecuencia (lunes, miércoles y viernes 20:00).
@@ -107,14 +108,14 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 
 ## Equipo de agentes (`.claude/agents/`)
 - **marketing:** la estratega. Decide qué hacer y cómo se mide (embudo, campañas, pruebas, métricas) y reparte el trabajo entre redes, seo-guias, comercial y relaciones.
-- **redes:** la directora creativa. Inventa las ideas (investiga tendencias, tira 10 ideas por pieza en `scripts/redes/IDEAS.md`, elige la más audaz) y las produce, con ambición de crecer en seguidores. Pedido del dueño (17/10): las ideas tienen que salir de ella, no del dueño.
+- **redes:** la directora creativa, capacitada en marketing que vende (`scripts/redes/CAPACITACION.md`, 20/10). Inventa las ideas (investiga tendencias, tira 10 ideas por pieza en `scripts/redes/IDEAS.md`, elige la más audaz) y las produce, con ambición de crecer en seguidores. Pedido del dueño (17/10): las ideas tienen que salir de ella, no del dueño.
 - **seguridad:** revisa cada PR (claves, CSP, funciones de `api/`). Solo lee, no edita.
 - **vera-n8n:** diagnostica y corrige el flujo de Vera con el conector de n8n.
-- **seo-guias:** escribe y publica las guías de `/guias`.
+- **seo-guias:** escribe y publica las guías de `/guias`, capacitada en SEO y búsqueda con IA (`scripts/guias/CAPACITACION-SEO.md`, 20/10).
 - **comercial:** ventas directas (PyMEs, LinkedIn, seguimiento de pruebas) para la meta del 15/11.
 - **relaciones:** prensa, alianzas, influencers, campañas por fecha, sorteos y reputación de la firma.
 - **Autonomía (pedido del dueño, 19/10), con límite de consumo:** una sola tarea por día de lunes a viernes a las 08:10, con un solo agente elegido por impacto (martes y jueves, la guía SEO). No lanzar varios agentes a la vez: el dueño necesita lugar para usar la sesión. Redes y vera-n8n mantienen su tarea fija. Horarios y límites en `scripts/OBJETIVO.md`.
-- **Tablero del equipo** (Claude Docs, https://claude.ai/code/artifact/21ab2d66-13c8-49a4-82bc-ca9030235d8a; doc `21ab2d66-13c8-49a4-82bc-ca9030235d8a`, cuerpo `b9e506b6-e787`): todo lo que hace cada agente, con orden del dueño o sin ella, va a la Bitácora. Las aprobaciones van a "Necesita a Germán" y las organizaciones y empresas a "Oportunidades". Los mails a terceros quedan como borradores en Gmail. Cuando se haga algo a pedido del dueño en esta sesión, sumar también la fila en la Bitácora.
+- **Tablero del equipo** (Claude Docs, https://claude.ai/code/artifact/21ab2d66-13c8-49a4-82bc-ca9030235d8a; doc `21ab2d66-13c8-49a4-82bc-ca9030235d8a`, cuerpo `b9e506b6-e787`): todo lo que hace cada agente, con orden del dueño o sin ella, va a la Bitácora. Las aprobaciones van a "Necesita a Germán" y las organizaciones y empresas a "Oportunidades". Los mails a terceros quedan como borradores en Zoho (info@cybermobile.com.ar). Cuando se haga algo a pedido del dueño en esta sesión, sumar también la fila en la Bitácora.
 - Se usan pidiéndolos por nombre ("usá el agente seguridad") o con `/agents`. `.claude/` no se publica en la web (`.vercelignore`).
 
 ## Skills de Instagram (`.claude/skills/ig-*`)
