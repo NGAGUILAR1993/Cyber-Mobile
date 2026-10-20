@@ -161,6 +161,17 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - **Base de comparación:** SEO 71, visibilidad en IA 55, velocidad en celular 73. Volver a correr el análisis gratis de Bunzy unas 3 semanas después del 13/10.
 - **Search Console:** es una propiedad de dominio, así que el sitemap se envía con la URL completa `https://www.cybermobile.com.ar/sitemap.xml`. Hay una entrada vieja mal cargada (`sitemap.xml](...`) que conviene borrar.
 
+## Estado al 20/10 (traspaso de la sesión original)
+- **Tareas programadas** (ids para `update_trigger`): Redes diario `trig_01Qae97N6tU25LUjJr3caRQA` · TikTok automático `trig_01JmpLS5K9hveMjb8Sc3gPUM` · Equipo: una tarea por día `trig_0188dvm6iXxYfjpgbpUAWwsT` · Vera conversión (mié) `trig_01TPmHS6xePARTnhAuMYHMeZ` · Seguridad (vie) `trig_01WL2LeFaU5FzW8zfXn3h5om` · Control alerta (mar) `trig_01RRmcNFvwnqVeNxUeJ7cctv` · Mail pieza del día (11:22, sesión propia con Gmail) `trig_01TVTmoHNQKmXc4Nj2dH8cyo`. Pausadas: Comercial `trig_014nRTL9a2s8eXG5LBsSyC9d`, Relaciones `trig_01N5xRBSQu8gk9eZkGGcerpm`, SEO `trig_013WcfiVn5HWPtHzwCCkD3Nb`.
+- **Piezas listas:** 20/10 "¿Ese link de PAMI es estafa?" y 21/10 "El Observatorio" (recorridos de la web real, `redes/2026-10-20/` y `redes/2026-10-21/`, IG y canal en 25 s, TikTok en 26 s; el TikTok del 21 lo toma la tarea automática). Herramientas en `scripts/redes/grabacion/` (plantilla de grabación de celular y grabación de la web real). Pedido del dueño: piezas que parezcan grabadas de un celular, nada de maquetas.
+- **TikTok:** quedan 2 episodios sin publicar en `scripts/tiktok/episodios.json`; la próxima corrida agrega 3.
+- **Rechazado por el dueño (19/10):** concurso "la madre más desconfiada" y la serie/personaje "La Vieja Invicta".
+- **Diario Época:** nota sobre un papá al que le vaciaron la cuenta tras bajar una app (es el #1 del Observatorio, "App de acceso remoto"). Se le mandaron al dueño el mail y el DM para el diario; él los envía.
+- **Embudo (19/10):** en 7 días ninguna persona nueva le escribió a Vera; 0 pagos. Campaña "Primeros 10" en `scripts/campanas/2026-10-19-primeros-10.md`. Los botones de prueba de la web ya pasan por `/vera?o=web`; falta una vista para leer los clics de Redis (propuesta: `?vista=vera` en `api/observatorio-stats.js` + tabla en `admin.html`).
+- **Alerta del lunes:** el 19/10 n8n la "envió" a 7 números, pero Meta solo entrega a quien escribió en las últimas 24 h (imagen o texto, da igual; fuera de esa ventana solo plantillas pagas). Propuesto al dueño, sin respuesta: guardar el estado de entrega de Meta para saber a quién llegó, publicar la alerta en el canal de WhatsApp, y que Vera invite a escribir "ALERTA".
+- **Seguridad:** el historial de ejecuciones de n8n guarda las claves del nodo "Config Secretos" en cada ítem; pendiente sacarlas y rotar las de MP, Meta y Evolution (espera aprobación en el tablero).
+- **Consumo:** el dueño pidió (19/10) no gastar de más: un agente por vez y dejarle lugar en la sesión.
+
 ## Pendientes
 - **Sin plantillas pagas de Meta (decisión del dueño, 14/10):** no se crean plantillas porque Meta cobra cada mensaje con plantilla y hoy no hay clientes pagos.
   - Todo lo que manda Vera es gratis: respuestas y tarjetas dentro de las 24 h desde que el cliente escribió.
