@@ -50,7 +50,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 | Pieza diaria para redes (`redes/<fecha>/`) | `redes.yml` → `scripts/redes/generar.mjs` | Todos los días 08:15 AR |
 | Mail diario con la pieza del día a cybermobile.ai@gmail.com | Routine de claude.ai | 11:22 AR |
 | Control de la alerta del lunes (revisa en n8n, reenvía si falló, manda mail) | Routine "Control alerta semanal (martes 12 h)", ligada a la sesión original | Martes 11:52 AR |
-| Monitor de caídas (sitio, agente, n8n, Evolution; mail solo si cambia el estado) | `monitor.yml` | Cada 30 min (GitHub suele atrasarlo) |
+| Monitor de caídas (sitio, agente, n8n, Evolution y el video de bienvenida en Supabase; mail solo si cambia el estado) | `monitor.yml` | Cada 30 min (GitHub suele atrasarlo) |
 | Controles de seguridad | `seguridad.yml` | Cada push a main y cada PR |
 | Mail a cybermobile.ai@gmail.com cada vez que sale una tarjeta de la red (tipo, señales, imagen; cliente con los últimos 4 dígitos) | n8n, "Preparar Mail Tarjeta" → "Mail Tarjeta Enviada" (SMTP de info@cybermobile.com.ar) | Cada tarjeta |
 | Mail con el resumen de la alerta del lunes (a cuántos salió, fallos, tarjeta) | n8n, "Preparar Mail Alerta" → "Mail Alerta Enviada" | Lunes, después del envío |
@@ -185,4 +185,5 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - propuesta para PyMEs (documento "Propuesta Cyber Mobile para PyMEs" en Claude Docs);
   - contacto con Verisure y Prosegur por LinkedIn (textos ya entregados).
 - **OBJETIVO (17/10): 100 clientes pagos al 31/12/2026 y que Cyber Mobile se haga viral.** Plan y trabajo fijo de cada agente en `scripts/OBJETIVO.md`. Hito intermedio: al 15/11, 50 personas que hayan probado Vera y 5 que paguen.
+- **Video de bienvenida:** n8n ("Enviar Video Vera") lo manda por link desde Supabase (`swhwheusmyhaygfiypqs.supabase.co/storage/v1/object/public/Vera/vera.mp4`). El 20/10 no le llegó a un número nuevo porque el proyecto de Supabase (plan gratis) estaba pausado: Meta acepta el envío igual y falla después, sin error en n8n. El dueño lo restauró y el monitor lo consulta para mantenerlo activo y avisar si se cae.
 - **Bienvenida de Vera:** el número del staff no ve el flujo real. Las pruebas de primer mensaje las hace un número que nunca escribió.
