@@ -4,7 +4,9 @@
 import Redis from 'ioredis';
 
 const WA = 'https://wa.me/5491170598505?text=' + encodeURIComponent('Hola Vera, quiero probar 7 días gratis');
-const ORIGENES = ['ig', 'bio', 'comentario', 'tarjeta', 'qr', 'web', 'canal', 'historia', 'guia', 'alerta', 'tiktok', 'estado'];
+const ORIGENES = ['ig', 'bio', 'comentario', 'tarjeta', 'qr', 'web', 'canal', 'historia', 'guia', 'alerta', 'tiktok', 'estado',
+    // Campaña de viralización (20/10): alianzas, prensa, otros países, Product Hunt, grupos y creadores.
+    'ong', 'prensa', 'latam', 'en', 'ph', 'grupo', 'creador'];
 
 let redisClient;
 function redis() {
