@@ -22,6 +22,9 @@ SITIO = 'https://www.cybermobile.com.ar'
 N8N = 'https://primary-production-3c8ba.up.railway.app'
 EVOLUTION = 'https://evolution-api-production-bf51.up.railway.app'
 INSTANCIA = 'Agente%20Ciber'
+# Video de bienvenida de Vera (lo manda n8n por link). Consultarlo seguido también mantiene
+# activo el proyecto de Supabase, que en el plan gratis se pausa si no tiene uso.
+VIDEO_BIENVENIDA = 'https://swhwheusmyhaygfiypqs.supabase.co/storage/v1/object/public/Vera/vera.mp4'
 ETIQUETA = 'monitor'
 INTENTOS = 3
 ESPERA = 20  # segundos entre intentos, para no avisar por un corte de segundos
@@ -48,6 +51,7 @@ def chequeos():
         ('Sitemap', lambda: pedir(SITIO + '/sitemap.xml'), lambda c, t: c == 200 and '<urlset' in t),
         ('n8n (flujos del agente)', lambda: pedir(N8N + '/healthz'), lambda c, t: c == 200 and 'ok' in t),
         ('Evolution API (WhatsApp)', lambda: pedir(EVOLUTION + '/'), lambda c, t: 200 <= c < 500 and c != 0),
+        ('Video de bienvenida (Supabase)', lambda: pedir(VIDEO_BIENVENIDA, {'Range': 'bytes=0-1023'}), lambda c, t: c in (200, 206)),
     ]
     clave = os.environ.get('EVOLUTION_APIKEY', '').strip()
     if clave:
@@ -114,7 +118,7 @@ def main():
             pass  # ya existe
         lista = '\n'.join(f'• {n}: {d}' for n, d in fallas)
         cuerpo = (f'Detectamos una caída a las {ahora} (hora de Argentina):\n\n{lista}\n\n'
-                  'Revisá Railway (n8n y Evolution) o Vercel según lo que falle. '
+                  'Revisá Railway (n8n y Evolution), Vercel o Supabase (video de bienvenida: entrá al proyecto y tocá Restore) según lo que falle. '
                   'Te aviso de nuevo cuando todo vuelva a funcionar.\n\n— Monitor de Cyber Mobile')
         github('POST', '/issues', {'title': f'🔴 Caída: {", ".join(n for n, _ in fallas)}', 'body': cuerpo, 'labels': [ETIQUETA]})
         correo(f'🔴 Cyber Mobile: falla {fallas[0][0]}' + (f' y {len(fallas) - 1} más' if len(fallas) > 1 else ''), cuerpo)
