@@ -72,7 +72,7 @@
 
 ---
 
-## 3. Borradores creados en Zoho (desde info@cybermobile.com.ar, sin enviar)
+## 3. Mails enviados desde info@cybermobile.com.ar (20/10, autorizados por Germán)
 Todas las direcciones son públicas: las de las asociaciones salen del [Registro Nacional de Asociaciones de Consumidores](https://www.argentina.gob.ar/economia/industria-y-comercio/defensadelconsumidor/registro-nacional-de-asociaciones-de-consumidores) (actualizado el 08/05/2026).
 
 | # | Destinatario | Mail | Asunto | Por qué |
@@ -88,7 +88,7 @@ Todas las direcciones son públicas: las de las asociaciones salen del [Registro
 | 9 | Proconsumer | proconsumer@proconsumer.org.ar | Estafas virtuales: datos mensuales y una herramienta de verificación para sus asociados | Mantiene el listado de asociaciones: puede replicar. |
 | 10 | ADDUC (provincia de Buenos Aires) | info@adduc.org | Estafas virtuales: herramienta de verificación para sus consultas y charla gratuita | Atiende consultas en el conurbano. |
 
-**Antes de enviar, Germán revisa:** (a) el borrador a Faro Digital dice "Cyber Mobile (Córdoba)": si la empresa no está en Córdoba, borrar esa palabra; (b) todos ofrecen "probar Vera sin costo" (la prueba normal de 7 días) y "charla gratuita": si se quiere dar a las asociaciones una prueba más larga, eso es una oferta y se decide aparte. Se mandan de a 3 o 4 por día para no caer en spam. Seguimiento único a los 7 días.
+**Enviados el 20/10 a la madrugada** desde info@cybermobile.com.ar, firmados "Mg. Germán Aguilar". Al de Faro Digital se le sacó "(Córdoba)" antes de enviarlo. Seguimiento único a los 7 días (27/10), a cargo de relaciones.
 
 ---
 
@@ -97,6 +97,7 @@ Valen las reglas de `CLAUDE.md` y `scripts/redes/CAPACITACION.md`: portada que a
 
 ### Guion 1 · "Vera le pone nota a tu estafa" · episodio 1 (Instagram y TikTok)
 Protagonista: cualquiera que recibe mensajes truchos. Episodio 1 con un mensaje recreado; desde el 2, con los que manden los seguidores (con permiso y tapados).
+
 | Seg. | Pantalla | Texto en pantalla |
 |---|---|---|
 | 0-3 | Chat claro de WhatsApp, número tapado. Llega: "Hola! Te mandé un código por error a tu número, ¿me lo pasás porfa?" | **¿Cuánto le das a esta estafa del 1 al 10?** |
@@ -112,6 +113,7 @@ Protagonista: cualquiera que recibe mensajes truchos. Episodio 1 con un mensaje 
 
 ### Guion 2 · "¿Estafa o real? Edición Latinoamérica" (TikTok, español neutro)
 Protagonista: hispanohablantes de cualquier país. Voz y textos sin voseo.
+
 | Seg. | Pantalla | Texto en pantalla |
 |---|---|---|
 | 0-3 | Tres burbujas numeradas, borrosas. | **Dos son estafa. Una es real. ¿Cuál?** |
@@ -129,6 +131,7 @@ Protagonista: hispanohablantes de cualquier país. Voz y textos sin voseo.
 Solo si la jugada 7 deja a Vera respondiendo en inglés. Mismo esquema que el guion 2: 1) peaje impago (toll text), 2) un chat de "número equivocado" que termina en una inversión, 3) el código que pediste. Cierre: "Which one fooled you? Comment 1, 2 or 3. Link in bio · 7 days free". Fuentes: las inversiones fueron la categoría con más pérdidas en 2025, más de USD 7.900 M ([FTC, testimonio ante el Congreso](https://www.ftc.gov/system/files/ftc_gov/pdf/ftc-testimony-jec-hearing-on-the-rising-scam-economy.pdf)); los SMS de peaje impago dispararon un 40 % los reportes de falsos organismos ([PYMNTS](https://www.pymnts.com/fraud-prevention/2026/ftc-sounds-alarm-as-imposter-scams-steal-3-5-billion/)). Se publica en la misma cuenta, una vez, para medir: si un video en inglés supera el doble de vistas del promedio, se piensa una cuenta aparte.
 
 ### Guion 4 · Dúo o stitch a un video viral de estafa (plantilla)
+
 | Seg. | Pantalla | Texto en pantalla |
 |---|---|---|
 | 0-5 | El video original (función Dúo o Stitch, nunca descargado y resubido). | Esto se está viralizando. Probemos. |
@@ -140,6 +143,7 @@ Regla: dentro de las 24 h del video original, citando al creador con respeto ("b
 
 ### Guion 5 · "Regalale Vera a tus viejos" (diciembre, venta)
 Protagonista: hija o hijo de 30 a 55 años.
+
 | Seg. | Pantalla | Texto en pantalla |
 |---|---|---|
 | 0-3 | Chat claro "Mamá" (nombre tapado): "Hija, me llegó esto del banco, ¿lo toco?" | **¿Cuántas veces por mes te pasa esto?** |
@@ -151,6 +155,7 @@ Protagonista: hija o hijo de 30 a 55 años.
 Si Germán aprueba una tarjeta de regalo o un precio de Navidad, se cambia la nota de los segundos 18-25.
 
 ### Guion 6 · "3 señales de una tienda falsa" (CyberMonday 2 al 4/11; adaptable a El Buen Fin y Black Friday)
+
 | Seg. | Pantalla | Texto en pantalla |
 |---|---|---|
 | 0-3 | Publicidad recreada: zapatillas de marca al 70 % de descuento, dominio raro visible. | **¿Comprarías acá?** |
@@ -193,9 +198,9 @@ Todo esto pide una cuenta, un formulario o sus datos: queda en "Necesita a Germ�
 ## 7. Próximos 14 días
 | Día | Qué | Quién |
 |---|---|---|
-| Mar 20/10 | Prueba del camino completo. Revisar y mandar los borradores 1 a 4. | Germán |
-| Mié 21/10 | Vera multipaís mínima (prefijo, español neutro, recursos por país, "avisame cuando cobren en mi país"). Mandar los borradores 5 a 7. | vera-n8n, Germán |
-| Jue 22/10 | Producir el guion 1 (nota a tu estafa). Mandar los borradores 8 a 10. Postular a Google for Startups Cloud y AWS Activate. | redes, Germán |
+| Mar 20/10 | Prueba del camino completo. (Los 10 mails ya salieron el 20/10.) | Germán |
+| Mié 21/10 | Vera multipaís mínima (prefijo, español neutro, recursos por país, "avisame cuando cobren en mi país"). | vera-n8n |
+| Jue 22/10 | Producir el guion 1 (nota a tu estafa). Postular a Google for Startups Cloud y AWS Activate. | redes, Germán |
 | Vie 23/10 | TikTok: guion 2 (Edición Latinoamérica) en lugar del episodio de la lista. Primer dúo o stitch (guion 4). | redes |
 | Lun 26/10 | Métricas de la semana: respuestas a los mails, clics por origen, % de vistas fuera de Argentina. | marketing |
 | Mar 27/10 | Seguimiento único a los mails sin respuesta. Formularios de Chequeado y GASA. | relaciones, Germán |
