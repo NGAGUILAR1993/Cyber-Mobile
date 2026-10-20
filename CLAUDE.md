@@ -146,13 +146,18 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - **Publicadas:** verificar-estafa-whatsapp, que-es-phishing, verificar-numero-desconocido (13/10); de-quien-es-un-cbu (17/10); como-saber-si-es-estafa (18/10, incluye la sección "Las estafas por WhatsApp más comunes en Argentina").
 - **Títulos y descripciones (18/10):** se reescribieron para subir el CTR (título ≤60, descripción ≤155, palabra buscada adelante, "gratis"/2026/Argentina cuando aplica) en las guías, `/guias`, la portada y `/observatorio`. Mantener esos largos en las guías nuevas.
 - **Automático:** tarea programada "SEO: libre" (lunes a viernes 10:10 AR, ligada a la sesión original). Martes y jueves publica la próxima de "Faltan" y manda un mail con el link para pedir la indexación en Search Console; los otros días hace mejoras de SEO.
-- **Faltan** (2 o 3 por semana, de más a menos búsquedas):
+- **Search Console 20/10 (28 días: 179 impresiones, 6 clics, puesto 15,4):** la guía del CBU ya aparece ("a quién pertenece" puesto 1; "con el CBU puedo saber de quién es la cuenta" puesto 8) y "phishing" puesto 3. Aparecemos lejos en "qué hacer si fui víctima de phishing" (79), "fraude en compras online" (39) y "sobre inversiones" (6). La marca "cyber mobile" sale 4.ª: falta reforzarla (datos estructurados de organización con Instagram y TikTok).
+- **Faltan** (2 o 3 por semana; primero las que Search Console ya muestra, después por búsquedas):
+  - qué hacer si fui víctima de phishing (ya aparece en el puesto 79: guía de pasos en la primera hora, bancos, denuncia);
+  - inversiones falsas: cómo reconocerlas (#2 del Observatorio; "sobre inversiones" en el puesto 6);
+  - fraude en compras online / tienda falsa (puesto 39);
   - estafas por WhatsApp más comunes (1.000): guía aparte, lista larga de modalidades con un ejemplo y qué hacer en cada una; que enlace a como-saber-si-es-estafa, que ya tiene una sección corta con ese subtítulo.
   - denunciar estafa por WhatsApp (480);
   - cómo saber si un email es falso (320);
   - cómo saber si un link es seguro (140);
   - cómo saber si una cuenta bancaria es confiable (140);
 - **Competencia:** mediavox.co (puesto 18) y detect.ar (puesto 14) para "verificar estafa whatsapp argentina".
+- **Mejora chica pendiente:** en la guía de-quien-es-un-cbu, sumar la pregunta frecuente literal "¿Con el CBU puedo saber de quién es la cuenta?" y en la portada los datos estructurados `Organization` con `sameAs` (Instagram, TikTok).
 - **Base de comparación:** SEO 71, visibilidad en IA 55, velocidad en celular 73. Volver a correr el análisis gratis de Bunzy unas 3 semanas después del 13/10.
 - **Search Console:** es una propiedad de dominio, así que el sitemap se envía con la URL completa `https://www.cybermobile.com.ar/sitemap.xml`. Hay una entrada vieja mal cargada (`sitemap.xml](...`) que conviene borrar.
 
