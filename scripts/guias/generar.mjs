@@ -22,8 +22,19 @@ const fichas = new Map([...(datos.top10 || []), ...(datos.watch || [])].map((x) 
 
 // ---------- Utilidades ----------
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const md = (s) => esc(s).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-const plano = (s) => String(s || '').replace(/\*\*/g, '');
+// Links: [texto](/ruta-interna) o [texto](https://sitio-oficial). Solo se aceptan rutas internas y los
+// dominios oficiales de la lista; cualquier otro link hace fallar el generador.
+const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+const LINK_EXTERNO_OK = /^https:\/\/([a-z0-9-]+\.)*(gob\.ar|gov\.ar|mercadopago\.com\.ar|whatsapp\.com|ftc\.gov)(\/[^\s"'<>]*)?$/;
+const LINK_INTERNO_OK = /^\/(?!\/)[a-z0-9\-\/?=&#.]*$/;
+function enlace(texto, href) {
+    const h = href.replace(/&amp;/g, '&');
+    if (LINK_INTERNO_OK.test(h) && !h.includes('..')) return `<a href="${esc(h)}">${texto}</a>`;
+    if (LINK_EXTERNO_OK.test(h)) return `<a href="${esc(h)}" target="_blank" rel="noopener">${texto}</a>`;
+    throw new Error('Link no permitido en las guías: ' + h);
+}
+const md = (s) => esc(s).replace(LINK, (m, t, h) => enlace(t, h)).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+const plano = (s) => String(s || '').replace(LINK, '$1').replace(/\*\*/g, '');
 const SLUG_OK = /^[a-z0-9-]{3,80}$/;
 const fechaLarga = (iso) => new Date(iso + 'T12:00:00Z').toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 // Ancho y alto reales de un JPEG (para reservar el espacio y que la página no salte al cargar).
@@ -86,6 +97,8 @@ article ul,article ol{margin:0;padding-left:22px;display:flex;flex-direction:col
 .lbl{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
 .vera{padding:26px;border-radius:22px;background:radial-gradient(120% 100% at 100% 0%,rgba(34,211,238,.2),rgba(10,15,28,.9) 70%);border:1px solid rgba(34,211,238,.35);display:flex;flex-direction:column;gap:12px}
 .vera b{font-size:22px;line-height:1.25}.vera span{font-size:15.5px;line-height:1.55;color:var(--txt2)}
+.vera-top{flex-direction:row;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px}.vera-top b{font-size:18px}.vera-top .btn{flex:none}
+@media(max-width:640px){.vera-top{flex-direction:column;align-items:stretch}}
 details{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}details+details{margin-top:10px}
 summary{cursor:pointer;padding:18px 22px;font-size:17px;font-weight:600;list-style:none}summary::-webkit-details-marker{display:none}
 summary::after{content:'+';float:right;color:var(--acc)}details[open] summary::after{content:'–'}
@@ -132,6 +145,7 @@ ${jsonld.map(ld).join('\n')}
 }
 
 const ORG = { '@type': 'Organization', name: 'Cyber Mobile', url: SITIO + '/', logo: SITIO + '/Escudo%20CM.jpeg' };
+const veraTop = () => `<div class="vera vera-top"><div><b>¿Te llegó algo así? Reenviáselo a Vera.</b><br><span>Por WhatsApp te dice en segundos si es estafa y qué hacer.</span></div><a class="btn btn-p" href="${VERA}" rel="nofollow">Probala gratis</a></div>`;
 const veraBox = (frase) => `<div class="vera"><b>${esc(frase)}</b><span>Reenviale el mensaje, el link, el número o la captura a Vera por WhatsApp. Te responde en segundos con un semáforo y qué hacer.</span><a class="btn btn-p" href="${VERA}" rel="nofollow">Probala 7 días gratis</a></div>`;
 
 function paginaGuia(g) {
@@ -155,6 +169,7 @@ ${fich.length ? `<div class="box"><span class="lbl">Estafas que circulan hoy</sp
 <p class="meta">Actualizada el ${fechaLarga(g.actualizada || g.publicada)} · Equipo de Cyber Mobile</p>
 <div class="layout"><article>
 <div class="res"><b>RESPUESTA RÁPIDA</b><p>${md(g.resumen)}</p></div>
+${veraTop()}
 ${secciones}${caso}${veraBox('¿No querés revisarlo vos? Mandáselo a Vera.')}${faq}
 </article>${aside}</div>`;
     const jsonld = [
