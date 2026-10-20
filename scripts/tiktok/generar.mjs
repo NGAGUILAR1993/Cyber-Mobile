@@ -1,4 +1,4 @@
-// Arma el video de TikTok "¿Estafa o real?" (1080x1920, 26 s) con el próximo episodio de episodios.json.
+// Arma el video de TikTok "¿Estafa o real?" (1080x1920, 30 s) con el próximo episodio de episodios.json.
 //
 //   node scripts/tiktok/generar.mjs                 → próximo episodio sin publicar, fecha de hoy (AR)
 //   node scripts/tiktok/generar.mjs --episodio <id> --fecha AAAA-MM-DD
@@ -13,8 +13,8 @@ import { pathToFileURL } from 'node:url';
 const DIR = path.dirname(new URL(import.meta.url).pathname);
 const RAIZ = path.resolve(DIR, '..', '..');
 const ARCHIVO = path.join(DIR, 'episodios.json');
-// 26 s (3 más que los reels de Instagram): el dueño pidió más tiempo para leer los mensajes.
-const DURACION = 26, TRANSICION = 0.8;
+// 30 s, igual que los reels de Instagram: el dueño pidió más tiempo para leer los mensajes (20/10).
+const DURACION = 30, TRANSICION = 0.8;
 // Segundos relativos de cada pantalla: portada, 3 mensajes, respuestas, cierre.
 const PESOS = [2.8, 4.6, 4.6, 4.2, 6.0, 3.8];
 const TRANSICIONES = ['fadeblack', 'slideleft', 'slideleft', 'fadeblack', 'fadeblack'];
