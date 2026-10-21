@@ -158,7 +158,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - cómo saber si un link es seguro (140);
   - cómo saber si una cuenta bancaria es confiable (140);
 - **Competencia:** mediavox.co (puesto 18) y detect.ar (puesto 14) para "verificar estafa whatsapp argentina".
-- **Mejora chica pendiente:** en la guía de-quien-es-un-cbu, sumar la pregunta frecuente literal "¿Con el CBU puedo saber de quién es la cuenta?" y en la portada los datos estructurados `Organization` con `sameAs` (Instagram, TikTok).
+- **Hecho (21/10):** en de-quien-es-un-cbu se sumó la pregunta frecuente literal "¿Con el CBU puedo saber de quién es la cuenta?" (primera del FAQ). En la portada, `Organization` ya tenía `logo` y `contactPoint` con el WhatsApp de Vera; **falta sumar TikTok a `sameAs`**: el usuario no está confirmado (`scripts/redes/TIKTOK.md` dice `@cybermobile.ar` o, si estaba tomado, `@vera.antiestafas`). Cuando Germán confirme el usuario, agregar `https://www.tiktok.com/@<usuario>`.
 - **Base de comparación:** SEO 71, visibilidad en IA 55, velocidad en celular 73. Volver a correr el análisis gratis de Bunzy unas 3 semanas después del 13/10.
 - **Search Console:** es una propiedad de dominio, así que el sitemap se envía con la URL completa `https://www.cybermobile.com.ar/sitemap.xml`. Hay una entrada vieja mal cargada (`sitemap.xml](...`) que conviene borrar.
 
