@@ -1,7 +1,7 @@
 # python3 sfx2.py <dia> <dur> <salida.wav> : efectos sintetizados (toques, barridos, golpes, notificación)
 import wave, struct, math, random, sys
 dia, dur, out = sys.argv[1], float(sys.argv[2]), sys.argv[3]
-K = dur/23.0
+K = dur/(30.0 if dia=='3' else 23.0)
 R=44100; N=int(dur*R); a=[0.0]*N
 random.seed(7)
 def add(t, f):
@@ -26,6 +26,12 @@ if dia=='1':
     for t in (2.7,5.9,6.95,13.55,14.7,19.55): whoosh(t)
     for t in (0.05,11.35,19.65): thump(t)
     pop(15.35); ding(16.9)
+elif dia=='3':
+    for t in (4.85,8.35): tap(t)
+    for t in (2.9,5.25,8.75,12.2,15.4,19.0,22.2,26.4): whoosh(t,.28)
+    for t in (0.05,9.05,26.5): thump(t)
+    for t in (9.3,12.9,16.1,19.7,22.9): pop(t)
+    ding(8.5)
 else:
     for t in (11.25,19.15): tap(t)
     for t in (2.6,5.0,7.6,9.9,11.45,14.8,17.3,19.55): whoosh(t,.28)
