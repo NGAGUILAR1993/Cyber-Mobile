@@ -40,7 +40,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - La rama `claude/...` no genera vistas previas (`git.deploymentEnabled`): solo se publica al hacer merge a main.
   - `admin.html` consulta `/api/stats` cada 60 s y solo con la pestaña a la vista (antes, cada 5 s siempre).
   - `/redes/` lleva caché de un día en el navegador.
-- **Link corto:** `/vera?o=<origen>` → wa.me con texto armado. Cuenta los clics por origen en Redis (`cm:vera:clics:<fecha>`). Orígenes: ig, bio, comentario, tarjeta, qr, web, canal, historia, guia, alerta, tiktok, estado.
+- **Link corto:** `/vera?o=<origen>` → wa.me con texto armado. Cuenta los clics por origen en Redis (`cm:vera:clics:<fecha>`). Orígenes: ig, bio, comentario, tarjeta, qr, web, canal, historia, guia, alerta, tiktok, estado; y desde el 20/10, para la campaña Viralizar: ong, prensa, latam, en, ph, grupo, creador.
 
 ## Automatizaciones (qué corre solo)
 | Qué | Dónde | Cuándo |
@@ -50,7 +50,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 | Pieza diaria para redes (`redes/<fecha>/`) | `redes.yml` → `scripts/redes/generar.mjs` | Todos los días 08:15 AR |
 | Mail diario con la pieza del día a cybermobile.ai@gmail.com | Routine de claude.ai | 11:22 AR |
 | Control de la alerta del lunes (revisa en n8n, reenvía si falló, manda mail) | Routine "Control alerta semanal (martes 12 h)", ligada a la sesión original | Martes 11:52 AR |
-| Monitor de caídas (sitio, agente, n8n, Evolution; mail solo si cambia el estado) | `monitor.yml` | Cada 30 min (GitHub suele atrasarlo) |
+| Monitor de caídas (sitio, agente, n8n, Evolution y el video de bienvenida en Supabase; mail solo si cambia el estado) | `monitor.yml` | Cada 30 min (GitHub suele atrasarlo) |
 | Controles de seguridad | `seguridad.yml` | Cada push a main y cada PR |
 | Mail a cybermobile.ai@gmail.com cada vez que sale una tarjeta de la red (tipo, señales, imagen; cliente con los últimos 4 dígitos) | n8n, "Preparar Mail Tarjeta" → "Mail Tarjeta Enviada" (SMTP de info@cybermobile.com.ar) | Cada tarjeta |
 | Mail con el resumen de la alerta del lunes (a cuántos salió, fallos, tarjeta) | n8n, "Preparar Mail Alerta" → "Mail Alerta Enviada" | Lunes, después del envío |
@@ -84,7 +84,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - Los videos especiales se suben a `redes/<fecha>/<nombre>/` para poder mandar el link por mail. Los archivos de más de ~7 MB no se adjuntan: se mandan links a la web y a GitHub.
 
 ## Reglas del dueño (respetar siempre)
-1. **Los videos de Instagram y del canal de WhatsApp duran 25 segundos** (regla del dueño desde el 19/10: más lentos, para que se puedan leer; antes eran 23). **TikTok dura 26 segundos.** Transiciones lentas y textos con tiempo para leerse.
+1. **Todos los reels y videos duran 30 segundos:** Instagram, canal de WhatsApp y TikTok (regla del dueño desde el 20/10, para que se puedan leer bien; antes eran 25 y 26). Transiciones lentas y textos con tiempo para leerse.
 2. **Estructura de cada pieza:**
    - **Portada:** abre una incógnita y no revela la respuesta.
    - **Puente:** amplía el problema.
@@ -95,7 +95,8 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 5. **Mensaje de marca:** "No somos otra cuenta de alertas: creamos una herramienta para que te enteres primero, en tu teléfono." Detrás de Vera hay ciberseguridad, IA entrenada, automatizaciones y herramientas especializadas.
 6. **Comparaciones con otras IA:** ser justos ("son útiles para muchas cosas; para estafas conviene una especialista"). Las marcas (ChatGPT, Gemini) van solo en el texto de la publicación, nunca en las imágenes.
 7. **No pedirle que cargue cosas técnicas** (secretos, importar JSON): quiere que salga solo. Si algo es indispensable de su lado (por ejemplo, la plantilla de Meta), explicar el paso exacto.
-8. **Mandar los entregables por mail** a cybermobile.ai@gmail.com cuando lo pida, con el conector de Gmail.
+8. **Mandar los entregables por mail** a cybermobile.ai@gmail.com cuando lo pida.
+9. **Todo mail a terceros (medios, empresas, clientes) sale desde info@cybermobile.com.ar**, la cuenta institucional de Zoho (conector de Zoho Mail, cuenta `7816472000000008002`), nunca desde Gmail (pedido del dueño, 20/10). Los borradores para aprobar también van en Zoho (`ZohoMail_sendEmail` con `mode: "draft"`). **Firma de Germán en todo mail y documento: "Mg. Germán Aguilar"** (Cyber Mobile · info@cybermobile.com.ar · www.cybermobile.com.ar).
 
 ## TikTok
 - Guía completa en `scripts/redes/TIKTOK.md`: perfil, público, estilo, series y frecuencia (lunes, miércoles y viernes 20:00).
@@ -107,14 +108,15 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 
 ## Equipo de agentes (`.claude/agents/`)
 - **marketing:** la estratega. Decide qué hacer y cómo se mide (embudo, campañas, pruebas, métricas) y reparte el trabajo entre redes, seo-guias, comercial y relaciones.
-- **redes:** la directora creativa. Inventa las ideas (investiga tendencias, tira 10 ideas por pieza en `scripts/redes/IDEAS.md`, elige la más audaz) y las produce, con ambición de crecer en seguidores. Pedido del dueño (17/10): las ideas tienen que salir de ella, no del dueño.
+- **redes:** la directora creativa, capacitada en marketing que vende (`scripts/redes/CAPACITACION.md`, 20/10). Inventa las ideas (investiga tendencias, tira 10 ideas por pieza en `scripts/redes/IDEAS.md`, elige la más audaz) y las produce, con ambición de crecer en seguidores. Pedido del dueño (17/10): las ideas tienen que salir de ella, no del dueño.
 - **seguridad:** revisa cada PR (claves, CSP, funciones de `api/`). Solo lee, no edita.
 - **vera-n8n:** diagnostica y corrige el flujo de Vera con el conector de n8n.
-- **seo-guias:** escribe y publica las guías de `/guias`.
+- **seo-guias:** escribe y publica las guías de `/guias`, capacitada en SEO y búsqueda con IA (`scripts/guias/CAPACITACION-SEO.md`, 20/10).
 - **comercial:** ventas directas (PyMEs, LinkedIn, seguimiento de pruebas) para la meta del 15/11.
 - **relaciones:** prensa, alianzas, influencers, campañas por fecha, sorteos y reputación de la firma.
+- **Viralización con libertad (pedido del dueño, 20/10):** "viralizar como sea, llegar a todo el mundo; si en Argentina no alcanza, salir de la caja". El agente marketing tiene permiso para buscar y ejecutar opciones de viralización y expansión (otros países, otros públicos, alianzas) sin pedir aprobación previa, con estos límites: no gastar plata, nada de comprar seguidores, bots, spam masivo ni cuentas falsas, nada inventado, y los mails a terceros desde info@ con su firma. Plan y avances en `scripts/campanas/` (plan del 20/10: `scripts/campanas/2026-10-20-viralizar.md`; ese día salieron desde info@ 10 mails a asociaciones de consumidores, Faro Digital, Factchequeado y Maldita).
 - **Autonomía (pedido del dueño, 19/10), con límite de consumo:** una sola tarea por día de lunes a viernes a las 08:10, con un solo agente elegido por impacto (martes y jueves, la guía SEO). No lanzar varios agentes a la vez: el dueño necesita lugar para usar la sesión. Redes y vera-n8n mantienen su tarea fija. Horarios y límites en `scripts/OBJETIVO.md`.
-- **Tablero del equipo** (Claude Docs, https://claude.ai/code/artifact/21ab2d66-13c8-49a4-82bc-ca9030235d8a; doc `21ab2d66-13c8-49a4-82bc-ca9030235d8a`, cuerpo `b9e506b6-e787`): todo lo que hace cada agente, con orden del dueño o sin ella, va a la Bitácora. Las aprobaciones van a "Necesita a Germán" y las organizaciones y empresas a "Oportunidades". Los mails a terceros quedan como borradores en Gmail. Cuando se haga algo a pedido del dueño en esta sesión, sumar también la fila en la Bitácora.
+- **Tablero del equipo** (Claude Docs, https://claude.ai/code/artifact/21ab2d66-13c8-49a4-82bc-ca9030235d8a; doc `21ab2d66-13c8-49a4-82bc-ca9030235d8a`, cuerpo `b9e506b6-e787`): todo lo que hace cada agente, con orden del dueño o sin ella, va a la Bitácora. Las aprobaciones van a "Necesita a Germán" y las organizaciones y empresas a "Oportunidades". Los mails a terceros quedan como borradores en Zoho (info@cybermobile.com.ar). Cuando se haga algo a pedido del dueño en esta sesión, sumar también la fila en la Bitácora.
 - Se usan pidiéndolos por nombre ("usá el agente seguridad") o con `/agents`. `.claude/` no se publica en la web (`.vercelignore`).
 
 ## Skills de Instagram (`.claude/skills/ig-*`)
@@ -143,12 +145,11 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - Fuente: `guias/guias.json`. Generador: `scripts/guias/generar.mjs`.
   - Salida estática: `guias/<slug>/index.html`, `guias/lista.json` y el bloque de la portada entre las marcas `guias:inicio` y `guias:fin`.
   - El sitemap (`api/sitemap.js`) las incluye solas.
-- **Publicadas:** verificar-estafa-whatsapp, que-es-phishing, verificar-numero-desconocido (13/10); de-quien-es-un-cbu (17/10); como-saber-si-es-estafa (18/10, incluye la sección "Las estafas por WhatsApp más comunes en Argentina").
+- **Publicadas:** verificar-estafa-whatsapp, que-es-phishing, verificar-numero-desconocido (13/10); de-quien-es-un-cbu (17/10); como-saber-si-es-estafa (18/10, incluye la sección "Las estafas por WhatsApp más comunes en Argentina"); que-hacer-si-fui-victima-de-phishing (20/10). Desde el 20/10 el generador acepta links `[texto](/ruta)` o a dominios oficiales de una lista cerrada (gob.ar, gov.ar, mercadopago.com.ar, whatsapp.com, ftc.gov) y pone la caja de Vera arriba, después de la respuesta.
 - **Títulos y descripciones (18/10):** se reescribieron para subir el CTR (título ≤60, descripción ≤155, palabra buscada adelante, "gratis"/2026/Argentina cuando aplica) en las guías, `/guias`, la portada y `/observatorio`. Mantener esos largos en las guías nuevas.
 - **Automático:** tarea programada "SEO: libre" (lunes a viernes 10:10 AR, ligada a la sesión original). Martes y jueves publica la próxima de "Faltan" y manda un mail con el link para pedir la indexación en Search Console; los otros días hace mejoras de SEO.
 - **Search Console 20/10 (28 días: 179 impresiones, 6 clics, puesto 15,4):** la guía del CBU ya aparece ("a quién pertenece" puesto 1; "con el CBU puedo saber de quién es la cuenta" puesto 8) y "phishing" puesto 3. Aparecemos lejos en "qué hacer si fui víctima de phishing" (79), "fraude en compras online" (39) y "sobre inversiones" (6). La marca "cyber mobile" sale 4.ª: falta reforzarla (datos estructurados de organización con Instagram y TikTok).
 - **Faltan** (2 o 3 por semana; primero las que Search Console ya muestra, después por búsquedas):
-  - qué hacer si fui víctima de phishing (ya aparece en el puesto 79: guía de pasos en la primera hora, bancos, denuncia);
   - inversiones falsas: cómo reconocerlas (#2 del Observatorio; "sobre inversiones" en el puesto 6);
   - fraude en compras online / tienda falsa (puesto 39);
   - estafas por WhatsApp más comunes (1.000): guía aparte, lista larga de modalidades con un ejemplo y qué hacer en cada una; que enlace a como-saber-si-es-estafa, que ya tiene una sección corta con ese subtítulo.
@@ -157,14 +158,14 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - cómo saber si un link es seguro (140);
   - cómo saber si una cuenta bancaria es confiable (140);
 - **Competencia:** mediavox.co (puesto 18) y detect.ar (puesto 14) para "verificar estafa whatsapp argentina".
-- **Mejora chica pendiente:** en la guía de-quien-es-un-cbu, sumar la pregunta frecuente literal "¿Con el CBU puedo saber de quién es la cuenta?" y en la portada los datos estructurados `Organization` con `sameAs` (Instagram, TikTok).
+- **Hecho (21/10):** en de-quien-es-un-cbu se sumó la pregunta frecuente literal "¿Con el CBU puedo saber de quién es la cuenta?" (primera del FAQ). En la portada, `Organization` ya tenía `logo` y `contactPoint` con el WhatsApp de Vera; **falta sumar TikTok a `sameAs`**: el usuario no está confirmado (`scripts/redes/TIKTOK.md` dice `@cybermobile.ar` o, si estaba tomado, `@vera.antiestafas`). Cuando Germán confirme el usuario, agregar `https://www.tiktok.com/@<usuario>`.
 - **Base de comparación:** SEO 71, visibilidad en IA 55, velocidad en celular 73. Volver a correr el análisis gratis de Bunzy unas 3 semanas después del 13/10.
 - **Search Console:** es una propiedad de dominio, así que el sitemap se envía con la URL completa `https://www.cybermobile.com.ar/sitemap.xml`. Hay una entrada vieja mal cargada (`sitemap.xml](...`) que conviene borrar.
 
 ## Estado al 20/10 (traspaso de la sesión original)
 - **Sesiones (desde el 20/10):** las tareas automáticas corren en la sesión "Cyber Mobile · Operaciones" (`session_01MxYYsnjkKK9JefcQK7TQcs`, con Gmail, n8n, Claude Docs, Higgsfield y GitHub). La sesión original (`session_01Fx8nG8n9zT2oynar78L9kM`) queda libre para el dueño; sus tareas viejas quedaron apagadas. Donde este archivo dice "ligada a la sesión original", hoy es la de Operaciones.
 - **Tareas programadas** (ids para `update_trigger`, todas en Operaciones): Redes diario `trig_0169854CEhxh1PpEPSUtiaKE` · TikTok automático `trig_01TsfWL4KwNAGocaDwgxqkw4` · Equipo: una tarea por día `trig_01Syyjz1Sf6LpdUiS419Zvzi` · Vera conversión (mié) `trig_01Cq6J6pXdPz7tB4nxZUAaYe` · Seguridad (vie) `trig_01XB8NnmXu2vMmGKeWzBNzg4` · Control alerta (mar) `trig_014hpQrV2WqPQ2CoDAXomPG8` · Mail pieza del día (11:22, sesión nueva cada vez con Gmail) `trig_01TVTmoHNQKmXc4Nj2dH8cyo`. Pausadas (sesión original): Comercial `trig_014nRTL9a2s8eXG5LBsSyC9d`, Relaciones `trig_01N5xRBSQu8gk9eZkGGcerpm`, SEO `trig_013WcfiVn5HWPtHzwCCkD3Nb`.
-- **Piezas listas:** 20/10 "¿Ese link de PAMI es estafa?" y 21/10 "El Observatorio" (recorridos de la web real, `redes/2026-10-20/` y `redes/2026-10-21/`, IG y canal en 25 s, TikTok en 26 s; el TikTok del 21 lo toma la tarea automática). Herramientas en `scripts/redes/grabacion/` (plantilla de grabación de celular y grabación de la web real). Pedido del dueño: piezas que parezcan grabadas de un celular, nada de maquetas.
+- **Piezas listas:** 20/10 "El Observatorio" (cierre "Animate a escribirle · 7 días gratis"; el dueño pidió que saliera ese día) y 21/10 "¿Ese link de PAMI es estafa?" (recorridos de la web real, `redes/2026-10-20/` y `redes/2026-10-21/`, todo en 30 s; el TikTok del 21, ahora el de PAMI, lo toma la tarea automática). Herramientas en `scripts/redes/grabacion/` (plantilla de grabación de celular y grabación de la web real). Pedido del dueño: piezas que parezcan grabadas de un celular, nada de maquetas.
 - **TikTok:** quedan 2 episodios sin publicar en `scripts/tiktok/episodios.json`; la próxima corrida agrega 3.
 - **Rechazado por el dueño (19/10):** concurso "la madre más desconfiada" y la serie/personaje "La Vieja Invicta".
 - **Diario Época:** nota sobre un papá al que le vaciaron la cuenta tras bajar una app (es el #1 del Observatorio, "App de acceso remoto"). Se le mandaron al dueño el mail y el DM para el diario; él los envía.
@@ -184,4 +185,5 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - propuesta para PyMEs (documento "Propuesta Cyber Mobile para PyMEs" en Claude Docs);
   - contacto con Verisure y Prosegur por LinkedIn (textos ya entregados).
 - **OBJETIVO (17/10): 100 clientes pagos al 31/12/2026 y que Cyber Mobile se haga viral.** Plan y trabajo fijo de cada agente en `scripts/OBJETIVO.md`. Hito intermedio: al 15/11, 50 personas que hayan probado Vera y 5 que paguen.
+- **Video de bienvenida:** n8n ("Enviar Video Vera") lo manda por link desde Supabase (`swhwheusmyhaygfiypqs.supabase.co/storage/v1/object/public/Vera/vera.mp4`). El 20/10 no le llegó a un número nuevo porque el proyecto de Supabase (plan gratis) estaba pausado: Meta acepta el envío igual y falla después, sin error en n8n. El dueño lo restauró y el monitor lo consulta para mantenerlo activo y avisar si se cae.
 - **Bienvenida de Vera:** el número del staff no ve el flujo real. Las pruebas de primer mensaje las hace un número que nunca escribió.

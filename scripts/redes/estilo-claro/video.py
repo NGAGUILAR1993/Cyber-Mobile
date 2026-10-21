@@ -1,5 +1,5 @@
 import subprocess,sys
-def video(imgs, pesos, trans, salida, total=23.0, tr=0.8):
+def video(imgs, pesos, trans, salida, total=30.0, tr=0.8):
     n=len(imgs); k=(total+tr*(n-1))/sum(pesos); dur=[round(p*k,2) for p in pesos]
     args=[]
     for i in imgs: args+=['-i',i]

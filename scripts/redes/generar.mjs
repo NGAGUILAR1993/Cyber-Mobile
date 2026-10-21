@@ -196,7 +196,7 @@ try {
 // ---------- Video de los reels (sin voz; la música se agrega en Instagram) ----------
 // Todos los reels duran DURACION_REEL segundos: las pantallas se reparten el tiempo según su peso, con
 // transiciones lentas y un zoom suave para que se puedan leer con calma.
-const DURACION_REEL = 23;
+const DURACION_REEL = 30;
 function video(pesos, transiciones) {
     const tr = 0.8, n = pesos.length;
     const k = (DURACION_REEL + tr * (n - 1)) / pesos.reduce((a, b) => a + b, 0);

@@ -38,12 +38,12 @@ Todo lo que hace cada agente, pedido por el dueño o por iniciativa propia, se a
 Cómo se escribe en el tablero: lo hace la tarea programada (la sesión principal), con el conector de Claude Docs, a partir de lo que entrega el agente. Primero `read` con `sinceRev` o una búsqueda para ver lo nuevo, después se agregan filas: nunca se reescribe ni se borra lo que puso el dueño. Antes de proponer algo, cada agente mira la bitácora para no repetir trabajo.
 
 ## Libertad, con estos límites
-- **Sin pedir permiso:** investigar, armar listas de contactos públicos, escribir propuestas, comunicados, guías y piezas; mejorar la web (pasa por el control de seguridad); dejar mails para terceros como **borrador en Gmail** (`create_draft`), listos para que el dueño los mande.
+- **Sin pedir permiso:** investigar, armar listas de contactos públicos, escribir propuestas, comunicados, guías y piezas; mejorar la web (pasa por el control de seguridad); dejar mails para terceros como **borrador en Zoho desde info@cybermobile.com.ar** (`ZohoMail_sendEmail` con `mode: "draft"`, cuenta `7816472000000008002`), listos para que el dueño los mande.
 - **Con aprobación del dueño (fila en "Necesita a Germán"):** escribirle a cualquier persona u organización de afuera, ofertas, descuentos, sorteos o promesas, y cualquier gasto.
 - Si una fila quedó Aprobada, el agente la ejecuta al día siguiente y la pasa a Hecho.
 
 ## Reglas para todos
-- Nadie le escribe a terceros por su cuenta: los mensajes para clientes, medios o empresas quedan como borrador en Gmail y en el tablero; el dueño los aprueba y los envía.
+- Nadie le escribe a terceros por su cuenta: los mensajes para clientes, medios o empresas quedan como borrador en Zoho (info@cybermobile.com.ar) y en el tablero; el dueño los aprueba y los envía. **Todo mail a terceros sale desde info@cybermobile.com.ar, nunca desde Gmail** (pedido del dueño, 20/10).
 - Nada inventado: ni cifras, ni testimonios, ni promesas que Vera no cumpla.
 - Nada de gastar plata sin aprobación del dueño.
 - Las reglas de `CLAUDE.md` siguen valiendo.
