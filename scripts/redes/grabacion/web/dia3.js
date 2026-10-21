@@ -19,23 +19,24 @@ const st=document.createElement('style');st.textContent=`
 #wa2 .col{position:absolute;left:0;top:0;width:1080px}#wa2 .col img{display:block;width:1080px;margin-bottom:24px}
 #wa2 .in{position:absolute;left:20px;right:150px;bottom:22px;height:110px;border-radius:55px;background:#1f2c33;font-size:38px;color:#8696a0;display:flex;align-items:center;padding:0 40px}
 #wa2 .mic{position:absolute;right:20px;bottom:22px;width:110px;height:110px;border-radius:50%;background:#00a884}
+#cta img.ft{width:340px;height:510px;border-radius:34px;object-fit:cover;margin-bottom:30px}
 #cta .e{font-family:G;font-size:46px;color:#fff;margin-top:34px;line-height:1.35}`;
 document.head.appendChild(st);
 const ph=document.getElementById('phone');
 ph.insertAdjacentHTML('beforeend',`<div id="ct"><div class="hd"><span>✕</span><b>Crear contacto</b><span class="g">Guardar</span></div>
-<img class="av" src="/cyber_agent_logo.png"><div class="fi on"><span>Nombre</span><i id="nom"></i><i class="cur" id="cur"></i></div>
+<img class="av" src="/comp/casos-vera/vera.jpg"><div class="fi on"><span>Nombre</span><i id="nom"></i><i class="cur" id="cur"></i></div>
 <div class="fi"><span>Empresa</span>Cyber Mobile</div><div class="fi"><span>Teléfono (Móvil)</span>+54 9 11 7059-8505</div>
 <div class="toast" id="toast">Contacto guardado</div></div>
-<div id="wa2"><div class="wh"><span class="ar">&#8592;</span><img src="/cyber_agent_logo.png"><div><b>Vera AI Antiestafas</b><small>Cuenta de empresa</small></div></div>
+<div id="wa2"><div class="wh"><span class="ar">&#8592;</span><img src="/comp/casos-vera/vera.jpg"><div><b>Vera AI Antiestafas</b><small>Cuenta de empresa</small></div></div>
 <div class="bd"><div class="col" id="col">${[1,2,3,4,5].map(i=>`<img src="/comp/casos-vera/c${i}.png">`).join('')}</div></div>
 <div class="in">Mensaje</div><div class="mic"></div></div>`);
 // tapa (y) del cuerpo del chat: la tapa de cada caso queda a 260 px del borde
 const OFF=[0,624,1210,2680,4086], TOPC=320;
 const Y=[[9.0,-TOPC],[12.2,-TOPC],[12.8,OFF[1]-TOPC],[15.4,OFF[1]-TOPC],[16.0,OFF[2]-TOPC],[16.6,OFF[2]-TOPC],[18.6,1124],[19.0,1124],[19.6,OFF[3]-TOPC],[20.2,OFF[3]-TOPC],[21.8,2530],[22.2,2530],[22.8,OFF[4]-TOPC]];
 const NOM='Vera AI Antiestafas';
-CTA.ig=`<img src="/cyber_agent_logo.png"><div class="a">Comentá<br>VERA</div><div class="b">para conocerla<br>en tu celular</div><div class="e">y compartila con amigos y familia</div><div class="c">7 días gratis</div>`;
-CTA.wa=`<img src="/cyber_agent_logo.png"><div class="a">Agendá<br>a Vera</div><div class="b">+54 9 11 7059-8505</div><div class="e">y compartila con amigos y familia</div><div class="c">7 días gratis</div>`;
-CTA.tt=`<img src="/cyber_agent_logo.png"><div class="a">Link en<br>el perfil</div><div class="b">Agendá a Vera<br>en tu celular</div><div class="c">7 días gratis</div>`;
+CTA.ig=`<img class="ft" src="/comp/casos-vera/vera-foto.jpg"><div class="a">Comentá<br>VERA</div><div class="b">para conocerla<br>en tu celular</div><div class="e">y compartila con amigos y familia</div><div class="c">7 días gratis</div>`;
+CTA.wa=`<img class="ft" src="/comp/casos-vera/vera-foto.jpg"><div class="a">Agendá<br>a Vera</div><div class="b">+54 9 11 7059-8505</div><div class="e">y compartila con amigos y familia</div><div class="c">7 días gratis</div>`;
+CTA.tt=`<img class="ft" src="/comp/casos-vera/vera-foto.jpg"><div class="a">Link en<br>el perfil</div><div class="b">Agendá a Vera<br>en tu celular</div><div class="c">7 días gratis</div>`;
 C={
   scenes:[{from:0,to:99,frame:'H',url:U,scroll:[[0,0],[2.9,0],[4.2,{sel:'.actions',off:300}]]}],
   cam:[[0,[1.12,540,700]],[0.8,[1,540,960]],[4.3,[1,540,960]],[4.7,[1.08,540,1150]],[5.1,[1.08,540,1150]],[5.4,[1,540,960]]],
@@ -64,6 +65,7 @@ C={
 };
 (async()=>{
   await mk('H','/');
+  doc('H').querySelectorAll('.brand-logo').forEach(i=>i.src='/comp/casos-vera/vera.jpg');
   await Promise.all([...document.querySelectorAll('#col img,#ct img,#wa2 img')].map(i=>i.complete?1:new Promise(r=>i.onload=r)));
   await document.fonts.ready;try{await FR.H.contentDocument.fonts.ready}catch(e){}
   document.documentElement.dataset.listo=1;
