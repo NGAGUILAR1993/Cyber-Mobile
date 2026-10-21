@@ -393,6 +393,7 @@
             .tabbar .icon { width: 22px; height: 22px; }
         }
     </style>
+    <link rel="preload" as="image" href="/media/vera3d/v2/poster.webp" type="image/webp" fetchpriority="high">
 </head>
 <body>
 
@@ -462,9 +463,14 @@
                         <span><svg class="icon"><use href="#i-check"/></svg>Disponible 24/7</span>
                     </div>
                 </div>
-                <div class="hero-visual v3d" id="v3d">
-                    <video id="v3d-vid" autoplay muted loop playsinline preload="metadata" poster="/media/vera3d/poster.jpg" aria-label="Celular con el chat de Vera: una alerta de phishing sale de la pantalla"><source src="/media/vera3d/giro.webm" type="video/webm"><source src="/media/vera3d/giro.mp4" type="video/mp4"></video>
-                    <canvas id="v3d-cv" width="720" height="720" hidden aria-hidden="true"></canvas>
+                <div class="hero-visual v3d" id="v3d" data-base="/media/vera3d/v2/">
+                    <video id="v3d-vid" muted loop playsinline preload="none" width="1080" height="1080" poster="/media/vera3d/v2/poster.webp" aria-label="Celular con el chat de Vera: un documento malicioso sale de la pantalla">
+                        <source media="(max-width: 900px)" src="/media/vera3d/v2/giro-720.webm" type="video/webm">
+                        <source media="(max-width: 900px)" src="/media/vera3d/v2/giro-720.mp4" type="video/mp4">
+                        <source src="/media/vera3d/v2/giro-1080.webm" type="video/webm">
+                        <source src="/media/vera3d/v2/giro-1080.mp4" type="video/mp4">
+                    </video>
+                    <canvas id="v3d-cv" width="1080" height="1080" hidden aria-hidden="true"></canvas>
                 </div>
             </div>
         </section>
@@ -1015,6 +1021,6 @@
             play('email');
         });
     </script>
-    <script src="/media/vera3d/v3d.js" defer></script>
+    <script src="/media/vera3d/v2/v3d.js" defer></script>
 </body>
 </html>
