@@ -97,6 +97,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 7. **No pedirle que cargue cosas técnicas** (secretos, importar JSON): quiere que salga solo. Si algo es indispensable de su lado (por ejemplo, la plantilla de Meta), explicar el paso exacto.
 8. **Mandar los entregables por mail** a cybermobile.ai@gmail.com cuando lo pida.
 9. **Todo mail a terceros (medios, empresas, clientes) sale desde info@cybermobile.com.ar**, la cuenta institucional de Zoho (conector de Zoho Mail, cuenta `7816472000000008002`), nunca desde Gmail (pedido del dueño, 20/10). Los borradores para aprobar también van en Zoho (`ZohoMail_sendEmail` con `mode: "draft"`). **Firma de Germán en todo mail y documento: "Mg. Germán Aguilar"** (Cyber Mobile · info@cybermobile.com.ar · www.cybermobile.com.ar).
+10. **Seriedad de marca (pedido del dueño, 22/10):** nada de nombres o términos en chiste para las piezas (se rechazó "Caradurómetro"). El tono es serio, innovador, de impacto y con color para llegar también a los jóvenes que usan redes: confianza, mostrar la herramienta real y el trabajo de ciberseguridad detrás.
 
 ## TikTok
 - Guía completa en `scripts/redes/TIKTOK.md`: perfil, público, estilo, series y frecuencia (lunes, miércoles y viernes 20:00).
