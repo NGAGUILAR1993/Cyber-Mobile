@@ -1,5 +1,6 @@
 // Celular 3D de la portada.
 // Gira en loop mientras se ve; al bajar un poco (o a los 4 s) se frena de frente y el documento malicioso sale de la pantalla.
+// Al volver arriba después de haber bajado (o cuando el bloque vuelve a verse) empieza a girar de nuevo.
 // Ahorro: no carga video ni cuadros si el bloque no está a la vista, si el usuario pidió menos movimiento o ahorro de datos.
 (() => {
   const box = document.getElementById('v3d'), vid = document.getElementById('v3d-vid'), cv = document.getElementById('v3d-cv');
@@ -16,7 +17,7 @@
     for (let i = 1; i <= N; i++) { const im = new Image(); im.decoding = 'async'; im.src = base + dir + 'f_' + String(i).padStart(4, '0') + '.webp'; fr.push(im); }
   }
 
-  let state = 'spin', auto = false, autoT = 0, e = 0, last = -1, lastT = 0, t0 = 0, idle = 0, visible = false, raf = 0;
+  let state = 'spin', auto = false, autoT = 0, e = 0, last = -1, lastT = 0, t0 = 0, idle = 0, visible = false, raf = 0, away = false;
   const prog = () => Math.max(0, Math.min(1, scrollY / (innerHeight * .6)));
   function draw(i) {
     if (!fr.length) return;
@@ -37,13 +38,15 @@
       let target = Math.min(1, p / .35);
       if (auto) target = Math.max(target, Math.min(1, (now - autoT) / 1300));
       e += (target - e) * .18; draw(e * (N - 1));
-      if (!auto && p < .005 && e < .02) { if (++idle > 90) { idle = 0; toSpin(); } } else idle = 0;
+      if (p > .25) away = true;                         // bajó: al volver arriba, gira otra vez
+      if (p < .005 && (away || (!auto && e < .02))) { if (++idle > (away ? 20 : 90)) { idle = 0; away = false; toSpin(); } } else idle = 0;
     }
     raf = requestAnimationFrame(tick);
   }
 
   new IntersectionObserver(([en]) => {
-    visible = en.isIntersecting;
+    const was = visible; visible = en.isIntersecting;
+    if (visible && !was && state !== 'spin' && vid.preload !== 'none') toSpin();   // volvió a verse: arranca girando
     if (visible) {
       if (vid.preload === 'none') { vid.preload = 'auto'; vid.load(); t0 = performance.now(); setTimeout(load, 2500); }
       play(); if (!raf) raf = requestAnimationFrame(tick);
