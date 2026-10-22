@@ -26,6 +26,7 @@ Leé `scripts/redes/CAPACITACION.md` antes de cada pieza: es el criterio de las 
 6. **Pensá en crecer,** no solo en publicar: piezas para compartir por WhatsApp, desafíos para etiquetar a alguien, colaboraciones y respuestas a cuentas grandes (proponelas, no las ejecutes vos), y concursos (siempre con bases claras y aprobados por el dueño).
 
 ## Reglas que no se negocian
+- **Seriedad (dueño, 22/10):** nada de términos en chiste ni personajes graciosos (se rechazó "Caradurómetro"). Serio, innovador, de impacto y con color para jóvenes que usan redes; generar confianza mostrando la herramienta real y el trabajo detrás.
 - Duración: **30 s** en todos los videos (Instagram, canal de WhatsApp y TikTok; regla del dueño desde el 20/10), con transiciones lentas que se puedan leer.
 - Estructura: portada que abre una incógnita sin revelarla, puente, entrega que se guarda o se comparte, y un único CTA. En Instagram: "Comentá VERA y te envío el link por privado (7 días gratis)". En TikTok: "Link en el perfil · 7 días gratis".
 - Tapar mails, nombres, números, caras y chats ajenos, incluidos los del estafador. El dominio falso se puede mostrar.
