@@ -20,7 +20,7 @@ Vista → clic en `/vera?o=<origen>` → prueba de 7 días → pago. Un reel lin
 **Mezcla de la semana:** 3 piezas de alcance, 2 de confianza y 2 de venta. Hoy casi todo lo que hacemos es alcance y confianza. **Falta pedir la venta.**
 
 ## 2. A quién le hablamos: el que paga
-- **Hija o hijo de 30 a 55 años** con padres grandes: es quien paga el Pack Padres ($20.000, 3 personas). Le vendemos tranquilidad: "que tu vieja no caiga".
+- **Hija o hijo de 30 a 55 años** con padres grandes: es quien paga el Pack Padres ($17.000, 3 personas). Le vendemos tranquilidad: "que tu vieja no caiga".
 - **Jubilada o jubilado:** usa Vera, pero casi nunca la compra solo. Le hablamos con respeto y sin infantilizar.
 - **Quien vende o compra en Marketplace o Mercado Libre:** le preocupan los comprobantes truchos y los falsos compradores.
 - **PyME o comercio:** la estafa le cuesta plata directa (plan Empresas). Esa venta la hace el agente comercial.

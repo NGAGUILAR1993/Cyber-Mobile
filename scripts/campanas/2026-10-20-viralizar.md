@@ -68,7 +68,7 @@
 
 **Lo que no hacemos:** comprar seguidores, bots, cuentas falsas, spam en grupos, hablar con estafadores, inventar casos o números. Las marcas de otras IA van solo en el texto y con comparaciones justas.
 
-**Con plata, si en algún momento se aprueba:** promocionar solo el video que más se compartió de forma orgánica, con objetivo "Mensajes" a WhatsApp. Es la propuesta que ya está en "Necesita a Germán" ($3.000 por día, tope $20.000). Recomiendo esperar a que la jugada 1 pase y haya 3 pruebas reales.
+**Con plata, si en algún momento se aprueba:** promocionar solo el video que más se compartió de forma orgánica, con objetivo "Mensajes" a WhatsApp. Es la propuesta que ya está en "Necesita a Germán" ($3.000 por día, tope $17.000). Recomiendo esperar a que la jugada 1 pase y haya 3 pruebas reales.
 
 ---
 
@@ -149,7 +149,7 @@ Protagonista: hija o hijo de 30 a 55 años.
 | 0-3 | Chat claro "Mamá" (nombre tapado): "Hija, me llegó esto del banco, ¿lo toco?" | **¿Cuántas veces por mes te pasa esto?** |
 | 3-10 | Mensaje recreado de "cuenta bloqueada" con link. | Vos no siempre estás para contestarle. |
 | 10-18 | La madre se lo reenvía a Vera; respuesta real 🔴 con "no toques el link, llamá al número de atrás de tu tarjeta". | Vera sí. A cualquier hora. |
-| 18-25 | Nota: "Pack Padres: 3 personas, $20.000 por mes, 7 días gratis, se cancela desde Mercado Pago". | El regalo que no se rompe ni se pierde. |
+| 18-25 | Nota: "Pack Padres: 3 personas, $17.000 por mes, 7 días gratis, se cancela desde Mercado Pago". | El regalo que no se rompe ni se pierde. |
 | 25-30 | Cierre. | Mandale este video a tu hermano y lo pagan entre los dos. |
 
 Si Germán aprueba una tarjeta de regalo o un precio de Navidad, se cambia la nota de los segundos 18-25.
