@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vera Antiestafas</title>
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+<header class="top">
+  <img src="icons/icon-48.png" width="34" height="34" alt="">
+  <div class="marca">
+    <b>Vera</b>
+    <span>Tu especialista en estafas</span>
+  </div>
+  <span class="cupo" id="cupo" hidden></span>
+</header>
+
+<main id="vista-inicio">
+  <section class="bienvenida" id="bienvenida" hidden>
+    <h1>Ya tenés a Vera en tu navegador</h1>
+    <p>Hacé clic derecho en cualquier link, texto o página y elegí <b>Verificar con Vera</b>. O tocá el ícono de Vera arriba a la derecha.</p>
+  </section>
+
+  <section class="pagina" id="pagina" hidden>
+    <span class="lbl">Estás en</span>
+    <div class="dominio" id="dominio"></div>
+    <div class="fila">
+      <button class="btn pri" id="b-pagina" type="button">Verificar esta página</button>
+      <button class="btn" id="b-pantalla" type="button" title="Saca una captura de lo que ves y se la manda a Vera">Analizar la pantalla</button>
+    </div>
+  </section>
+
+  <section class="consulta">
+    <label class="lbl" for="texto">Pegá lo que te llegó</label>
+    <textarea id="texto" rows="3" maxlength="4000" placeholder="Un link, CBU o alias, teléfono, mail o el mensaje completo"></textarea>
+    <div class="fila">
+      <button class="btn pri" id="b-verificar" type="button">Verificar</button>
+      <label class="btn" for="archivo" title="Captura, PDF o APK de hasta 3 MB">Subir archivo</label>
+      <input id="archivo" type="file" accept="image/jpeg,image/png,image/webp,application/pdf,.apk,.doc,.docx,.zip" hidden>
+    </div>
+    <p class="nota">Los audios se analizan por WhatsApp.</p>
+  </section>
+</main>
+
+<main id="vista-cargando" hidden>
+  <div class="radar" aria-hidden="true"><i></i></div>
+  <p class="cargando" id="cargando-txt">Vera lo está analizando…</p>
+  <p class="nota">Revisa reputación, antivirus y casos reportados. Puede tardar hasta un minuto.</p>
+</main>
+
+<main id="vista-resultado" hidden>
+  <article class="res" id="res">
+    <div class="sem" id="sem"><i></i><i></i><i></i></div>
+    <span class="nivel" id="r-nivel"></span>
+    <h2 id="r-titulo"></h2>
+    <p id="r-resumen"></p>
+    <ul class="hallazgos" id="r-hallazgos"></ul>
+    <div id="r-pasos-box" hidden>
+      <span class="lbl">Qué hacer</span>
+      <ol id="r-pasos"></ol>
+    </div>
+    <a class="modalidad" id="r-modalidad" target="_blank" rel="noopener" hidden></a>
+  </article>
+  <div class="fila">
+    <button class="btn" id="b-otra" type="button">Verificar otra cosa</button>
+  </div>
+</main>
+
+<main id="vista-pago" hidden>
+  <h2>Usaste tus 3 consultas gratis</h2>
+  <p>Seguí protegido con Vera sin límites en el navegador y en tu WhatsApp. Débito automático por Mercado Pago; cancelás cuando quieras.</p>
+  <ul class="planes">
+    <li><b>Individual</b><span>$12.000/mes</span></li>
+    <li><b>Pack Padres</b><span>$20.000/mes · 3 personas</span></li>
+    <li><b>Pack Familiar</b><span>$40.000/mes · 5 personas</span></li>
+  </ul>
+  <div class="fila col">
+    <button class="btn pri" id="b-suscribir" type="button">Suscribirme por WhatsApp</button>
+    <button class="btn" id="b-ya-soy" type="button">Ya soy cliente: vincular mi WhatsApp</button>
+  </div>
+</main>
+
+<main id="vista-vincular" hidden>
+  <h2>Vinculá tu WhatsApp</h2>
+  <p>Mandale este código a Vera por WhatsApp. Cuando lo reciba, tu suscripción queda activa también acá.</p>
+  <div class="codigo" id="v-codigo">…</div>
+  <div class="fila col">
+    <button class="btn pri" id="b-enviar-codigo" type="button">Enviar el código por WhatsApp</button>
+    <button class="btn" id="b-volver" type="button">Volver</button>
+  </div>
+  <p class="nota" id="v-estado">Esperando el mensaje…</p>
+</main>
+
+<footer class="pie">
+  <span id="pie-cuenta"></span>
+  <a href="https://www.cybermobile.com.ar/?o=extension" target="_blank" rel="noopener">cybermobile.com.ar</a>
+</footer>
+<div class="error" id="error" role="alert" hidden></div>
+<script type="module" src="panel.js"></script>
+</body>
+</html>

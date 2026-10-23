@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 import { validar } from '../_lib/validar.js';
 import {
     redis, configurado, urlN8n, responder, ipDe, origenPermitido, sesionOCrear, reservarGratis, devolverGratis,
-    excedeLimite, estadoSuscripcion, guardarEstado, firmaN8n, normalizarWeb, ESTADOS_CON_ACCESO, GRATIS, MIMES, MAX_ARCHIVO, gratisUsadas, tokenSesion
+    excedeLimite, estadoSuscripcion, guardarEstado, firmaN8n, normalizarWeb, ESTADOS_CON_ACCESO, MIMES, MAX_ARCHIVO, gratisUsadas, tokenSesion, cupoGratis, esExtension
 } from '../_lib/agente.js';
 
 const TIMEOUT_MS = 55000;
@@ -56,6 +56,7 @@ export default async function handler(req, res) {
     const r = redis();
     const ip = ipDe(req);
     const s = sesionOCrear(req, res);
+    const cupo = cupoGratis(req);
     try {
         if (await excedeLimite(r, 'ip:' + ip, LIMITES)) return responder(res, 429, { codigo: 'limite', error: 'Hiciste muchas consultas seguidas. Esperá unos minutos.' });
     } catch (e) { console.error('agente/consulta: límite no disponible:', e.message); }
@@ -65,7 +66,7 @@ export default async function handler(req, res) {
     try {
         const estado = await estadoSuscripcion(r, s.tel);
         if (s.tel && (ESTADOS_CON_ACCESO.includes(estado) || !estado)) modo = 'suscripcion';   // sin dato: que lo confirme n8n
-        else if (await reservarGratis(r, s, ip)) reservada = true;
+        else if (await reservarGratis(r, s, ip, cupo)) reservada = true;
         else if (s.tel) modo = 'suscripcion';   // sin gratis: n8n revisa si ya pagó
         else return responder(res, 402, { codigo: 'sin_cupo', error: 'Usaste tus consultas gratis.', sesion: tokenSesion(s) });
     } catch (e) {
@@ -76,7 +77,7 @@ export default async function handler(req, res) {
     // 3) Reenviar a n8n firmado
     const id = crypto.randomUUID();
     async function llamarN8n(modoEnvio) {
-        const cuerpo = JSON.stringify({ id, origen: 'web', modo: modoEnvio, telefono: s.tel || undefined, ...consulta });
+        const cuerpo = JSON.stringify({ id, origen: 'web', canal: esExtension(req) ? 'extension' : 'web', modo: modoEnvio, telefono: s.tel || undefined, ...consulta });
         const ts = String(Math.floor(Date.now() / 1000));
         const ctrl = new AbortController();
         const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
@@ -98,7 +99,7 @@ export default async function handler(req, res) {
         let rta = await llamarN8n(modo);
         if (rta.ok && rta.datos.estadoSuscripcion !== undefined && s.tel) await guardarEstado(r, s.tel, rta.datos.estadoSuscripcion);
         // Vinculado pero sin suscripción activa: si le quedan gratis, se usa una.
-        if (rta.ok && rta.datos.acceso === 'denegado' && !reservada && await reservarGratis(r, s, ip)) {
+        if (rta.ok && rta.datos.acceso === 'denegado' && !reservada && await reservarGratis(r, s, ip, cupo)) {
             reservada = true; modo = 'gratis';
             rta = await llamarN8n(modo);
         }
@@ -111,7 +112,7 @@ export default async function handler(req, res) {
         }
         ok = true;
         const usadas = await gratisUsadas(r, s);
-        return responder(res, 200, { id, modo, restantes: Math.max(0, GRATIS - usadas), resultado: normalizarWeb(rta.datos), sesion: tokenSesion(s) });
+        return responder(res, 200, { id, modo, restantes: Math.max(0, cupo - usadas), resultado: normalizarWeb(rta.datos), sesion: tokenSesion(s) });
     } catch (e) {
         const timeout = e.name === 'AbortError';
         console.error('agente/consulta:', timeout ? 'timeout' : e.message, 'id', id);

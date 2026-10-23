@@ -107,6 +107,13 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - El sandbox no llega a `upload.higgsfield.ai`. Por eso el video se sube primero al repo (`redes/<fecha>/<nombre>/`) y, después del merge, se importa desde la web con `media_import_url` (usar `?v=N` si dio 404 antes del deploy).
   - El link de Higgsfield es `https://d2ol7oe51mr4n9.cloudfront.net/user_3Hhk6wBXukaieqWmzGUm4XH7K22/<media_id>.mp4`. Después se llama a `tiktok_prepare_publish`.
 
+## Extensión de Chrome "Vera Antiestafas" (desde el 23/10)
+- Código en `extension/` (Manifest V3, sin dependencias; `.vercelignore` la saca de la web y `ignoreCommand` no hace deploy si solo cambia ella). Ficha de la tienda, permisos justificados y pasos de Germán en `extension/TIENDA.md`. Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-<versión>.zip` (no se commitea).
+- Usa la misma API del agente web (`/api/agente/estado|consulta|vincular`): la sesión viaja en `X-CM-Sesion` y se guarda en `chrome.storage.local`; la extensión se identifica con `Origin: chrome-extension://…` y `X-CM-Canal: extension`, y tiene **3 consultas gratis** (`GRATIS_EXT`; la web sigue con 2). A n8n le llega `canal: "extension"`.
+- Funciones: ícono (verificar la página, analizar la pantalla con captura, pegar texto, subir archivo), clic derecho (link, texto marcado, página, pantalla), pago (WhatsApp → Mercado Pago) y vinculación con código `CM-XXXXXX`. Los audios siguen solo por WhatsApp. **Solo computadora:** el dueño no quiere app de celular (23/10).
+- **Pendiente:** cuando la tienda dé el ID de la extensión, cerrar `ORIGENES` en `api/_lib/agente.js` a ese ID (hoy acepta cualquier `chrome-extension://`).
+- **Lanzamiento (pedido del dueño):** pruebas sábado 25/10, últimas pruebas y publicación domingo 26/10 a la noche, reel de lanzamiento lunes 27/10 a las 12:00. Origen del link corto: `/vera?o=extension`.
+
 ## Equipo de agentes (`.claude/agents/`)
 - **marketing:** la estratega. Decide qué hacer y cómo se mide (embudo, campañas, pruebas, métricas) y reparte el trabajo entre redes, seo-guias, comercial y relaciones.
 - **redes:** la directora creativa, capacitada en marketing que vende (`scripts/redes/CAPACITACION.md`, 20/10). Inventa las ideas (investiga tendencias, tira 10 ideas por pieza en `scripts/redes/IDEAS.md`, elige la más audaz) y las produce, con ambición de crecer en seguidores. Pedido del dueño (17/10): las ideas tienen que salir de ella, no del dueño.

@@ -1,0 +1,94 @@
+/* Vera en el navegador: mismo lenguaje que cybermobile.com.ar (fondo noche, cian de marca, semáforo). */
+:root {
+  --bg: #05070d; --panel: #0d131f; --panel2: #121b2b; --line: #1f2b40;
+  --fg: #eef3fa; --muted: #93a3bb; --cyan: #22d3ee;
+  --rojo: #f43f5e; --ambar: #fbbf24; --verde: #34d399; --gris: #64748b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+html { overflow-x: hidden; }
+body {
+  width: 380px; min-height: 480px; background: var(--bg); color: var(--fg);
+  font: 14px/1.5 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  display: flex; flex-direction: column;
+}
+body.ventana { width: auto; min-height: 100vh; }
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+.top { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(34,211,238,.08), transparent); }
+.top img { border-radius: 9px; }
+.marca { display: flex; flex-direction: column; line-height: 1.2; flex: 1; min-width: 0; }
+.marca b { font-size: 17px; letter-spacing: .02em; }
+.marca span { font-size: 11.5px; color: var(--muted); }
+.cupo { font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 3px 8px; border: 1px solid var(--cyan); color: var(--cyan); border-radius: 999px; white-space: nowrap; }
+.cupo.pro { border-color: var(--verde); color: var(--verde); }
+
+main { padding: 14px 16px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+section { display: flex; flex-direction: column; gap: 8px; }
+h1 { font-size: 17px; margin: 0; }
+h2 { font-size: 18px; margin: 0; line-height: 1.3; }
+p { margin: 0; color: #c9d4e3; }
+.lbl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.nota { font-size: 12px; color: var(--muted); }
+.bienvenida { background: var(--panel2); border: 1px solid var(--cyan); border-radius: 12px; padding: 12px; }
+
+.pagina { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+.dominio { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; word-break: break-all; }
+
+textarea { width: 100%; resize: vertical; min-height: 70px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+textarea::placeholder { color: #66758d; }
+
+.fila { display: flex; gap: 8px; flex-wrap: wrap; }
+.fila.col { flex-direction: column; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 38px; padding: 0 14px;
+  border-radius: 10px; border: 1px solid var(--line); background: var(--panel2); cursor: pointer; font-weight: 600; font-size: 13.5px; }
+.btn:hover { border-color: var(--cyan); }
+.btn.pri { background: var(--cyan); border-color: var(--cyan); color: #03141b; }
+.btn.pri:hover { background: #67e8f9; }
+.btn[disabled] { opacity: .5; cursor: not-allowed; }
+
+/* cargando */
+.radar { width: 120px; height: 120px; margin: 24px auto 4px; border-radius: 50%; border: 1px solid var(--line); position: relative; overflow: hidden;
+  background: radial-gradient(circle, rgba(34,211,238,.12) 0 30%, transparent 31%), radial-gradient(circle, transparent 0 60%, rgba(34,211,238,.08) 61% 62%, transparent 63%); }
+.radar i { position: absolute; inset: 0; background: conic-gradient(from 0deg, rgba(34,211,238,.55), transparent 25%); animation: giro 1.6s linear infinite; }
+@keyframes giro { to { transform: rotate(360deg); } }
+.cargando { text-align: center; font-weight: 600; }
+#vista-cargando .nota { text-align: center; }
+
+/* resultado */
+.res { border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 8px; background: var(--panel); border-top: 4px solid var(--gris); }
+.res.alto { border-top-color: var(--rojo); }
+.res.medio { border-top-color: var(--ambar); }
+.res.bajo { border-top-color: var(--verde); }
+.sem { display: flex; gap: 6px; }
+.sem i { width: 14px; height: 14px; border-radius: 50%; background: #1e293b; }
+.res.alto .sem i:nth-child(1) { background: var(--rojo); box-shadow: 0 0 10px var(--rojo); }
+.res.medio .sem i:nth-child(2) { background: var(--ambar); box-shadow: 0 0 10px var(--ambar); }
+.res.bajo .sem i:nth-child(3) { background: var(--verde); box-shadow: 0 0 10px var(--verde); }
+.nivel { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.res.alto .nivel { color: var(--rojo); } .res.medio .nivel { color: var(--ambar); } .res.bajo .nivel { color: var(--verde); }
+.hallazgos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.hallazgos li { padding-left: 18px; position: relative; font-size: 13px; color: #d6dfec; }
+.hallazgos li::before { content: ""; position: absolute; left: 2px; top: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--ambar); }
+.hallazgos li.peligro::before { background: var(--rojo); }
+.hallazgos li.ok::before { background: var(--verde); }
+ol { margin: 4px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+.modalidad { font-size: 13px; color: var(--cyan); text-decoration: none; }
+.modalidad:hover { text-decoration: underline; }
+
+/* pago y vinculación */
+.planes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.planes li { display: flex; justify-content: space-between; gap: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 13px; }
+.planes span { color: var(--muted); }
+.codigo { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 26px; font-weight: 700; letter-spacing: .08em; text-align: center;
+  padding: 14px; border: 1px dashed var(--cyan); border-radius: 12px; color: var(--cyan); user-select: all; }
+
+.pie { display: flex; justify-content: space-between; gap: 8px; padding: 10px 16px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+.pie a { color: var(--muted); }
+.pie button { background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; padding: 0; font-size: 12px; }
+.error { margin: 0 16px 12px; padding: 10px 12px; border-radius: 10px; background: rgba(244,63,94,.12); border: 1px solid rgba(244,63,94,.5); font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { .radar i { animation: none; } }
