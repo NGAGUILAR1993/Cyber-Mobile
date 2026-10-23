@@ -5,7 +5,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 const RAIZ = new URL('../../extension/', import.meta.url).pathname;
 const { version } = JSON.parse(fs.readFileSync(RAIZ + 'manifest.json', 'utf8'));
-const ARCHIVOS = ['manifest.json', 'sw.js', 'api.js', 'panel.html', 'panel.css', 'panel.js', 'icons'];
+const ARCHIVOS = ['manifest.json', 'sw.js', 'api.js', 'panel.html', 'panel.css', 'panel.js', 'icons', 'fonts'];
 fs.mkdirSync(RAIZ + 'dist', { recursive: true });
 const salida = `dist/vera-chrome-${version}.zip`;
 fs.rmSync(RAIZ + salida, { force: true });

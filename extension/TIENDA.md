@@ -79,6 +79,13 @@ Certificar:
 - que no se usan para fines ajenos al propósito único;
 - que no se usan para evaluar créditos.
 
+## Versión 1.1.0 (23/10, pedido del dueño: "se ve vacía, poco clara, le falta estilo y links de contexto")
+- Estilo del reel "Lo que no ves" (azul noche con grilla, degradé cian, violeta y rosa, Space Grotesk y JetBrains Mono, que van dentro del paquete en `fonts/` con su licencia OFL).
+- Inicio: titular, las 5 capacidades de Vera como tarjetas que llevan a la acción, "Detrás de Vera" con el Observatorio. La bienvenida explica las 3 formas de usarla.
+- Mientras analiza, muestra qué está revisando según lo que se mandó.
+- Resultado: "Lo que encontró", "Qué hacer" y **"Para entender de qué se trata"**: ficha del Observatorio, la guía que corresponde y, si hay riesgo, dónde reclamar o denunciar (solo sitios oficiales: mpf.gob.ar, bcra.gob.ar, argentina.gob.ar, whatsapp.com). Botón "Avisarle a mi familia" (WhatsApp con el tipo de estafa, sin los datos de la consulta).
+- Paquete: `scripts/extension/vera-chrome-1.1.0.zip`. Los permisos no cambian, así que las respuestas de privacidad siguen iguales.
+
 ## Imágenes
 - Ícono: 128×128, ya va dentro del paquete (`icons/icon-128.png`).
 - Capturas 1280×800: `tienda/captura-1.png` (Vera abierta sobre una página falsa) y `tienda/captura-2.png` (resultado en rojo).
