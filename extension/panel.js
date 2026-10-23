@@ -212,7 +212,7 @@ async function iniciarVinculo() {
     if (status !== 200) { $('v-estado').textContent = datos.error || 'No pude generar el código. Probá de nuevo.'; return; }
     $('v-codigo').textContent = datos.codigo;
     $('v-estado').textContent = 'Esperando el mensaje… (el código vence en 15 minutos)';
-    $('b-enviar-codigo').onclick = () => abrir(datos.whatsapp);
+    $('b-enviar-codigo').onclick = () => { if (/^https:\/\/wa\.me\/\d+\?text=/.test(String(datos.whatsapp))) abrir(datos.whatsapp); };
     clearInterval(sondeo);
     const fin = Date.now() + datos.vence * 1000;
     sondeo = setInterval(async () => {

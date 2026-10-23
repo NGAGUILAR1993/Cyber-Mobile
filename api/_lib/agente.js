@@ -46,12 +46,15 @@ export function ipDe(req) {
 const ORIGENES = [
     /^https:\/\/(www\.)?cybermobile\.com\.ar$/,
     /^https:\/\/cyber-mobile[a-z0-9-]*-ngaguilar1993s-projects\.vercel\.app$/,
-    /^chrome-extension:\/\/[a-p]{32}$/          // extensión "Vera Antiestafas" (Chrome, Edge, Brave)
+    // Extensión "Vera Antiestafas": con CM_EXTENSION_ID cargado en Vercel, solo acepta esa extensión.
+    new RegExp('^chrome-extension://' + (/^[a-p]{32}$/.test(process.env.CM_EXTENSION_ID || '') ? process.env.CM_EXTENSION_ID : '[a-p]{32}') + '$')
 ];
-// La extensión de Chrome tiene su propio cupo gratis (GRATIS_EXT).
-// En GET el navegador no siempre manda Origin: la extensión además se identifica con X-CM-Canal.
-export const esExtension = (req) => /^chrome-extension:\/\//.test(String(req.headers.origin || '')) || req.headers['x-cm-canal'] === 'extension';
+// La extensión de Chrome tiene su propio cupo gratis (GRATIS_EXT). Para gastarlo vale solo el Origin,
+// que el navegador pone y no se puede falsificar desde una página.
+export const esExtension = (req) => ORIGENES[2].test(String(req.headers.origin || ''));
 export const cupoGratis = (req) => (esExtension(req) ? GRATIS_EXT : GRATIS);
+// En GET el navegador no siempre manda Origin: para mostrar el número alcanza con X-CM-Canal.
+export const cupoMostrado = (req) => (esExtension(req) || req.headers['x-cm-canal'] === 'extension' ? GRATIS_EXT : GRATIS);
 export function origenPermitido(req) {
     const o = req.headers.origin;
     if (!o) return true;   // mismo origen en GET o navegadores que no lo mandan
