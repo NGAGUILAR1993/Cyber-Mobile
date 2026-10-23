@@ -112,8 +112,9 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - Usa la misma API del agente web (`/api/agente/estado|consulta|vincular`): la sesión viaja en `X-CM-Sesion` y se guarda en `chrome.storage.local`; la extensión se identifica con `Origin: chrome-extension://…` y `X-CM-Canal: extension`, y tiene **3 consultas gratis** (`GRATIS_EXT`; la web sigue con 2). A n8n le llega `canal: "extension"`.
 - Funciones: ícono (verificar la página, analizar la pantalla con captura, pegar texto, subir archivo), clic derecho (link, texto marcado, página, pantalla), pago (WhatsApp → Mercado Pago) y vinculación con código `CM-XXXXXX`. Los audios siguen solo por WhatsApp. **Solo computadora:** el dueño no quiere app de celular (23/10).
 - **Versión en la tienda:** 1.1.0 (23/10, estilo del reel "Lo que no ves", capacidades a la vista y links de contexto en el resultado; detalle en `extension/TIENDA.md`). Enviada a revisión el 23/10 con publicación manual: Germán la publica el domingo 26/10 a la noche. ID en la tienda: `djbbpjphdicakfckokaanmfghnbjmldh`.
+- **Página de instalación `/extension` (lista, guardada para el lanzamiento):** paso a paso para agregarla (tienda → Agregar a Chrome → fijarla con el rompecabezas → clic derecho), qué hace y preguntas, en `navegador/index.html` con CSP sin scripts, más un bloque "Vera también en tu computadora" en la portada con los 4 pasos y links en el menú y el pie. Está en el commit `90cd7f5` y se sacó en `93f737f` porque el botón lleva a `chromewebstore.google.com/detail/djbbpjphdicakfckokaanmfghnbjmldh`, que da 404 hasta que se publique. **Cuando Germán publique la extensión: `git revert 93f737f`, PR y merge.** Pedido del dueño (23/10): el lanzamiento y la web tienen que explicar cómo agregarla.
 - **Pendiente:** cuando la tienda dé el ID de la extensión, cerrar `ORIGENES` en `api/_lib/agente.js` a ese ID (hoy acepta cualquier `chrome-extension://`).
-- **Lanzamiento (pedido del dueño):** pruebas sábado 25/10, últimas pruebas y publicación domingo 26/10 a la noche, reel de lanzamiento lunes 27/10 a las 12:00. Origen del link corto: `/vera?o=extension`.
+- **Lanzamiento (pedido del dueño):** pruebas sábado 25/10, últimas pruebas y publicación domingo 26/10 a la noche, reel de lanzamiento lunes 27/10 a las 12:00, con el paso a paso para agregarla (si Google la aprueba a tiempo; el dueño dijo "el lunes lanzamos si me la habilitan"). Origen del link corto: `/vera?o=extension`.
 
 ## Equipo de agentes (`.claude/agents/`)
 - **marketing:** la estratega. Decide qué hacer y cómo se mide (embudo, campañas, pruebas, métricas) y reparte el trabajo entre redes, seo-guias, comercial y relaciones.
@@ -147,6 +148,10 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - `npm audit`.
 - **Páginas estáticas nuevas:** sin JavaScript ejecutable, CSP estricta en `vercel.json` y escapar todo el texto.
 - **Pendiente recomendado:** rotar las claves de Mercado Pago, Meta y Evolution, que circularon en archivos JSON.
+- **Incidente de Railway (21/10):** Railway avisó que el espacio "Staff IA" tiene variables con el patrón que buscó el atacante (claves de IA y de la nube); no sabe si se descifraron y pide rotar todo lo cargado antes del 21/10. n8n sin señales raras al 23/10 (no hay flujos nuevos ni ejecuciones extrañas). Hecho el 23/10:
+  - acciones de GitHub fijadas a un commit y control nuevo en `revisar.mjs` que bloquea las que no lo estén;
+  - 25 flujos viejos inactivos de n8n archivados (tenían claves viejas en "Config Secretos"; se restauran desde n8n si hace falta).
+  Falta, del lado de Germán: rotar las claves (orden y pasos en el mensaje del 23/10), sacar de "Config Secretos" las claves nuevas y cargarlas como credenciales de n8n, cortar el acceso público a Postgres y Redis en Railway si no hace falta, y revisar los accesos de GitHub.
 - **Commits y PRs:** no incluir identificadores de modelo. Flujo de trabajo: rama `claude/web-improvements-cyber-app-kq7rww` → PR → esperar `seguridad.yml` → merge.
 
 ## SEO (plan basado en el reporte de Bunzy)

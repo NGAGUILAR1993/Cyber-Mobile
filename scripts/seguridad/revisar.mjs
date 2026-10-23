@@ -4,6 +4,7 @@
 //     links externos con rel="noopener".
 //  2. vercel.json: JSON válido y cada ruta/encabezado con patrón válido.
 //  3. Ningún archivo publicado con nombre o contenido típico de exportaciones de n8n o claves.
+//  4. GitHub Actions fijadas a un commit (SHA de 40 caracteres), no a una etiqueta que se puede mover.
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -52,6 +53,13 @@ for (const f of archivos(RAIZ, ['.json', '.env', '.pem', '.key'])) {
         const t = fs.readFileSync(f, 'utf8');
         if (/"nodes"\s*:\s*\[/.test(t) && /"connections"\s*:\s*\{/.test(t) && /n8n-nodes-base\./.test(t)) mal(f, 'parece una exportación de n8n (contiene claves): no se sube al repositorio');
         if (/"(EVOLUTION_API_KEY|MP_ACCESS_TOKEN|OPENAI_API_KEY|GEMINI_API_KEY)"\s*:\s*"[^"]{8,}"/.test(t)) mal(f, 'contiene una clave de API');
+    }
+}
+
+// 4. Acciones de GitHub fijadas a un commit: una etiqueta (@v4) la puede mover quien controle esa acción.
+for (const f of archivos(path.join(RAIZ, '.github', 'workflows'), ['.yml', '.yaml'])) {
+    for (const m of fs.readFileSync(f, 'utf8').matchAll(/^\s*-?\s*uses:\s*([^\s#]+)/gm)) {
+        if (!m[1].startsWith('./') && !/@[0-9a-f]{40}$/.test(m[1])) mal(f, `acción sin fijar a un commit: ${m[1]}`);
     }
 }
 
