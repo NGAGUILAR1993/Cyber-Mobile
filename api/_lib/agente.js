@@ -10,6 +10,7 @@ import crypto from 'node:crypto';
 import Redis from 'ioredis';
 
 export const GRATIS = 2;                 // consultas gratis por navegador
+export const GRATIS_EXT = 3;             // consultas gratis en la extensión de Chrome
 export const GRATIS_POR_IP = 6;          // tope de consultas gratis por IP y por mes
 export const COOKIE = 'cm_agente';
 const COOKIE_DIAS = 180;
@@ -44,8 +45,13 @@ export function ipDe(req) {
 // Solo el propio sitio (y sus vistas previas) puede llamar a la API desde el navegador.
 const ORIGENES = [
     /^https:\/\/(www\.)?cybermobile\.com\.ar$/,
-    /^https:\/\/cyber-mobile[a-z0-9-]*-ngaguilar1993s-projects\.vercel\.app$/
+    /^https:\/\/cyber-mobile[a-z0-9-]*-ngaguilar1993s-projects\.vercel\.app$/,
+    /^chrome-extension:\/\/[a-p]{32}$/          // extensión "Vera Antiestafas" (Chrome, Edge, Brave)
 ];
+// La extensión de Chrome tiene su propio cupo gratis (GRATIS_EXT).
+// En GET el navegador no siempre manda Origin: la extensión además se identifica con X-CM-Canal.
+export const esExtension = (req) => /^chrome-extension:\/\//.test(String(req.headers.origin || '')) || req.headers['x-cm-canal'] === 'extension';
+export const cupoGratis = (req) => (esExtension(req) ? GRATIS_EXT : GRATIS);
 export function origenPermitido(req) {
     const o = req.headers.origin;
     if (!o) return true;   // mismo origen en GET o navegadores que no lo mandan
@@ -104,12 +110,12 @@ export async function gratisUsadas(r, s) {
     return Number(await r.get(`cm_agente:gratis:${s.id}`)) || 0;
 }
 // Reserva una consulta gratis. Devuelve false si no quedan (por navegador o por IP).
-export async function reservarGratis(r, s, ip) {
+export async function reservarGratis(r, s, ip, max = GRATIS) {
     const kId = `cm_agente:gratis:${s.id}`, kIp = `cm_agente:gratis_ip:${ip}:${mesActual()}`;
     const [[, nId], [, nIp]] = await r.multi().incr(kId).incr(kIp).exec();
     if (nId === 1) await r.expire(kId, 365 * 86400);
     if (nIp === 1) await r.expire(kIp, 40 * 86400);
-    if (nId > GRATIS || nIp > GRATIS_POR_IP) {
+    if (nId > max || nIp > GRATIS_POR_IP) {
         await r.multi().decr(kId).decr(kIp).exec();
         return false;
     }
