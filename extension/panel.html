@@ -7,22 +7,32 @@
 <link rel="stylesheet" href="panel.css">
 </head>
 <body>
+<div class="fondo" aria-hidden="true"></div>
+<div class="marco">
 <header class="top">
-  <img src="icons/icon-48.png" width="34" height="34" alt="">
+  <img src="icons/icon-48.png" width="36" height="36" alt="">
   <div class="marca">
     <b>Vera</b>
-    <span>Tu especialista en estafas</span>
+    <span>ANTIESTAFAS · CYBER MOBILE</span>
   </div>
   <span class="cupo" id="cupo" hidden></span>
 </header>
 
 <main id="vista-inicio">
-  <section class="bienvenida" id="bienvenida" hidden>
-    <h1>Ya tenés a Vera en tu navegador</h1>
-    <p>Hacé clic derecho en cualquier link, texto o página y elegí <b>Verificar con Vera</b>. O tocá el ícono de Vera arriba a la derecha.</p>
+  <section class="hero">
+    <span class="tag" id="hero-tag">¿ES ESTAFA?</span>
+    <h1 id="hero-titulo">Preguntale a <span class="grad">Vera</span> antes de hacer clic.</h1>
+    <p id="hero-sub" hidden>Se usa de tres formas:</p>
   </section>
 
+  <ol class="pasos-uso" id="como-se-usa" hidden>
+    <li><b>Clic derecho</b> sobre un link, un texto marcado o la página → <em>Verificar con Vera</em>.</li>
+    <li><b>Tocá el ícono</b> de Vera arriba a la derecha (fijalo con la pieza de rompecabezas 🧩).</li>
+    <li><b>Pegá</b> lo que te llegó o <b>subí</b> una captura. Te contesta con un semáforo y qué hacer.</li>
+  </ol>
+
   <section class="pagina" id="pagina" hidden>
+    <i class="scan" aria-hidden="true"></i>
     <span class="lbl">Estás en</span>
     <div class="dominio" id="dominio"></div>
     <div class="fila">
@@ -39,37 +49,60 @@
       <label class="btn" for="archivo" title="Captura, PDF o APK de hasta 3 MB">Subir archivo</label>
       <input id="archivo" type="file" accept="image/jpeg,image/png,image/webp,application/pdf,.apk,.doc,.docx,.zip" hidden>
     </div>
-    <p class="nota">Los audios se analizan por WhatsApp.</p>
+  </section>
+
+  <section class="capacidades">
+    <span class="lbl">Qué revisa Vera por dentro</span>
+    <div class="caps" id="caps"></div>
+    <p class="nota">Los audios se analizan por WhatsApp: reenviáselos a Vera al +54 9 11 7059-8505.</p>
+  </section>
+
+  <section class="detras">
+    <span class="tag">DETRÁS DE VERA</span>
+    <p>Ciberseguridad, IA entrenada para estafas y el <a id="l-observatorio" target="_blank" rel="noopener">Observatorio de Fraude Digital</a>, que sigue las estafas que circulan en Argentina.</p>
   </section>
 </main>
 
 <main id="vista-cargando" hidden>
   <div class="radar" aria-hidden="true"><i></i></div>
   <p class="cargando" id="cargando-txt">Vera lo está analizando…</p>
-  <p class="nota">Revisa reputación, antivirus y casos reportados. Puede tardar hasta un minuto.</p>
+  <ul class="chequeos" id="chequeos"></ul>
+  <p class="nota centro">Puede tardar hasta un minuto.</p>
 </main>
 
 <main id="vista-resultado" hidden>
   <article class="res" id="res">
-    <div class="sem" id="sem"><i></i><i></i><i></i></div>
-    <span class="nivel" id="r-nivel"></span>
+    <div class="res-cab">
+      <div class="sem" id="sem"><i></i><i></i><i></i></div>
+      <span class="nivel" id="r-nivel"></span>
+    </div>
     <h2 id="r-titulo"></h2>
     <p id="r-resumen"></p>
-    <ul class="hallazgos" id="r-hallazgos"></ul>
+    <div id="r-hallazgos-box" hidden>
+      <span class="lbl">Lo que encontró</span>
+      <ul class="hallazgos" id="r-hallazgos"></ul>
+    </div>
     <div id="r-pasos-box" hidden>
       <span class="lbl">Qué hacer</span>
-      <ol id="r-pasos"></ol>
+      <ol class="pasos" id="r-pasos"></ol>
     </div>
-    <a class="modalidad" id="r-modalidad" target="_blank" rel="noopener" hidden></a>
   </article>
+
+  <section class="contexto" id="r-contexto-box" hidden>
+    <span class="lbl">Para entender de qué se trata</span>
+    <div class="links" id="r-contexto"></div>
+  </section>
+
   <div class="fila">
+    <button class="btn pri" id="b-avisar" type="button" title="Abre WhatsApp con un aviso para tu familia, sin tus datos">Avisarle a mi familia</button>
     <button class="btn" id="b-otra" type="button">Verificar otra cosa</button>
   </div>
 </main>
 
 <main id="vista-pago" hidden>
-  <h2>Usaste tus 3 consultas gratis</h2>
-  <p>Seguí protegido con Vera sin límites en el navegador y en tu WhatsApp. Débito automático por Mercado Pago; cancelás cuando quieras.</p>
+  <span class="tag">TUS 3 CONSULTAS GRATIS YA SE USARON</span>
+  <h2>Seguí protegido con <span class="grad">Vera</span>, sin límites.</h2>
+  <p>En el navegador y en tu WhatsApp. Débito automático por Mercado Pago; cancelás cuando quieras.</p>
   <ul class="planes">
     <li><b>Individual</b><span>$10.000/mes</span></li>
     <li><b>Pack Padres</b><span>$17.000/mes · 3 personas</span></li>
@@ -82,6 +115,7 @@
 </main>
 
 <main id="vista-vincular" hidden>
+  <span class="tag">VINCULAR</span>
   <h2>Vinculá tu WhatsApp</h2>
   <p>Mandale este código a Vera por WhatsApp. Cuando lo reciba, tu suscripción queda activa también acá.</p>
   <div class="codigo" id="v-codigo">…</div>
@@ -92,11 +126,12 @@
   <p class="nota" id="v-estado">Esperando el mensaje…</p>
 </main>
 
+<div class="error" id="error" role="alert" hidden></div>
 <footer class="pie">
   <span id="pie-cuenta"></span>
-  <a href="https://www.cybermobile.com.ar/?o=extension" target="_blank" rel="noopener">cybermobile.com.ar</a>
+  <a id="l-web" target="_blank" rel="noopener">cybermobile.com.ar</a>
 </footer>
-<div class="error" id="error" role="alert" hidden></div>
+</div>
 <script type="module" src="panel.js"></script>
 </body>
 </html>
