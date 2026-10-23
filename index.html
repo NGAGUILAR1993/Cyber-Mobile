@@ -152,13 +152,6 @@
         main { overflow-x: clip; }
         section { position: relative; }
         .sec { padding-top: clamp(80px, 9vw, 140px); }
-        .ext-strip { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; padding: 28px; border-radius: 24px; border: 1px solid rgba(167,139,250,.35); background: linear-gradient(135deg, rgba(34,211,238,.08), rgba(167,139,250,.08) 50%, rgba(244,114,182,.08)); }
-        .ext-strip h2 em { font-style: normal; background: linear-gradient(90deg,#22D3EE,#A78BFA 50%,#F472B6); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .ext-pasos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; counter-reset: e; }
-        .ext-pasos li { counter-increment: e; position: relative; padding: 10px 14px 10px 54px; border-radius: 14px; background: rgba(15,23,42,.7); border: 1px solid var(--line, rgba(148,163,184,.14)); color: var(--txt2, #C3CEDD); }
-        .ext-pasos li::before { content: "0" counter(e); position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #060914; background: linear-gradient(90deg,#22D3EE,#A78BFA 50%,#F472B6); }
-        .ext-pasos b { color: var(--txt, #E6EDF7); }
-        @media (max-width: 860px) { .ext-strip { grid-template-columns: 1fr; padding: 22px; } }
         .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 48px; flex-wrap: wrap; margin-bottom: 44px; }
         .sec-head h2 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.1; font-weight: 700; margin-top: 14px; max-width: 680px; }
         .sec-head p { max-width: 440px; font-size: 17px; color: var(--muted); }
@@ -441,7 +434,6 @@
                 <a href="/guias">Guías</a>
                 <a href="#planes">Planes</a>
                 <a href="/agente" data-track="nav_agente_web">Vera web</a>
-                <a href="/extension" data-track="nav_extension">Extensión</a>
                 <a href="/observatorio"><span class="dot pulse"></span>Observatorio</a>
                 <a href="#contacto">Contacto</a>
             </nav>
@@ -495,26 +487,6 @@
                 <div class="top3" id="top3">
                     <div class="tile skeleton"></div><div class="tile skeleton"></div><div class="tile skeleton"></div>
                 </div>
-            </div>
-        </section>
-
-        <section id="extension" class="sec wrap reveal" aria-labelledby="ext-titulo">
-            <div class="ext-strip">
-                <div>
-                    <div class="kicker"><span class="dot pulse"></span>Nuevo · Extensión para Chrome</div>
-                    <h2 id="ext-titulo">Vera también en tu computadora: <em>preguntale antes de hacer clic</em></h2>
-                    <p>Con un clic derecho revisa un link, una página, un CBU o lo que ves en pantalla. 3 consultas gratis, sin registrarte. Funciona en Chrome, Edge, Brave y Opera.</p>
-                    <div class="actions">
-                        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/djbbpjphdicakfckokaanmfghnbjmldh" rel="noopener" data-track="cta_extension_agregar">Agregar a Chrome <svg class="icon"><use href="#i-arrow"/></svg></a>
-                        <a class="btn btn-ghost" href="/extension" data-track="cta_extension_pasos">Ver el paso a paso</a>
-                    </div>
-                </div>
-                <ol class="ext-pasos" aria-label="Cómo agregarla">
-                    <li>Abrí la tienda de Chrome desde la computadora y tocá <b>Agregar a Chrome</b>.</li>
-                    <li>Confirmá con <b>Agregar extensión</b>.</li>
-                    <li>Fijala: tocá la <b>pieza de rompecabezas</b> arriba a la derecha y la <b>chincheta</b> al lado de Vera.</li>
-                    <li>Clic derecho sobre un link o un texto → <b>Verificar con Vera</b>.</li>
-                </ol>
             </div>
         </section>
 
@@ -823,7 +795,6 @@
             <div class="legal">
                 <a href="/guias">Guías</a>
                 <a href="/observatorio">Observatorio</a>
-                <a href="/extension">Extensión Chrome</a>
                 <button type="button" data-open="termsModal">Términos</button>
                 <button type="button" data-open="privacyModal">Privacidad</button>
             </div>
