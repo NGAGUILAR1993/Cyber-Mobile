@@ -148,6 +148,10 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
   - `npm audit`.
 - **Páginas estáticas nuevas:** sin JavaScript ejecutable, CSP estricta en `vercel.json` y escapar todo el texto.
 - **Pendiente recomendado:** rotar las claves de Mercado Pago, Meta y Evolution, que circularon en archivos JSON.
+- **Incidente de Railway (21/10):** Railway avisó que el espacio "Staff IA" tiene variables con el patrón que buscó el atacante (claves de IA y de la nube); no sabe si se descifraron y pide rotar todo lo cargado antes del 21/10. n8n sin señales raras al 23/10 (no hay flujos nuevos ni ejecuciones extrañas). Hecho el 23/10:
+  - acciones de GitHub fijadas a un commit y control nuevo en `revisar.mjs` que bloquea las que no lo estén;
+  - 25 flujos viejos inactivos de n8n archivados (tenían claves viejas en "Config Secretos"; se restauran desde n8n si hace falta).
+  Falta, del lado de Germán: rotar las claves (orden y pasos en el mensaje del 23/10), sacar de "Config Secretos" las claves nuevas y cargarlas como credenciales de n8n, cortar el acceso público a Postgres y Redis en Railway si no hace falta, y revisar los accesos de GitHub.
 - **Commits y PRs:** no incluir identificadores de modelo. Flujo de trabajo: rama `claude/web-improvements-cyber-app-kq7rww` → PR → esperar `seguridad.yml` → merge.
 
 ## SEO (plan basado en el reporte de Bunzy)
