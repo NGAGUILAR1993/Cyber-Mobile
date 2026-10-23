@@ -68,3 +68,15 @@ Lo mantiene el agente redes: antes de cada pieza tira al menos 10 ideas, anota a
 | 22/10 (rehecha) | "Los 5 archivos que nunca tenés que abrir" | Reel lista | Tips | Descartada (formato de todas las cuentas) |
 | 22/10 (rehecha) | Glosario visual: troyano, phishing, CVU, filtración en 30 s con tipografía cinética | Reel glosario | Guardable para jóvenes | Guardada |
 | 22/10 (rehecha) | Encuesta en historia "¿Qué te llega más seguido?" | Historia encuesta | Respuesta de 1 toque | Usada como historia |
+| 23/10 | **"Por dentro" ep. 2, rayos X: "$855.733 en Temu. No compraste nada."**: la captura real del mail falso de VISA que le mandaron a Vera, en pantalla completa con pulso de mano; una banda de rayos X baja por el mail y frena en las 3 trampas que marcó Vera (logo, monto, "llamá a este número"); corte a la respuesta real "Riesgo ALTO, vishing"; cierre "Guardá esta regla: no llames al número del mensaje" + VERA | Reel captura real en movimiento (serie) | Continúa la serie que le gustó a Germán, todo real (cero recreación), el monto frena el dedo (hookscore 66,2) y la regla final se guarda y se manda "a quien usa tarjeta en tu casa" | Elegida |
+| 23/10 | "Llamé al número del mail" (audio recreado del falso soporte) | Reel suspenso | Tensión de llamada | Descartada (habría que hablar con un estafador o recrear audio: riesgo y poca verdad) |
+| 23/10 | Pieza de venta: "Lo que incluye Vera por $12.000" con precio, 7 días gratis y cancelación en MP | Reel oferta | Pide la venta explícita (falta en la semana) | Guardada para el lunes 26 (venta de la semana) |
+| 23/10 | "Agendá a Vera en 3 pasos" (grabación real del celu) | Reel tutorial | Baja fricción | Guardada (necesita grabación real del alta) |
+| 23/10 | Dúo/respuesta a video viral de "compra que no hiciste" en TikTok con estas mismas 3 señales | Respuesta | Alcance prestado | Propuesta (no se ejecuta sin el dueño) |
+| 23/10 | "My reaction to": reacción en pantalla dividida a 3 mails falsos de tarjetas | Reel reacción (tendencia oct.) | Formato en tendencia | Descartada (exige caras o voz) |
+| 23/10 | Glosario cinético: vishing, smishing, phishing en 30 s | Reel glosario | Guardable para jóvenes | Guardada |
+| 23/10 | "¿Cuál es el número oficial?": 2 números lado a lado, el público elige | Reel juego | Participación | Descartada (mostrar números reales, aunque sean oficiales, confunde y choca con tapar datos) |
+| 23/10 | Rayos X a un SMS de puntos | Reel serie | Mismo formato | Descartada (caso sms-puntos ya usado el 12/10) |
+| 23/10 | Carrusel "El mail de VISA en 5 zooms" | Carrusel | Guardable | Descartada (el reel en movimiento hace lo mismo con más impacto) |
+| 23/10 | "Hoy no compraste nada en Temu" en formato notificación push recreada que se apila | Reel POV | Identificación | Descartada (recreación cuando hay caso real) |
+| 23/10 | Historia: "Te llega esto. ¿Llamás?" con encuesta | Historia encuesta | Respuesta de 1 toque | Usada como historia |

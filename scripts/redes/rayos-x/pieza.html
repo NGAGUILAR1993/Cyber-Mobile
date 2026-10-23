@@ -1,0 +1,135 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:JB;src:url(/home/user/cm-redes/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#060914}
+#st{position:absolute;inset:0;overflow:hidden;font-family:Inter,"DejaVu Sans",sans-serif;color:#fff}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5}
+#cam{position:absolute;left:0;top:0;width:720px;height:1272px;transform-origin:0 0}
+#cam img{position:absolute;left:0;top:0;width:720px;height:1272px}
+#xr{filter:invert(1) hue-rotate(185deg) saturate(2.4) contrast(1.15)}
+.hs{position:absolute;border-radius:6px;border:2.5px solid;opacity:0}
+.hs i{position:absolute;left:-15px;top:-15px;width:26px;height:26px;border-radius:8px;font:700 15px/26px JB;font-style:normal;text-align:center;color:#060914}
+#band{position:absolute;left:0;width:720px;height:3px}
+.tag{position:absolute;font-family:JB;font-size:30px;letter-spacing:4px;color:#A5F3FC}
+.h{position:absolute;left:70px;right:70px;font-family:SG;line-height:1.02;letter-spacing:-2px}
+.grad{background:linear-gradient(90deg,#22D3EE,#A78BFA 50%,#F472B6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{position:absolute;left:70px;right:70px;font-size:44px;line-height:1.25;font-weight:600;color:#E2E8F0}
+.card{position:absolute;left:70px;right:70px;top:1560px;min-height:170px;border-radius:30px;background:rgba(15,23,42,.88);border:2px solid;display:flex;align-items:center;padding:24px 30px;gap:26px}
+.card .n{font-family:JB;font-size:30px;width:80px;height:80px;border-radius:22px;display:flex;align-items:center;justify-content:center;color:#060914;flex:none}
+.card b{display:block;font-family:SG;font-size:44px;letter-spacing:-.5px}
+.card span{display:block;font-size:34px;color:#CBD5E1;margin-top:4px;line-height:1.2}
+.rot{position:absolute;font-family:JB;font-size:24px;color:#94A3B8;letter-spacing:1px}
+.pill{position:absolute;left:70px;right:70px;border-radius:40px;padding:30px 36px;font-size:40px;font-weight:700;line-height:1.25;text-align:center}
+.shade{position:absolute;left:0;right:0}
+#flash{position:absolute;inset:0;background:#F43F5E;opacity:0;mix-blend-mode:screen}
+#rec{position:absolute;top:70px;right:70px;font-family:JB;font-size:26px;color:#F8FAFC;display:flex;align-items:center;gap:12px}
+#rec i{width:18px;height:18px;border-radius:50%;background:#F43F5E;display:block}
+#fin{position:absolute;inset:0;background:#060914;opacity:0}
+</style></head><body>
+<div id="st">
+ <div class="blob" id="b1" style="width:900px;height:900px;background:#7C3AED"></div>
+ <div class="blob" id="b2" style="width:800px;height:800px;background:#06B6D4"></div>
+ <div id="cam">
+  <img id="base" src="visa.jpg">
+  <img id="xr" src="visa.jpg">
+  <div id="band"></div>
+  <div class="hs" id="h0" style="left:458px;top:22px;width:192px;height:140px;border-color:#A78BFA"><i style="background:#A78BFA">1</i></div>
+  <div class="hs" id="h1" style="left:458px;top:392px;width:200px;height:22px;border-color:#FBBF24"><i style="background:#FBBF24">2</i></div>
+  <div class="hs" id="h2" style="left:458px;top:434px;width:236px;height:38px;border-color:#F472B6"><i style="background:#F472B6">3</i></div>
+  <div class="hs" id="h3" style="left:30px;top:604px;width:520px;height:48px;border-color:#F43F5E"></div>
+ </div>
+ <div class="shade" id="sTop" style="top:0;height:560px;background:linear-gradient(180deg,rgba(6,9,20,.96) 0,rgba(6,9,20,.9) 62%,rgba(6,9,20,0))"></div>
+ <div class="shade" id="sBot" style="bottom:0;height:580px;background:linear-gradient(0deg,rgba(6,9,20,.98) 0,rgba(6,9,20,.95) 72%,rgba(6,9,20,0))"></div>
+ <div class="tag" id="tag" style="left:70px;top:72px">POR DENTRO · EP. 2</div>
+ <div id="rec"><i></i><span id="clk">00:00</span></div>
+
+ <div class="h" id="hook" style="top:200px;font-size:112px"><span id="hk1" style="color:#FBBF24">$855.733</span><span id="hk1b"> en Temu.</span><br><span id="hk2" class="grad">No compraste nada.</span></div>
+ <div class="sub" id="hs" style="top:1580px">Te llega este mail “de VISA”.<br><span style="color:#F472B6">¿Llamás al número para anularla?</span></div>
+
+ <div class="h" id="t2" style="top:190px;font-size:84px">Le pasamos<br><span class="grad">rayos X</span></div>
+ <div class="sub" id="t2s" style="top:400px;font-size:36px;color:#CBD5E1">Lo mismo que buscó Vera en este caso real:</div>
+ <div id="cards"></div>
+
+ <div class="h" id="t3" style="top:190px;font-size:84px">La respuesta<br><span class="grad">real de Vera</span></div>
+ <div class="sub" id="t3s" style="top:1580px;font-size:46px"><span style="color:#F43F5E">Riesgo ALTO.</span> Es “vishing”: un falso soporte que te hace llamar a un celular particular.</div>
+
+ <div class="rot" id="r1" style="left:70px;top:1830px">Caso real enviado a Vera · datos personales tapados</div>
+
+ <div id="fin">
+  <div class="blob" id="b3" style="width:800px;height:800px;background:#EC4899;opacity:.35"></div>
+  <div class="tag" id="f0" style="left:70px;top:250px;color:#F9A8D4">GUARDÁ ESTA REGLA</div>
+  <div class="h" id="f1" style="top:320px;font-size:92px">¿Una compra que<br>no hiciste?</div>
+  <div class="h" id="f2" style="top:560px;font-size:92px"><span class="grad">No llames al número del mensaje.</span></div>
+  <div class="sub" id="f3" style="top:930px;font-size:50px">Llamá al que está atrás de tu tarjeta o entrá a la app de tu banco.</div>
+  <div class="pill" id="f4" style="top:1240px;background:linear-gradient(90deg,#22D3EE,#A78BFA,#F472B6);color:#060914"></div>
+  <div class="sub" id="f5" style="top:1480px;font-size:36px;color:#CBD5E1;text-align:center">Mandáselo a quien usa tarjeta en tu casa.</div>
+ </div>
+
+ <div id="hist" style="display:none">
+  <div class="h" style="top:190px;font-size:104px">Te llega esto.<br><span class="grad">¿Llamás?</span></div>
+  <div style="position:absolute;left:150px;right:150px;top:1330px;height:270px;border:4px dashed rgba(255,255,255,.6);border-radius:30px;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:26px;color:#E2E8F0;background:rgba(6,9,20,.6)">ENCUESTA: SÍ · NO, ES ESTAFA</div>
+  <div class="sub" style="top:1630px;text-align:center;font-size:36px">Hoy a la noche: los rayos X de este mail.</div>
+  <div style="position:absolute;left:290px;right:290px;top:1730px;height:96px;border:4px dashed rgba(244,114,182,.85);border-radius:60px;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:24px;color:#F9A8D4;background:rgba(6,9,20,.6)">ENLACE: PROBAR VERA</div>
+ </div>
+ <div id="flash"></div>
+</div>
+<script>
+const P=new URLSearchParams(location.search), canal=P.get('canal')||'ig';
+const CTA={ig:'Comentá VERA y te envío el link<br>por privado (7 días gratis)',wa:'Probala 7 días gratis<br>WhatsApp +54 9 11 7059-8505',tt:'Link en el perfil · 7 días gratis'};
+document.getElementById('f4').innerHTML=CTA[canal];
+const C=[['01','#A78BFA','Logo de VISA y Prisma','Usan una marca conocida para que confíes.'],
+['02','#FBBF24','Una compra de $855.733','Un monto altísimo para que entres en pánico.'],
+['03','#F472B6','“Llamá a este número”','Es un celular particular, no un canal oficial.']];
+const cw=document.getElementById('cards');
+C.forEach((c,i)=>{const d=document.createElement('div');d.className='card';d.id='c'+i;d.style.borderColor=c[1]+'88';d.innerHTML=`<div class="n" style="background:${c[1]}">${c[0]}</div><div><b>${c[2]}</b><span>${c[3]}</span></div>`;cw.appendChild(d)});
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), E3=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}, eo=x=>1-Math.pow(1-cl(x),3);
+const R=(t,a,b)=>cl((t-a)/(b-a)), L=(a,b,k)=>a+(b-a)*k;
+function show(id,t,a,b,dy=40,fade=.5){const el=$(id);const k=eo(R(t,a,a+fade))*(1-eo(R(t,b-fade*.8,b)));el.style.opacity=k;el.style.transform=`translateY(${(1-eo(R(t,a,a+fade)))*dy}px)`;return k}
+// cámara: [t, cx, cy (coord. de la captura), escala, centro en pantalla y]
+const K=[[0,560,404,3.6,1280],[3.6,560,404,3.9,1280],[4.4,462,250,2.05,1000],[7.6,462,250,2.15,1000],
+[8.4,462,250,2.25,1000],[11.2,552,120,2.6,1000],[14.4,560,404,2.9,1000],[17.6,575,450,2.9,1000],
+[18.4,320,760,1.5,1020],[21.2,286,640,1.95,1060],[23.2,286,640,2.05,1060]];
+function camAt(t){let i=0;while(i<K.length-2&&t>K[i+1][0])i++;const a=K[i],b=K[i+1];const k=E3(R(t,a[0],b[0]));return [L(a[1],b[1],k),L(a[2],b[2],k),L(a[3],b[3],k),L(a[4],b[4],k)]}
+function render(t){
+ $('b1').style.transform=`translate(${-250+Math.sin(t*.5)*120}px,${-200+Math.cos(t*.4)*100}px)`;
+ $('b2').style.transform=`translate(${520+Math.cos(t*.45)*120}px,${1100+Math.sin(t*.35)*140}px)`;
+ $('b3').style.transform=`translate(${300+Math.sin(t*.3)*140}px,${1200+Math.cos(t*.5)*100}px)`;
+ $('clk').textContent='00:'+String(Math.floor(t)).padStart(2,'0');
+ $('rec').firstElementChild.style.opacity=(Math.floor(t*2)%2)?.25:1;
+ // cámara con pulso de mano
+ const [cx,cy,s,sy]=camAt(t);
+ const jx=Math.sin(t*1.7)*5+Math.sin(t*3.1)*2, jy=Math.cos(t*1.3)*5, rot=Math.sin(t*.9)*.35;
+ $('cam').style.transform=`translate(${540-cx*s+jx}px,${sy-cy*s+jy}px) scale(${s}) rotate(${rot}deg)`;
+ // rayos X: banda que baja hasta cada señal
+ const xr=$('xr'), band=$('band');
+ let y0=-1;
+ const tg=[[8.4,11.2,0,165],[11.2,14.4,165,415],[14.4,17.6,415,474]];
+ tg.forEach((g,i)=>{if(t>=g[0]&&t<g[1]){y0=L(g[2],g[3],E3(R(t,g[0],g[0]+1.6)))}});
+ if(y0>=0){const top=Math.max(0,y0-34);xr.style.opacity=1;xr.style.clipPath=`inset(${top}px 0 ${1272-y0}px 230px)`;band.style.opacity=1;band.style.top=y0+'px';const ci=tg.findIndex(g=>t>=g[0]&&t<g[1]);band.style.background=`linear-gradient(90deg,transparent 30%,${C[ci][1]},transparent)`;band.style.boxShadow=`0 0 18px 4px ${C[ci][1]}`}
+ else{xr.style.opacity=0;band.style.opacity=0}
+ // señales
+ for(let i=0;i<3;i++){const a=tg[i][0]+1.5;const k=eo(R(t,a,a+.4))*(1-eo(R(t,18,18.4)));$('h'+i).style.opacity=k;$('h'+i).style.boxShadow=t>=a&&t<tg[i][1]?`0 0 14px ${C[i][1]}`:'none';
+  const el=$('c'+i), ka=eo(R(t,tg[i][0]+1.2,tg[i][0]+1.7))*(1-eo(R(t,tg[i][1]-.3,tg[i][1])));el.style.opacity=ka;el.style.transform=`translateX(${(1-eo(R(t,tg[i][0]+1.2,tg[i][0]+1.7)))*140}px)`}
+ const kh3=eo(R(t,20.4,20.9));$('h3').style.opacity=kh3*(1-eo(R(t,23.2,23.6)));$('h3').style.boxShadow=`0 0 ${10+8*Math.sin(t*6)}px #F43F5E`;
+ // textos
+ $('sTop').style.height=(t<4.4?820:560)+'px';
+ show('tag',t,0,30,0,.3);$('rec').style.opacity=$('tag').style.opacity;
+ show('hook',t,.1,4.4,30,.35);
+ $('hk1').style.opacity=eo(R(t,.1,.5));$('hk1b').style.opacity=eo(R(t,.5,.9));$('hk2').style.opacity=eo(R(t,1.3,1.8));
+ show('hs',t,4.5,8.4,40,.5);
+ show('t2',t,8.4,18.2,30,.5);show('t2s',t,8.8,18.2,20,.5);
+ show('t3',t,18.4,23.4,30,.5);show('t3s',t,19.6,23.4,30,.5);
+ show('r1',t,4.4,23.4,0,.4);
+ $('flash').style.opacity=t>20.4&&t<21?.22*(1-R(t,20.4,21)):0;
+ // cierre
+ $('fin').style.opacity=eo(R(t,23.3,24));
+ show('f0',t,23.6,31,20,.4);show('f1',t,23.8,31,40,.5);show('f2',t,24.8,31,40,.5);show('f3',t,25.9,31,30,.5);show('f4',t,27.0,31,30,.5);show('f5',t,27.6,31,20,.5);
+ const pulse=1+.03*Math.sin(t*6)*(t>28?1:0);$('f4').style.transform+=` scale(${pulse})`;
+ if(P.get('historia')){['hook','hs','t2','t2s','t3','t3s','cards','fin','r1','rec'].forEach(i=>$(i).style.display='none');$('hist').style.display='block';$('sBot').style.height='760px';$('tag').style.opacity=1;
+  $('cam').style.transform=`translate(${540-462*2.05}px,${960-250*2.05}px) scale(2.05)`;$('xr').style.opacity=0}
+}
+Promise.all([...document.images].map(i=>i.decode().catch(()=>0))).then(()=>document.fonts.ready.then(()=>{render(0);document.documentElement.dataset.listo=1}));
+</script></body></html>
