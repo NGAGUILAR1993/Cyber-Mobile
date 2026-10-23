@@ -49,7 +49,7 @@ Qué podés verificar:
 • Lo que ves en pantalla: Vera mira una captura y te dice si es una trampa.
 • Archivos: capturas, PDF o APK de hasta 3 MB.
 
-3 consultas gratis, sin registrarte. Después, seguí protegido con un plan mensual desde $12.000 por débito automático en Mercado Pago, que también incluye a Vera en tu WhatsApp. Si ya sos cliente, vinculás tu WhatsApp con un código y listo.
+3 consultas gratis, sin registrarte. Después, seguí protegido con un plan mensual desde $10.000 por débito automático en Mercado Pago, que también incluye a Vera en tu WhatsApp. Si ya sos cliente, vinculás tu WhatsApp con un código y listo.
 
 Privacidad: la extensión no lee tu historial ni las páginas que visitás. Solo envía lo que vos elegís verificar.
 

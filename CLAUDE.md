@@ -13,7 +13,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - n8n actualiza `observatorio/datos.json` y abre un deploy automático.
   - Cada estafa tiene su ficha en `/observatorio/<slug>` (`api/estafa.js`).
 - **Planes:** prueba de 7 días gratis.
-  - Individual $12.000, Pack Padres $20.000 (3 personas), Pack Familiar $40.000 (5 personas).
+  - Individual $10.000, Pack Padres $17.000 (3 personas), Pack Familiar $33.000 (5 personas) (precios nuevos del 23/10, cargados por el dueño en Mercado Pago).
   - Empresas: $60.000 hasta 10 personas, $125.000 hasta 25.
   - Débito automático por Mercado Pago; se cancela desde la app de MP → Suscripciones.
 - **Dueño:** Germán (habla en español rioplatense). Mail de trabajo: cybermobile.ai@gmail.com.
