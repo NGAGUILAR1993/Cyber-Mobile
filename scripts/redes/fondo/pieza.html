@@ -1,0 +1,162 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:JB;src:url(/home/user/cm-redes/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow:hidden;background:#060914}
+#st{position:relative;overflow:hidden;font-family:Inter,sans-serif;color:#fff;background:#060914}
+.blob{position:absolute;border-radius:50%;filter:blur(130px);opacity:.5}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px}
+.tag{position:absolute;font-family:JB;font-size:28px;letter-spacing:4px;color:#A5F3FC}
+.h{position:absolute;left:80px;right:80px;font-family:SG;line-height:1.03;letter-spacing:-2px}
+.grad{background:linear-gradient(90deg,#22D3EE,#A78BFA 50%,#F472B6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{position:absolute;left:80px;right:80px;font-size:42px;line-height:1.3;font-weight:600;color:#E2E8F0}
+.rot{position:absolute;font-family:JB;font-size:22px;color:#94A3B8;letter-spacing:1px}
+.pag{position:absolute;right:80px;top:76px;font-family:JB;font-size:26px;color:#94A3B8;letter-spacing:2px}
+.chip{display:inline-flex;align-items:center;gap:14px;border-radius:40px;padding:14px 26px;font-family:JB;font-size:24px;letter-spacing:1px;border:2px solid rgba(255,255,255,.18);background:rgba(15,23,42,.7)}
+/* teléfono */
+.ph{position:absolute;border-radius:64px;background:#0B1022;padding:16px;box-shadow:0 0 0 3px rgba(255,255,255,.14),0 40px 120px rgba(0,0,0,.6),0 0 160px rgba(124,58,237,.35)}
+.ph .sc{position:relative;width:100%;height:100%;border-radius:50px;overflow:hidden;background:#060914}
+.ph .sc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph .isl{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:30%;height:5.2%;max-height:40px;border-radius:30px;background:#000;z-index:3}
+.ph .lk{position:absolute;left:0;right:0;text-align:center;z-index:2;color:#fff}
+.ph .lk .d{font-weight:600;opacity:.9}
+.ph .lk .t{font-family:Inter,sans-serif;font-weight:700;letter-spacing:-2px;line-height:1}
+/* fondo */
+.rg{position:absolute;left:80px;right:80px;border-radius:34px;background:rgba(10,15,32,.72);border:2px solid rgba(255,255,255,.12);padding:30px 36px 32px 132px}
+.rg .n{position:absolute;left:30px;top:32px;width:76px;height:76px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:30px;color:#060914}
+.rg .q{font-size:40px;font-weight:600;color:#CBD5E1;line-height:1.2}
+.rg .a{font-family:SG;font-size:64px;letter-spacing:-1px;line-height:1.05;margin-top:8px}
+.rg .a small{display:block;font-family:Inter,sans-serif;font-size:36px;font-weight:700;letter-spacing:0;margin-top:6px;color:#fff}
+/* carrusel */
+.big{font-family:JB;font-size:150px;letter-spacing:-6px;line-height:1}
+.why{position:absolute;left:80px;right:80px;font-size:40px;line-height:1.32;color:#CBD5E1;font-weight:500}
+.why b,.whyf b{color:#fff}
+.src{position:absolute;left:80px;right:80px}
+.lst{position:absolute;left:80px;right:80px}
+.lst div{display:flex;align-items:center;gap:24px;height:82px;border-bottom:2px solid rgba(255,255,255,.08);font-size:38px;font-weight:600}
+.lst div i{font-style:normal;font-family:JB;font-size:26px;width:70px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#060914;flex:none}
+.lst div span{margin-left:auto;font-family:JB;font-size:24px;color:#94A3B8}
+.step{position:absolute;left:560px;right:70px;font-size:36px;line-height:1.28;font-weight:600;color:#E2E8F0}
+.step i{display:block;font-style:normal;font-family:JB;font-size:26px;letter-spacing:2px;margin-bottom:8px}
+.pill{position:absolute;left:80px;right:80px;border-radius:40px;padding:30px 36px;font-size:40px;font-weight:700;line-height:1.25;text-align:center;background:linear-gradient(90deg,#22D3EE,#A78BFA,#F472B6);color:#060914}
+.call{position:absolute;border-radius:36px;background:rgba(15,23,42,.9);border:2px solid rgba(255,255,255,.14);padding:34px 40px}
+.dash{position:absolute;border:4px dashed rgba(255,255,255,.55);border-radius:30px;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:26px;color:#CBD5E1}
+</style></head><body>
+<div id="st"></div>
+<script>
+const P=new URLSearchParams(location.search), M=P.get('modo')||'fondo';
+const st=document.getElementById('st');
+const SZ={fondo:[1080,2340],historia:[1080,1920]}, [W,H]=SZ[M]||[1080,1350];
+document.documentElement.style.width=document.body.style.width=st.style.width=W+'px';
+document.documentElement.style.height=document.body.style.height=st.style.height=H+'px';
+const VIOL='#A78BFA',CIAN='#22D3EE',ROSA='#F472B6',LIMA='#A3E635',ROJO='#FB7185';
+const REG=[
+ ['01',CIAN,'Te llaman y te piden bajar una app','CORTÁ.',''],
+ ['02',VIOL,'Te piden un código que te llegó','NO LO DES.','A nadie, aunque sea un conocido.'],
+ ['03',ROSA,'Un link de PAMI, ARCA o el banco','NO LO TOQUES.','Entrá vos a la app oficial.'],
+ ['04',LIMA,'Una compra que no hiciste','NO LLAMES','al número del mensaje.'],
+];
+function fondoBase(o){ // blobs + grid
+ return `<div class="blob" style="width:${o.s1||900}px;height:${o.s1||900}px;background:#7C3AED;left:${o.x1??-300}px;top:${o.y1??-250}px"></div>
+ <div class="blob" style="width:800px;height:800px;background:#06B6D4;left:${o.x2??560}px;top:${o.y2??500}px"></div>
+ <div class="blob" style="width:760px;height:760px;background:#EC4899;left:${o.x3??-260}px;top:${o.y3??H-500}px"></div>
+ <div class="grid"></div>`}
+function phone({x,y,w,rot=0,blur=0,clock=true,img='fondo.jpg',extra=''}){
+ const h=Math.round(w*2340/1080)+32; // pantalla + marco
+ const iw=w-32, ih=Math.round(iw*2340/1080);
+ const fs=Math.round(iw*0.2), ds=Math.round(iw*0.05);
+ return `<div class="ph" style="left:${x}px;top:${y}px;width:${w}px;height:${ih+32}px;transform:rotate(${rot}deg)">
+  <div class="sc"><div class="isl"></div><img src="${img}" style="filter:blur(${blur}px);transform:scale(${blur?1.08:1})">
+  ${clock?`<div class="lk" style="top:${Math.round(ih*0.085)}px"><div class="d" style="font-size:${ds}px">sábado 24 de octubre</div><div class="t" style="font-size:${fs}px">19:42</div></div>`:''}${extra}</div></div>`}
+let html='';
+if(M==='fondo'){
+ html+=fondoBase({x1:-320,y1:-200,s1:1000,x2:520,y2:900,y3:1900});
+ html+=`<div class="tag" style="left:80px;top:872px;color:#A5F3FC">ANTES DE HACER NADA</div>`;
+ html+=`<div style="position:absolute;left:0;right:0;top:930px;display:flex;flex-direction:column;gap:22px">`;
+ REG.forEach((r,i)=>{html+=`<div class="rg" style="position:relative;left:auto;right:auto;margin:0 80px;border-color:${r[1]}55"><div class="n" style="background:${r[1]}">${r[0]}</div><div class="q">${r[2]}</div><div class="a" style="color:${r[1]}">${r[3]}${r[4]?`<small>${r[4]}</small>`:''}</div></div>`});
+ html+=`</div>`;
+ html+=`<div style="position:absolute;left:80px;right:80px;top:1925px;border-radius:34px;padding:28px 36px;background:linear-gradient(90deg,rgba(34,211,238,.18),rgba(167,139,250,.18),rgba(244,114,182,.18));border:2px solid rgba(255,255,255,.2)">
+  <div style="font-family:SG;font-size:46px;letter-spacing:-.5px">¿Dudás? Reenviáselo a Vera</div>
+  <div style="font-family:JB;font-size:32px;color:#E2E8F0;margin-top:8px">WhatsApp +54 9 11 7059-8505</div></div>
+ <div class="rot" style="left:80px;top:2100px;font-size:22px;color:#64748B">cybermobile.com.ar · Observatorio de Fraude Digital · octubre 2026</div>`;
+}
+else if(M==='1'){ // portada
+ html+=fondoBase({});
+ html+=`<div class="tag" style="left:80px;top:76px;color:#F9A8D4">GUARDALO PARA TU FAMILIA</div>`;
+ html+=`<div class="h" style="top:150px;font-size:96px">Tu vieja no necesita<br>otra app.<br><span class="grad">Necesita esta<br>pantalla.</span></div>`;
+ html+=phone({x:560,y:640,w:430,rot:7,blur:22});
+ html+=`<div style="position:absolute;left:615px;top:1010px;width:330px;transform:rotate(7deg);text-align:center"><div style="display:inline-flex;width:110px;height:110px;border-radius:50%;background:rgba(6,9,20,.75);border:3px solid rgba(255,255,255,.5);align-items:center;justify-content:center;font-family:SG;font-size:64px">?</div></div>`;
+ html+=`<div class="sub" style="top:900px;right:560px;font-size:38px;color:#CBD5E1">4 reglas que ve cada vez que agarra el celular.</div>`;
+ html+=`<div class="chip" style="position:absolute;left:80px;top:1180px;color:#A5F3FC">DESLIZÁ →</div>`;
+}
+else if(M==='2'){
+ html+=fondoBase({x2:600,y2:-200});
+ html+=`<div class="pag">2/9</div><div class="tag" style="left:80px;top:76px">EL PROBLEMA</div>`;
+ html+=`<div class="call" style="left:80px;right:80px;top:170px;display:flex;align-items:center;gap:30px">
+  <div style="width:110px;height:110px;border-radius:50%;background:#1E293B;display:flex;align-items:center;justify-content:center;font-size:56px">🏦</div>
+  <div><div style="font-family:JB;font-size:24px;color:#94A3B8;letter-spacing:2px">LLAMADA ENTRANTE</div><div style="font-family:SG;font-size:44px;margin-top:4px;white-space:nowrap">“Soporte del banco”</div><div style="margin-top:8px;display:inline-block;width:300px;height:30px;border-radius:8px;background:#334155"></div></div>
+  <div style="margin-left:auto;display:flex;gap:18px"><div style="width:88px;height:88px;border-radius:50%;background:#EF4444"></div><div style="width:88px;height:88px;border-radius:50%;background:#22C55E"></div></div></div>
+ <div class="rot" style="left:80px;top:465px">Recreación · número tapado</div>`;
+ html+=`<div class="h" style="top:560px;font-size:84px">Cuando la llaman<br>“del banco”,<br><span class="grad">vos no estás al lado.</span></div>`;
+ html+=`<div class="sub" style="top:930px">Los consejos quedaron en algún grupo de WhatsApp.<br><span style="color:#F9A8D4">Lo que sí tiene en la mano es el celular.</span></div>
+ <div class="h" style="top:1150px;font-size:54px;letter-spacing:-1px">Ahí tiene que estar <span class="grad">lo que importa.</span></div>`;
+}
+else if(M==='3'){
+ html+=fondoBase({x2:620,y2:600});
+ html+=`<div class="pag">3/9</div><div class="tag" style="left:80px;top:76px">LA IDEA</div>`;
+ html+=`<div class="h" style="top:150px;font-size:76px">Armamos un fondo de<br>pantalla con <span class="grad">4 reglas.</span></div>`;
+ html+=`<div class="sub" style="top:350px;font-size:38px;color:#CBD5E1">Salen del ranking de octubre de nuestro Observatorio de Fraude Digital. Apuntan a <b style="color:#fff">6 de las 10 estafas</b> más activas del mes:</div>`;
+ const L=[['#1',CIAN,'App de acceso remoto','Teléfono'],['#2',CIAN,'Phishing bancario','Teléfono'],['#3',ROSA,'Phishing de PAMI','WhatsApp'],['#4',ROSA,'Phishing de ARCA','SMS'],['#6',ROSA,'Phishing de servicios','WhatsApp'],['#9',VIOL,'Secuestro de WhatsApp','WhatsApp']];
+ html+=`<div class="lst" style="top:590px">${L.map(l=>`<div><i style="background:${l[1]}">${l[0]}</i>${l[2]}<span>${l[3].toUpperCase()}</span></div>`).join('')}</div>`;
+ html+=`<div class="rot" style="left:80px;top:1130px">Fuente: cybermobile.com.ar/observatorio · octubre 2026</div>`;
+}
+else if(['4','5','6','7'].includes(M)){
+ const i=+M-4, r=REG[i];
+ const WHY=[
+  ['Es la estafa nº1 de octubre. Se hacen pasar por el soporte del banco y te hacen instalar una app de acceso remoto. <b>Con esa app manejan tu celular y transfieren desde tu cuenta.</b>','Observatorio · #1 y #2 de octubre (por teléfono)'],
+  ['Ese código de verificación sirve para abrir tu WhatsApp en otro teléfono. <b>Con tu cuenta les piden plata a tus contactos en tu nombre.</b>','Observatorio · #9 de octubre: secuestro de WhatsApp'],
+  ['Los links truchos llevan a copias idénticas de la página real que te piden datos y claves. <b>Si hay un trámite de verdad, también aparece en la app o en la web oficial.</b>','Observatorio · #3, #4 y #6 de octubre'],
+  ['El número para “anular la compra” es del estafador. <b>Llamá al que está atrás de tu tarjeta o entrá a la app del banco.</b>','Caso real enviado a Vera · datos tapados'],
+ ][i];
+ html+=fondoBase({x1:i%2?500:-300,y1:-300,x2:i%2?-200:600,y2:700});
+ html+=`<div class="pag">${+M}/9</div><div class="tag" style="left:80px;top:76px;color:${r[1]}">REGLA ${r[0]}</div>`;
+ html+=`<div style="position:absolute;left:80px;right:80px;top:140px;display:flex;flex-direction:column">
+  <div class="big" style="color:${r[1]}">${r[0]}</div>
+  <div style="font-family:SG;font-size:58px;letter-spacing:-1px;line-height:1.08;color:#E2E8F0;margin-top:34px;text-wrap:balance">${r[2]}</div>
+  <div style="font-family:SG;font-size:${r[3].length>11?108:120}px;letter-spacing:-2px;line-height:1;color:${r[1]};margin-top:22px">${r[3]}</div>
+  ${r[4]?`<div style="font-family:SG;font-size:50px;letter-spacing:-1px;margin-top:14px">${r[4]}</div>`:''}
+  <div style="font-size:${i===3?36:40}px;line-height:1.32;color:#CBD5E1;font-weight:500;margin-top:${i===3?30:48}px" class="whyf">${WHY[0]}</div>
+  ${i===3?`<div style="position:relative;height:318px;margin-top:30px;border-radius:24px;overflow:hidden;border:2px solid ${r[1]}66"><img src="visa.jpg" style="position:absolute;left:0;width:100%;top:-${Math.round(592*920/720)}px"></div>`:''}
+ </div>`;
+ if(i<3) html+=`<div class="rot" style="left:80px;top:908px;color:#94A3B8">ASÍ APARECE EN EL FONDO DE PANTALLA</div><div class="rg" style="top:948px;border-color:${r[1]}66"><div class="n" style="background:${r[1]}">${r[0]}</div><div class="q">${r[2]}</div><div class="a" style="color:${r[1]}">${r[3]}${r[4]?`<small>${r[4]}</small>`:''}</div></div>`;
+ html+=`<div class="chip" style="position:absolute;left:80px;bottom:70px;color:${r[1]}">${WHY[1].toUpperCase()}</div>`;
+}
+else if(M==='8'){
+ html+=fondoBase({x2:500,y2:300});
+ html+=`<div class="pag">8/9</div><div class="tag" style="left:80px;top:76px">ASÍ QUEDA</div>`;
+ html+=phone({x:70,y:150,w:430});
+ html+=`<div class="h" style="left:560px;top:160px;font-size:64px;letter-spacing:-1px">Ponéselo<br><span class="grad">en 3 pasos</span></div>`;
+ const S=[[CIAN,'PASO 1','Guardá la imagen en alta: está en nuestra historia de hoy y en el canal de WhatsApp.'],[VIOL,'PASO 2','Abrila en la galería y tocá el menú: “Usar como fondo de pantalla”.'],[ROSA,'PASO 3','Elegí “Pantalla de bloqueo”. Listo: la ve cada vez que agarra el celular.']];
+ S.forEach((s,k)=>{html+=`<div class="step" style="top:${370+k*270}px"><i style="color:${s[0]}">${s[1]}</i>${s[2]}</div>`});
+}
+else if(M==='9'){
+ html+=fondoBase({x2:560,y2:200});
+ html+=`<div class="pag">9/9</div><div class="tag" style="left:80px;top:76px;color:#F9A8D4">PARA HOY</div>`;
+ html+=`<div class="h" style="top:160px;font-size:104px"><span class="grad">Guardalo</span><br>y ponéselo hoy<br>a tu vieja.</div>`;
+ html+=`<div class="sub" style="top:560px;font-size:40px">Y si igual le queda la duda, que le reenvíe el mensaje a Vera. El número ya está en el fondo.</div>`;
+ html+=`<div class="sub" style="top:790px;font-size:34px;color:#94A3B8">Vera es nuestro agente antiestafas por WhatsApp: revisa links, CBU, teléfonos, mails, capturas y audios, y te contesta con un semáforo y qué hacer.</div>`;
+ html+=`<div class="pill" style="top:1040px">Comentá VERA y te envío el link<br>por privado (7 días gratis)</div>`;
+}
+else if(M==='historia'){
+ html+=fondoBase({x2:560,y2:600,y3:1500});
+ html+=`<div class="tag" style="left:80px;top:150px;color:#F9A8D4">GUARDALO PARA TU FAMILIA</div>`;
+ html+=`<div class="h" style="top:210px;font-size:88px">El fondo<br><span class="grad">antiestafas</span></div>`;
+ html+=`<div class="sub" style="top:420px;font-size:38px;color:#CBD5E1">4 reglas que tu vieja ve cada vez que agarra el celular.</div>`;
+ html+=phone({x:290,y:560,w:500,rot:0});
+ html+=`<div class="dash" style="left:260px;right:260px;top:1700px;height:110px;border-color:rgba(244,114,182,.85);color:#F9A8D4;border-radius:60px">ENLACE: FONDO EN ALTA</div>`;
+}
+st.innerHTML=html;
+const imgs=[...st.querySelectorAll('img')];
+Promise.all([document.fonts.ready,...imgs.map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r}))]).then(()=>document.documentElement.setAttribute('data-listo',1));
+</script></body></html>
