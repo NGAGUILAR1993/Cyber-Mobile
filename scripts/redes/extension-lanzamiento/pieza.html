@@ -1,0 +1,168 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SGR;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#060914}
+#st{position:absolute;inset:0;overflow:hidden;font-family:SGR,sans-serif;color:#fff}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5}
+#grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:60px 60px}
+.tag{position:absolute;font-family:JB;font-size:30px;letter-spacing:4px;color:#A5F3FC}
+.h{position:absolute;left:70px;right:70px;font-family:SG;line-height:1.02;letter-spacing:-2px}
+.grad{background:linear-gradient(90deg,#22D3EE,#A78BFA 50%,#F472B6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{position:absolute;left:70px;right:70px;font-size:44px;line-height:1.25;color:#E2E8F0}
+.sub b{font-family:SG;color:#fff}
+#rec{position:absolute;top:70px;right:70px;font-family:JB;font-size:26px;color:#F8FAFC;display:flex;align-items:center;gap:12px}
+#rec i{width:18px;height:18px;border-radius:50%;background:#F43F5E;display:block}
+/* navegador */
+#nav{position:absolute;left:50px;width:980px;border-radius:22px;overflow:hidden;background:#202124;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 2px rgba(255,255,255,.08);transform-origin:50% 0}
+#nav .bar{height:74px;display:flex;align-items:center;gap:14px;padding:0 18px;background:#35363a}
+#nav .dot{width:16px;height:16px;border-radius:50%;background:#5f6368}
+#nav .url{flex:1;height:48px;border-radius:24px;background:#202124;color:#e8eaed;font-size:24px;display:flex;align-items:center;padding:0 22px;gap:10px;font-family:SGR}
+#nav .url em{font-style:normal;color:#9aa0a6}
+#nav .ext{width:48px;height:48px;border-radius:50%;background:#4a4b4f;display:flex;align-items:center;justify-content:center;outline:3px solid #22D3EE}
+#nav .ext img{width:30px;height:30px;border-radius:6px}
+#nav .page{position:relative;height:582px;background:#eef2f6;overflow:hidden}
+#nav .page>img{width:980px;display:block}
+#cur{position:absolute;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:34px solid #fff;transform:rotate(-30deg);filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.menu{position:absolute;background:#292a2d;border:1px solid #3c4043;border-radius:12px;padding:10px 0;font-size:26px;color:#e8eaed;box-shadow:0 18px 50px rgba(0,0,0,.55);min-width:520px}
+.menu div{padding:12px 24px;display:flex;align-items:center;gap:14px}
+.menu .on{background:#3c4043}
+.menu .on img{width:30px;height:30px;border-radius:6px}
+#pop{position:absolute;width:420px;border-radius:18px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.75),0 0 0 2px rgba(167,139,250,.6)}
+#pop img{width:420px;display:block}
+#flash{position:absolute;inset:0;background:#F43F5E;opacity:0;mix-blend-mode:screen}
+/* pasos */
+.card{position:absolute;left:70px;right:70px;height:112px;border-radius:28px;background:rgba(15,23,42,.82);border:2px solid rgba(255,255,255,.12);display:flex;align-items:center;padding:0 30px;gap:26px}
+.card .n{font-family:JB;font-size:28px;width:74px;height:74px;border-radius:20px;display:flex;align-items:center;justify-content:center;color:#060914;flex:none}
+.card b{display:block;font-family:SG;font-size:40px;letter-spacing:-.5px}
+.card .ok{margin-left:auto;font-family:JB;font-size:28px;flex:none}
+.vis{position:absolute;left:70px;right:70px;top:430px;height:470px;display:flex;align-items:center;justify-content:center}
+.urlbar{width:900px;height:110px;border-radius:55px;background:#fff;color:#202124;display:flex;align-items:center;gap:22px;padding:0 40px;font-size:46px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.urlbar .lock{width:30px;height:36px;border:5px solid #5f6368;border-radius:6px;position:relative;top:6px}
+.urlbar .lock::before{content:"";position:absolute;width:18px;height:18px;border:5px solid #5f6368;border-bottom:0;border-radius:10px 10px 0 0;left:1px;top:-20px}
+.caret{display:inline-block;width:4px;height:52px;background:#1a73e8;margin-left:4px;vertical-align:middle}
+.store{width:900px;border-radius:30px;background:#fff;color:#202124;padding:40px 44px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;align-items:center;gap:30px;position:relative}
+.store img{width:110px;height:110px;border-radius:24px}
+.store b{display:block;font-family:SG;font-size:40px;line-height:1.1}
+.store small{display:block;font-size:26px;color:#5f6368;margin-top:6px}
+.bt{position:absolute;right:40px;bottom:-40px;background:#1a73e8;color:#fff;font-family:SG;font-size:36px;padding:22px 40px;border-radius:50px;box-shadow:0 12px 30px rgba(26,115,232,.5)}
+.dlg{position:absolute;left:60px;right:300px;top:290px;background:#fff;color:#202124;border-radius:24px;padding:34px 38px;box-shadow:0 30px 90px rgba(0,0,0,.6);font-size:32px}
+.dlg b{font-family:SG}
+.dlg .bt2{display:inline-block;margin-top:24px;background:#1a73e8;color:#fff;font-family:SG;padding:16px 32px;border-radius:40px;font-size:30px}
+.tool{width:900px;height:120px;border-radius:24px;background:#35363a;display:flex;align-items:center;justify-content:flex-end;gap:26px;padding:0 34px;box-shadow:0 30px 80px rgba(0,0,0,.5);position:relative}
+.ico{width:76px;height:76px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:44px;background:#4a4b4f}
+.ico img{width:46px;height:46px;border-radius:9px}
+.drop{position:absolute;right:120px;top:140px;width:560px;background:#292a2d;border:1px solid #3c4043;border-radius:18px;padding:20px 0;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.drop div{display:flex;align-items:center;gap:20px;padding:16px 28px;font-size:32px;color:#e8eaed}
+.drop img{width:44px;height:44px;border-radius:9px}
+.drop .pin{margin-left:auto;font-size:38px}
+.pill{position:absolute;left:70px;right:70px;border-radius:40px;padding:30px 36px;font-size:42px;font-family:SG;line-height:1.2;text-align:center;background:linear-gradient(90deg,#22D3EE,#A78BFA,#F472B6);color:#060914}
+.rot{position:absolute;left:70px;right:70px;font-family:JB;font-size:24px;color:#94A3B8;letter-spacing:1px}
+</style></head><body>
+<div id="st">
+ <div class="blob" id="b1" style="width:900px;height:900px;background:#7C3AED"></div>
+ <div class="blob" id="b2" style="width:800px;height:800px;background:#06B6D4"></div>
+ <div class="blob" id="b3" style="width:700px;height:700px;background:#EC4899"></div>
+ <div id="grid"></div>
+ <div class="tag" id="tag" style="left:70px;top:72px">NUEVO · VERA PARA CHROME</div>
+ <div id="rec"><i></i><span id="clk">00:00</span></div>
+
+ <div class="h" id="hook" style="top:200px;font-size:100px"><span id="hk1">La página falsa</span><br><span id="hk2">aparecía primera</span><br><span id="hk3" class="grad">en Google.</span></div>
+ <div class="sub" id="s1" style="top:1640px;font-size:46px">¿Cómo te das cuenta <b>antes</b> de hacer clic?</div>
+
+ <div id="nav">
+  <div class="bar"><span class="dot"></span><span class="dot"></span><div class="url">🔒 beneficios-jubilados2026.online<em>/actualizar-datos</em></div><div class="ext"><img src="logo-cm.png"></div></div>
+  <div class="page"><img src="sitio.png">
+   <div class="menu" id="menu" style="left:300px;top:160px"><div>Volver</div><div>Recargar</div><div>Guardar como…</div><div class="on"><img src="logo-cm.png">Verificar esta página con Vera</div></div>
+   <div id="cur"></div>
+  </div>
+ </div>
+ <div id="pop"><img src="vera-res.png"></div>
+ <div class="h" id="t2" style="top:1290px;font-size:84px">Ahora Vera vive<br><span class="grad">en tu navegador.</span></div>
+ <div class="sub" id="s2" style="top:1520px;font-size:40px">Clic derecho → <b>Verificar con Vera</b>. Te dice si es trampa antes de que cargues nada.</div>
+ <div class="rot" id="r2" style="top:1700px">Pantallas reales de la extensión · página falsa de ejemplo</div>
+
+ <div class="h" id="t3" style="top:220px;font-size:96px">Agregala en<br><span class="grad">1 minuto:</span></div>
+ <div class="vis" id="v0"><div class="urlbar"><span class="lock"></span><span id="typed"></span><span class="caret" id="caret"></span></div></div>
+ <div class="vis" id="v1"><div style="position:relative;width:900px;height:420px">
+   <div class="store" style="top:30px"><img src="logo-cm.png"><div><b>Vera Antiestafas · Cyber Mobile</b><small>Chrome Web Store · Privacidad y seguridad</small></div><div class="bt" id="bt">Agregar a Chrome</div></div>
+   <div class="dlg" id="dlg">¿Agregar <b>“Vera Antiestafas”</b>?<br><span class="bt2" id="bt2">Agregar extensión</span></div>
+ </div></div>
+ <div class="vis" id="v2"><div style="position:relative;width:900px;height:420px;top:40px">
+   <div class="tool"><div class="ico" id="puz">🧩</div><div class="ico" id="vico" style="opacity:0"><img src="logo-cm.png"></div><div class="ico" style="background:#5f6368;width:56px;height:56px"></div></div>
+   <div class="drop" id="drop"><div><img src="logo-cm.png">Vera Antiestafas<span class="pin" id="pin">📌</span></div></div>
+ </div></div>
+ <div class="vis" id="v3"><div style="position:relative;width:900px;height:420px">
+   <div class="menu" id="menu2" style="left:120px;top:40px;font-size:32px;min-width:660px"><div>Abrir enlace en una pestaña nueva</div><div>Copiar dirección del enlace</div><div class="on" id="on2"><img src="logo-cm.png">Verificar este link con Vera</div></div>
+ </div></div>
+ <div id="cards"></div>
+ <div class="rot" id="r3" style="top:1620px;text-align:center;font-size:30px;color:#CBD5E1">cybermobile.com.ar/extension</div>
+
+ <div id="fin">
+  <div class="tag" id="f0" style="left:70px;top:330px;color:#F9A8D4">GRATIS · 3 CONSULTAS · SIN REGISTRARTE</div>
+  <div class="h" id="f1" style="top:390px;font-size:124px">Preguntale<br>a <span class="grad">Vera</span><br>antes de<br>hacer clic.</div>
+  <div class="sub" id="f2" style="top:960px;font-size:40px;color:#CBD5E1">Funciona en Chrome, Edge, Brave y Opera de computadora. En el celu, Vera sigue en tu WhatsApp.</div>
+  <div class="pill" id="f3" style="top:1230px"></div>
+  <div class="sub" id="f4" style="top:1480px;font-size:36px;color:#A5F3FC;text-align:center;font-family:JB">cybermobile.com.ar/extension</div>
+ </div>
+ <div id="flash"></div>
+</div>
+<script>
+const P=new URLSearchParams(location.search), canal=P.get('canal')||'ig';
+const CTA={ig:'Comentá VERA y te envío el link por privado',wa:'Agregala gratis:<br>cybermobile.com.ar/extension',tt:'Link en el perfil · 3 consultas gratis'};
+document.getElementById('f3').innerHTML=CTA[canal];
+if(canal!=='ig')document.getElementById('f4').textContent='3 consultas gratis · 7 días de prueba en WhatsApp';
+const S=[['01','#22D3EE','Entrá a la página de Vera'],['02','#A78BFA','Tocá “Agregar a Chrome”'],['03','#A3E635','Fijala con el 🧩 y el 📌'],['04','#F472B6','Clic derecho → Verificar']];
+const cw=document.getElementById('cards');
+S.forEach((c,i)=>{const d=document.createElement('div');d.className='card';d.id='c'+i;d.innerHTML=`<div class="n" style="background:${c[1]}">${c[0]}</div><div><b>${c[2]}</b></div><div class="ok" style="color:${c[1]}">●</div>`;d.style.top=(1020+i*136)+'px';d.style.borderColor=c[1]+'55';cw.appendChild(d)});
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), E3=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}, eo=x=>1-Math.pow(1-cl(x),3);
+const R=(t,a,b)=>cl((t-a)/(b-a)), L=(a,b,k)=>a+(b-a)*k;
+function show(id,t,a,b,dy=40,fade=.5){const el=$(id);const k=eo(R(t,a,a+fade))*(1-eo(R(t,b-fade*.8,b)));el.style.opacity=k;el.style.transform=`translateY(${(1-eo(R(t,a,a+fade)))*dy}px)`;return k}
+const URLTXT='cybermobile.com.ar/extension';
+function render(t){
+ $('b1').style.transform=`translate(${-250+Math.sin(t*.5)*120}px,${-200+Math.cos(t*.4)*100}px)`;
+ $('b2').style.transform=`translate(${520+Math.cos(t*.45)*120}px,${700+Math.sin(t*.35)*140}px)`;
+ $('b3').style.transform=`translate(${-200+Math.sin(t*.3+1)*140}px,${1350+Math.cos(t*.5)*100}px)`;
+ $('clk').textContent='00:'+String(Math.floor(t)).padStart(2,'0');
+ $('rec').firstElementChild.style.opacity=(Math.floor(t*2)%2)?.25:1;
+ // 1) gancho (0-4.6)
+ show('hook',t,.1,4.6,30,.4);
+ ['hk1','hk2','hk3'].forEach((id,i)=>{$(id).style.opacity=eo(R(t,.1+i*.5,.6+i*.5))});
+ show('s1',t,2.2,4.6,30,.5);
+ // navegador (0.6-10)
+ const nv=$('nav');let ny,ns;
+ if(t<4.6){ny=L(1000,880,E3(R(t,.6,2)));ns=1}else{const z=E3(R(t,4.6,5.6));ny=L(880,230,z);ns=1}
+ nv.style.top=ny+'px';nv.style.transform=`scale(${ns})`;nv.style.opacity=eo(R(t,.6,1.4))*(1-eo(R(t,9.6,10.2)));
+ // cursor y menú (5.6-7.4)
+ const cu=$('cur');cu.style.opacity=t>5.3&&t<7.6?1:0;cu.style.left=L(700,330,E3(R(t,5.3,6)))+'px';cu.style.top=L(470,180,E3(R(t,5.3,6)))+'px';
+ const mn=$('menu');mn.style.opacity=t>6.1&&t<7.5?1:0;mn.querySelector('.on').style.background=t>6.6?'#3c4043':'transparent';
+ // popup de Vera (7.4-10)
+ const pp=$('pop'),pk=eo(R(t,7.3,7.9));pp.style.opacity=pk*(1-eo(R(t,9.6,10.2)));pp.style.left='560px';pp.style.top=L(380,300,pk)+'px';pp.style.transform=`scale(${L(.9,1,pk)})`;pp.style.transformOrigin='100% 0';
+ $('flash').style.opacity=t>7.4&&t<8?.2*(1-R(t,7.4,8)):0;
+ show('t2',t,5.0,10,40,.5);show('s2',t,5.6,10,30,.5);show('r2',t,7.4,10,0,.4);
+ // 2) pasos (10-24)
+ show('t3',t,10.2,24,30,.5);show('r3',t,10.6,24,0,.4);
+ const A=[10.8,14.2,17.6,21];
+ S.forEach((c,i)=>{const a=A[i],el=$('c'+i),k=eo(R(t,a,a+.6))*(1-eo(R(t,23.6,24.1)));el.style.opacity=k;el.style.transform=`translateX(${(1-eo(R(t,a,a+.6)))*160}px)`;const on=t>=a&&t<(A[i+1]||24);el.style.boxShadow=on?`0 0 0 3px ${c[1]}, 0 0 60px ${c[1]}66`:'none';const ok=el.querySelector('.ok');ok.textContent=t>a+2.4?'✓':'●';ok.style.opacity=t>a+2.4?1:(Math.floor(t*4)%2?.3:1)});
+ ['v0','v1','v2','v3'].forEach((id,i)=>{const a=A[i],b=(A[i+1]||24);const el=$(id);const k=eo(R(t,a,a+.5))*(1-eo(R(t,b-.4,b)));el.style.opacity=k;el.style.transform=`scale(${L(.92,1,eo(R(t,a,a+.5)))})`});
+ // paso 1: tipeo
+ const n=Math.floor(URLTXT.length*R(t,11.1,12.9));$('typed').textContent=URLTXT.slice(0,n);$('caret').style.opacity=Math.floor(t*3)%2?1:0;
+ // paso 2: botón y diálogo
+ const bp=t>15.1&&t<15.4?.92:1;$('bt').style.transform=`scale(${bp})`;const dk=eo(R(t,15.5,16));$('dlg').style.opacity=dk;$('dlg').style.transform=`translateY(${(1-dk)*30}px)`;$('bt2').style.transform=`scale(${t>16.6&&t<16.9?.92:1})`;
+ // paso 3: rompecabezas y chincheta
+ $('puz').style.boxShadow=t>18.2&&t<18.9?'0 0 0 5px #A3E635':'none';const dr=eo(R(t,18.5,18.9));$('drop').style.opacity=dr*(1-eo(R(t,20.2,20.5)));
+ const pinOn=t>19.4;$('pin').style.filter=pinOn?'none':'grayscale(1) opacity(.5)';$('vico').style.opacity=eo(R(t,20.2,20.6));$('vico').style.boxShadow=t>20.2?'0 0 0 5px #22D3EE':'none';
+ // paso 4: menú
+ $('on2').style.background=t>22?'#3c4043':'transparent';$('on2').style.boxShadow=t>22?'inset 6px 0 0 #F472B6':'none';
+ // 3) cierre (24-30)
+ $('fin').style.opacity=eo(R(t,24,24.6));
+ show('f0',t,24.2,31,20,.4);show('f1',t,24.4,31,40,.5);show('f2',t,25.4,31,30,.5);show('f3',t,26.2,31,30,.5);show('f4',t,26.8,31,20,.5);
+ $('f3').style.transform+=` scale(${1+.03*Math.sin(t*6)*(t>27.4?1:0)})`;
+ $('tag').style.opacity=1-eo(R(t,23.8,24.2))*.0;
+}
+const imgs=[...document.images];
+Promise.all(imgs.map(i=>i.decode().catch(()=>0))).then(()=>document.fonts.ready).then(()=>{render(0);document.documentElement.dataset.listo=1});
+</script></body></html>
