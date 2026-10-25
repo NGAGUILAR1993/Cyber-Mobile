@@ -1,0 +1,200 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:A;src:url(/home/user/cm-redes/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:JB;src:url(/home/user/cm-redes/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b141a}
+#st{position:absolute;inset:0;overflow:hidden;font-family:Inter,"DejaVu Sans",sans-serif;color:#111}
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+#screen{position:absolute;inset:0;background:#0b141a;overflow:hidden}
+.sb{position:absolute;left:0;right:0;top:0;height:64px;display:flex;align-items:center;padding:0 36px;font-size:30px;font-weight:700;color:#e9edef;background:#1f2c34;z-index:5}
+.sb .rec{width:26px;height:26px;border-radius:50%;background:#e53935;margin-left:16px;box-shadow:0 0 0 5px rgba(229,57,53,.3)}
+.sb .der{margin-left:auto;display:flex;gap:16px;align-items:center}
+.sig{display:flex;gap:4px;align-items:flex-end}.sig b{width:7px;background:#e9edef;border-radius:2px;display:block}
+.bat{width:46px;height:24px;border:3px solid #e9edef;border-radius:6px;position:relative}.bat i{position:absolute;left:2px;top:2px;bottom:2px;width:24px;background:#e9edef;border-radius:2px}
+.wh{position:absolute;left:0;right:0;top:64px;height:150px;background:#1f2c34;display:flex;align-items:center;gap:24px;padding:0 30px;color:#e9edef;z-index:5}
+.wh img{width:96px;height:96px;border-radius:50%;object-fit:cover;background:#0b0f1a}
+.wh b{font-size:42px;display:block;font-weight:600}.wh small{font-size:30px;color:#8696a0}
+#chat{position:absolute;left:0;top:214px;width:1080px}
+#chat img{width:1080px;display:block}
+#mark{position:absolute;left:112px;width:840px;height:0;background:rgba(253,224,71,.16);border:5px solid #FDE047;border-radius:14px;box-shadow:0 0 24px rgba(253,224,71,.55)}
+.in{position:absolute;left:20px;right:20px;bottom:20px;height:110px;border-radius:55px;background:#1f2c34;color:#8696a0;font-size:38px;display:flex;align-items:center;padding:0 46px;z-index:5}
+#tap{position:absolute;width:110px;height:110px;margin:-55px 0 0 -55px;border-radius:50%;background:rgba(255,255,255,.5);border:5px solid rgba(60,60,60,.5);box-shadow:0 0 0 3px rgba(255,255,255,.55);z-index:60;opacity:0}
+#tit{position:absolute;left:50px;right:50px;top:250px;z-index:90;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.l1{font-family:A;font-size:120px;line-height:1.02;text-transform:uppercase;background:#fff;color:#111;padding:6px 26px 2px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.l1 em{font-style:normal;color:#111;background:#FDE047;padding:0 12px;border-radius:8px}
+.l1.m{font-size:96px}
+.l1.y{background:#FDE047}
+.l2{font-family:G;font-size:46px;line-height:1.2;background:#111;color:#fff;padding:14px 26px;border-radius:14px;max-width:980px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.l2 em{font-style:normal;color:#FDE047}
+#ops{position:absolute;left:90px;right:90px;top:880px;z-index:80;display:flex;flex-direction:column;gap:34px}
+.op{height:150px;border-radius:32px;background:#fff;display:flex;align-items:center;gap:34px;padding:0 40px;font-family:G;font-size:58px;color:#111;box-shadow:0 14px 40px rgba(0,0,0,.45);border:5px solid transparent}
+.op i{font-style:normal;width:92px;height:92px;border-radius:24px;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:46px;flex:none}
+.op s{text-decoration:none;margin-left:auto;font-size:64px;color:#16a34a;opacity:0}
+#cd{position:absolute;left:440px;top:1500px;width:200px;height:200px;z-index:80}
+#cd svg{position:absolute;inset:0}
+#cdn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:A;font-size:110px;color:#fff}
+#cdt{position:absolute;left:0;right:0;top:1730px;text-align:center;font-family:G;font-size:40px;color:#fff;z-index:80;text-shadow:0 4px 20px rgba(0,0,0,.6)}
+#rot{position:absolute;left:50px;bottom:170px;z-index:85;font-family:JB;font-size:26px;color:#fff;background:rgba(17,17,17,.78);padding:10px 18px;border-radius:10px}
+#flash{position:absolute;inset:0;background:#FDE047;opacity:0;mix-blend-mode:screen;z-index:95}
+#dim{position:absolute;inset:0;background:#0b141a;opacity:0;z-index:70}
+#map{position:absolute;inset:0;z-index:75;opacity:0}
+#map svg{position:absolute;inset:0}
+.hub{position:absolute;left:390px;top:1010px;width:300px;height:300px;border-radius:50%;background:#FDE047;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:A;font-size:60px;color:#111;box-shadow:0 0 0 18px rgba(253,224,71,.18),0 0 80px rgba(253,224,71,.5)}
+.hub small{font-family:G;font-size:30px;margin-top:4px}
+.env{width:120px;height:80px;border:7px solid #111;border-radius:10px;position:relative;margin-bottom:8px;overflow:hidden}
+.env:before{content:"";position:absolute;left:4px;top:-52px;width:96px;height:96px;border:7px solid #111;transform:rotate(45deg)}
+.nd{position:absolute;width:300px;height:110px;margin:-55px 0 0 -150px;border-radius:26px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:G;font-size:44px;color:#111;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.nd small{position:absolute;top:-44px;left:0;right:0;text-align:center;font-family:JB;font-size:22px;color:#FDE047;white-space:nowrap}
+#fin{position:absolute;inset:0;background:#F6F7FB;opacity:0;z-index:98}
+.fk{position:absolute;left:70px;right:70px}
+.tag{font-family:JB;font-size:30px;letter-spacing:4px;color:#7C3AED}
+.fh{font-family:A;text-transform:uppercase;font-size:140px;line-height:1.12;color:#111}
+.fh em{font-style:normal;background:#FDE047;padding:0 16px;border-radius:12px;display:inline-block;line-height:1.05}
+.fs{font-family:G;font-size:58px;line-height:1.15;color:#111}
+.grad{background:linear-gradient(90deg,#7C3AED,#DB2777);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{border-radius:44px;padding:32px 36px;font-family:G;font-size:42px;line-height:1.25;text-align:center;background:#111;color:#fff;box-shadow:0 16px 40px rgba(17,17,17,.25)}
+.mk{display:flex;align-items:center;gap:18px;font-family:G;font-size:34px;color:#334155}
+.mk img{width:70px;height:70px;border-radius:50%;background:#0b0f1a}
+#hist{display:none}
+</style></head><body>
+<div id="st">
+ <div id="cam"><div id="screen">
+  <div class="sb"><span id="hora">11:42</span><span class="rec"></span>
+   <div class="der"><div class="sig"><b style="height:8px"></b><b style="height:14px"></b><b style="height:20px"></b><b style="height:26px"></b></div><span>4G</span><span>64%</span><div class="bat"><i></i></div></div></div>
+  <div class="wh"><span style="font-size:50px">&#8592;</span><img src="/home/user/cm-redes/logo-cm.png"><div><b>Vera · Antiestafas</b><small>en línea</small></div></div>
+  <div id="chat"><img src="mail.jpg"><div id="mark"></div></div>
+  <div class="in">Mensaje</div>
+ </div></div>
+
+ <div id="dim"></div>
+ <div id="map">
+  <svg width="1080" height="1920"><g id="lines" stroke="#FDE047" stroke-width="6" stroke-linecap="round" fill="none"></g></svg>
+  <div class="hub"><div class="env"></div>TU MAIL</div>
+  <div class="nd" id="n0" style="left:250px;top:780px"><small>OLVIDÉ MI CLAVE</small>Banco</div>
+  <div class="nd" id="n1" style="left:830px;top:780px"><small>OLVIDÉ MI CLAVE</small>Redes</div>
+  <div class="nd" id="n2" style="left:250px;top:1560px"><small>OLVIDÉ MI CLAVE</small>Billetera</div>
+  <div class="nd" id="n3" style="left:830px;top:1560px"><small>OLVIDÉ MI CLAVE</small>Compras</div>
+ </div>
+
+ <div id="ops">
+  <div class="op" id="o0"><i>A</i>La del banco<s>&#10007;</s></div>
+  <div class="op" id="o1"><i>B</i>La de Instagram<s>&#10007;</s></div>
+  <div class="op" id="o2"><i>C</i>La del mail<s>&#10003;</s></div>
+ </div>
+ <div id="cd"><svg width="200" height="200"><circle cx="100" cy="100" r="86" stroke="rgba(255,255,255,.25)" stroke-width="12" fill="rgba(17,17,17,.55)"/><circle id="arc" cx="100" cy="100" r="86" stroke="#FDE047" stroke-width="12" fill="none" stroke-linecap="round" transform="rotate(-90 100 100)" stroke-dasharray="540" stroke-dashoffset="0"/></svg><div id="cdn">3</div></div>
+ <div id="cdt">Elegí antes de que llegue a cero</div>
+
+ <div id="tit"></div>
+ <div id="rot">Captura real de Vera · mail tapado</div>
+ <div id="tap"></div>
+ <div id="flash"></div>
+
+ <div id="fin">
+  <div class="fk tag" id="f0" style="top:400px">GUARDALO</div>
+  <div class="fk fh" id="f1" style="top:470px">Primero,<br><em>la del mail.</em></div>
+  <div class="fk fs" id="f2" style="top:810px">¿El tuyo está en una filtración?<br><span class="grad">Mandáselo a Vera y te lo dice.</span></div>
+  <div class="fk pill" id="f3" style="top:1100px"></div>
+  <div class="fk fs" id="f4" style="top:1360px;font-size:40px;color:#334155">Mandale este video a quien usa la misma clave para todo.</div>
+  <div class="fk mk" id="f5" style="top:1700px"><img src="/home/user/cm-redes/logo-cm.png">Cyber Mobile · Vera antiestafas</div>
+ </div>
+
+ <div id="hist">
+  <div style="position:absolute;inset:0;background:rgba(11,20,26,.55);z-index:96"></div>
+  <div style="position:absolute;left:60px;right:60px;top:230px;z-index:97;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+   <div class="l1">¿Cuántas cuentas</div><div class="l1">usan <em>la misma</em></div><div class="l1">clave?</div>
+   <div class="l2">Nadie ve tu respuesta.</div>
+  </div>
+  <div style="position:absolute;left:120px;right:120px;top:1060px;height:250px;border:4px dashed rgba(255,255,255,.75);border-radius:30px;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:26px;color:#fff;background:rgba(17,17,17,.6);z-index:97">CONTROL DESLIZANTE: 0 → TODAS</div>
+  <div style="position:absolute;left:60px;right:60px;top:1380px;z-index:97;font-family:G;font-size:42px;color:#fff;text-align:center;line-height:1.25;text-shadow:0 4px 20px rgba(0,0,0,.7)">Hoy a la noche: qué clave<br>cambiar primero si se filtra tu mail.</div>
+  <div style="position:absolute;left:280px;right:280px;top:1640px;height:100px;border:4px dashed rgba(253,224,71,.9);border-radius:60px;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:24px;color:#FDE047;background:rgba(17,17,17,.6);z-index:97">ENLACE: PROBAR VERA</div>
+ </div>
+</div>
+<script>
+const P=new URLSearchParams(location.search), canal=P.get('canal')||'ig';
+const CTA={ig:'Comentá VERA y te envío el link<br>por privado (7 días gratis)',wa:'Probala 7 días gratis<br>WhatsApp +54 9 11 7059-8505',tt:'Link en el perfil · 7 días gratis'};
+const $=id=>document.getElementById(id);
+$('f3').innerHTML=CTA[canal];
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), E3=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}, eo=x=>1-Math.pow(1-cl(x),3);
+const R=(t,a,b)=>cl((t-a)/(b-a)), L=(a,b,k)=>a+(b-a)*k;
+// captura 720 px -> 1080 px (x1.5); el chat arranca en y=214 de la pantalla
+const Y=y=>214+y*1.5;
+// scroll del chat (px de pantalla): [t, desplazamiento]
+const S=[[0,0],[12.6,0],[13.4,-260],[21.5,-260],[22.2,-420],[30,-420]];
+function at(arr,t){let i=0;while(i<arr.length-2&&t>arr[i+1][0])i++;const a=arr[i],b=arr[i+1];const k=E3(R(t,a[0],b[0]));return a.slice(1).map((v,j)=>L(v,b[j+1],k))}
+// cámara: [t, cx, cy (pantalla, ya con scroll), escala, y en pantalla]
+const K=[[0,540,960,1.0,960],[5.4,540,960,1.0,960],[6.6,520,Y(103),1.22,1000],[8.6,520,Y(103),1.27,1000],
+[9.4,520,Y(366),1.25,1060],[12.4,520,Y(366),1.3,1060],[13.4,520,Y(510)-260,1.25,1080],[17.4,520,Y(510)-260,1.3,1080],
+[18.0,520,Y(510)-260,1.3,1080],[21.5,520,Y(510)-260,1.3,1080],[22.4,520,Y(605)-420,1.22,1120],[25.4,520,Y(605)-420,1.27,1120],[30,520,Y(605)-420,1.27,1120]];
+// títulos: [desde, hasta, html]
+const TITS=[
+ [0.15,5.3,'<div class="l1">Se filtró tu mail</div><div class="l1 y">en 2020.</div><div class="l2">¿Qué clave cambiás <em>primero</em>?</div>'],
+ [5.6,9.2,'<div class="l1 m">Se lo mandamos</div><div class="l1 m">a Vera</div><div class="l2">Un mail real. Mirá lo que encontró.</div>',1250],
+ [9.4,12.9,'<div class="l1 m">Una filtración</div><div class="l1 m y">de 2020</div><div class="l2">Nombre, usuario, mail y contraseñas.<br>Seis años después, sigue ahí.</div>'],
+ [13.5,17.9,'<div class="l1">La del mail.</div><div class="l1 y">Primero.</div><div class="l2">“Es la llave maestra”, responde Vera.</div>'],
+ [18.1,22.2,'<div class="l1 m">¿Por qué?</div><div class="l2">Quien entra a tu mail toca “olvidé mi clave” en todo lo demás. <em>Y el aviso llega a tu mail.</em></div>'],
+ [22.4,25.6,'<div class="l1 m">Después,</div><div class="l2">las claves repetidas y el segundo factor.<br><em>En ese orden.</em></div>']];
+// golpes (flash + sacudida)
+const HITS=[6.6,9.6,15.0,22.6];
+// dedo: [desde, hasta, x, y, toque en]
+const TAPS=[[2.0,2.9,700,1030,-1],[2.9,3.8,720,1215,-1],[3.8,4.9,740,1030,-1],[12.5,13.4,560,1500,-1],[14.1,15.2,860,1080,14.9],[21.6,22.3,560,1550,-1]];
+const lines=$('lines');
+const NODES=[[250,780],[830,780],[250,1560],[830,1560]];
+NODES.forEach((n,i)=>{const l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',540);l.setAttribute('y1',1160);l.setAttribute('x2',n[0]);l.setAttribute('y2',n[1]);l.id='ln'+i;const len=Math.hypot(n[0]-540,n[1]-1160);l.setAttribute('stroke-dasharray',len);l.dataset.len=len;lines.appendChild(l)});
+let titIdx=-2;
+function render(t){
+ $('hora').textContent='11:42';
+ document.querySelector('.sb .rec').style.opacity=(Math.floor(t*2)%2)?.35:1;
+ // chat
+ const [sc]=at(S,t);$('chat').style.transform=`translateY(${sc}px)`;
+ // marcador amarillo sobre el paso 1
+ const mk=eo(R(t,14.3,15.0));$('mark').style.top=(510-28)*1.5+'px';$('mark').style.height=(mk>0?98:0)+'px';$('mark').style.width=(840*mk)+'px';$('mark').style.display=mk>0.02?'block':'none';$('mark').style.opacity=1-eo(R(t,25.6,26));
+ // cámara con pulso de mano y sacudida
+ const [cx,cy,s,sy]=at(K,t);
+ let sh=0;HITS.forEach(h=>{if(t>=h&&t<h+.35)sh=Math.max(sh,1-(t-h)/.35)});
+ const jx=Math.sin(t*1.7)*4+Math.sin(t*3.1)*2+sh*Math.sin(t*90)*14, jy=Math.cos(t*1.3)*4+sh*Math.cos(t*80)*10, rot=Math.sin(t*.9)*.3;
+ const tx=cl(540-cx*s,1080-1080*s,0), ty=cl(sy-cy*s,1920-1920*s,0);
+ $('cam').style.transform=`translate(${tx+jx}px,${ty+jy}px) scale(${s}) rotate(${rot}deg)`;
+ // portada: chat desenfocado
+ const bl=1-eo(R(t,5.3,6.1));$('screen').style.filter=`blur(${bl*16}px) brightness(${1-bl*.5})`;
+ // opciones
+ const ko=1-eo(R(t,5.0,5.5));
+ ['o0','o1','o2'].forEach((id,i)=>{const k=eo(R(t,.6+i*.3,1.0+i*.3));const el=$(id);el.style.opacity=k*ko;el.style.transform=`translateX(${(1-k)*-160}px) scale(${1+.02*Math.sin(t*5+i)})`});
+ // cuenta regresiva 3-2-1 (2.0 a 5.0)
+ const kc=eo(R(t,1.7,2.1))*ko;$('cd').style.opacity=kc;$('cdt').style.opacity=kc;
+ const left=cl(5.0-t,0,3);$('cdn').textContent=left>0?Math.ceil(left):'0';$('arc').setAttribute('stroke-dashoffset',540*(1-left/3));
+ const pz=1+.12*Math.max(0,1-((t-2)%1)/.25)*(t>2&&t<5?1:0);$('cdn').style.transform=`scale(${pz})`;
+ // la C aparece correcta al revelar (vuelve un instante a las 15.0)
+ // títulos
+ let idx=TITS.findIndex(x=>t>=x[0]&&t<x[1]);
+ if(idx!==titIdx){$('tit').innerHTML=idx>=0?TITS[idx][2]:'';titIdx=idx}
+ if(idx>=0){const x=TITS[idx];const k=eo(R(t,x[0],x[0]+.35))*(1-eo(R(t,x[1]-.3,x[1])));$('tit').style.opacity=k;$('tit').style.transform=`translateY(${(1-eo(R(t,x[0],x[0]+.35)))*40}px)`;
+  [...$('tit').children].forEach((c,j)=>{const kk=eo(R(t,x[0]+j*.18,x[0]+j*.18+.3));c.style.opacity=kk;c.style.transform=`translateX(${(1-kk)*-60}px)`})}
+ else $('tit').style.opacity=0;
+ // posición de títulos: en el mapa van arriba de todo
+ $('tit').style.top=(idx>=0&&TITS[idx][3]?TITS[idx][3]:(t>18&&t<22.3?120:250))+'px';
+ // rótulo
+ $('rot').style.opacity=eo(R(t,6.0,6.4))*(1-eo(R(t,25.6,26)));
+ // mapa del mail (18.0 a 22.3)
+ const km=eo(R(t,18.0,18.5))*(1-eo(R(t,21.9,22.3)));$('dim').style.opacity=km*.82;$('map').style.opacity=km;
+ NODES.forEach((n,i)=>{const a=18.6+i*.55;const k=eo(R(t,a,a+.45));const ln=$('ln'+i);ln.setAttribute('stroke-dashoffset',ln.dataset.len*(1-k));$('n'+i).style.opacity=k;$('n'+i).style.transform=`scale(${.7+.3*k})`;
+  $('n'+i).style.boxShadow=t>a+.45&&t<a+1?'0 0 0 8px rgba(253,224,71,.6)':'0 10px 30px rgba(0,0,0,.4)'});
+ document.querySelector('.hub').style.transform=`scale(${1+.04*Math.sin(t*4)})`;
+ // dedo
+ let tp=null;TAPS.forEach(a=>{if(t>=a[0]&&t<a[1])tp=a});
+ if(tp){const k=R(t,tp[0],tp[1]);const tapNow=tp[4]>0&&t>=tp[4]&&t<tp[4]+.25;
+  let x=tp[2],y=tp[3];if(tp===TAPS[3]||tp===TAPS[5]){y=L(1550,1050,E3(k))}
+  $('tap').style.left=x+Math.sin(t*3)*6+'px';$('tap').style.top=y+Math.cos(t*2.5)*6+'px';$('tap').style.opacity=Math.min(eo(R(t,tp[0],tp[0]+.15)),1-eo(R(t,tp[1]-.15,tp[1])))*.95;$('tap').style.transform=`scale(${tapNow?.82:1})`}
+ else $('tap').style.opacity=0;
+ // flash
+ let fl=0;HITS.forEach(h=>{if(t>=h&&t<h+.4)fl=Math.max(fl,.3*(1-(t-h)/.4))});$('flash').style.opacity=fl;
+ // cierre
+ $('fin').style.opacity=eo(R(t,25.6,26.2));
+ [['f0',25.9],['f1',26.1],['f2',26.9],['f3',27.6],['f4',28.2],['f5',28.4]].forEach(([id,a])=>{const k=eo(R(t,a,a+.45));$(id).style.opacity=k;$(id).style.transform=`translateY(${(1-k)*40}px)`});
+ const pulse=t>28.4?1+.025*Math.sin(t*6):1;$('f3').style.transform+=` scale(${pulse})`;
+ if(P.get('historia')){['tit','ops','cd','cdt','rot','tap','fin','map','dim'].forEach(i=>$(i).style.display='none');$('hist').style.display='block';
+  $('screen').style.filter='blur(16px) brightness(.7)';$('cam').style.transform=`translate(${540-470*1.6}px,${960-Y(300)*1.6}px) scale(1.6)`;$('flash').style.opacity=0}
+}
+Promise.all([...document.images].map(i=>i.decode().catch(()=>0))).then(()=>document.fonts.ready.then(()=>{render(0);document.documentElement.dataset.listo=1}));
+</script></body></html>
