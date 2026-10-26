@@ -1,0 +1,220 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:A;src:url(/home/user/cm-redes/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:GR;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/cm-redes/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b141a}
+#st{position:absolute;inset:0;overflow:hidden;font-family:"DejaVu Sans",sans-serif;color:#111}
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+#screen{position:absolute;inset:0;background:#0b141a;overflow:hidden}
+#wall{position:absolute;inset:0;background:
+ radial-gradient(circle at 20% 30%,rgba(255,255,255,.025) 0 60px,transparent 61px),
+ radial-gradient(circle at 70% 60%,rgba(255,255,255,.025) 0 80px,transparent 81px),#0b141a}
+.sb{position:absolute;left:0;right:0;top:0;height:64px;display:flex;align-items:center;padding:0 36px;font-size:30px;font-weight:700;color:#e9edef;background:#1f2c34;z-index:5}
+.sb .rec{width:26px;height:26px;border-radius:50%;background:#e53935;margin-left:16px;box-shadow:0 0 0 5px rgba(229,57,53,.3)}
+.sb .der{margin-left:auto;display:flex;gap:16px;align-items:center}
+.sig{display:flex;gap:4px;align-items:flex-end}.sig b{width:7px;background:#e9edef;border-radius:2px;display:block}
+.bat{width:46px;height:24px;border:3px solid #e9edef;border-radius:6px;position:relative}.bat i{position:absolute;left:2px;top:2px;bottom:2px;width:24px;background:#e9edef;border-radius:2px}
+.wh{position:absolute;left:0;right:0;top:64px;height:150px;background:#1f2c34;display:flex;align-items:center;gap:24px;padding:0 30px;color:#e9edef;z-index:5}
+.wh img{width:96px;height:96px;border-radius:50%;object-fit:cover;background:#0b0f1a}
+.wh b{font-size:42px;display:block;font-weight:600}.wh small{font-size:30px;color:#8696a0}
+.scn{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#s0 img{position:absolute;left:130px;top:540px;width:820px;border-radius:28px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#s1 img{position:absolute;left:0;top:470px;width:1080px}
+#s2 img{position:absolute;left:0;top:-370px;width:1080px}
+.mark{position:absolute;height:0;background:rgba(253,224,71,.16);border:5px solid #FDE047;border-radius:14px;box-shadow:0 0 24px rgba(253,224,71,.55);display:none}
+.in{position:absolute;left:20px;right:20px;bottom:20px;height:110px;border-radius:55px;background:#1f2c34;color:#8696a0;font-size:38px;display:flex;align-items:center;padding:0 46px;z-index:5}
+#tap{position:absolute;width:110px;height:110px;margin:-55px 0 0 -55px;border-radius:50%;background:rgba(255,255,255,.5);border:5px solid rgba(60,60,60,.5);box-shadow:0 0 0 3px rgba(255,255,255,.55);z-index:60;opacity:0}
+#grad{position:absolute;left:0;right:0;bottom:0;height:640px;background:linear-gradient(180deg,rgba(11,20,26,0),rgba(11,20,26,.92) 45%);z-index:65;opacity:0}
+#tit{position:absolute;left:50px;right:50px;top:250px;z-index:90;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.l1{font-family:A;font-size:120px;line-height:1.02;text-transform:uppercase;background:#fff;color:#111;padding:6px 26px 2px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.l1.m{font-size:96px}
+.l1.y{background:#FDE047}
+.l2{font-family:G;font-size:46px;line-height:1.2;background:#111;color:#fff;padding:14px 26px;border-radius:14px;max-width:980px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.l2 em{font-style:normal;color:#FDE047}
+#big{position:absolute;left:0;right:0;top:300px;z-index:90;text-align:center}
+#num{font-family:A;font-size:300px;line-height:1;color:#FDE047;text-shadow:0 12px 50px rgba(0,0,0,.6),0 0 60px rgba(253,224,71,.35)}
+#pm{display:inline-block;font-family:A;font-size:110px;text-transform:uppercase;background:#fff;color:#111;padding:6px 30px 0;border-radius:14px;margin-top:10px}
+#bq{display:inline-block;font-family:G;font-size:64px;line-height:1.2;background:#111;color:#fff;padding:20px 36px;border-radius:18px;margin-top:40px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+#bq em{font-style:normal;color:#FDE047}
+#chip{position:absolute;right:50px;top:1550px;z-index:88;font-family:JB;font-size:44px;color:#111;background:#FDE047;padding:12px 26px;border-radius:40px;opacity:0;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+#rot{position:absolute;left:50px;top:1560px;z-index:85;font-family:JB;font-size:26px;color:#fff;background:rgba(17,17,17,.78);padding:10px 18px;border-radius:10px}
+#flash{position:absolute;inset:0;background:#FDE047;opacity:0;mix-blend-mode:screen;z-index:95}
+#dim{position:absolute;inset:0;background:#0b141a;opacity:0;z-index:70}
+#no{position:absolute;left:60px;right:60px;top:300px;z-index:80;opacity:0}
+#no h2{font-family:A;font-size:150px;line-height:1.15;text-transform:uppercase;color:#fff;margin-bottom:60px}
+#no h2 em{display:inline-block;line-height:1.05;font-style:normal;color:#111;background:#FB7185;padding:0 20px;border-radius:12px}
+.nr{display:flex;gap:34px;align-items:flex-start;margin-bottom:54px}
+.nr i{font-style:normal;flex:none;width:96px;height:96px;border-radius:50%;background:#FB7185;color:#111;font-family:G;font-size:60px;display:flex;align-items:center;justify-content:center}
+.nr div{font-family:G;font-size:58px;line-height:1.15;color:#fff}
+.nr div small{display:block;font-family:GR;font-size:42px;color:#cbd5e1;margin-top:8px}
+#pr{position:absolute;left:60px;right:60px;top:260px;z-index:80;opacity:0;background:#F6F7FB;border-radius:44px;padding:56px 54px 50px;box-shadow:0 30px 80px rgba(0,0,0,.55)}
+#pr .tag{font-family:JB;font-size:30px;letter-spacing:4px;color:#7C3AED}
+#pr .g7{font-family:A;font-size:130px;line-height:1.15;text-transform:uppercase;color:#111;margin:10px 0 30px}
+#pr .g7 em{display:inline-block;line-height:1.05;font-style:normal;background:#FDE047;padding:0 14px;border-radius:12px}
+.pl{display:flex;align-items:center;border-top:3px solid #e2e8f0;padding:30px 0}
+.pl b{font-family:G;font-size:52px;color:#111}
+.pl small{display:block;font-family:GR;font-size:36px;color:#475569;margin-top:4px}
+.pl span{margin-left:auto;font-family:A;font-size:84px;color:#111}
+.pl.h{background:linear-gradient(90deg,rgba(124,58,237,.12),rgba(219,39,119,.12));border-radius:26px;border-top-color:transparent;padding:30px 26px;margin:0 -26px}
+.pl.h small{color:#7C3AED;font-family:G}
+#pr .ft{font-family:GR;font-size:36px;color:#334155;line-height:1.3;margin-top:22px}
+#pr .ft b{font-family:G}
+#fin{position:absolute;inset:0;background:#F6F7FB;opacity:0;z-index:98}
+.fk{position:absolute;left:70px;right:70px}
+.tg{font-family:JB;font-size:30px;letter-spacing:4px;color:#7C3AED}
+.fh{font-family:A;text-transform:uppercase;font-size:140px;line-height:1.12;color:#111}
+.fh em{font-style:normal;background:#FDE047;padding:0 16px;border-radius:12px;display:inline-block;line-height:1.05}
+.fs{font-family:G;font-size:58px;line-height:1.15;color:#111}
+.grad{background:linear-gradient(90deg,#7C3AED,#DB2777);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{border-radius:44px;padding:32px 36px;font-family:G;font-size:42px;line-height:1.25;text-align:center;background:#111;color:#fff;box-shadow:0 16px 40px rgba(17,17,17,.25)}
+.mk{display:flex;align-items:center;gap:18px;font-family:G;font-size:34px;color:#334155}
+.mk img{width:70px;height:70px;border-radius:50%;background:#0b0f1a}
+#hist{display:none}
+</style></head><body>
+<div id="st">
+ <div id="cam"><div id="screen">
+  <div id="wall"></div>
+  <div class="scn" id="s0"><img src="capacidades.jpg"><div class="mark" id="m0"></div></div>
+  <div class="scn" id="s1"><img src="link-phishing.jpg"><div class="mark" id="m1"></div></div>
+  <div class="scn" id="s2"><img src="sms-saldo.jpg"><div class="mark" id="m2"></div></div>
+  <div class="sb"><span>12:07</span><span class="rec"></span>
+   <div class="der"><div class="sig"><b style="height:8px"></b><b style="height:14px"></b><b style="height:20px"></b><b style="height:26px"></b></div><span>4G</span><span>71%</span><div class="bat"><i></i></div></div></div>
+  <div class="wh"><span style="font-size:50px">&#8592;</span><img src="/home/user/cm-redes/logo-cm.png"><div><b>Vera · Antiestafas</b><small>en línea</small></div></div>
+  <div class="in">Mensaje</div>
+ </div></div>
+
+ <div id="grad"></div>
+ <div id="dim"></div>
+ <div id="big"><div id="num">$10.000</div><div id="pm">por mes</div><br><div id="bq">Lo que incluye.<br><em>Y lo que no.</em></div></div>
+ <div id="chip">1/8</div>
+
+ <div id="no">
+  <h2>Lo que<br><em>no</em></h2>
+  <div class="nr" id="n0"><i>&#10005;</i><div>No instalás nada.<small>Es un chat de WhatsApp.</small></div></div>
+  <div class="nr" id="n1"><i>&#10005;</i><div>No lee tus chats.<small>Solo ve lo que le reenviás.</small></div></div>
+  <div class="nr" id="n2"><i>&#10005;</i><div>No te ata.<small>La cancelás desde Mercado Pago.</small></div></div>
+ </div>
+
+ <div id="pr">
+  <div class="tag">CUÁNTO SALE</div>
+  <div class="g7">7 días<br><em>gratis.</em></div><div style="font-family:G;font-size:46px;color:#334155;margin:-6px 0 18px">Después, por mes:</div>
+  <div class="pl" id="p0"><div><b>Individual</b><small>1 persona</small></div><span>$10.000</span></div>
+  <div class="pl h" id="p1"><div><b>Pack Padres</b><small>Vos y tus viejos · 3 personas</small></div><span>$17.000</span></div>
+  <div class="pl" id="p2"><div><b>Pack Familiar</b><small>5 personas</small></div><span>$33.000</span></div>
+  <div class="ft" id="p3">Débito automático. <b>Se cancela desde la app de Mercado Pago → Suscripciones.</b></div>
+ </div>
+
+ <div id="tit"></div>
+ <div id="rot">Captura real de Vera</div>
+ <div id="tap"></div>
+ <div id="flash"></div>
+
+ <div id="fin">
+  <div class="fk tg" id="f0" style="top:400px">SIN LETRA CHICA</div>
+  <div class="fk fh" id="f1" style="top:470px">Probala<br><em>7 días gratis.</em></div>
+  <div class="fk fs" id="f2" style="top:810px">Mandale lo próximo que te parezca raro.<br><span class="grad">Y decidí después.</span></div>
+  <div class="fk pill" id="f3" style="top:1100px"></div>
+  <div class="fk fs" id="f4" style="top:1360px;font-size:40px;color:#334155">Mandale este video a quien siempre te pregunta “¿esto es estafa?”.</div>
+  <div class="fk mk" id="f5" style="top:1700px"><img src="/home/user/cm-redes/logo-cm.png">Cyber Mobile · Vera antiestafas</div>
+ </div>
+
+ <div id="hist">
+  <div style="position:absolute;inset:0;background:rgba(11,20,26,.6);z-index:96"></div>
+  <div style="position:absolute;left:60px;right:60px;top:230px;z-index:97;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+   <div class="l1">¿Qué <span style="background:#FB7185;padding:0 12px;border-radius:8px">no</span> hace</div><div class="l1">Vera?</div>
+   <div class="l2">Una sola es la correcta.</div>
+  </div>
+  <div style="position:absolute;left:120px;right:120px;top:880px;height:420px;border:4px dashed rgba(255,255,255,.75);border-radius:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font-family:JB;font-size:26px;color:#fff;background:rgba(17,17,17,.6);z-index:97;text-align:center">STICKER PRUEBA<br>A Revisar un CBU<br>B Leer tus chats ✓<br>C Escuchar un audio</div>
+  <div style="position:absolute;left:60px;right:60px;top:1380px;z-index:97;font-family:G;font-size:42px;color:#fff;text-align:center;line-height:1.25;text-shadow:0 4px 20px rgba(0,0,0,.7)">Hoy: todo lo que incluye Vera,<br>cuánto sale y cómo se cancela.</div>
+  <div style="position:absolute;left:280px;right:280px;top:1640px;height:100px;border:4px dashed rgba(253,224,71,.9);border-radius:60px;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:24px;color:#FDE047;background:rgba(17,17,17,.6);z-index:97">ENLACE: PROBAR VERA</div>
+ </div>
+</div>
+<script>
+const P=new URLSearchParams(location.search), canal=P.get('canal')||'ig';
+const CTA={ig:'Comentá VERA y te envío el link<br>por privado (7 días gratis)',wa:'Escribile a Vera por WhatsApp<br>+54 9 11 7059-8505',tt:'Link en el perfil · 7 días gratis'};
+const $=id=>document.getElementById(id);
+$('f3').innerHTML=CTA[canal];
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), E3=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}, eo=x=>1-Math.pow(1-cl(x),3);
+const R=(t,a,b)=>cl((t-a)/(b-a)), L=(a,b,k)=>a+(b-a)*k;
+function at(arr,t){let i=0;while(i<arr.length-2&&t>arr[i+1][0])i++;const a=arr[i],b=arr[i+1];const k=E3(R(t,a[0],b[0]));return a.slice(1).map((v,j)=>L(v,b[j+1],k))}
+// capacidades: 600 px -> 960 px (x1.6), arriba en y=280
+const C=y=>540+y*1.3667;
+const ITEMS=[[138,186],[192,276],[280,362],[366,410],[415,500],[503,590],[592,676],[680,724]];
+const T0=5.9, DT=.72; // un renglón cada 0,72 s
+// cámara: [t, cx, cy, escala, y destino]
+const K=[[0,540,960,1.0,960],[4.6,540,960,1.0,960],[5.4,540,1000,1.03,1000],[12.3,540,1000,1.07,1000],[12.6,540,1000,1.0,1000],[15.4,540,1000,1.06,1000],[15.6,540,1000,1.0,1000],[18.3,540,1000,1.06,1000],[30,540,1000,1.0,1000]];
+// títulos: [desde, hasta, html, top]
+const TITS=[
+ [5.1,8.6,'<div class="l1 m">Lo que incluye</div><div class="l2">La lista es de Vera, tal cual la manda.</div>',240],
+ [8.8,12.3,'<div class="l1 m y">Antes de transferir</div><div class="l2">CBU, links, audios, perfiles:<br><em>se lo reenviás y te contesta.</em></div>',240],
+ [12.8,15.4,'<div class="l1 m">Un link</div><div class="l2">92 sistemas de seguridad lo revisaron.<br><em>Riesgo alto: phishing.</em></div>',240],
+ [15.7,18.3,'<div class="l1 m">Una captura</div><div class="l2">SMS de una deuda falsa, con 2 links.<br><em>Qué es y qué hacer, en claro.</em></div>',240]];
+const HITS=[5.2,12.6,15.6,18.5,22.9];
+const TAPS=[[4.7,5.5,560,1500,5.25],[12.0,12.7,600,1500,-1],[15.0,15.6,600,1500,-1]];
+let titIdx=-2;
+function render(t){
+ document.querySelector('.sb .rec').style.opacity=(Math.floor(t*2)%2)?.35:1;
+ // escenas con barrido lateral
+ const w1=E3(R(t,12.5,12.9)), w2=E3(R(t,15.5,15.9));
+ $('s0').style.transform=`translateX(${-1080*w1}px)`;$('s0').style.display=w1<1?'block':'none';
+ $('s1').style.transform=`translateX(${1080*(1-w1)-1080*w2}px)`;$('s1').style.display=(w1>0&&w2<1)?'block':'none';
+ $('s2').style.transform=`translateX(${1080*(1-w2)}px)`;$('s2').style.display=w2>0?'block':'none';
+ // marcador que baja renglón por renglón
+ let ci=-1;ITEMS.forEach((it,i)=>{if(t>=T0+i*DT)ci=i});
+ const m0=$('m0');
+ if(ci>=0&&t<12.6){const a=ITEMS[ci],pv=ci>0?ITEMS[ci-1]:a,k=eo(R(t,T0+ci*DT,T0+ci*DT+.25));
+  const y0=L(C(pv[0])-8,C(a[0])-8,ci>0?k:1),y1=L(C(pv[1])+8,C(a[1])+8,ci>0?k:1);
+  m0.style.display='block';m0.style.left='138px';m0.style.width=(804*(ci>0?1:k))+'px';m0.style.top=y0+'px';m0.style.height=(y1-y0)+'px'}
+ else m0.style.display='none';
+ $('chip').textContent=(ci+1)+'/8';$('chip').style.opacity=eo(R(t,T0,T0+.2))*(1-eo(R(t,12.2,12.5)));
+ $('chip').style.transform=`scale(${1+.15*Math.max(0,1-((t-T0)%DT)/.2)*(t>=T0&&t<T0+8*DT?1:0)})`;
+ const m1=$('m1'),k1=eo(R(t,13.7,14.3));m1.style.display=k1>0?'block':'none';m1.style.left='40px';m1.style.top=(470+340*1.5)+'px';m1.style.height='66px';m1.style.width=(1000*k1)+'px';
+ const m2=$('m2'),k2=eo(R(t,16.5,17.1));m2.style.display=k2>0?'block':'none';m2.style.left='40px';m2.style.top=(-370+660*1.5)+'px';m2.style.height='80px';m2.style.width=(1000*k2)+'px';
+ // cámara con pulso de mano
+ const [cx,cy,s,sy]=at(K,t);
+ let sh=0;HITS.forEach(h=>{if(t>=h&&t<h+.35)sh=Math.max(sh,1-(t-h)/.35)});
+ const jx=Math.sin(t*1.7)*4+Math.sin(t*3.1)*2+sh*Math.sin(t*90)*14, jy=Math.cos(t*1.3)*4+sh*Math.cos(t*80)*10, rot=Math.sin(t*.9)*.3;
+ const tx=cl(540-cx*s,1080-1080*s,0), ty=cl(sy-cy*s,1920-1920*s,0);
+ $('cam').style.transform=`translate(${tx+jx}px,${ty+jy}px) scale(${s}) rotate(${rot}deg)`;
+ // portada: chat desenfocado
+ const bl=1-eo(R(t,4.4,5.2));$('screen').style.filter=`blur(${bl*18}px) brightness(${1-bl*.55})`;
+ const kb=eo(R(t,.05,.4))*(1-eo(R(t,4.3,4.7)));$('big').style.opacity=kb;
+ const cnt=Math.round(10000*eo(R(t,.2,1.3))/100)*100;$('num').textContent='$'+cnt.toLocaleString('es-AR');
+ $('num').style.transform=`scale(${1+.06*Math.max(0,1-Math.abs(t-1.35)/.25)})`;
+ $('pm').style.opacity=eo(R(t,1.3,1.7));$('bq').style.opacity=eo(R(t,1.9,2.3));$('bq').style.transform=`translateY(${(1-eo(R(t,1.9,2.3)))*40}px)`;
+ // títulos
+ let idx=TITS.findIndex(x=>t>=x[0]&&t<x[1]);
+ if(idx!==titIdx){$('tit').innerHTML=idx>=0?TITS[idx][2]:'';titIdx=idx}
+ if(idx>=0){const x=TITS[idx];const k=eo(R(t,x[0],x[0]+.35))*(1-eo(R(t,x[1]-.3,x[1])));$('tit').style.opacity=k;$('tit').style.top=x[3]+'px';
+  [...$('tit').children].forEach((c,j)=>{const kk=eo(R(t,x[0]+j*.18,x[0]+j*.18+.3));c.style.opacity=kk;c.style.transform=`translateX(${(1-kk)*-60}px)`})}
+ else $('tit').style.opacity=0;
+ $('grad').style.display='none';0&&eo(R(t,5.0,5.4))*(1-eo(R(t,18.2,18.6)));
+ // rótulo
+ $('rot').textContent=t<12.5?'Captura real de Vera':'Respuestas reales de Vera · datos tapados';
+ $('rot').style.opacity=eo(R(t,5.4,5.8))*(1-eo(R(t,18.2,18.5)));
+ // lo que no (18.5 a 22.8)
+ const kn=eo(R(t,18.4,18.9))*(1-eo(R(t,22.5,22.9)));$('no').style.opacity=kn;
+ ['n0','n1','n2'].forEach((id,i)=>{const a=19.0+i*.9,k=eo(R(t,a,a+.4));$(id).style.opacity=k;$(id).style.transform=`translateX(${(1-k)*-80}px)`});
+ // precios (22.9 a 26.6)
+ const kp=eo(R(t,22.8,23.3))*(1-eo(R(t,26.4,26.8)));$('pr').style.opacity=kp;$('pr').style.transform=`translateY(${(1-eo(R(t,22.8,23.3)))*120}px) rotate(${Math.sin(t*.8)*.4}deg)`;
+ ['p0','p1','p2','p3'].forEach((id,i)=>{const a=23.4+i*.35,k=eo(R(t,a,a+.35));$(id).style.opacity=k;$(id).style.transform=`translateY(${(1-k)*30}px)`+(id==='p1'&&t>24.3?` scale(${1+.015*Math.sin(t*5)})`:'')});
+ $('dim').style.opacity=(eo(R(t,18.3,18.8))*(1-eo(R(t,26.4,26.8))))*.9;
+ // dedo
+ let tp=null;TAPS.forEach(a=>{if(t>=a[0]&&t<a[1])tp=a});
+ if(tp){const k=R(t,tp[0],tp[1]);const tapNow=tp[4]>0&&t>=tp[4]&&t<tp[4]+.25;
+  let x=tp[2],y=tp[3];if(tp[4]<0){x=L(900,200,E3(k))}
+  $('tap').style.left=x+Math.sin(t*3)*6+'px';$('tap').style.top=y+Math.cos(t*2.5)*6+'px';$('tap').style.opacity=Math.min(eo(R(t,tp[0],tp[0]+.15)),1-eo(R(t,tp[1]-.15,tp[1])))*.95;$('tap').style.transform=`scale(${tapNow?.82:1})`}
+ else $('tap').style.opacity=0;
+ let fl=0;HITS.forEach(h=>{if(t>=h&&t<h+.4)fl=Math.max(fl,.3*(1-(t-h)/.4))});$('flash').style.opacity=fl;
+ // cierre
+ $('fin').style.opacity=eo(R(t,26.6,27.1));
+ [['f0',26.8],['f1',27.0],['f2',27.7],['f3',28.3],['f4',28.9],['f5',29.1]].forEach(([id,a])=>{const k=eo(R(t,a,a+.4));$(id).style.opacity=k;$(id).style.transform=`translateY(${(1-k)*40}px)`});
+ const pulse=t>29?1+.025*Math.sin(t*6):1;$('f3').style.transform+=` scale(${pulse})`;
+ if(P.get('historia')){['tit','big','chip','rot','tap','fin','no','pr','dim','grad'].forEach(i=>$(i).style.display='none');$('hist').style.display='block';
+  $('screen').style.filter='blur(14px) brightness(.75)';$('cam').style.transform='none';$('flash').style.opacity=0}
+}
+Promise.all([...document.images].map(i=>i.decode().catch(()=>0))).then(()=>document.fonts.ready.then(()=>{render(0);document.documentElement.dataset.listo=1}));
+</script></body></html>
