@@ -11,7 +11,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - Revisa links (VirusTotal), CBU/CVU, mails filtrados, teléfonos, capturas, archivos, perfiles y audios. Responde con un semáforo 🔴🟡🟢 y qué hacer.
 - **Observatorio de Fraude Digital** (/observatorio): ranking mensual de estafas en Argentina.
   - n8n actualiza `observatorio/datos.json` y abre un deploy automático.
-  - Cada estafa tiene su ficha en `/observatorio/<slug>` (`api/estafa.js`).
+  - Cada estafa tiene su ficha en `/observatorio/<slug>` (`api/estafa.js`). Desde el 26/10 las fichas que salen del ranking **no desaparecen**: quedan en `observatorio/archivo.json` con su último contenido y la página las muestra como "Fuera del ranking · Archivo del Observatorio" (siguen en el sitemap con prioridad 0.5). El archivo lo mantiene `scripts/observatorio/archivar.mjs` desde `observatorio-archivo.yml` cuando n8n actualiza `datos.json`, y solo cambia si aparece una estafa nueva o cambian sus textos (para no sumar deploys). Solo un slug que nunca existió redirige (301) al ranking.
 - **Planes:** prueba de 7 días gratis.
   - Individual $10.000, Pack Padres $17.000 (3 personas), Pack Familiar $33.000 (5 personas) (precios nuevos del 23/10, cargados por el dueño en Mercado Pago).
   - Empresas: $60.000 hasta 10 personas, $125.000 hasta 25.

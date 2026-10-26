@@ -1,7 +1,7 @@
 // Sitemap dinámico: portada, Observatorio, una URL por cada estafa vigente y las guías.
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { cargarDatos, modalidades, SITIO } from './_lib/observatorio.js';
+import { cargarDatos, cargarArchivo, modalidades, SITIO } from './_lib/observatorio.js';
 
 // guias/lista.json lo genera scripts/guias/generar.mjs: [{ slug, fecha }]
 function guias() {
@@ -29,8 +29,15 @@ export default function handler(req, res) {
         for (const g of lista) urls.push({ loc: `${SITIO}/guias/${g.slug}`, lastmod: g.fecha, freq: 'monthly', pri: '0.8' });
     }
     if (d) {
+        const vivas = new Set();
         for (const m of modalidades(d)) {
+            vivas.add(m.slug);
             urls.push({ loc: `${SITIO}/observatorio/${m.slug}`, lastmod: act, freq: 'weekly', pri: m.seccion === 'top' ? '0.8' : '0.6' });
+        }
+        // Fichas archivadas (salieron del ranking pero su página sigue viva).
+        for (const [slug, a] of Object.entries(cargarArchivo())) {
+            if (vivas.has(slug) || !/^[a-z0-9-]{1,80}$/.test(slug)) continue;
+            urls.push({ loc: `${SITIO}/observatorio/${slug}`, lastmod: String(a.visto || act).slice(0, 10), freq: 'monthly', pri: '0.5' });
         }
     }
     const xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +

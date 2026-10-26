@@ -1,7 +1,7 @@
 // Página propia de cada estafa del Observatorio: /observatorio/<slug>
 // Se genera en el servidor a partir de observatorio/datos.json para que los
 // buscadores reciban el contenido completo, sin depender de JavaScript.
-import { cargarDatos, modalidades, slugDe, canal, conTildes, esc, SITIO } from './_lib/observatorio.js';
+import { cargarDatos, cargarArchivo, modalidades, slugDe, canal, conTildes, esc, SITIO } from './_lib/observatorio.js';
 
 const WA = 'https://wa.me/5491170598505?text=';
 const RIESGO = { alto: 'Riesgo alto', medio: 'Riesgo medio', bajo: 'Riesgo bajo' };
@@ -192,9 +192,13 @@ export default function handler(req, res) {
         return res.status(503).send('Observatorio no disponible');
     }
     const lista = modalidades(d);
-    const s = lista.find((x) => x.slug === slug);
-    // Las fichas que salen del ranking mensual llevan al ranking actual (301) en vez de dar 404,
-    // así Google no las cuenta como errores y no se pierden las visitas que llegan desde links viejos.
+    let s = lista.find((x) => x.slug === slug);
+    // Las fichas que salen del ranking quedan en el archivo con su último contenido, marcadas como
+    // "fuera del ranking": la página sigue viva para Google. Solo un slug desconocido va al ranking (301).
+    if (!s) {
+        const a = cargarArchivo()[slug];
+        if (a) s = { ...a, slug, archivada: true };
+    }
     if (!s) {
         res.statusCode = 301;
         res.setHeader('Location', '/observatorio');
@@ -202,7 +206,8 @@ export default function handler(req, res) {
         return res.end();
     }
 
-    const mes = (d.meta && d.meta.mes) || '';
+    const mesActual = (d.meta && d.meta.mes) || '';
+    const mes = s.archivada ? (s.mes || mesActual) : mesActual;
     const mesCap = mes.charAt(0).toUpperCase() + mes.slice(1);
     const c = canal(s.canal);
     const nombre = conTildes(s.nombre);
@@ -211,9 +216,9 @@ export default function handler(req, res) {
     const act = Math.max(0, Math.min(100, Number(s.act) || 0));
     const riesgo = RIESGO[s.riesgo] ? s.riesgo : 'medio';
     const colR = { alto: 'var(--alto)', medio: 'var(--medio)', bajo: 'var(--bajo)' }[riesgo];
-    const delta = Number(s.delta) || 0;
-    const actualizado = (d.meta && d.meta.actualizado) || '';
-    const lugar = s.seccion === 'top' ? `#${s.pos} del ranking · ${mes}` : `En vigilancia · ${mes}`;
+    const delta = s.archivada ? 0 : Number(s.delta) || 0;
+    const actualizado = s.archivada ? (s.visto || '') : (d.meta && d.meta.actualizado) || '';
+    const lugar = s.archivada ? `Fuera del ranking de ${mesActual} · Archivo del Observatorio` : s.seccion === 'top' ? `#${s.pos} del ranking · ${mes}` : `En vigilancia · ${mes}`;
     const como = conTildes(s.como), detectar = conTildes(s.detectar);
 
     const provincias = (s.provincias || []).map((p) => (typeof p === 'string' ? p : p && p.nombre)).filter(Boolean);
@@ -238,7 +243,8 @@ export default function handler(req, res) {
   <ol class="crumbs" aria-label="Ruta"><li><a href="/">Inicio</a></li><li><a href="/observatorio">Observatorio</a></li><li aria-current="page">${esc(nombre)}</li></ol>
   <div class="kick">${esc(lugar)}</div>
   <h1>${esc(titulo)}</h1>
-  <div class="meta"><span class="chip">${esc(c.lbl)}</span><span class="rg ${riesgo}">${RIESGO[riesgo]}</span>${actualizado ? `<span>Actualizado el ${fechaCorta(actualizado)}</span>` : ''}</div>
+  <div class="meta"><span class="chip">${esc(c.lbl)}</span><span class="rg ${riesgo}">${RIESGO[riesgo]}</span>${actualizado ? `<span>${s.archivada ? 'Último registro' : 'Actualizado'} el ${fechaCorta(actualizado)}</span>` : ''}</div>
+  ${s.archivada ? `<p class="p" style="margin-top:14px">Esta modalidad no está en el ranking de ${esc(mesActual)}, pero sigue existiendo: estos datos son de su último registro (${esc(mes)}). Las señales para reconocerla y qué hacer siguen valiendo.</p>` : ''}
  </div>
  <div class="tile idx">
   <span style="font-size:14px;color:var(--muted)">Índice de actividad</span>
@@ -292,9 +298,9 @@ export default function handler(req, res) {
 </aside>
 </div>
 
-${relacionadas.length ? `<section style="padding-top:72px"><h2>Otras estafas que circulan en ${esc(mes)}</h2>
+${relacionadas.length ? `<section style="padding-top:72px"><h2>${s.archivada ? 'Las estafas que más circulan' : 'Otras estafas que circulan'} en ${esc(mesActual)}</h2>
 <div class="rel">${relacionadas.map((x) => `<a class="tile" href="/observatorio/${x.slug}"><span class="h"><span class="pos">${String(x.pos).padStart(2, '0')}</span><span class="chip">${esc(canal(x.canal).lbl)}</span></span><b>${esc(conTildes(x.nombre))}</b></a>`).join('')}</div>
-<p style="margin-top:20px"><a href="/observatorio" style="display:inline-flex;align-items:center;gap:8px;font-weight:600;min-height:44px">Ver el ranking completo de ${esc(mes)} ${svg('arrow', 18)}</a></p>
+<p style="margin-top:20px"><a href="/observatorio" style="display:inline-flex;align-items:center;gap:8px;font-weight:600;min-height:44px">Ver el ranking completo de ${esc(mesActual)} ${svg('arrow', 18)}</a></p>
 </section>` : ''}
 </div>`;
 

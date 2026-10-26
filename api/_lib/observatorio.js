@@ -19,6 +19,19 @@ export function cargarDatos() {
     return cache;
 }
 
+// Fichas de estafas que ya salieron del ranking (observatorio/archivo.json, lo arma
+// scripts/observatorio/archivar.mjs). Así su página sigue viva y no se pierde en Google.
+let archivo = null;
+export function cargarArchivo() {
+    if (archivo) return archivo;
+    try {
+        archivo = JSON.parse(readFileSync(join(process.cwd(), 'observatorio', 'archivo.json'), 'utf8')).modalidades || {};
+    } catch {
+        archivo = {};
+    }
+    return archivo;
+}
+
 // "phishing_pami" -> "phishing-pami". Se usa la clave (estable entre meses)
 // y no el nombre, que puede cambiar de redacción.
 export function slugDe(key) {
