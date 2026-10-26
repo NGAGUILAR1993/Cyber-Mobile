@@ -20,6 +20,7 @@ export default function handler(req, res) {
         { loc: `${SITIO}/`, lastmod: act, freq: 'weekly', pri: '1.0' },
         { loc: `${SITIO}/observatorio`, lastmod: act, freq: 'daily', pri: '0.9' },
         { loc: `${SITIO}/agente`, lastmod: '2026-10-01', freq: 'monthly', pri: '0.9' },
+        { loc: `${SITIO}/extension`, lastmod: '2026-10-27', freq: 'monthly', pri: '0.8' },
         { loc: `${SITIO}/privacidad.html`, lastmod: '2026-10-01', freq: 'yearly', pri: '0.3' }
     ];
     const lista = guias();

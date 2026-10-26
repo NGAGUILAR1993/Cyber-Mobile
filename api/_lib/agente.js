@@ -46,8 +46,8 @@ export function ipDe(req) {
 const ORIGENES = [
     /^https:\/\/(www\.)?cybermobile\.com\.ar$/,
     /^https:\/\/cyber-mobile[a-z0-9-]*-ngaguilar1993s-projects\.vercel\.app$/,
-    // Extensión "Vera Antiestafas": con CM_EXTENSION_ID cargado en Vercel, solo acepta esa extensión.
-    new RegExp('^chrome-extension://' + (/^[a-p]{32}$/.test(process.env.CM_EXTENSION_ID || '') ? process.env.CM_EXTENSION_ID : '[a-p]{32}') + '$')
+    // Extensión "Vera Antiestafas": solo la publicada en Chrome Web Store (o la de CM_EXTENSION_ID, para probar una copia cargada a mano).
+    new RegExp('^chrome-extension://' + (/^[a-p]{32}$/.test(process.env.CM_EXTENSION_ID || '') ? process.env.CM_EXTENSION_ID : 'djbbpjphdicakfckokaanmfghnbjmldh') + '$')
 ];
 // La extensión de Chrome tiene su propio cupo gratis (GRATIS_EXT). Para gastarlo vale solo el Origin,
 // que el navegador pone y no se puede falsificar desde una página.
