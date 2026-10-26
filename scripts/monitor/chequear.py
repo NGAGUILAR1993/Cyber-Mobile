@@ -22,9 +22,9 @@ SITIO = 'https://www.cybermobile.com.ar'
 N8N = 'https://primary-production-3c8ba.up.railway.app'
 EVOLUTION = 'https://evolution-api-production-bf51.up.railway.app'
 INSTANCIA = 'Agente%20Ciber'
-# Video de bienvenida de Vera (lo manda n8n por link). Consultarlo seguido también mantiene
-# activo el proyecto de Supabase, que en el plan gratis se pausa si no tiene uso.
-VIDEO_BIENVENIDA = 'https://swhwheusmyhaygfiypqs.supabase.co/storage/v1/object/public/Vera/vera.mp4'
+# Video de bienvenida de Vera (lo manda n8n por link desde la web desde el 26/10; Supabase
+# quedó como segundo intento).
+VIDEO_BIENVENIDA = SITIO + '/tarjetas/vera-bienvenida.mp4'
 ETIQUETA = 'monitor'
 INTENTOS = 3
 ESPERA = 20  # segundos entre intentos, para no avisar por un corte de segundos
@@ -51,7 +51,7 @@ def chequeos():
         ('Sitemap', lambda: pedir(SITIO + '/sitemap.xml'), lambda c, t: c == 200 and '<urlset' in t),
         ('n8n (flujos del agente)', lambda: pedir(N8N + '/healthz'), lambda c, t: c == 200 and 'ok' in t),
         ('Evolution API (WhatsApp)', lambda: pedir(EVOLUTION + '/'), lambda c, t: 200 <= c < 500 and c != 0),
-        ('Video de bienvenida (Supabase)', lambda: pedir(VIDEO_BIENVENIDA, {'Range': 'bytes=0-1023'}), lambda c, t: c in (200, 206)),
+        ('Video de bienvenida', lambda: pedir(VIDEO_BIENVENIDA, {'Range': 'bytes=0-1023'}), lambda c, t: c in (200, 206)),
     ]
     clave = os.environ.get('EVOLUTION_APIKEY', '').strip()
     if clave:
