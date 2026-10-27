@@ -1,0 +1,51 @@
+# Staging de Cyber Mobile para análisis de seguridad. Levanta todo aislado en tu computadora:
+#   - web:    la web igual que producción, en http://localhost:8080
+#   - vera:   el n8n falso (no toca WhatsApp, Gemini ni Mercado Pago)
+#   - redis:  un Redis propio y vacío, solo para esta prueba
+# Nada de esto se conecta a los servicios reales. Las claves son de mentira.
+#
+#   cd al repo y:  docker compose -f scripts/staging/docker-compose.yml up --build
+#   para apagar:   docker compose -f scripts/staging/docker-compose.yml down -v
+
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    networks: [cm]
+
+  vera:
+    build:
+      context: ../..
+      dockerfile: scripts/staging/Dockerfile
+    command: ["node", "scripts/staging/n8n-falso.mjs"]
+    volumes:
+      - ../..:/app:ro
+    environment:
+      PORT: "5699"
+    networks: [cm]
+
+  web:
+    build:
+      context: ../..
+      dockerfile: scripts/staging/Dockerfile
+    command: ["node", "scripts/staging/servidor.mjs"]
+    volumes:
+      - ../..:/app:ro
+    environment:
+      PORT: "8080"
+      REDIS_URL: "redis://redis:6379"
+      N8N_WEB_URL: "http://vera:5699/webhook/staging"
+      # Secretos de MENTIRA, solo para que las funciones arranquen. No sirven para nada real.
+      N8N_SHARED_SECRET: "staging-no-es-secreto-no-es-secreto-staging"
+      ADMIN_USER: "staging"
+      ADMIN_PASSWORD: "staging"
+      AGENTE_COOKIE_INSEGURA: "1"
+      AGENTE_ORIGEN_LOCAL: "http://localhost:8080"
+    ports:
+      - "8080:8080"
+    depends_on: [redis, vera]
+    networks: [cm]
+
+networks:
+  cm:
+    driver: bridge

@@ -140,6 +140,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - Las reglas de este archivo tienen prioridad sobre las de las skills.
 
 ## Seguridad (DevSecOps)
+- **Staging local para análisis de seguridad (`scripts/staging/`, 27/10):** copia de la web igual a producción en Docker, para correrle ZAP, Nuclei, Nikto o Shannon **sin tocar el sitio real**. `docker compose -f scripts/staging/docker-compose.yml up --build` levanta la web (localhost:8080), un Redis propio vacío y una "Vera falsa" (`n8n-falso.mjs`, no toca WhatsApp/Gemini/MP); claves de mentira. `servidor.mjs` imita a Vercel (reescrituras y encabezados de `vercel.json`, oculta `/scripts /app /docs /extension`). Guía y herramientas en `scripts/staging/LEEME.md`. Pedido de Germán, también para practicar (arranca en ciber en diciembre). Nunca correr esas herramientas contra producción ni contra n8n/Evolution.
 - **Nunca** commitear exportaciones de n8n ni claves. Los JSON del flujo tienen claves de API en vivo; el control `scripts/seguridad/revisar.mjs` lo bloquea.
 - **Antes de pedir merge,** `seguridad.yml` tiene que estar en verde:
   - gitleaks (binario fijo con SHA-256);
