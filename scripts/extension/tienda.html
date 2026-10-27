@@ -1,0 +1,132 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:SG;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SGR;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;display:flex;flex-direction:column;gap:30px;padding:20px;width:1460px}
+.s{position:relative;overflow:hidden;background:#060914;color:#F8FAFC;font-family:SGR,sans-serif}
+.s::before{content:"";position:absolute;inset:0;background-image:radial-gradient(55% 45% at 85% 10%,rgba(167,139,250,.30),transparent 70%),radial-gradient(45% 40% at 5% 90%,rgba(34,211,238,.20),transparent 70%),radial-gradient(35% 35% at 60% 100%,rgba(244,114,182,.18),transparent 70%),linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:auto,auto,auto,40px 40px,40px 40px}
+.cap{width:1280px;height:800px}
+.txt{position:absolute;left:72px;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+.tag{font-family:JB;font-size:18px;letter-spacing:4px;color:#F9A8D4}
+.marca{display:flex;align-items:center;gap:14px;font-family:JB;font-size:16px;letter-spacing:3px;color:#A5F3FC}
+.marca img{width:44px;height:44px;border-radius:11px;box-shadow:0 0 22px rgba(34,211,238,.4)}
+h1{font-family:SG;font-size:64px;line-height:1.02;letter-spacing:-2px}
+h2{font-family:SG;font-size:54px;line-height:1.04;letter-spacing:-1.5px}
+.g{background:linear-gradient(90deg,#22D3EE,#A78BFA 50%,#F472B6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.r{color:#F43F5E}
+p{font-size:24px;line-height:1.4;color:#CBD5E1}
+p b{color:#fff;font-family:SG}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{font-family:JB;font-size:15px;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(15,23,42,.7);color:#E2E8F0}
+.pop{position:absolute;border-radius:18px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 2px rgba(167,139,250,.55),0 0 60px -10px rgba(167,139,250,.5);background:#060914}
+.pop img{display:block;width:100%}
+.nav{position:absolute;border-radius:16px;overflow:hidden;background:#202124;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.1)}
+.nav .bar{height:52px;display:flex;align-items:center;gap:10px;padding:0 14px;background:#35363a}
+.nav .dot{width:12px;height:12px;border-radius:50%;background:#5f6368}
+.nav .url{flex:1;height:34px;border-radius:17px;background:#202124;color:#e8eaed;font-size:17px;display:flex;align-items:center;padding:0 16px;gap:6px}
+.nav .url em{font-style:normal;color:#9aa0a6}
+.nav .ext{width:36px;height:36px;border-radius:50%;background:#4a4b4f;display:flex;align-items:center;justify-content:center;outline:2px solid #22D3EE}
+.nav .ext img{width:22px;height:22px;border-radius:5px}
+.nav .page{position:relative;overflow:hidden;background:#eef2f6}
+.nav .page>img{display:block;width:100%}
+.menu{position:absolute;background:#292a2d;border:1px solid #3c4043;border-radius:10px;padding:8px 0;font-size:19px;color:#e8eaed;box-shadow:0 18px 50px rgba(0,0,0,.55);min-width:380px;font-family:SGR}
+.menu div{padding:9px 20px;display:flex;align-items:center;gap:12px}
+.menu .on{background:#3c4043;box-shadow:inset 4px 0 0 #F472B6}
+.menu img{width:22px;height:22px;border-radius:5px}
+.cur{position:absolute;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:26px solid #fff;transform:rotate(-30deg);filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{display:flex;align-items:center;gap:16px;padding:12px 16px;border-radius:16px;background:rgba(15,23,42,.82);border:1px solid rgba(255,255,255,.1);border-left:4px solid var(--c)}
+.card .n{flex:none;width:40px;height:40px;border-radius:11px;background:var(--c);color:#060914;font-family:JB;font-size:15px;display:flex;align-items:center;justify-content:center}
+.card b{display:block;font-family:SG;font-size:21px}
+.card span{display:block;font-size:16px;color:#CBD5E1}
+/* mosaicos */
+#chico{width:440px;height:280px}
+#grande{width:1400px;height:560px}
+</style></head><body>
+
+<!-- 1: portada con la extensión abierta -->
+<div class="s cap" id="c1">
+ <div class="txt">
+  <div class="marca"><img src="logo-cm.png">VERA ANTIESTAFAS · CYBER MOBILE</div>
+  <h1>¿Es estafa?<br>Preguntale a <span class="g">Vera</span> antes de hacer clic.</h1>
+  <p>Links, páginas, CBU, teléfonos, mails y capturas. Te contesta en segundos con un <b>semáforo</b> y qué hacer.</p>
+  <div class="chips"><span>3 CONSULTAS GRATIS</span><span>SIN REGISTRARTE</span></div>
+ </div>
+ <div class="pop" style="right:90px;top:40px;width:370px;height:720px"><img src="pop-inicio.png"></div>
+</div>
+
+<!-- 2: clic derecho en una página falsa -->
+<div class="s cap" id="c2">
+ <div class="txt" style="width:420px">
+  <div class="tag">CLIC DERECHO</div>
+  <h2>¿Esa página es la real?</h2>
+  <p>Clic derecho → <b>Verificar con Vera</b>. Revisa la página, un link o lo que marcás, <b>sin que cargues nada</b>.</p>
+ </div>
+ <div class="nav" style="left:520px;top:150px;width:700px">
+  <div class="bar"><span class="dot"></span><span class="dot"></span><div class="url">🔒 beneficios-jubilados2026.online<em>/actualizar-datos</em></div><div class="ext"><img src="logo-cm.png"></div></div>
+  <div class="page" style="height:420px"><img src="sitio.png">
+   <div class="menu" style="left:250px;top:120px"><div>Volver</div><div>Recargar</div><div>Guardar como…</div><div class="on"><img src="logo-cm.png">Verificar esta página con Vera</div></div>
+   <div class="cur" style="left:262px;top:110px"></div>
+  </div>
+ </div>
+</div>
+
+<!-- 3: resultado -->
+<div class="s cap" id="c3">
+ <div class="txt" style="width:520px">
+  <div class="tag" style="color:#FDA4AF">RESULTADO EN SEGUNDOS</div>
+  <h2>Te dice si es <span class="r">trampa</span><br>y qué hacer.</h2>
+  <p>Detrás: decenas de antivirus a la vez (VirusTotal), reputación del sitio y casos reportados en Argentina.</p>
+ </div>
+ <div class="pop" style="right:110px;top:40px;width:400px;height:720px"><img src="pop-res.png"></div>
+</div>
+
+<!-- 4: links de contexto -->
+<div class="s cap" id="c4">
+ <div class="txt" style="width:520px">
+  <div class="tag">PARA ENTENDER DE QUÉ SE TRATA</div>
+  <h2>No solo te avisa:<br><span class="g">te explica.</span></h2>
+  <p>Cómo funciona esa estafa en el <b>Observatorio de Fraude Digital</b>, la guía que corresponde y, si hace falta, <b>dónde denunciar</b>.</p>
+ </div>
+ <div class="pop" style="right:110px;top:40px;width:400px;height:720px"><img src="pop-res.png" style="margin-top:-560px"></div>
+</div>
+
+<!-- 5: qué revisa -->
+<div class="s cap" id="c5">
+ <div class="txt" style="width:470px">
+  <div class="tag">QUÉ REVISA VERA POR DENTRO</div>
+  <h2>Una especialista en estafas, <span class="g">en tu navegador.</span></h2>
+  <p>Si ya sos cliente de Vera por WhatsApp, vinculás tu cuenta con un código y listo.</p>
+ </div>
+ <div class="cards" style="position:absolute;left:600px;right:72px;top:150px">
+  <div class="card" style="--c:#A78BFA"><div class="n">01</div><div><b>Links y archivos</b><span>Decenas de antivirus a la vez y la reputación del sitio</span></div></div>
+  <div class="card" style="--c:#22D3EE"><div class="n">02</div><div><b>CBU, CVU y alias</b><span>Reportes de estafa y cuentas recién abiertas</span></div></div>
+  <div class="card" style="--c:#A3E635"><div class="n">03</div><div><b>Teléfonos</b><span>Cruce con reportes de otras personas</span></div></div>
+  <div class="card" style="--c:#FBBF24"><div class="n">04</div><div><b>Mails</b><span>El remitente real y si tu correo aparece en filtraciones</span></div></div>
+  <div class="card" style="--c:#F472B6"><div class="n">05</div><div><b>Capturas y mensajes</b><span>Lee el mensaje, el link y qué te piden</span></div></div>
+ </div>
+</div>
+
+<!-- mosaico chico 440x280 -->
+<div class="s" id="chico">
+ <div style="position:absolute;left:26px;top:30px;display:flex;align-items:center;gap:10px;font-family:JB;font-size:11px;letter-spacing:2px;color:#A5F3FC"><img src="logo-cm.png" style="width:34px;height:34px;border-radius:8px">VERA ANTIESTAFAS</div>
+ <div style="position:absolute;left:26px;top:86px;width:250px;font-family:SG;font-size:34px;line-height:1.02;letter-spacing:-1px">¿Es estafa?<br><span class="g">Preguntale a Vera.</span></div>
+ <div style="position:absolute;left:26px;bottom:26px;font-family:JB;font-size:11px;letter-spacing:1px;color:#CBD5E1">3 CONSULTAS GRATIS</div>
+ <div class="pop" style="right:22px;top:24px;width:130px;height:232px;border-radius:10px"><img src="pop-res.png"></div>
+</div>
+
+<!-- marquesina 1400x560 -->
+<div class="s" id="grande">
+ <div style="position:absolute;left:80px;top:0;bottom:0;width:640px;display:flex;flex-direction:column;justify-content:center;gap:22px">
+  <div class="marca"><img src="logo-cm.png">VERA ANTIESTAFAS · CYBER MOBILE</div>
+  <h1 style="font-size:70px">¿Es estafa?<br>Preguntale a <span class="g">Vera</span><br>antes de hacer clic.</h1>
+  <div class="chips"><span>LINKS</span><span>PÁGINAS</span><span>CBU Y ALIAS</span><span>TELÉFONOS</span><span>CAPTURAS</span></div>
+ </div>
+ <div class="nav" style="left:760px;top:70px;width:560px">
+  <div class="bar"><span class="dot"></span><span class="dot"></span><div class="url" style="font-size:14px">🔒 beneficios-jubilados2026.online</div><div class="ext"><img src="logo-cm.png"></div></div>
+  <div class="page" style="height:330px"><img src="sitio.png"></div>
+ </div>
+ <div class="pop" style="right:60px;top:40px;width:250px;height:480px;border-radius:14px"><img src="pop-res.png"></div>
+</div>
+</body></html>
