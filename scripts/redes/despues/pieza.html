@@ -1,0 +1,189 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:A;src:url(/home/user/cm-redes/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:GR;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/cm-redes/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b141a}
+#st{position:absolute;inset:0;overflow:hidden;font-family:"DejaVu Sans",sans-serif;color:#111}
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
+#screen{position:absolute;inset:0;background:#0b141a;overflow:hidden}
+#wall{position:absolute;inset:0;background:
+ radial-gradient(circle at 20% 30%,rgba(255,255,255,.025) 0 60px,transparent 61px),
+ radial-gradient(circle at 70% 60%,rgba(255,255,255,.025) 0 80px,transparent 81px),#0b141a}
+.sb{position:absolute;left:0;right:0;top:0;height:64px;display:flex;align-items:center;padding:0 36px;font-size:30px;font-weight:700;color:#e9edef;background:#1f2c34;z-index:5}
+.sb .rec{width:26px;height:26px;border-radius:50%;background:#e53935;margin-left:16px;box-shadow:0 0 0 5px rgba(229,57,53,.3)}
+.sb .der{margin-left:auto;display:flex;gap:16px;align-items:center}
+.sig{display:flex;gap:4px;align-items:flex-end}.sig b{width:7px;background:#e9edef;border-radius:2px;display:block}
+.bat{width:46px;height:24px;border:3px solid #e9edef;border-radius:6px;position:relative}.bat i{position:absolute;left:2px;top:2px;bottom:2px;width:24px;background:#e9edef;border-radius:2px}
+.wh{position:absolute;left:0;right:0;top:64px;height:150px;background:#1f2c34;display:flex;align-items:center;gap:24px;padding:0 30px;color:#e9edef;z-index:5}
+.wh img{width:96px;height:96px;border-radius:50%;object-fit:cover;background:#0b0f1a}
+.wh b{font-size:42px;display:block;font-weight:600}.wh small{font-size:30px;color:#8696a0}
+.scn{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.mark{position:absolute;height:0;background:rgba(253,224,71,.16);border:5px solid #FDE047;border-radius:14px;box-shadow:0 0 24px rgba(253,224,71,.55);display:none}
+.in{position:absolute;left:20px;right:20px;bottom:20px;height:110px;border-radius:55px;background:#1f2c34;color:#8696a0;font-size:38px;display:flex;align-items:center;padding:0 46px;z-index:5}
+#tap{position:absolute;width:110px;height:110px;margin:-55px 0 0 -55px;border-radius:50%;background:rgba(255,255,255,.5);border:5px solid rgba(60,60,60,.5);box-shadow:0 0 0 3px rgba(255,255,255,.55);z-index:60;opacity:0}
+#grad{position:absolute;left:0;right:0;bottom:0;height:640px;background:linear-gradient(180deg,rgba(11,20,26,0),rgba(11,20,26,.92) 45%);z-index:65;opacity:0}
+#tit{position:absolute;left:50px;right:50px;top:250px;z-index:90;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.l1{font-family:A;font-size:120px;line-height:1.02;text-transform:uppercase;background:#fff;color:#111;padding:6px 26px 2px;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.l1.m{font-size:96px}
+.l1.y{background:#FDE047}
+.l2{font-family:G;font-size:46px;line-height:1.2;background:#111;color:#fff;padding:14px 26px;border-radius:14px;max-width:980px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.l2 em{font-style:normal;color:#FDE047}
+#big{position:absolute;left:0;right:0;top:300px;z-index:90;text-align:center}
+#num{font-family:A;font-size:300px;line-height:1;color:#FDE047;text-shadow:0 12px 50px rgba(0,0,0,.6),0 0 60px rgba(253,224,71,.35)}
+#pm{display:inline-block;font-family:A;font-size:110px;text-transform:uppercase;background:#fff;color:#111;padding:6px 30px 0;border-radius:14px;margin-top:10px}
+#bq{display:inline-block;font-family:G;font-size:64px;line-height:1.2;background:#111;color:#fff;padding:20px 36px;border-radius:18px;margin-top:40px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+#bq em{font-style:normal;color:#FDE047}
+#chip{position:absolute;right:50px;top:1550px;z-index:88;font-family:JB;font-size:44px;color:#111;background:#FDE047;padding:12px 26px;border-radius:40px;opacity:0;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+#rot{position:absolute;left:50px;top:1560px;z-index:85;font-family:JB;font-size:26px;color:#fff;background:rgba(17,17,17,.78);padding:10px 18px;border-radius:10px}
+#flash{position:absolute;inset:0;background:#FDE047;opacity:0;mix-blend-mode:screen;z-index:95}
+#dim{position:absolute;inset:0;background:#0b141a;opacity:0;z-index:70}
+#s0 img{position:absolute;left:0;top:0;width:1080px}
+#num{font-size:230px}
+#pm{font-size:96px}
+#chip{top:1080px;font-size:60px;padding:14px 30px}
+#ent{position:absolute;left:60px;right:60px;top:230px;z-index:80;opacity:0}
+#ent .tg2{font-family:JB;font-size:32px;letter-spacing:4px;color:#FDE047;margin-bottom:18px}
+#ent h2{font-family:A;font-size:128px;line-height:1.12;text-transform:uppercase;color:#fff;margin-bottom:56px}
+#ent h2 em{display:inline-block;line-height:1.05;font-style:normal;color:#111;background:#FDE047;padding:0 18px;border-radius:12px}
+.nr{display:flex;gap:34px;align-items:flex-start;margin-bottom:54px}
+.nr i{font-style:normal;flex:none;width:96px;height:96px;border-radius:50%;background:#FDE047;color:#111;font-family:G;font-size:56px;display:flex;align-items:center;justify-content:center}
+.nr div{font-family:G;font-size:58px;line-height:1.15;color:#fff}
+.nr div small{display:block;font-family:GR;font-size:42px;color:#cbd5e1;margin-top:8px}
+#fin{position:absolute;inset:0;background:#F6F7FB;opacity:0;z-index:98}
+.fk{position:absolute;left:70px;right:70px}
+.tg{font-family:JB;font-size:30px;letter-spacing:4px;color:#7C3AED}
+.fh{font-family:A;text-transform:uppercase;font-size:140px;line-height:1.12;color:#111}
+.fh em{font-style:normal;background:#FDE047;padding:0 16px;border-radius:12px;display:inline-block;line-height:1.05}
+.fs{font-family:G;font-size:58px;line-height:1.15;color:#111}
+.grad{background:linear-gradient(90deg,#7C3AED,#DB2777);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pill{border-radius:44px;padding:32px 36px;font-family:G;font-size:42px;line-height:1.25;text-align:center;background:#111;color:#fff;box-shadow:0 16px 40px rgba(17,17,17,.25)}
+.mk{display:flex;align-items:center;gap:18px;font-family:G;font-size:34px;color:#334155}
+.mk img{width:70px;height:70px;border-radius:50%;background:#0b0f1a}
+#hist{display:none}
+</style></head><body>
+<div id="st">
+ <div id="cam"><div id="screen">
+  <div id="wall"></div>
+  <div class="scn" id="s0"><img src="aduana.jpg"><div class="mark" id="m0"></div><div class="mark" id="m1"></div></div>
+  <div class="sb"><span>21:14</span><span class="rec"></span>
+   <div class="der"><div class="sig"><b style="height:8px"></b><b style="height:14px"></b><b style="height:20px"></b><b style="height:26px"></b></div><span>4G</span><span>58%</span><div class="bat"><i></i></div></div></div>
+  <div class="wh"><span style="font-size:50px">&#8592;</span><img src="/home/user/cm-redes/logo-cm.png"><div><b>Vera · Antiestafas</b><small>en línea</small></div></div>
+  <div class="in">Mensaje</div>
+ </div></div>
+ <div id="dim"></div>
+ <div id="big"><div id="pm">¿Te cobran</div><br><div id="num">$248.104</div><div id="pm2" class="l1 m" style="display:inline-block;font-size:84px">para liberar tu compra?</div><br><div id="bq">La estafa que llega<br><em>después</em> del CyberMonday.</div></div>
+ <div id="chip">$0</div>
+ <div id="ent">
+  <div class="tg2">CYBERMONDAY · 2 AL 4/11</div>
+  <h2>Guardalo<br><em>para el 2/11</em></h2>
+  <div class="nr" id="n0"><i>1</i><div>No pagues desde el link.<small>Entrá vos al sitio del envío con tu número de seguimiento.</small></div></div>
+  <div class="nr" id="n1"><i>2</i><div>No mandes fotos de tu DNI.<small>Ni de tu tarjeta.</small></div></div>
+  <div class="nr" id="n2"><i>3</i><div>¿Dudás? Reenviáselo a Vera.<small>Te contesta con el semáforo y qué hacer.</small></div></div>
+ </div>
+ <div id="tit"></div>
+ <div id="rot">Captura real de Vera · datos tapados</div>
+ <div id="tap"></div>
+ <div id="flash"></div>
+ <div id="fin">
+  <div class="fk tg" id="f0" style="top:380px">ANTES DE PAGAR ALGO RARO</div>
+  <div class="fk fh" id="f1" style="top:450px">Preguntale<br><em>a Vera.</em></div>
+  <div class="fk fs" id="f2" style="top:790px">Le reenviás el mail o la captura.<br><span class="grad">Te dice si es real.</span></div>
+  <div class="fk pill" id="f3" style="top:1080px"></div>
+  <div class="fk fs" id="f4" style="top:1340px;font-size:40px;color:#334155">Mandale este video a quien ya tiene el carrito lleno.</div>
+  <div class="fk mk" id="f5" style="top:1700px"><img src="/home/user/cm-redes/logo-cm.png">Cyber Mobile · Vera antiestafas</div>
+ </div>
+ <div id="hist">
+  <div style="position:absolute;inset:0;background:rgba(11,20,26,.62);z-index:96"></div>
+  <div style="position:absolute;left:60px;right:60px;top:230px;z-index:97;display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+   <div class="l1 m">Tu compra quedó</div><div class="l1 m y">"retenida"</div>
+   <div class="l2">Te piden $248.104 de aranceles<br>para liberarla. <em>¿Qué hacés?</em></div>
+  </div>
+  <div style="position:absolute;left:120px;right:120px;top:900px;height:360px;border:4px dashed rgba(255,255,255,.75);border-radius:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;font-family:JB;font-size:28px;color:#fff;background:rgba(17,17,17,.6);z-index:97;text-align:center">STICKER ENCUESTA<br>Pago y listo<br>Se lo mando a Vera</div>
+  <div style="position:absolute;left:60px;right:60px;top:1360px;z-index:97;font-family:G;font-size:42px;color:#fff;text-align:center;line-height:1.25;text-shadow:0 4px 20px rgba(0,0,0,.7)">A las 20: el mail real<br>y lo que contestó Vera.</div>
+  <div style="position:absolute;left:280px;right:280px;top:1640px;height:100px;border:4px dashed rgba(253,224,71,.9);border-radius:60px;display:flex;align-items:center;justify-content:center;font-family:JB;font-size:24px;color:#FDE047;background:rgba(17,17,17,.6);z-index:97">ENLACE: PROBAR VERA</div>
+ </div>
+</div>
+<script>
+const P=new URLSearchParams(location.search), canal=P.get('canal')||'ig';
+const CTA={ig:'Comentá VERA y te envío el link<br>por privado (7 días gratis)',wa:'Escribile a Vera por WhatsApp<br>+54 9 11 7059-8505',tt:'Link en el perfil · 7 días gratis'};
+const $=id=>document.getElementById(id);
+$('f3').innerHTML=CTA[canal];
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), E3=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2}, eo=x=>1-Math.pow(1-cl(x),3);
+const R=(t,a,b)=>cl((t-a)/(b-a)), L=(a,b,k)=>a+(b-a)*k;
+function at(arr,t){let i=0;while(i<arr.length-2&&t>arr[i+1][0])i++;const a=arr[i],b=arr[i+1];const k=E3(R(t,a[0],b[0]));return a.slice(1).map((v,j)=>L(v,b[j+1],k))}
+const S=1.5, Y0=260, Y1=-220; // posición del chat antes y después del scroll
+const ROWS=[[190,238,144860],[238,280,47424],[280,320,26218],[320,380,29602]];
+const T0=9.3, DT=.95;
+// cámara: [t, cx, cy, escala, y destino]
+const K=[[0,540,960,1,960],[5.3,540,960,1,960],[6.0,540,560,1.12,520],[8.8,540,560,1.12,520],[9.4,700,690,1.3,760],[13.2,700,690,1.3,760],[13.8,560,1020,1.25,900],[15.4,560,1020,1.25,900],[16.2,540,960,1,960],[16.8,540,700,1.1,640],[18.4,540,700,1.1,640],[19.0,540,1250,1.08,1200],[20.6,540,1250,1.08,1200],[21.2,540,960,1,960],[30,540,960,1,960]];
+const TITS=[
+ [5.6,9.0,'<div class="l1 m">"Paquete retenido"</div><div class="l2">Un mail "de la Aduana" que<br>alguien le reenvió a Vera.</div>',1250],
+ [9.3,13.4,'<div class="l1 m y">4 aranceles</div><div class="l2">Con nombres oficiales.<br><em>La Aduana no los cobra por mail.</em></div>',1260],
+ [13.8,15.6,'<div class="l1 m">Y tus fotos</div><div class="l2">"Pasos a seguir: adjuntar una fotografía".</div>',1250],
+ [16.6,18.6,'<div class="l1 m" style="background:#FB7185">Riesgo alto</div><div class="l2">Lo que contestó Vera en segundos.</div>',240],
+ [19.0,20.8,'<div class="l1 m">Suplantación</div><div class="l2">Se hace pasar por la Aduana o el Correo.<br><em>No pagues.</em></div>',240]];
+const HITS=[5.4,9.3,13.8,16.5,21.0];
+const TAPS=[[4.8,5.6,700,800,5.3],[15.6,16.3,600,1500,-1]];
+let titIdx=-2;
+function render(t){
+ document.querySelector('.sb .rec').style.opacity=(Math.floor(t*2)%2)?.35:1;
+ const ky=E3(R(t,15.7,16.3)); $('s0').style.transform=`translateY(${L(Y0,Y1,ky)}px)`;
+ // marcador renglón por renglón con suma
+ let ci=-1;ROWS.forEach((r,i)=>{if(t>=T0+i*DT)ci=i});
+ const m0=$('m0');let sum=0;
+ if(ci>=0&&t<13.6){const a=ROWS[ci],pv=ci>0?ROWS[ci-1]:a,k=eo(R(t,T0+ci*DT,T0+ci*DT+.25));
+  const y0=L(pv[0]*S,a[0]*S,ci>0?k:1)-6,y1=L(pv[1]*S,a[1]*S,ci>0?k:1)+6;
+  m0.style.display='block';m0.style.left='405px';m0.style.width=(590*(ci>0?1:k))+'px';m0.style.top=y0+'px';m0.style.height=(y1-y0)+'px';
+  for(let i=0;i<ci;i++)sum+=ROWS[i][2];sum+=Math.round(ROWS[ci][2]*eo(R(t,T0+ci*DT,T0+ci*DT+.5)))}
+ else if(t>=13.8&&t<15.7){const k=eo(R(t,13.9,14.4));m0.style.display='block';m0.style.left='405px';m0.style.top=(492*S)+'px';m0.style.height=(36*S)+'px';m0.style.width=(620*k)+'px'}
+ else m0.style.display='none';
+ const m1=$('m1');
+ if(t>=16.6&&t<18.8){const k=eo(R(t,16.7,17.2));m1.style.display='block';m1.style.left='50px';m1.style.top=(560*S)+'px';m1.style.height=(42*S)+'px';m1.style.width=(830*k)+'px'}
+ else if(t>=19.0&&t<21){const k=eo(R(t,19.1,19.6));m1.style.display='block';m1.style.left='50px';m1.style.top=(905*S)+'px';m1.style.height=(212*S)+'px';m1.style.width=(900*k)+'px'}
+ else m1.style.display='none';
+ $('chip').textContent='$'+sum.toLocaleString('es-AR');
+ $('chip').style.opacity=eo(R(t,T0,T0+.2))*(1-eo(R(t,13.3,13.6)));
+ $('chip').style.transform=`scale(${1+.15*Math.max(0,1-((t-T0)%DT)/.25)*(t>=T0&&t<T0+4*DT?1:0)})`;
+ // cámara con pulso de mano
+ const [cx,cy,s,sy]=at(K,t);
+ let sh=0;HITS.forEach(h=>{if(t>=h&&t<h+.35)sh=Math.max(sh,1-(t-h)/.35)});
+ const jx=Math.sin(t*1.7)*4+Math.sin(t*3.1)*2+sh*Math.sin(t*90)*14, jy=Math.cos(t*1.3)*4+sh*Math.cos(t*80)*10, rot=Math.sin(t*.9)*.3;
+ const tx=cl(540-cx*s,1080-1080*s,0), ty=cl(sy-cy*s,1920-1920*s,0);
+ $('cam').style.transform=`translate(${tx+jx}px,${ty+jy}px) scale(${s}) rotate(${rot}deg)`;
+ // portada
+ const bl=1-eo(R(t,4.4,5.2));$('screen').style.filter=`blur(${bl*18}px) brightness(${1-bl*.55})`;
+ const kb=eo(R(t,.05,.4))*(1-eo(R(t,4.3,4.7)));$('big').style.opacity=kb;
+ const cnt=Math.round(248104*eo(R(t,.4,1.5)));$('num').textContent='$'+cnt.toLocaleString('es-AR');
+ $('num').style.transform=`scale(${1+.06*Math.max(0,1-Math.abs(t-1.55)/.25)})`;
+ $('pm2').style.opacity=eo(R(t,1.5,1.9));$('bq').style.opacity=eo(R(t,2.2,2.6));$('bq').style.transform=`translateY(${(1-eo(R(t,2.2,2.6)))*40}px)`;
+ // títulos
+ let idx=TITS.findIndex(x=>t>=x[0]&&t<x[1]);
+ if(idx!==titIdx){$('tit').innerHTML=idx>=0?TITS[idx][2]:'';titIdx=idx}
+ if(idx>=0){const x=TITS[idx];const k=eo(R(t,x[0],x[0]+.35))*(1-eo(R(t,x[1]-.3,x[1])));$('tit').style.opacity=k;$('tit').style.top=x[3]+'px';
+  [...$('tit').children].forEach((c,j)=>{const kk=eo(R(t,x[0]+j*.18,x[0]+j*.18+.3));c.style.opacity=kk;c.style.transform=`translateX(${(1-kk)*-60}px)`})}
+ else $('tit').style.opacity=0;
+ $('rot').style.top=(t<16?1600:1720)+'px';
+ $('rot').style.opacity=eo(R(t,5.4,5.8))*(1-eo(R(t,20.6,20.9)));
+ // entrega (21 a 26.8)
+ const kn=eo(R(t,20.9,21.4))*(1-eo(R(t,26.5,26.9)));$('ent').style.opacity=kn;
+ ['n0','n1','n2'].forEach((id,i)=>{const a=21.8+i*1.3,k=eo(R(t,a,a+.4));$(id).style.opacity=k;$(id).style.transform=`translateX(${(1-k)*-80}px)`});
+ $('dim').style.opacity=(eo(R(t,20.8,21.3))*(1-eo(R(t,26.5,26.9))))*.9;
+ // dedo
+ let tp=null;TAPS.forEach(a=>{if(t>=a[0]&&t<a[1])tp=a});
+ if(tp){const k=R(t,tp[0],tp[1]);const tapNow=tp[4]>0&&t>=tp[4]&&t<tp[4]+.25;
+  let x=tp[2],y=tp[3];if(tp[4]<0){y=L(1500,700,E3(k))}
+  $('tap').style.left=x+Math.sin(t*3)*6+'px';$('tap').style.top=y+Math.cos(t*2.5)*6+'px';$('tap').style.opacity=Math.min(eo(R(t,tp[0],tp[0]+.15)),1-eo(R(t,tp[1]-.15,tp[1])))*.95;$('tap').style.transform=`scale(${tapNow?.82:1})`}
+ else $('tap').style.opacity=0;
+ let fl=0;HITS.forEach(h=>{if(t>=h&&t<h+.4)fl=Math.max(fl,.3*(1-(t-h)/.4))});$('flash').style.opacity=fl;
+ // cierre
+ $('fin').style.opacity=eo(R(t,26.7,27.2));
+ [['f0',26.9],['f1',27.1],['f2',27.7],['f3',28.3],['f4',28.9],['f5',29.1]].forEach(([id,a])=>{const k=eo(R(t,a,a+.4));$(id).style.opacity=k;$(id).style.transform=`translateY(${(1-k)*40}px)`});
+ const pulse=t>29?1+.025*Math.sin(t*6):1;$('f3').style.transform+=` scale(${pulse})`;
+ if(P.get('historia')){['tit','big','chip','rot','tap','fin','ent','dim'].forEach(i=>$(i).style.display='none');$('hist').style.display='block';
+  $('screen').style.filter='blur(12px) brightness(.75)';$('cam').style.transform='none';$('flash').style.opacity=0}
+}
+Promise.all([...document.images].map(i=>i.decode().catch(()=>0))).then(()=>document.fonts.ready.then(()=>{render(0);document.documentElement.dataset.listo=1}));
+</script></body></html>
