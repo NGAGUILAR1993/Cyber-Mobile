@@ -88,4 +88,4 @@ Certificar:
 
 ## Imágenes
 - Ícono: 128×128, ya va dentro del paquete (`icons/icon-128.png`).
-- Capturas 1280×800: `tienda/captura-1.png` (Vera abierta sobre una página falsa) y `tienda/captura-2.png` (resultado en rojo).
+- Capturas 1280×800 (nuevo estilo, 27/10): `tienda/captura-1.jpg` a `captura-5.jpg` (portada, clic derecho, resultado, links de contexto, qué revisa). Mosaico 440×280 y marquesina 1400×560 en `tienda/`. Se arman con `scripts/extension/tienda.html` (imágenes reales de la extensión 1.1).
