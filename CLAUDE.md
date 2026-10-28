@@ -40,7 +40,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - La rama `claude/...` no genera vistas previas (`git.deploymentEnabled`): solo se publica al hacer merge a main.
   - `admin.html` consulta `/api/stats` cada 60 s y solo con la pestaña a la vista (antes, cada 5 s siempre).
   - `/redes/` lleva caché de un día en el navegador.
-- **Link corto:** `/vera?o=<origen>` → wa.me con texto armado. Cuenta los clics por origen en Redis (`cm:vera:clics:<fecha>`). Orígenes: ig, bio, comentario, tarjeta, qr, web, canal, historia, guia, alerta, tiktok, estado; y desde el 20/10, para la campaña Viralizar: ong, prensa, latam, en, ph, grupo, creador.
+- **Link corto:** `/vera?o=<origen>` → wa.me con texto armado. Cuenta los clics por origen en Redis (`cm:vera:clics:<fecha>`). Orígenes: ig, bio, comentario, tarjeta, qr, web, canal, historia, guia, alerta, tiktok, estado; y desde el 20/10, para la campaña Viralizar: ong, prensa, latam, en, ph, grupo, creador; extension; y aliado (kit para que un aliado comparta Vera, 28/10).
 
 ## Automatizaciones (qué corre solo)
 | Qué | Dónde | Cuándo |

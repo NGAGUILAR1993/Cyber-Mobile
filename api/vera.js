@@ -8,7 +8,9 @@ const ORIGENES = ['ig', 'bio', 'comentario', 'tarjeta', 'qr', 'web', 'canal', 'h
     // Campaña de viralización (20/10): alianzas, prensa, otros países, Product Hunt, grupos y creadores.
     'ong', 'prensa', 'latam', 'en', 'ph', 'grupo', 'creador',
     // Extensión de Chrome (lanzamiento 25/10)
-    'extension'];
+    'extension',
+    // Kit para aliados que comparten Vera (28/10)
+    'aliado'];
 
 let redisClient;
 function redis() {
