@@ -23,17 +23,12 @@ def beat(t0,t1,bpm=112):
     k=t0
     while k<t1:
         n=int(.18*R); e=env(n,.002,.05); add(k,[.22*e[i]*math.sin(2*math.pi*(60-20*i/n)*i/R) for i in range(n)]); k+=60/bpm
-beat(2.6,28.6)
-ding(.15); buzz(.15)
-for x in (.3,.5,.75,1.0): pop(x)
-tap(2.35)
-for c in (2.6,4.6,9.3,12.8,15.8,17.3,20.4,24.4): whoosh(c-.15); thump(c)
-for c in (6.6,7.5,8.4): thump(c); pop(c+.12)
-whoosh(11.65); thump(11.8)
-tap(16.85)
-for x in (21.0,21.8,22.6): pop(x)
-tap(25.95); ding(26.05); pop(26.1)
-whoosh(28.7)
+beat(1.2,28.8,96)
+ding(.12); buzz(.12)
+tap(4.5)
+for c in (5.0,7.9,11.4,14.2,16.4,19.4,22.7): whoosh(c-.2); thump(c)
+tap(26.0); ding(26.05)
+whoosh(28.9)
 m=max(abs(x) for x in a); a=[x/m*.8 for x in a]
 w=wave.open('sfx.wav','w'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(R)
 w.writeframes(b''.join(struct.pack('<h',int(x*32000)) for x in a)); w.close()

@@ -1,184 +1,125 @@
 <!doctype html><html><head><meta charset="utf-8">
-<!-- Reel "La notificación" (28/10, versión para promoción paga, objetivo seguidores).
-     Vera en tres lugares: WhatsApp, web (/agente) y extensión de Chrome. 1080x1920, 30 s, render(t) por cuadro con rec.mjs.
-     Todo lo que se ve son capturas reales (scripts/redes/casos/, extension-lanzamiento/, /agente renderizada del repo). -->
+<!-- Reel "La notificación" v2 (28/10, promoción paga, objetivo seguidores).
+     Dirección visual: papel claro "Cloud Dancer" con grano + tinta negra + lima eléctrica como resaltador + rojo solo para el riesgo.
+     Ritmo: cada texto queda ~0,4 s por palabra + 0,6 s (mínimo 1,8 s), fundidos de 0,45 s. 1080x1920, 30 s, render(t) con rec.mjs.
+     Solo material real: respuestas de Vera (scripts/redes/casos/), /agente del repo y pantallas reales de la extensión. -->
 <style>
 @font-face{font-family:A;src:url(../../../tarjetas/fuentes/Anton-Regular.ttf)}
 @font-face{font-family:G;src:url(../../../tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
 @font-face{font-family:GR;src:url(../../../tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
 @font-face{font-family:JB;src:url(../../../tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+:root{--papel:#EFEDE8;--tinta:#0E0E0E;--lima:#C8FF1F;--rojo:#FF3B30;--gris:#6B6A66}
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1080px;height:1920px;overflow:hidden;background:#07070c}
-#st{position:absolute;inset:0;overflow:hidden;font-family:G,sans-serif}
-.lay{position:absolute;inset:0;opacity:0}
-#lock{background:radial-gradient(120% 70% at 30% 20%,#123b4a 0,#0b1a2b 45%,#07070c 100%)}
-#lock .orb{position:absolute;width:900px;height:900px;border-radius:50%;filter:blur(120px);opacity:.5}
-#lock .sb{position:absolute;top:30px;left:70px;right:70px;display:flex;justify-content:space-between;font-family:G;font-size:34px;color:#fff}
-#hora{position:absolute;top:165px;left:0;right:0;text-align:center;font-family:GR;font-size:250px;letter-spacing:-6px;color:rgba(255,255,255,.92);line-height:1}
-#fecha{position:absolute;top:125px;left:0;right:0;text-align:center;font-family:G;font-size:40px;color:rgba(255,255,255,.85)}
-#noti{position:absolute;left:48px;right:48px;top:470px;border-radius:44px;background:rgba(245,245,250,.9);padding:30px 34px;box-shadow:0 30px 80px rgba(0,0,0,.45);display:flex;gap:26px;align-items:flex-start;opacity:0}
-#noti .ic{flex:none;width:92px;height:92px;border-radius:22px;background:#0b0f1a;overflow:hidden}
-#noti .ic img{width:92px;height:92px}
-#noti .tx{flex:1}
-#noti .h{display:flex;justify-content:space-between;font-family:G;font-size:36px;color:#111}
-#noti .h span{font-family:GR;color:#6b6b75;font-size:30px}
-#noti .b{font-family:GR;font-size:36px;line-height:1.28;color:#222;margin-top:6px}
-#noti .b b{font-family:G}
-#noti .dot{display:inline-block;width:30px;height:30px;border-radius:50%;background:#ef4444;vertical-align:-4px;margin-right:8px}
-#nlab{position:absolute;left:48px;right:48px;top:790px;font-family:JB;font-size:24px;color:rgba(255,255,255,.72);text-align:center;opacity:0}
-#gancho{position:absolute;left:60px;right:60px;top:930px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
-.blk{font-family:A;text-transform:uppercase;font-size:108px;line-height:1;background:#fff;color:#0b0b10;padding:14px 26px 6px;border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.45);white-space:nowrap}
-.blk.y{background:#FDE047}
-.blk.c{background:#22d3ee}
-.blk.k{background:#0b0b10;color:#fff}
-.blk.s{font-size:84px}
-.sm{font-family:JB;font-size:40px;letter-spacing:3px;color:#FDE047;text-transform:uppercase;text-shadow:0 4px 18px rgba(0,0,0,.7)}
-#cap{background:#0b141a}
-#bg{position:absolute;inset:-80px;background-position:center;background-size:cover;filter:blur(40px) brightness(.32) saturate(1.3)}
-.crop{position:absolute;left:40px;width:1000px;overflow:hidden;border-radius:26px;box-shadow:0 30px 90px rgba(0,0,0,.6),0 0 0 4px rgba(255,255,255,.1);background:#0b141a}
-.crop img{position:absolute;left:0;top:0;transform-origin:0 0}
-#sub{position:absolute;left:60px;right:60px;display:flex;flex-direction:column;align-items:flex-start;gap:14px}
-#rot{position:absolute;left:60px;font-family:JB;font-size:26px;color:#fff;background:rgba(0,0,0,.66);padding:10px 18px;border-radius:10px}
-#corte{background:#F6F7FB}
-#corte .c0{position:absolute;left:70px;top:640px;font-family:JB;font-size:34px;letter-spacing:4px;color:#7C3AED}
-#corte .c1{position:absolute;left:70px;right:70px;top:710px;font-family:A;font-size:170px;line-height:1.04;text-transform:uppercase;color:#0b0b10}
-#corte .c1 em{font-style:normal;background:linear-gradient(90deg,#7C3AED,#DB2777);-webkit-background-clip:text;background-clip:text;color:transparent}
-#res{background:#0b0b10}
-#res .tg{position:absolute;left:70px;top:270px;font-family:JB;font-size:34px;letter-spacing:4px;color:#22d3ee}
-#res h2{position:absolute;left:70px;right:70px;top:330px;font-family:A;font-size:150px;line-height:1.02;text-transform:uppercase;color:#fff}
-#res h2 em{font-style:normal;color:#FDE047}
-.ps{position:absolute;left:70px;right:90px;display:flex;gap:34px;align-items:center;opacity:0}
-.ps i{font-style:normal;flex:none;width:120px;height:120px;border-radius:30px;display:flex;align-items:center;justify-content:center;font-family:A;font-size:64px;color:#0b0b10}
-.ps div{font-family:G;font-size:66px;line-height:1.1;color:#fff}
-.ps small{display:block;font-family:JB;font-size:38px;color:#c4c8d4;margin-top:8px}
-#fin{background:#F6F7FB}
-#fin .tg{position:absolute;left:70px;top:290px;font-family:JB;font-size:32px;letter-spacing:4px;color:#7C3AED}
-#fin .f1{position:absolute;left:70px;right:70px;top:350px;font-family:A;font-size:140px;line-height:1.05;text-transform:uppercase;color:#0b0b10}
-#fin .f1 em{font-style:normal;background:#FDE047;padding:0 16px;border-radius:12px;display:inline-block;line-height:1.05}
-#fin .hd{position:absolute;left:70px;right:70px;top:720px;display:flex;align-items:center;gap:26px;background:#fff;border-radius:30px;padding:26px 30px;box-shadow:0 16px 40px rgba(17,17,17,.12)}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--papel)}
+#st{position:absolute;inset:0;overflow:hidden;background:var(--papel)}
+#grano{position:absolute;inset:0;z-index:80;pointer-events:none;opacity:.22;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>")}
+.sc{position:absolute;inset:0;opacity:0;background:var(--papel)}
+.cap{position:absolute;left:60px;top:90px;font-family:JB;font-size:30px;letter-spacing:3px;color:var(--tinta);display:flex;gap:18px;align-items:center}
+.cap b{background:var(--tinta);color:var(--lima);padding:6px 14px;border-radius:6px;font-weight:400}
+.reg{position:absolute;right:60px;top:98px;font-family:JB;font-size:26px;color:var(--gris)}
+.t{font-family:A;text-transform:uppercase;color:var(--tinta);line-height:1;letter-spacing:-1px}
+.hl{background:linear-gradient(transparent 6%,var(--lima) 6%,var(--lima) 94%,transparent 94%);padding:0 14px}
+.w{display:inline-block;opacity:0}
+.rot{position:absolute;left:60px;font-family:JB;font-size:26px;color:var(--gris)}
+.rot:before{content:"";display:inline-block;width:14px;height:14px;background:var(--lima);border:3px solid var(--tinta);border-radius:50%;margin-right:12px;vertical-align:-1px}
+.card{position:absolute;left:60px;width:944px;overflow:hidden;border-radius:30px;background:#0b141a;border:4px solid var(--tinta);box-shadow:16px 16px 0 var(--tinta)}
+.card img{position:absolute;left:0;top:0;transform-origin:0 0}
+#hora{position:absolute;left:0;right:0;top:170px;text-align:center;font-family:A;font-size:330px;line-height:1;color:var(--tinta);letter-spacing:-4px}
+#fecha{position:absolute;left:0;right:0;top:120px;text-align:center;font-family:JB;font-size:34px;color:var(--tinta);letter-spacing:2px}
+#sbar{position:absolute;top:24px;left:60px;right:60px;display:flex;justify-content:space-between;font-family:G;font-size:32px;color:var(--tinta)}
+#noti{position:absolute;left:50px;right:50px;top:560px;border-radius:40px;background:var(--tinta);padding:30px 34px;display:flex;gap:26px;align-items:flex-start;box-shadow:0 30px 60px rgba(0,0,0,.25)}
+#noti img{flex:none;width:92px;height:92px;border-radius:22px;background:#0b0f1a}
+#noti .h{display:flex;justify-content:space-between;font-family:G;font-size:36px;color:#fff}
+#noti .h span{font-family:GR;color:#9a9a9a;font-size:30px}
+#noti .b{font-family:GR;font-size:36px;line-height:1.28;color:#e8e8e8;margin-top:6px}
+#noti .b b{font-family:G;color:#fff}
+#noti .dot{display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--rojo);vertical-align:-3px;margin-right:8px}
+#nlab{position:absolute;left:50px;right:50px;top:870px;font-family:JB;font-size:24px;color:var(--gris);text-align:center}
+#gch{position:absolute;left:60px;right:60px;top:970px}
+#gch .k{font-family:JB;font-size:40px;letter-spacing:3px;color:var(--tinta);margin-bottom:22px}
+#gch .t{font-size:150px}
+#fin .t{position:absolute;left:60px;right:60px;top:220px;font-size:170px}
+#fin .hd{position:absolute;left:60px;right:76px;top:820px;display:flex;align-items:center;gap:26px;background:#fff;border:4px solid var(--tinta);border-radius:30px;padding:26px 30px;box-shadow:12px 12px 0 var(--tinta)}
 #fin .hd img{width:110px;height:110px;border-radius:50%;background:#0b0f1a}
-#fin .hd b{font-family:G;font-size:50px;color:#0b0b10;display:block}
-#fin .hd small{font-family:GR;font-size:32px;color:#475569}
-#fin .bt{margin-left:auto;font-family:G;font-size:40px;color:#fff;background:#3b82f6;padding:18px 34px;border-radius:18px}
-#fin .pill{position:absolute;left:70px;right:70px;top:990px;border-radius:44px;padding:36px;font-family:G;font-size:46px;line-height:1.25;text-align:center;background:#0b0b10;color:#fff;box-shadow:0 16px 40px rgba(17,17,17,.25)}
-#fin .pill em{font-style:normal;color:#FDE047}
-#fin .nt{position:absolute;left:70px;right:70px;top:1270px;font-family:G;font-size:40px;line-height:1.25;color:#334155}
-#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:50}
-#tap{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:rgba(255,255,255,.55);border:5px solid rgba(60,60,60,.5);z-index:40;opacity:0}
-#prog{position:absolute;left:0;top:0;height:10px;background:#22d3ee;z-index:60}
+#fin .hd b{font-family:G;font-size:50px;color:var(--tinta);display:block}
+#fin .hd small{font-family:GR;font-size:32px;color:var(--gris)}
+#fin .bt{margin-left:auto;font-family:G;font-size:40px;color:var(--tinta);background:var(--lima);border:3px solid var(--tinta);padding:16px 32px;border-radius:18px}
+#fin .pill{position:absolute;left:60px;right:60px;top:1090px;border-radius:30px;padding:40px 40px;font-family:G;font-size:54px;line-height:1.22;background:var(--tinta);color:#fff}
+#fin .pill em{font-style:normal;color:var(--lima)}
+#tap{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:rgba(200,255,31,.55);border:5px solid var(--tinta);z-index:70;opacity:0}
+#prog{position:absolute;left:0;top:0;height:10px;background:var(--tinta);z-index:90}
 </style></head><body>
 <div id="st">
- <div class="lay" id="lock">
-  <div class="orb" style="left:-300px;top:900px;background:#0891b2"></div>
-  <div class="orb" style="left:500px;top:1300px;background:#7C3AED;opacity:.35"></div>
-  <div class="sb"><span>21:14</span><span>4G &nbsp;58%</span></div>
-  <div id="fecha">miércoles, 28 de octubre</div>
+ <div class="sc" id="s0">
+  <div id="sbar"><span>21:14</span><span>4G 58%</span></div>
+  <div id="fecha">MIÉRCOLES 28 DE OCTUBRE</div>
   <div id="hora">21:14</div>
-  <div id="noti"><div class="ic"><img src="../../../logo-cm.png"></div><div class="tx"><div class="h">Vera · Antiestafas <span>ahora</span></div><div class="b"><span class="dot"></span><b>LINK PELIGROSO, Riesgo ALTO.</b> No abras este link bajo ningún concepto.</div></div></div>
+  <div id="noti"><img src="../../../logo-cm.png"><div style="flex:1"><div class="h">Vera · Antiestafas <span>ahora</span></div><div class="b"><span class="dot"></span><b>LINK PELIGROSO, Riesgo ALTO.</b> No abras este link bajo ningún concepto.</div></div></div>
   <div id="nlab">Notificación recreada · el texto es de una respuesta real de Vera</div>
-  <div id="gancho"></div>
+  <div id="gch"><div class="k w">NADIE TE LO DICE:</div><div class="t"><span class="w">Hay</span> <span class="w">una</span> <span class="w">experta</span><br><span class="w hl">en estafas</span><br><span class="w">en tu</span> <span class="w">WhatsApp</span></div></div>
  </div>
- <div class="lay" id="cap">
-  <div id="bg"></div>
-  <div class="crop" id="cr"><img id="ci"></div>
-  <div id="sub"></div>
-  <div id="rot"></div>
- </div>
- <div class="lay" id="corte"><div class="c0">Y SI NO ESTÁS EN WHATSAPP</div><div class="c1">¿Estás en<br><em>la compu?</em></div></div>
- <div class="lay" id="res">
-  <div class="tg">VERA · CYBER MOBILE</div>
-  <h2>Una experta.<br><em>Tres lugares.</em></h2>
-  <div class="ps" id="p0" style="top:770px"><i style="background:#25D366">1</i><div>WhatsApp<small>un contacto · 24/7</small></div></div>
-  <div class="ps" id="p1" style="top:1000px"><i style="background:#22d3ee">2</i><div>La web<small>cybermobile.com.ar/agente</small></div></div>
-  <div class="ps" id="p2" style="top:1230px"><i style="background:#FDE047">3</i><div>Chrome<small>extensión · 3 consultas gratis</small></div></div>
- </div>
- <div class="lay" id="fin">
-  <div class="tg">PARA QUE NO TE PASE</div>
-  <div class="f1">Seguí a<br><em>Cyber Mobile</em></div>
-  <div class="hd"><img src="../../../logo-cm.png"><div><b>@cybermobile.ai</b><small>Vera · antiestafas</small></div><div class="bt">Seguir</div></div>
-  <div class="pill">Comentá <em>VERA</em> y te envío el link<br>por privado (7 días gratis)</div>
-  <div class="nt">Mandáselo a quien siempre te pregunta "¿esto es real?".</div>
+ <div class="sc" id="s1"><div class="cap"><b>01</b>WHATSAPP</div><div class="reg">VERA · CYBER MOBILE</div>
+  <div class="card" data-img="link-phishing.jpg" data-r="0,10,720,140" style="top:260px"><img></div>
+  <div class="t" style="position:absolute;left:60px;right:60px;top:720px;font-size:200px"><span class="w">Le</span> <span class="w">mandás</span><br><span class="w hl">el link.</span></div>
+  <div class="rot" style="top:1440px">Respuesta real de Vera · datos tapados</div></div>
+ <div class="sc" id="s2"><div class="cap"><b>01</b>WHATSAPP</div><div class="reg">VERA · CYBER MOBILE</div>
+  <div class="card" data-img="link-phishing.jpg" data-r="20,300,680,180" style="top:260px"><img></div>
+  <div class="t" style="position:absolute;left:60px;right:60px;top:840px;font-size:150px"><span class="w">Lo</span> <span class="w">cruza</span> <span class="w">con</span><br><span class="w hl">92 sistemas</span><br><span class="w">de</span> <span class="w">seguridad.</span></div>
+  <div class="rot" style="top:1440px">Respuesta real de Vera · datos tapados</div></div>
+ <div class="sc" id="s3"><div class="cap"><b>01</b>WHATSAPP</div><div class="reg">VERA · CYBER MOBILE</div>
+  <div class="card" data-img="capacidades.jpg" data-r="0,0,600,520" data-pan="214" style="top:200px"><img></div>
+  <div class="t" style="position:absolute;left:60px;right:60px;top:1110px;font-size:150px"><span class="w hl">24/7.</span><br><span class="w">Un</span> <span class="w">contacto.</span></div>
+  <div class="rot" style="top:1470px">Mensaje real de Vera</div></div>
+ <div class="sc" id="s4" style="background:var(--tinta)">
+  <div class="t" style="position:absolute;left:60px;right:60px;top:660px;font-size:210px;color:var(--papel)"><span class="w">¿Estás</span> <span class="w">en</span><br><span class="w" style="color:var(--lima)">la compu?</span></div></div>
+ <div class="sc" id="s5"><div class="cap"><b>02</b>LA WEB</div><div class="reg">VERA · CYBER MOBILE</div>
+  <div class="card" data-img="agente-web.png" data-r="0,420,1030,860" data-pan="760" style="top:200px"><img></div>
+  <div class="t" style="position:absolute;left:60px;right:60px;top:1090px;font-size:150px"><span class="w">Entrá</span> <span class="w">a</span><br><span class="w hl">/agente</span></div>
+  <div class="rot" style="top:1440px">Página real: cybermobile.com.ar/agente</div></div>
+ <div class="sc" id="s6"><div class="cap"><b>03</b>CHROME</div><div class="reg">VERA · CYBER MOBILE</div>
+  <div class="card" data-img="vera-res.png" data-r="0,0,800,700" data-pan="170" style="top:200px"><img></div>
+  <div class="t" style="position:absolute;left:60px;right:60px;top:1090px;font-size:120px"><span class="w">Extensión</span> <span class="w">de</span> <span class="w">Chrome:</span><br><span class="w hl">3 consultas gratis</span></div>
+  <div class="rot" style="top:1500px">Pantallas reales de la extensión · página falsa de ejemplo</div></div>
+ <div class="sc" id="fin">
+  <div class="t"><span class="w">Seguí</span> <span class="w">a</span><br><span class="w hl">Cyber Mobile</span><br><span class="w" style="font-size:96px;margin-top:20px">para que no te pase</span></div>
+  <div class="hd w"><img src="../../../logo-cm.png"><div><b>@cybermobile.ai</b><small>Vera · antiestafas</small></div><div class="bt">Seguir</div></div>
+  <div class="pill w">Comentá <em>VERA</em> y te envío el link por privado (7 días gratis)</div>
  </div>
  <div id="tap"></div>
- <div id="flash"></div>
+ <div id="grano"></div>
  <div id="prog"></div>
 </div>
 <script>
 const $=id=>document.getElementById(id);
-const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), eo=x=>1-Math.pow(1-cl(x),3), eb=x=>{x=cl(x);const c=1.70158;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), eo=x=>1-Math.pow(1-cl(x),3), es=x=>{x=cl(x);return x*x*(3-2*x)};
 const R=(t,a,b)=>cl((t-a)/(b-a)), L=(a,b,k)=>a+(b-a)*k;
-const W={'link-phishing.jpg':720,'sms-saldo.jpg':720,'visa-falso.jpg':720,'mp-dia-madre.jpg':720,'capacidades.jpg':600,'agente-web.png':1030,'sitio.png':2560,'vera-res.png':800};
-const RW='Respuesta real de Vera en WhatsApp · datos tapados', RX='Pantallas reales de la extensión · página falsa de ejemplo';
-// [inicio, fin, imagen, [x,y,w,h], y final del paneo, top, subtítulo, top del subtítulo, rótulo, top del rótulo]
-const SC=[
- [2.6,4.6,'link-phishing.jpg',[0,10,720,140],10,520,['<div class="blk">Le mandás</div>','<div class="blk c">el link</div>'],900,RW,1560],
- [4.6,6.6,'link-phishing.jpg',[20,300,680,180],300,520,['<div class="blk">92 sistemas</div>','<div class="blk y">de seguridad</div>'],960,RW,1560],
- [6.6,7.5,'sms-saldo.jpg',[0,10,720,710],10,250,['<div class="blk c">SMS</div>'],1340,RW,1560],
- [7.5,8.4,'visa-falso.jpg',[0,0,720,690],0,250,['<div class="blk c">Mails</div>'],1340,RW,1560],
- [8.4,9.3,'mp-dia-madre.jpg',[0,0,720,800],0,190,['<div class="blk c">Capturas</div>'],1350,RW,1560],
- [9.3,11.8,'capacidades.jpg',[0,0,600,520],214,240,['<div class="blk y">24/7</div>','<div class="blk s">en tu WhatsApp</div>'],1180,'Mensaje real de Vera',1560],
- [12.8,15.8,'agente-web.png',[0,380,1030,1000],760,250,['<div class="blk s">En la web</div>','<div class="blk s c">/agente</div>'],1290,'Página real: cybermobile.com.ar/agente',1560],
- [15.8,17.3,'sitio.png',[0,0,2560,1520],0,420,['<div class="blk s">¿Esta página</div>','<div class="blk s y">es real?</div>'],1100,RX,1560],
- [17.3,20.4,'vera-res.png',[0,0,800,760],170,240,['<div class="blk s">Extensión</div>','<div class="blk s c">de Chrome</div>'],1250,RX,1580],
-];
-const CUTS=[.15,2.6,4.6,6.6,7.5,8.4,9.3,11.8,12.8,15.8,17.3,20.4,24.4,28.8];
-let subIdx=-2;
-function render(t){
- ['lock','cap','corte','res','fin'].forEach(i=>$(i).style.opacity=0);
- $('prog').style.width=(1080*t/30)+'px';
- $('tap').style.opacity=0;
- // ---- pantalla bloqueada: gancho (0 a 2.6) y vuelta del loop (28.8 a 30) ----
- if(t<2.6||t>=28.8){
-  $('lock').style.opacity=1;
-  const fin=t>=28.8, kn=fin?0:eb(R(t,.15,.45));
-  const buzz=(!fin&&t>.15&&t<.75)?Math.sin(t*140)*10*(1-R(t,.15,.75)):0;
-  $('noti').style.opacity=fin?0:cl(kn*1.2);
-  $('noti').style.transform=`translate(${buzz}px,${(1-kn)*-260}px)`;
-  $('nlab').style.opacity=fin?0:eo(R(t,.6,.9));
-  const g=$('gancho');
-  if(!fin){
-   if(!g.dataset.on){g.innerHTML='<div class="sm" id="g0">Nadie te lo dice:</div><div class="blk" id="g1">Hay una experta</div><div class="blk y" id="g2">en estafas</div><div class="blk c" id="g3">en tu WhatsApp</div>';g.dataset.on=1}
-   [['g0',.3],['g1',.5],['g2',.75],['g3',1.0]].forEach(([id,a])=>{const k=eb(R(t,a,a+.22));$(id).style.opacity=cl(k*1.3);$(id).style.transform=`scale(${L(.6,1,k)})`;$(id).style.transformOrigin='0 50%'});
-   g.style.opacity=1-eo(R(t,2.4,2.6));
-  } else {g.innerHTML='';delete g.dataset.on}
-  $('lock').style.transform=`scale(${1+.03*R(t,0,2.6)})`;
-  if(!fin&&t>1.95){$('tap').style.opacity=Math.min(eo(R(t,1.95,2.1)),1-eo(R(t,2.5,2.6)));$('tap').style.left='560px';$('tap').style.top=L(900,620,eo(R(t,1.95,2.25)))+'px';$('tap').style.transform=`scale(${t>2.3&&t<2.45?.8:1})`}
-  if(fin)$('lock').style.opacity=eo(R(t,28.8,29.2));
- }
- // ---- capturas reales ----
- const si=SC.findIndex(s=>t>=s[0]&&t<s[1]);
- if(si>=0){
-  const [a,b,img,[x,y,w,h],y2,top,sub,subTop,rot,rotTop]=SC[si];
-  $('cap').style.opacity=1;
-  const ci=$('ci');if(ci.dataset.src!==img){ci.src=img;ci.dataset.src=img;$('bg').style.backgroundImage=`url(${img})`}
-  const k=R(t,a,b), push=1+.05*k, s=1000/w*push, yy=L(y,y2,eo(R(t,a+.3,b-.2)));
-  const cr=$('cr');cr.style.top=top+'px';cr.style.height=(h*1000/w)+'px';
-  const ox=(w*s-1000)/2, oy=(h*s-h*1000/w)/2;
-  ci.style.width=W[img]+'px';ci.style.transform=`translate(${-x*s-ox}px,${-yy*s-oy}px) scale(${s})`;
-  const ki=eb(R(t,a,a+.25));cr.style.transform=`scale(${L(.86,1,ki)})`;cr.style.opacity=cl(ki*1.5);
-  const sb=$('sub');
-  if(si!==subIdx){sb.innerHTML=sub.join('');subIdx=si}
-  sb.style.top=subTop+'px';[...sb.children].forEach((c,j)=>{const kk=eb(R(t,a+.12+j*.22,a+.34+j*.22));c.style.opacity=cl(kk*1.3);c.style.transform=`scale(${L(.7,1,kk)})`;c.style.transformOrigin='0 50%'});
-  $('rot').textContent=rot;$('rot').style.top=rotTop+'px';$('rot').style.opacity=eo(R(t,a+.2,a+.4));
-  const sh=1-R(t,a,a+.3);$('cap').style.transform=`translate(${Math.sin(t*90)*12*sh}px,${Math.cos(t*80)*9*sh}px)`;
-  // dedo: clic derecho sobre la página falsa
-  if(si===7&&t>16.3){$('tap').style.opacity=Math.min(eo(R(t,16.3,16.5)),1-eo(R(t,17.1,17.3)));$('tap').style.left=L(800,600,eo(R(t,16.3,16.7)))+'px';$('tap').style.top=L(900,760,eo(R(t,16.3,16.7)))+'px';$('tap').style.transform=`scale(${t>16.8&&t<16.95?.8:1})`}
- } else subIdx=-2;
- // ---- corte blanco ----
- if(t>=11.8&&t<12.8){$('corte').style.opacity=1;const c1=$('corte').querySelector('.c1'),k=eb(R(t,11.8,12.1));c1.style.transform=`scale(${L(1.3,1,k)})`;c1.style.transformOrigin='0 50%'}
- // ---- resumen (20.4 a 24.4) ----
- if(t>=20.4&&t<24.4){$('res').style.opacity=1;const h2=$('res').querySelector('h2');h2.style.transform=`scale(${L(1.2,1,eb(R(t,20.4,20.7)))})`;h2.style.transformOrigin='0 0';
-  [['p0',21.0],['p1',21.8],['p2',22.6]].forEach(([id,a])=>{const k=eb(R(t,a,a+.3));$(id).style.opacity=cl(k*1.3);$(id).style.transform=`translateX(${(1-k)*-120}px)`})}
- // ---- cierre (24.4 a 28.8) ----
- if(t>=24.4&&t<28.8){$('fin').style.opacity=1-eo(R(t,28.55,28.8));
-  [['.tg',24.5],['.f1',24.65],['.hd',25.3],['.pill',26.1],['.nt',26.9]].forEach(([q,a])=>{const e=$('fin').querySelector(q),k=eb(R(t,a,a+.3));e.style.opacity=cl(k*1.3);e.style.transform=`translateY(${(1-k)*50}px)`});
-  const bt=$('fin').querySelector('.bt'),on=t>26.05;bt.style.transform=`scale(${t>25.9&&t<26.2?.88:1})`;bt.textContent=on?'Siguiendo':'Seguir';bt.style.background=on?'#e2e8f0':'#3b82f6';bt.style.color=on?'#0b0b10':'#fff';
-  if(t>25.6&&t<26.3){$('tap').style.opacity=Math.min(eo(R(t,25.6,25.75)),1-eo(R(t,26.15,26.3)));$('tap').style.left='880px';$('tap').style.top=L(1000,812,eo(R(t,25.6,25.9)))+'px';$('tap').style.transform=`scale(${t>25.9&&t<26.05?.8:1})`}
-  const p=$('fin').querySelector('.pill');if(t>27)p.style.transform+=` scale(${1+.02*Math.sin(t*6)})`;
- }
- let fl=0;CUTS.forEach(c=>{if(t>=c&&t<c+.18)fl=Math.max(fl,.5*(1-(t-c)/.18))});$('flash').style.opacity=fl;
+const F=.45;
+// [id, entra, sale, segundos entre palabras]
+const SC=[['s0',0,5.0,.17],['s1',5.0,7.9,.2],['s2',7.9,11.4,.2],['s3',11.4,14.2,.25],['s4',14.2,16.4,.25],['s5',16.4,19.4,.25],['s6',19.4,22.7,.22],['fin',22.7,29.2,.3]];
+const WI={'link-phishing.jpg':720,'capacidades.jpg':600,'agente-web.png':1030,'vera-res.png':800};
+document.querySelectorAll('.card').forEach(c=>{const im=c.querySelector('img');im.src=c.dataset.img;im.style.width=WI[c.dataset.img]+'px';const [x,y,w,h]=c.dataset.r.split(',').map(Number);c.style.height=(h*944/w)+'px'});
+function render(T){
+ $('prog').style.width=(1080*T/30)+'px';
+ SC.forEach(([id,a,b,st],i)=>{
+  const el=$(id);
+  let o=i===0?(1-es(R(T,b-F*.5,b+F*.5))):Math.min(eo(R(T,a-F*.5,a+F*.5)),1-es(R(T,b-F*.5,b+F*.5)));
+  el.style.opacity=o; el.style.transform=i?`translateY(${(1-eo(R(T,a-F*.5,a+F*.5)))*50}px)`:'none';
+  if(o<=0)return;
+  const t0=i?a+.1:.3;
+  [...el.querySelectorAll('.w')].forEach((w,j)=>{const kk=eo(R(T,t0+j*st,t0+j*st+.35));w.style.opacity=kk;w.style.transform=`translateY(${(1-kk)*30}px)`});
+  el.querySelectorAll('.card').forEach(c=>{const [x,y,w,h]=c.dataset.r.split(',').map(Number);const pan=c.dataset.pan?+c.dataset.pan:y;const s=944/w*(1+.03*R(T,a,b));const yy=L(y,pan,es(R(T,a+.8,b-.4)));const ox=(w*s-944)/2,oy=(h*s-h*944/w)/2;c.querySelector('img').style.transform=`translate(${-x*s-ox}px,${-yy*s-oy}px) scale(${s})`});
+ });
+ const kn=eo(R(T,.12,.42)), buzz=(T>.12&&T<.7)?Math.sin(T*140)*8*(1-R(T,.12,.7)):0;
+ $('noti').style.opacity=kn;$('noti').style.transform=`translate(${buzz}px,${(1-kn)*-200}px)`;
+ $('nlab').style.opacity=eo(R(T,.6,.9));
+ if(T>=29.0){$('s0').style.opacity=es(R(T,29.0,29.6));$('noti').style.opacity=0;$('nlab').style.opacity=0;$('s0').querySelectorAll('.w').forEach(w=>w.style.opacity=0)}
+ let tp=null;
+ if(T>4.1&&T<4.9)tp=[560,L(1000,690,eo(R(T,4.1,4.4))),T>4.45&&T<4.6,Math.min(eo(R(T,4.1,4.25)),1-eo(R(T,4.75,4.9)))];
+ if(T>25.6&&T<26.5)tp=[880,L(1100,918,eo(R(T,25.6,25.9))),T>25.95&&T<26.1,Math.min(eo(R(T,25.6,25.75)),1-eo(R(T,26.35,26.5)))];
+ if(tp){$('tap').style.left=tp[0]+'px';$('tap').style.top=tp[1]+'px';$('tap').style.transform=`scale(${tp[2]?.8:1})`;$('tap').style.opacity=tp[3]}else $('tap').style.opacity=0;
+ const bt=document.querySelector('#fin .bt'),on=T>26.05;bt.textContent=on?'Siguiendo':'Seguir';bt.style.background=on?'#fff':'#C8FF1F';
 }
-const PRE=Object.keys(W).map(s=>{const i=new Image();i.src=s;return i.decode().catch(()=>0)});
-Promise.all([...PRE,...[...document.images].map(i=>i.decode().catch(()=>0))]).then(()=>document.fonts.ready.then(()=>{render(0);document.documentElement.dataset.listo=1}));
+Promise.all([...document.images].map(i=>i.decode().catch(()=>0))).then(()=>document.fonts.ready.then(()=>{render(0);document.documentElement.dataset.listo=1}));
 </script>
 </body></html>
