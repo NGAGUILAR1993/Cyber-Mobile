@@ -4,7 +4,7 @@ Material para conseguir los primeros usuarios reales de Vera, cara a cara, en C�
 
 - **`AUDITORIA-GASTOS.md`** — qué estás pagando, qué pausar, cómo dejar de gastar al vicio (plan de 15 min).
 - **`GUION-CHARLA.md`** — el guion de la charla (15–20 min), pensado para que la gente pruebe Vera ahí mismo.
-- **`LUGARES-CORDOBA.md`** — 15 centros de día municipales de Córdoba con contacto + cómo pedir la charla.
+- **`LUGARES-CABA.md`** — Centros de Día de CABA cercanos a Caballito + cómo pedir la charla (contacto oficial GCBA y mapa de centros de jubilados).
 - **`folleto-vera-charla.pdf`** — folleto A5 imprimible (letra grande, con QR). Uno por persona.
 - **`folleto-vera-charla.png`** — el mismo folleto en imagen (para mandar o ver).
 - **`qr-vera-charla.png`** — el QR solo (lleva a `cybermobile.com.ar/vera?o=charla` → WhatsApp de Vera).

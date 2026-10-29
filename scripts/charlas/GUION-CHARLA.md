@@ -60,4 +60,4 @@
 ---
 
 ### Pedido de la charla (para contactar al centro)
-Tenés un texto corto listo para mandar por mail o WhatsApp en `LUGARES-CORDOBA.md`.
+Tenés un texto corto listo para mandar por mail o WhatsApp en `LUGARES-CABA.md`.
