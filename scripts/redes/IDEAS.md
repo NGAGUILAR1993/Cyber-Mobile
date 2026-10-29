@@ -129,3 +129,16 @@ Lo mantiene el agente redes: antes de cada pieza tira al menos 10 ideas, anota a
 | 28/10 (promo) | "Agendá este número": tarjeta de contacto de Vera que se guarda | Reel tutorial | Acción directa | Guardada (para una historia con sticker) |
 | 28/10 (promo) | "Lo que hace Vera mientras dormís": reloj 03:14 y respuestas reales | Reel storytime | 24/7 | Descartada (las capturas no tienen esa hora; sería inventar) |
 | 28/10 (promo) | "Probé mandarle 5 estafas reales en 30 s" | Reel desafío | Ritmo | Fusionada en la elegida (cortes rápidos) |
+| 29/10 | **"Este mail tiene 6 letras falsas. ¿Las encontrás?"**: juego de buscar con el mail real de chantaje masivo ("te veo por la pantalla", en inglés) que le reenviaron a Vera. Cuenta regresiva de 5 s ("pausá si querés"), aparecen 6 círculos sobre las letras de otros alfabetos (м, ɑ, ẏ, ʝ, ɢ), el porqué (pasar el filtro de spam y llegar a miles), la respuesta real de Vera (Riesgo ALTO, chantaje masivo, caracteres modificados) y 3 pasos | Reel juego "encontrá" + captura real, estilo papel de "La notificación" | Nadie del nicho muestra el truco tipográfico; es un juego que se pausa y se comenta ("encontré 4"), le habla a jóvenes (a quienes les llega este mail) y alivia un miedo real ("no te eligieron a vos"). Hookscore 50,6 (el script solo cuenta "you") | **Elegida** |
+| 29/10 | "Mismo mensaje, dos lecturas" (Aduana) | Carrusel comparación | Educa | Guardada para el 31/10 (sigue en pie) |
+| 29/10 | "Leé el dominio antes del carrito" | Carrusel tutorial | Guardable | Guardada para el 3/11 (CyberMonday) |
+| 29/10 | "La primera hora": qué hacer si ya caíste | Carrusel guía | Muy guardable | Guardada |
+| 29/10 | "Halloween de verdad": los 3 mails que más miedo dan del archivo de Vera (chantaje, VISA, Aduana) | Reel ranking | Fecha del 31/10 | Descartada (fecha importada y tono de disfraz choca con la regla de seriedad) |
+| 29/10 | "Te filmaron por la cámara" en POV de pantalla bloqueada a las 3 AM | Reel POV suspenso | Miedo + alivio | Descartada (repite la apertura de pantalla bloqueada de "La notificación" del 28/10) |
+| 29/10 | "El .zip del grupo de la familia": 40 de 68 antivirus | Reel caso real | Grupo familiar | Descartada (zip-malicioso ya usado el 22/10) |
+| 29/10 | "Traducido al castellano": el mail de chantaje leído en voz alta, frase por frase, con la trampa debajo | Reel narrado | Mucha gente no lee inglés y se asusta igual | Fusionada (la escena 01 lo resume) |
+| 29/10 | "¿Por qué tu filtro de spam no lo frenó?": rayos X técnico de los caracteres Unicode | Reel técnico | Muestra el trabajo de ciberseguridad | Fusionada (es la escena "¿para qué?") |
+| 29/10 | Desafío "etiquetá al que siempre abre todo": encontrar las letras en 5 s | Mecánica de comentarios | Etiquetas = alcance | Usada como comentario fijado |
+| 29/10 | "El IP que no conocías": caso ip-maliciosa | Reel caso real | Caso sin usar | Descartada (una IP no le dice nada a nadie) |
+| 29/10 | Pack Padres con el aguinaldo antes del CyberMonday | Reel venta | Venta de la semana | Guardada (la venta de la semana ya salió el 26/10; promo necesita aprobación) |
+| 29/10 | Historia: prueba "¿Cuántas letras falsas ves? 2 · 4 · 6" con la respuesta en el reel de las 20 | Historia prueba | Anticipa el reel | Usada como historia |
