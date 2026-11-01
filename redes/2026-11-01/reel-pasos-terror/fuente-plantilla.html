@@ -1,0 +1,261 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:A;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:M;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:"Liberation Sans",Arial,"Noto Color Emoji",sans-serif;color:#f4f4f4}
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 960px;will-change:transform}
+#phone{position:absolute;inset:0;background:#07070a;overflow:hidden}
+/* wallpaper oscuro (sin caras) */
+#wall{position:absolute;inset:0;background:
+  radial-gradient(130% 80% at 50% 8%,#1b2030 0%,#0c0e16 46%,#060608 100%)}
+#wall:after{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 40% at 30% 72%,rgba(80,96,130,.16),transparent 70%),
+  radial-gradient(50% 36% at 76% 80%,rgba(70,84,120,.12),transparent 72%)}
+/* barra de estado (modo oscuro) */
+.sb{position:absolute;left:0;right:0;top:0;height:74px;display:flex;align-items:center;padding:0 44px;font-size:33px;font-weight:700;z-index:40;color:#eee}
+.sb .rec{width:28px;height:28px;border-radius:50%;background:#ff2b2b;margin-left:18px;box-shadow:0 0 18px 4px rgba(255,43,43,.6)}
+.sb .der{margin-left:auto;display:flex;gap:16px;align-items:center}
+.bat{width:54px;height:27px;border:3px solid #eee;border-radius:6px;position:relative;padding:3px}
+.bat i{display:block;height:100%;width:48%;background:#eee;border-radius:2px}
+.bat:after{content:"";position:absolute;right:-9px;top:7px;width:5px;height:9px;background:#eee;border-radius:0 2px 2px 0}
+.sig{display:flex;gap:4px;align-items:flex-end;height:27px}.sig b{width:7px;background:#eee;border-radius:2px}
+/* reloj grande del lock */
+#lock{position:absolute;left:0;right:0;top:150px;text-align:center;z-index:12}
+#lock .d{font-size:40px;color:#c7cedd;letter-spacing:1px}
+#lock .h{font-family:A;font-size:210px;line-height:.9;color:#eef1f7;margin-top:6px;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+/* pila de notificaciones */
+#stack{position:absolute;left:36px;right:36px;top:470px;z-index:16;display:flex;flex-direction:column;gap:22px}
+.nt{background:rgba(22,24,32,.82);backdrop-filter:blur(8px);border-radius:38px;padding:22px 32px;display:flex;gap:24px;align-items:flex-start;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.06);opacity:0;transform:translateY(40px)}
+.nt .ic{width:80px;height:80px;border-radius:22px;flex:none;display:flex;align-items:center;justify-content:center;font-size:46px}
+.nt .ic.red{background:#3a1416;color:#ff5a5a;box-shadow:inset 0 0 0 2px rgba(255,90,90,.35)}
+.nt .ic.phone{background:#132a1a;color:#53d07e;box-shadow:inset 0 0 0 2px rgba(83,208,126,.3)}
+.nt .ic.gift{background:#2c2410;color:#ffcf4d;box-shadow:inset 0 0 0 2px rgba(255,207,77,.3)}
+.nt .ic.wa{background:#0b3d33;color:#25d366;box-shadow:inset 0 0 0 2px rgba(37,211,102,.35)}
+.nt .tx{flex:1;min-width:0}
+.nt .ap{font-size:28px;color:#9aa3b5;display:flex;justify-content:space-between}
+.nt b{display:block;font-size:38px;color:#fff;margin:6px 0 4px;font-weight:700}
+.nt p{font-size:33px;color:#c4cad6;line-height:1.28}
+.nt .lk{color:#6ea8ff;word-break:break-all}
+.redo{outline:2px solid rgba(255,43,43,.0)}
+/* dedo */
+#tap{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:rgba(255,255,255,.14);border:5px solid rgba(255,255,255,.5);box-shadow:0 0 30px rgba(255,90,90,.4);z-index:60;opacity:0}
+/* capa de mancha/terror */
+#stain{position:absolute;inset:0;z-index:30;pointer-events:none;opacity:0;
+  background:
+   radial-gradient(42% 30% at 8% 98%,rgba(150,8,12,.9),transparent 70%),
+   radial-gradient(46% 32% at 98% 6%,rgba(120,6,10,.85),transparent 70%),
+   radial-gradient(40% 30% at 98% 100%,rgba(130,6,10,.8),transparent 72%)}
+#vig{position:absolute;inset:0;z-index:31;pointer-events:none;
+  box-shadow:inset 0 0 300px 80px rgba(0,0,0,.0);opacity:1}
+#flash{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,0,0,.05) 20%,rgba(190,0,0,.8) 100%);opacity:0;pointer-events:none;z-index:50}
+#grain{position:absolute;inset:0;z-index:33;pointer-events:none;opacity:0;mix-blend-mode:overlay;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.05),rgba(0,0,0,.05) 2px,rgba(255,255,255,.04) 3px)}
+/* chat Vera */
+#wa{position:absolute;inset:0;background:#0b141a;z-index:44;display:none}
+#wa .wh{height:150px;background:#1f2c33;display:flex;align-items:center;gap:26px;padding:0 30px}
+#wa .wh img{width:94px;height:94px;border-radius:50%;object-fit:cover;background:#0b0f1a}
+#wa .wh b{font-size:42px;display:block;color:#fff}#wa .wh small{font-size:30px;color:#9fe0c0}
+#wa .bd{padding:40px 34px}
+.dia{margin:0 auto 30px;width:max-content;background:#182a36;border-radius:16px;padding:10px 26px;font-size:28px;color:#c9d3da}
+.fwd{margin-left:auto;width:720px;background:#005c4b;border-radius:26px 8px 26px 26px;padding:16px 20px 16px;box-shadow:0 2px 2px rgba(0,0,0,.25)}
+.fwd .f{font-size:28px;color:#aedcc9;font-style:italic;margin-bottom:10px}
+.fwd .msg{background:rgba(0,0,0,.18);border-radius:14px;padding:18px 20px;font-size:35px;color:#eafff6;line-height:1.3}
+.fwd .lk{color:#8ec6ff;word-break:break-all}
+.fwd .hr{font-size:25px;color:#cfe9df;text-align:right;margin-top:8px}.fwd .hr .tk{color:#53bdeb}
+#typing{margin-top:30px;width:150px;height:78px;background:#1f2c33;border-radius:8px 26px 26px 26px;display:none;gap:12px;align-items:center;justify-content:center}
+#typing i{width:16px;height:16px;border-radius:50%;background:#8696a0}
+#vr{margin-top:30px;width:940px;background:#1f2c33;border-radius:8px 26px 26px 26px;padding:30px 32px 18px;font-size:38px;line-height:1.4;color:#eef2f4;transform-origin:0 0;display:none;box-shadow:0 2px 2px rgba(0,0,0,.25)}
+#vr .t{font-weight:700;font-size:43px;color:#fff}
+#vr ul{list-style:none;margin:12px 0}
+#vr li{padding-left:36px;position:relative;margin:8px 0;color:#d4dbe2}#vr li:before{content:"•";position:absolute;left:8px;color:#ff6b6b}
+#vr .qh{color:#9fe0c0;font-weight:700;margin-top:6px}
+/* títulos */
+#tit{position:absolute;left:52px;right:52px;top:1350px;z-index:70;display:flex;flex-direction:column;align-items:flex-start;gap:14px;transform-origin:0 0}
+.l1{font-family:A;font-size:112px;line-height:1.0;text-transform:uppercase;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.8),0 0 2px #000}
+.l1 em{font-style:normal;color:#fff;background:#d4111a;padding:2px 16px 0;border-radius:10px}
+.l1.m{font-size:88px}
+.l2{font-family:M;font-size:42px;line-height:1.25;background:rgba(10,10,12,.72);color:#eee;padding:14px 24px;border-radius:14px;max-width:980px}
+.tag{display:inline-block;font-family:A;font-size:46px;background:#d4111a;color:#fff;border-radius:12px;padding:6px 22px 2px;text-transform:uppercase;letter-spacing:1px;box-shadow:0 0 24px rgba(212,17,26,.5)}
+#rot{position:absolute;left:40px;top:1760px;z-index:71;font-family:M;font-size:29px;color:#fff;background:rgba(0,0,0,.72);padding:10px 22px;border-radius:30px;opacity:0}
+/* reversing */
+#rew{position:absolute;inset:0;z-index:72;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+#rew .b{font-family:A;font-size:150px;color:#fff;letter-spacing:4px;text-shadow:0 0 40px rgba(110,168,255,.7)}
+#rew .bars{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(110,168,255,.0),rgba(110,168,255,.08) 3px,transparent 6px)}
+/* cierre */
+#fin{position:absolute;inset:0;z-index:95;background:radial-gradient(120% 90% at 50% 0%,#16351f 0%,#0c2416 55%,#07160d 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 80px;text-align:center;opacity:0}
+#fin .mk{display:flex;align-items:center;gap:20px;font-family:M;font-size:40px;color:#bfe9cf}
+#fin .mk img{width:84px;height:84px;border-radius:50%;background:#0b0f1a}
+#fin h2{font-family:A;font-size:122px;line-height:1.0;text-transform:uppercase;margin:50px 0 10px;color:#fff}
+#fin h2 em{font-style:normal;color:#43d17c}
+#fin .ph{font-family:M;font-size:44px;color:#cfe9df;margin-bottom:46px}
+#fin .cta{font-family:M;font-size:52px;line-height:1.25;background:#fff;color:#0c2416;border-radius:26px;padding:38px 46px;font-weight:700}
+#fin .cta b{color:#0a7a3f}
+#fin .sub{font-family:M;font-size:38px;color:#bfe9cf;margin-top:30px}
+</style></head><body>
+<div id="cam"><div id="phone">
+  <div id="wall"></div>
+  <div class="sb"><span id="hora">02:14</span><span class="rec"></span>
+    <div class="der"><div class="sig"><b style="height:9px"></b><b style="height:15px"></b><b style="height:21px"></b><b style="height:27px"></b></div><span>4G</span><span>19%</span><div class="bat"><i></i></div></div></div>
+  <div id="lock"><div class="d">viernes 31 de octubre</div><div class="h" id="hh">02:14</div></div>
+  <div id="stack">
+    <div class="nt" id="n1"><div class="ic red">&#9888;</div><div class="tx"><div class="ap"><span>Seguridad</span><span>hace 3 meses</span></div><b>Tu correo apareció en una filtración</b><p>j&bull;&bull;&bull;&bull;&bull;@&bull;&bull;&bull;&bull;.com y tu clave quedaron expuestos.</p></div></div>
+    <div class="nt" id="n2"><div class="ic phone">&#9742;</div><div class="tx"><div class="ap"><span>Llamada perdida</span><span>ayer</span></div><b>&quot;Soporte&quot; &bull; &bull;&bull;&bull;&bull;&nbsp;&bull;&bull;&bull;&bull;</b><p>&quot;Detectamos un movimiento raro en tu cuenta.&quot;</p></div></div>
+    <div class="nt" id="n3"><div class="ic gift">&#127873;</div><div class="tx"><div class="ap"><span>Promociones</span><span>hoy</span></div><b>&iexcl;Ganaste un premio! &bull; -70% &bull; &Uacute;ltimo aviso</b><p>Reclamalo ahora. Tu cuenta tiene un problema.</p></div></div>
+    <div class="nt" id="n4"><div class="ic wa">&#128172;</div><div class="tx"><div class="ap"><span>WhatsApp &bull; &bull;&bull;&bull;&bull;&nbsp;&bull;&bull;&bull;&bull;</span><span>ahora</span></div><b>Validá tu cuenta para no perderla</b><p>Ingresá acá &#128073; <span class="lk">validar-tu-cuenta.xyz</span></p></div></div>
+  </div>
+  <div id="tap"></div>
+  <div id="wa">
+    <div class="wh"><span style="font-size:48px;color:#fff">&#8592;</span><img src="/home/user/Cyber-Mobile/logo-cm.png"><div><b>Vera &middot; Antiestafas</b><small>en línea</small></div></div>
+    <div class="bd">
+      <div class="dia">Hoy &bull; 02:15</div>
+      <div class="fwd"><div class="f">&#8618; Reenviado</div><div class="msg">Validá tu cuenta para no perderla. Ingresá acá &#128073; <span class="lk">validar-tu-cuenta.xyz</span></div><div class="hr">02:15 <span class="tk">&#10003;&#10003;</span></div></div>
+      <div id="typing"><i></i><i></i><i></i></div>
+      <div id="vr"><div class="t">&#128308; Riesgo alto: link de estafa (phishing)</div>
+        <ul><li>El dominio no es de ningún banco: validar-tu-cuenta.xyz</li><li>La página imita tu home banking para robarte la clave.</li></ul>
+        <div class="qh">Qué hacer:</div>no toques el link. Entrá a tu banco escribiendo vos la dirección.<div class="hr" style="text-align:right;font-size:25px;color:#9fb3ab;margin-top:8px">02:15</div></div>
+    </div>
+  </div>
+  <div id="stain"></div>
+  <div id="vig"></div>
+  <div id="grain"></div>
+  <div id="flash"></div>
+</div></div>
+<div id="tit"></div>
+<div id="rot">Recreación &middot; mensajes y chat recreados, datos tapados</div>
+<div id="rew"><div class="bars"></div><div class="b">&#171;&#171; REBOBINÁ</div></div>
+<div id="fin"><div class="mk"><img src="/home/user/Cyber-Mobile/logo-cm.png">Cyber Mobile &middot; Vera</div>
+  <h2>Ya estaban <em>alertados</em><br>No cayeron</h2>
+  <div class="ph">Vera revisa links, llamadas y mensajes en tu WhatsApp.</div>
+  <div class="cta" id="cta"></div><div class="sub" id="sub"></div></div>
+<script>
+const P=new URLSearchParams(location.search);
+const canal=P.get('canal')||'ig';
+const $=s=>document.querySelector(s);
+const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eo=x=>1-Math.pow(1-x,3);
+const seg=(t,a,b)=>cl((t-a)/(b-a),0,1);
+// cierre según canal
+if(canal==='wa'){ $('#cta').innerHTML='Probala <b>7 días gratis</b>'; $('#sub').textContent='cybermobile.com.ar/vera'; }
+else if(canal==='tt'){ $('#cta').innerHTML='Link en el perfil'; $('#sub').textContent='· 7 días gratis'; }
+else { $('#cta').innerHTML='Comentá <b>VERA</b> y te envío el link por privado'; $('#sub').textContent='(7 días gratis)'; }
+
+// ----- marcas de tiempo -----
+// aparición de cada rastro (notificación) y su mancha asociada
+const RASTROS=[
+  {el:'#n1', ap:3.95},
+  {el:'#n2', ap:7.55},
+  {el:'#n3', ap:11.15},
+  {el:'#n4', ap:14.75},
+];
+const HITS=[3.95,7.55,11.15,14.75,18.9]; // sacudida + flash
+function hit(t){let a=0;for(const h of HITS){const d=t-h;if(d>=0&&d<.42)a=Math.max(a,1-d/.42);}return a;}
+// latidos: tempo creciente -> usados solo visualmente (pulso del glow)
+function heart(t){
+  // bpm sube de ~60 a ~150 entre 0 y 19
+  const bpm=60+ (150-60)*cl(t/19,0,1);
+  const ph=(t*bpm/60)%1;
+  return Math.exp(-ph*6)+0.35*Math.exp(-((ph-.14)%1)*6);
+}
+const TITS=[
+  [0.0,3.85,'<div class="l1">La estafa ya</div><div class="l1">estaba en <em>su casa</em></div><div class="l2">Un matrimonio. Una cuenta. 4 rastros.</div>'],
+  [3.95,7.45,'<div class="tag">Rastro 1</div><div class="l1 m">Les robaron</div><div class="l1 m">las claves</div><div class="l2">De una filtración vieja. Ni se enteraron.</div>'],
+  [7.55,11.05,'<div class="tag">Rastro 2</div><div class="l1 m">Los llamaron</div><div class="l2">Falso soporte del banco. &quot;Hay algo raro.&quot;</div>'],
+  [11.15,14.65,'<div class="tag">Rastro 3</div><div class="l1 m">Promos y</div><div class="l1 m">premios falsos</div><div class="l2">Ofertas y apuro para que no pienses.</div>'],
+  [14.75,18.9,'<div class="tag">Rastro 4</div><div class="l1 m">El mensaje</div><div class="l1 m">con el <em>link</em></div><div class="l2">Un clic y entraban a la cuenta.</div>'],
+  [18.9,19.6,'<div class="l1 m">Están por</div><div class="l1 m">tocar&hellip;</div>'],
+  [21.7,26.5,'<div class="l1 m">Antes del clic,</div><div class="l1 m">se lo mandaron</div><div class="l1 m">a <em>Vera</em></div>'],
+];
+function setTit(h){const el=$('#tit');if(el.dataset.h!==h){el.innerHTML=h;el.dataset.h=h;}}
+
+function render(t){
+  // ---- título ----
+  let tt='',t0=0;for(const[a,b,h]of TITS){if(t>=a&&t<b){tt=h;t0=a;}}
+  setTit(tt);const pop=eo(seg(t,t0,t0+.28));
+  $('#tit').style.opacity=tt?pop:0;$('#tit').style.transform=`scale(${.9+.1*pop})`;
+
+  // ---- fase de reversing ----
+  // avanzamos el "reloj interno" de la escena hacia atrás entre 19.6 y 21.6
+  const reving = t>=19.6 && t<21.6;
+  const te = reving ? (19.6 - (t-19.6)*8.4) : t; // rebobina rápido hasta ~2.8s de escena
+  const teC = cl(te,0,19.6);
+
+  // ---- notificaciones (según te) ----
+  RASTROS.forEach(r=>{
+    const el=$(r.el);const u=eo(seg(teC,r.ap,r.ap+.5));
+    el.style.opacity=u;el.style.transform=`translateY(${(1-u)*40}px)`;
+  });
+  // promos extra: sacudir n3 un poco (apuro)
+  const n3=$('#n3');if(teC>11.15){const j=Math.sin(teC*22)*2*hit(t);n3.style.marginLeft=j+'px';}
+
+  // ---- dedo acercándose al link (rastro 4) ----
+  const tap=$('#tap');const n4=$('#n4');
+  const insX=600, insY=1250; // sobre el link del n4
+  let tv=0,tx2=0,ty2=0,tsc=1;
+  if(teC>=15.6 && teC<19.6){
+    const u=ease(seg(teC,15.6,18.8));
+    tx2=940+(insX-940)*u; ty2=1850+(insY-1850)*u;
+    tv=seg(teC,15.6,15.9);
+    const pr=(teC>18.6&&teC<19.0);tsc=pr?.82:1;
+  }
+  // durante reversing el dedo se aleja
+  tap.style.opacity=reving?tv*(1-seg(t,19.6,21.0)):tv;
+  tap.style.left=tx2+'px';tap.style.top=ty2+'px';tap.style.transform=`scale(${tsc})`;
+
+  // ---- mancha / vignette / glow (terror) crece con los rastros ----
+  const prog=cl(teC/19,0,1);
+  $('#stain').style.opacity=cl(prog*1.05,0,1);
+  const hb=heart(teC);
+  const vigDark=120+360*prog + 40*hb*prog;
+  $('#vig').style.boxShadow=`inset 0 0 ${vigDark}px ${60+120*prog}px rgba(80,0,4,${.15+.5*prog})`;
+  $('#grain').style.opacity=(.12+.25*prog);
+
+  // ---- cámara: shake + push-in + drift de mano ----
+  const h=hit(t);
+  const sx=Math.sin(t*94)*30*h, sy=Math.cos(t*73)*24*h, rot=Math.sin(t*58)*1.7*h;
+  const dx=Math.sin(t*1.3)*6, dy=Math.cos(t*1.05)*7;
+  // push-in sutil durante el puente (la tensión la llevan la mancha, el latido y la sacudida)
+  let s=1.0+0.05*prog;
+  if(reving){ s=1.0+0.05*(teC/19); }
+  // leve "congelado" tembloroso en el pico 18.9-19.6
+  if(t>=18.9&&t<19.6){ s+=0.025*Math.sin(t*40); }
+  $('#cam').style.transformOrigin=`540px 960px`;
+  $('#cam').style.transform=`translate(${sx+dx}px,${sy+dy}px) scale(${s}) rotate(${rot}deg)`;
+
+  // ---- flash rojo ----
+  $('#flash').style.opacity=h*0.9 + (t>=18.9&&t<19.6?0.12:0);
+
+  // ---- reversing overlay ----
+  const rw=$('#rew');
+  const rin=seg(t,19.6,19.85)*(1-seg(t,21.2,21.55));
+  rw.style.opacity=reving?rin:0;
+  rw.querySelector('.b').style.transform=`scale(${.9+.2*Math.sin(t*10)})`;
+
+  // ---- chat Vera (21.6 -> 26.6) ----
+  const wa=$('#wa');const win=ease(seg(t,21.6,22.0));
+  wa.style.display=(t>21.55&&t<26.7)?'block':'none';
+  wa.style.transform=`translateX(${(1-win)*1080}px)`;
+  const ty=$('#typing');ty.style.display=(t>22.5&&t<23.7)?'flex':'none';
+  [...ty.children].forEach((d,i)=>d.style.opacity=.4+.6*Math.abs(Math.sin(t*6+i)));
+  const vr=$('#vr');const vin=eo(seg(t,23.7,24.1));
+  vr.style.display=t>=23.7?'block':'none';vr.style.transform=`scale(${.9+.1*vin})`;vr.style.opacity=vin;
+  // durante Vera, atenuar la capa de terror
+  if(t>21.55){ $('#stain').style.opacity=0; $('#vig').style.boxShadow='inset 0 0 0 0 rgba(0,0,0,0)'; $('#grain').style.opacity=0; $('#flash').style.opacity=0; $('#tap').style.opacity=0; }
+
+  // ---- reloj ----
+  const hora = t<21.6?'02:14':'02:15';
+  $('#hora').textContent=hora;$('#hh').textContent=hora;
+
+  // ---- rótulo recreación ----
+  $('#rot').style.opacity=(t>0.4&&t<26.5)?1:0;
+
+  // ---- cierre ----
+  const fin=$('#fin');const fu=ease(seg(t,26.6,27.0));
+  fin.style.opacity=fu;fin.style.transform=`translateY(${(1-fu)*160}px)`;
+  if(t>=26.6){ $('#rew').style.opacity=0; $('#tit').style.opacity=0; $('#wa').style.display='none'; }
+}
+window.render=render;
+if(P.get('limpio')){const st=document.createElement('style');st.textContent='#tit,#tap,#rot{display:none!important}';document.head.appendChild(st);}
+document.fonts.ready.then(()=>{render(+(P.get('t')||0));document.documentElement.setAttribute('data-listo','1');});
+</script></body></html>
