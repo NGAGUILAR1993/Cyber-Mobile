@@ -46,10 +46,10 @@ def rev_whoosh(t0,t1,amp):
         p=.93*p+.07*random.uniform(-1,1); tmp.append(p)
     out=[amp*tmp[i]*(0.1+0.9*(i/n))*(0.5+0.5*math.sin(2*math.pi*5*(i/R))) for i in range(n)]
     add(t0,out)
-rev_whoosh(17.5,19.2,0.5)
+rev_whoosh(17.5,19.2,0.55)
 for k in range(9):
     tt=17.6+k*0.17
-    n=int(.03*R); e=env(n,.001,.006); add(tt,[0.25*e[i]*math.sin(2*math.pi*2400*i/R) for i in range(n)])
+    n=int(.03*R); e=env(n,.001,.006); add(tt,[0.3*e[i]*math.sin(2*math.pi*2400*i/R) for i in range(n)])
 # pad cálido al llegar a Vera
 def pad(t0,dur,freqs,amp):
     n=int(dur*R); buf=[]
@@ -64,8 +64,8 @@ def ding(t,amp):
     for d,f in ((0,880),(.12,1320)):
         n=int(.42*R); e=env(n,.003,.14); add(t+d,[amp*e[i]*math.sin(2*math.pi*f*i/R) for i in range(n)])
 def pop(t): n=int(.08*R); e=env(n,.002,.02); add(t,[0.2*e[i]*math.sin(2*math.pi*(600+700*i/n)*i/R) for i in range(n)])
-for tt in (20.6,22.9,25.1): ding(tt,0.24)
-for tt in (19.9,22.2,24.4): pop(tt)
+for tt in (20.3,22.6,24.9): ding(tt,0.24)
+for tt in (19.7,21.8,24.0): pop(tt)
 # cierre: swell mayor, calma
 pad(26.4,3.4,[261.6,329.6,392.0,523.3],0.16)
 m=max(1e-6,max(abs(x) for x in a)); a=[x/m*0.8 for x in a]

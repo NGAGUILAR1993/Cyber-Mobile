@@ -55,6 +55,13 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family
 .promo .d{font-size:33px;font-weight:700;margin:12px 0 10px;line-height:1.2}
 .promo .dom{display:inline-block;background:rgba(0,0,0,.35);border-radius:10px;padding:8px 16px;font-family:M;font-size:28px;color:#ffe08a}
 .promo .sm{font-size:24px;opacity:.85;margin-top:10px}
+/* documento recreado (comprobante PDF) */
+.doc{width:540px;border-radius:14px;background:#ffffff;color:#1a1a1a;padding:22px 24px 18px}
+.doc .t{font-family:M;font-weight:700;font-size:29px;text-align:center;letter-spacing:1px;color:#0a7a3f}
+.doc .big{font-size:42px;font-weight:700;text-align:center;margin:10px 0 14px}
+.doc .row{display:flex;justify-content:space-between;border-top:1px solid #e6e6e6;padding:9px 0;font-size:28px;color:#444}
+.doc .row .ok{color:#0a7a3f;font-weight:700}
+.fn{font-family:M;font-size:29px;color:#cfe9df;margin-top:10px}
 #caps{position:absolute;left:28px;right:28px;bottom:150px;z-index:6;background:rgba(10,20,16,.9);border:1px solid rgba(37,211,102,.35);border-radius:22px;padding:22px 26px;font-family:M;font-size:36px;color:#dff3e8;text-align:center;opacity:0}
 #caps b{color:#43d17c}
 #wa .in{position:absolute;left:20px;right:20px;bottom:30px;height:104px;border-radius:52px;background:#1f2c33;font-size:34px;color:#8696a0;display:flex;align-items:center;padding:0 38px;z-index:6}
@@ -101,8 +108,10 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family
       <div class="bv" id="m3v"><span class="s y">&#128993; Desconocido, sin reportes</span><br>Desconfiá si te apura.<div class="hr">02:16</div></div>
       <div class="bu" id="m4u"><div class="promo"><div class="w">&#127881; ¡Ganaste!</div><div class="d">Recargá $&bull;&bull;&bull;&bull; y DUPLICÁS tu saldo</div><span class="dom">promo-recarga.xyz</span><div class="sm">Solo por hoy &middot; cupos limitados</div></div><div style="margin-top:10px">¿Esta promo es real?</div><div class="hr">02:16 <span class="tk">&#10003;&#10003;</span></div></div>
       <div class="bv" id="m4v"><span class="s r">&#128308; Promo falsa</span><br>El dominio no es de ninguna marca.<div class="hr">02:16</div></div>
+      <div class="bu" id="m5u"><div class="doc"><div class="t">TRANSFERENCIA ENVIADA</div><div class="big">$ &bull;&bull;&bull;&bull;&bull;&bull;</div><div class="row"><span>Para</span><span>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span></div><div class="row"><span>CVU</span><span>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span></div><div class="row"><span>Estado</span><span class="ok">Aprobado &#10003;</span></div><div class="row"><span>Operación</span><span>#&bull;&bull;&bull;&bull;</span></div></div><div class="fn">&#128196; comprobante.pdf</div><div style="margin-top:8px">¿Es real este comprobante?</div><div class="hr">02:17 <span class="tk">&#10003;&#10003;</span></div></div>
+      <div class="bv" id="m5v"><span class="s r">&#128308; Comprobante falso</span><br>Esa operación no existe en el banco.<div class="hr">02:17</div></div>
     </div>
-    <div id="caps">Mandale <b>links, CBU, teléfonos, capturas…</b><br>y Vera te dice con el semáforo.</div>
+    <div id="caps">Mandale <b>links, CBU, teléfonos, capturas, documentos…</b><br>y Vera te dice con el semáforo.</div>
     <div class="in">Escribí un mensaje</div>
   </div>
   <div id="stain"></div><div id="vig"></div><div id="grain"></div><div id="flash"></div>
@@ -142,7 +151,6 @@ const RB=[4.0,7.5,11.0,14.6,17.5];
 function rastroIdx(t){ if(t<RB[0])return 0; for(let i=0;i<4;i++){ if(t>=RB[i]&&t<RB[i+1]) return i+1; } return 0; }
 const RSTART=[4.0,7.5,11.0,14.6,17.0];
 function heart(t){const bpm=58+(120-58)*cl(t/17,0,1);const ph=(t*bpm/60)%1;return Math.exp(-ph*6)+0.35*Math.exp(-((ph-.14)%1)*6);}
-// bloom rojo suave y lento en cada rastro (sin golpe de cámara)
 function bloom(t){let a=0;for(const r of RSTART){const d=t-r;if(d>=0&&d<0.9)a=Math.max(a,0.2*Math.sin(Math.PI*d/0.9));}return a;}
 function ramp(t,a0,a1,b0,b1){ if(t<a0||t>=b1) return 0; return Math.min(seg(t,a0,a1), 1-seg(t,b0,b1)); }
 const TITS=[
@@ -155,20 +163,20 @@ const TITS=[
 ];
 function setTit(h){const el=$('#tit');if(el.dataset.h!==h){el.innerHTML=h;el.dataset.h=h;}}
 
-// --- chat burst (3 mensajes, lento y legible) ---
-const SHOWN=['#m1u','#m1v','#m2u','#m2v','#m4u','#m4v'];
+// --- chat burst: 3 consultas con veredicto seguro (link, promo, documento) ---
+const SHOWN=['#m1u','#m1v','#m4u','#m4v','#m5u','#m5v'];
 const MSG=[
- {el:'#m1u',t:19.9},{el:'#m1v',t:20.6},
- {el:'#m2u',t:22.2},{el:'#m2v',t:22.9},
- {el:'#m4u',t:24.4},{el:'#m4v',t:25.1},
+ {el:'#m1u',t:19.7},{el:'#m1v',t:20.3},
+ {el:'#m4u',t:21.8},{el:'#m4v',t:22.6},
+ {el:'#m5u',t:24.0},{el:'#m5v',t:24.9},
 ];
-const EXT=[19.9,22.2,24.4];
+const EXT=[19.7,21.8,24.0];
 let VPOS=[0,0,0], ST=[0,0,0], MSGTOP=240;
 function measureChat(){
-  $('#m3u').style.display='none'; $('#m3v').style.display='none';
+  ['#m2u','#m2v','#m3u','#m3v'].forEach(id=>{$(id).style.display='none';});
   const wa=$('#wa'); const prev=wa.style.display; wa.style.display='block';
   SHOWN.forEach(id=>{const e=$(id);e.style.display='block';e.style.opacity='1';e.style.transform='none';});
-  const vera=['#m1v','#m2v','#m4v'];
+  const vera=['#m1v','#m4v','#m5v'];
   vera.forEach((id,i)=>{const e=$(id);VPOS[i]=e.offsetTop+e.offsetHeight;});
   MSGTOP=1300-VPOS[0];
   $('#msgs').style.top=MSGTOP+'px';
@@ -184,12 +192,12 @@ function scrollAt(t){
 }
 
 function render(t){
-  // título (fade suave, sin rebote)
+  // título (fade suave)
   let tt='',t0=0;for(const[a,b,h]of TITS){if(t>=a&&t<b){tt=h;t0=a;}}
   setTit(tt);const tu=seg(t,t0,t0+.5);
   $('#tit').style.opacity=tt?tu:0;$('#tit').style.transform='none';
 
-  // reloj de escena (rebobina en 17.5-19.2)
+  // reloj de escena (reversing restaurado V3: rebobina dinámica 17.5-19.2)
   const reving=t>=17.5&&t<19.2;
   const te=reving?(17.5-(t-17.5)*8.6):t; const teC=cl(te,0,17.5);
 
@@ -198,7 +206,7 @@ function render(t){
   let oPl=ramp(teC,-1,.3,7.1,7.7)+ramp(teC,10.7,11.3,14.3,14.9);
   let oCe=ramp(teC,7.1,7.7,10.7,11.3)+ramp(teC,14.3,14.9,17.5,18.0);
   oPl=cl(oPl,0,1); oCe=cl(oCe,0,1);
-  if(reving){ oCe=Math.max(oCe,.5+.5*Math.sin(t*20)); }
+  if(reving){ oCe=Math.max(oCe,.5+.5*Math.sin(t*26)); } // destello pareja (V3)
   pl.style.opacity=oPl; ce.style.opacity=oCe;
   const kbP=1.05+0.09*cl(teC/17,0,1);
   let kbC=1.07+0.10*cl(teC/17,0,1); if(teC>=14.6) kbC+=0.05*seg(teC,14.6,17.5);
@@ -221,7 +229,7 @@ function render(t){
   tap.style.opacity=reving?tv*(1-seg(t,17.5,18.8)):tv;
   tap.style.left=tx2+'px';tap.style.top=ty2+'px';tap.style.transform=`scale(${tsc})`;
 
-  // terror (sin golpes: solo bloom rojo lento + mancha que crece)
+  // terror (sin golpes: bloom rojo lento + mancha que crece)
   const prog=cl(teC/17.5,0,1);
   $('#stain').style.opacity=cl(prog*1.0,0,1)*(t<19.15?1:0);
   const hb=heart(teC);
@@ -230,25 +238,25 @@ function render(t){
   $('#grain').style.opacity=(t<19.15)?(.1+.2*prog):0;
   $('#flash').style.opacity=(t<19.15)?bloom(t):0;
 
-  // cámara: SIN sacudida; solo deriva lenta y suave (handheld tranquilo)
+  // cámara: SIN sacudida; solo deriva lenta y suave
   const dx=Math.sin(t*0.7)*4, dy=Math.cos(t*0.6)*5;
   $('#cam').style.transform=`translate(${dx}px,${dy}px)`;
 
-  // reversing overlay (fade suave)
-  const rw=$('#rew');const rin=seg(t,17.5,17.9)*(1-seg(t,18.7,19.15));
+  // reversing overlay (dinámico, V3)
+  const rw=$('#rew');const rin=seg(t,17.5,17.75)*(1-seg(t,18.8,19.15));
   rw.style.opacity=reving?rin:0;
-  rw.querySelector('.b').style.transform=`scale(${.96+.06*Math.sin(t*6)})`;
+  rw.querySelector('.b').style.transform=`scale(${.9+.2*Math.sin(t*10)})`;
 
   // chat de Vera (entrada lenta)
-  const wa=$('#wa');const win=ease(seg(t,19.3,19.9));
-  const chatOn=(t>19.25&&t<26.55);
+  const wa=$('#wa');const win=ease(seg(t,19.25,19.8));
+  const chatOn=(t>19.2&&t<26.55);
   wa.style.display=chatOn?'block':'none';
   wa.style.transform=`translateX(${(1-win)*1080}px)`;
   if(chatOn){
     MSG.forEach(m=>{const e=$(m.el);const u=eo(seg(t,m.t,m.t+0.4));
       e.style.opacity=u; e.style.transform=`translateY(${(1-u)*22}px)`;});
     $('#msgs').style.transform=`translateY(${-scrollAt(t)}px)`;
-    $('#caps').style.opacity=seg(t,20.7,21.4)*(1-seg(t,26.0,26.4));
+    $('#caps').style.opacity=seg(t,20.4,21.0)*(1-seg(t,26.0,26.4));
   }
 
   // pareja / rec / card ocultos durante Vera
