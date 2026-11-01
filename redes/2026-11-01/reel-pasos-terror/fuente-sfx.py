@@ -43,7 +43,7 @@ def boom(t,amp):
     add(t,[amp*e[i]*math.sin(2*math.pi*(90-55*i/n)*i/R) for i in range(n)])
     n2=int(.25*R); e2=env(n2,.001,.05)
     add(t,[amp*0.5*e2[i]*random.uniform(-1,1) for i in range(n2)])
-HITS=[3.95,7.55,11.15,14.75]
+HITS=[4.0,7.5,11.0,14.6]
 for h in HITS:
     riser(h-0.9,h,120,900,0.18); boom(h,0.7)
 # pico (antes de tocar)
