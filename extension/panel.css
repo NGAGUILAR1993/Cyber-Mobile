@@ -174,4 +174,17 @@ textarea:focus { border-color: var(--violeta); outline: none; box-shadow: 0 0 0 
 .pie a { color: var(--muted); }
 .pie button { background: none; border: 0; color: #a5f3fc; text-decoration: underline; cursor: pointer; padding: 0; font-size: 12px; }
 .error { margin: 0 16px 12px; padding: 10px 12px; border-radius: 12px; background: rgba(244,63,94,.12); border: 1px solid rgba(244,63,94,.5); font-size: 13px; }
+/* layout en columnas: info de un lado, fuentes/evidencia del otro (en ventana ancha) */
+.cols { display: flex; flex-direction: column; gap: 16px; }
+.col-info, .col-lado { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+body.ventana .cols { flex-direction: row; align-items: flex-start; }
+body.ventana .col-info { flex: 1 1 56%; }
+body.ventana .col-lado { flex: 1 1 44%; }
+body.ventana .caps { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+
+/* barra fija: suscribirse y compartir */
+.acciones { position: sticky; bottom: 0; z-index: 2; display: flex; gap: 8px; padding: 10px 16px;
+  border-top: 1px solid var(--line); background: rgba(5,8,15,.82); backdrop-filter: blur(8px); }
+.acciones .btn { flex: 1; }
+
 @media (prefers-reduced-motion: reduce) { .radar i, .pagina .scan { animation: none; } .pagina .scan { display: none; } }

@@ -17,7 +17,8 @@ Dos vías según de dónde es la persona, detectadas solas por la extensión/web
    - **Es el vendedor legal**: se encarga del **IVA/impuestos de cada país** (clave para una empresa de una
      sola persona: no te tenés que registrar en 50 países).
    - Te **deposita a vos** una vez por mes vía **Payoneer** (funciona en Argentina) o transferencia.
-   - Precio sugerido internacional: **USD 8/mes** individual (ajustable). Comisión de Paddle ~5% + USD 0,50.
+   - Precio internacional (definido por el dueño): **USD 5/mes** individual, **USD 10/mes** familiar (5 personas).
+     Comisión de Paddle ~5% + USD 0,50.
 
 **Por qué Paddle y no otro:**
 - **Lemon Squeezy** (muy bueno) hoy tiene el **alta por lista de espera/invitación** y paga solo en USD;
@@ -31,8 +32,8 @@ Dos vías según de dónde es la persona, detectadas solas por la extensión/web
 1. Abrir cuenta en **Payoneer** (gratis) — para recibir los USD. (payoneer.com)
 2. Abrir cuenta en **Paddle** (paddle.com, alta directa). Verificar identidad (DNI/CUIT) y **conectar Payoneer**
    como forma de cobro.
-3. En Paddle, crear el producto **"Vera — plan internacional"**, suscripción mensual en **USD** (ej. 8).
-   Paddle te da un **link de pago (checkout)**.
+3. En Paddle, crear el producto **"Vera — plan internacional"**: suscripción mensual **USD 5** (individual) y
+   **USD 10** (familiar, 5 personas). Paddle te da un **link de pago (checkout)**.
 4. Pasarme ese **link de checkout** y, si querés activación automática, las **claves de API + el webhook**.
    Con eso dejo que, cuando alguien del exterior paga, su Vera quede **activa sola** (sin WhatsApp argentino).
 

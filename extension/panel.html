@@ -76,32 +76,37 @@
 </main>
 
 <main id="vista-resultado" hidden>
-  <article class="res" id="res">
-    <div class="res-cab">
-      <div class="sem" id="sem"><i></i><i></i><i></i></div>
-      <span class="nivel" id="r-nivel"></span>
+  <div class="cols">
+    <div class="col-info">
+      <article class="res" id="res">
+        <div class="res-cab">
+          <div class="sem" id="sem"><i></i><i></i><i></i></div>
+          <span class="nivel" id="r-nivel"></span>
+        </div>
+        <h2 id="r-titulo"></h2>
+        <p id="r-resumen"></p>
+        <div id="r-hallazgos-box" hidden>
+          <span class="lbl">Lo que encontró</span>
+          <ul class="hallazgos" id="r-hallazgos"></ul>
+        </div>
+        <div id="r-pasos-box" hidden>
+          <span class="lbl">Qué hacer</span>
+          <ol class="pasos" id="r-pasos"></ol>
+        </div>
+      </article>
     </div>
-    <h2 id="r-titulo"></h2>
-    <p id="r-resumen"></p>
-    <div id="r-hallazgos-box" hidden>
-      <span class="lbl">Lo que encontró</span>
-      <ul class="hallazgos" id="r-hallazgos"></ul>
+    <div class="col-lado">
+      <section id="r-fuentes-box" hidden>
+        <span class="lbl">Fuentes que consultó Vera</span>
+        <ul class="fuentes" id="r-fuentes"></ul>
+        <p class="nota">Vera no adivina: cruza estas fuentes para darte el informe.</p>
+      </section>
+      <section class="contexto" id="r-contexto-box" hidden>
+        <span class="lbl">Para entender de qué se trata</span>
+        <div class="links" id="r-contexto"></div>
+      </section>
     </div>
-    <div id="r-pasos-box" hidden>
-      <span class="lbl">Qué hacer</span>
-      <ol class="pasos" id="r-pasos"></ol>
-    </div>
-    <div id="r-fuentes-box" hidden>
-      <span class="lbl">Fuentes que consultó Vera</span>
-      <ul class="fuentes" id="r-fuentes"></ul>
-      <p class="nota">Vera no adivina: cruza estas fuentes para darte el informe.</p>
-    </div>
-  </article>
-
-  <section class="contexto" id="r-contexto-box" hidden>
-    <span class="lbl">Para entender de qué se trata</span>
-    <div class="links" id="r-contexto"></div>
-  </section>
+  </div>
 
   <div class="fila">
     <button class="btn pri" id="b-avisar" type="button" title="Abre WhatsApp con un aviso para tu familia, sin tus datos">Avisarle a mi familia</button>
@@ -129,8 +134,8 @@
     <h2>Stay protected with <span class="grad">Vera</span>.</h2>
     <p>Vera lives in your browser and checks links, accounts, phone numbers, emails and screenshots before you click or pay. Secure international checkout — cancel anytime.</p>
     <ul class="planes">
-      <li><b>Individual</b><span>USD 8/mo</span></li>
-      <li><b>Family</b><span>USD 20/mo · 5 people</span></li>
+      <li><b>Individual</b><span>USD 5/mo</span></li>
+      <li><b>Family</b><span>USD 10/mo · 5 people</span></li>
     </ul>
     <div class="fila col">
       <button class="btn pri" id="b-suscribir-int" type="button">Subscribe (secure checkout)</button>
@@ -152,6 +157,10 @@
 </main>
 
 <div class="error" id="error" role="alert" hidden></div>
+<nav class="acciones" aria-label="Suscribirse y compartir">
+  <button class="btn pri" id="b-suscribir-bar" type="button">Suscribirme</button>
+  <button class="btn" id="b-compartir" type="button">Compartir Vera</button>
+</nav>
 <footer class="pie">
   <span id="pie-cuenta"></span>
   <a id="l-web" target="_blank" rel="noopener">cybermobile.com.ar</a>

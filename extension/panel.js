@@ -315,6 +315,13 @@ $('l-web').href = BASE + '/?o=extension';
 pintarCapacidades();
 $('b-suscribir').onclick = () => abrir(WA_SUSCRIBIR);
 $('b-suscribir-int').onclick = () => abrir(PADDLE_CHECKOUT);
+$('b-suscribir-bar').onclick = irAPago;
+$('b-compartir').onclick = () => {
+    const msg = PAIS === 'AR'
+        ? `Te paso a Vera, la IA antiestafas: verificás links, CBU, teléfonos y capturas antes de hacer clic o transferir. Agregala a tu navegador gratis: ${BASE}/chrome`
+        : `Meet Vera, the anti-scam AI: check links, accounts, phone numbers and screenshots before you click or pay. Add it to your browser for free: ${BASE}/chrome`;
+    abrir('https://wa.me/?text=' + encodeURIComponent(msg));
+};
 $('b-ya-soy').onclick = iniciarVinculo;
 $('b-volver').onclick = () => { clearInterval(sondeo); if (ultimo) irAPago(); else mostrar('inicio'); };
 
