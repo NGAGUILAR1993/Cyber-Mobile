@@ -64,10 +64,15 @@
 </main>
 
 <main id="vista-cargando" hidden>
-  <div class="radar" aria-hidden="true"><i></i></div>
   <p class="cargando" id="cargando-txt">Vera lo está analizando…</p>
-  <ul class="chequeos" id="chequeos"></ul>
-  <p class="nota centro">Puede tardar hasta un minuto.</p>
+  <div class="term" role="log" aria-live="polite" aria-label="Consulta en vivo de Vera">
+    <div class="term-top">
+      <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+      <b>vera · motor de análisis</b>
+    </div>
+    <div class="term-cuerpo" id="term-cuerpo"></div>
+  </div>
+  <p class="nota centro">Estas son las fuentes reales que consulta Vera. Puede tardar hasta un minuto.</p>
 </main>
 
 <main id="vista-resultado" hidden>
@@ -86,6 +91,11 @@
       <span class="lbl">Qué hacer</span>
       <ol class="pasos" id="r-pasos"></ol>
     </div>
+    <div id="r-fuentes-box" hidden>
+      <span class="lbl">Fuentes que consultó Vera</span>
+      <ul class="fuentes" id="r-fuentes"></ul>
+      <p class="nota">Vera no adivina: cruza estas fuentes para darte el informe.</p>
+    </div>
   </article>
 
   <section class="contexto" id="r-contexto-box" hidden>
@@ -100,17 +110,32 @@
 </main>
 
 <main id="vista-pago" hidden>
-  <span class="tag">TUS 3 CONSULTAS GRATIS YA SE USARON</span>
-  <h2>Seguí protegido con <span class="grad">Vera</span>, sin límites.</h2>
-  <p>En el navegador y en tu WhatsApp. Débito automático por Mercado Pago; cancelás cuando quieras.</p>
-  <ul class="planes">
-    <li><b>Individual</b><span>$10.000/mes</span></li>
-    <li><b>Pack Padres</b><span>$17.000/mes · 3 personas</span></li>
-    <li><b>Pack Familiar</b><span>$33.000/mes · 5 personas</span></li>
-  </ul>
-  <div class="fila col">
-    <button class="btn pri" id="b-suscribir" type="button">Suscribirme por WhatsApp</button>
-    <button class="btn" id="b-ya-soy" type="button">Ya soy cliente: vincular mi WhatsApp</button>
+  <div id="pago-ar">
+    <span class="tag">TUS 3 CONSULTAS GRATIS YA SE USARON</span>
+    <h2>Seguí protegido con <span class="grad">Vera</span>, sin límites.</h2>
+    <p>En el navegador y en tu WhatsApp. Débito automático por Mercado Pago; cancelás cuando quieras.</p>
+    <ul class="planes">
+      <li><b>Individual</b><span>$10.000/mes</span></li>
+      <li><b>Pack Padres</b><span>$17.000/mes · 3 personas</span></li>
+      <li><b>Pack Familiar</b><span>$33.000/mes · 5 personas</span></li>
+    </ul>
+    <div class="fila col">
+      <button class="btn pri" id="b-suscribir" type="button">Suscribirme por WhatsApp</button>
+      <button class="btn" id="b-ya-soy" type="button">Ya soy cliente: vincular mi WhatsApp</button>
+    </div>
+  </div>
+  <div id="pago-int" hidden>
+    <span class="tag">YOUR 3 FREE CHECKS ARE USED</span>
+    <h2>Stay protected with <span class="grad">Vera</span>.</h2>
+    <p>Vera lives in your browser and checks links, accounts, phone numbers, emails and screenshots before you click or pay. Secure international checkout — cancel anytime.</p>
+    <ul class="planes">
+      <li><b>Individual</b><span>USD 8/mo</span></li>
+      <li><b>Family</b><span>USD 20/mo · 5 people</span></li>
+    </ul>
+    <div class="fila col">
+      <button class="btn pri" id="b-suscribir-int" type="button">Subscribe (secure checkout)</button>
+    </div>
+    <p class="nota" id="pago-int-nota">Already paid? Your access activates automatically. Questions: info@cybermobile.com.ar</p>
   </div>
 </main>
 

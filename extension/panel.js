@@ -15,14 +15,29 @@ const CAPS = [
     { n: '04', c: '#fbbf24', t: 'Mails', d: 'El remitente real y si tu correo aparece en filtraciones', ph: 'Pegá el mail o el texto del correo', ir: 'PEGAR' },
     { n: '05', c: '#f472b6', t: 'Capturas y mensajes', d: 'Lee el mensaje, el link y qué te piden', ph: '', ir: 'CAPTURAR' }
 ];
-const CHEQUEOS = {
-    link: ['Reputación del dominio', 'Decenas de antivirus (VirusTotal)', 'Casos reportados en Argentina', 'Modalidades del Observatorio'],
-    cbu: ['Formato y banco de la cuenta', 'Reportes de estafa', 'Antigüedad de la cuenta', 'Modalidades del Observatorio'],
-    tel: ['Origen del número', 'Reportes de otras personas', 'Modalidades del Observatorio'],
-    email: ['Dominio del remitente', 'Filtraciones conocidas', 'Modalidades del Observatorio'],
-    archivo: ['Lectura de la imagen o el archivo', 'Links y datos que aparecen', 'Qué te están pidiendo', 'Modalidades del Observatorio'],
-    mensaje: ['Lectura del mensaje', 'Links, cuentas y teléfonos que aparecen', 'Qué te están pidiendo', 'Modalidades del Observatorio']
+// Las fuentes REALES que consulta Vera según lo que se verifica. [nombre, qué consulta].
+// Se muestran en la terminal (mientras analiza) y como evidencia en el resultado.
+const FUENTES = {
+    link: [['DNS y dominio', 'resuelve el dominio y su antigüedad'], ['VirusTotal', '70+ motores antivirus y listas de bloqueo'], ['Reputación del sitio', 'señales de phishing y reportes'], ['Observatorio', 'modalidades que circulan en la región']],
+    cbu: [['Formato bancario', 'banco y validez de la cuenta'], ['Reportes de estafa', 'denuncias sobre esa cuenta'], ['Antigüedad', 'cuentas abiertas hace poco'], ['Observatorio', 'modalidades que circulan']],
+    tel: [['Origen del número', 'país y tipo de línea'], ['Reportes', 'cruce con avisos de otras personas'], ['Observatorio', 'modalidades que circulan']],
+    email: [['Remitente real', 'dominio y autenticación del correo'], ['Filtraciones', 'si el correo aparece en bases filtradas'], ['Observatorio', 'modalidades que circulan']],
+    archivo: [['Lectura del archivo', 'texto, links y datos con OCR/IA'], ['VirusTotal', 'si es APK o documento, 70+ motores'], ['Qué te piden', 'el patrón de engaño'], ['Observatorio', 'modalidades que circulan']],
+    mensaje: [['Lectura del mensaje', 'links, cuentas y teléfonos que aparecen'], ['Reputación', 'de los dominios y datos citados'], ['Qué te piden', 'el patrón de engaño'], ['Observatorio', 'modalidades que circulan']]
 };
+// ¿Desde qué país se usa? Define el cobro: Argentina → Mercado Pago (pesos); resto → Paddle (USD).
+function detectarPais() {
+    try {
+        const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+        const lang = (navigator.language || '').toLowerCase();
+        if (/argentina/i.test(tz) || lang === 'es-ar') return 'AR';
+        return 'INT';
+    } catch { return 'INT'; }
+}
+const PAIS = detectarPais();
+// Link de pago internacional (Paddle). Placeholder hasta que Germán conecte su cuenta de Paddle;
+// se puede sobreescribir cargando CM_PADDLE en chrome.storage.local sin tocar el código.
+let PADDLE_CHECKOUT = 'https://www.cybermobile.com.ar/vera?o=extension&pago=int';
 // Guías propias y fuentes oficiales para entender el resultado (solo dominios conocidos).
 const GUIA = (slug, titulo, c) => ({ href: `${BASE}/guias/${slug}?o=extension`, origen: 'Guía de Cyber Mobile', titulo, c });
 const G = {
@@ -76,20 +91,69 @@ async function verificar(consulta) {
     if (!consulta || (!consulta.valor && !consulta.archivo)) return error('Pegá algo para verificar.');
     ultimo = consulta;
     $('cargando-txt').textContent = consulta.tipo === 'archivo' ? 'Vera está mirando la imagen o el archivo…' : 'Vera lo está revisando por dentro…';
-    const ul = $('chequeos'); ul.textContent = '';
-    (CHEQUEOS[consulta.tipo] || CHEQUEOS.mensaje).forEach((t) => { const li = document.createElement('li'); li.textContent = t; ul.append(li); });
-    let k = 0;
-    clearInterval(giro);
-    giro = setInterval(() => { const li = ul.children[k++]; if (li) li.className = 'on'; else clearInterval(giro); }, 1600);
+    correrTerminal(consulta.tipo);
     mostrar('cargando');
     const { status, datos } = await consultar(consulta);
     clearInterval(giro);
     pintarEstado();
     if (status === 200 && datos.resultado) return pintarResultado(datos.resultado);
-    if (status === 402) return mostrar('pago');
+    if (status === 402) return irAPago();
     if (status === 409 && datos.codigo === 'solo_whatsapp') { mostrar('inicio'); return error('Los audios se analizan por WhatsApp: reenviáselo a Vera al +54 9 11 7059-8505.'); }
     mostrar('inicio');
     error(datos.error || 'No pude completar el análisis. Probá de nuevo en un rato.');
+}
+
+// Terminal en vivo: imprime, una por una, las fuentes que Vera consulta para este tipo de consulta.
+function correrTerminal(tipo) {
+    const cuerpo = $('term-cuerpo'); cuerpo.textContent = '';
+    const fuentes = FUENTES[tipo] || FUENTES.mensaje;
+    const cmd = document.createElement('div'); cmd.className = 't-cmd';
+    cmd.textContent = 'vera@cybermobile ~ % analizar --fuente ' + (tipo || 'mensaje');
+    cuerpo.append(cmd);
+    const lineas = fuentes.map(([nombre, det], idx) => {
+        const l = document.createElement('div'); l.className = 't-line';
+        const ix = document.createElement('span'); ix.className = 't-ix'; ix.textContent = '[' + (idx + 1) + '/' + fuentes.length + ']';
+        const nm = document.createElement('span'); nm.className = 't-name'; nm.textContent = nombre;
+        const dt = document.createElement('span'); dt.className = 't-det'; dt.textContent = det;
+        const st = document.createElement('span'); st.className = 't-st'; st.textContent = '…';
+        l.append(ix, nm, dt, st); cuerpo.append(l);
+        return { l, st };
+    });
+    const cur = document.createElement('div'); cur.className = 't-line done';
+    const cs = document.createElement('span'); cs.className = 't-cur'; cs.textContent = '█'; cur.append(cs); cuerpo.append(cur);
+    let i = 0;
+    clearInterval(giro);
+    giro = setInterval(() => {
+        if (i > 0) { const p = lineas[i - 1]; p.st.textContent = 'ok'; p.st.className = 't-st ok'; p.l.classList.add('done'); }
+        if (i < lineas.length) { const n = lineas[i]; n.st.textContent = 'consultando'; n.st.className = 't-st run'; n.l.classList.add('done'); i++; }
+        else { clearInterval(giro); cs.textContent = 'compilando informe… █'; }
+        cuerpo.scrollTop = cuerpo.scrollHeight;
+    }, 1300);
+}
+
+// Pago según el país: Argentina ve Mercado Pago (pesos); el resto, el plan en USD.
+function irAPago() {
+    $('pago-ar').hidden = PAIS !== 'AR';
+    $('pago-int').hidden = PAIS === 'AR';
+    mostrar('pago');
+}
+
+// Fuentes consultadas como evidencia. Si el backend manda fuentes/evidencia reales, las usa; si no, las de este tipo.
+function pintarFuentes(r) {
+    const ul = $('r-fuentes'); ul.textContent = '';
+    const tipo = (ultimo && ultimo.tipo) || 'mensaje';
+    const ev = Array.isArray(r.fuentes) ? r.fuentes : (Array.isArray(r.evidencia) ? r.evidencia : null);
+    const items = (ev && ev.length)
+        ? ev.map((e) => [String(e.nombre || e.fuente || 'Fuente'), String(e.detalle || e.texto || e.resultado || '')])
+        : (FUENTES[tipo] || FUENTES.mensaje);
+    items.forEach(([n, d]) => {
+        const li = document.createElement('li');
+        const b = document.createElement('b'); b.textContent = n;
+        li.append(b);
+        if (d) { const s = document.createElement('small'); s.textContent = d; li.append(s); }
+        ul.append(li);
+    });
+    $('r-fuentes-box').hidden = !items.length;
 }
 
 const NIVELES = { alto: 'Riesgo alto', medio: 'Precaución', bajo: 'Sin señales de riesgo', desconocido: 'Sin datos suficientes' };
@@ -106,6 +170,7 @@ function pintarResultado(r) {
     (r.pasos || []).forEach((p) => { const li = document.createElement('li'); li.textContent = p; ol.append(li); });
     $('r-pasos-box').hidden = !(r.pasos || []).length;
     ultimoRes = r;
+    pintarFuentes(r);
     pintarContexto(r);
     mostrar('resultado');
 }
@@ -127,9 +192,11 @@ function linksDeContexto(r) {
     if (r.nivel === 'alto' || r.nivel === 'medio') {
         L.push(G.victima);
         if (hay(/secuestro|c[oó]digo de verificaci|cuenta de whatsapp/)) L.push(OFICIAL.whatsapp);
-        if (hay(/tienda|compra|venta|producto|env[ií]o|mercado libre/)) L.push(OFICIAL.consumidor);
-        if (tipo === 'cbu' || hay(/banco|transfer|\bcbu\b|\bcvu\b|tarjeta|homebanking/)) L.push(OFICIAL.bcra);
-        L.push(OFICIAL.denuncia);
+        if (PAIS === 'AR') {   // las denuncias oficiales de abajo son de Argentina
+            if (hay(/tienda|compra|venta|producto|env[ií]o|mercado libre/)) L.push(OFICIAL.consumidor);
+            if (tipo === 'cbu' || hay(/banco|transfer|\bcbu\b|\bcvu\b|tarjeta|homebanking/)) L.push(OFICIAL.bcra);
+            L.push(OFICIAL.denuncia);
+        }
     }
     return [...new Map(L.map((x) => [x.href, x])).values()].slice(0, 5);
 }
@@ -247,10 +314,12 @@ $('l-observatorio').href = BASE + '/observatorio?o=extension';
 $('l-web').href = BASE + '/?o=extension';
 pintarCapacidades();
 $('b-suscribir').onclick = () => abrir(WA_SUSCRIBIR);
+$('b-suscribir-int').onclick = () => abrir(PADDLE_CHECKOUT);
 $('b-ya-soy').onclick = iniciarVinculo;
-$('b-volver').onclick = () => { clearInterval(sondeo); mostrar(ultimo ? 'pago' : 'inicio'); };
+$('b-volver').onclick = () => { clearInterval(sondeo); if (ultimo) irAPago(); else mostrar('inicio'); };
 
 (async () => {
+    try { const { CM_PADDLE } = await chrome.storage.local.get('CM_PADDLE'); if (typeof CM_PADDLE === 'string' && /^https:\/\//.test(CM_PADDLE)) PADDLE_CHECKOUT = CM_PADDLE; } catch { /* sin override */ }
     if (params.get('ventana') || params.get('bienvenida')) document.body.classList.add('ventana');
     if (params.get('bienvenida')) {
         $('hero-tag').textContent = 'LISTO · VERA YA ESTÁ INSTALADA';
