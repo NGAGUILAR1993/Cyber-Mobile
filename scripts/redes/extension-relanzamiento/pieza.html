@@ -1,0 +1,138 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SGR;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#060914}
+#st{position:absolute;inset:0;overflow:hidden;font-family:SGR,sans-serif;color:#fff}
+.blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5}
+#grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:60px 60px}
+.tag{position:absolute;font-family:JB;font-size:30px;letter-spacing:4px;color:#A5F3FC}
+.h{position:absolute;left:70px;right:70px;font-family:SG;line-height:1.03;letter-spacing:-2px}
+.grad{background:linear-gradient(90deg,#22D3EE,#A78BFA 50%,#F472B6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{position:absolute;left:70px;right:70px;font-size:44px;line-height:1.25;color:#E2E8F0}
+.sub b{font-family:SG;color:#fff}
+#rec{position:absolute;top:70px;right:70px;font-family:JB;font-size:26px;color:#F8FAFC;display:flex;align-items:center;gap:12px}
+#rec i{width:18px;height:18px;border-radius:50%;background:#F43F5E;display:block}
+/* telefono */
+#phone{position:absolute;left:190px;top:360px;width:700px;height:1300px;border-radius:70px;background:#0b0f1c;border:14px solid #1c2334;box-shadow:0 50px 140px rgba(0,0,0,.7),0 0 0 2px rgba(255,255,255,.06),0 0 90px rgba(124,58,237,.25);overflow:hidden;opacity:0}
+#phone .notch{position:absolute;left:50%;top:22px;transform:translateX(-50%);width:200px;height:34px;background:#000;border-radius:20px;z-index:5}
+#phone .wbar{position:absolute;top:0;left:0;right:0;height:96px;background:#1f2c34;display:flex;align-items:center;gap:18px;padding:0 30px;z-index:4}
+#phone .wbar .av{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#22D3EE,#A78BFA);display:flex;align-items:center;justify-content:center;overflow:hidden}
+#phone .wbar .av img{width:46px;height:46px}
+#phone .wbar .nm{font-family:SG;font-size:36px;color:#fff;line-height:1}
+#phone .wbar .st{font-size:24px;color:#8fa6b4;margin-top:4px;font-family:SGR}
+#screen{position:absolute;top:96px;left:0;right:0;bottom:0;overflow:hidden;background:#0b141a}
+.shot{position:absolute;top:0;left:0;width:672px;opacity:0;transform-origin:50% 20%}
+.chip{position:absolute;left:0;right:0;bottom:70px;display:flex;justify-content:center;z-index:6;pointer-events:none}
+.chip span{font-family:SG;font-size:40px;color:#060914;background:linear-gradient(90deg,#22D3EE,#A78BFA,#F472B6);padding:20px 40px;border-radius:50px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+#count{position:absolute;left:70px;right:70px;top:300px;text-align:center;font-family:JB;font-size:30px;letter-spacing:3px;color:#94A3B8}
+/* cierre / extension */
+.store{position:absolute;left:90px;right:90px;border-radius:30px;background:#fff;color:#202124;padding:38px 42px;box-shadow:0 30px 80px rgba(0,0,0,.5);display:flex;align-items:center;gap:30px}
+.store img{width:104px;height:104px;border-radius:24px}
+.store b{display:block;font-family:SG;font-size:40px;line-height:1.1}
+.store small{display:block;font-size:26px;color:#5f6368;margin-top:6px}
+.store .add{margin-left:auto;background:#1a73e8;color:#fff;font-family:SG;font-size:30px;padding:18px 30px;border-radius:50px;white-space:nowrap}
+.pill{position:absolute;left:70px;right:70px;border-radius:40px;padding:30px 36px;font-size:42px;font-family:SG;line-height:1.2;text-align:center;background:linear-gradient(90deg,#22D3EE,#A78BFA,#F472B6);color:#060914}
+#flash{position:absolute;inset:0;background:#22D3EE;opacity:0;mix-blend-mode:screen}
+</style></head><body>
+<div id="st">
+ <div class="blob" id="b1" style="width:900px;height:900px;background:#7C3AED"></div>
+ <div class="blob" id="b2" style="width:800px;height:800px;background:#06B6D4"></div>
+ <div class="blob" id="b3" style="width:700px;height:700px;background:#EC4899"></div>
+ <div id="grid"></div>
+ <div class="tag" id="tag" style="left:70px;top:72px">VERA ANTIESTAFAS</div>
+ <div id="rec"><i></i><span id="clk">00:00</span></div>
+
+ <!-- 1) gancho -->
+ <div class="h" id="hook" style="top:470px;font-size:104px"><span id="hk1">Le mandás</span><br><span id="hk2">una captura.</span><br><span id="hk3" class="grad">Te dice si es estafa.</span></div>
+ <div class="sub" id="s1" style="top:1040px;font-size:46px;text-align:center">Tres casos reales, en segundos 👇</div>
+
+ <!-- 2) telefono con chats -->
+ <div id="count">CASO <span id="cn">1</span> DE 3</div>
+ <div id="phone">
+  <div class="notch"></div>
+  <div class="wbar"><div class="av"><img src="/home/user/Cyber-Mobile/logo-cm.png"></div><div><div class="nm">Vera</div><div class="st">en línea</div></div></div>
+  <div id="screen">
+   <img class="shot" id="sh0" src="/home/user/Cyber-Mobile/scripts/redes/casos/link-phishing.jpg">
+   <img class="shot" id="sh1" src="/home/user/Cyber-Mobile/scripts/redes/casos/sms-saldo.jpg">
+   <img class="shot" id="sh2" src="/home/user/Cyber-Mobile/scripts/redes/casos/visa-falso.jpg">
+  </div>
+  <div class="chip"><span id="chip">Link de phishing</span></div>
+ </div>
+
+ <!-- 3) cierre extension -->
+ <div class="tag" id="f0" style="left:70px;top:330px;color:#F9A8D4">NUEVO · YA DISPONIBLE</div>
+ <div class="h" id="f1" style="top:390px;font-size:112px">Y ahora,<br>también en tu<br><span class="grad">navegador.</span></div>
+ <div class="store" id="f2" style="top:980px"><img src="/home/user/Cyber-Mobile/logo-cm.png"><div><b>Vera Antiestafas · Cyber Mobile</b><small>Chrome Web Store · gratis</small></div><div class="add">Agregar</div></div>
+ <div class="sub" id="f3" style="top:1200px;font-size:38px;color:#CBD5E1;text-align:center">Clic derecho → <b>Verificar con Vera</b>.<br>En Chrome, Edge, Brave y Opera.</div>
+ <div class="pill" id="f4" style="top:1420px"></div>
+ <div class="sub" id="f5" style="top:1640px;font-size:36px;color:#A5F3FC;text-align:center;font-family:JB">cybermobile.com.ar/extension</div>
+ <div id="flash"></div>
+</div>
+<script>
+const P=new URLSearchParams(location.search), canal=P.get('canal')||'ig';
+const CTA={ig:'Comentá VERA y te envío el link por privado',wa:'Agregala gratis · 3 consultas sin registrarte',tt:'Link en el perfil · 3 consultas gratis'};
+document.getElementById('f4').innerHTML=CTA[canal];
+const CHIPS=['Link de phishing','SMS trucho (smishing)','Email falso de VISA'];
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=x=>1-Math.pow(1-cl(x),3), E3=x=>{x=cl(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const R=(t,a,b)=>cl((t-a)/(b-a)), L=(a,b,k)=>a+(b-a)*k;
+function show(id,t,a,b,dy=40,fade=.5){const el=$(id);const k=eo(R(t,a,a+fade))*(1-eo(R(t,b-fade*.8,b)));el.style.opacity=k;el.style.transform=`translateY(${(1-eo(R(t,a,a+fade)))*dy}px)`;return k}
+// ventanas de cada caso (dwell largo, fundido lento de 1.2s)
+const SH=[[4.4,11.2],[10.6,17.4],[16.8,23.2]];
+const FADE=1.2;
+function render(t){
+ $('b1').style.transform=`translate(${-250+Math.sin(t*.5)*120}px,${-200+Math.cos(t*.4)*100}px)`;
+ $('b2').style.transform=`translate(${520+Math.cos(t*.45)*120}px,${700+Math.sin(t*.35)*140}px)`;
+ $('b3').style.transform=`translate(${-200+Math.sin(t*.3+1)*140}px,${1350+Math.cos(t*.5)*100}px)`;
+ $('clk').textContent='00:'+String(Math.floor(t)).padStart(2,'0');
+ $('rec').firstElementChild.style.opacity=(Math.floor(t*2)%2)?.25:1;
+
+ // 1) gancho 0-4.2
+ show('hook',t,.1,4.2,34,.45);
+ ['hk1','hk2','hk3'].forEach((id,i)=>{$(id).style.opacity=eo(R(t,.1+i*.45,.6+i*.45))});
+ show('s1',t,1.9,4.2,30,.5);
+
+ // 2) telefono 4.2-23.4
+ const ph=$('phone');
+ const pin=eo(R(t,4.2,5.0)), pout=1-eo(R(t,22.8,23.4));
+ ph.style.opacity=pin*pout;
+ ph.style.transform=`translateY(${(1-pin)*60}px) scale(${L(.96,1,pin)})`;
+ // chats: fundido lento + leve ken-burns
+ let active=0, chipK=0;
+ SH.forEach((w,i)=>{
+   const [a,b]=w;
+   const kin=eo(R(t,a,a+FADE)), kout=1-eo(R(t,b-FADE,b));
+   const k=kin*kout;
+   const el=$('sh'+i);
+   el.style.opacity=k;
+   const kb=L(1.0,1.05,R(t,a,b)); // acercamiento muy lento
+   el.style.transform=`scale(${kb})`;
+   if(k>chipK){chipK=k;active=i}
+ });
+ $('cn').textContent=active+1;
+ $('chip').textContent=CHIPS[active];
+ $('count').style.opacity=pin*pout*.9;
+ $('chip').parentElement.style.opacity=pin*pout;
+
+ // 3) cierre 23.4-30
+ const finIn=eo(R(t,23.6,24.3));
+ $('flash').style.opacity=t>23.2&&t<24?.22*(1-R(t,23.2,24)):0;
+ ['f0','f1','f2','f3','f4','f5'].forEach(id=>{const e=$(id);if(e.dataset.base===undefined)e.dataset.base=1});
+ show('f0',t,23.9,31,20,.4);
+ show('f1',t,24.1,31,40,.5);
+ show('f2',t,24.9,31,30,.5);
+ show('f3',t,25.5,31,28,.5);
+ show('f4',t,26.1,31,28,.5);
+ show('f5',t,26.7,31,20,.5);
+ $('f4').style.transform+=` scale(${1+.03*Math.sin(t*6)*(t>27.2?1:0)})`;
+ $('tag').style.opacity=(1-eo(R(t,3.9,4.3)))*0 + (t<23.4? (1-eo(R(t,23.0,23.4))) :0) ;
+ // tag visible solo en escena telefono/gancho
+ $('tag').style.opacity = t<23.4 ? 1 : 0;
+}
+const imgs=[...document.images];
+Promise.all(imgs.map(i=>i.decode().catch(()=>0))).then(()=>document.fonts.ready).then(()=>{render(0);document.documentElement.dataset.listo=1});
+</script></body></html>

@@ -1,0 +1,280 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:A;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:M;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:"Liberation Sans",Arial,"Noto Color Emoji",sans-serif;color:#f4f4f4}
+#cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 960px;will-change:transform}
+#stage{position:absolute;inset:0;background:#07070a;overflow:hidden}
+.ph{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;transform-origin:540px 780px;will-change:transform;opacity:0}
+#grad{position:absolute;inset:0;z-index:10;pointer-events:none;background:
+  linear-gradient(to bottom,rgba(0,0,0,.52) 0%,rgba(0,0,0,.12) 18%,rgba(0,0,0,.04) 40%,rgba(0,0,0,.46) 60%,rgba(0,0,0,.9) 100%)}
+.rec{position:absolute;left:44px;top:30px;z-index:36;display:flex;align-items:center;gap:16px;font-family:M;font-size:34px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.rec b{width:26px;height:26px;border-radius:50%;background:#ff2b2b;box-shadow:0 0 16px 4px rgba(255,43,43,.6)}
+#clk{position:absolute;right:44px;top:30px;z-index:36;font-family:M;font-size:34px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+#card{position:absolute;left:36px;right:36px;top:1070px;z-index:22;opacity:0}
+.nt{background:rgba(18,20,27,.9);backdrop-filter:blur(8px);border-radius:38px;padding:24px 32px;display:flex;gap:24px;align-items:flex-start;
+  box-shadow:0 24px 60px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.08)}
+.nt .ic{width:84px;height:84px;border-radius:22px;flex:none;display:flex;align-items:center;justify-content:center;font-size:48px}
+.nt .ic.red{background:#3a1416;color:#ff5a5a;box-shadow:inset 0 0 0 2px rgba(255,90,90,.35)}
+.nt .ic.phone{background:#132a1a;color:#53d07e;box-shadow:inset 0 0 0 2px rgba(83,208,126,.3)}
+.nt .ic.gift{background:#2c2410;color:#ffcf4d;box-shadow:inset 0 0 0 2px rgba(255,207,77,.3)}
+.nt .ic.wa{background:#0b3d33;color:#25d366;box-shadow:inset 0 0 0 2px rgba(37,211,102,.35)}
+.nt .tx{flex:1;min-width:0}
+.nt .ap{font-size:29px;color:#aab2c2;display:flex;justify-content:space-between}
+.nt b{display:block;font-size:40px;color:#fff;margin:7px 0 5px;font-weight:700}
+.nt p{font-size:35px;color:#ccd2de;line-height:1.3}
+.nt .lk{color:#7eb3ff;word-break:break-all}
+#tap{position:absolute;width:122px;height:122px;margin:-61px 0 0 -61px;border-radius:50%;background:rgba(255,255,255,.16);border:5px solid rgba(255,255,255,.55);box-shadow:0 0 34px rgba(255,90,90,.45);z-index:60;opacity:0}
+#stain{position:absolute;inset:0;z-index:30;pointer-events:none;opacity:0;background:
+   radial-gradient(42% 30% at 6% 100%,rgba(150,8,12,.92),transparent 70%),
+   radial-gradient(46% 32% at 100% 4%,rgba(120,6,10,.88),transparent 70%),
+   radial-gradient(40% 30% at 100% 100%,rgba(130,6,10,.85),transparent 72%),
+   radial-gradient(38% 28% at 0% 10%,rgba(120,6,10,.6),transparent 72%)}
+#vig{position:absolute;inset:0;z-index:31;pointer-events:none}
+#grain{position:absolute;inset:0;z-index:33;pointer-events:none;opacity:0;mix-blend-mode:overlay;background:repeating-linear-gradient(0deg,rgba(255,255,255,.05),rgba(0,0,0,.05) 2px,rgba(255,255,255,.04) 3px)}
+#flash{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,0,0,.05) 20%,rgba(190,0,0,.82) 100%);opacity:0;pointer-events:none;z-index:50}
+/* chat de Vera */
+#wa{position:absolute;inset:0;background:#0b141a;z-index:44;display:none;overflow:hidden}
+#wa .head{position:absolute;top:0;left:0;right:0;height:224px;z-index:10;background:#0b141a}
+#wa .wh{position:absolute;top:74px;left:0;right:0;height:150px;background:#1f2c33;display:flex;align-items:center;gap:26px;padding:0 30px}
+#wa .wh img{width:94px;height:94px;border-radius:50%;object-fit:cover;background:#0b0f1a}
+#wa .wh b{font-size:42px;display:block;color:#fff}#wa .wh small{font-size:30px;color:#9fe0c0}
+#msgs{position:absolute;left:0;right:0;top:240px;padding:0 30px;will-change:transform}
+.bu,.bv{opacity:0;margin-bottom:22px;font-size:37px;line-height:1.32;box-shadow:0 2px 2px rgba(0,0,0,.25)}
+.bu{margin-left:auto;max-width:720px;width:max-content;background:#005c4b;color:#eafff6;border-radius:26px 8px 26px 26px;padding:16px 22px}
+.bu .f{font-size:26px;color:#aedcc9;font-style:italic;margin-bottom:8px}
+.bu .lk{color:#bfe0ff;word-break:break-all}
+.bu .hr{font-size:23px;color:#cfe9df;text-align:right;margin-top:6px}.bu .hr .tk{color:#9fe8ff}
+.bv{margin-right:auto;max-width:860px;width:max-content;background:#1f2c33;color:#eef2f4;border-radius:8px 26px 26px 26px;padding:16px 24px}
+.bv .s{font-weight:700;font-size:40px}
+.bv .s.r{color:#ff6b6b}.bv .s.y{color:#ffcf4d}
+.bv .hr{font-size:23px;color:#9fb3ab;text-align:right;margin-top:6px}
+/* placa de promo recreada (imagen que se manda) */
+.promo{width:540px;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#7b1fa2,#c2185b 60%,#e65100);padding:26px 24px 22px;text-align:center;color:#fff;position:relative}
+.promo .w{font-family:A;font-size:66px;line-height:1;text-transform:uppercase;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.promo .d{font-size:33px;font-weight:700;margin:12px 0 10px;line-height:1.2}
+.promo .dom{display:inline-block;background:rgba(0,0,0,.35);border-radius:10px;padding:8px 16px;font-family:M;font-size:28px;color:#ffe08a}
+.promo .sm{font-size:24px;opacity:.85;margin-top:10px}
+/* documento recreado (comprobante PDF) */
+.doc{width:540px;border-radius:14px;background:#ffffff;color:#1a1a1a;padding:22px 24px 18px}
+.doc .t{font-family:M;font-weight:700;font-size:29px;text-align:center;letter-spacing:1px;color:#0a7a3f}
+.doc .big{font-size:42px;font-weight:700;text-align:center;margin:10px 0 14px}
+.doc .row{display:flex;justify-content:space-between;border-top:1px solid #e6e6e6;padding:9px 0;font-size:28px;color:#444}
+.doc .row .ok{color:#0a7a3f;font-weight:700}
+.fn{font-family:M;font-size:29px;color:#cfe9df;margin-top:10px}
+#caps{position:absolute;left:28px;right:28px;bottom:150px;z-index:6;background:rgba(10,20,16,.9);border:1px solid rgba(37,211,102,.35);border-radius:22px;padding:22px 26px;font-family:M;font-size:36px;color:#dff3e8;text-align:center;opacity:0}
+#caps b{color:#43d17c}
+#wa .in{position:absolute;left:20px;right:20px;bottom:30px;height:104px;border-radius:52px;background:#1f2c33;font-size:34px;color:#8696a0;display:flex;align-items:center;padding:0 38px;z-index:6}
+/* títulos */
+#tit{position:absolute;left:52px;right:52px;top:1360px;z-index:70;display:flex;flex-direction:column;align-items:flex-start;gap:14px;transform-origin:0 0}
+.l1{font-family:A;font-size:112px;line-height:1.0;text-transform:uppercase;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.9),0 0 3px #000}
+.l1 em{font-style:normal;color:#fff;background:#d4111a;padding:2px 16px 0;border-radius:10px}
+.l1.m{font-size:86px}
+.l2{font-family:M;font-size:42px;line-height:1.25;background:rgba(8,8,10,.8);color:#eee;padding:14px 24px;border-radius:14px;max-width:980px}
+.tag{display:inline-block;font-family:A;font-size:46px;background:#d4111a;color:#fff;border-radius:12px;padding:6px 22px 2px;text-transform:uppercase;letter-spacing:1px;box-shadow:0 0 24px rgba(212,17,26,.55)}
+#rot{position:absolute;left:40px;top:1778px;z-index:71;font-family:M;font-size:29px;color:#fff;background:rgba(0,0,0,.74);padding:10px 22px;border-radius:30px;opacity:0}
+#rew{position:absolute;inset:0;z-index:72;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none}
+#rew .b{font-family:A;font-size:150px;color:#fff;letter-spacing:4px;text-shadow:0 0 40px rgba(110,168,255,.75)}
+#rew .bars{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(110,168,255,0),rgba(110,168,255,.08) 3px,transparent 6px)}
+#fin{position:absolute;inset:0;z-index:95;overflow:hidden;opacity:0}
+#fin img{position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;object-position:50% 30%;transform-origin:540px 600px}
+#fin .gr{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,22,13,.35) 0%,rgba(7,20,13,.1) 30%,rgba(7,22,14,.72) 62%,rgba(5,18,11,.96) 100%)}
+#fin .ct{position:absolute;left:0;right:0;bottom:0;top:960px;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:0 70px;text-align:center}
+#fin .mk{display:flex;align-items:center;gap:18px;font-family:M;font-size:38px;color:#bfe9cf}
+#fin .mk img{position:static;width:78px;height:78px;border-radius:50%;background:#0b0f1a;object-fit:cover}
+#fin h2{font-family:A;font-size:118px;line-height:1.0;text-transform:uppercase;margin:26px 0 10px;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.8)}
+#fin h2 em{font-style:normal;color:#43d17c}
+#fin .ph2{font-family:M;font-size:42px;color:#dbeee4;margin-bottom:34px;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+#fin .cta{font-family:M;font-size:50px;line-height:1.24;background:#fff;color:#0c2416;border-radius:26px;padding:34px 44px;font-weight:700}
+#fin .cta b{color:#0a7a3f}
+#fin .sub{font-family:M;font-size:37px;color:#cfeadb;margin-top:26px;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+</style></head><body>
+<div id="cam"><div id="stage">
+  <img class="ph" id="phPlano" src="/home/user/Cyber-Mobile/redes/2026-11-01/reel-pasos-terror/pareja/preocupados-plano.webp">
+  <img class="ph" id="phCerca" src="/home/user/Cyber-Mobile/redes/2026-11-01/reel-pasos-terror/pareja/preocupados-cerca.webp">
+  <div id="grad"></div>
+  <div class="rec"><b></b>REC</div>
+  <div id="clk">02:14</div>
+  <div id="card"></div>
+  <div id="tap"></div>
+  <div id="wa">
+    <div class="head"><div class="wh"><span style="font-size:48px;color:#fff">&#8592;</span><img src="/home/user/Cyber-Mobile/logo-cm.png"><div><b>Vera &middot; Antiestafas</b><small>en línea</small></div></div></div>
+    <div id="msgs">
+      <div class="bu" id="m1u"><div class="f">&#8618; Reenviado</div>Validá tu cuenta &#128073; <span class="lk">validar-tu-cuenta.xyz</span><div class="hr">02:15 <span class="tk">&#10003;&#10003;</span></div></div>
+      <div class="bv" id="m1v"><span class="s r">&#128308; Link de estafa</span><br>No lo abras: el dominio no es tu banco.<div class="hr">02:15</div></div>
+      <div class="bu" id="m2u">¿Transfiero a este alias?<br>&#128179; <b>PREMIO.MP.2026</b><div class="hr">02:15 <span class="tk">&#10003;&#10003;</span></div></div>
+      <div class="bv" id="m2v"><span class="s y">&#128993; No lo pude confirmar</span><br>No transfieras sin estar seguro.<div class="hr">02:15</div></div>
+      <div class="bu" id="m3u">&#9742; Me llamó este número<br>&bull;&bull;&bull;&bull;&nbsp;&bull;&bull;&bull;&bull;&nbsp;&bull;&bull;&bull;&bull;<div class="hr">02:16 <span class="tk">&#10003;&#10003;</span></div></div>
+      <div class="bv" id="m3v"><span class="s y">&#128993; Desconocido, sin reportes</span><br>Desconfiá si te apura.<div class="hr">02:16</div></div>
+      <div class="bu" id="m4u"><div class="promo"><div class="w">&#127881; ¡Ganaste!</div><div class="d">Recargá $&bull;&bull;&bull;&bull; y DUPLICÁS tu saldo</div><span class="dom">promo-recarga.xyz</span><div class="sm">Solo por hoy &middot; cupos limitados</div></div><div style="margin-top:10px">¿Esta promo es real?</div><div class="hr">02:16 <span class="tk">&#10003;&#10003;</span></div></div>
+      <div class="bv" id="m4v"><span class="s r">&#128308; Promo falsa</span><br>El dominio no es de ninguna marca.<div class="hr">02:16</div></div>
+      <div class="bu" id="m5u"><div class="doc"><div class="t">TRANSFERENCIA ENVIADA</div><div class="big">$ &bull;&bull;&bull;&bull;&bull;&bull;</div><div class="row"><span>Para</span><span>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span></div><div class="row"><span>CVU</span><span>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span></div><div class="row"><span>Estado</span><span class="ok">Aprobado &#10003;</span></div><div class="row"><span>Operación</span><span>#&bull;&bull;&bull;&bull;</span></div></div><div class="fn">&#128196; comprobante.pdf</div><div style="margin-top:8px">¿Es real este comprobante?</div><div class="hr">02:17 <span class="tk">&#10003;&#10003;</span></div></div>
+      <div class="bv" id="m5v"><span class="s r">&#128308; Comprobante falso</span><br>Esa operación no existe en el banco.<div class="hr">02:17</div></div>
+    </div>
+    <div id="caps">Mandale <b>links, CBU, teléfonos, capturas, documentos…</b><br>y Vera te dice con el semáforo.</div>
+    <div class="in">Escribí un mensaje</div>
+  </div>
+  <div id="stain"></div><div id="vig"></div><div id="grain"></div><div id="flash"></div>
+</div></div>
+<div id="tit"></div>
+<div id="rot">Recreación &middot; pareja y mensajes recreados, datos tapados</div>
+<div id="rew"><div class="bars"></div><div class="b">&#171;&#171; REBOBINÁ</div></div>
+<div id="fin">
+  <img src="/home/user/Cyber-Mobile/redes/2026-11-01/reel-pasos-terror/pareja/aliviados.webp">
+  <div class="gr"></div>
+  <div class="ct">
+    <div class="mk"><img src="/home/user/Cyber-Mobile/logo-cm.png">Cyber Mobile &middot; Vera</div>
+    <h2>Ya estaban <em>alertados</em><br>No cayeron</h2>
+    <div class="ph2">Vera revisa links, llamadas y mensajes en tu WhatsApp.</div>
+    <div class="cta" id="cta"></div><div class="sub" id="sub"></div>
+  </div>
+</div>
+<script>
+const P=new URLSearchParams(location.search);
+const canal=P.get('canal')||'ig';
+const $=s=>document.querySelector(s);
+const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eo=x=>1-Math.pow(1-x,3);
+const seg=(t,a,b)=>cl((t-a)/(b-a),0,1);
+if(canal==='wa'){ $('#cta').innerHTML='Probala <b>7 días gratis</b>'; $('#sub').textContent='cybermobile.com.ar/vera'; }
+else if(canal==='tt'){ $('#cta').innerHTML='Link en el perfil'; $('#sub').textContent='· 7 días gratis'; }
+else { $('#cta').innerHTML='Comentá <b>VERA</b> y te envío el link por privado'; $('#sub').textContent='(7 días gratis)'; }
+
+const CARDS={
+ 1:'<div class="nt"><div class="ic red">&#9888;</div><div class="tx"><div class="ap"><span>Seguridad</span><span>hace 3 meses</span></div><b>Tu correo apareció en una filtración</b><p>j&bull;&bull;&bull;&bull;&bull;@&bull;&bull;&bull;&bull;.com y tu clave quedaron expuestos.</p></div></div>',
+ 2:'<div class="nt"><div class="ic phone">&#9742;</div><div class="tx"><div class="ap"><span>Llamada perdida</span><span>ayer</span></div><b>&quot;Soporte&quot; &bull; &bull;&bull;&bull;&bull;&nbsp;&bull;&bull;&bull;&bull;</b><p>&quot;Detectamos un movimiento raro en tu cuenta.&quot;</p></div></div>',
+ 3:'<div class="nt"><div class="ic gift">&#127873;</div><div class="tx"><div class="ap"><span>Promociones</span><span>hoy</span></div><b>&iexcl;Ganaste un premio! &bull; -70%</b><p>Reclamalo ahora. Tu cuenta tiene un problema.</p></div></div>',
+ 4:'<div class="nt"><div class="ic wa">&#128172;</div><div class="tx"><div class="ap"><span>WhatsApp &bull; &bull;&bull;&bull;&bull;&nbsp;&bull;&bull;&bull;&bull;</span><span>ahora</span></div><b>Validá tu cuenta para no perderla</b><p>Ingresá acá &#128073; <span class="lk">validar-tu-cuenta.xyz</span></p></div></div>'
+};
+const RB=[4.0,7.5,11.0,14.6,17.5];
+function rastroIdx(t){ if(t<RB[0])return 0; for(let i=0;i<4;i++){ if(t>=RB[i]&&t<RB[i+1]) return i+1; } return 0; }
+const RSTART=[4.0,7.5,11.0,14.6,17.0];
+function heart(t){const bpm=58+(120-58)*cl(t/17,0,1);const ph=(t*bpm/60)%1;return Math.exp(-ph*6)+0.35*Math.exp(-((ph-.14)%1)*6);}
+function bloom(t){let a=0;for(const r of RSTART){const d=t-r;if(d>=0&&d<0.9)a=Math.max(a,0.2*Math.sin(Math.PI*d/0.9));}return a;}
+function ramp(t,a0,a1,b0,b1){ if(t<a0||t>=b1) return 0; return Math.min(seg(t,a0,a1), 1-seg(t,b0,b1)); }
+const TITS=[
+  [0.0,3.9,'<div class="l1">La estafa ya</div><div class="l1">estaba en <em>su casa</em></div><div class="l2">Un matrimonio. Una cuenta. 4 rastros.</div>'],
+  [4.0,7.4,'<div class="tag">Rastro 1</div><div class="l1 m">Les robaron</div><div class="l1 m">las claves</div><div class="l2">De una filtración vieja. Ni se enteraron.</div>'],
+  [7.5,10.9,'<div class="tag">Rastro 2</div><div class="l1 m">Los llamaron</div><div class="l2">Falso soporte del banco. &quot;Hay algo raro.&quot;</div>'],
+  [11.0,14.5,'<div class="tag">Rastro 3</div><div class="l1 m">Promos y</div><div class="l1 m">premios falsos</div><div class="l2">Ofertas y apuro para que no pienses.</div>'],
+  [14.6,16.8,'<div class="tag">Rastro 4</div><div class="l1 m">El mensaje</div><div class="l1 m">con el <em>link</em></div><div class="l2">Un clic y entraban a la cuenta.</div>'],
+  [16.8,17.5,'<div class="l1 m">Están por</div><div class="l1 m">tocar&hellip;</div>'],
+];
+function setTit(h){const el=$('#tit');if(el.dataset.h!==h){el.innerHTML=h;el.dataset.h=h;}}
+
+// --- chat burst: 3 consultas con veredicto seguro (link, promo, documento) ---
+const SHOWN=['#m1u','#m1v','#m4u','#m4v','#m5u','#m5v'];
+const MSG=[
+ {el:'#m1u',t:19.7},{el:'#m1v',t:20.3},
+ {el:'#m4u',t:21.8},{el:'#m4v',t:22.6},
+ {el:'#m5u',t:24.0},{el:'#m5v',t:24.9},
+];
+const EXT=[19.7,21.8,24.0];
+let VPOS=[0,0,0], ST=[0,0,0], MSGTOP=240;
+function measureChat(){
+  ['#m2u','#m2v','#m3u','#m3v'].forEach(id=>{$(id).style.display='none';});
+  const wa=$('#wa'); const prev=wa.style.display; wa.style.display='block';
+  SHOWN.forEach(id=>{const e=$(id);e.style.display='block';e.style.opacity='1';e.style.transform='none';});
+  const vera=['#m1v','#m4v','#m5v'];
+  vera.forEach((id,i)=>{const e=$(id);VPOS[i]=e.offsetTop+e.offsetHeight;});
+  MSGTOP=1300-VPOS[0];
+  $('#msgs').style.top=MSGTOP+'px';
+  ST=VPOS.map(v=>v-VPOS[0]);
+  SHOWN.forEach(id=>{$(id).style.opacity='0';});
+  wa.style.display=prev||'none';
+}
+function scrollAt(t){
+  let i=0; while(i<2 && t>=EXT[i+1]-0.3) i++;
+  const from=i===0?0:ST[i-1], to=ST[i];
+  const u=ease(seg(t,EXT[i]-0.3,EXT[i]+0.8));
+  return from+(to-from)*u;
+}
+
+function render(t){
+  // título (fade suave)
+  let tt='',t0=0;for(const[a,b,h]of TITS){if(t>=a&&t<b){tt=h;t0=a;}}
+  setTit(tt);const tu=seg(t,t0,t0+.5);
+  $('#tit').style.opacity=tt?tu:0;$('#tit').style.transform='none';
+
+  // reloj de escena (reversing restaurado V3: rebobina dinámica 17.5-19.2)
+  const reving=t>=17.5&&t<19.2;
+  const te=reving?(17.5-(t-17.5)*8.6):t; const teC=cl(te,0,17.5);
+
+  // fotos + Ken Burns (crossfade lento ~0.6s)
+  const pl=$('#phPlano'), ce=$('#phCerca');
+  let oPl=ramp(teC,-1,.3,7.1,7.7)+ramp(teC,10.7,11.3,14.3,14.9);
+  let oCe=ramp(teC,7.1,7.7,10.7,11.3)+ramp(teC,14.3,14.9,17.5,18.0);
+  oPl=cl(oPl,0,1); oCe=cl(oCe,0,1);
+  if(reving){ oCe=Math.max(oCe,.5+.5*Math.sin(t*26)); } // destello pareja (V3)
+  pl.style.opacity=oPl; ce.style.opacity=oCe;
+  const kbP=1.05+0.09*cl(teC/17,0,1);
+  let kbC=1.07+0.10*cl(teC/17,0,1); if(teC>=14.6) kbC+=0.05*seg(teC,14.6,17.5);
+  pl.style.transform=`scale(${kbP}) translateY(${-10*cl(teC/17,0,1)}px)`;
+  ce.style.transform=`scale(${kbC}) translateY(${-12*cl(teC/17,0,1)}px)`;
+
+  // tarjeta de notificación (aparición lenta)
+  const card=$('#card');const idx=rastroIdx(teC);
+  if(idx>=1){ if(card.dataset.idx!=idx){ card.innerHTML=CARDS[idx]; card.dataset.idx=idx; }
+    const u=eo(seg(teC,RB[idx-1],RB[idx-1]+0.7));
+    card.style.opacity=u; card.style.transform=`translateY(${(1-u)*36}px)`;
+  } else { card.style.opacity=0; card.dataset.idx=0; }
+
+  // dedo rastro 4 (acercamiento lento)
+  const tap=$('#tap');const insX=600,insY=1210;
+  let tv=0,tx2=0,ty2=0,tsc=1;
+  if(teC>=15.0&&teC<17.5){ const u=ease(seg(teC,15.0,16.9));
+    tx2=950+(insX-950)*u; ty2=1850+(insY-1850)*u; tv=seg(teC,15.0,15.5);
+    const pr=(teC>16.7&&teC<17.0);tsc=pr?.85:1; }
+  tap.style.opacity=reving?tv*(1-seg(t,17.5,18.8)):tv;
+  tap.style.left=tx2+'px';tap.style.top=ty2+'px';tap.style.transform=`scale(${tsc})`;
+
+  // terror (sin golpes: bloom rojo lento + mancha que crece)
+  const prog=cl(teC/17.5,0,1);
+  $('#stain').style.opacity=cl(prog*1.0,0,1)*(t<19.15?1:0);
+  const hb=heart(teC);
+  const vigDark=120+340*prog+30*hb*prog;
+  $('#vig').style.boxShadow=(t<19.15)?`inset 0 0 ${vigDark}px ${50+110*prog}px rgba(70,0,4,${.12+.48*prog})`:'inset 0 0 0 0 rgba(0,0,0,0)';
+  $('#grain').style.opacity=(t<19.15)?(.1+.2*prog):0;
+  $('#flash').style.opacity=(t<19.15)?bloom(t):0;
+
+  // cámara: SIN sacudida; solo deriva lenta y suave
+  const dx=Math.sin(t*0.7)*4, dy=Math.cos(t*0.6)*5;
+  $('#cam').style.transform=`translate(${dx}px,${dy}px)`;
+
+  // reversing overlay (dinámico, V3)
+  const rw=$('#rew');const rin=seg(t,17.5,17.75)*(1-seg(t,18.8,19.15));
+  rw.style.opacity=reving?rin:0;
+  rw.querySelector('.b').style.transform=`scale(${.9+.2*Math.sin(t*10)})`;
+
+  // chat de Vera (entrada lenta)
+  const wa=$('#wa');const win=ease(seg(t,19.25,19.8));
+  const chatOn=(t>19.2&&t<26.55);
+  wa.style.display=chatOn?'block':'none';
+  wa.style.transform=`translateX(${(1-win)*1080}px)`;
+  if(chatOn){
+    MSG.forEach(m=>{const e=$(m.el);const u=eo(seg(t,m.t,m.t+0.4));
+      e.style.opacity=u; e.style.transform=`translateY(${(1-u)*22}px)`;});
+    $('#msgs').style.transform=`translateY(${-scrollAt(t)}px)`;
+    $('#caps').style.opacity=seg(t,20.4,21.0)*(1-seg(t,26.0,26.4));
+  }
+
+  // pareja / rec / card ocultos durante Vera
+  $('.rec').style.opacity=(t<17.3)?1:0;
+  $('#clk').textContent=t<17.5?'02:14':'02:15';
+  $('#clk').style.opacity=(t<17.3)?1:0;
+  if(t>19.15){ pl.style.opacity=0; ce.style.opacity=0; card.style.opacity=0; tap.style.opacity=0; $('#grad').style.opacity=0; }
+  else { $('#grad').style.opacity=1; }
+
+  $('#rot').style.opacity=(t>0.4&&t<26.4)?1:0;
+
+  // cierre (fade lento)
+  const fin=$('#fin');const fu=ease(seg(t,26.4,27.1));
+  fin.style.opacity=fu;
+  fin.querySelector('img').style.transform=`scale(${1.06+0.10*seg(t,26.4,30)})`;
+  if(t>=26.4){ $('#rew').style.opacity=0; $('#tit').style.opacity=0; $('#wa').style.display=(t>26.6?'none':$('#wa').style.display); }
+}
+window.render=render;
+if(P.get('limpio')){const st=document.createElement('style');st.textContent='#tit,#tap,#rot{display:none!important}';document.head.appendChild(st);}
+document.fonts.ready.then(()=>{ measureChat(); render(+(P.get('t')||0)); document.documentElement.setAttribute('data-listo','1'); });
+</script></body></html>

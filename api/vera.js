@@ -10,7 +10,9 @@ const ORIGENES = ['ig', 'bio', 'comentario', 'tarjeta', 'qr', 'web', 'canal', 'h
     // Extensión de Chrome (lanzamiento 25/10)
     'extension',
     // Kit para aliados que comparten Vera (28/10)
-    'aliado'];
+    'aliado',
+    // Charlas en centros de jubilados / bibliotecas (folleto con QR, 29/10)
+    'charla'];
 
 let redisClient;
 function redis() {

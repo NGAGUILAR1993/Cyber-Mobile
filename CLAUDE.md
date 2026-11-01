@@ -13,7 +13,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - n8n actualiza `observatorio/datos.json` y abre un deploy automático.
   - Cada estafa tiene su ficha en `/observatorio/<slug>` (`api/estafa.js`). Desde el 26/10 las fichas que salen del ranking **no desaparecen**: quedan en `observatorio/archivo.json` con su último contenido y la página las muestra como "Fuera del ranking · Archivo del Observatorio" (siguen en el sitemap con prioridad 0.5). El archivo lo mantiene `scripts/observatorio/archivar.mjs` desde `observatorio-archivo.yml` cuando n8n actualiza `datos.json`, y solo cambia si aparece una estafa nueva o cambian sus textos (para no sumar deploys). Solo un slug que nunca existió redirige (301) al ranking.
 - **Planes:** prueba de 7 días gratis.
-  - Individual $10.000, Pack Padres $17.000 (3 personas), Pack Familiar $33.000 (5 personas) (precios nuevos del 23/10, cargados por el dueño en Mercado Pago).
+  - Individual $5.000, Pack Padres $12.000 (3 personas), Pack Familiar $15.000 (5 personas) (precios nuevos del 01/11, bajados por el dueño; los carga en Mercado Pago). Precio internacional (extensión, fuera de Argentina): USD 5 individual, USD 10 familiar.
   - Empresas: $60.000 hasta 10 personas, $125.000 hasta 25.
   - Débito automático por Mercado Pago; se cancela desde la app de MP → Suscripciones.
 - **Dueño:** Germán (habla en español rioplatense). Mail de trabajo: cybermobile.ai@gmail.com.
@@ -23,6 +23,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
 - **n8n** (Railway, `primary-production-3c8ba.up.railway.app`):
   - Flujo principal **activo: "CYBER MOBILE 2026_10 - V38"** (id `fFoGJZEQRy0g6Dt1`).
     - Versión publicada el 19/10: **V39b**. Vera solo cita dominios que se ven escritos en la captura e ignora los servidores de imágenes. Detecta apps falsas dentro de Google Play o App Store por el desarrollador y las descargas (patrón `app_falsa_tienda`, con tarjeta propia) y contesta la pregunta que viene con la foto. Pendiente menor en `analizar_imagen`, `numDescargas`: "500 mil" se lee como 500 millones; corregir el orden del regex a `(milm|mil|mm|b|m|k)` la próxima vez que se edite ese nodo.
+    - **Publicado el 29/10:** se sumó al system prompt del nodo `AI Agent` el bloque "INTERÉS EN EL PROYECTO, ALIANZAS Y PRENSA": cuando alguien escribe ofreciendo apoyar, invertir, aliarse o hacer prensa (no por una estafa), Vera ya no lo deriva en seco; agradece, valora, ofrece dejar la propuesta y pasa el contacto institucional info@cybermobile.com.ar, sin inventar nombres, números ni compromisos. (Surgió del caso Ariel.) El **video de bienvenida** funciona bien: sale una sola vez, en el primer mensaje de cada contacto nuevo (candado `videolock:<numero>` + texto de respaldo si falla); a Ariel no se le reenvió el 24/10 porque ya no era nuevo (estaba en prueba, con casos ese día).
   - También: "CYBER MOBILE - Agente Web" y "Notificaciones MercadoPago".
   - Hay un **conector de n8n** en claude.ai: con él se ven ejecuciones y se edita y publica el flujo directamente (`update_workflow` + `publish_workflow`). **No hace falta mandarle JSON al usuario para importar.**
 - **WhatsApp:** Evolution API (`evolution-api-production-bf51.up.railway.app`), instancia "Agente Ciber". Es la **API oficial de WhatsApp Business (Meta)**:

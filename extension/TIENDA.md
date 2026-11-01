@@ -86,6 +86,17 @@ Certificar:
 - Resultado: "Lo que encontró", "Qué hacer" y **"Para entender de qué se trata"**: ficha del Observatorio, la guía que corresponde y, si hay riesgo, dónde reclamar o denunciar (solo sitios oficiales: mpf.gob.ar, bcra.gob.ar, argentina.gob.ar, whatsapp.com). Botón "Avisarle a mi familia" (WhatsApp con el tipo de estafa, sin los datos de la consulta).
 - Paquete: `scripts/extension/vera-chrome-1.1.0.zip`. Los permisos no cambian, así que las respuestas de privacidad siguen iguales.
 
+## Versión 1.2.0 (01/11, pedido del dueño: "se usa en otros países, no se sabe en qué se basa, hay que dejar evidencia y dónde consulta; estilo más serio; y cómo me pagan desde afuera")
+- **Terminal de análisis en vivo:** mientras Vera trabaja, muestra una terminal seria (monoespaciada) que va imprimiendo, una por una, **las fuentes reales que consulta** según lo que se verifica (DNS/dominio, VirusTotal, reputación, filtraciones, Observatorio…), con estado "consultando → ok". Transparencia: deja ver en qué se basa.
+- **"Fuentes que consultó Vera"** en el resultado: bloque de evidencia con las fuentes cruzadas. Si el backend (n8n) devuelve evidencia por caso (campo `fuentes`/`evidencia`), la muestra; si no, muestra las fuentes del tipo de consulta. (Pendiente opcional: que n8n devuelva la evidencia concreta por caso, por ejemplo "VirusTotal: X/70 motores".)
+- **Cobro por país.** La extensión detecta de dónde se usa:
+  - **Argentina →** Mercado Pago en pesos + WhatsApp (como hasta ahora).
+  - **Otros países →** plan en **USD** con checkout internacional (Paddle, Merchant of Record: cobra con tarjeta/PayPal y maneja los impuestos de cada país; paga a Germán por Payoneer). El link de pago se configura sin tocar código, cargando `CM_PADDLE` en el almacenamiento de la extensión, o con el placeholder actual hasta que Germán conecte Paddle. Detalle y pasos en `scripts/campanas/cobro-internacional.md`.
+  - Para quienes están fuera de Argentina no se muestran las denuncias oficiales argentinas (UFECI, BCRA, Defensa del Consumidor).
+- Pendiente para completar afuera: traducción al inglés del resto de la interfaz y el webhook de Paddle para activar la suscripción sola (queda listo del lado de la extensión; falta la cuenta de Paddle de Germán).
+- Los permisos **no cambian** (contextMenus, storage, activeTab, host cybermobile.com.ar): las respuestas de privacidad de la consola siguen iguales.
+- Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.2.0.zip`.
+
 ## Imágenes
 - Ícono: 128×128, ya va dentro del paquete (`icons/icon-128.png`).
 - Capturas 1280×800 (nuevo estilo, 27/10): `tienda/captura-1.jpg` a `captura-5.jpg` (portada, clic derecho, resultado, links de contexto, qué revisa). Mosaico 440×280 y marquesina 1400×560 en `tienda/`. Se arman con `scripts/extension/tienda.html` (imágenes reales de la extensión 1.1).

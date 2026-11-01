@@ -102,6 +102,32 @@ textarea:focus { border-color: var(--violeta); outline: none; box-shadow: 0 0 0 
 .chequeos li.on { color: var(--fg); border-color: rgba(34,211,238,.5); }
 .chequeos li.on::before { content: "● "; color: var(--cyan); }
 
+/* terminal de consulta: muestra, en vivo, qué fuentes consulta Vera */
+.term { width: 100%; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #05080f; box-shadow: inset 0 0 40px rgba(34,211,238,.05); }
+.term-top { display: flex; align-items: center; gap: 7px; padding: 8px 12px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,.03); }
+.term-top b { font-family: JB, monospace; font-size: 11px; letter-spacing: 1px; color: var(--muted); margin-left: 4px; }
+.term-dot { width: 10px; height: 10px; border-radius: 50%; background: #334155; }
+.term-dot.r { background: var(--rojo); } .term-dot.y { background: var(--ambar); } .term-dot.g { background: var(--verde); }
+.term-cuerpo { font-family: JB, monospace; font-size: 11.5px; line-height: 1.7; padding: 12px 14px; min-height: 150px; max-height: 260px; overflow-y: auto; color: #cbd5e1; }
+.t-cmd { color: #a5f3fc; margin-bottom: 6px; }
+.t-cmd::before { content: ""; }
+.t-line { display: flex; align-items: baseline; gap: 7px; white-space: normal; opacity: .55; transition: opacity .3s; }
+.t-line.done { opacity: 1; }
+.t-ix { color: var(--violeta); flex: none; }
+.t-name { color: var(--fg); }
+.t-det { color: var(--muted); }
+.t-st { margin-left: auto; flex: none; color: var(--gris); }
+.t-st.run { color: var(--ambar); }
+.t-st.ok { color: var(--verde); }
+.t-cur { color: var(--cyan); animation: parpadeo 1s steps(1) infinite; }
+@keyframes parpadeo { 50% { opacity: 0; } }
+
+/* fuentes consultadas (evidencia en el resultado) */
+.fuentes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.fuentes li { display: flex; flex-direction: column; gap: 1px; padding: 8px 11px; border-radius: 10px; background: #05080f; border: 1px solid var(--line); border-left: 3px solid var(--cyan); }
+.fuentes b { font-size: 12.5px; font-weight: 650; }
+.fuentes small { font-family: JB, monospace; font-size: 10.5px; color: var(--muted); }
+
 /* resultado */
 .res { border: 1px solid var(--line); border-radius: 18px; padding: 15px; display: flex; flex-direction: column; gap: 10px; background: var(--panel); position: relative; overflow: hidden; }
 .res::before { content: ""; position: absolute; inset: 0 0 auto; height: 4px; background: var(--gris); }
@@ -148,4 +174,17 @@ textarea:focus { border-color: var(--violeta); outline: none; box-shadow: 0 0 0 
 .pie a { color: var(--muted); }
 .pie button { background: none; border: 0; color: #a5f3fc; text-decoration: underline; cursor: pointer; padding: 0; font-size: 12px; }
 .error { margin: 0 16px 12px; padding: 10px 12px; border-radius: 12px; background: rgba(244,63,94,.12); border: 1px solid rgba(244,63,94,.5); font-size: 13px; }
+/* layout en columnas: info de un lado, fuentes/evidencia del otro (en ventana ancha) */
+.cols { display: flex; flex-direction: column; gap: 16px; }
+.col-info, .col-lado { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+body.ventana .cols { flex-direction: row; align-items: flex-start; }
+body.ventana .col-info { flex: 1 1 56%; }
+body.ventana .col-lado { flex: 1 1 44%; }
+body.ventana .caps { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+
+/* barra fija: suscribirse y compartir */
+.acciones { position: sticky; bottom: 0; z-index: 2; display: flex; gap: 8px; padding: 10px 16px;
+  border-top: 1px solid var(--line); background: rgba(5,8,15,.82); backdrop-filter: blur(8px); }
+.acciones .btn { flex: 1; }
+
 @media (prefers-reduced-motion: reduce) { .radar i, .pagina .scan { animation: none; } .pagina .scan { display: none; } }
