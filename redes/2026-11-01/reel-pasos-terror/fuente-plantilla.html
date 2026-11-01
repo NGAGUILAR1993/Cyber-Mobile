@@ -140,9 +140,10 @@ const CARDS={
 };
 const RB=[4.0,7.5,11.0,14.6,17.5];
 function rastroIdx(t){ if(t<RB[0])return 0; for(let i=0;i<4;i++){ if(t>=RB[i]&&t<RB[i+1]) return i+1; } return 0; }
-const HITS=[4.0,7.5,11.0,14.6,17.0];
-function hit(t){let a=0;for(const h of HITS){const d=t-h;if(d>=0&&d<.42)a=Math.max(a,1-d/.42);}return a;}
-function heart(t){const bpm=60+(150-60)*cl(t/17,0,1);const ph=(t*bpm/60)%1;return Math.exp(-ph*6)+0.35*Math.exp(-((ph-.14)%1)*6);}
+const RSTART=[4.0,7.5,11.0,14.6,17.0];
+function heart(t){const bpm=58+(120-58)*cl(t/17,0,1);const ph=(t*bpm/60)%1;return Math.exp(-ph*6)+0.35*Math.exp(-((ph-.14)%1)*6);}
+// bloom rojo suave y lento en cada rastro (sin golpe de cámara)
+function bloom(t){let a=0;for(const r of RSTART){const d=t-r;if(d>=0&&d<0.9)a=Math.max(a,0.2*Math.sin(Math.PI*d/0.9));}return a;}
 function ramp(t,a0,a1,b0,b1){ if(t<a0||t>=b1) return 0; return Math.min(seg(t,a0,a1), 1-seg(t,b0,b1)); }
 const TITS=[
   [0.0,3.9,'<div class="l1">La estafa ya</div><div class="l1">estaba en <em>su casa</em></div><div class="l2">Un matrimonio. Una cuenta. 4 rastros.</div>'],
@@ -151,104 +152,103 @@ const TITS=[
   [11.0,14.5,'<div class="tag">Rastro 3</div><div class="l1 m">Promos y</div><div class="l1 m">premios falsos</div><div class="l2">Ofertas y apuro para que no pienses.</div>'],
   [14.6,16.8,'<div class="tag">Rastro 4</div><div class="l1 m">El mensaje</div><div class="l1 m">con el <em>link</em></div><div class="l2">Un clic y entraban a la cuenta.</div>'],
   [16.8,17.5,'<div class="l1 m">Están por</div><div class="l1 m">tocar&hellip;</div>'],
-  [19.4,21.1,'<div class="l1 m">Antes del clic,</div><div class="l1 m">a <em>Vera</em></div>'],
 ];
 function setTit(h){const el=$('#tit');if(el.dataset.h!==h){el.innerHTML=h;el.dataset.h=h;}}
 
-// --- chat burst ---
-const MSG=[ // {el, t} tiempo de aparición
- {el:'#m1u',t:19.7},{el:'#m1v',t:20.1},
- {el:'#m2u',t:21.2},{el:'#m2v',t:21.6},
- {el:'#m3u',t:22.6},{el:'#m3v',t:23.0},
- {el:'#m4u',t:23.9},{el:'#m4v',t:24.6},
+// --- chat burst (3 mensajes, lento y legible) ---
+const SHOWN=['#m1u','#m1v','#m2u','#m2v','#m4u','#m4v'];
+const MSG=[
+ {el:'#m1u',t:19.9},{el:'#m1v',t:20.6},
+ {el:'#m2u',t:22.2},{el:'#m2v',t:22.9},
+ {el:'#m4u',t:24.4},{el:'#m4v',t:25.1},
 ];
-const EXT=[19.7,21.2,22.6,23.9]; // inicio de cada intercambio
-let VPOS=[0,0,0,0], ST=[0,0,0,0], MSGTOP=240;
+const EXT=[19.9,22.2,24.4];
+let VPOS=[0,0,0], ST=[0,0,0], MSGTOP=240;
 function measureChat(){
+  $('#m3u').style.display='none'; $('#m3v').style.display='none';
   const wa=$('#wa'); const prev=wa.style.display; wa.style.display='block';
-  MSG.forEach(m=>{$(m.el).style.display='block';$(m.el).style.opacity='1';$(m.el).style.transform='none';});
-  const vera=['#m1v','#m2v','#m3v','#m4v'];
+  SHOWN.forEach(id=>{const e=$(id);e.style.display='block';e.style.opacity='1';e.style.transform='none';});
+  const vera=['#m1v','#m2v','#m4v'];
   vera.forEach((id,i)=>{const e=$(id);VPOS[i]=e.offsetTop+e.offsetHeight;});
-  MSGTOP = 1300 - VPOS[0];
-  $('#msgs').style.top = MSGTOP+'px';
-  ST = VPOS.map(v=>v-VPOS[0]);
-  MSG.forEach(m=>{$(m.el).style.opacity='0';});
+  MSGTOP=1300-VPOS[0];
+  $('#msgs').style.top=MSGTOP+'px';
+  ST=VPOS.map(v=>v-VPOS[0]);
+  SHOWN.forEach(id=>{$(id).style.opacity='0';});
   wa.style.display=prev||'none';
 }
 function scrollAt(t){
-  let i=0; while(i<3 && t>=EXT[i+1]-0.15) i++;
+  let i=0; while(i<2 && t>=EXT[i+1]-0.3) i++;
   const from=i===0?0:ST[i-1], to=ST[i];
-  const u=ease(seg(t,EXT[i]-0.15,EXT[i]+0.45));
+  const u=ease(seg(t,EXT[i]-0.3,EXT[i]+0.8));
   return from+(to-from)*u;
 }
 
 function render(t){
+  // título (fade suave, sin rebote)
   let tt='',t0=0;for(const[a,b,h]of TITS){if(t>=a&&t<b){tt=h;t0=a;}}
-  setTit(tt);const pop=eo(seg(t,t0,t0+.28));
-  $('#tit').style.opacity=tt?pop:0;$('#tit').style.transform=`scale(${.9+.1*pop})`;
+  setTit(tt);const tu=seg(t,t0,t0+.5);
+  $('#tit').style.opacity=tt?tu:0;$('#tit').style.transform='none';
 
+  // reloj de escena (rebobina en 17.5-19.2)
   const reving=t>=17.5&&t<19.2;
   const te=reving?(17.5-(t-17.5)*8.6):t; const teC=cl(te,0,17.5);
 
-  // fotos + Ken Burns
+  // fotos + Ken Burns (crossfade lento ~0.6s)
   const pl=$('#phPlano'), ce=$('#phCerca');
-  let oPl=ramp(teC,-1,.2,7.3,7.6)+ramp(teC,10.8,11.1,14.4,14.7);
-  let oCe=ramp(teC,7.3,7.6,10.8,11.1)+ramp(teC,14.4,14.7,17.5,17.8);
+  let oPl=ramp(teC,-1,.3,7.1,7.7)+ramp(teC,10.7,11.3,14.3,14.9);
+  let oCe=ramp(teC,7.1,7.7,10.7,11.3)+ramp(teC,14.3,14.9,17.5,18.0);
   oPl=cl(oPl,0,1); oCe=cl(oCe,0,1);
-  if(reving){ oCe=Math.max(oCe,.5+.5*Math.sin(t*26)); }
+  if(reving){ oCe=Math.max(oCe,.5+.5*Math.sin(t*20)); }
   pl.style.opacity=oPl; ce.style.opacity=oCe;
-  const kbP=1.05+0.10*cl(teC/17,0,1);
-  let kbC=1.07+0.11*cl(teC/17,0,1); if(teC>=14.6) kbC+=0.06*seg(teC,14.6,17.5);
+  const kbP=1.05+0.09*cl(teC/17,0,1);
+  let kbC=1.07+0.10*cl(teC/17,0,1); if(teC>=14.6) kbC+=0.05*seg(teC,14.6,17.5);
   pl.style.transform=`scale(${kbP}) translateY(${-10*cl(teC/17,0,1)}px)`;
   ce.style.transform=`scale(${kbC}) translateY(${-12*cl(teC/17,0,1)}px)`;
 
-  // tarjeta de notificación
+  // tarjeta de notificación (aparición lenta)
   const card=$('#card');const idx=rastroIdx(teC);
   if(idx>=1){ if(card.dataset.idx!=idx){ card.innerHTML=CARDS[idx]; card.dataset.idx=idx; }
-    const u=eo(seg(teC,RB[idx-1],RB[idx-1]+0.45));
-    card.style.opacity=u; card.style.transform=`translateY(${(1-u)*50}px)`;
+    const u=eo(seg(teC,RB[idx-1],RB[idx-1]+0.7));
+    card.style.opacity=u; card.style.transform=`translateY(${(1-u)*36}px)`;
   } else { card.style.opacity=0; card.dataset.idx=0; }
 
-  // dedo rastro 4
+  // dedo rastro 4 (acercamiento lento)
   const tap=$('#tap');const insX=600,insY=1210;
   let tv=0,tx2=0,ty2=0,tsc=1;
   if(teC>=15.0&&teC<17.5){ const u=ease(seg(teC,15.0,16.9));
-    tx2=950+(insX-950)*u; ty2=1850+(insY-1850)*u; tv=seg(teC,15.0,15.35);
-    const pr=(teC>16.7&&teC<17.0);tsc=pr?.82:1; }
+    tx2=950+(insX-950)*u; ty2=1850+(insY-1850)*u; tv=seg(teC,15.0,15.5);
+    const pr=(teC>16.7&&teC<17.0);tsc=pr?.85:1; }
   tap.style.opacity=reving?tv*(1-seg(t,17.5,18.8)):tv;
   tap.style.left=tx2+'px';tap.style.top=ty2+'px';tap.style.transform=`scale(${tsc})`;
 
-  // terror
+  // terror (sin golpes: solo bloom rojo lento + mancha que crece)
   const prog=cl(teC/17.5,0,1);
   $('#stain').style.opacity=cl(prog*1.0,0,1)*(t<19.15?1:0);
   const hb=heart(teC);
-  const vigDark=120+360*prog+40*hb*prog;
-  $('#vig').style.boxShadow=(t<19.15)?`inset 0 0 ${vigDark}px ${50+120*prog}px rgba(70,0,4,${.12+.5*prog})`:'inset 0 0 0 0 rgba(0,0,0,0)';
-  $('#grain').style.opacity=(t<19.15)?(.1+.22*prog):0;
+  const vigDark=120+340*prog+30*hb*prog;
+  $('#vig').style.boxShadow=(t<19.15)?`inset 0 0 ${vigDark}px ${50+110*prog}px rgba(70,0,4,${.12+.48*prog})`:'inset 0 0 0 0 rgba(0,0,0,0)';
+  $('#grain').style.opacity=(t<19.15)?(.1+.2*prog):0;
+  $('#flash').style.opacity=(t<19.15)?bloom(t):0;
 
-  // cámara
-  const h=hit(t);
-  const sx=Math.sin(t*94)*30*h, sy=Math.cos(t*73)*24*h, rot=Math.sin(t*58)*1.5*h;
-  const dx=Math.sin(t*1.25)*7, dy=Math.cos(t*1.05)*8;
-  let extra=0; if(t>=16.8&&t<17.5) extra=4*Math.sin(t*40);
-  $('#cam').style.transform=`translate(${sx+dx}px,${sy+dy+extra}px) rotate(${rot}deg)`;
-  $('#flash').style.opacity=h*0.9+(t>=16.8&&t<17.5?0.12:0);
+  // cámara: SIN sacudida; solo deriva lenta y suave (handheld tranquilo)
+  const dx=Math.sin(t*0.7)*4, dy=Math.cos(t*0.6)*5;
+  $('#cam').style.transform=`translate(${dx}px,${dy}px)`;
 
-  // reversing overlay
-  const rw=$('#rew');const rin=seg(t,17.5,17.75)*(1-seg(t,18.8,19.15));
+  // reversing overlay (fade suave)
+  const rw=$('#rew');const rin=seg(t,17.5,17.9)*(1-seg(t,18.7,19.15));
   rw.style.opacity=reving?rin:0;
-  rw.querySelector('.b').style.transform=`scale(${.9+.2*Math.sin(t*10)})`;
+  rw.querySelector('.b').style.transform=`scale(${.96+.06*Math.sin(t*6)})`;
 
-  // chat de Vera
-  const wa=$('#wa');const win=ease(seg(t,19.2,19.6));
-  const chatOn=(t>19.15&&t<26.55);
+  // chat de Vera (entrada lenta)
+  const wa=$('#wa');const win=ease(seg(t,19.3,19.9));
+  const chatOn=(t>19.25&&t<26.55);
   wa.style.display=chatOn?'block':'none';
   wa.style.transform=`translateX(${(1-win)*1080}px)`;
   if(chatOn){
-    MSG.forEach(m=>{const e=$(m.el);const u=eo(seg(t,m.t,m.t+0.3));
-      e.style.opacity=u; e.style.transform=`translateY(${(1-u)*26}px)`;});
+    MSG.forEach(m=>{const e=$(m.el);const u=eo(seg(t,m.t,m.t+0.4));
+      e.style.opacity=u; e.style.transform=`translateY(${(1-u)*22}px)`;});
     $('#msgs').style.transform=`translateY(${-scrollAt(t)}px)`;
-    $('#caps').style.opacity=seg(t,21.2,21.7)*(1-seg(t,26.1,26.5));
+    $('#caps').style.opacity=seg(t,20.7,21.4)*(1-seg(t,26.0,26.4));
   }
 
   // pareja / rec / card ocultos durante Vera
@@ -260,11 +260,11 @@ function render(t){
 
   $('#rot').style.opacity=(t>0.4&&t<26.4)?1:0;
 
-  // cierre
-  const fin=$('#fin');const fu=ease(seg(t,26.5,27.0));
+  // cierre (fade lento)
+  const fin=$('#fin');const fu=ease(seg(t,26.4,27.1));
   fin.style.opacity=fu;
-  fin.querySelector('img').style.transform=`scale(${1.06+0.10*seg(t,26.5,30)})`;
-  if(t>=26.5){ $('#rew').style.opacity=0; $('#tit').style.opacity=0; $('#wa').style.display='none'; }
+  fin.querySelector('img').style.transform=`scale(${1.06+0.10*seg(t,26.4,30)})`;
+  if(t>=26.4){ $('#rew').style.opacity=0; $('#tit').style.opacity=0; $('#wa').style.display=(t>26.6?'none':$('#wa').style.display); }
 }
 window.render=render;
 if(P.get('limpio')){const st=document.createElement('style');st.textContent='#tit,#tap,#rot{display:none!important}';document.head.appendChild(st);}
