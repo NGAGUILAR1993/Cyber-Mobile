@@ -13,7 +13,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - n8n actualiza `observatorio/datos.json` y abre un deploy automático.
   - Cada estafa tiene su ficha en `/observatorio/<slug>` (`api/estafa.js`). Desde el 26/10 las fichas que salen del ranking **no desaparecen**: quedan en `observatorio/archivo.json` con su último contenido y la página las muestra como "Fuera del ranking · Archivo del Observatorio" (siguen en el sitemap con prioridad 0.5). El archivo lo mantiene `scripts/observatorio/archivar.mjs` desde `observatorio-archivo.yml` cuando n8n actualiza `datos.json`, y solo cambia si aparece una estafa nueva o cambian sus textos (para no sumar deploys). Solo un slug que nunca existió redirige (301) al ranking.
 - **Planes:** prueba de 7 días gratis.
-  - Individual $10.000, Pack Padres $17.000 (3 personas), Pack Familiar $33.000 (5 personas) (precios nuevos del 23/10, cargados por el dueño en Mercado Pago).
+  - Individual $5.000, Pack Padres $12.000 (3 personas), Pack Familiar $15.000 (5 personas) (precios nuevos del 01/11, bajados por el dueño; los carga en Mercado Pago). Precio internacional (extensión, fuera de Argentina): USD 5 individual, USD 10 familiar.
   - Empresas: $60.000 hasta 10 personas, $125.000 hasta 25.
   - Débito automático por Mercado Pago; se cancela desde la app de MP → Suscripciones.
 - **Dueño:** Germán (habla en español rioplatense). Mail de trabajo: cybermobile.ai@gmail.com.

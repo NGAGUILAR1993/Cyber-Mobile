@@ -88,7 +88,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b141a}
 
  <div id="grad"></div>
  <div id="dim"></div>
- <div id="big"><div id="num">$10.000</div><div id="pm">por mes</div><br><div id="bq">Lo que incluye.<br><em>Y lo que no.</em></div></div>
+ <div id="big"><div id="num">$5.000</div><div id="pm">por mes</div><br><div id="bq">Lo que incluye.<br><em>Y lo que no.</em></div></div>
  <div id="chip">1/8</div>
 
  <div id="no">
@@ -101,9 +101,9 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b141a}
  <div id="pr">
   <div class="tag">CUÁNTO SALE</div>
   <div class="g7">7 días<br><em>gratis.</em></div><div style="font-family:G;font-size:46px;color:#334155;margin:-6px 0 18px">Después, por mes:</div>
-  <div class="pl" id="p0"><div><b>Individual</b><small>1 persona</small></div><span>$10.000</span></div>
-  <div class="pl h" id="p1"><div><b>Pack Padres</b><small>Vos y tus viejos · 3 personas</small></div><span>$17.000</span></div>
-  <div class="pl" id="p2"><div><b>Pack Familiar</b><small>5 personas</small></div><span>$33.000</span></div>
+  <div class="pl" id="p0"><div><b>Individual</b><small>1 persona</small></div><span>$5.000</span></div>
+  <div class="pl h" id="p1"><div><b>Pack Padres</b><small>Vos y tus viejos · 3 personas</small></div><span>$12.000</span></div>
+  <div class="pl" id="p2"><div><b>Pack Familiar</b><small>5 personas</small></div><span>$15.000</span></div>
   <div class="ft" id="p3">Débito automático. <b>Se cancela desde la app de Mercado Pago → Suscripciones.</b></div>
  </div>
 
@@ -182,7 +182,7 @@ function render(t){
  // portada: chat desenfocado
  const bl=1-eo(R(t,4.4,5.2));$('screen').style.filter=`blur(${bl*18}px) brightness(${1-bl*.55})`;
  const kb=eo(R(t,.05,.4))*(1-eo(R(t,4.3,4.7)));$('big').style.opacity=kb;
- const cnt=Math.round(10000*eo(R(t,.2,1.3))/100)*100;$('num').textContent='$'+cnt.toLocaleString('es-AR');
+ const cnt=Math.round(5000*eo(R(t,.2,1.3))/100)*100;$('num').textContent='$'+cnt.toLocaleString('es-AR');
  $('num').style.transform=`scale(${1+.06*Math.max(0,1-Math.abs(t-1.35)/.25)})`;
  $('pm').style.opacity=eo(R(t,1.3,1.7));$('bq').style.opacity=eo(R(t,1.9,2.3));$('bq').style.transform=`translateY(${(1-eo(R(t,1.9,2.3)))*40}px)`;
  // títulos
