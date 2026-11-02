@@ -37,7 +37,7 @@ function detectarPais() {
 const PAIS = detectarPais();
 // Link de pago internacional (Paddle). Placeholder hasta que Germán conecte su cuenta de Paddle;
 // se puede sobreescribir cargando CM_PADDLE en chrome.storage.local sin tocar el código.
-let PADDLE_CHECKOUT = 'https://www.cybermobile.com.ar/vera?o=extension&pago=int';
+let PADDLE_CHECKOUT = 'https://www.cybermobile.com.ar/pagar?plan=individual';
 // Guías propias y fuentes oficiales para entender el resultado (solo dominios conocidos).
 const GUIA = (slug, titulo, c) => ({ href: `${BASE}/guias/${slug}?o=extension`, origen: 'Guía de Cyber Mobile', titulo, c });
 const G = {

@@ -1,0 +1,18 @@
+# Config de gitleaks para Cyber Mobile.
+# Extiende las reglas por defecto y permite SOLO identificadores PÚBLICOS de Paddle
+# (el client-side token y los Price ID) que, por diseño, van embebidos en el frontend
+# de la página de pago. NO son secretos.
+# La API key SECRETA de Paddle (pdl_..._apikey_...) y cualquier otra clave/token real
+# siguen bloqueadas por las reglas por defecto.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Identificadores públicos de Paddle en el frontend de pago (no son secretos)"
+paths = [
+  '''pagar/pagar\.js'''
+]
+regexes = [
+  '''(test|live)_[0-9a-f]{20,}''',
+  '''pri_[0-9a-z]{20,}'''
+]
