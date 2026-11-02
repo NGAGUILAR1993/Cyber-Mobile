@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suscribite a Vera — Cyber Mobile</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#05070D">
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+<style>
+  :root { --bg:#05070D; --panel:rgba(15,23,42,.72); --line:rgba(255,255,255,.12); --fg:#f8fafc; --muted:#94a3b8;
+    --cyan:#22d3ee; --violeta:#a78bfa; --rosa:#f472b6; --grad:linear-gradient(90deg,#22d3ee,#a78bfa 55%,#f472b6); }
+  * { box-sizing:border-box; }
+  html,body { margin:0; background:var(--bg); color:var(--fg); }
+  body { min-height:100vh; display:grid; place-items:center; padding:24px 16px;
+    font:16px/1.55 "Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background-image:radial-gradient(60% 40% at 85% 0%,rgba(167,139,250,.18),transparent 70%),radial-gradient(50% 35% at 0% 20%,rgba(34,211,238,.12),transparent 70%); }
+  main { width:100%; max-width:440px; text-align:center; }
+  .logo { width:64px; height:64px; border-radius:16px; box-shadow:0 0 24px rgba(34,211,238,.35); }
+  h1 { font-size:26px; letter-spacing:-.4px; margin:16px 0 6px; }
+  .grad { background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  p.sub { color:var(--muted); margin:0 0 22px; }
+  .planes { display:flex; flex-direction:column; gap:12px; }
+  .plan { display:flex; align-items:center; justify-content:space-between; gap:12px; width:100%; text-align:left;
+    padding:16px 18px; border-radius:16px; border:1px solid var(--line); background:var(--panel); color:var(--fg);
+    cursor:pointer; transition:border-color .15s, transform .1s; font:inherit; }
+  .plan:hover { border-color:var(--violeta); }
+  .plan:active { transform:translateY(1px); }
+  .plan.dest { border-color:var(--cyan); box-shadow:0 0 20px -6px var(--cyan); }
+  .plan b { font-size:17px; }
+  .plan small { display:block; color:var(--muted); font-size:13px; }
+  .plan .precio { font-weight:700; font-size:18px; white-space:nowrap; }
+  .nota { color:var(--muted); font-size:13px; margin-top:18px; }
+  #estado { min-height:22px; margin-top:14px; font-size:14px; }
+  #estado.ok { color:var(--cyan); }
+  #estado.err { color:#f87171; }
+  a.volver { color:#a5f3fc; font-size:14px; text-decoration:none; display:inline-block; margin-top:16px; }
+  a { color:var(--cyan); }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="/icon-192.png" width="64" height="64" alt="Cyber Mobile">
+  <h1>Suscribite a <span class="grad">Vera</span></h1>
+  <p class="sub">Tu asistente antiestafas, sin límites. Pago seguro, cancelás cuando quieras.</p>
+  <div class="planes">
+    <button class="plan" type="button" data-plan="individual">
+      <span><b>Individual</b><small>1 persona</small></span>
+      <span class="precio">USD 5<small style="font-weight:400">/mes</small></span>
+    </button>
+    <button class="plan" type="button" data-plan="familiar">
+      <span><b>Familiar</b><small>Hasta 5 personas</small></span>
+      <span class="precio">USD 10<small style="font-weight:400">/mes</small></span>
+    </button>
+  </div>
+  <p id="estado"></p>
+  <p class="nota">Impuestos y medios de pago los gestiona Paddle (nuestro procesador). ¿Dudas? info@cybermobile.com.ar</p>
+  <a class="volver" href="/">← Volver a Cyber Mobile</a>
+</main>
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script src="/pagar/pagar.js"></script>
+</body>
+</html>
