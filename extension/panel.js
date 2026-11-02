@@ -156,6 +156,23 @@ function pintarFuentes(r) {
     $('r-fuentes-box').hidden = !items.length;
 }
 
+// Dominio engañoso: detecta links que imitan a otro sitio con Punycode (IDN) o caracteres no latinos
+// (homógrafos, p. ej. una "а" cirílica en vez de la "a"). Es un chequeo local, antes de confiar en el dominio.
+function dominioEnganoso(valor) {
+    try {
+        let host = String(valor || '');
+        const m = host.match(/^(?:[a-z][a-z0-9+.-]*:\/\/)?([^/\s?#]+)/i);
+        host = (m ? m[1] : host).split('@').pop().split(':')[0].trim().toLowerCase();
+        if (!host || host.indexOf('.') === -1) return null;
+        if (/(^|\.)xn--/.test(host)) return 'punycode';                 // dominio IDN (puede imitar a otro)
+        if (/[^\u0000-\u007F]/.test(host)) {                            // tiene caracteres no ASCII
+            if (/[a-z]/.test(host) && /[Ѐ-ӿͰ-Ͽ]/.test(host)) return 'mixto'; // latino + cirílico/griego
+            return 'nolatino';
+        }
+        return null;
+    } catch { return null; }
+}
+
 const NIVELES = { alto: 'Riesgo alto', medio: 'Precaución', bajo: 'Sin señales de riesgo', desconocido: 'Sin datos suficientes' };
 function pintarResultado(r) {
     const res = $('res');
@@ -164,8 +181,11 @@ function pintarResultado(r) {
     $('r-titulo').textContent = r.titulo || '';
     $('r-resumen').textContent = r.resumen || '';
     const ul = $('r-hallazgos'); ul.textContent = '';
-    (r.hallazgos || []).forEach((h) => { const li = document.createElement('li'); li.className = h.tipo; li.textContent = h.texto; ul.append(li); });
-    $('r-hallazgos-box').hidden = !(r.hallazgos || []).length;
+    const hall = [...(r.hallazgos || [])];
+    const eng = (ultimo && (ultimo.tipo === 'link' || ultimo.tipo === 'email')) ? dominioEnganoso(ultimo.valor) : null;
+    if (eng) hall.unshift({ tipo: 'peligro', texto: 'El dominio usa caracteres engañosos' + (eng === 'punycode' ? ' (Punycode/IDN)' : '') + ': puede estar imitando a otro sitio real. Miralo letra por letra antes de confiar.' });
+    hall.forEach((h) => { const li = document.createElement('li'); li.className = h.tipo; li.textContent = h.texto; ul.append(li); });
+    $('r-hallazgos-box').hidden = !hall.length;
     const ol = $('r-pasos'); ol.textContent = '';
     (r.pasos || []).forEach((p) => { const li = document.createElement('li'); li.textContent = p; ol.append(li); });
     $('r-pasos-box').hidden = !(r.pasos || []).length;

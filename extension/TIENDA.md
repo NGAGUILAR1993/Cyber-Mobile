@@ -97,6 +97,10 @@ Certificar:
 - Los permisos **no cambian** (contextMenus, storage, activeTab, host cybermobile.com.ar): las respuestas de privacidad de la consola siguen iguales.
 - Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.2.0.zip`.
 
+## Versión 1.3.0 (02/11, ideas del informe de competencia StopCiberestafas)
+- **Detección de dominios engañosos (homógrafos / Punycode):** al verificar un link o un mail, si el dominio usa Punycode/IDN (`xn--`) o caracteres no latinos (p. ej. una "а" cirílica que imita la "a"), Vera suma una señal 🔴 "El dominio usa caracteres engañosos: puede estar imitando a otro sitio". Es un chequeo local (no depende del backend). Precios de Argentina actualizados (01/11): $5.000 / $12.000 / $15.000.
+- Los permisos no cambian. Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.3.0.zip`.
+
 ## Imágenes
 - Ícono: 128×128, ya va dentro del paquete (`icons/icon-128.png`).
 - Capturas 1280×800 (nuevo estilo, 27/10): `tienda/captura-1.jpg` a `captura-5.jpg` (portada, clic derecho, resultado, links de contexto, qué revisa). Mosaico 440×280 y marquesina 1400×560 en `tienda/`. Se arman con `scripts/extension/tienda.html` (imágenes reales de la extensión 1.1).
