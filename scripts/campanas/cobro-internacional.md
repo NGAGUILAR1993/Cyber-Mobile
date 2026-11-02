@@ -50,3 +50,15 @@ Dos vías según de dónde es la persona, detectadas solas por la extensión/web
 ## Nota
 Esto es una recomendación de negocio, no mueve plata ni abre cuentas por vos. El alta de Payoneer/Paddle y el
 precio final los definís vos. Firma institucional para cualquier comunicación: **Mg. Germán Aguilar**.
+
+## Estado del alta de Paddle (02/11) — HANDOFF
+- **Payoneer:** habilitado ✅ (para recibir los USD).
+- **Paddle (sandbox):** cuenta creada; producto **"Vera"** con dos precios mensuales en USD:
+  - Individual (USD 5/mes): `pri_01m6ev8f3ftc2jznq5fss0z452`
+  - Familiar (USD 10/mes): `pri_01m6ev9s2xht4ks2y7wve6kmvx`
+- **Falta de Germán:** aprobación del dominio `cybermobile.com.ar` en Paddle, conectar Payoneer como payout, y pasar a producción cuando lo aprueben.
+- **Falta técnico (cuando esté el conector MCP de Paddle, o con el client-side token `test_...`):**
+  - Armar la página de checkout `/pagar?plan=individual|familiar` con Paddle.js (token público en el frontend) y los dos Price IDs. Cuidado con la CSP: `/pagar` necesita permitir los dominios de Paddle.
+  - Enchufar el botón "Subscribe" de la extensión (hoy `PADDLE_CHECKOUT`/`CM_PADDLE`) y de la web internacional a `/pagar`.
+  - **Webhook de activación automática:** usa la **API key secreta** (`pdl_sdbx_apikey_…`) → va como variable de entorno en **Vercel** (NUNCA en el frontend ni en git). Verificar la firma del webhook con su secreto. En producción, **rotar** la API key (circuló en el chat).
+- **Nota de funciones Vercel:** hay 12/12 funciones en `api/`. Si el webhook/checkout necesita backend, juntarlo con una función existente + rewrite (patrón `/api/stats`), no agregar una nueva.
