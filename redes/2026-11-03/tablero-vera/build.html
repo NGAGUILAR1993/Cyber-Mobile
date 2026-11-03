@@ -1,0 +1,255 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!-- "El tablero de Vera" ep.1 (03/11). Reel dark-premium 1080x1920, 30 s, 30 fps, render(t) con rec.mjs.
+     Muestra cómo trabaja Vera POR DENTRO con un caso REAL (sms-saldo, smishing). Overlay del motor = recreación (etiquetado);
+     el SMS y el veredicto son captura real de Vera (scripts/redes/casos/sms-saldo.jpg, datos ya tapados). -->
+<style>
+@font-face{font-family:A;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:GR;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+:root{--bg:#070A12;--bg2:#0C1222;--ink:#EAF1FF;--cy:#1FE3C6;--cy2:#13A9C9;--red:#FF4D4D;--amb:#FFC53D;--grn:#34E27A;--mut:#6E7A96;--line:#1C2740}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+#stage{position:absolute;inset:0;overflow:hidden;background:
+ radial-gradient(1200px 900px at 50% 18%, #11204a 0%, rgba(17,32,74,0) 60%),
+ radial-gradient(1000px 1200px at 78% 88%, #0b2b33 0%, rgba(11,43,51,0) 55%),
+ linear-gradient(180deg,#070A12 0%,#0A0F1C 55%,#070A12 100%)}
+#grid{position:absolute;inset:-2px;z-index:1;opacity:.5;pointer-events:none;
+ background-image:linear-gradient(rgba(31,227,198,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(31,227,198,.06) 1px,transparent 1px);
+ background-size:60px 60px;mask:radial-gradient(1200px 1400px at 50% 40%,#000 40%,transparent 85%)}
+#grain{position:absolute;inset:0;z-index:90;pointer-events:none;opacity:.10;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='300' height='300' filter='url(%23n)' opacity='.6'/></svg>")}
+#vig{position:absolute;inset:0;z-index:85;pointer-events:none;box-shadow:inset 0 0 300px 60px rgba(0,0,0,.75)}
+/* barra superior */
+#top{position:absolute;z-index:40;left:54px;right:54px;top:48px;display:flex;justify-content:space-between;align-items:center}
+#brandtop{font-family:G;font-size:30px;letter-spacing:3px;color:var(--ink);display:flex;gap:16px;align-items:center}
+#brandtop .pul{width:16px;height:16px;border-radius:50%;background:var(--cy);box-shadow:0 0 18px var(--cy)}
+#brandtop b{color:var(--cy);font-weight:700}
+#modo{font-family:JB;font-size:22px;letter-spacing:2px;color:var(--mut);border:1.5px solid var(--line);border-radius:999px;padding:8px 18px;display:flex;gap:12px;align-items:center}
+#modo .d{width:12px;height:12px;border-radius:50%;background:var(--mut)}
+.sc{position:absolute;inset:0;z-index:20;opacity:0}
+.ink{font-family:A;text-transform:uppercase;color:var(--ink);line-height:.98;letter-spacing:-1px}
+.cy{color:var(--cy)}
+.hl{background:linear-gradient(180deg,transparent 10%,rgba(31,227,198,.22) 10%,rgba(31,227,198,.22) 90%,transparent 90%);border-bottom:5px solid var(--cy);padding:0 10px}
+.soft{font-family:GR;color:var(--mut)}
+/* ---------- Escena A: portada ---------- */
+#A h1{position:absolute;left:70px;right:70px;top:430px;font-size:132px;font-family:A;text-transform:uppercase;color:var(--ink);line-height:.98;letter-spacing:-1px}
+#A .tag{position:absolute;left:70px;top:360px;font-family:JB;font-size:28px;letter-spacing:5px;color:var(--cy)}
+/* tarjeta mensaje */
+.phone{position:absolute;border-radius:46px;background:#0A0F1A;border:3px solid #223052;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 10px rgba(31,227,198,.05);overflow:hidden}
+.phone img{position:absolute;left:0;top:0;width:100%;height:auto;display:block}
+.glass{position:absolute;border-radius:28px;background:rgba(14,22,40,.72);border:1.5px solid rgba(31,227,198,.18);backdrop-filter:blur(2px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.chiplbl{position:absolute;font-family:JB;font-size:22px;letter-spacing:2px;color:var(--mut)}
+.badge{position:absolute;font-family:G;font-size:24px;letter-spacing:1px;padding:9px 18px;border-radius:999px}
+.bReal{background:rgba(52,226,122,.14);color:var(--grn);border:1.5px solid rgba(52,226,122,.5)}
+.bRec{background:rgba(31,227,198,.10);color:var(--cy);border:1.5px solid rgba(31,227,198,.4)}
+/* ---------- Escena B: puente ---------- */
+#B h2{position:absolute;left:70px;right:70px;top:300px;font-family:A;text-transform:uppercase;font-size:86px;line-height:1.02;color:var(--ink)}
+#scan{position:absolute;height:6px;left:0;right:0;background:linear-gradient(90deg,transparent,var(--cy),transparent);box-shadow:0 0 30px 6px rgba(31,227,198,.55);opacity:0}
+#scanlbl{position:absolute;font-family:JB;font-size:24px;letter-spacing:3px;color:var(--cy);opacity:0}
+/* ---------- Escena C: chequeos ---------- */
+#C .ttl{position:absolute;left:70px;top:150px;font-family:JB;font-size:28px;letter-spacing:4px;color:var(--mut)}
+#C .big{position:absolute;left:70px;top:198px;font-family:A;text-transform:uppercase;font-size:62px;line-height:.98;color:var(--ink)}
+.mod{position:absolute;left:54px;right:54px;height:150px;border-radius:26px;background:rgba(12,19,36,.85);border:1.5px solid var(--line);box-shadow:0 18px 40px rgba(0,0,0,.45);opacity:0;display:flex;align-items:center;padding:0 34px;gap:28px;overflow:hidden}
+.mod .ic{flex:none;width:92px;height:92px;border-radius:22px;display:flex;align-items:center;justify-content:center;font-size:52px;background:#0A1324;border:1.5px solid var(--line)}
+.mod .tx{flex:1;min-width:0}
+.mod .k{font-family:G;font-size:34px;letter-spacing:1px;color:var(--ink)}
+.mod .v{font-family:GR;font-size:30px;color:var(--mut);margin-top:6px;line-height:1.2}
+.mod .v b{color:var(--ink);font-family:G;font-weight:700}
+.mod .verd{flex:none;font-family:G;font-size:30px;letter-spacing:1px;padding:12px 22px;border-radius:14px;opacity:0}
+.mod .bar{position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--line)}
+.mod.bad{border-color:rgba(255,77,77,.5);box-shadow:0 18px 40px rgba(0,0,0,.45),0 0 40px rgba(255,77,77,.10)}
+.mod.bad .bar{background:var(--red)}
+.mod.bad .verd{background:rgba(255,77,77,.14);color:var(--red);border:1.5px solid rgba(255,77,77,.55)}
+/* semaforo */
+#sem{position:absolute;right:54px;top:150px;width:150px;height:360px;border-radius:40px;background:#080D18;border:2px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:space-around;padding:22px 0;opacity:0;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+#sem .l{width:96px;height:96px;border-radius:50%;background:#10182b;border:2px solid #1b2742;transition:none}
+#sem .l.r.on{background:var(--red);box-shadow:0 0 50px 10px rgba(255,77,77,.7)}
+#sem .l.a.on{background:var(--amb);box-shadow:0 0 50px 10px rgba(255,197,61,.6)}
+#sem .l.g.on{background:var(--grn);box-shadow:0 0 50px 10px rgba(52,226,122,.6)}
+#stamp{position:absolute;left:54px;right:54px;top:1280px;text-align:center;opacity:0}
+#stamp .r{font-family:A;text-transform:uppercase;font-size:118px;color:var(--red);letter-spacing:-1px;text-shadow:0 0 40px rgba(255,77,77,.4)}
+#stamp .s{font-family:JB;font-size:34px;letter-spacing:6px;color:var(--ink);margin-top:4px}
+/* mini-captura durante chequeos */
+#miniphone{position:absolute;opacity:0}
+/* ---------- Escena D: respuesta real ---------- */
+#D .lbl{position:absolute;left:70px;top:150px;font-family:A;text-transform:uppercase;font-size:70px;color:var(--ink);line-height:1.02}
+#D .lbl span{color:var(--cy)}
+/* ---------- Escena E: cierre ---------- */
+#E{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+#E .mark{font-family:A;text-transform:uppercase;font-size:200px;color:var(--ink);letter-spacing:2px;line-height:.9}
+#E .mark b{color:var(--cy)}
+#E .sub{font-family:A;text-transform:uppercase;font-size:66px;color:var(--ink);line-height:1.08;margin-top:28px}
+#E .sub u{text-decoration:none;color:var(--cy)}
+#E .pill{margin-top:48px;font-family:G;font-size:40px;letter-spacing:1px;color:#061018;background:var(--cy);padding:20px 40px;border-radius:999px;box-shadow:0 0 50px rgba(31,227,198,.4)}
+#E .web{margin-top:34px;font-family:JB;font-size:34px;letter-spacing:3px;color:var(--mut)}
+#E .wa{margin-top:10px;font-family:JB;font-size:30px;letter-spacing:2px;color:var(--cy)}
+</style></head>
+<body>
+<div id="stage">
+  <div id="grid"></div>
+
+  <!-- A -->
+  <div class="sc" id="A">
+    <div class="tag" id="Atag">EL TABLERO DE VERA · EP.1</div>
+    <h1><span class="w">ESTE</span> <span class="w">SMS</span> <span class="w">TIENE</span><br><span class="w hl cy">4&nbsp;TRAMPAS</span><br><span class="w">¿LAS</span> <span class="w">ENCONTRÁS?</span></h1>
+    <div class="phone" id="Aphone" style="left:300px;top:1200px;width:480px;height:520px">
+      <img id="Aimg" src="file:///home/user/Cyber-Mobile/scripts/redes/casos/sms-saldo.jpg">
+    </div>
+    <div class="badge bReal" id="Abadge" style="left:300px;top:1138px">MENSAJE REAL</div>
+  </div>
+
+  <!-- B -->
+  <div class="sc" id="B">
+    <h2 id="Bh">VOS LEÉS<br>EL TEXTO.<br><span class="cy">VERA LEE</span><br>LO DE ATRÁS.</h2>
+    <div class="phone" id="Bphone" style="left:300px;top:1030px;width:480px;height:760px">
+      <img src="file:///home/user/Cyber-Mobile/scripts/redes/casos/sms-saldo.jpg">
+    </div>
+    <div id="scanlbl" style="left:300px;top:966px">ANALIZANDO…</div>
+    <div id="scan"></div>
+  </div>
+
+  <!-- C -->
+  <div class="sc" id="C">
+    <div class="ttl">MOTOR DE VERA · ANÁLISIS EN CURSO</div>
+    <div class="big">CHEQUEANDO<br>EL MENSAJE</div>
+    <div id="sem">
+      <div class="l r"></div><div class="l a"></div><div class="l g"></div>
+    </div>
+    <div class="mod" id="m1" style="top:560px"><div class="bar"></div><div class="ic">📟</div><div class="tx"><div class="k">REMITENTE</div><div class="v"><b>87185</b> · código corto, no es tu empresa</div></div><div class="verd">SOSPECHOSO</div></div>
+    <div class="mod" id="m2" style="top:730px"><div class="bar"></div><div class="ic">🌐</div><div class="tx"><div class="k">DOMINIO</div><div class="v"><b>mvbnjk.bond</b> · genérico, no oficial</div></div><div class="verd">SOSPECHOSO</div></div>
+    <div class="mod" id="m3" style="top:900px"><div class="bar"></div><div class="ic">🔗</div><div class="tx"><div class="k">ENLACE</div><div class="v">sin vista previa · destino oculto · <b>VirusTotal</b></div></div><div class="verd">SOSPECHOSO</div></div>
+    <div class="mod" id="m4" style="top:1070px"><div class="bar"></div><div class="ic">⚠️</div><div class="tx"><div class="k">PATRÓN</div><div class="v">SUSPENSIÓN + <b>40% dto</b> · miedo y premio</div></div><div class="verd">SOSPECHOSO</div></div>
+    <div id="stamp"><div class="r">RIESGO ALTO</div><div class="s">S M I S H I N G</div></div>
+    <div class="badge bRec" id="Cbadge" style="right:54px;top:1560px">Recreación del análisis</div>
+  </div>
+
+  <!-- D -->
+  <div class="sc" id="D">
+    <div class="lbl">ESTO LO ESCRIBIÓ<br><span>VERA.</span> DE VERDAD.</div>
+    <div class="phone" id="Dphone" style="left:150px;top:360px;width:780px;height:1420px">
+      <img id="Dimg" src="file:///home/user/Cyber-Mobile/scripts/redes/casos/sms-saldo.jpg">
+    </div>
+    <div class="badge bReal" id="Dbadge" style="left:150px;top:300px">RESPUESTA REAL DE VERA</div>
+  </div>
+
+  <!-- E -->
+  <div class="sc" id="E">
+    <div class="mark"><b>VERA</b></div>
+    <div class="sub">REENVIALE CUALQUIER<br>MENSAJE. TE DICE EN<br><u>SEGUNDOS</u> SI ES ESTAFA.</div>
+    <div class="pill">7 días gratis · por WhatsApp</div>
+    <div class="web">CYBERMOBILE.COM.AR</div>
+    <div class="wa">CYBER MOBILE · SEGURIDAD DIGITAL</div>
+  </div>
+
+  <div id="vig"></div>
+  <div id="grain"></div>
+  <div id="top">
+    <div id="brandtop"><span class="pul"></span>VERA · <b>MOTOR DE ANÁLISIS</b></div>
+    <div id="modo"><span class="d"></span><span id="modot">EN ESPERA</span></div>
+  </div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const cl=(x,a,b)=>Math.max(a,Math.min(b,x));
+// fade de escena con solape suave
+function scene(el,t,a,b,fin=.45){let o=0;if(t>=a&&t<=b){o=cl((t-a)/fin,0,1)*cl((b-t)/fin,0,1);}el.style.opacity=o;return o;}
+function rv(t,a,b){return cl((t-a)/(b-a),0,1);} // rampa 0..1
+function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;}
+
+function render(t){
+  // modo (barra superior)
+  let modo='EN ESPERA', dcol='var(--mut)';
+  if(t>=4.2&&t<22){modo='ANALIZANDO';dcol='var(--cy)';}
+  else if(t>=22&&t<27){modo='RESULTADO';dcol='var(--red)';}
+  else if(t>=27){modo='LISTO';dcol='var(--cy)';}
+  $('#modot').textContent=modo; $('#modo .d').style.background=dcol;
+  $('#modo .d').style.boxShadow = dcol==='var(--mut)'?'none':'0 0 14px '+dcol;
+
+  // ---- A 0 - 4.4 ----
+  const oa=scene($('#A'),t,0,4.4);
+  if(oa>0){
+    const ws=$$('#A .w');
+    ws.forEach((w,i)=>{const s=.25+i*.18;const p=ease(rv(t,s,s+.5));w.style.opacity=p;w.style.transform=`translateY(${(1-p)*26}px)`;});
+    const pp=ease(rv(t,2.3,3.1));
+    $('#Aphone').style.transform=`translateY(${(1-pp)*60}px) rotate(${(1-pp)*4-2}deg)`;
+    $('#Aphone').style.opacity=pp; $('#Abadge').style.opacity=pp;
+    // encuadra el SMS (arriba de la captura)
+    $('#Aimg').style.transform='translateY(0px) scale(1.0)';
+  }
+
+  // ---- B 4.2 - 8.2 ----
+  const ob=scene($('#B'),t,4.2,8.2);
+  if(ob>0){
+    const lines=['block'];
+    const h=$('#Bh'); // revelar por línea via clip
+    const p=ease(rv(t,4.5,6.0));
+    h.style.opacity=1; h.style.transform=`translateX(${(1-p)*-30}px)`; h.style.filter=`blur(${(1-p)*4}px)`;
+    // scanning line sobre la tarjeta
+    const top=1030,bot=1030+760;
+    const sp=rv(t,5.2,7.8);
+    const y=top+ (Math.sin(sp*Math.PI)* (bot-top)); // pasa y vuelve
+    const yy= top + ((bot-top))* ( (Math.sin((sp*2-0.5)*Math.PI)+1)/2 );
+    const sv=scene($('#scan'),t,5.2,8.0,.3)?1:0;
+    $('#scan').style.opacity = (t>5.2&&t<7.9)?.9:0;
+    $('#scan').style.top=yy+'px';
+    $('#scan').style.left='300px'; $('#scan').style.width='480px';
+    $('#scanlbl').style.opacity=(t>5.2&&t<7.9)?1:0;
+  } else { $('#scan').style.opacity=0; }
+
+  // ---- C 8.0 - 22.2 ----
+  const oc=scene($('#C'),t,8.0,22.2,.4);
+  if(oc>0){
+    $('#sem').style.opacity=cl(rv(t,8.2,8.8),0,1);
+    const mods=[['#m1',8.6],['#m2',11.0],['#m3',13.6],['#m4',16.2]];
+    mods.forEach(([id,s])=>{
+      const el=$(id);const p=ease(rv(t,s,s+.55));
+      el.style.opacity=p; el.style.transform=`translateX(${(1-p)*40}px)`;
+      const vp=rv(t,s+.6,s+1.0);
+      el.querySelector('.verd').style.opacity=vp;
+      if(t>=s+.7) el.classList.add('bad'); else el.classList.remove('bad');
+    });
+    // semaforo progresivo
+    const r=$('#sem .r'),a=$('#sem .a'),g=$('#sem .g');
+    a.classList.toggle('on', t>=11.6 && t<18.8);
+    r.classList.toggle('on', t>=17.0);
+    g.classList.remove('on');
+    // parpadeo rojo al fijarse
+    if(t>=18.8){const bl=Math.sin(t*16)>-.2;r.classList.toggle('on',bl||t>19.6);a.classList.remove('on');}
+    // sello
+    const sp=ease(rv(t,19.0,19.7));
+    $('#stamp').style.opacity=sp;
+    $('#stamp').style.transform=`scale(${.9+sp*.1})`;
+  }
+
+  // ---- D 22.0 - 27.2 ----
+  const od=scene($('#D'),t,22.0,27.2,.4);
+  if(od>0){
+    // pan de la captura real: de arriba (mensaje) al veredicto de Vera
+    const img=$('#Dimg');
+    // imagen 720 ancho -> escalada a 780; alto nativo ~1290 -> ~1397; marco 1420
+    const scaleW=780/720; const natH=1290*scaleW; const frameH=1420;
+    const maxShift=Math.min(0, frameH-natH); // negativo
+    const pp=ease(rv(t,22.4,26.4));
+    // arrancamos mostrando el mensaje (0) y bajamos hacia el veredicto
+    const targetShift = -(555*scaleW); // llevar el veredicto (y~555 del original) hacia arriba
+    const shift = targetShift*pp;
+    img.style.transform=`translateY(${cl(shift,maxShift,0)}px)`;
+    $('#Dbadge').style.opacity=cl(rv(t,22.3,22.9),0,1);
+  }
+
+  // ---- E 27.0 - 30 ----
+  const oe=scene($('#E'),t,27.0,30.2,.5);
+  if(oe>0){
+    const m=ease(rv(t,27.2,28.0)); $('#E .mark').style.transform=`scale(${.92+m*.08})`;
+    const s=ease(rv(t,27.6,28.4)); $('#E .sub').style.opacity=s; $('#E .sub').style.transform=`translateY(${(1-s)*20}px)`;
+    const pz=ease(rv(t,28.2,28.9)); $('#E .pill').style.opacity=pz; $('#E .pill').style.transform=`scale(${.9+pz*.1})`;
+    $('#E .web').style.opacity=ease(rv(t,28.6,29.2));
+    $('#E .wa').style.opacity=ease(rv(t,28.8,29.4));
+  }
+}
+render(0);
+document.documentElement.setAttribute('data-listo','1');
+</script>
+</body></html>

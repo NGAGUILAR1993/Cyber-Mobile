@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:A;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:JB;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+:root{--bg:#070A12;--ink:#EAF1FF;--cy:#1FE3C6;--red:#FF4D4D;--mut:#6E7A96;--line:#1C2740}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+#s{position:absolute;inset:0;background:
+ radial-gradient(1100px 900px at 50% 24%,#11204a 0%,rgba(17,32,74,0) 60%),
+ radial-gradient(900px 1100px at 76% 86%,#0b2b33 0%,rgba(11,43,51,0) 55%),
+ linear-gradient(180deg,#070A12,#0A0F1C 55%,#070A12)}
+#grid{position:absolute;inset:0;opacity:.5;background-image:linear-gradient(rgba(31,227,198,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(31,227,198,.06) 1px,transparent 1px);background-size:60px 60px;mask:radial-gradient(1100px 1300px at 50% 42%,#000 40%,transparent 85%)}
+#vig{position:absolute;inset:0;box-shadow:inset 0 0 300px 60px rgba(0,0,0,.72)}
+.top{position:absolute;left:60px;top:150px;font-family:JB;font-size:28px;letter-spacing:4px;color:var(--cy);display:flex;gap:16px;align-items:center}
+.top .d{width:16px;height:16px;border-radius:50%;background:var(--cy);box-shadow:0 0 18px var(--cy)}
+h1{position:absolute;left:60px;right:60px;top:300px;font-family:A;text-transform:uppercase;color:var(--ink);font-size:118px;line-height:.98;letter-spacing:-1px}
+h1 .hl{background:linear-gradient(180deg,transparent 12%,rgba(31,227,198,.22) 12%,rgba(31,227,198,.22) 90%,transparent 90%);border-bottom:5px solid var(--cy);color:var(--cy);padding:0 10px}
+.phone{position:absolute;left:290px;top:830px;width:500px;height:520px;border-radius:44px;background:#0A0F1A;border:3px solid #223052;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 10px rgba(31,227,198,.05);overflow:hidden}
+.phone img{position:absolute;left:0;top:0;width:100%}
+.badge{position:absolute;left:290px;top:758px;font-family:G;font-size:24px;letter-spacing:1px;padding:9px 18px;border-radius:999px;background:rgba(255,77,77,.14);color:var(--red);border:1.5px solid rgba(255,77,77,.5)}
+.cta{position:absolute;left:60px;right:60px;bottom:360px;text-align:center;font-family:A;text-transform:uppercase;font-size:58px;color:var(--ink);line-height:1.05}
+.cta u{text-decoration:none;color:var(--cy)}
+.pill{position:absolute;left:50%;transform:translateX(-50%);bottom:250px;font-family:G;font-size:34px;color:#061018;background:var(--cy);padding:18px 40px;border-radius:999px;box-shadow:0 0 44px rgba(31,227,198,.4)}
+</style></head>
+<body><div id="s"><div id="grid"></div>
+<div class="top"><span class="d"></span>EL TABLERO DE VERA · EP.1</div>
+<h1>¿CUÁNTO<br>VE VERA<br>EN <span class="hl">4 SEG?</span></h1>
+<div class="badge">CASO REAL · SMISHING</div>
+<div class="phone"><img src="file:///home/user/Cyber-Mobile/scripts/redes/casos/sms-saldo.jpg"></div>
+<div class="cta">MIRÁ EL <u>REEL</u> NUEVO</div>
+<div class="pill">Deslizá para ver cómo trabaja</div>
+<div id="vig"></div></div>
+<script>function render(t){}document.documentElement.setAttribute('data-listo','1');</script>
+</body></html>
