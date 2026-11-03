@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Diseno de sonido para "El tablero de Vera" (30 s, 44100, mono). Sin numpy.
+# Diseno de sonido para "Vera por dentro" (30 s, 44100, mono). Sin numpy. Tiempos sincronizados al timeline legible.
 import wave, struct, math, random
 SR=44100; DUR=30.0; N=int(SR*DUR)
 buf=[0.0]*N
@@ -24,35 +24,35 @@ def pulse(t,p):
     ph=(t%beat)/beat
     click=math.exp(-ph*22)*math.sin(2*math.pi*180*t)
     return click
-add(4.2,15.8,lambda t,p: pulse(t,p)*(0.3+0.7*p),0.08)
-# 3) barrido del escáner (whoosh) 5.2-7.9
+add(6.0,15.8,lambda t,p: pulse(t,p)*(0.3+0.7*p),0.08)
+# 3) barrido del escáner (whoosh) 7.2-9.9
 def sweep(t,p):
     f=300+1700*p
     n=(random.random()*2-1)
     tone=math.sin(2*math.pi*f*t)
     return (0.6*tone+0.4*n)*env(p,0.1,0.35)
-add(5.2,2.7,sweep,0.09)
+add(7.2,2.7,sweep,0.09)
 # 4) ticks de cada módulo (ping UI descendente = sospechoso)
 def ping(freq):
     def f(t,p):
         return math.sin(2*math.pi*freq*(1-0.15*p)*t)*math.exp(-p*6)*env(p,0.005,0.6)
     return f
-for ts in (8.6,11.0,13.6,16.2):
+for ts in (10.6,12.6,14.6,16.6):
     add(ts,0.5,ping(680),0.16)
     add(ts+0.18,0.4,ping(340),0.12)
-# 5) impacto rojo (RIESGO ALTO) ~19s
+# 5) impacto rojo (RIESGO ALTO) ~18.8s
 def impact(t,p):
     f=140*math.exp(-p*2.2)
     body=math.sin(2*math.pi*f*t)
     noise=(random.random()*2-1)*math.exp(-p*9)
     return (body*0.8+noise*0.5)*env(p,0.004,0.5)
-add(18.9,1.3,impact,0.5)
+add(18.7,1.3,impact,0.5)
 # riser antes del impacto
 def riser(t,p):
     f=120+900*p*p
     return math.sin(2*math.pi*f*t)*p*env(p,0.2,0.1)
-add(17.0,1.9,riser,0.12)
-# 6) resolución cálida al mostrar la respuesta real (~22s) y cierre (~27s)
+add(16.8,1.9,riser,0.12)
+# 6) resolución cálida al mostrar la respuesta real (~22.2s) y cierre (~27s)
 def chime(root):
     def f(t,p):
         s=0.0
@@ -60,9 +60,9 @@ def chime(root):
             s+=g*math.sin(2*math.pi*root*k*t)
         return s*math.exp(-p*2.2)*env(p,0.01,0.6)
     return f
-add(22.0,1.6,chime(330),0.14)
-add(27.0,2.0,chime(392),0.16)
-add(27.0,2.0,chime(523),0.10)
+add(22.2,1.6,chime(330),0.14)
+add(26.9,2.0,chime(392),0.16)
+add(26.9,2.0,chime(523),0.10)
 # normalizar suave (limiter) + fade in/out
 mx=max(1e-6,max(abs(x) for x in buf))
 norm=0.92/mx if mx>0.92 else 1.0

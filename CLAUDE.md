@@ -88,7 +88,8 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 - Los videos especiales se suben a `redes/<fecha>/<nombre>/` para poder mandar el link por mail. Los archivos de más de ~7 MB no se adjuntan: se mandan links a la web y a GitHub.
 
 ## Reglas del dueño (respetar siempre)
-1. **Todos los reels y videos duran 30 segundos:** Instagram, canal de WhatsApp y TikTok (regla del dueño desde el 20/10, para que se puedan leer bien; antes eran 25 y 26). Transiciones lentas y textos con tiempo para leerse.
+1. **Todos los reels y videos duran 30 segundos:** Instagram, canal de WhatsApp y TikTok (regla del dueño desde el 20/10, para que se puedan leer bien; antes eran 25 y 26).
+   - **LEGIBILIDAD = REGLA DURA (el dueño la repite seguido y se incumple; NO puede volver a pasar).** La gente NO tiene tiempo ni ganas de frenar el video: todo texto o mensaje que haya que **leer** queda en pantalla el tiempo de leerlo dos veces. Mínimos: una **captura o mensaje de chat ≥ 4 s**; cada **texto/placa clave ≥ 2,5 s**; **transiciones lentas ≥ 0,6 s**, nada de cortes rápidos ni elementos que aparecen y desaparecen antes de poder leerlos. Si no entra todo de forma legible en 30 s, **se sacan elementos, NO se acelera** (menos cosas, bien leídas, mejor que muchas que vuelan). Antes de entregar, **cronometrar** que cada texto sea legible (ver el video a velocidad real, no solo cuadros sueltos).
 2. **Estructura de cada pieza:**
    - **Portada:** abre una incógnita y no revela la respuesta.
    - **Puente:** amplía el problema.

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face{ font-family:'Anton'; src:url('file:///home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf'); }
+  @font-face{ font-family:'Space'; src:url('file:///home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Bold.ttf'); font-weight:700; }
+  @font-face{ font-family:'Space'; src:url('file:///home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Regular.ttf'); font-weight:400; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ width:1080px; height:1350px; }
+  body{
+    font-family:'Space',system-ui,sans-serif;
+    background:
+      radial-gradient(1200px 820px at 82% -8%, rgba(34,211,238,.20), transparent 60%),
+      radial-gradient(1000px 900px at -10% 112%, rgba(96,165,250,.16), transparent 58%),
+      linear-gradient(160deg,#060A14 0%,#05070D 55%,#04060B 100%);
+    color:#E6EDF7; position:relative; overflow:hidden;
+  }
+  .grid{ position:absolute; inset:0; opacity:.045;
+    background-image:linear-gradient(#9AA8BD 1px,transparent 1px),linear-gradient(90deg,#9AA8BD 1px,transparent 1px);
+    background-size:60px 60px; }
+  .wrap{ position:absolute; inset:0; padding:74px 76px 64px; display:flex; flex-direction:column; }
+
+  .top{ display:flex; align-items:center; gap:16px; }
+  .dot{ width:15px; height:15px; border-radius:50%; background:#22D3EE; box-shadow:0 0 22px 4px rgba(34,211,238,.8); }
+  .brand{ font-weight:700; letter-spacing:.26em; font-size:21px; color:#A5F3FC; text-transform:uppercase; }
+  .kicker{ margin-top:52px; font-weight:700; font-size:25px; letter-spacing:.02em; color:#9AA8BD; text-transform:uppercase; }
+
+  h1{ font-family:'Anton'; font-weight:400; font-size:98px; line-height:.98; margin-top:18px; letter-spacing:.005em;
+      background:linear-gradient(92deg,#ECFEFF,#22D3EE 72%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sub{ margin-top:22px; font-size:27px; line-height:1.42; color:#C3CEDD; max-width:900px; font-weight:400; }
+
+  .stats{ margin-top:auto; display:flex; flex-direction:column; gap:20px; }
+  .row{ display:flex; align-items:center; gap:30px; padding:26px 32px; border-radius:22px;
+    background:linear-gradient(180deg,rgba(23,34,54,.72),rgba(12,19,33,.55)); border:1px solid rgba(34,211,238,.20); }
+  .num{ font-family:'Anton'; font-weight:400; font-size:92px; line-height:.86; min-width:234px; text-align:right; }
+  .c1{ color:#22D3EE; } .c2{ color:#FB923C; } .c3{ color:#FACC15; }
+  .txt{ font-size:28px; line-height:1.3; color:#E6EDF7; font-weight:400; }
+  .txt b{ font-weight:700; color:#FFFFFF; }
+
+  .foot{ margin-top:30px; display:flex; justify-content:space-between; align-items:flex-end; gap:24px; }
+  .src{ font-size:18px; line-height:1.45; color:#8391A7; max-width:640px; }
+  .src b{ color:#C3CEDD; font-weight:700; }
+  .vera{ text-align:right; }
+  .vera .l{ font-weight:700; font-size:22px; color:#A5F3FC; letter-spacing:.02em; }
+  .vera .s{ font-size:17px; color:#8391A7; margin-top:4px; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="wrap">
+    <div class="top">
+      <span class="dot"></span>
+      <span class="brand">Cyber Mobile · Vera Antiestafas</span>
+    </div>
+
+    <div class="kicker">El fraude digital, en datos · estudio U FASTA</div>
+    <h1>La ciberseguridad<br>es personal</h1>
+    <p class="sub">No alcanza con el consejo suelto ni con esperar que regulen a las plataformas. La persona necesita una herramienta para actuar en el momento.</p>
+
+    <div class="stats">
+      <div class="row"><div class="num c1">34%</div><div class="txt">1 de cada 3 personas fue <b>víctima de un ciberdelito</b> en el último año</div></div>
+      <div class="row"><div class="num c2">+14%</div><div class="txt">crecieron las <b>estafas por Internet</b> en un solo año</div></div>
+      <div class="row"><div class="num c3">71%</div><div class="txt">conoce a <b>alguien cercano</b> que ya cayó en un engaño digital</div></div>
+    </div>
+
+    <div class="foot">
+      <div class="src">Fuente: <b>Observatorio Universitario de la Ciudad e InFo-Lab, Universidad FASTA</b> (Mar del Plata), estudio 2024-2025.</div>
+      <div class="vera"><div class="l">Vera · 7 días gratis</div><div class="s">Agente antiestafas por WhatsApp</div></div>
+    </div>
+  </div>
+</body>
+</html>
