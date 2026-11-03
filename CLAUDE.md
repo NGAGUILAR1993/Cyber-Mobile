@@ -37,7 +37,8 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - Si la tarjeta nueva no responde, n8n usa la fija `tarjetas/alerta-red.jpg` (caso) o el flyer de GitHub (lunes).
 - **Límite de Vercel: 12 funciones** en `api/` (sin contar `_lib`). Hoy hay 12: para sumar una, juntarla con otra y usar un rewrite (como `/api/stats` → `api/observatorio-stats.js?vista=eventos`). Si se pasa, el deploy falla al instante y las rutas nuevas dan 404.
 - **Consumo de Vercel (plan gratis, 18/10 avisó 75%):**
-  - `ignoreCommand` en `vercel.json`: no se hace deploy si el commit solo toca `scripts/`, `app/`, `docs/`, `.github/`, `.claude/`, `CLAUDE.md` o `README.md` (no cambian el sitio).
+  - `ignoreCommand` en `vercel.json`: no se hace deploy si el commit solo toca `scripts/`, `app/`, `docs/`, `.github/`, `.claude/`, `extension/`, `redes/`, `CLAUDE.md` o `README.md` (no cambian el sitio).
+  - **`redes/` NO se despliega (desde 03/11):** los reels/videos (mp4, ~5–10 MB c/u, ~338 MB en total) llenaban el almacenamiento de deployments de Vercel (10 GB del plan gratis). Están en `.vercelignore`: viven solo en GitHub. Para linkear un reel, usar el **raw de GitHub** (`raw.githubusercontent.com/NGAGUILAR1993/Cyber-Mobile/main/redes/...`), no `cybermobile.com.ar/redes/...` (ya no existe). La importación de TikTok a Higgsfield (`media_import_url`) también debe usar el link de GitHub raw. Para liberar el espacio ya usado hay que borrar deploys viejos en el panel de Vercel (acción del dueño; no se puede desde acá).
   - La rama `claude/...` no genera vistas previas (`git.deploymentEnabled`): solo se publica al hacer merge a main.
   - `admin.html` consulta `/api/stats` cada 60 s y solo con la pestaña a la vista (antes, cada 5 s siempre).
   - `/redes/` lleva caché de un día en el navegador.
