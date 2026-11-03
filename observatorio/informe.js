@@ -47,6 +47,10 @@
     var previo = informes.filter(function (i) { return i.id < inf.id; }).pop() || null;
     var esPrimero = !previo;
     var top = (inf.top || []).map(function (x) { var y = {}; for (var k in x) y[k] = x[k]; y.nombre = tildes(x.nombre); return y; });
+    // Caja "Nivel de riesgo" = gravedad del propio Top (se cuenta acá para que siempre
+    // coincida con las filas, sin depender de un valor pre-guardado que podría quedar viejo).
+    var cajaRiesgo = { alto: 0, medio: 0, bajo: 0 };
+    top.forEach(function (x) { if (cajaRiesgo[x.riesgo] != null) cajaRiesgo[x.riesgo]++; });
     // Detalle (cómo opera, cómo reconocerla) tomado de la ficha vigente con el mismo nombre.
     var vigentes = (d.top10 || []).concat(d.watch || []);
     function detalle(x) {
@@ -62,7 +66,7 @@
     set('[data-anio]', inf.id.split('-')[0]);
     html('[data-badge]', esPrimero ? '<span class="badge">Primer informe mensual</span>' : '');
     set('[data-kpi-monit]', inf.totalModalidades != null ? inf.totalModalidades : top.length);
-    set('[data-kpi-alto]', inf.riesgo ? inf.riesgo.alto : '—');
+    set('[data-kpi-alto]', cajaRiesgo.alto);
     set('[data-kpi-intl]', inf.internacionales != null ? inf.internacionales : '—');
 
     // Canales del Top 10
@@ -114,9 +118,9 @@
       return '<div class="hb"><span>' + esc(c.k) + '</span><span class="t"><i style="width:' + (c.n / maxC * 100) + '%"></i></span><span class="v">' + c.n + '</span></div>';
     }).join(''));
 
-    // Riesgo
-    if (inf.riesgo) {
-      var r = inf.riesgo, rt = (r.alto + r.medio + r.bajo) || 1;
+    // Riesgo (gravedad del daño, contada desde el Top del período)
+    if (top.length) {
+      var r = cajaRiesgo, rt = (r.alto + r.medio + r.bajo) || 1;
       html('[data-riesgo]', [['Alto', r.alto, 'var(--alto)'], ['Medio', r.medio, 'var(--medio)'], ['Bajo', r.bajo, 'var(--bajo)']].map(function (f) {
         return '<div class="hb"><span>' + f[0] + '</span><span class="t"><i style="width:' + (f[1] / rt * 100) + '%;background:' + f[2] + '"></i></span><span class="v">' + f[1] + '</span></div>';
       }).join(''));
@@ -169,7 +173,7 @@
       : 'Este es el primer informe mensual del Observatorio, por lo que todavía no hay un período anterior para comparar variaciones.'));
     set('[data-lectura-2]', listaCanales.length
       ? 'Por canal, el Top 10 se repartió entre ' + listaCanales.map(function (c) { return c.k + ' (' + c.n + ')'; }).join(', ') + '.' +
-        (inf.riesgo ? ' ' + inf.riesgo.alto + ' de las ' + (inf.riesgo.alto + inf.riesgo.medio + inf.riesgo.bajo) + ' modalidades clasificadas fueron de riesgo alto.' : '')
+        (top.length ? ' ' + cajaRiesgo.alto + ' de las ' + (cajaRiesgo.alto + cajaRiesgo.medio + cajaRiesgo.bajo) + ' modalidades del Top fueron de riesgo alto (gravedad del daño).' : '')
       : '');
 
     document.documentElement.setAttribute('data-listo', '1');

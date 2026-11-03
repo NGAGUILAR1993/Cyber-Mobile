@@ -25,13 +25,16 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
+      # Normaliza el campo `riesgo` según la tabla de gravedad (idempotente): si n8n lo
+      # dejó mal cargado, lo corrige; si ya está bien, no cambia nada y no hay commit extra.
+      - run: node scripts/observatorio/gravedad.mjs
       - run: node scripts/observatorio/archivar.mjs
       - name: Guardar si cambió
         run: |
-          if git diff --quiet -- observatorio/archivo.json; then echo "Sin cambios"; exit 0; fi
+          if git diff --quiet -- observatorio/datos.json observatorio/archivo.json; then echo "Sin cambios"; exit 0; fi
           git config user.name "observatorio-bot"
           git config user.email "observatorio-bot@users.noreply.github.com"
-          git add observatorio/archivo.json
-          git commit -m "Observatorio: archivo de fichas actualizado"
+          git add observatorio/datos.json observatorio/archivo.json
+          git commit -m "Observatorio: gravedad normalizada y archivo de fichas actualizado"
           for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && exit 0; sleep 5; done
           exit 1
