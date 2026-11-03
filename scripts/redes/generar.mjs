@@ -21,6 +21,9 @@ import { chromium } from 'playwright';
 
 const RAIZ = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
 const SITIO = 'https://www.cybermobile.com.ar';
+// Los archivos de redes/ ya NO se sirven desde Vercel (desde 03/11): viven solo en GitHub.
+// Las URLs de descarga apuntan al raw de GitHub, no a cybermobile.com.ar/redes (daría 404).
+const RAW = 'https://raw.githubusercontent.com/NGAGUILAR1993/Cyber-Mobile/main';
 const WA_AGENTE = '5491170598505';
 const INICIO_ROTACION = '2026-10-01';
 const LUNES_CERO = '2026-10-12';   // semana 0 de la grilla nueva
@@ -316,7 +319,7 @@ if (formato === 'carrusel') {
 }
 const conFicha = ['carrusel', 'reel-falso'].includes(formato);
 textos = { fecha, tipo, formato, horario, mes, ...textos, ...(conFicha ? { slug: m.slug, clave: m.clave, resumen: m.comoCorto, ficha } : {}) };
-textos.archivos = archivos.map((a) => ({ nombre: a, url: `${SITIO}/redes/${fecha}/${a}` }));
+textos.archivos = archivos.map((a) => ({ nombre: a, url: `${RAW}/redes/${fecha}/${a}` }));
 fs.writeFileSync(path.join(salida, 'textos.json'), JSON.stringify(textos, null, 2) + '\n');
 fs.writeFileSync(path.join(salida, 'instagram.txt'), textos.instagram + '\n');
 fs.writeFileSync(path.join(salida, 'whatsapp.txt'), textos.whatsapp + '\n');

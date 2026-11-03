@@ -9,6 +9,8 @@ import { chromium } from 'playwright';
 
 const RAIZ = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
 const SITIO = 'https://www.cybermobile.com.ar';
+// redes/ ya no se sirve desde Vercel (03/11): el flyer de respaldo se linkea desde GitHub raw.
+const RAW = 'https://raw.githubusercontent.com/NGAGUILAR1993/Cyber-Mobile/main';
 
 const arg = process.argv.indexOf('--fecha');
 const hoyAR = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Argentina/Buenos_Aires', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
@@ -90,7 +92,7 @@ const whatsapp = `🚨 *ALERTA: ${nombre}${c.frase ? ' ' + c.frase : ''}*\n_#1 d
 const textos = {
     fecha, tipo: 'alerta-semanal', mes, slug: m.slug, nombre, titulo: `#1 del ranking: ${nombre}`,
     whatsapp, ficha: `${SITIO}/observatorio/${m.slug}`,
-    archivos: [{ nombre: 'whatsapp.jpg', url: `${SITIO}/redes/alerta-semanal/whatsapp.jpg?v=${fecha}` }]
+    archivos: [{ nombre: 'whatsapp.jpg', url: `${RAW}/redes/alerta-semanal/whatsapp.jpg` }]
 };
 fs.writeFileSync(path.join(salida, 'textos.json'), JSON.stringify(textos, null, 2) + '\n');
 console.log(`${fecha} · alerta semanal · #1 ${nombre} · ${whatsapp.length} caracteres`);
