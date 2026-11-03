@@ -169,6 +169,31 @@
       ]
     },
     {
+      "source": "/servicios(/.*)?",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none'; style-src 'unsafe-inline'; font-src 'self'; img-src 'self' data:; form-action https://primary-production-3c8ba.up.railway.app; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
@@ -214,6 +239,10 @@
     {
       "source": "/pagar",
       "destination": "/pagar/index.html"
+    },
+    {
+      "source": "/servicios",
+      "destination": "/servicios/index.html"
     },
     {
       "source": "/favicon.ico",
