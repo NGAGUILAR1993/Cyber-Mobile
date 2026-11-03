@@ -79,7 +79,9 @@ fs.rmSync(tmp, { recursive: true, force: true });
 const descripcion = `${ep.descripcion}\n\nSi te llega algo raro, mandáselo a Vera por WhatsApp: en segundos te dice si es estafa 🔴🟡🟢\nProbala 7 días gratis: link en el perfil.\n\n${ep.hashtags}`;
 const comentario = '¿Cuántas acertaste? 1, 2 o las 3 👇 Si te llegó uno parecido, contalo y te decimos qué hacer.';
 fs.writeFileSync(path.join(salida, 'tiktok.txt'), `TÍTULO (máx. 150)\n${ep.titulo}\n\nDESCRIPCIÓN\n${descripcion}\n\nCOMENTARIO PARA FIJAR\n${comentario}\n`);
-const web = `https://www.cybermobile.com.ar/redes/${fecha}/tiktok-${ep.id}/`;
+// redes/ ya no se sirve desde Vercel (03/11): el video/portada se linkean desde GitHub raw
+// (también lo usa la importación a Higgsfield con media_import_url).
+const web = `https://raw.githubusercontent.com/NGAGUILAR1993/Cyber-Mobile/main/redes/${fecha}/tiktok-${ep.id}/`;
 fs.writeFileSync(path.join(salida, 'textos.json'), JSON.stringify({
     fecha, formato: `TikTok 1080x1920, ${DURACION} s`, serie: '¿Estafa o real?', episodio: ep.id, horario: '20:00',
     titulo: ep.titulo, descripcion, comentario,
