@@ -1,7 +1,8 @@
 <!doctype html><html><head><meta charset="utf-8">
-<!-- "El tablero de Vera" ep.1 (03/11). Reel dark-premium 1080x1920, 30 s, 30 fps, render(t) con rec.mjs.
+<!-- "Vera por dentro" ep.1 (03/11). Reel dark-premium 1080x1920, 30 s, 30 fps, render(t) con rec.mjs.
      Muestra cómo trabaja Vera POR DENTRO con un caso REAL (sms-saldo, smishing). Overlay del motor = recreación (etiquetado);
-     el SMS y el veredicto son captura real de Vera (scripts/redes/casos/sms-saldo.jpg, datos ya tapados). -->
+     el SMS y el veredicto son captura real de Vera (scripts/redes/casos/sms-saldo.jpg, datos ya tapados).
+     Timeline con LEGIBILIDAD como regla dura: SMS portada y respuesta real quietos >=4 s; placas/modulos >=2,5 s; transiciones 0,6 s. -->
 <style>
 @font-face{font-family:A;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
 @font-face{font-family:G;src:url(file:///home/user/Cyber-Mobile/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
@@ -91,7 +92,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
 
   <!-- A -->
   <div class="sc" id="A">
-    <div class="tag" id="Atag">EL TABLERO DE VERA · EP.1</div>
+    <div class="tag" id="Atag">VERA POR DENTRO · EP.1</div>
     <h1><span class="w">ESTE</span> <span class="w">SMS</span> <span class="w">TIENE</span><br><span class="w hl cy">4&nbsp;TRAMPAS</span><br><span class="w">¿LAS</span> <span class="w">ENCONTRÁS?</span></h1>
     <div class="phone" id="Aphone" style="left:300px;top:1200px;width:480px;height:520px">
       <img id="Aimg" src="file:///home/user/Cyber-Mobile/scripts/redes/casos/sms-saldo.jpg">
@@ -161,92 +162,85 @@ function ease(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;}
 function render(t){
   // modo (barra superior)
   let modo='EN ESPERA', dcol='var(--mut)';
-  if(t>=4.2&&t<22){modo='ANALIZANDO';dcol='var(--cy)';}
-  else if(t>=22&&t<27){modo='RESULTADO';dcol='var(--red)';}
-  else if(t>=27){modo='LISTO';dcol='var(--cy)';}
+  if(t>=6.0&&t<21.8){modo='ANALIZANDO';dcol='var(--cy)';}
+  else if(t>=21.8&&t<26.6){modo='RESULTADO';dcol='var(--red)';}
+  else if(t>=26.6){modo='LISTO';dcol='var(--cy)';}
   $('#modot').textContent=modo; $('#modo .d').style.background=dcol;
   $('#modo .d').style.boxShadow = dcol==='var(--mut)'?'none':'0 0 14px '+dcol;
 
-  // ---- A 0 - 4.4 ----
-  const oa=scene($('#A'),t,0,4.4);
+  // ---- A 0 - 6.6 : portada + SMS (SMS quieto y legible >=4 s: fijo 1.8 -> 6.0) ----
+  const oa=scene($('#A'),t,0,6.6,0.6);
   if(oa>0){
     const ws=$$('#A .w');
-    ws.forEach((w,i)=>{const s=.25+i*.18;const p=ease(rv(t,s,s+.5));w.style.opacity=p;w.style.transform=`translateY(${(1-p)*26}px)`;});
-    const pp=ease(rv(t,2.3,3.1));
+    ws.forEach((w,i)=>{const s=.2+i*.16;const p=ease(rv(t,s,s+.5));w.style.opacity=p;w.style.transform=`translateY(${(1-p)*26}px)`;});
+    const pp=ease(rv(t,1.2,1.8));
     $('#Aphone').style.transform=`translateY(${(1-pp)*60}px) rotate(${(1-pp)*4-2}deg)`;
     $('#Aphone').style.opacity=pp; $('#Abadge').style.opacity=pp;
-    // encuadra el SMS (arriba de la captura)
+    // encuadra el SMS (arriba de la captura), estático
     $('#Aimg').style.transform='translateY(0px) scale(1.0)';
   }
 
-  // ---- B 4.2 - 8.2 ----
-  const ob=scene($('#B'),t,4.2,8.2);
+  // ---- B 6.0 - 10.4 : puente + escáner (placa >=2,5 s) ----
+  const ob=scene($('#B'),t,6.0,10.4,0.6);
   if(ob>0){
-    const lines=['block'];
-    const h=$('#Bh'); // revelar por línea via clip
-    const p=ease(rv(t,4.5,6.0));
+    const h=$('#Bh');
+    const p=ease(rv(t,6.4,7.6));
     h.style.opacity=1; h.style.transform=`translateX(${(1-p)*-30}px)`; h.style.filter=`blur(${(1-p)*4}px)`;
-    // scanning line sobre la tarjeta
+    // línea de escaneo sobre la tarjeta: baja y sube, lenta
     const top=1030,bot=1030+760;
-    const sp=rv(t,5.2,7.8);
-    const y=top+ (Math.sin(sp*Math.PI)* (bot-top)); // pasa y vuelve
+    const sp=rv(t,7.2,9.8);
     const yy= top + ((bot-top))* ( (Math.sin((sp*2-0.5)*Math.PI)+1)/2 );
-    const sv=scene($('#scan'),t,5.2,8.0,.3)?1:0;
-    $('#scan').style.opacity = (t>5.2&&t<7.9)?.9:0;
+    const vis=(t>7.1&&t<9.9);
+    $('#scan').style.opacity = vis?.9:0;
     $('#scan').style.top=yy+'px';
     $('#scan').style.left='300px'; $('#scan').style.width='480px';
-    $('#scanlbl').style.opacity=(t>5.2&&t<7.9)?1:0;
+    $('#scanlbl').style.opacity=vis?1:0;
   } else { $('#scan').style.opacity=0; }
 
-  // ---- C 8.0 - 22.2 ----
-  const oc=scene($('#C'),t,8.0,22.2,.4);
+  // ---- C 9.8 - 22.4 : motor (4 módulos cada ~2 s, persisten; sello >=2,5 s) ----
+  const oc=scene($('#C'),t,9.8,22.4,0.6);
   if(oc>0){
-    $('#sem').style.opacity=cl(rv(t,8.2,8.8),0,1);
-    const mods=[['#m1',8.6],['#m2',11.0],['#m3',13.6],['#m4',16.2]];
+    $('#sem').style.opacity=cl(rv(t,10.4,11.0),0,1);
+    const mods=[['#m1',10.6],['#m2',12.6],['#m3',14.6],['#m4',16.6]];
     mods.forEach(([id,s])=>{
-      const el=$(id);const p=ease(rv(t,s,s+.55));
+      const el=$(id);const p=ease(rv(t,s,s+.6));
       el.style.opacity=p; el.style.transform=`translateX(${(1-p)*40}px)`;
-      const vp=rv(t,s+.6,s+1.0);
+      const vp=rv(t,s+.7,s+1.1);
       el.querySelector('.verd').style.opacity=vp;
-      if(t>=s+.7) el.classList.add('bad'); else el.classList.remove('bad');
+      if(t>=s+.8) el.classList.add('bad'); else el.classList.remove('bad');
     });
-    // semaforo progresivo
+    // semáforo progresivo: amarillo mientras analiza, rojo al cerrar
     const r=$('#sem .r'),a=$('#sem .a'),g=$('#sem .g');
-    a.classList.toggle('on', t>=11.6 && t<18.8);
-    r.classList.toggle('on', t>=17.0);
+    a.classList.toggle('on', t>=12.6 && t<18.6);
+    r.classList.toggle('on', t>=17.4);
     g.classList.remove('on');
-    // parpadeo rojo al fijarse
-    if(t>=18.8){const bl=Math.sin(t*16)>-.2;r.classList.toggle('on',bl||t>19.6);a.classList.remove('on');}
-    // sello
-    const sp=ease(rv(t,19.0,19.7));
+    // parpadeo rojo al fijarse y luego fijo
+    if(t>=18.6){const bl=Math.sin(t*16)>-.2;r.classList.toggle('on',bl||t>19.4);a.classList.remove('on');}
+    // sello RIESGO ALTO, queda >=2,5 s (18.8 -> 21.8)
+    const sp=ease(rv(t,18.8,19.6));
     $('#stamp').style.opacity=sp;
     $('#stamp').style.transform=`scale(${.9+sp*.1})`;
   }
 
-  // ---- D 22.0 - 27.2 ----
-  const od=scene($('#D'),t,22.0,27.2,.4);
+  // ---- D 21.8 - 27.2 : respuesta real de Vera (quieta y legible >=4 s: 22.7 -> 26.6) ----
+  const od=scene($('#D'),t,21.8,27.2,0.6);
   if(od>0){
-    // pan de la captura real: de arriba (mensaje) al veredicto de Vera
+    // captura real 720x1285 -> 780 de ancho = 1392 de alto, entra en el marco 1420: estática.
+    // asentamiento suave de 0.8 s y después 100% quieta el resto del tiempo.
     const img=$('#Dimg');
-    // imagen 720 ancho -> escalada a 780; alto nativo ~1290 -> ~1397; marco 1420
-    const scaleW=780/720; const natH=1290*scaleW; const frameH=1420;
-    const maxShift=Math.min(0, frameH-natH); // negativo
-    const pp=ease(rv(t,22.4,26.4));
-    // arrancamos mostrando el mensaje (0) y bajamos hacia el veredicto
-    const targetShift = -(555*scaleW); // llevar el veredicto (y~555 del original) hacia arriba
-    const shift = targetShift*pp;
-    img.style.transform=`translateY(${cl(shift,maxShift,0)}px)`;
-    $('#Dbadge').style.opacity=cl(rv(t,22.3,22.9),0,1);
+    const settle=ease(rv(t,21.9,22.7));
+    img.style.transform=`translateY(${(1-settle)*24}px)`;
+    $('#Dbadge').style.opacity=cl(rv(t,22.0,22.6),0,1);
   }
 
-  // ---- E 27.0 - 30 ----
-  const oe=scene($('#E'),t,27.0,30.2,.5);
+  // ---- E 26.6 - fin : cierre / marca ----
+  const oe=scene($('#E'),t,26.6,31,0.6);
   if(oe>0){
-    const m=ease(rv(t,27.2,28.0)); $('#E .mark').style.transform=`scale(${.92+m*.08})`;
-    const s=ease(rv(t,27.6,28.4)); $('#E .sub').style.opacity=s; $('#E .sub').style.transform=`translateY(${(1-s)*20}px)`;
-    const pz=ease(rv(t,28.2,28.9)); $('#E .pill').style.opacity=pz; $('#E .pill').style.transform=`scale(${.9+pz*.1})`;
-    $('#E .web').style.opacity=ease(rv(t,28.6,29.2));
-    $('#E .wa').style.opacity=ease(rv(t,28.8,29.4));
+    const m=ease(rv(t,26.8,27.6)); $('#E .mark').style.transform=`scale(${.92+m*.08})`;
+    const s=ease(rv(t,27.2,28.0)); $('#E .sub').style.opacity=s; $('#E .sub').style.transform=`translateY(${(1-s)*20}px)`;
+    const pz=ease(rv(t,27.8,28.5)); $('#E .pill').style.opacity=pz; $('#E .pill').style.transform=`scale(${.9+pz*.1})`;
+    $('#E .web').style.opacity=ease(rv(t,28.2,28.9));
+    $('#E .wa').style.opacity=ease(rv(t,28.5,29.2));
   }
 }
 render(0);
