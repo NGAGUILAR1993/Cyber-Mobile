@@ -1,0 +1,33 @@
+{
+  "_doc": "Nivel de riesgo = GRAVEDAD DEL DAÑO al que cae, NO cuánto circula (eso es el índice de actividad 0-100). Regla fija para clasificar cada modalidad del Observatorio. Fuente única: la usan el informe, la web y las fichas. Mantener acá; no cargar 'riesgo' a mano en datos.json.",
+  "regla": {
+    "alto": "Toma de control de cuentas o del dispositivo, vaciamiento de cuentas/billeteras, pérdidas grandes o sostenidas, o daño personal severo (extorsión, robo de identidad).",
+    "medio": "Pérdida acotada al monto de una compra, seña o pago, o robo de datos personales sin control directo de la cuenta.",
+    "bajo": "Daño directo menor: molestia, captura de datos de bajo impacto o pago chico."
+  },
+  "niveles": {
+    "app de acceso remoto": "alto",
+    "plataforma de inversion falsa": "alto",
+    "phishing bancario": "alto",
+    "secuestro de cuenta de whatsapp": "alto",
+    "suplantacion de un contacto conocido": "alto",
+    "suplantacion de banco por telefono": "alto",
+    "sim swapping": "alto",
+    "robo de identidad digital": "alto",
+    "phishing de billetera virtual": "alto",
+    "sextorsion": "alto",
+    "perfil romantico falso": "alto",
+    "tienda online falsa": "medio",
+    "alquiler inexistente": "medio",
+    "falsa oferta laboral": "medio",
+    "vendedor falso en marketplace": "medio",
+    "falsa encomienda de correo argentino": "medio",
+    "falsa entrega de paqueteria": "medio",
+    "venta de entradas falsas": "medio",
+    "phishing de pami": "medio",
+    "phishing de anses": "medio",
+    "phishing de arca": "medio",
+    "phishing de servicios (luz, gas, agua)": "medio",
+    "premios y sorteos falsos": "bajo"
+  }
+}
