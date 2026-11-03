@@ -99,8 +99,8 @@
         .brand:hover { color: var(--txt); }
         .brand-logo { width: 40px; height: 40px; border-radius: 10px; }
         .brand span { font-family: Orbitron, sans-serif; font-weight: 700; font-size: 17px; letter-spacing: .14em; }
-        .menu { display: flex; gap: 32px; font-size: 15px; font-weight: 500; }
-        .menu a { color: var(--muted); display: flex; align-items: center; gap: 8px; }
+        .menu { display: flex; flex-wrap: nowrap; gap: 26px; font-size: 15px; font-weight: 500; }
+        .menu a { color: var(--muted); display: flex; align-items: center; gap: 8px; white-space: nowrap; }
         .menu a:hover { color: var(--txt); }
         .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--acc); box-shadow: 0 0 10px var(--acc); flex-shrink: 0; }
         .dot.pulse { animation: pulse 1.9s ease-in-out infinite; }
@@ -442,14 +442,10 @@
                 <span>CYBER MOBILE</span>
             </a>
             <nav class="menu" aria-label="Secciones">
-                <a href="#herramientas">Herramientas</a>
-                <a href="#casos">Casos reales</a>
+                <a href="/observatorio"><span class="dot pulse"></span>Observatorio</a>
                 <a href="/guias">Guías</a>
                 <a href="#planes">Planes</a>
                 <a href="/agente" data-track="nav_agente_web">Vera web</a>
-                <a href="/extension" data-track="nav_extension">Extensión</a>
-                <a href="/observatorio"><span class="dot pulse"></span>Observatorio</a>
-                <a href="#contacto">Contacto</a>
             </nav>
             <a class="btn btn-primary btn-sm" href="/vera?o=web" target="_blank" rel="noopener noreferrer" data-track="cta_whatsapp_nav" aria-label="Consultar por WhatsApp">
                 <svg class="icon"><use href="#i-chat"/></svg><span>Consultar por WhatsApp</span>
