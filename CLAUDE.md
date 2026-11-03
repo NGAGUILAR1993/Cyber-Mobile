@@ -17,6 +17,7 @@ Leé esto al empezar cada sesión. Resume qué es el proyecto, cómo funciona ca
   - Individual $5.000, Pack Padres $12.000 (3 personas), Pack Familiar $15.000 (5 personas) (precios nuevos del 01/11, bajados por el dueño; los carga en Mercado Pago). Precio internacional (extensión, fuera de Argentina): USD 5 individual, USD 10 familiar.
   - Empresas: $60.000 hasta 10 personas, $125.000 hasta 25.
   - Débito automático por Mercado Pago; se cancela desde la app de MP → Suscripciones.
+- **Colaborá con el proyecto (03/11):** botón ☕ en el pie de la portada (`/`) que lleva a **Cafecito** (`cafecito.app/veramobile`) para aportes voluntarios. Es un botón propio con el estilo de la marca (clase `.btn-colaborar`), NO el `<img>` que da Cafecito (la CSP de `vercel.json` bloquea imágenes externas). Idea tomada del análisis de StopCiberestafas.
 - **Dueño:** Germán (habla en español rioplatense). Mail de trabajo: cybermobile.ai@gmail.com.
 
 ## Arquitectura
