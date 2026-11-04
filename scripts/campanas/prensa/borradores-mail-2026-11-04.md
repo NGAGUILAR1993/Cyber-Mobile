@@ -24,7 +24,7 @@ Hola, redacción de Infobae:
 
 Les comparto el informe de noviembre del **Observatorio de Fraude Digital**, el relevamiento mensual de estafas en Argentina que publicamos en Cyber Mobile. El dato principal: la estafa de la **"app de acceso remoto"** es la de mayor circulación del país por segundo mes seguido (índice de actividad 93/100, riesgo alto). Empieza con una llamada, sigue con la instalación de una app y termina con la cuenta vacía; apunta sobre todo a adultos mayores.
 
-Otros datos del mes: 7 de las 10 modalidades del ranking son de riesgo alto, y el 48% de las estafas relevadas llegan por WhatsApp. El ranking completo, con la fuente de cada caso, está abierto en https://www.cybermobile.com.ar/observatorio.
+Otros datos del mes: 7 de las 10 modalidades del ranking son de riesgo alto, y la mitad de las modalidades del Top 10 (5 de 10) llega por WhatsApp. El ranking completo, con la fuente de cada caso, está abierto en https://www.cybermobile.com.ar/observatorio.
 
 Si les sirve para una nota, Germán Aguilar queda a disposición como fuente, y pueden probar Vera (nuestra IA antiestafas por WhatsApp) sin costo: https://www.cybermobile.com.ar/vera?o=prensa. Les paso la gacetilla completa más abajo. Gracias.
 
@@ -37,7 +37,7 @@ Si les sirve para una nota, Germán Aguilar queda a disposición como fuente, y 
 
 Hola, equipo de iProfesional:
 
-Para su sección de tecnología, les acerco el informe de noviembre del **Observatorio de Fraude Digital** de Cyber Mobile. Encabeza el ranking la **"app de acceso remoto"** (índice 93/100, riesgo alto), seguida del phishing bancario (90) y las plataformas de inversión falsas (89). El 48% de las estafas relevadas usa WhatsApp como canal.
+Para su sección de tecnología, les acerco el informe de noviembre del **Observatorio de Fraude Digital** de Cyber Mobile. Encabeza el ranking la **"app de acceso remoto"** (índice 93/100, riesgo alto), seguida del phishing bancario (90) y las plataformas de inversión falsas (89). La mitad de las modalidades del Top 10 (5 de 10) usa WhatsApp como canal.
 
 El ranking abierto, con la fuente de cada caso: https://www.cybermobile.com.ar/observatorio. Germán Aguilar queda disponible como fuente para contexto o entrevista, y pueden probar Vera (IA antiestafas por WhatsApp): https://www.cybermobile.com.ar/vera?o=prensa. Gacetilla completa abajo. Gracias.
 
@@ -50,7 +50,7 @@ El ranking abierto, con la fuente de cada caso: https://www.cybermobile.com.ar/o
 
 Hola, redacción de La Voz:
 
-Les comparto el informe de noviembre del **Observatorio de Fraude Digital** de Cyber Mobile, por si les sirve para una nota. El primer puesto del mes es la **"app de acceso remoto"** (índice 93/100, riesgo alto), una modalidad que apunta a adultos mayores: llamada + instalación de una app + vaciamiento de la cuenta. El 48% de las estafas relevadas llega por WhatsApp.
+Les comparto el informe de noviembre del **Observatorio de Fraude Digital** de Cyber Mobile, por si les sirve para una nota. El primer puesto del mes es la **"app de acceso remoto"** (índice 93/100, riesgo alto), una modalidad que apunta a adultos mayores: llamada + instalación de una app + vaciamiento de la cuenta. La mitad de las modalidades del Top 10 (5 de 10) llega por WhatsApp.
 
 El ranking completo y abierto, con la fuente de cada caso: https://www.cybermobile.com.ar/observatorio. Germán Aguilar (Cyber Mobile) queda a disposición como fuente. También pueden probar Vera, nuestra IA antiestafas por WhatsApp: https://www.cybermobile.com.ar/vera?o=prensa. Gacetilla completa abajo. Gracias.
 
@@ -63,7 +63,7 @@ El ranking completo y abierto, con la fuente de cada caso: https://www.cybermobi
 
 Hola, redacción de 0223:
 
-Somos Cyber Mobile, una empresa de ciberseguridad de Mar del Plata. Publicamos cada mes el **Observatorio de Fraude Digital**, un ranking de las estafas que más circulan en el país. En noviembre encabeza la **"app de acceso remoto"** (índice 93/100, riesgo alto), que apunta a personas mayores y termina con la cuenta vacía. El 48% de las estafas relevadas llega por WhatsApp.
+Somos Cyber Mobile, una empresa de ciberseguridad de Mar del Plata. Publicamos cada mes el **Observatorio de Fraude Digital**, un ranking de las estafas que más circulan en el país. En noviembre encabeza la **"app de acceso remoto"** (índice 93/100, riesgo alto), que apunta a personas mayores y termina con la cuenta vacía. La mitad de las modalidades del Top 10 (5 de 10) llega por WhatsApp.
 
 El ranking abierto, con la fuente de cada caso: https://www.cybermobile.com.ar/observatorio. Germán Aguilar queda a disposición como fuente marplatense para una nota o entrevista. Pueden probar Vera (IA antiestafas por WhatsApp): https://www.cybermobile.com.ar/vera?o=prensa. Gacetilla completa abajo. Gracias.
 
@@ -89,7 +89,7 @@ Ranking abierto, con la fuente de cada caso: https://www.cybermobile.com.ar/obse
 
 Hola, redacción de El Día:
 
-El Día aparece entre las fuentes de nuestro Observatorio de Fraude Digital (cubrieron casos de phishing bancario, que este mes es la segunda estafa más activa del país). Les comparto el ranking completo de noviembre: lo encabeza la **"app de acceso remoto"** (índice 93/100, riesgo alto) y el 48% de las estafas relevadas llega por WhatsApp.
+El Día aparece entre las fuentes de nuestro Observatorio de Fraude Digital (cubrieron casos de phishing bancario, que este mes es la segunda estafa más activa del país). Les comparto el ranking completo de noviembre: lo encabeza la **"app de acceso remoto"** (índice 93/100, riesgo alto) y la mitad de las modalidades del Top 10 (5 de 10) llega por WhatsApp.
 
 Ranking abierto, con la fuente de cada caso: https://www.cybermobile.com.ar/observatorio. Germán Aguilar (Cyber Mobile) queda a disposición como fuente. Prueba de Vera (IA antiestafas por WhatsApp): https://www.cybermobile.com.ar/vera?o=prensa. Gacetilla completa abajo. Gracias.
 
@@ -115,7 +115,7 @@ Ranking abierto, con la fuente de cada caso: https://www.cybermobile.com.ar/obse
 
 Hola, redacción de La Gaceta:
 
-Les comparto el informe de noviembre del **Observatorio de Fraude Digital** de Cyber Mobile, por si les sirve para el norte. Encabeza el ranking la **"app de acceso remoto"** (índice 93/100, riesgo alto): llamada + instalación de app + vaciamiento de cuenta, con los adultos mayores como blanco principal. El 48% de las estafas relevadas llega por WhatsApp.
+Les comparto el informe de noviembre del **Observatorio de Fraude Digital** de Cyber Mobile, por si les sirve para el norte. Encabeza el ranking la **"app de acceso remoto"** (índice 93/100, riesgo alto): llamada + instalación de app + vaciamiento de cuenta, con los adultos mayores como blanco principal. La mitad de las modalidades del Top 10 (5 de 10) llega por WhatsApp.
 
 Ranking abierto, con la fuente de cada caso: https://www.cybermobile.com.ar/observatorio. Germán Aguilar queda disponible como fuente. Prueba de Vera (IA antiestafas por WhatsApp): https://www.cybermobile.com.ar/vera?o=prensa. Gacetilla completa abajo. Gracias.
 
