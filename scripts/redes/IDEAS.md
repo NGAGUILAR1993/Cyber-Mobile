@@ -165,3 +165,7 @@ Lo mantiene el agente redes: antes de cada pieza tira al menos 10 ideas, anota a
 | 03/11 | "Falso descuento": foco en el 40% de dto como anzuelo (premio) combinado con amenaza (suspensión) | Reel psicología | Muestra la mecánica emocional | Fusionada (módulo "patrón" del tablero) |
 | 03/11 | "VirusTotal en 1 toque": mostrar que Vera consulta decenas de motores de seguridad por vos | Reel detrás de escena | Prueba técnica real | Fusionada (módulo "enlace" del tablero) |
 | 03/11 | Historia: encuesta "¿Vos qué ves primero en este SMS?" antes de revelar el tablero en el reel | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
+
+## 2026-11-04 · Servicios profesionales (pedido del dueño: informativa y sobria)
+- Elegida: carrusel de 4 placas oscuras (paleta de /servicios), 2 servicios por placa, cierre a cybermobile.com.ar/servicios. Confianza.
+- Descartadas: placa única con los 4 servicios (texto chico, se lee mal); carrusel de 6 con una placa por servicio (largo para una pieza informativa); reel recorriendo /servicios (el dueño pidió que no hiciera falta video).
