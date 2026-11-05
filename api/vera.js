@@ -12,7 +12,9 @@ const ORIGENES = ['ig', 'bio', 'comentario', 'tarjeta', 'qr', 'web', 'canal', 'h
     // Kit para aliados que comparten Vera (28/10)
     'aliado',
     // Charlas en centros de jubilados / bibliotecas (folleto con QR, 29/10)
-    'charla'];
+    'charla',
+    // Campaña de prensa a radios del interior (05/11)
+    'radio'];
 
 let redisClient;
 function redis() {
