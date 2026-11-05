@@ -24,7 +24,7 @@
 
 **La modalidad que encabeza el ranking de noviembre del Observatorio de Fraude Digital empieza con una llamada telefónica, sigue con la instalación de una aplicación y termina con la cuenta bancaria vacía. Es la estafa de mayor circulación del país por segundo mes seguido.**
 
-El Observatorio de Fraude Digital, el relevamiento mensual de estafas en la Argentina que publica la empresa marplatense Cyber Mobile, ubicó a la **"app de acceso remoto"** en el primer puesto de noviembre de 2026, con un índice de actividad de **93 sobre 100**. La modalidad ya había liderado el ranking de octubre.
+El Observatorio de Fraude Digital, el relevamiento mensual de estafas en la Argentina que publica la empresa argentina de ciberseguridad Cyber Mobile, ubicó a la **"app de acceso remoto"** en el primer puesto de noviembre de 2026, con un índice de actividad de **93 sobre 100**. La modalidad ya había liderado el ranking de octubre.
 
 El engaño combina dos pasos: una llamada en la que alguien se hace pasar por el banco o un organismo oficial y, con la excusa de "resolver un problema de seguridad", convence a la víctima de instalar una aplicación de acceso remoto en su celular o computadora. Con esa app, el estafador toma el control total del dispositivo y de las cuentas. Las alertas oficiales que releva el Observatorio coinciden en que el blanco principal son las personas mayores.
 
@@ -34,7 +34,7 @@ Detrás aparecen el **phishing bancario** (índice 90, por WhatsApp) y las **pla
 
 El ranking completo, con la ficha de cada modalidad y la fuente de cada caso, está disponible y abierto para consulta en **https://www.cybermobile.com.ar/observatorio**.
 
-**Sobre Cyber Mobile y Vera.** Cyber Mobile es una empresa argentina de ciberseguridad con base en Mar del Plata. Desarrolla **Vera**, un asistente de inteligencia artificial antiestafas que funciona por WhatsApp: la persona le reenvía un mensaje, un link, una captura, un mail, un audio o un teléfono sospechoso y Vera responde en segundos con un semáforo (rojo, amarillo o verde) y qué hacer. Cyber Mobile publica cada mes el Observatorio de Fraude Digital como aporte abierto para periodistas, instituciones y público.
+**Sobre Cyber Mobile y Vera.** Cyber Mobile es una empresa argentina de ciberseguridad. Desarrolla **Vera**, un asistente de inteligencia artificial antiestafas que funciona por WhatsApp: la persona le reenvía un mensaje, un link, una captura, un mail, un audio o un teléfono sospechoso y Vera responde en segundos con un semáforo (rojo, amarillo o verde) y qué hacer. Cyber Mobile publica cada mes el Observatorio de Fraude Digital como aporte abierto para periodistas, instituciones y público.
 
 **Contacto de prensa:** info@cybermobile.com.ar · www.cybermobile.com.ar
 Mg. Germán Aguilar — Cyber Mobile
