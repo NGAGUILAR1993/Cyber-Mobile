@@ -1,0 +1,180 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:A;src:url(/home/user/cm-redes/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:G;font-weight:700;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:"Liberation Sans",Arial,"Noto Color Emoji",sans-serif;color:#1f1f1f}
+#cam{position:absolute;inset:0;transform-origin:540px 960px}
+#phone{position:absolute;inset:0;background:#fff;overflow:hidden}
+.sb{position:absolute;left:0;right:0;top:0;height:72px;display:flex;align-items:center;padding:0 40px;font-size:32px;font-weight:700;z-index:30;background:#fff}
+.sb .rec{width:28px;height:28px;border-radius:50%;background:#e53935;margin-left:18px;box-shadow:0 0 0 5px #fde0df}
+.sb .der{margin-left:auto;font-size:28px;letter-spacing:2px}
+#share{position:absolute;left:0;right:0;top:72px;height:76px;background:#c62828;color:#fff;z-index:29;display:flex;align-items:center;gap:18px;padding:0 40px;font-size:30px;font-weight:700}
+#share i{width:20px;height:20px;border-radius:50%;background:#fff}
+.scr{position:absolute;left:0;right:0;top:148px;bottom:0;background:#f3f5f9}
+/* banco */
+.bh{background:linear-gradient(160deg,#16306b,#0d1f47);color:#fff;padding:120px 60px 70px;height:620px}
+.bh small{font-size:34px;opacity:.75}
+.bh .sal{font-family:G;font-weight:700;font-size:108px;margin-top:18px;letter-spacing:-2px}
+.bh .cta{font-size:30px;opacity:.7;margin-top:10px}
+.acc{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:0 40px;margin-top:-70px}
+.acc div{background:#fff;border-radius:28px;height:190px;box-shadow:0 6px 18px rgba(0,0,0,.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;font-size:30px;font-weight:700;color:#16306b}
+.acc b{width:72px;height:72px;border-radius:50%;background:#e4ebfb;display:block}
+.mov{margin:60px 40px 0;background:#fff;border-radius:28px;padding:30px 40px}
+.mov h4{font-size:36px;margin-bottom:10px}
+.mv{display:flex;justify-content:space-between;padding:26px 0;border-top:2px solid #eef0f4;font-size:32px;color:#444}
+.mv b{color:#1f1f1f}
+/* transferir */
+.th{background:#16306b;color:#fff;padding:60px;font-size:48px;font-weight:700}
+.tf{margin:40px;background:#fff;border-radius:28px;padding:40px}
+.tf small{font-size:30px;color:#666}
+.blur{display:inline-block;height:40px;width:360px;border-radius:10px;background:#c9ced8;filter:blur(3px);vertical-align:middle;margin-left:10px}
+.monto{font-family:G;font-weight:700;font-size:110px;margin-top:20px;min-height:130px;color:#16306b}
+.monto .car{display:inline-block;width:8px;height:96px;background:#16306b;margin-left:8px;vertical-align:-8px}
+.kp{position:absolute;left:40px;right:40px;top:760px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.kp div{height:150px;background:#fff;border-radius:24px;display:flex;align-items:center;justify-content:center;font-family:G;font-size:64px;font-weight:700;color:#333}
+#conf{position:absolute;left:40px;right:40px;top:1440px;height:150px;border-radius:75px;background:#16306b;color:#fff;font-size:50px;font-weight:700;display:flex;align-items:center;justify-content:center}
+#ok{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;opacity:0}
+#ok small{font-size:40px;color:#555}
+#ok .cero{font-family:G;font-weight:700;font-size:170px;color:#c62828}
+#ok .env{font-size:44px;font-weight:700;color:#16306b}
+/* chat */
+#chat{background:#efeae2}
+.ch{background:#fff;height:150px;display:flex;align-items:center;gap:26px;padding:0 36px;border-bottom:2px solid #e5e5e5}
+.ch .av{width:96px;height:96px;border-radius:50%;background:#bfc5cc;filter:blur(4px)}
+.ch .nm{height:38px;width:330px;border-radius:10px;background:#bfc5cc;filter:blur(3px)}
+.ch small{display:block;font-size:28px;color:#667;margin-top:12px}
+.bub{position:absolute;left:40px;max-width:900px;background:#fff;border-radius:0 30px 30px 30px;padding:30px 36px 46px;font-size:46px;line-height:1.32;box-shadow:0 2px 3px rgba(0,0,0,.1);color:#111}
+.bub .hr{position:absolute;right:26px;bottom:12px;font-size:26px;color:#889}
+.bub mark{background:#ffe1e1;color:#b71c1c;font-weight:700;padding:0 6px;border-radius:6px}
+/* toques */
+.tq{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:rgba(90,90,90,.42);border:5px solid rgba(255,255,255,.85);z-index:40;opacity:0}
+/* notas */
+.nota{position:absolute;left:60px;right:60px;top:200px;background:#fff;border-radius:34px;padding:38px 46px;font-family:G;font-weight:700;font-size:66px;line-height:1.14;color:#111;box-shadow:0 18px 50px rgba(0,0,0,.35);z-index:60;opacity:0}
+.nota em{font-style:normal;color:#c62828}
+#rot{position:absolute;left:40px;top:1735px;z-index:61;background:rgba(0,0,0,.72);color:#fff;font-size:30px;font-weight:700;padding:12px 24px;border-radius:30px;letter-spacing:1px}
+#rew{position:absolute;inset:0;z-index:70;opacity:0;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 3px,transparent 3px 9px),rgba(10,10,20,.55)}
+#rew span{font-family:A;font-size:120px;color:#fff;letter-spacing:2px;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+#flash{position:absolute;inset:0;background:#ff1f1f;z-index:80;opacity:0;mix-blend-mode:multiply}
+/* placas */
+.pl{position:absolute;inset:0;z-index:90;opacity:0;display:flex;flex-direction:column;justify-content:center;padding:0 80px}
+#dato{background:radial-gradient(120% 80% at 50% 40%,#2a0d12,#0a0a10);color:#fff}
+#dato small{font-family:G;font-size:42px;color:#ff8a80;letter-spacing:1px}
+#dato h2{font-family:A;font-weight:400;font-size:150px;line-height:1.02;margin-top:30px}
+#dato p{font-family:G;font-size:46px;margin-top:40px;color:#ddd}
+#pasos{background:#f6f7fb}
+#pasos h3{font-family:G;font-weight:700;font-size:78px;line-height:1.1;color:#111;margin-bottom:60px}
+.ps{display:flex;align-items:center;gap:40px;background:#fff;border-radius:34px;padding:44px 46px;margin-bottom:34px;box-shadow:0 10px 30px rgba(0,0,0,.08);opacity:0}
+.ps b{flex:none;width:110px;height:110px;border-radius:50%;background:#c62828;color:#fff;font-family:A;font-size:70px;display:flex;align-items:center;justify-content:center;font-weight:400}
+.ps span{font-family:G;font-weight:700;font-size:60px;line-height:1.12;color:#111}
+#cierre{background:linear-gradient(170deg,#0d1f47,#16306b);color:#fff;align-items:flex-start}
+#cierre h2{font-family:G;font-weight:700;font-size:96px;line-height:1.08}
+#cierre p{font-family:G;font-size:56px;line-height:1.2;margin-top:60px;color:#cfe0ff}
+#cierre .mk{margin-top:90px;display:flex;align-items:center;gap:26px;font-family:G;font-weight:700;font-size:44px}
+#cierre .sem{display:flex;gap:12px}#cierre .sem i{width:34px;height:34px;border-radius:50%;display:block}
+#cierre .wa{font-family:G;font-size:46px;margin-top:24px;color:#fff;opacity:.9}
+</style></head><body>
+<div id="cam"><div id="phone">
+  <div class="sb">21:47<span class="rec"></span><span class="der">5G ▮▮▮ 64%</span></div>
+  <div id="share"><i></i>Asistencia remota · compartiendo pantalla</div>
+  <div class="scr" id="home">
+    <div class="bh"><small>Saldo disponible</small><div class="sal">$ 1.284.350</div><div class="cta">Caja de ahorro en pesos</div></div>
+    <div class="acc"><div><b></b>Transferir</div><div><b></b>Pagar</div><div><b></b>Tarjetas</div><div><b></b>Más</div></div>
+    <div class="mov"><h4>Últimos movimientos</h4>
+      <div class="mv">Supermercado<b>-$ 38.420</b></div><div class="mv">Haberes<b>+$ 612.000</b></div><div class="mv">Farmacia<b>-$ 12.950</b></div></div>
+  </div>
+  <div class="scr" id="trans" style="opacity:0">
+    <div class="th">Transferir</div>
+    <div class="tf"><small>Destino: CVU ••••<span class="blur"></span></small><div class="monto" id="monto">$ <span class="car"></span></div></div>
+    <div class="kp" id="kp"><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>,</div><div>0</div><div>⌫</div></div>
+    <div id="conf">Confirmar</div>
+    <div id="ok"><small>Saldo disponible</small><div class="cero">$ 0,00</div><div class="env">Transferencia enviada</div></div>
+  </div>
+  <div class="scr" id="chat" style="opacity:0">
+    <div class="ch"><div class="av"></div><div><div class="nm"></div><small>en línea</small></div></div>
+    <div class="bub" id="b1" style="top:400px;opacity:0">Hola, te hablo del banco. Vimos una compra que no hiciste.<span class="hr">19:32</span></div>
+    <div class="bub" id="b2" style="top:700px;opacity:0">Para cancelarla, <mark>instalá esta app de asistencia</mark> y pasame el código que te aparece.<span class="hr">19:33</span></div>
+  </div>
+  <div class="tq" id="tq"></div>
+</div></div>
+<div class="nota" id="n1" style="top:1400px">Vos no tocás nada y tu cuenta queda en <em>$0</em>. ¿Cómo?</div>
+<div class="nota" id="n2">Lo maneja otra persona. <em>Desde otra casa.</em></div>
+<div class="nota" id="n3" style="top:190px">Empezó así:</div>
+<div id="rot">RECREACIÓN</div>
+<div id="rew"><span>◀◀ 2 HORAS ANTES</span></div>
+<div id="flash"></div>
+<div class="pl" id="dato"><small>OBSERVATORIO DE FRAUDE DIGITAL · NOV 2026</small><h2>Estafa nº1:<br>app de acceso remoto</h2><p>La instalás vos. La usan ellos.</p></div>
+<div class="pl" id="pasos"><h3>Si tu celu se mueve solo:</h3>
+  <div class="ps" id="p1"><b>1</b><span>Modo avión. Ya.</span></div>
+  <div class="ps" id="p2"><b>2</b><span>Llamá al banco desde otro teléfono.</span></div>
+  <div class="ps" id="p3"><b>3</b><span>Borrá esa app.</span></div></div>
+<div class="pl" id="cierre"><h2>El banco no te pide instalar apps por WhatsApp.</h2><p>¿Dudás? Preguntale a Vera.</p>
+  <div class="mk"><span class="sem"><i style="background:#e53935"></i><i style="background:#fbc02d"></i><i style="background:#43a047"></i></span>Vera · antiestafas por WhatsApp</div>
+  <div class="wa" id="wa" style="display:none">+54 9 11 7059-8505 · 7 días gratis</div></div>
+<script>
+const canal=new URLSearchParams(location.search).get('canal')||'ig';
+if(canal==='wa')document.getElementById('wa').style.display='block';
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ez=x=>{x=cl(x);return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2};
+const io=(t,a,b,d=.6)=>cl(Math.min((t-a)/d,(b-t)/d));   // fade in en a, fade out hasta b
+const KEY=[1,2,8,4,3,5,0];                          // 1.284.350
+const KPOS=d=>{const i=d===0?10:d-1;return [40+(i%3)*340+160,148+760+Math.floor(i/3)*170+75]};
+// toques: [t, x, y]
+const T=[[2.0,180,860]];
+KEY.forEach((d,i)=>{const p=KPOS(d);T.push([6.3+i*.36,p[0],p[1]])});
+T.push([9.2,540,148+1440+75]);
+const HITS=[9.45,14.4];
+function render(t){
+  // pantallas
+  const h2t=ez((t-2.6)/.7);
+  $('home').style.opacity=t<5.5?1-h2t*0:0;
+  $('home').style.transform=`translateX(${-h2t*0}px)`;
+  const toTrans=ez((t-4.9)/.7);
+  $('home').style.opacity=1-toTrans;
+  $('trans').style.opacity=t<11.9?toTrans:0;
+  $('trans').style.transform=`translateX(${(1-toTrans)*180}px)`;
+  const toChat=ez((t-11.7)/.7);
+  $('chat').style.opacity=toChat;
+  $('share').style.opacity=t<11.7?1:0;
+  // monto
+  const n=T.filter(x=>x[0]>=6.3&&x[0]<9&&t>=x[0]+.08).length;
+  const s=KEY.slice(0,n).join('');
+  const f=s?Number(s).toLocaleString('es-AR'):'';
+  $('monto').innerHTML='$ '+f+(Math.floor(t*2.2)%2?'<span class="car"></span>':'<span class="car" style="opacity:0"></span>');
+  $('ok').style.opacity=cl((t-9.45)/.5);
+  // botón presionado
+  $('conf').style.background=t>9.2&&t<9.5?'#0a1633':'#16306b';
+  // toques fantasma
+  let tq=null;for(const x of T){if(t>=x[0]-.18&&t<=x[0]+.32)tq=x}
+  const e=$('tq');
+  if(tq){const k=(t-tq[0]+.18)/.5;e.style.opacity=k<.3?k/.3:1-(k-.3)/.7;e.style.left=tq[1]+'px';e.style.top=tq[2]+'px';e.style.transform=`scale(${.8+.25*Math.sin(Math.PI*cl(k))})`}else e.style.opacity=0;
+  // burbujas
+  [['b1',12.4],['b2',13.1]].forEach(([id,a])=>{const k=ez((t-a)/.5);$(id).style.opacity=k;$(id).style.transform=`translateY(${(1-k)*40}px)`});
+  // notas
+  $('n1').style.opacity=io(t,.15,5.3,.4);
+  $('n2').style.opacity=io(t,5.5,11.2);
+  $('n3').style.opacity=io(t,12.2,16.9);
+  $('rot').style.opacity=t<17.0?1:0;
+  // rebobinado
+  $('rew').style.opacity=cl(Math.min((t-11.2)/.3,(12.3-t)/.4));
+  $('phone').style.filter=t>11.2&&t<12.2?'grayscale(1) blur(2px)':'none';
+  // cámara: mano + zoom
+  let sc=1+.05*ez(t/5.5), ox=0, oy=0;
+  if(t>5.5&&t<11)sc=1.02+.05*ez((t-5.5)/4);
+  if(t>=11.7){sc=1+.05*ez((t-14.0)/.9)}
+  const hand=t<17.2?1:0;
+  ox+=Math.sin(t*1.7)*5*hand+Math.sin(t*4.3)*2*hand; oy+=Math.cos(t*1.3)*6*hand;
+  let sh=0,fl=0;for(const hT of HITS){const d=t-hT;if(d>=0&&d<.45){sh=Math.max(sh,(1-d/.45));fl=Math.max(fl,(1-d/.45))}}
+  ox+=Math.sin(t*90)*18*sh; oy+=Math.cos(t*77)*14*sh;
+  $('cam').style.transform=`translate(${ox}px,${oy}px) scale(${sc})`;
+  $('flash').style.opacity=fl*.35;
+  // placas
+  $('dato').style.opacity=io(t,17.2,20.8,.6);
+  $('dato').style.transform=`scale(${1.04-.04*ez((t-17.2)/3.6)})`;
+  $('pasos').style.opacity=io(t,20.4,25.7,.6);
+  [['p1',20.8],['p2',21.6],['p3',22.4]].forEach(([id,a])=>{const k=ez((t-a)/.6);$(id).style.opacity=k;$(id).style.transform=`translateX(${(1-k)*-80}px)`});
+  $('cierre').style.opacity=cl((t-25.3)/.7);
+}
+document.fonts.ready.then(()=>{render(0);document.documentElement.dataset.listo=1});
+</script></body></html>
