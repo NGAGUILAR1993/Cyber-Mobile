@@ -186,3 +186,20 @@ Tendencias miradas: noticias 02-04/11 (Infobae: anuncios pagos en buscadores que
 | 05/11 | Pack Padres como regalo del aguinaldo | Reel venta | Venta de la semana | Guardada (promo necesita aprobación; venta va el domingo) |
 | 05/11 | "Chequeo de 10 segundos al celu de tus viejos": 3 ajustes reales de Android (apps con accesibilidad) | Carrusel tutorial | Muy guardable | Guardada (complemento ideal del elegido para el sábado) |
 | 05/11 | Historia: "¿Sabrías qué hacer si tu celu se mueve solo?" encuesta Sí/No antes del reel | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
+
+## 2026-11-08 · domingo (alcance + venta en el texto; legibilidad regla dura; CTA variable 03/11)
+Contexto: el Observatorio se actualizó hoy (08/11) y el nº1 de noviembre pasó a ser **Plataforma de inversión falsa** (nunca tuvo pieza propia). Del 06 y 07/11 salieron "IA general vs Vera" y "las 5 estafas" (una línea por modalidad): no se repite ese formato de lista. Gancho elegido puntuado con `hookscore.py`: 66,2.
+
+| Fecha | Idea | Formato | Por qué podría funcionar | Estado |
+|---|---|---|---|---|
+| 08/11 | **"El botón Retirar"**: grabación de pantalla (recreación) de una app de inversión genérica con el saldo que sube solo; tocás Retirar y aparece un "impuesto de liberación", pagás y aparece otro cargo; el saldo se desarma (era un número en una página). Dato real: nº1 del Observatorio hoy. 3 señales y cierre "Si para retirar tenés que pagar, es estafa" | Reel grabación de celular, 30 s | Promesa + frustración que todos entienden en 1 s; el giro "el saldo nunca existió" se manda al amigo que "está invirtiendo" | **Elegida** |
+| 08/11 | "6 dígitos": el código de WhatsApp pedido "por error" con cuenta regresiva | Reel suspenso | Todos recibieron ese SMS | Guardada (el 07/11 ya lo nombró en el carrusel; esperar 2 semanas) |
+| 08/11 | "Chequeo de 10 segundos al celu de tus viejos" (apps con accesibilidad) | Carrusel tutorial | Muy guardable | Guardada (muy pegado al reel del 05/11, acceso remoto) |
+| 08/11 | "El amigo que se hizo rico": chat de un conocido (tapado) que muestra capturas de ganancias y te pasa "el link de la plataforma" | Reel chat | El gancho social de la inversión falsa | Fusionada (se menciona en las señales: "te contactaron por redes") |
+| 08/11 | "Pantalla dividida: lo que ves vos / lo que hay detrás" (panel del estafador editando tu saldo a mano) | Reel split | Giro de punto de vista | Descartada (dos pantallas a 30 s se leen mal) |
+| 08/11 | "La cuenta del impuesto": calculadora que suma cada cargo que te pidieron hasta superar lo que pusiste | Reel dato animado | Indignación | Fusionada (los dos cargos del elegido cumplen ese rol, sin montos inventados como "promedio") |
+| 08/11 | Famoso con IA que "recomienda" invertir (deepfake) | Reel noticia | Muy actual | Descartada (mostrar una cara real o parecida es riesgo legal y de marca) |
+| 08/11 | "Tienda online falsa" rumbo al Black Friday (27/11) | Reel caso | nº6 y fecha cercana | Guardada (para la semana del 23/11) |
+| 08/11 | Encuesta "¿Pagarías el impuesto para retirar $1.248.300?" Sí/No | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
+| 08/11 | Vera revisando el link de una plataforma de inversión (captura real) | Reel demo | Confianza | Guardada (falta una captura real de Vera con un dominio de inversión; no se recrea una respuesta de Vera) |
+| 08/11 | Pieza de venta pura con el precio nuevo ($5.000) | Reel venta | Venta de la semana | Fusionada (la oferta explícita va en el texto de la publicación de hoy) |
