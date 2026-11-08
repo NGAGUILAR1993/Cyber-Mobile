@@ -1,0 +1,22 @@
+{
+  "fecha": "2026-11-06",
+  "version": "v4 FINAL — animación del diseño APROBADO keyframe4 (11 nodos de ciberseguridad) + zoom a las 3 clave + música procedural",
+  "tipo": "reel",
+  "formato": "Reel 1080x1920, 30 s, 30 fps",
+  "campana": "Pieza para pauta paga. Diseño del lienzo aprobado por Germán; mi tarea fue animarlo al pixel + 3 cambios pedidos.",
+  "cambios_v4_sobre_v3": "1) Nuevo set de nodos (keyframe4): 11 herramientas de ciberseguridad (VirusTotal, PhishStats, Cloudflare, Correos filtrados, Dominios RDAP/WHOIS, CBU/CVU, Teléfonos, Archivos, Capturas, Audios, Perfiles). Se sacaron Mercado Pago y Google Play; WhatsApp solo aparece en la intro y el CTA. 2) Zoom/push-in cinematográfico que recorre y agranda las 3 importantes (VirusTotal → PhishStats → Cloudflare), cada una ≥2,5s en pantalla, y vuelve al plano general. 3) Música de fondo 100% PROCEDURAL estilo synthwave/cyber (arpegio + sub bass + pad + beat sutil) en sfx.py, con ducking bajo los golpes y subiendo en el cierre; SIN temas con derechos.",
+  "titulo": "El motor de Vera (v4): intro con celular 3D (chat de Vera detectando un .zip malicioso, rotulado RECREACIÓN) → viaje a lluvia binaria → se abre el lienzo keyframe4 (escudo CM + 11 nodos ciber + conectores teal con dots) → push-in a VirusTotal/PhishStats/Cloudflare → secuencia de texto → Sabemos que funciona → 7 días GRATIS sin compromiso + Comentá VERA.",
+  "diseno_aprobado": "El lienzo copia EXACTAMENTE keyframe4.html (CSS, markup, paleta): fondo azul-noche con grilla de puntos, único acento teal #2fd6c6, Inter/Space Grotesk, escudo CM (logo-cm.png) al centro, 11 nodos tipo n8n con su nombre y bajada, conectores con glow + dots. Solo se animaron opacidad/transform/cámara; no se cambió el estilo ni los colores.",
+  "gancho_portada": "Zoom a VirusTotal dentro del lienzo (frame ~11s) — se ve el motor por dentro. (Intro: celular 3D detectando un .zip, rotulado RECREACIÓN.)",
+  "gancho_hablado_caption": "No es solo IA: mirá el motor de ciberseguridad que hay detrás de Vera.",
+  "hookscore": 54.2,
+  "embudo": "Confianza (mostrar el motor real de ciberseguridad) + venta (cierre 7 días gratis sin compromiso + CTA Comentá VERA)",
+  "cta": "Comentá VERA y te mando el link (WhatsApp: Escribí VERA; TikTok: link en el perfil). Oferta: 7 días GRATIS, sin compromiso.",
+  "legibilidad": "Cronometrada a velocidad real sobre el MP4 YA ENCODEADO. Caption intro ~3,3s; 'No es solo IA' 2,8s; cada nodo del zoom (VirusTotal/PhishStats/Cloudflare) ≥2,5s en pantalla, bien grande; 'Herramientas específicas · reales' header legible todo el zoom; 'Prompts…' 2,6s; 'IA entrenada… en tu teléfono' 3,2s; 'Sabemos que funciona' hasta el final; cierre 7 días GRATIS + CTA 4,4s. Transiciones y zoom con easing cine ≥0,6s. Nada acelerado.",
+  "musica": "Procedural (sin derechos), generada en sfx.py: synthwave/cyber oscuro (progresión Am–F–C–G a 100 BPM) con arpegio, sub bass, pad y beat sutil; a volumen de fondo con ducking bajo whoosh/chimes/impacto y sube en el cierre (7 días GRATIS). Mezclada con los SFX (whoosh del viaje, chimes por nodo y por zoom, impacto final).",
+  "produccion": "HTML5 Canvas (intro 3D webp + lluvia binaria + grano) + lienzo keyframe4 en DOM animado (reveal del escudo, ignite de 11 nodos, push-in de cámara a las 3 clave, conectores con dashoffset y dots) + ffmpeg. Higgsfield NO se usó (balance 0,3 créditos).",
+  "veracidad": "Intro 3D rotulado RECREACIÓN. Escudo CM = marca. Nodos = herramientas reales de ciberseguridad. NO hay logos de otras IA en la imagen (regla del dueño); ChatGPT/Gemini solo en el texto.",
+  "archivos": {"reel_instagram": "reel.mp4", "reel_whatsapp": "reel-whatsapp.mp4", "portada": "portada.jpg", "fuente": "build.html", "recorder": "rec.mjs", "audio": "sfx.py"},
+  "nota_generador": "build.html se generó a partir de keyframe4.html (aprobado) con un script que envuelve el lienzo y agrega las capas de animación; keyframe4.html es self-contained.",
+  "descripcion": "Ver instagram.txt y whatsapp.txt."
+}
