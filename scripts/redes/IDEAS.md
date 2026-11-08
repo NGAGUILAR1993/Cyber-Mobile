@@ -169,3 +169,37 @@ Lo mantiene el agente redes: antes de cada pieza tira al menos 10 ideas, anota a
 ## 2026-11-04 · Servicios profesionales (pedido del dueño: informativa y sobria)
 - Elegida: carrusel de 4 placas oscuras (paleta de /servicios), 2 servicios por placa, cierre a cybermobile.com.ar/servicios. Confianza.
 - Descartadas: placa única con los 4 servicios (texto chico, se lee mal); carrusel de 6 con una placa por servicio (largo para una pieza informativa); reel recorriendo /servicios (el dueño pidió que no hiciera falta video).
+
+## 2026-11-05 · jueves (alcance; dirección 03/11; legibilidad regla dura)
+Tendencias miradas: noticias 02-04/11 (Infobae: anuncios pagos en buscadores que imitan bancos; TN/Diario Popular: estafas del CyberMonday). Ranking de noviembre del Observatorio: nº1 App de acceso remoto, nº4 Secuestro de cuenta de WhatsApp, nº10 SIM swapping.
+
+| Fecha | Idea | Formato | Por qué podría funcionar | Estado |
+|---|---|---|---|---|
+| 05/11 | **"El celu que se maneja solo"**: grabación de pantalla de un home banking genérico donde los toques aparecen solos (los círculos de "mostrar toques" de Android) y la plata se va; rebobina a la app "de soporte" que lo empezó, dato real (nº1 del Observatorio en noviembre) y 3 pasos si te pasa | Reel grabación de pantalla poseída (recreación rotulada) | La imagen de un celular que se mueve sin dedo frena el scroll; el #1 real del ranking; "qué hacer en el momento" se guarda y se manda a los viejos | **Elegida** |
+| 05/11 | "El anuncio que aparece primero": el resultado pago de Google que imita al banco y te lleva a un falso soporte (Infobae 02/11) | Reel grabación de búsqueda | Noticia de esta semana | Descartada (muy cerca del lanzamiento de la extensión del 27/10, misma escena de buscador) |
+| 05/11 | "La hoja sobre el perfil": papel con "Nunca te pidió…" sobre la foto de perfil del banco en WhatsApp | Reel tendencia hoja de papel | Tendencia conocida | Descartada (sin persona real ni cámara, quedaría maqueta) |
+| 05/11 | "6 dígitos": el código de verificación de WhatsApp que te piden "por error" (#4 del ranking) con cuenta regresiva de 60 s | Reel suspenso con contador | Todos recibieron alguna vez ese SMS | Guardada (próxima semana, protagonista: el hijo) |
+| 05/11 | "Después del CyberMonday": el paquete que "no se pudo entregar" | Reel caso | Fecha | Descartada (la Aduana ya salió el 28/10) |
+| 05/11 | "Tu chip se apagó solo": SIM swapping contado desde la pantalla sin señal | Reel grabación | #10 del ranking, nadie lo cuenta | Guardada (necesita mejor material) |
+| 05/11 | Encuesta en vivo "¿Cuál de estas 3 apps te pediría instalar un estafador?" | Carrusel juego | Interacción | Descartada (nombrar apps reales de acceso remoto en imagen es injusto con apps legítimas) |
+| 05/11 | "Lo que ve el estafador": pantalla partida, su escritorio controlando tu celu | Reel pantalla dividida | Giro de punto de vista | Fusionada (el elegido ya lo cuenta sin dividir la pantalla, por legibilidad) |
+| 05/11 | Pack Padres como regalo del aguinaldo | Reel venta | Venta de la semana | Guardada (promo necesita aprobación; venta va el domingo) |
+| 05/11 | "Chequeo de 10 segundos al celu de tus viejos": 3 ajustes reales de Android (apps con accesibilidad) | Carrusel tutorial | Muy guardable | Guardada (complemento ideal del elegido para el sábado) |
+| 05/11 | Historia: "¿Sabrías qué hacer si tu celu se mueve solo?" encuesta Sí/No antes del reel | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
+
+## 2026-11-06 · PIEZA PARA PAUTA PAGA (pedido directo del dueño: impacto máximo, Ultra HD, ecosistema de marca)
+Concepto pedido: mostrar la TECNOLOGÍA y las HERRAMIENTAS de Vera con el lienzo tipo n8n como motivo central (motor por dentro), + las 3 superficies (WhatsApp, Web, Extensión) + "te asesora cuando quieras". CTA esta vez SÍ "Comentá VERA". Distinta de "El tablero de Vera" (03/11, análisis de UN caso) y "El celu que se maneja solo" (05/11): ésta es la MARCA/ecosistema, no una estafa puntual.
+Tendencias/criterio: formato "revelación del motor" (data-viz premium) que rinde bien en tech/IA; ganchos puntuados con hookscore (mejor 55.9).
+
+| Fecha | Idea | Formato | Por qué podría funcionar | Estado |
+|---|---|---|---|---|
+| 06/11 | **"El motor de Vera"**: cámara que arranca en primer plano del núcleo VERA (burbuja WhatsApp) y se abre revelando toda la red de nodos tipo n8n encendiéndose; herramientas reales en 3 clusters + semáforo; las 3 superficies; cierre Comentá VERA | Reel dark-premium, canvas animado + cámara en movimiento | La "máquina que se enciende" abre incógnita y frena el dedo; muestra el trabajo real (confianza) y diferencia de "otra IA"; estética cine da ganas de seguir la cuenta | **Elegida** |
+| 06/11 | Persona IA (retrato ultra-real) "hablando" sobre el motor holográfico detrás | Reel con avatar IA + motor | Caras humanas retienen | Descartada (sin Higgsfield/créditos no sale foto-real; el motor puro es más honesto y más "tech") |
+| 06/11 | Timeline "0,0s → 4,0s": reloj que corre mientras Vera verifica paso por paso | Reel cronómetro | Mostrar velocidad | Descartada (muy cerca de "El tablero", que ya mostró el análisis por pasos el 03/11) |
+| 06/11 | "3 pantallas, una Vera": split-screen de celu/notebook/navegador analizando el mismo mensaje | Reel multipantalla | Muestra las 3 superficies | Fusionada (las 3 superficies entran como tarjetas en el elegido, más legibles que un split) |
+| 06/11 | "No es magia, es ingeniería": desarmar la idea de "IA mágica" mostrando las APIs reales | Reel educativo | Angulo anti-humo | Guardada (buen hilo para una pieza de confianza más larga/educativa) |
+| 06/11 | Loop infinito del circuito como fondo para Reels/Historias de marca | B-roll reutilizable | Repurposing: sirve de fondo para muchas piezas | A producir (exportar el canvas sin texto como asset de marca) |
+| 06/11 | "Qué le podés mandar a Vera" (inventario visual: link, CBU, audio, captura, perfil) | Carrusel | Guardable, educa el uso | Guardada (complemento del elegido para la semana) |
+| 06/11 | "La diferencia está en el motor": comparación honesta IA general vs especialista mostrando herramientas | Reel comparación | Pedir la venta | Guardada (venta de la semana; evita repetir el carrusel IA vs Vera del 31/10) |
+| 06/11 | Historia: "¿Sabés qué pasa cuando le escribís a Vera?" con encuesta Sí/No antes del reel | Historia encuesta | 1 toque, anticipa el reel | A usar como historia de soporte |
+| 06/11 | "Vera también en tu compu": foco en la extensión de Chrome como puerta de entrada desde escritorio | Reel corto | Empuja la extensión (cybermobile.com.ar/chrome) | Guardada |

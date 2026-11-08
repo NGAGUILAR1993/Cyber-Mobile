@@ -68,7 +68,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family
   </div>
   <div id="vp"></div>
   <div id="wa">
-    <div class="wh"><span class="ar">&#8592;</span><img src="/cyber_agent_logo.png"><div><b>Vera · Cyber Mobile</b><small id="waEst">en línea</small></div></div>
+    <div class="wh"><span class="ar">&#8592;</span><img src="/logo-cm.png"><div><b>Vera · Cyber Mobile</b><small id="waEst">en línea</small></div></div>
     <div class="bd" id="waBd"></div>
     <div class="in">Mensaje</div>
   </div>
@@ -159,9 +159,9 @@ function render(t){
 // eventos que corren una sola vez (los dispara el grabador en orden)
 function eventos(t){for(const [et,fn] of (C.ev||[])){const k=et+'';if(t>=et&&!done.has(k)){done.add(k);fn();}}}
 const CTA={
-  ig:`<img src="/cyber_agent_logo.png"><div class="a">Comentá<br>VERA</div><div class="b">y te envío el link<br>por privado</div><div class="c">7 días gratis</div>`,
-  wa:`<img src="/cyber_agent_logo.png"><div class="a">Probala<br>7 días gratis</div><div class="b">Vera por WhatsApp<br>+54 9 11 7059-8505</div><div class="d">cybermobile.com.ar</div>`,
-  tt:`<img src="/cyber_agent_logo.png"><div class="a">Link en<br>el perfil</div><div class="c">7 días gratis</div><div class="d">Vera, el agente antiestafas<br>por WhatsApp</div>`
+  ig:`<img src="/logo-cm.png"><div class="a">Comentá<br>VERA</div><div class="b">y te envío el link<br>por privado</div><div class="c">7 días gratis</div>`,
+  wa:`<img src="/logo-cm.png"><div class="a">Probala<br>7 días gratis</div><div class="b">Vera por WhatsApp<br>+54 9 11 7059-8505</div><div class="d">cybermobile.com.ar</div>`,
+  tt:`<img src="/logo-cm.png"><div class="a">Link en<br>el perfil</div><div class="c">7 días gratis</div><div class="d">Vera, el agente antiestafas<br>por WhatsApp</div>`
 };
 const s=document.createElement('script');s.src='/comp/dia'+DIA+'.js';document.body.appendChild(s);
 </script>
