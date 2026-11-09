@@ -203,3 +203,20 @@ Contexto: el Observatorio se actualizó hoy (08/11) y el nº1 de noviembre pasó
 | 08/11 | Encuesta "¿Pagarías el impuesto para retirar $1.248.300?" Sí/No | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
 | 08/11 | Vera revisando el link de una plataforma de inversión (captura real) | Reel demo | Confianza | Guardada (falta una captura real de Vera con un dominio de inversión; no se recrea una respuesta de Vera) |
 | 08/11 | Pieza de venta pura con el precio nuevo ($5.000) | Reel venta | Venta de la semana | Fusionada (la oferta explícita va en el texto de la publicación de hoy) |
+
+## 2026-11-09 · lunes (alcance; legibilidad regla dura; CTA variable 03/11)
+Contexto: 05/11 y 08/11 fueron recreaciones de una app (acceso remoto, inversión). 06/11 comparación y 07/11 lista de 5 estafas. Observatorio al 09/11: nº1 inversión falsa, nº2 phishing bancario por WhatsApp, nº3 acceso remoto. Hoy a las 19 h sale la alerta del lunes. Gancho elegido puntuado con `hookscore.py`: 62,6 (las variantes con "¿tu vieja…?" dieron 30-36).
+
+| Fecha | Idea | Formato | Por qué podría funcionar | Estado |
+|---|---|---|---|---|
+| 09/11 | **"Antes y después: las faltas de ortografía"**: el SMS trucho de antes, con 6 faltas marcadas una por una, y el WhatsApp de hoy (phishing bancario, nº2), escrito perfecto y con tu nombre (tapado). Se marcan las 3 cosas que todavía la delatan (link que no es del banco, apuro, número cualquiera). Cierre: "Ya no alcanza con leer cómo está escrito: fijate a dónde te lleva" | Reel antes y después, 30 s, celular en mano (recreación rotulada) | Rompe el consejo que todos repiten ("fijate las faltas"); se lo mandás al que dice "yo me doy cuenta". Formato nuevo en 30 días | **Elegida** |
+| 09/11 | "El mapa del lunes": la estafa reportada en tu provincia (datos.json, `mapa`), carrusel por región, "¿no está tu provincia? contanos qué te llegó" | Carrusel por regiones | Identidad provincial, etiquetar al grupo de la familia | Guardada (serie mensual; el orden de modalidades por provincia no indica cuál es la más frecuente: aclararlo; CABA con 1 caso se lee raro) |
+| 09/11 | "Leelo en voz alta": guion real de una llamada de falso banco, subtitulado, y el momento exacto en que te piden el código | Reel audio narrado | Vishing, nadie lo muestra desde la voz | Descartada (necesita una voz; con IA puede leerse como "persona real") |
+| 09/11 | "Lo que el estafador sabe de vos antes de escribirte": nombre, banco y barrio, de filtraciones (sin cifras) | Reel suspenso | Inquietud, guardable | Descartada (sin dato verificable de cuánto se filtra en AR, cae en miedo genérico) |
+| 09/11 | "Nadie: / El estafador a las 3 de la mañana:" | Meme | Tendencia | Descartada (choca con la seriedad pedida el 22/10) |
+| 09/11 | Encuesta "¿Cuál de estos 2 mensajes es del banco?" (los dos son falsos) | Carrusel juego | Giro final | Fusionada (la idea de "el bien escrito también es falso" es el corazón de la elegida) |
+| 09/11 | "La alerta de las 19 h": mostrar cómo se arma la alerta del lunes que manda Vera | Reel detrás de escena | Confianza, hoy es lunes | Descartada (la alerta solo llega a quien escribió en 24 h; prometerla confunde) |
+| 09/11 | "6 dígitos" (código de WhatsApp) | Reel suspenso | #5 del ranking | Guardada (en dos semanas) |
+| 09/11 | "Tienda falsa rumbo al Black Friday" | Reel caso | #6 y fecha | Guardada (semana del 23/11) |
+| 09/11 | "Tu viejo vs. el mensaje": dúo/respuesta a un video de una cuenta grande de consejos que dice "fijate las faltas" | Respuesta a cuenta grande | Alcance prestado | Propuesta (no se ejecuta: elegir la cuenta y aprobar con el dueño) |
+| 09/11 | Historia: encuesta "¿Vos la reconocés por las faltas de ortografía?" Sí / No, antes del reel | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
