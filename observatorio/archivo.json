@@ -7,12 +7,12 @@
    "canal": "APP",
    "riesgo": "alto",
    "act": 91,
-   "como": "Los estafadores envían una notificación de supuesta actualización de seguridad para una aplicación bancaria. Al hacer clic, la víctima descarga un software malicioso que permite a los delincuentes tomar control remoto del dispositivo y vaciar las cuentas bancarias. Es una variante del 'soporte técnico falso' pero con foco en apps bancarias.",
-   "detectar": "Notificación inesperada de actualización de seguridad para una app bancaria, que al ser aceptada, instala un software de acceso remoto no autorizado.",
+   "como": "Los estafadores envían una falsa notificación de actualización de una aplicación bancaria. Al hacer clic, la víctima descarga un software malicioso que permite a los delincuentes tomar control remoto del dispositivo y vaciar sus cuentas bancarias. Es un engaño sofisticado que aprovecha la confianza en las actualizaciones de software.",
+   "detectar": "La víctima recibió una notificación de actualización de una app bancaria que no era legítima, lo que llevó a la descarga de un software malicioso y al vaciamiento de sus cuentas.",
    "provincias": [
     {
      "nombre": "Buenos Aires",
-     "n": 256
+     "n": 257
     },
     {
      "nombre": "Córdoba",
@@ -122,7 +122,7 @@
    "seccion": "top",
    "pos": 3,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "alquiler-inexistente": {
    "key": "alquiler_inexistente",
@@ -234,12 +234,12 @@
    "canal": "MARKETPLACE",
    "riesgo": "medio",
    "act": 83,
-   "como": "Los estafadores crean tiendas online o perfiles falsos en marketplaces, ofreciendo productos atractivos a precios muy bajos. Una vez que la víctima realiza la compra y el pago, el producto nunca llega o es de una calidad muy inferior a la esperada. A menudo, los sitios desaparecen o bloquean al comprador, dejando a la persona sin el dinero y sin el artículo.",
-   "detectar": "Precios excesivamente bajos, sitios web con errores de diseño o gramaticales, falta de información de contacto o reseñas sospechosas en tiendas online y marketplaces.",
+   "como": "Los estafadores crean tiendas online o perfiles falsos en marketplaces, ofreciendo productos atractivos a precios muy bajos. Una vez que la víctima realiza la compra y el pago, los productos nunca son enviados o son de una calidad muy inferior a la prometida. El objetivo es robar el dinero y, en algunos casos, datos personales y bancarios.",
+   "detectar": "Alertas de prensa sobre tiendas online fraudulentas, perfiles falsos en redes sociales o marketplaces, y ofertas de productos con precios excesivamente bajos que resultan ser un engaño.",
    "provincias": [
     {
      "nombre": "Mendoza",
-     "n": 41
+     "n": 42
     },
     {
      "nombre": "Catamarca",
@@ -285,16 +285,16 @@
    "seccion": "top",
    "pos": 6,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "encomienda-correo": {
    "key": "encomienda_correo",
    "nombre": "Falsa encomienda de Correo Argentino",
    "canal": "SMS",
    "riesgo": "medio",
-   "act": 69,
+   "act": 70,
    "como": "Los estafadores envían SMS haciéndose pasar por Correo Argentino, informando sobre un paquete pendiente de entrega. Para \"desbloquearlo\", solicitan un pago mínimo y datos personales y bancarios, que luego usan para vaciar cuentas o realizar compras fraudulentas. Es una modalidad recurrente que busca robar información sensible.",
-   "detectar": "Mensajes de texto (SMS) que simulan ser del Correo Argentino, solicitando un pago para liberar un paquete y pidiendo datos personales o de tarjeta de crédito.",
+   "detectar": "Mensajes de texto (SMS) que simulan ser del Correo Argentino, solicitando pagos o datos personales para liberar un paquete, con enlaces a sitios web falsos.",
    "provincias": [],
    "evidencias": [
     {
@@ -311,7 +311,7 @@
    "seccion": "top",
    "pos": 10,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "entrada-falsa": {
    "key": "entrada_falsa",
@@ -401,8 +401,8 @@
    "canal": "REDES",
    "riesgo": "alto",
    "act": 91,
-   "como": "Lucas Bertero fue víctima de una estafa millonaria a través de una plataforma de inversión falsa que prometía grandes ganancias. Los estafadores lo contactaron por redes sociales, lo convencieron de invertir y, una vez que depositó el dinero, desaparecieron con sus fondos, dejándolo sin posibilidad de recuperarlos.",
-   "detectar": "La noticia se detecta por el testimonio de una figura pública que sufrió una estafa millonaria, alertando sobre plataformas de inversión fraudulentas que prometen retornos irrealmente altos.",
+   "como": "Lucas Bertero, periodista argentino, fue víctima de una estafa millonaria. Los delincuentes lo contactaron a través de redes sociales, ofreciéndole una inversión con rendimientos extraordinarios. Lo convencieron de transferir una suma considerable de dinero a una cuenta fraudulenta, prometiéndole ganancias rápidas que nunca llegaron. La operación resultó ser un esquema Ponzi o una inversión falsa, donde el dinero inicial se pierde sin posibilidad de recupero.",
+   "detectar": "La señal de detección principal fue la promesa de rendimientos financieros inusualmente altos y rápidos, típicos de esquemas de inversión fraudulentos que operan en redes sociales.",
    "provincias": [
     {
      "nombre": "Entre Ríos",
@@ -476,7 +476,7 @@
    "seccion": "top",
    "pos": 1,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "marketplace-falso": {
    "key": "marketplace_falso",
@@ -550,9 +550,9 @@
    "nombre": "Falsa oferta laboral",
    "canal": "WHATSAPP",
    "riesgo": "medio",
-   "act": 59,
-   "como": "Los estafadores contactan a las víctimas por WhatsApp con supuestas ofertas de empleo de empresas reconocidas. Piden datos personales y bancarios, y luego solicitan transferencias de dinero bajo la excusa de capacitaciones o materiales, prometiendo altos retornos. Una vez que la víctima transfiere el dinero, los delincuentes desaparecen.",
-   "detectar": "Mensajes de WhatsApp con ofertas de trabajo demasiado buenas para ser verdad, solicitando datos personales y dinero para supuestas capacitaciones o materiales.",
+   "act": 60,
+   "como": "Los estafadores contactan a las víctimas por WhatsApp con supuestas ofertas de empleo de empresas reconocidas. Piden datos personales y bancarios, o solicitan una pequeña inversión inicial para 'capacitación' o 'materiales', prometiendo grandes ganancias. Una vez que obtienen el dinero o la información, desaparecen.",
+   "detectar": "Mensajes de WhatsApp con ofertas de trabajo demasiado buenas para ser verdad, solicitando datos personales o dinero por adelantado para supuestas capacitaciones o materiales.",
    "provincias": [
     {
      "nombre": "Catamarca",
@@ -560,7 +560,7 @@
     },
     {
      "nombre": "Santa Fe",
-     "n": 15
+     "n": 16
     }
    ],
    "evidencias": [
@@ -610,7 +610,7 @@
    "seccion": "watch",
    "pos": 13,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "paqueteria-falsa": {
    "key": "paqueteria_falsa",
@@ -806,16 +806,16 @@
    "canal": "WHATSAPP",
    "riesgo": "alto",
    "act": 91,
-   "como": "Una persona recibió un mensaje de WhatsApp de un número desconocido que se hacía pasar por su banco. Le informaron sobre un supuesto error en su cuenta y le pidieron que hiciera clic en un enlace para 'solucionarlo'. Al ingresar sus datos bancarios, los estafadores accedieron a su cuenta y le robaron casi $3 millones.",
-   "detectar": "Mensaje de WhatsApp de un número desconocido que se hace pasar por el banco, solicitando datos personales o bancarios a través de un enlace.",
+   "como": "Un hombre recibió un mensaje de WhatsApp de un número desconocido, haciéndose pasar por un empleado bancario. Le informaron sobre un supuesto problema con su cuenta y lo guiaron para instalar una aplicación de acceso remoto. Una vez instalada, los estafadores tomaron control de su dispositivo y realizaron transferencias no autorizadas, vaciando su cuenta bancaria.",
+   "detectar": "Mensaje de WhatsApp de un número desconocido haciéndose pasar por el banco, solicitando instalar una aplicación o compartir datos sensibles para solucionar un problema urgente en la cuenta.",
    "provincias": [
     {
      "nombre": "Buenos Aires",
-     "n": 75
+     "n": 76
     },
     {
      "nombre": "Santiago del Estero",
-     "n": 50
+     "n": 51
     },
     {
      "nombre": "La Pampa",
@@ -893,7 +893,7 @@
    "seccion": "top",
    "pos": 2,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "phishing-mercadopago": {
    "key": "phishing_mercadopago",
@@ -967,16 +967,16 @@
    "nombre": "Phishing de PAMI",
    "canal": "WHATSAPP",
    "riesgo": "medio",
-   "act": 85,
-   "como": "Los estafadores se hacen pasar por el Instituto de Seguros de Jujuy (ISJ) a través de WhatsApp, enviando mensajes con enlaces maliciosos. Buscan robar datos personales y bancarios de los afiliados, ofreciendo supuestos beneficios o trámites urgentes que requieren ingresar información sensible en sitios falsos.",
-   "detectar": "Mensajes de WhatsApp de números desconocidos que se hacen pasar por el ISJ, solicitando datos personales o bancarios a través de enlaces sospechosos.",
+   "act": 86,
+   "como": "Los estafadores se hacen pasar por personal del ISJ (Instituto de Seguros de Jujuy) a través de WhatsApp. Envían mensajes con enlaces maliciosos o solicitan datos personales y bancarios, con la excusa de actualizar información o gestionar trámites, para luego robar credenciales y acceder a cuentas bancarias o realizar compras fraudulentas.",
+   "detectar": "Mensajes de WhatsApp de supuestos agentes del ISJ solicitando datos personales o bancarios, o pidiendo hacer clic en enlaces sospechosos para \"actualizar\" información.",
    "provincias": [
     {
-     "nombre": "Buenos Aires",
-     "n": 44
+     "nombre": "Jujuy",
+     "n": 46
     },
     {
-     "nombre": "Jujuy",
+     "nombre": "Buenos Aires",
      "n": 44
     },
     {
@@ -1035,7 +1035,7 @@
    "seccion": "top",
    "pos": 4,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "phishing-servicios": {
    "key": "phishing_servicios",
@@ -1250,8 +1250,8 @@
    "canal": "TELEFONO",
    "riesgo": "alto",
    "act": 78,
-   "como": "El periodista Lucas Bertero fue víctima de una estafa donde le robaron la identidad para sacar créditos por más de 20 millones de pesos a su nombre. Los delincuentes lograron acceder a sus datos personales y financieros, posiblemente a través de una llamada telefónica o un engaño previo, para luego gestionar préstamos en distintas entidades bancarias, dejándolo con una deuda millonaria y un grave problema legal y financiero.",
-   "detectar": "La víctima se enteró de la estafa al recibir notificaciones de deudas y créditos que nunca solicitó, evidenciando el uso fraudulento de su identidad para obtener beneficios económicos.",
+   "como": "El periodista Lucas Bertero fue víctima de una estafa donde le robaron su identidad. Los delincuentes, haciéndose pasar por empleados de una empresa de telefonía, lo contactaron para ofrecerle un descuento. Durante la interacción, obtuvieron sus datos personales y, con esa información, sacaron créditos por más de 20 millones de pesos a su nombre en distintas entidades bancarias.",
+   "detectar": "La víctima recibió una llamada telefónica de supuestos empleados de una empresa de telefonía que ofrecían un descuento, lo que derivó en el robo de su identidad y la solicitud de créditos fraudulentos.",
    "provincias": [],
    "evidencias": [
     {
@@ -1268,7 +1268,7 @@
    "seccion": "top",
    "pos": 8,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "romance-scam": {
    "key": "romance_scam",
@@ -1315,8 +1315,8 @@
    "canal": "WHATSAPP",
    "riesgo": "alto",
    "act": 83,
-   "como": "Los estafadores secuestran una cuenta de WhatsApp, generalmente a través de un código de verificación o un enlace malicioso. Luego, se hacen pasar por el titular de la cuenta y contactan a sus contactos pidiéndoles dinero con alguna excusa urgente, como una emergencia o una necesidad económica inmediata, para que realicen transferencias a cuentas de terceros.",
-   "detectar": "La policía investiga una estafa donde se suplantó la identidad de una persona en WhatsApp para pedir dinero a sus contactos, lo que indica un secuestro de cuenta.",
+   "como": "Los estafadores secuestran una cuenta de WhatsApp, generalmente a través de un código de verificación o un engaño. Luego, se hacen pasar por el titular de la cuenta y contactan a sus contactos pidiéndoles dinero con una excusa urgente, como una emergencia o una transferencia bancaria fallida, para que les depositen en una cuenta fraudulenta.",
+   "detectar": "Contactos de la víctima reciben mensajes inusuales pidiendo dinero de forma urgente, o la víctima pierde el acceso a su cuenta de WhatsApp sin motivo aparente.",
    "provincias": [
     {
      "nombre": "Catamarca",
@@ -1394,7 +1394,7 @@
    "seccion": "top",
    "pos": 5,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "sextorsion": {
    "key": "sextorsion",
@@ -1460,9 +1460,9 @@
    "nombre": "SIM swapping",
    "canal": "TELEFONO",
    "riesgo": "alto",
-   "act": 66,
-   "como": "Los estafadores realizaron un 'SIM swapping' para duplicar la línea telefónica de la víctima. Una vez que tuvieron el control de su número, accedieron a sus cuentas bancarias y aplicaciones financieras, vaciándolas y solicitando créditos millonarios a su nombre. La víctima perdió el control de su celular y sus finanzas.",
-   "detectar": "La víctima perdió la señal de su celular de forma inesperada y luego descubrió movimientos bancarios y solicitudes de crédito no autorizadas en sus cuentas.",
+   "act": 68,
+   "como": "Los estafadores realizaron un 'SIM swapping' para duplicar la línea telefónica de la víctima. Una vez que tuvieron control de su número, accedieron a sus cuentas bancarias y aplicaciones, vaciándolas y solicitando créditos millonarios a su nombre. La víctima perdió el control de su celular y sus finanzas.",
+   "detectar": "La víctima perdió la señal de su celular de forma inesperada, lo que fue el primer indicio de que su línea había sido duplicada por los delincuentes para acceder a sus datos y cuentas bancarias.",
    "provincias": [],
    "evidencias": [
     {
@@ -1479,16 +1479,16 @@
    "seccion": "watch",
    "pos": 12,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "suplantacion-banco": {
    "key": "suplantacion_banco",
    "nombre": "Suplantacion de banco por telefono",
    "canal": "TELEFONO",
    "riesgo": "alto",
-   "act": 55,
-   "como": "Los estafadores se hacen pasar por empleados de un banco y llaman a la víctima para alertar sobre supuestos movimientos sospechosos en su cuenta. Con la excusa de 'solucionar' el problema, solicitan datos personales y bancarios, o incluso guían a la víctima para que instale una aplicación de acceso remoto, vaciando la cuenta en cuestión de segundos.",
-   "detectar": "Llamadas telefónicas inesperadas de supuestos bancos que solicitan datos personales o la instalación de software, con la excusa de resolver problemas de seguridad en la cuenta.",
+   "act": 56,
+   "como": "Los estafadores se hacen pasar por un banco y llaman a la víctima para alertarla sobre un supuesto movimiento sospechoso en su cuenta. Con la excusa de 'solucionar' el problema, le piden que instale una aplicación de acceso remoto en su celular, lo que les permite tomar el control del dispositivo y vaciar la cuenta bancaria en cuestión de segundos.",
+   "detectar": "Llamadas telefónicas inesperadas de supuestos bancos que solicitan instalar aplicaciones de acceso remoto o compartir datos sensibles para resolver problemas de seguridad en la cuenta.",
    "provincias": [
     {
      "nombre": "Jujuy",
@@ -1562,7 +1562,7 @@
    "seccion": "watch",
    "pos": 14,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "suplantacion-contacto": {
    "key": "suplantacion_contacto",
@@ -1570,16 +1570,16 @@
    "canal": "WHATSAPP",
    "riesgo": "alto",
    "act": 81,
-   "como": "Los estafadores se hacen pasar por un familiar o amigo a través de WhatsApp, generalmente con un número desconocido, alegando una situación de urgencia (como un problema con el celular o una necesidad económica inmediata) para pedir dinero. Solicitan transferencias rápidas a una cuenta bancaria o billetera virtual, aprovechando la confianza y el apuro de la víctima.",
-   "detectar": "Mensajes de WhatsApp de números desconocidos que se hacen pasar por familiares o amigos, pidiendo dinero de forma urgente y con excusas poco creíbles sobre problemas con su teléfono habitual.",
+   "como": "Los estafadores se hacen pasar por un familiar o contacto cercano de la víctima, generalmente a través de WhatsApp, alegando una situación de urgencia (como un problema económico o una emergencia médica) para solicitar transferencias de dinero inmediatas. Utilizan perfiles falsos o números desconocidos para engañar a la persona y que realice el pago.",
+   "detectar": "Mensajes de WhatsApp de números desconocidos o perfiles falsos que se hacen pasar por familiares, solicitando dinero de forma urgente y con excusas poco creíbles.",
    "provincias": [
     {
      "nombre": "Río Negro",
-     "n": 20
+     "n": 21
     },
     {
      "nombre": "Santa Cruz",
-     "n": 18
+     "n": 19
     },
     {
      "nombre": "Chubut",
@@ -1641,20 +1641,20 @@
    "seccion": "top",
    "pos": 7,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   },
   "turno-falso": {
    "key": "turno_falso",
    "nombre": "Falso turno o tramite",
    "canal": "TELEFONO",
    "riesgo": "alto",
-   "act": 71,
-   "como": "Los estafadores se hacen pasar por personal de Salud y llaman a las víctimas para ofrecerles falsos turnos de vacunación. Durante la conversación, solicitan datos personales y bancarios con la excusa de \"confirmar\" el turno, buscando obtener información sensible para luego realizar operaciones fraudulentas o vaciar cuentas.",
-   "detectar": "Llamadas telefónicas inesperadas de supuestos organismos de salud solicitando datos personales o bancarios para un turno de vacunación. Las autoridades de salud no piden información sensible por teléfono.",
+   "act": 72,
+   "como": "Los estafadores se hacen pasar por personal de salud y llaman a las víctimas para ofrecerles falsos turnos de vacunación. Durante la llamada, solicitan datos personales y bancarios con la excusa de \"confirmar\" el turno, buscando obtener información sensible para luego realizar operaciones fraudulentas o vaciar cuentas. Es una modalidad de vishing que explota la confianza en las autoridades sanitarias.",
+   "detectar": "Alertas de organismos oficiales sobre llamadas telefónicas que solicitan datos personales o bancarios para \"confirmar\" turnos de vacunación, especialmente si no se solicitó previamente.",
    "provincias": [
     {
      "nombre": "Chaco",
-     "n": 7
+     "n": 8
     }
    ],
    "evidencias": [
@@ -1672,7 +1672,7 @@
    "seccion": "top",
    "pos": 9,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-08T15:00:20.269Z"
+   "visto": "2026-11-09T01:00:18.939Z"
   }
  }
 }
