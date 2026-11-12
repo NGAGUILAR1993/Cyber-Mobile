@@ -49,9 +49,7 @@ body{font-family:SG,system-ui,sans-serif;color:#fff;position:relative}
 .b.out{background:#d9fdd3;align-self:flex-end;border-top-right-radius:6px;transform-origin:100% 100%}
 .b time{display:block;text-align:right;font-size:19px;color:#7b8389;margin-top:3px}
 .b .fw{font-size:22px;color:#6b7479;font-style:italic;margin-bottom:5px}
-.b .pic{width:520px;height:250px;border-radius:14px;margin-bottom:10px;background:linear-gradient(180deg,#8fd0f2 0,#bfe6f7 46%,#3aa0c8 47%,#2b86ad 70%,#e9d7ae 71%,#dcc594);position:relative;overflow:hidden}
-.b .pic:after{content:"";position:absolute;left:60px;top:70px;width:190px;height:120px;background:#8a5a3a;clip-path:polygon(0 38%,50% 0,100% 38%,100% 100%,0 100%)}
-.b .pic:before{content:"";position:absolute;right:70px;top:34px;width:62px;height:62px;border-radius:50%;background:#ffe9a6;box-shadow:0 0 40px #fff3c4}
+.b .pic{width:520px;height:292px;border-radius:14px;margin-bottom:10px;object-fit:cover;display:block}
 .b .tap{display:inline-block;width:300px;height:24px;border-radius:6px;background:#8c949a;filter:blur(6px);vertical-align:middle}
 .b.v{max-width:600px;padding:18px 22px 14px}
 .b.v .tag{display:inline-block;background:#e5392e;color:#fff;font-weight:700;font-size:30px;padding:7px 16px;border-radius:10px;letter-spacing:.02em;margin-bottom:10px}
@@ -80,24 +78,22 @@ body{font-family:SG,system-ui,sans-serif;color:#fff;position:relative}
 <div class="brand"><img src="/home/user/Cyber-Mobile/logo-cm.png">CYBER MOBILE</div>
 
 <div class="cap" id="c1">Encontraron la cabaña ideal <em>para el verano.</em></div>
-<div class="cap r" id="c3">Estaban a un toque <em>de transferir.</em></div>
-<div class="cap" id="c4">Esta vez, la hija <em>se lo reenvió a Vera.</em></div>
+<div class="cap r" id="c3"><em>Paso 4.</em> Transferís la seña. Y no contesta nunca más.</div>
 <div class="cap" id="c6">Si el año pasado perdiste plata, <em>no vuelvas a caer.</em></div>
 
 <div id="rw"><div class="lines"></div><div class="bar" id="rwb"></div><div class="t">◀◀ REBOBINÁ<small>¿Y si antes preguntaban?</small></div></div>
 
-<div class="note" id="n2"><em>40% OFF.</em> Seña hoy.<br>Solo por transferencia.</div>
-<div class="note" id="n5">Vera lo revisó <em>en segundos.</em></div>
+<div class="note" id="s1"><em>Paso 1.</em> Un aviso con<br>precio regalado.</div><div class="note" id="s2"><em>Paso 2.</em> Te apuran:<br>«señá hoy».</div><div class="note" id="s3"><em>Paso 3.</em> Sin videollamada.<br>Solo transferencia.</div>
+<div class="note" id="n5">Antes de señar, la hija<br><em>le preguntó a Vera.</em></div>
 
 <!-- celular A: el "dueño" -->
 <div class="phone" id="phA"><div class="scr"><div class="isl"></div>
  <div class="sb"><span>21:47</span><i><span class="sig"><b style="height:8px"></b><b style="height:12px"></b><b style="height:16px"></b><b style="height:20px"></b></span>5G<span class="bat"></span></i></div>
  <div class="hd"><span class="bk">‹</span><span class="av gen"><svg width="46" height="46" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="8.5" r="4.2"/><path d="M3.5 21a8.5 8.5 0 0117 0z"/></svg></span><div><b>Alquiler cabaña <span class="blur"></span></b><small>número no agendado</small></div></div>
  <div class="chat">
-  <div class="b in" id="a1"><div class="pic"></div>Cabaña frente al mar, 2.ª quincena de enero 🏖️<time>21:44</time></div>
-  <div class="b in" id="a2"><b>¡40% OFF si señás HOY!</b> Es la última que me queda.<time>21:45</time></div>
-  <div class="b in" id="a3">Transferí la seña a este CBU:<br><span class="tap"></span><time>21:46</time></div>
-  <div class="b in" id="a4">Tengo otra familia interesada, apurate ⏰<time>21:47</time></div>
+  <div class="b in" id="a1"><img class="pic" src="familia/cabana.png">Cabaña a metros del mar, enero. <b>Mitad de precio</b> que las de la zona 🏖️<time>21:44</time></div>
+  <div class="b in" id="a2"><b>Señá HOY</b> y te la guardo. Tengo otra familia interesada ⏰<time>21:45</time></div>
+  <div class="b in" id="a3">Videollamada no puedo, estoy de viaje. Transferí la seña a este CBU:<br><span class="tap"></span><time>21:47</time></div>
  </div>
  <div class="inp"><div>Mensaje</div><span></span></div><div class="glare"></div></div></div>
 
@@ -106,12 +102,12 @@ body{font-family:SG,system-ui,sans-serif;color:#fff;position:relative}
  <div class="sb"><span>21:48</span><i><span class="sig"><b style="height:8px"></b><b style="height:12px"></b><b style="height:16px"></b><b style="height:20px"></b></span>5G<span class="bat"></span></i></div>
  <div class="hd"><span class="bk">‹</span><img class="av" src="vera-perfil.png"><div><b>Vera AI Antiestafas</b><small>en línea</small></div></div>
  <div class="chat">
-  <div class="b out" id="b1"><div class="fw">↪ Reenviado</div><b>¡40% OFF si señás HOY!</b> Transferí la seña a este CBU…<time>21:48 ✓✓</time></div>
+  <div class="b out" id="b1"><div class="fw">↪ Reenviado</div>Mitad de precio. <b>Señá HOY.</b> Videollamada no puedo…<time>21:48 ✓✓</time></div>
   <div class="b out" id="b2">¿Es seguro señar esta cabaña?<time>21:48 ✓✓</time></div>
   <div class="typ" id="ty"><i></i><i></i><i></i></div>
   <div class="b in v" id="b3"><span class="tag">🔴 RIESGO ALTO</span><br>Tiene señales de <b>estafa de alquiler</b>:
-   <p>🚩 Precio muy por debajo de lo normal</p><p>🚩 Apuro para señar hoy</p><p>🚩 Solo transferencia, a una cuenta personal</p>
-   <div class="do">✋ No transfieras. Pedí una videollamada desde el lugar.</div><time>21:48</time></div>
+   <p>🚩 Precio muy por debajo de la zona</p><p>🚩 Apuro para señar hoy</p><p>🚩 Se niega a la videollamada</p>
+   <div class="do">✋ No transfieras. Pedí videollamada desde el lugar y buscá la dirección en el mapa.</div><time>21:48</time></div>
  </div>
  <div class="inp"><div>Mensaje</div><span></span></div><div class="glare"></div></div></div>
 <div class="rec" id="rec">RECREACIÓN</div>
@@ -125,50 +121,42 @@ const ez=x=>{x=cl(x);return x*x*(3-2*x)};
 // aparece en a (dura fi) y se va en b (dura fo)
 const win=(t,a,b,fi=.6,fo=.6)=>ez((t-a)/fi)*(1-ez((t-(b-fo))/fo));
 const canal=new URLSearchParams(location.search).get('canal')||'ig';
-$('cta').textContent = canal==='wa' ? 'Escribile por WhatsApp · link en el canal' : canal==='tt' ? 'Link en el perfil' : 'Comentá VERA y te envío el link';
+$('cta').textContent = canal==='wa' ? 'Escribile por WhatsApp · link en el canal' : canal==='tt' ? 'Link en el perfil o escribime por privado' : 'Comentá VERA y te envío el link';
 function pop(el,t,at){const k=ez((t-at)/.45);el.style.opacity=k;el.style.transform=`translateY(${(1-k)*26}px) scale(${.94+.06*k})`;}
 function phone(el,t,a,b){const k=win(t,a,b,.7,.6);const up=ez((t-a)/.7);el.style.opacity=k;
  el.style.transform=`perspective(2600px) translateY(${(1-up)*220}px) rotateX(${(1-up)*10+1.2}deg) rotateY(${-2.2+Math.sin(t*.7)*1.1}deg) scale(${.96+.04*up})`;}
 function render(t){
- // fotos
- const o1=1-ez((t-2.9)/.8)+ (win(t,11.9,14.5,.3,.3)*(0.5+0.5*Math.sin(t*38)>0.5?1:0));
- const o2=win(t,2.9+0,23.9,.8,.8);
- const o3=ez((t-23.3)/.9);
- $('p1').style.opacity=cl(o1); $('p2').style.opacity=cl(o2); $('p3').style.opacity=o3;
+ const flick=win(t,14.0,16.5,.3,.3)*((Math.sin(t*38)>0)?1:0);
+ $('p1').style.opacity=cl(1-ez((t-2.5)/.8)+flick);
+ $('p2').style.opacity=win(t,2.5,23.2,.8,.8);
+ $('p3').style.opacity=ez((t-22.5)/.9);
  $('p1').style.transform=`scale(${1.04+t*.012})`;
- $('p2').style.transform=`scale(${1.05+cl(t-2.9,0,30)*.006}) translateY(${-cl(t-9,0,3)*6}px)`;
- $('p3').style.transform=`scale(${1.12-cl(t-23.3,0,7)*.012})`;
- // p2 desaturada/oscura mientras hay celular; roja antes del clic
- const sat = 1 - .35*win(t,9.2,14.5,.5,.5);
- $('p2').style.filter=`saturate(${sat})`;
- const dim=Math.max(win(t,3.2,9.2,.7,.6),win(t,17.1,23.6,.7,.6))*.72;
- $('dim').style.opacity=dim;
- const beat=.5+.5*Math.sin((t-9.2)*Math.PI*2*1.9);
- $('red').style.opacity=win(t,9.2,12.2,.6,.5)*(.55+.45*beat);
- // textos
- $('c1').style.opacity=win(t,.3,3.2,.6,.5);
- $('c3').style.opacity=win(t,9.3,11.9,.5,.4);
- $('c4').style.opacity=win(t,14.5,17.2,.6,.5);
- $('c6').style.opacity=win(t,23.7,26.4,.6,.5);
- for(const id of ['c1','c3','c4','c6']){const e=$(id);e.style.transform=`translateY(${(1-cl(+e.style.opacity*1.2))*22}px)`;}
- $('n2').style.opacity=win(t,5.5,9.1,.6,.5);
- $('n5').style.opacity=win(t,19.6,23.5,.6,.5);
- // rebobinar
- const rw=win(t,11.9,14.5,.35,.4); $('rw').style.opacity=rw;
- $('rwb').style.top=(1920-((t-11.9)*1500)%2100)+'px';
+ $('p2').style.transform=`scale(${1.05+cl(t-2.5,0,30)*.006}) translateY(${-cl(t-11,0,3)*6}px)`;
+ $('p3').style.transform=`scale(${1.12-cl(t-22.5,0,8)*.012})`;
+ $('p2').style.filter=`saturate(${1-.35*win(t,11.2,16.5,.5,.5)})`;
+ $('dim').style.opacity=Math.max(win(t,2.8,11.2,.7,.6),win(t,16.5,22.8,.7,.6))*.72;
+ const beat=.5+.5*Math.sin((t-11.2)*Math.PI*2*1.9);
+ $('red').style.opacity=win(t,11.2,14.2,.6,.5)*(.55+.45*beat);
+ $('c1').style.opacity=win(t,.2,2.8,.6,.5);
+ $('c3').style.opacity=win(t,11.3,14.0,.5,.4);
+ $('c6').style.opacity=win(t,22.9,25.7,.6,.5);
+ for(const id of ['c1','c3','c6']){const e=$(id);e.style.transform=`translateY(${(1-cl(+e.style.opacity*1.2))*22}px)`;}
+ $('s1').style.opacity=win(t,3.0,5.8,.5,.4);
+ $('s2').style.opacity=win(t,5.8,8.5,.5,.4);
+ $('s3').style.opacity=win(t,8.5,11.2,.5,.4);
+ $('n5').style.opacity=win(t,16.9,22.7,.6,.5);
+ const rw=win(t,14.0,16.5,.35,.4); $('rw').style.opacity=rw;
+ $('rwb').style.top=(1920-((t-14.0)*1500)%2100)+'px';
  if(rw>0.02){const j=Math.sin(t*90)*6*rw; $('p2').style.transform+=` translateX(${j}px)`; $('p1').style.transform+=` translateX(${-j}px)`;}
- // celular A
- phone($('phA'),t,3.2,9.2);
- pop($('a1'),t,3.9);pop($('a2'),t,4.3);pop($('a3'),t,4.7);pop($('a4'),t,5.1);
- // celular B
- phone($('phB'),t,17.1,23.6);
- pop($('b1'),t,17.8);pop($('b2'),t,18.3);
- const ty=win(t,18.7,19.45,.25,.25); $('ty').style.opacity=ty; $('ty').style.display=t>19.45?'none':'flex';
+ phone($('phA'),t,2.8,11.2);
+ pop($('a1'),t,3.3);pop($('a2'),t,5.9);pop($('a3'),t,8.6);
+ phone($('phB'),t,16.5,22.8);
+ pop($('b1'),t,17.1);pop($('b2'),t,17.5);
+ const ty=win(t,17.9,18.55,.25,.25); $('ty').style.opacity=ty; $('ty').style.display=t>18.55?'none':'flex';
  [...$('ty').children].forEach((d,i)=>d.style.transform=`translateY(${-6*Math.max(0,Math.sin(t*9-i*.9))}px)`);
- pop($('b3'),t,19.4);
- $('rec').style.opacity=Math.max(win(t,3.6,9.2,.6,.5),win(t,17.5,23.6,.6,.5));
- // cierre
- const e=ez((t-26.3)/.7); $('end').style.opacity=e;
+ pop($('b3'),t,18.5);
+ $('rec').style.opacity=Math.max(win(t,3.2,11.2,.6,.5),win(t,16.9,22.8,.6,.5));
+ const e=ez((t-25.6)/.7); $('end').style.opacity=e;
  $('grad').style.opacity=1-e*.2;
 }
 const IMG=[...document.images];
