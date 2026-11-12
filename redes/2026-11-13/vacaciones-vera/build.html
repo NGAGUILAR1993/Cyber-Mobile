@@ -1,0 +1,177 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:SG;font-weight:700;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SG;font-weight:400;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Regular.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+body{font-family:SG,system-ui,sans-serif;color:#fff;position:relative}
+.ph{position:absolute;inset:0;width:1080px;height:1920px;object-fit:cover;transform-origin:50% 40%;will-change:transform,opacity}
+#dim{position:absolute;inset:0;background:#05080d;opacity:0}
+#red{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%,rgba(190,20,20,0) 35%,rgba(190,20,20,.75) 100%);opacity:0;mix-blend-mode:multiply}
+#grad{position:absolute;left:0;right:0;bottom:0;height:1000px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.55) 45%,rgba(0,0,0,.9))}
+#gtop{position:absolute;left:0;right:0;top:0;height:420px;background:linear-gradient(0deg,rgba(0,0,0,0),rgba(0,0,0,.6))}
+.brand{position:absolute;top:150px;left:64px;display:flex;align-items:center;gap:14px;font-weight:700;letter-spacing:.24em;font-size:24px;color:#e8f1f5}
+.brand img{width:54px;height:54px;object-fit:contain}
+.cap{position:absolute;left:64px;right:64px;bottom:400px;font-weight:700;font-size:78px;line-height:1.08;letter-spacing:-.015em;text-shadow:0 4px 30px rgba(0,0,0,.7);opacity:0}
+.cap em{font-style:normal;color:#39e6d4}
+.cap.r em{color:#ff5a4e}
+.cap small{display:block;font-weight:400;font-size:40px;line-height:1.25;margin-top:18px;color:#dfe8ee;letter-spacing:0}
+/* rebobinar */
+#rw{position:absolute;inset:0;opacity:0}
+#rw .lines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 3px,transparent 3px 9px)}
+#rw .bar{position:absolute;left:0;right:0;height:120px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.28),transparent)}
+#rw .t{position:absolute;left:0;right:0;top:820px;text-align:center;font-weight:700;font-size:118px;letter-spacing:.02em;text-shadow:6px 0 0 rgba(255,40,60,.75),-6px 0 0 rgba(40,220,255,.75)}
+#rw .t small{display:block;font-size:44px;font-weight:400;letter-spacing:.04em;margin-top:18px;text-shadow:none;color:#e6eef3}
+/* celular */
+.phone{position:absolute;left:170px;top:330px;width:740px;height:1380px;border-radius:104px;padding:17px;
+ background:linear-gradient(145deg,#4a4f57,#16181c 28%,#2b2e34 60%,#0b0c0e);
+ box-shadow:0 0 0 2px #050607,0 0 0 5px #5d636c,0 60px 120px rgba(0,0,0,.75),0 20px 40px rgba(0,0,0,.5);opacity:0;will-change:transform,opacity}
+.phone:before{content:"";position:absolute;right:-9px;top:330px;width:7px;height:150px;border-radius:4px;background:#3a3e45}
+.phone:after{content:"";position:absolute;left:-9px;top:270px;width:7px;height:90px;border-radius:4px;background:#3a3e45;box-shadow:0 120px 0 #3a3e45}
+.scr{position:relative;width:100%;height:100%;border-radius:88px;overflow:hidden;background:#efe7dd;border:5px solid #000}
+.scr .glare{position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,.13) 0,rgba(255,255,255,0) 26%);pointer-events:none;z-index:9}
+.isl{position:absolute;top:22px;left:50%;margin-left:-98px;width:196px;height:50px;border-radius:30px;background:#000;z-index:8}
+.sb{position:absolute;top:0;left:0;right:0;height:88px;background:#f7f5f2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 54px 12px;font-weight:700;font-size:27px;color:#111;font-family:system-ui,sans-serif;z-index:6}
+.sb i{font-style:normal;display:flex;gap:9px;align-items:center}
+.sb .bat{width:44px;height:21px;border:2.5px solid #111;border-radius:6px;position:relative}.sb .bat:before{content:"";position:absolute;inset:2px 8px 2px 2px;background:#111;border-radius:2px}
+.sb .sig{display:flex;gap:3px;align-items:flex-end}.sb .sig b{width:5px;background:#111;border-radius:1px}
+.hd{position:absolute;top:88px;left:0;right:0;height:118px;background:#f7f5f2;border-bottom:1px solid #dcd6cd;display:flex;align-items:center;gap:18px;padding:0 26px;z-index:6;font-family:system-ui,sans-serif;color:#111}
+.hd .bk{font-size:46px;color:#128c7e;line-height:1}
+.hd .av{width:82px;height:82px;border-radius:50%;object-fit:cover;flex:none;background:#b9c2c9}
+.hd .gen{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#c9d2d8,#98a4ad)}
+.hd b{font-size:31px;display:block;line-height:1.15}
+.hd small{font-size:23px;color:#687076}
+.hd .blur{display:inline-block;width:170px;height:22px;border-radius:6px;background:#9aa2a8;filter:blur(5px);vertical-align:middle}
+.chat{position:absolute;top:206px;left:0;right:0;bottom:104px;padding:26px 24px;font-family:system-ui,sans-serif;display:flex;flex-direction:column;gap:14px;
+ background-color:#efe7dd;background-image:radial-gradient(rgba(120,100,70,.08) 2px,transparent 2.4px);background-size:34px 34px}
+.b{max-width:560px;padding:15px 20px 12px;border-radius:22px;font-size:31px;line-height:1.3;color:#111;box-shadow:0 2px 3px rgba(0,0,0,.14);opacity:0;transform-origin:0 100%}
+.b.in{background:#fff;align-self:flex-start;border-top-left-radius:6px}
+.b.out{background:#d9fdd3;align-self:flex-end;border-top-right-radius:6px;transform-origin:100% 100%}
+.b time{display:block;text-align:right;font-size:19px;color:#7b8389;margin-top:3px}
+.b .fw{font-size:22px;color:#6b7479;font-style:italic;margin-bottom:5px}
+.b .pic{width:520px;height:250px;border-radius:14px;margin-bottom:10px;background:linear-gradient(180deg,#8fd0f2 0,#bfe6f7 46%,#3aa0c8 47%,#2b86ad 70%,#e9d7ae 71%,#dcc594);position:relative;overflow:hidden}
+.b .pic:after{content:"";position:absolute;left:60px;top:70px;width:190px;height:120px;background:#8a5a3a;clip-path:polygon(0 38%,50% 0,100% 38%,100% 100%,0 100%)}
+.b .pic:before{content:"";position:absolute;right:70px;top:34px;width:62px;height:62px;border-radius:50%;background:#ffe9a6;box-shadow:0 0 40px #fff3c4}
+.b .tap{display:inline-block;width:300px;height:24px;border-radius:6px;background:#8c949a;filter:blur(6px);vertical-align:middle}
+.b.v{max-width:600px;padding:18px 22px 14px}
+.b.v .tag{display:inline-block;background:#e5392e;color:#fff;font-weight:700;font-size:30px;padding:7px 16px;border-radius:10px;letter-spacing:.02em;margin-bottom:10px}
+.b.v p{margin-top:8px}
+.b.v .do{margin-top:12px;padding-top:11px;border-top:1px solid #e6e2dc;font-weight:700}
+.typ{align-self:flex-start;background:#fff;border-radius:22px;padding:20px 24px;display:flex;gap:9px;opacity:0;box-shadow:0 2px 3px rgba(0,0,0,.14)}
+.typ i{width:14px;height:14px;border-radius:50%;background:#98a1a7}
+.inp{position:absolute;left:0;right:0;bottom:0;height:104px;background:#f7f5f2;display:flex;align-items:center;gap:16px;padding:0 22px 14px;z-index:6}
+.inp div{flex:1;height:64px;border-radius:34px;background:#fff;border:1px solid #e2ddd5;font-family:system-ui;font-size:27px;color:#9aa1a6;display:flex;align-items:center;padding-left:26px}
+.inp span{width:66px;height:66px;border-radius:50%;background:#128c7e;flex:none}
+.rec{position:absolute;left:0;right:0;top:1740px;text-align:center;font-size:25px;letter-spacing:.3em;color:rgba(255,255,255,.72);opacity:0}
+.note{position:absolute;left:64px;right:64px;top:212px;text-align:center;font-weight:700;font-size:52px;line-height:1.12;opacity:0;text-shadow:0 3px 22px rgba(0,0,0,.8)}
+.note em{font-style:normal;color:#ffd24a}
+/* cierre */
+#end{position:absolute;inset:0;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 70px 160px;background:linear-gradient(180deg,rgba(4,10,16,.82),rgba(4,10,16,.93))}
+#end .av{width:300px;height:300px;border-radius:50%;object-fit:cover;border:6px solid #39e6d4;box-shadow:0 0 90px rgba(57,230,212,.45)}
+#end h1{font-size:112px;line-height:1;margin-top:44px;letter-spacing:-.02em}
+#end h1 em{font-style:normal;color:#39e6d4}
+#end h2{font-size:50px;font-weight:400;line-height:1.2;margin-top:22px;color:#e4edf2}
+#end p{font-size:44px;font-weight:700;margin-top:34px;line-height:1.2}
+#end .pill{margin-top:44px;background:#39e6d4;color:#04141a;font-weight:700;font-size:54px;padding:22px 52px;border-radius:999px}
+#end .cta{margin-top:26px;font-size:36px;color:#cfdbe2}
+</style></head><body>
+<img class="ph" id="p1" src="familia/e1.jpg"><img class="ph" id="p2" src="familia/e2.jpg"><img class="ph" id="p3" src="familia/e3.jpg">
+<div id="red"></div><div id="dim"></div><div id="gtop"></div><div id="grad"></div>
+<div class="brand"><img src="/home/user/Cyber-Mobile/logo-cm.png">CYBER MOBILE</div>
+
+<div class="cap" id="c1">Encontraron la cabaña ideal <em>para el verano.</em></div>
+<div class="cap r" id="c3">Estaban a un toque <em>de transferir.</em></div>
+<div class="cap" id="c4">Esta vez, la hija <em>se lo reenvió a Vera.</em></div>
+<div class="cap" id="c6">Si el año pasado perdiste plata, <em>no vuelvas a caer.</em></div>
+
+<div id="rw"><div class="lines"></div><div class="bar" id="rwb"></div><div class="t">◀◀ REBOBINÁ<small>¿Y si antes preguntaban?</small></div></div>
+
+<div class="note" id="n2"><em>40% OFF.</em> Seña hoy.<br>Solo por transferencia.</div>
+<div class="note" id="n5">Vera lo revisó <em>en segundos.</em></div>
+
+<!-- celular A: el "dueño" -->
+<div class="phone" id="phA"><div class="scr"><div class="isl"></div>
+ <div class="sb"><span>21:47</span><i><span class="sig"><b style="height:8px"></b><b style="height:12px"></b><b style="height:16px"></b><b style="height:20px"></b></span>5G<span class="bat"></span></i></div>
+ <div class="hd"><span class="bk">‹</span><span class="av gen"><svg width="46" height="46" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="8.5" r="4.2"/><path d="M3.5 21a8.5 8.5 0 0117 0z"/></svg></span><div><b>Alquiler cabaña <span class="blur"></span></b><small>número no agendado</small></div></div>
+ <div class="chat">
+  <div class="b in" id="a1"><div class="pic"></div>Cabaña frente al mar, 2.ª quincena de enero 🏖️<time>21:44</time></div>
+  <div class="b in" id="a2"><b>¡40% OFF si señás HOY!</b> Es la última que me queda.<time>21:45</time></div>
+  <div class="b in" id="a3">Transferí la seña a este CBU:<br><span class="tap"></span><time>21:46</time></div>
+  <div class="b in" id="a4">Tengo otra familia interesada, apurate ⏰<time>21:47</time></div>
+ </div>
+ <div class="inp"><div>Mensaje</div><span></span></div><div class="glare"></div></div></div>
+
+<!-- celular B: Vera -->
+<div class="phone" id="phB"><div class="scr"><div class="isl"></div>
+ <div class="sb"><span>21:48</span><i><span class="sig"><b style="height:8px"></b><b style="height:12px"></b><b style="height:16px"></b><b style="height:20px"></b></span>5G<span class="bat"></span></i></div>
+ <div class="hd"><span class="bk">‹</span><img class="av" src="vera-perfil.png"><div><b>Vera AI Antiestafas</b><small>en línea</small></div></div>
+ <div class="chat">
+  <div class="b out" id="b1"><div class="fw">↪ Reenviado</div><b>¡40% OFF si señás HOY!</b> Transferí la seña a este CBU…<time>21:48 ✓✓</time></div>
+  <div class="b out" id="b2">¿Es seguro señar esta cabaña?<time>21:48 ✓✓</time></div>
+  <div class="typ" id="ty"><i></i><i></i><i></i></div>
+  <div class="b in v" id="b3"><span class="tag">🔴 RIESGO ALTO</span><br>Tiene señales de <b>estafa de alquiler</b>:
+   <p>🚩 Precio muy por debajo de lo normal</p><p>🚩 Apuro para señar hoy</p><p>🚩 Solo transferencia, a una cuenta personal</p>
+   <div class="do">✋ No transfieras. Pedí una videollamada desde el lugar.</div><time>21:48</time></div>
+ </div>
+ <div class="inp"><div>Mensaje</div><span></span></div><div class="glare"></div></div></div>
+<div class="rec" id="rec">RECREACIÓN</div>
+
+<div id="end"><img class="av" src="vera-perfil.png"><h1>Conocé a <em>Vera</em></h1><h2>Tu asistente de seguridad digital</h2><p>Para unas vacaciones de verano tranquilas.</p><div class="pill">7 días gratis</div><div class="cta" id="cta"></div></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ez=x=>{x=cl(x);return x*x*(3-2*x)};
+// aparece en a (dura fi) y se va en b (dura fo)
+const win=(t,a,b,fi=.6,fo=.6)=>ez((t-a)/fi)*(1-ez((t-(b-fo))/fo));
+const canal=new URLSearchParams(location.search).get('canal')||'ig';
+$('cta').textContent = canal==='wa' ? 'Escribile por WhatsApp · link en el canal' : canal==='tt' ? 'Link en el perfil' : 'Comentá VERA y te envío el link';
+function pop(el,t,at){const k=ez((t-at)/.45);el.style.opacity=k;el.style.transform=`translateY(${(1-k)*26}px) scale(${.94+.06*k})`;}
+function phone(el,t,a,b){const k=win(t,a,b,.7,.6);const up=ez((t-a)/.7);el.style.opacity=k;
+ el.style.transform=`perspective(2600px) translateY(${(1-up)*220}px) rotateX(${(1-up)*10+1.2}deg) rotateY(${-2.2+Math.sin(t*.7)*1.1}deg) scale(${.96+.04*up})`;}
+function render(t){
+ // fotos
+ const o1=1-ez((t-2.9)/.8)+ (win(t,11.9,14.5,.3,.3)*(0.5+0.5*Math.sin(t*38)>0.5?1:0));
+ const o2=win(t,2.9+0,23.9,.8,.8);
+ const o3=ez((t-23.3)/.9);
+ $('p1').style.opacity=cl(o1); $('p2').style.opacity=cl(o2); $('p3').style.opacity=o3;
+ $('p1').style.transform=`scale(${1.04+t*.012})`;
+ $('p2').style.transform=`scale(${1.05+cl(t-2.9,0,30)*.006}) translateY(${-cl(t-9,0,3)*6}px)`;
+ $('p3').style.transform=`scale(${1.12-cl(t-23.3,0,7)*.012})`;
+ // p2 desaturada/oscura mientras hay celular; roja antes del clic
+ const sat = 1 - .35*win(t,9.2,14.5,.5,.5);
+ $('p2').style.filter=`saturate(${sat})`;
+ const dim=Math.max(win(t,3.2,9.2,.7,.6),win(t,17.1,23.6,.7,.6))*.72;
+ $('dim').style.opacity=dim;
+ const beat=.5+.5*Math.sin((t-9.2)*Math.PI*2*1.9);
+ $('red').style.opacity=win(t,9.2,12.2,.6,.5)*(.55+.45*beat);
+ // textos
+ $('c1').style.opacity=win(t,.3,3.2,.6,.5);
+ $('c3').style.opacity=win(t,9.3,11.9,.5,.4);
+ $('c4').style.opacity=win(t,14.5,17.2,.6,.5);
+ $('c6').style.opacity=win(t,23.7,26.4,.6,.5);
+ for(const id of ['c1','c3','c4','c6']){const e=$(id);e.style.transform=`translateY(${(1-cl(+e.style.opacity*1.2))*22}px)`;}
+ $('n2').style.opacity=win(t,5.5,9.1,.6,.5);
+ $('n5').style.opacity=win(t,19.6,23.5,.6,.5);
+ // rebobinar
+ const rw=win(t,11.9,14.5,.35,.4); $('rw').style.opacity=rw;
+ $('rwb').style.top=(1920-((t-11.9)*1500)%2100)+'px';
+ if(rw>0.02){const j=Math.sin(t*90)*6*rw; $('p2').style.transform+=` translateX(${j}px)`; $('p1').style.transform+=` translateX(${-j}px)`;}
+ // celular A
+ phone($('phA'),t,3.2,9.2);
+ pop($('a1'),t,3.9);pop($('a2'),t,4.3);pop($('a3'),t,4.7);pop($('a4'),t,5.1);
+ // celular B
+ phone($('phB'),t,17.1,23.6);
+ pop($('b1'),t,17.8);pop($('b2'),t,18.3);
+ const ty=win(t,18.7,19.45,.25,.25); $('ty').style.opacity=ty; $('ty').style.display=t>19.45?'none':'flex';
+ [...$('ty').children].forEach((d,i)=>d.style.transform=`translateY(${-6*Math.max(0,Math.sin(t*9-i*.9))}px)`);
+ pop($('b3'),t,19.4);
+ $('rec').style.opacity=Math.max(win(t,3.6,9.2,.6,.5),win(t,17.5,23.6,.6,.5));
+ // cierre
+ const e=ez((t-26.3)/.7); $('end').style.opacity=e;
+ $('grad').style.opacity=1-e*.2;
+}
+const IMG=[...document.images];
+Promise.all([document.fonts.ready,...IMG.map(im=>im.decode?im.decode().catch(()=>0):0)]).then(()=>{render(0);document.documentElement.setAttribute('data-listo','1');});
+setTimeout(()=>document.documentElement.setAttribute('data-listo','1'),5000);
+</script></body></html>
