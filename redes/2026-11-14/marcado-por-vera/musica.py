@@ -45,7 +45,7 @@ for b in range(nbars):
     for q in range(4):
         t=t0+q*BT
         if t>=DUR-1.6: continue
-        full = 5*BAR<=t<9.5*BAR; pre = 2*BAR<=t<5*BAR; fin = t>=9.5*BAR
+        full = 6*BAR<=t<10*BAR; pre = 2*BAR<=t<6*BAR; fin = t>=10*BAR
         if full or (fin and q in (0,2)) or (pre and q==0): mix(K if (full or fin) else KS,t,0,.9); kicks.append(t)
         if full and q in (1,3): mix(C,t,0,.8)
         if fin and q==2: mix(C,t,0,.5)
@@ -60,7 +60,7 @@ PL=array('d',[0.0])*N; PR=array('d',[0.0])*N
 for b in range(nbars):
     t0=b*BAR; root,ch=CH[b%4]
     if t0>=DUR-1.2: break
-    g=.05 if t0<5*BAR else (.045 if t0<9.5*BAR else .07)
+    g=.05 if t0<6*BAR else (.045 if t0<10*BAR else .07)
     for k,f in enumerate(ch):
         for det,pan in ((.997,-.6),(1.003,.6)):
             n=int((BAR+.3)*R); o=[0.0]*n; w1=TAU*f*det/R
@@ -83,7 +83,7 @@ for b in range(nbars):
     for s in range(16):
         t=t0+s*BT/4
         if t>=DUR-2.2: continue
-        intro=t<2*BAR; pre=2*BAR<=t<5*BAR
+        intro=t<2*BAR; pre=2*BAR<=t<6*BAR
         if intro and s%4!=0: continue
         if pre and s%2!=0: continue
         f=ch[pat[s%8]]*(2 if s%8 in (2,5) else 1)*2
@@ -93,14 +93,15 @@ for i in range(dl,N):
     AL[i]+=.36*AR[i-dl]; AR[i]+=.36*AL[i-dl]
 for i in range(N): L[i]+=AL[i]; Rr[i]+=AR[i]
 # --- subida y golpe antes del veredicto ---
-t0=5*BAR-1.5; n=int(1.5*R); z=hp(noise(n))
+t0=6*BAR-1.5; n=int(1.5*R); z=hp(noise(n))
 mix([.16*(i/n)**2*z[i]+.05*(i/n)*sin(TAU*(200+900*(i/n)**2)*i/R) for i in range(n)],t0,0)
-n=int(1.4*R); mix([.75*exp(-(i/R)/.45)*sin(TAU*(38+30*exp(-(i/R)/.05))*i/R)+.18*exp(-(i/R)/.25)*random.uniform(-1,1) for i in range(n)],5*BAR,0)
+n=int(1.4*R); mix([.75*exp(-(i/R)/.45)*sin(TAU*(38+30*exp(-(i/R)/.05))*i/R)+.18*exp(-(i/R)/.25)*random.uniform(-1,1) for i in range(n)],6*BAR,0)
 # --- efectos sobre las marcas de Vera ---
 def swish(d,amp):
     n=int(d*R); z=hp(noise(n)); return [amp*z[i]*sin(math.pi*i/n)**1.5 for i in range(n)]
-for t in (8*BT,11*BT,14*BT): mix(swish(.5,.10),t,-.2)
-for t in (9*BT,12*BT,15*BT): mix(tone(880,.16,.10,[1,.3],dec=.05),t,.3); mix(tone(1320,.14,.07,[1],dec=.04),t+.05,.3)
+for t in (12.4*BT,13.2*BT,14*BT): mix(swish(.4,.10),t,-.2)
+for t in (10.4*BT,11.4*BT): mix(tone(660,.12,.10,[1,.3],dec=.04),t,.3)
+mix(tone(784,.5,.16,[1,.4],dec=.22),15*BT,.2); mix(tone(1046.5,.7,.16,[1,.3],dec=.28),15*BT+.14,.2)
 for i in (1,2,3,4): mix(tone(70,.2,.22,[1,.4],dec=.07),i*BT,0)
 # --- cierre: acorde final ---
 tf=12.5*BAR
