@@ -1,0 +1,132 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:A;src:url(/home/user/cm-redes/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:G;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:G;font-weight:700;src:url(/home/user/cm-redes/tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000;font-family:"Liberation Sans",Arial,"Noto Color Emoji",sans-serif;color:#1f1f1f}
+#cam{position:absolute;inset:0;transform-origin:540px 900px}
+#phone{position:absolute;inset:0;background:#fff;overflow:hidden}
+.sb{position:absolute;left:0;right:0;top:0;height:72px;display:flex;align-items:center;padding:0 40px;font-size:32px;font-weight:700;z-index:30;background:#fff}
+.sb .rec{width:28px;height:28px;border-radius:50%;background:#e53935;margin-left:18px;box-shadow:0 0 0 5px #fde0df}
+.sb .der{margin-left:auto;font-size:28px;letter-spacing:2px}
+.scr{position:absolute;left:0;right:0;top:72px;bottom:0}
+#s1{background:#fafafa}#s2{background:#efeae2}
+.hd{display:flex;align-items:center;gap:26px;height:150px;padding:0 40px;font-size:42px;font-weight:700;border-bottom:2px solid #e3e3e3}
+#s1 .hd{background:#fff}#s2 .hd{background:#f0f2f5;border-bottom:0}
+.hd .av{width:92px;height:92px;border-radius:50%;background:#b9c0c4;flex:none}
+.hd .bk{font-size:56px;color:#555;font-weight:400}
+.tap{display:inline-block;background:#9aa3a8;color:transparent;border-radius:10px;filter:blur(5px);padding:0 6px}
+.hd small{display:block;font-size:28px;font-weight:400;color:#777;margin-top:4px}
+.fe{text-align:center;font-size:30px;color:#777;margin:190px 0 30px}
+#s2 .fe span{background:#fff;padding:8px 22px;border-radius:14px;color:#555}
+.bu{margin:0 40px 0 34px;max-width:900px;font-size:50px;line-height:1.36;padding:34px 40px;border-radius:40px}
+#s1 .bu{background:#e9e9eb;border-bottom-left-radius:10px;font-size:52px}
+#s2 .bu{background:#fff;border-top-left-radius:6px;box-shadow:0 2px 3px rgba(0,0,0,.12);font-size:48px}
+.bu .hr{display:block;text-align:right;font-size:28px;color:#888;margin-top:6px}
+.lk{color:#1565c0;text-decoration:underline}
+.er{position:relative;display:inline-block}
+.er i{position:absolute;left:-12px;right:-12px;top:-2px;bottom:-2px;border:6px solid #e53935;border-radius:30px;opacity:0}
+.er i.v{border-color:#ff6d00}
+.nm{display:inline-block;background:#9aa3a8;color:transparent;border-radius:10px;filter:blur(5px)}
+#yr{position:absolute;left:50%;top:236px;z-index:62;transform:translateX(-50%);font-family:A;font-size:120px;line-height:1;padding:18px 54px 14px;border-radius:30px;color:#fff;background:#c62828;box-shadow:0 14px 40px rgba(0,0,0,.35);letter-spacing:2px}
+.nota{position:absolute;left:60px;right:60px;background:#fff;border-radius:34px;padding:38px 46px;font-family:G;font-weight:700;font-size:70px;line-height:1.14;color:#111;box-shadow:0 18px 50px rgba(0,0,0,.35);z-index:60;opacity:0}
+.nota em{font-style:normal;color:#c62828}
+.nota em.g{color:#0d7a45}
+#chip{position:absolute;left:60px;top:1100px;z-index:60;background:#111;color:#fff;font-family:G;font-weight:700;font-size:52px;padding:22px 40px;border-radius:30px;opacity:0}
+.sl{position:absolute;left:60px;right:60px;z-index:60;display:flex;align-items:center;gap:34px;background:#fff;border-radius:32px;padding:30px 40px;box-shadow:0 14px 36px rgba(0,0,0,.25);opacity:0}
+.sl b{flex:none;width:96px;height:96px;border-radius:50%;background:#e53935;color:#fff;font-family:A;font-weight:400;font-size:62px;display:flex;align-items:center;justify-content:center}
+.sl span{font-family:G;font-weight:700;font-size:56px;line-height:1.12;color:#111}
+#rot{position:absolute;left:40px;top:1790px;z-index:61;background:rgba(0,0,0,.72);color:#fff;font-size:30px;font-weight:700;padding:12px 24px;border-radius:30px;letter-spacing:1px}
+#flash{position:absolute;inset:0;background:#fff;z-index:80;opacity:0}
+.pl{position:absolute;inset:0;z-index:90;opacity:0;display:flex;flex-direction:column;justify-content:center;padding:0 80px}
+#p1{background:radial-gradient(120% 80% at 50% 40%,#2a0d12,#0a0a10);color:#fff}
+#p1 h2{font-family:A;font-weight:400;font-size:190px;line-height:1}
+#p1 p{font-family:G;font-weight:700;font-size:96px;line-height:1.1;margin-top:70px;color:#1fd17a}
+#cierre{background:linear-gradient(170deg,#082419,#0e3b2a);color:#fff}
+#cierre h2{font-family:G;font-weight:700;font-size:104px;line-height:1.08}
+#cierre h2 em{font-style:normal;color:#1fd17a}
+#cierre .mk{margin-top:90px;display:flex;align-items:center;gap:26px;font-family:G;font-weight:700;font-size:46px}
+#cierre .sem{display:flex;gap:12px}#cierre .sem i{width:36px;height:36px;border-radius:50%;display:block}
+#cierre .wa{font-family:G;font-size:46px;margin-top:24px;opacity:.9}
+</style></head><body>
+<div id="cam"><div id="phone">
+  <div class="sb"><span id="hora">10:42</span><span class="rec"></span><span class="der">4G ▮▮▮ 64%</span></div>
+  <div class="scr" id="s1">
+    <div class="hd"><span class="bk">‹</span><div class="av"></div><div><span class="tap">+54 9 351 000-0000</span><small>Mensaje de texto</small></div></div>
+    <div class="fe">Hoy 10:41</div>
+    <div class="bu">Estimado <span class="er">clinete<i></i></span>, su cuenta <span class="er">a sido<i></i></span> bloqueada. Ingrese <span class="er">aqui<i></i></span> para <span class="er">desbloquiarla<i></i></span> <span class="er">urjente<i></i></span>: <span class="lk">banco-<span class="er">segurida<i></i></span>.com</span><span class="hr">10:41</span></div>
+  </div>
+  <div class="scr" id="s2">
+    <div class="hd"><span class="bk">‹</span><div class="av"></div><div><span class="er" id="num"><span class="tap">+54 9 11 0000-0000</span><i></i></span><small>en línea</small></div></div>
+    <div class="fe"><span>HOY</span></div>
+    <div class="bu">Hola, <span class="er"><span class="nm">Marta</span><i class="v"></i></span>. Detectamos un ingreso a tu home banking desde un dispositivo nuevo. Si no fuiste vos, validá tu identidad <span class="er">antes de las 18:00<i></i></span> para evitar el bloqueo preventivo de tu cuenta.<br><span class="er"><span class="lk">validacion-clientes-ar.com/seguridad</span><i></i></span><span class="hr">10:42</span></div>
+  </div>
+</div></div>
+<div id="yr">2016</div>
+<div class="nota" id="n1" style="top:1260px">En 2016 la reconocías <em>por las faltas.</em></div>
+<div class="nota" id="n2" style="top:1260px"><em>6 faltas.</em> Imposible no verla.</div>
+<div class="nota" id="n3" style="top:1260px">Hoy, no: <em>cero faltas.</em></div>
+<div class="nota" id="n4" style="top:1260px">Y <em>sabe tu nombre.</em></div>
+<div id="chip">Lo que todavía la delata:</div>
+<div class="sl" id="l1" style="top:1230px"><b>1</b><span>El link no es del banco.</span></div>
+<div class="sl" id="l2" style="top:1410px"><b>2</b><span>Te apura con un horario.</span></div>
+<div class="sl" id="l3" style="top:1590px"><b>3</b><span>Te escribe un número cualquiera.</span></div>
+<div id="rot">RECREACIÓN · MENSAJES DE EJEMPLO</div>
+<div id="flash"></div>
+<div class="pl" id="p1"><h2>Las faltas ya no te avisan.</h2><p>El link, sí.</p></div>
+<div class="pl" id="cierre"><h2>Mandáselo a quien todavía <em>busca las faltas.</em></h2>
+  <div class="mk"><span class="sem"><i style="background:#e53935"></i><i style="background:#fbc02d"></i><i style="background:#43a047"></i></span>Vera · antiestafas por WhatsApp</div>
+  <div class="wa" id="wa" style="display:none">+54 9 11 7059-8505 · 7 días gratis</div></div>
+<script>
+const canal=new URLSearchParams(location.search).get('canal')||'ig';
+if(canal==='wa')document.getElementById('wa').style.display='block';
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ez=x=>{x=cl(x);return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2};
+const io=(t,a,b,d=.6)=>cl(Math.min((t-a)/d,(b-t)/d));
+const E1=[...document.querySelectorAll('#s1 .er i')];
+const E2=[...document.querySelectorAll('#s2 .er i')]; // num, nombre, horario, link
+const TR=7.4, TD=0.9, HITS=[TR+.55];
+function render(t){
+  // anillos de las faltas (0,8 a 3,8 s)
+  E1.forEach((e,i)=>{const a=.8+i*.6;const q=ez((t-a)/.35);e.style.opacity=q;e.style.transform=`scale(${1.25-.25*q})`});
+  // transición: 2016 sale a la izquierda, 2026 entra desde la derecha
+  const k=ez((t-TR)/TD);
+  $('s1').style.transform=`translateX(${-k*1080}px)`;
+  $('s2').style.transform=`translateX(${(1-k)*1080}px)`;
+  $('hora').textContent=t<TR+.45?'10:42':'10:43';
+  const y=$('yr'); const sw=t>=TR+.45;
+  y.textContent=sw?'2026':'2016'; y.style.background=sw?'#0d7a45':'#c62828';
+  y.style.opacity=t<22.4?1:0;
+  y.style.transform=`translateX(-50%) scale(${1+.18*Math.max(0,1-Math.abs(t-(TR+.45))/.3)})`;
+  // anillos del mensaje de hoy
+  const R2=[[20.0,E2[0]],[12.1,E2[1]],[18.0,E2[2]],[16.0,E2[3]]];
+  R2.forEach(([a,e])=>{const q=ez((t-a)/.35)*(t<22.4?1:0);e.style.opacity=q;e.style.transform=`scale(${1.25-.25*q})`});
+  E2[1].style.opacity=io(t,12.1,15.6,.35);
+  // notas
+  $('n1').style.opacity=io(t,-1,4.4,.4);
+  $('n2').style.opacity=io(t,4.7,7.4,.5);
+  $('n3').style.opacity=io(t,8.6,11.8,.5);
+  $('n4').style.opacity=io(t,12.1,15.5,.5);
+  $('chip').style.opacity=io(t,15.8,22.4,.5);
+  [['l1',16.0],['l2',18.0],['l3',20.0]].forEach(([id,a])=>{const q=ez((t-a)/.6)*cl((22.5-t)/.4);$(id).style.opacity=q;$(id).style.transform=`translateX(${(1-ez((t-a)/.6))*-80}px)`});
+  $('rot').style.opacity=t<22.5?1:0;
+  // cámara: celu en mano
+  let sc=1+.05*ez(t/7), ox=0, oy=0;
+  if(t>=TR)sc=1.05-.05*ez((t-TR)/1.2);
+  if(t>12&&t<15.8)sc=1+.04*ez((t-12)/1)-.04*ez((t-15)/.8);
+  const hand=t<22.6?1:0;
+  ox+=(Math.sin(t*1.7)*5+Math.sin(t*4.3)*2)*hand; oy+=Math.cos(t*1.3)*6*hand;
+  let sh=0;for(const h of HITS){const d=t-h;if(d>=0&&d<.45)sh=Math.max(sh,1-d/.45)}
+  ox+=Math.sin(t*90)*16*sh; oy+=Math.cos(t*77)*12*sh;
+  $('cam').style.transform=`translate(${ox}px,${oy}px) scale(${sc})`;
+  $('cam').style.opacity=t<23.2?1:0;
+  $('flash').style.opacity=sh*.35;
+  // placas
+  $('p1').style.opacity=io(t,22.6,26.8,.6);
+  $('p1').style.transform=`scale(${1.05-.05*ez((t-22.6)/4.2)})`;
+  $('cierre').style.opacity=cl((t-26.6)/.6);
+  $('cierre').style.transform=`scale(${1.03-.03*ez((t-26.6)/3.4)})`;
+}
+document.fonts.ready.then(()=>{render(0);document.documentElement.dataset.listo=1});
+</script></body></html>

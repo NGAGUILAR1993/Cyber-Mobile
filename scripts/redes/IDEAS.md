@@ -229,3 +229,37 @@ Tendencias/fuentes: vishing confirmado como actualidad (Banco Provincia, nov 202
 | 10/11 | "Número oculto = cortá": micro-regla en 10 s sobre llamadas de N.º oculto que dicen ser el banco | Reel corto/tip | Accionable | Descartada (muy chico y de tip suelto; va como detalle del elegido) |
 | 10/11 | "Vishing para tus viejos": versión del elegido pensada para reenviar al grupo de hermanos, con 3 reglas para la heladera | Carrusel guía | Muy guardable/compartible | Guardada (gran complemento del elegido para el fin de semana) |
 | 10/11 | Historia: encuesta "Te llama el 'banco' y sabe tus datos. ¿Le creés?" Sí/No antes del reel | Historia encuesta | 1 toque, anticipa el reel | A usar como historia de soporte |
+
+## 2026-11-08 · domingo (alcance + venta en el texto; legibilidad regla dura; CTA variable 03/11)
+Contexto: el Observatorio se actualizó hoy (08/11) y el nº1 de noviembre pasó a ser **Plataforma de inversión falsa** (nunca tuvo pieza propia). Del 06 y 07/11 salieron "IA general vs Vera" y "las 5 estafas" (una línea por modalidad): no se repite ese formato de lista. Gancho elegido puntuado con `hookscore.py`: 66,2.
+
+| Fecha | Idea | Formato | Por qué podría funcionar | Estado |
+|---|---|---|---|---|
+| 08/11 | **"El botón Retirar"**: grabación de pantalla (recreación) de una app de inversión genérica con el saldo que sube solo; tocás Retirar y aparece un "impuesto de liberación", pagás y aparece otro cargo; el saldo se desarma (era un número en una página). Dato real: nº1 del Observatorio hoy. 3 señales y cierre "Si para retirar tenés que pagar, es estafa" | Reel grabación de celular, 30 s | Promesa + frustración que todos entienden en 1 s; el giro "el saldo nunca existió" se manda al amigo que "está invirtiendo" | **Elegida** |
+| 08/11 | "6 dígitos": el código de WhatsApp pedido "por error" con cuenta regresiva | Reel suspenso | Todos recibieron ese SMS | Guardada (el 07/11 ya lo nombró en el carrusel; esperar 2 semanas) |
+| 08/11 | "Chequeo de 10 segundos al celu de tus viejos" (apps con accesibilidad) | Carrusel tutorial | Muy guardable | Guardada (muy pegado al reel del 05/11, acceso remoto) |
+| 08/11 | "El amigo que se hizo rico": chat de un conocido (tapado) que muestra capturas de ganancias y te pasa "el link de la plataforma" | Reel chat | El gancho social de la inversión falsa | Fusionada (se menciona en las señales: "te contactaron por redes") |
+| 08/11 | "Pantalla dividida: lo que ves vos / lo que hay detrás" (panel del estafador editando tu saldo a mano) | Reel split | Giro de punto de vista | Descartada (dos pantallas a 30 s se leen mal) |
+| 08/11 | "La cuenta del impuesto": calculadora que suma cada cargo que te pidieron hasta superar lo que pusiste | Reel dato animado | Indignación | Fusionada (los dos cargos del elegido cumplen ese rol, sin montos inventados como "promedio") |
+| 08/11 | Famoso con IA que "recomienda" invertir (deepfake) | Reel noticia | Muy actual | Descartada (mostrar una cara real o parecida es riesgo legal y de marca) |
+| 08/11 | "Tienda online falsa" rumbo al Black Friday (27/11) | Reel caso | nº6 y fecha cercana | Guardada (para la semana del 23/11) |
+| 08/11 | Encuesta "¿Pagarías el impuesto para retirar $1.248.300?" Sí/No | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
+| 08/11 | Vera revisando el link de una plataforma de inversión (captura real) | Reel demo | Confianza | Guardada (falta una captura real de Vera con un dominio de inversión; no se recrea una respuesta de Vera) |
+| 08/11 | Pieza de venta pura con el precio nuevo ($5.000) | Reel venta | Venta de la semana | Fusionada (la oferta explícita va en el texto de la publicación de hoy) |
+
+## 2026-11-09 · lunes (alcance; legibilidad regla dura; CTA variable 03/11)
+Contexto: 05/11 y 08/11 fueron recreaciones de una app (acceso remoto, inversión). 06/11 comparación y 07/11 lista de 5 estafas. Observatorio al 09/11: nº1 inversión falsa, nº2 phishing bancario por WhatsApp, nº3 acceso remoto. Hoy a las 19 h sale la alerta del lunes. Gancho elegido puntuado con `hookscore.py`: 62,6 (las variantes con "¿tu vieja…?" dieron 30-36).
+
+| Fecha | Idea | Formato | Por qué podría funcionar | Estado |
+|---|---|---|---|---|
+| 09/11 | **"Antes y después: las faltas de ortografía"**: el SMS trucho de antes, con 6 faltas marcadas una por una, y el WhatsApp de hoy (phishing bancario, nº2), escrito perfecto y con tu nombre (tapado). Se marcan las 3 cosas que todavía la delatan (link que no es del banco, apuro, número cualquiera). Cierre: "Ya no alcanza con leer cómo está escrito: fijate a dónde te lleva" | Reel antes y después, 30 s, celular en mano (recreación rotulada) | Rompe el consejo que todos repiten ("fijate las faltas"); se lo mandás al que dice "yo me doy cuenta". Formato nuevo en 30 días | **Elegida** |
+| 09/11 | "El mapa del lunes": la estafa reportada en tu provincia (datos.json, `mapa`), carrusel por región, "¿no está tu provincia? contanos qué te llegó" | Carrusel por regiones | Identidad provincial, etiquetar al grupo de la familia | Guardada (serie mensual; el orden de modalidades por provincia no indica cuál es la más frecuente: aclararlo; CABA con 1 caso se lee raro) |
+| 09/11 | "Leelo en voz alta": guion real de una llamada de falso banco, subtitulado, y el momento exacto en que te piden el código | Reel audio narrado | Vishing, nadie lo muestra desde la voz | Descartada (necesita una voz; con IA puede leerse como "persona real") |
+| 09/11 | "Lo que el estafador sabe de vos antes de escribirte": nombre, banco y barrio, de filtraciones (sin cifras) | Reel suspenso | Inquietud, guardable | Descartada (sin dato verificable de cuánto se filtra en AR, cae en miedo genérico) |
+| 09/11 | "Nadie: / El estafador a las 3 de la mañana:" | Meme | Tendencia | Descartada (choca con la seriedad pedida el 22/10) |
+| 09/11 | Encuesta "¿Cuál de estos 2 mensajes es del banco?" (los dos son falsos) | Carrusel juego | Giro final | Fusionada (la idea de "el bien escrito también es falso" es el corazón de la elegida) |
+| 09/11 | "La alerta de las 19 h": mostrar cómo se arma la alerta del lunes que manda Vera | Reel detrás de escena | Confianza, hoy es lunes | Descartada (la alerta solo llega a quien escribió en 24 h; prometerla confunde) |
+| 09/11 | "6 dígitos" (código de WhatsApp) | Reel suspenso | #5 del ranking | Guardada (en dos semanas) |
+| 09/11 | "Tienda falsa rumbo al Black Friday" | Reel caso | #6 y fecha | Guardada (semana del 23/11) |
+| 09/11 | "Tu viejo vs. el mensaje": dúo/respuesta a un video de una cuenta grande de consejos que dice "fijate las faltas" | Respuesta a cuenta grande | Alcance prestado | Propuesta (no se ejecuta: elegir la cuenta y aprobar con el dueño) |
+| 09/11 | Historia: encuesta "¿Vos la reconocés por las faltas de ortografía?" Sí / No, antes del reel | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
