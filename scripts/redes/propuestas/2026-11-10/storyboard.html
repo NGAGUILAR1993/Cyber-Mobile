@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face{font-family:'Anton';src:url('Anton-Regular.ttf')}
+@font-face{font-family:'SG';src:url('SpaceGrotesk-Regular.ttf');font-weight:400}
+@font-face{font-family:'SG';src:url('SpaceGrotesk-Bold.ttf');font-weight:700}
+@font-face{font-family:'Mono';src:url('JetBrainsMono-Medium.ttf')}
+:root{
+  --noche:#070b1c; --noche2:#0c1230; --panel:#0f1738;
+  --teal:#2fd6c6; --rojo:#ff4d57; --amarillo:#ffcf5c; --verde:#36d97b;
+  --txt:#eef2ff; --sub:#9fb0d8; --linea:rgba(120,150,230,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05070f;font-family:'SG',sans-serif;color:var(--txt)}
+.board{width:1920px;padding:70px 70px 56px;background:
+  radial-gradient(1100px 700px at 20% -5%, #16205200 0%, #05070f 70%),
+  radial-gradient(900px 900px at 100% 110%, rgba(47,214,198,.10), #05070f 60%),
+  #05070f;}
+.head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:46px}
+.kicker{font-family:'Mono';font-size:21px;letter-spacing:.32em;color:var(--teal);text-transform:uppercase}
+.h1{font-family:'Anton';font-size:78px;line-height:.98;letter-spacing:.5px;margin-top:14px}
+.h1 em{font-style:normal;color:var(--teal)}
+.meta{text-align:right;font-family:'Mono';font-size:19px;color:var(--sub);line-height:1.6}
+.meta b{color:var(--txt)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:46px}
+.cell{}
+.cap{display:flex;align-items:center;gap:14px;margin:0 2px 16px}
+.num{font-family:'Anton';font-size:30px;color:var(--noche);background:var(--teal);width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.capt{font-family:'SG';font-weight:700;font-size:26px}
+.capt span{display:block;font-weight:400;font-size:19px;color:var(--sub);margin-top:3px}
+.time{margin-left:auto;font-family:'Mono';font-size:18px;color:var(--teal);border:1px solid var(--linea);padding:7px 14px;border-radius:999px}
+
+/* phone */
+.phone{position:relative;width:100%;aspect-ratio:9/16;border-radius:46px;overflow:hidden;
+  background:linear-gradient(170deg,var(--noche2),var(--noche));
+  box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 2px rgba(120,150,230,.10) inset, 0 0 60px rgba(47,214,198,.05) inset;}
+.notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:150px;height:30px;background:#000;border-radius:999px;z-index:6}
+.sbar{position:absolute;top:0;left:0;right:0;height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;font-family:'Mono';font-size:21px;color:var(--txt);z-index:5}
+.scrim{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 0%, transparent 55%, rgba(0,0,0,.45));z-index:4;pointer-events:none}
+.grain{position:absolute;inset:0;z-index:7;pointer-events:none;mix-blend-mode:overlay;opacity:.06;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>")}
+
+/* ---- F1 incoming call ---- */
+.f1{background:radial-gradient(130% 80% at 50% 18%, #1a2550 0%, #070b1c 62%)}
+.callwrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;padding-top:150px}
+.avatar{width:168px;height:168px;border-radius:50%;background:linear-gradient(150deg,#22306a,#0c1230);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,.14);box-shadow:0 0 0 14px rgba(47,214,198,.06),0 0 60px rgba(47,214,198,.18)}
+.avatar svg{width:92px;height:92px;opacity:.9}
+.callname{font-family:'SG';font-weight:700;font-size:52px;margin-top:38px;letter-spacing:.5px}
+.callsub{font-family:'SG';font-size:27px;color:var(--sub);margin-top:10px}
+.calltag{margin-top:20px;font-family:'Mono';font-size:20px;color:var(--teal);letter-spacing:.14em}
+.hook{position:absolute;left:0;right:0;bottom:250px;text-align:center}
+.hook b{font-family:'Anton';font-size:84px;line-height:.92;display:block;text-shadow:0 4px 30px rgba(0,0,0,.7)}
+.hook b.r{color:var(--rojo)}
+.callbtns{position:absolute;bottom:72px;left:0;right:0;display:flex;justify-content:center;gap:120px}
+.cbtn{width:102px;height:102px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:46px}
+.cbtn.red{background:#ff3b30}.cbtn.grn{background:#34c759}
+
+/* ---- F2 live captions ---- */
+.f2{background:linear-gradient(180deg,#0a1130,#070b1c)}
+.live{position:absolute;top:92px;left:28px;display:flex;align-items:center;gap:12px;font-family:'Mono';font-size:20px;color:var(--rojo)}
+.dot{width:14px;height:14px;border-radius:50%;background:var(--rojo);box-shadow:0 0 14px var(--rojo)}
+.wave{position:absolute;top:150px;left:0;right:0;height:120px;display:flex;align-items:center;justify-content:center;gap:9px}
+.wave i{width:9px;border-radius:999px;background:linear-gradient(var(--teal),#1b7f78)}
+.subs{position:absolute;left:34px;right:34px;top:320px}
+.bubble{background:rgba(20,30,70,.72);border:1px solid var(--linea);border-radius:22px;padding:24px 26px;margin-bottom:20px;backdrop-filter:blur(2px)}
+.bubble .q{font-family:'Mono';font-size:18px;color:var(--teal);letter-spacing:.14em;margin-bottom:10px}
+.bubble p{font-family:'SG';font-size:30px;line-height:1.3}
+.bubble p b{color:var(--teal)}
+.insight{position:absolute;left:28px;right:28px;bottom:70px;background:rgba(255,77,87,.12);border:1px solid rgba(255,77,87,.4);border-radius:22px;padding:26px 28px}
+.insight small{font-family:'Mono';font-size:18px;letter-spacing:.18em;color:var(--rojo)}
+.insight p{font-family:'Anton';font-size:46px;line-height:1.02;margin-top:8px}
+
+/* ---- F3 the ask / red flag ---- */
+.f3{background:radial-gradient(120% 80% at 50% 40%, #2a0f16 0%, #070b1c 66%)}
+.smscard{position:absolute;top:120px;left:34px;right:34px;background:#0c1434;border:1px solid var(--linea);border-radius:24px;padding:28px}
+.smscard .from{font-family:'SG';font-weight:700;font-size:24px;color:var(--sub)}
+.smscard .code{font-family:'Mono';font-size:58px;letter-spacing:.22em;color:var(--txt);margin-top:14px}
+.smscard .fine{font-family:'SG';font-size:21px;color:var(--sub);margin-top:14px;line-height:1.35}
+.ask{position:absolute;left:34px;right:34px;top:420px;background:rgba(20,30,70,.72);border:1px solid var(--linea);border-radius:22px;padding:24px 26px}
+.ask .q{font-family:'Mono';font-size:18px;color:var(--rojo);letter-spacing:.14em;margin-bottom:10px}
+.ask p{font-family:'SG';font-size:30px;line-height:1.3}
+.flag{position:absolute;left:28px;right:28px;bottom:60px;text-align:center}
+.flag .ico{font-size:58px}
+.flag p{font-family:'Anton';font-size:58px;line-height:.98;margin-top:10px}
+.flag p em{font-style:normal;color:var(--rojo)}
+
+/* ---- F4 Vera ---- */
+.f4{background:linear-gradient(180deg,#0a1130,#070b1c)}
+.vhead{position:absolute;top:86px;left:30px;right:30px;display:flex;align-items:center;gap:16px;padding-bottom:22px;border-bottom:1px solid var(--linea)}
+.vlogo{width:66px;height:66px;border-radius:18px;background:linear-gradient(150deg,var(--teal),#1b7f78);display:flex;align-items:center;justify-content:center;font-family:'Anton';color:var(--noche);font-size:34px}
+.vname{font-family:'SG';font-weight:700;font-size:34px}
+.vname span{display:block;font-weight:400;font-size:20px;color:var(--verde);margin-top:2px}
+.rotulo{position:absolute;top:30px;right:30px;font-family:'Mono';font-size:17px;color:var(--sub);background:rgba(255,255,255,.06);border:1px solid var(--linea);padding:6px 12px;border-radius:8px;z-index:8}
+.vmsg{position:absolute;left:30px;right:30px;top:210px;background:#0c1434;border:1px solid var(--linea);border-left:5px solid var(--rojo);border-radius:20px;padding:26px}
+.vtag{display:inline-flex;align-items:center;gap:10px;font-family:'SG';font-weight:700;font-size:28px;color:var(--rojo)}
+.vtag .sem{font-size:30px}
+.vmsg h4{font-family:'SG';font-weight:700;font-size:28px;margin:18px 0 8px}
+.vmsg ul{list-style:none;margin-top:6px}
+.vmsg li{font-family:'SG';font-size:26px;line-height:1.5;color:var(--txt);padding-left:30px;position:relative;margin-bottom:8px}
+.vmsg li::before{content:'';position:absolute;left:0;top:12px;width:12px;height:12px;border-radius:50%;background:var(--rojo)}
+.close{position:absolute;left:30px;right:30px;bottom:150px}
+.close p{font-family:'Anton';font-size:48px;line-height:1.0}
+.close p em{font-style:normal;color:var(--teal)}
+.brand{position:absolute;bottom:56px;left:30px;right:30px;display:flex;align-items:center;justify-content:space-between}
+.brand .b{font-family:'Anton';font-size:34px;color:var(--teal);letter-spacing:1px}
+.brand .wa{font-family:'Mono';font-size:20px;color:var(--sub)}
+
+.foot{margin-top:50px;border-top:1px solid var(--linea);padding-top:26px;display:flex;justify-content:space-between;align-items:flex-start;gap:40px}
+.foot .col{font-family:'SG';font-size:21px;color:var(--sub);line-height:1.55;max-width:560px}
+.foot .col b{color:var(--txt)}
+.foot .col.tag b{color:var(--teal)}
+</style>
+</head>
+<body>
+<div class="board">
+  <div class="head">
+    <div>
+      <div class="kicker">Cyber Mobile · Propuesta de reel · 10 nov 2026</div>
+      <div class="h1">EL LLAMADO <em>DEL BANCO</em><br>QUE NO ES EL BANCO</div>
+    </div>
+    <div class="meta">
+      Reel vertical · <b>30 s</b><br>
+      Serie: <b>Vishing</b> (#2 y #10 del Observatorio)<br>
+      Embudo: <b>confianza</b> · Objetivo: <b>seguidores</b>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- FRAME 1 -->
+    <div class="cell">
+      <div class="cap"><div class="num">1</div><div class="capt">Gancho · el teléfono suena<span>Interrupción de patrón: parece tu propio celular</span></div><div class="time">0–3 s</div></div>
+      <div class="phone f1">
+        <div class="sbar"><span>9:41</span><span>· · ·  ▮▮▮</span></div>
+        <div class="callwrap">
+          <div class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="#9fb0d8" stroke-width="1.4"><path d="M3 5c0 9 7 16 16 16l2-4-5-2-2 2a12 12 0 0 1-5-5l2-2-2-5z"/></svg></div>
+          <div class="callname">BANCO</div>
+          <div class="callsub">Atención al cliente</div>
+          <div class="calltag">LLAMADA ENTRANTE · N.º OCULTO</div>
+        </div>
+        <div class="hook"><b>No cortes.</b><b class="r">Ese es el error.</b></div>
+        <div class="callbtns"><div class="cbtn red">✕</div><div class="cbtn grn">✓</div></div>
+        <div class="scrim"></div><div class="grain"></div>
+      </div>
+    </div>
+
+    <!-- FRAME 2 -->
+    <div class="cell">
+      <div class="cap"><div class="num">2</div><div class="capt">Puente · ya sabe todo de vos<span>La voz calma que recita tus datos filtrados</span></div><div class="time">3–13 s</div></div>
+      <div class="phone f2">
+        <div class="sbar"><span>9:41</span><span>🔊  00:38</span></div>
+        <div class="live"><span class="dot"></span>EN LLAMADA · "BANCO"</div>
+        <div class="wave" id="wave"></div>
+        <div class="subs">
+          <div class="bubble"><div class="q">LO QUE TE DICE</div><p>"Le confirmo sus datos: tarjeta terminada en <b>••87</b>, última compra en una farmacia…"</p></div>
+          <div class="bubble"><div class="q">POR QUÉ SUENA REAL</div><p>No adivina. <b>Ya compró tus datos filtrados.</b> Por eso le creés.</p></div>
+        </div>
+        <div class="insight"><small>EL DETALLE QUE NADIE TE CUENTA</small><p>Nunca te pide la clave de frente.</p></div>
+        <div class="scrim"></div><div class="grain"></div>
+      </div>
+    </div>
+
+    <!-- FRAME 3 -->
+    <div class="cell">
+      <div class="cap"><div class="num">3</div><div class="capt">Giro · el pedido trampa<span>El código del SMS = autorizar la transferencia</span></div><div class="time">13–22 s</div></div>
+      <div class="phone f3">
+        <div class="sbar"><span>9:41</span><span>🔊  01:12</span></div>
+        <div class="smscard">
+          <div class="from">SMS · Tu banco (real)</div>
+          <div class="code">8 4 2 9 1 7</div>
+          <div class="fine">Código para confirmar una transferencia. No lo compartas con nadie.</div>
+        </div>
+        <div class="ask"><div class="q">LO QUE TE PIDE "EL BANCO"</div><p>"Para <b>cancelar</b> la operación, léame el código que le acaba de llegar."</p></div>
+        <div class="flag">
+          <div class="ico">🚩</div>
+          <p>No te roban la clave.<br><em>Te la hacen decir vos.</em></p>
+        </div>
+        <div class="scrim"></div><div class="grain"></div>
+      </div>
+    </div>
+
+    <!-- FRAME 4 -->
+    <div class="cell">
+      <div class="cap"><div class="num">4</div><div class="capt">Entrega · cortás y chequeás<span>Vera lo nombra: suplantación de banco por teléfono</span></div><div class="time">22–30 s</div></div>
+      <div class="phone f4">
+        <div class="rotulo">RECREACIÓN</div>
+        <div class="sbar"><span>9:42</span><span>▮▮▮</span></div>
+        <div class="vhead"><div class="vlogo">V</div><div class="vname">Vera<span>en línea · antiestafas</span></div></div>
+        <div class="vmsg">
+          <div class="vtag"><span class="sem">🔴</span> Riesgo ALTO</div>
+          <h4>Suplantación de banco por teléfono</h4>
+          <ul>
+            <li>El banco nunca te pide el código del SMS por teléfono.</li>
+            <li>Ese código autoriza una transferencia, no la cancela.</li>
+            <li>Cortá y llamá vos al número del dorso de tu tarjeta.</li>
+          </ul>
+        </div>
+        <div class="close"><p>Cortá.<br><em>El banco de verdad te espera.</em></p></div>
+        <div class="brand"><div class="b">VERA · CYBER MOBILE</div><div class="wa">wa.me · 7 días gratis</div></div>
+        <div class="scrim"></div><div class="grain"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="col"><b>Por qué suma seguidores:</b> el primer segundo imita una llamada entrante real (interrupción de patrón: "¿suena mi celu?"). El dato "ya tienen tus datos filtrados" y el giro "te la hacen decir vos" enseñan algo que casi nadie sabe: contenido que se guarda y se manda al grupo de la familia.</div>
+    <div class="col tag"><b>Fuente real:</b> #2 Phishing bancario y #10 Suplantación de banco por teléfono (Observatorio, nov 2026). Nota de Banco Provincia (nov 2026) sobre estafas telefónicas.</div>
+    <div class="col"><b>Nota de producción:</b> voz del "agente" recreada y rotulada. Ideal: capturar una respuesta REAL de Vera a "me llaman del banco y me piden el código del SMS" para reemplazar el cuadro 4. Legibilidad cronometrada: cada texto ≥2,5 s, el SMS ≥4 s.</div>
+  </div>
+</div>
+<script>
+// barras de onda de voz (estáticas para el mock)
+const w=document.getElementById('wave');
+const hs=[22,40,70,54,88,36,62,96,48,74,30,58,84,44,66,100,52,38,78,46,90,34,60,82,42,70,26,56];
+hs.forEach(h=>{const i=document.createElement('i');i.style.height=h+'px';i.style.opacity=(0.4+h/160).toFixed(2);w.appendChild(i)});
+</script>
+</body>
+</html>
