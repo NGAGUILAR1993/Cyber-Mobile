@@ -66,6 +66,27 @@ export default async function handler(req, res) {
     }
   }
 
+  // ?vista=vera: clics del link corto /vera?o=<origen> de los últimos 30 días (HGETALL cm:vera:clics:<fecha>).
+  if (req.query && req.query.vista === 'vera') {
+    try {
+      const r = getRedisClient();
+      const fmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' });
+      const dias = [];
+      for (let i = 0; i < 30; i++) dias.push(fmt.format(new Date(Date.now() - i * 86400000)));
+      const filas = await Promise.all(dias.map(d => r.hgetall(`cm:vera:clics:${d}`)));
+      const totales = {};
+      const porDia = dias.map((d, i) => {
+        const o = {};
+        for (const [k, v] of Object.entries(filas[i] || {})) { o[k] = Number(v) || 0; totales[k] = (totales[k] || 0) + o[k]; }
+        return { dia: d, clics: o };
+      }).filter(x => Object.keys(x.clics).length);
+      return res.status(200).json({ totales, porDia });
+    } catch (error) {
+      console.error('observatorio-stats (vera):', error.message);
+      return res.status(500).json({ error: 'Error leyendo clics' });
+    }
+  }
+
   try {
     const redis = getRedisClient();
 
