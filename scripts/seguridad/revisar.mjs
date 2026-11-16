@@ -23,7 +23,7 @@ function archivos(dir, ext) {
 }
 
 // 1. HTML estático de las guías
-for (const f of archivos(path.join(RAIZ, 'guias'), ['.html'])) {
+for (const f of [...archivos(path.join(RAIZ, 'guias'), ['.html']), ...archivos(path.join(RAIZ, 'informe-fraude-digital'), ['.html'])]) {
     const h = fs.readFileSync(f, 'utf8');
     for (const m of h.matchAll(/<script\b([^>]*)>/gi)) if (!/type="application\/ld\+json"/i.test(m[1])) mal(f, 'tiene <script> ejecutable');
     if (/\son[a-z]+\s*=/i.test(h.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/gi, ''))) mal(f, 'tiene un manejador de eventos inline (on...=)');
