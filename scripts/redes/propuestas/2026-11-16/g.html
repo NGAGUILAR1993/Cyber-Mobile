@@ -1,0 +1,41 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:AN;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:SG;font-weight:700;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SG;font-weight:400;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/JetBrainsMono-Medium.ttf)}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;background:radial-gradient(ellipse at 50% 55%,#0b1a26 0%,#04070d 70%);position:relative;overflow:hidden;color:#f1ebdf;font-family:SG}
+svg{position:absolute;inset:0}.t{position:absolute;left:60px;right:60px;top:110px;font:150px/1.03 AN;text-transform:uppercase}
+.r{color:#ff2d1f;text-shadow:0 0 40px #ff2d1f88}.g{color:#19e66b;text-shadow:0 0 40px #19e66b88}.c{color:#19e6c4;text-shadow:0 0 40px #19e6c488}
+.hud{position:absolute;left:60px;top:55px;font:500 28px JB;letter-spacing:4px;color:#19e6c4;text-transform:uppercase}.hud2{position:absolute;right:60px;top:55px;font:500 28px JB;letter-spacing:4px;color:#ffffff88}
+.s{position:absolute;left:60px;right:60px;bottom:50px;font:700 46px/1.2 SG}.s b{color:#19e66b}
+.ph{position:absolute;left:110px;right:110px;top:470px;height:1500px;background:#0b141a;border:14px solid #1d2a33;border-radius:90px 90px 0 0;box-shadow:0 0 90px #19e66b55}
+.hd{height:130px;background:#1f2c34;border-radius:76px 76px 0 0;display:flex;align-items:center;gap:26px;padding:0 40px;font:700 44px SG}.hd img{width:92px;height:92px;border-radius:50%;border:4px solid #ffd400}.hd small{display:block;font:400 30px SG;color:#19e66b}
+.m{margin:40px 34px 0;border-radius:28px;padding:30px 36px;font:400 44px/1.3 SG;max-width:700px}.me{background:#005c4b;margin-left:auto}.me small{display:block;font:400 30px SG;color:#9fd5c7;margin-bottom:8px}.ve{background:#202c33;border:4px solid #19e66b;box-shadow:0 0 60px #19e66b88}
+mark{background:#ffd40099;color:#fff;padding:0 6px;border-radius:6px}.tag{display:inline-block;background:#ff2d1f;color:#fff;font:700 40px SG;padding:8px 24px;border-radius:12px;margin-bottom:18px}
+.sig{font:500 38px/1.45 JB;color:#e9edef;margin-top:6px}.scan{position:absolute;left:30px;right:30px;top:830px;height:6px;background:#19e66b;box-shadow:0 0 40px #19e66b}
+.lbl{position:absolute;font:700 36px SG;color:#f1ebdf;transform:translateX(-50%);text-align:center;text-shadow:0 0 14px #000}.cta{position:absolute;left:60px;bottom:50px;font:700 40px SG;background:#19e66b;color:#04070d;padding:26px 40px;border-radius:20px;box-shadow:0 0 50px #19e66b88}
+</style><div id=app></div>
+<script>
+const n=+location.hash.slice(1)||1,A=document.getElementById('app');
+const defs='<defs><filter id=gl><feGaussianBlur stdDeviation=7 result=b /><feMerge><feMergeNode in=b /><feMergeNode in=SourceGraphic /></feMerge></filter></defs>';
+const hud=(a,b)=>`<div class=hud>● ${a}</div><div class=hud2>${b}</div>`;
+if(n==1)A.innerHTML=hud('NODO 0001 · CELULAR DE UN USUARIO','ANÁLISIS')+`<div class=t>Vera <span class=r>detecta</span><br>la estafa.</div>
+<div class=ph><div class=hd><img src=vera-perfil.png><div>Vera AI Antiestafas<small>● en línea</small></div></div>
+<div class="m me"><small>↪ Reenviado</small>Tu cuenta será <mark>suspendida hoy</mark>. Verificá ahora: <mark>banco-clientes.online</mark></div>
+<div class="m ve"><span class=tag>🔴 RIESGO ALTO</span><div style="font:700 48px/1.2 SG">Es una estafa. No toqués el link.</div><div class=sig>⚑ Te amenaza con suspender la cuenta<br>⚑ Te apura: “hoy”<br>⚑ Link que no es oficial</div></div></div><div class=s style="z-index:3;background:#04070dcc;padding:16px 0;bottom:0;left:0;right:0;padding-left:60px">Todo empieza en <b>un solo celular.</b></div>`;
+const P=(x,y,l,c='#19e66b',r=44)=>`<circle cx=${x} cy=${y} r=${r} fill=${c} filter=url(#gl) /><text x=${x} y=${y+9} text-anchor=middle font-size=${r*0.8} >${l}</text>`;
+if(n==2){const cx=540,cy=1000;const ps=[[200,640,'👩‍🦳','Mamá'],[880,640,'👦','Hermano'],[160,1160,'👥','Grupo Familia'],[920,1160,'🧑‍🤝‍🧑','Amigos'],[540,1480,'💬','Vecina']];
+ let s=`<svg viewBox="0 0 1080 1920">${defs}`;ps.forEach(p=>s+=`<line x1=${cx} y1=${cy} x2=${p[0]} y2=${p[1]} stroke=#19e66b stroke-width=6 filter=url(#gl) stroke-dasharray="4 18" />`);
+ s+=`<circle cx=${cx} cy=${cy} r=120 fill=none stroke=#19e66b stroke-width=4 opacity=.6 /><circle cx=${cx} cy=${cy} r=76 fill=#19e66b filter=url(#gl) /><text x=${cx} y=${cy+22} text-anchor=middle font-size=64>📱</text>`;
+ ps.forEach(p=>s+=P(p[0],p[1],p[2]));s+='</svg>';
+ A.innerHTML=hud('REENVÍO','ALERTA EN CAMINO')+`<div class=t>Lo <span class=g>reenvía</span> a su familia y amigos.</div>`+s+ps.map(p=>`<div class=lbl style="left:${p[0]}px;top:${p[1]+60}px">${p[3]}</div>`).join('')+`<div class=s><b>“Ojo: es una estafa.”</b> Un reenvío y ya no es solo suyo.</div>`}
+if(n>=3){let sd=7;const rnd=()=>{sd|=0;sd=sd+0x6D2B79F5|0;let t=Math.imul(sd^sd>>>15,1|sd);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+ const N=[[540,1050]];for(let i=0;i<70;i++){let x,y,ok;do{x=70+rnd()*940;y=560+rnd()*1000;ok=N.every(p=>Math.hypot(p[0]-x,p[1]-y)>95)}while(!ok);N.push([x,y])}
+ const d=p=>Math.hypot(p[0]-540,p[1]-1050);const lit=p=>n==4?true:d(p)<(n==3?470:0);
+ const L=[];N.forEach((p,i)=>{N.map((q,j)=>[j,Math.hypot(p[0]-q[0],p[1]-q[1])]).filter(x=>x[0]!=i).sort((a,b)=>a[1]-b[1]).slice(0,2).forEach(x=>{if(x[1]<210&&i<x[0])L.push([i,x[0]])})});
+ let s=`<svg viewBox="0 0 1080 1920">${defs}`;L.forEach(([i,j])=>{const a=N[i],b=N[j],on=lit(a)&&lit(b);s+=`<line x1=${a[0]} y1=${a[1]} x2=${b[0]} y2=${b[1]} stroke=${on?'#19e66b':'#19e6c4'} stroke-width=${on?4:2} opacity=${on?.95:.3} ${on?'filter=url(#gl)':''} />`});
+ N.forEach((p,i)=>{const on=i==0||lit(p);s+=`<circle cx=${p[0]} cy=${p[1]} r=${i==0?26:(on?12:8)} fill=${on?'#19e66b':'#19e6c4'} opacity=${on?1:.5} filter=url(#gl) />`});
+ if(n==3)for(let r=1;r<=4;r++)s+=`<circle cx=540 cy=1050 r=${r*120} fill=none stroke=#19e66b stroke-width=3 opacity=${.7-r*.12} />`;s+='</svg>';
+ A.innerHTML=hud(n==3?'ALERTA MULTIPLICADA':'RED VERA · ACTIVA',n==3?'FAMILIA → VECINOS':'TODOS EN ALERTA')+(n==3?`<div class=t>Ellos <span class=g>avisan</span> a los suyos.</div>${s}<div class=s>La alerta salta de <b>persona en persona,</b> sin que nadie la pare.</div>`:`<div class=t><span style="font-size:122px">Uno detecta.<br><span class=g>Todos se cuidan.</span></span></div>${s}<div class=cta>Sumate a Vera · 7 días gratis</div>`)}
+document.documentElement.setAttribute('data-listo',1)
+</script>
