@@ -1,7 +1,7 @@
 # Pista instrumental original, sintetizada (106 BPM, La menor). Uso: python3 musica.py salida.wav golpes_en_beats(coma)  -- caida del bajo en el compas 9 (beat 36)
 import sys
 HITS=[float(x)*60/106 for x in sys.argv[2].split(',')] if len(sys.argv)>2 else []
-DB=8; FB=10.6
+DB=8.55; FB=10.5
 import math, random, struct, sys, wave
 from array import array
 R=44100; DUR=30.0; N=int(R*DUR); BT=60/106; BAR=4*BT
