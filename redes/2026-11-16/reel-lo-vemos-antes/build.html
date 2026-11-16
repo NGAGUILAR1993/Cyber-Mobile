@@ -1,0 +1,146 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>
+@font-face{font-family:AN;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:SG;font-weight:700;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SG;font-weight:400;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+#cam{position:absolute;inset:0;transform-origin:50% 45%}
+.f{position:absolute;inset:0;overflow:hidden}
+.grain{position:absolute;inset:0;opacity:.2;mix-blend-mode:multiply;pointer-events:none}
+.mono{font-family:JB;letter-spacing:.14em;font-size:26px}
+.top{position:absolute;top:150px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.top b{font-family:SG;font-size:26px;letter-spacing:.22em}
+.w{display:inline-block;transform-origin:0 60%;opacity:0}
+.a{background:#f1ebdf;color:#0e0e0e}
+.a h1{position:absolute;left:62px;top:290px;font-family:AN;font-weight:400;font-size:204px;line-height:1.06;letter-spacing:-.01em;text-transform:uppercase}
+.a .dom{position:absolute;left:70px;top:1215px;font-family:JB;font-size:40px;line-height:1.35;opacity:0}
+/* P: celular real */
+.p{background:#f1ebdf;color:#0e0e0e;opacity:0}
+#pz{position:absolute;inset:0;transform-origin:50% 55%}
+#ph{position:absolute;left:0;top:0;transform-origin:0 0}
+.p h1{position:absolute;left:62px;top:205px;font-family:AN;font-weight:400;font-size:100px;line-height:1.1;text-transform:uppercase;white-space:nowrap;z-index:5}
+.p h1 .k{display:inline-block;position:relative;padding:0 14px;transform:rotate(-2deg)}
+.p h1 .k i{position:absolute;inset:0;background:#19e6c4;transform-origin:0 50%;z-index:-1}
+#scr{position:absolute;overflow:hidden;background:#efe7dd;z-index:3}
+.sb{height:74px;background:#f7f5f2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 44px 8px;font-weight:700;font-size:23px;font-family:system-ui,sans-serif}
+.hd{height:104px;background:#f7f5f2;border-bottom:1px solid #dcd6cd;display:flex;align-items:center;gap:15px;padding:0 20px;font-family:system-ui,sans-serif}
+.hd .bk{font-size:40px;color:#128c7e;line-height:1}.hd img{width:76px;height:76px;border-radius:50%;object-fit:cover}
+.hd b{font-size:29px;display:block;line-height:1.15}.hd small{font-size:21px;color:#128c7e}
+.chat{padding:20px 18px;font-family:system-ui,sans-serif;display:flex;flex-direction:column;gap:14px;background-color:#efe7dd;background-image:radial-gradient(rgba(120,100,70,.08) 2px,transparent 2.4px);background-size:30px 30px;height:100%}
+.bb{position:relative;max-width:548px;padding:14px 17px 10px;border-radius:19px;font-size:28.5px;line-height:1.3;box-shadow:0 2px 3px rgba(0,0,0,.14);opacity:0}
+.bb.out{background:#d9fdd3;align-self:flex-end;border-top-right-radius:5px;transform-origin:100% 100%}
+.bb.in{background:#fff;align-self:flex-start;border-top-left-radius:5px;transform-origin:0 100%}
+.bb time{display:block;text-align:right;font-size:17px;color:#7b8389;margin-top:3px}
+.fw{font-size:20px;color:#6b7479;font-style:italic;margin-bottom:4px}
+#hl{background-image:linear-gradient(#ffd400,#ffd400);background-repeat:no-repeat;background-size:0% 100%;padding:0 4px}
+.dm{font-family:JB;font-size:22px}
+.tag{display:inline-block;background:#ff2d1f;color:#fff;font-weight:700;font-size:28px;padding:6px 14px;border-radius:9px;margin-bottom:7px}
+.in p{margin-top:5px}.in .do{margin-top:9px;padding-top:9px;border-top:1px solid #e6e2dc;font-weight:700}
+svg.ink{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#typ{position:absolute;left:18px;background:#fff;border-radius:19px;padding:18px 22px;display:flex;gap:8px;opacity:0;box-shadow:0 2px 3px rgba(0,0,0,.14)}
+#typ i{width:13px;height:13px;border-radius:50%;background:#98a1a7}
+.inp{position:absolute;left:0;right:0;bottom:0;height:96px;background:#f7f5f2;display:flex;align-items:center;gap:14px;padding:0 20px 14px;font-family:system-ui}
+.inp div{flex:1;height:58px;border-radius:30px;background:#fff;border:1px solid #e2ddd5;font-size:24px;color:#9aa1a6;display:flex;align-items:center;padding-left:24px}
+.inp span{width:60px;height:60px;border-radius:50%;background:#128c7e}
+#pcam{position:absolute;width:26px;height:26px;border-radius:50%;background:#050505;z-index:4}
+#glare{position:absolute;z-index:4;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.16) 0,rgba(255,255,255,0) 24%)}
+.st{position:absolute;font-family:JB;font-size:32px;letter-spacing:.06em;background:#ff2d1f;color:#fff;padding:11px 18px;border-radius:6px;box-shadow:6px 6px 0 #0e0e0e;white-space:nowrap;z-index:6;opacity:0}
+/* B */
+.b{background:#ff2d1f;color:#0e0e0e;clip-path:circle(0px at 540px 1050px)}
+.b .big{position:absolute;left:54px;top:420px;font-family:AN;font-size:318px;line-height:1.02;letter-spacing:-.01em;transform:rotate(-5deg);transform-origin:0 50%;white-space:nowrap}
+.b .big span{display:block;opacity:0;transform-origin:0 60%}.b .big span:first-child{font-size:200px}.b .big .wh{color:#fff}
+.b .sub{position:absolute;left:70px;right:70px;top:1200px;font-family:SG;font-weight:700;font-size:84px;line-height:1.08;color:#fff;opacity:0}
+/* S */
+.s{background:#0b0b0b;color:#f1ebdf;opacity:0}
+.s .cap{position:absolute;left:70px;right:70px;top:232px;font-family:SG;font-weight:700;font-size:58px;line-height:1.08;opacity:0}
+.band{position:absolute;left:0;width:1080px;height:400px;display:flex;align-items:center;padding-left:60px;font-family:AN;font-size:300px;line-height:1;letter-spacing:-.01em;color:#0e0e0e}
+.band small{position:absolute;right:60px;bottom:34px;font-family:JB;font-size:27px;letter-spacing:.1em}
+/* C */
+.c{background:#0b0b0b;color:#f1ebdf;opacity:0}
+.c h1{position:absolute;left:62px;top:290px;font-family:AN;font-weight:400;font-size:204px;line-height:1.08;text-transform:uppercase}
+.c h1 .k{display:inline-block;position:relative;color:#0b0b0b;padding:0 20px;margin-left:-14px;transform:rotate(-2deg)}
+.c h1 .k i{position:absolute;inset:0;background:#19e6c4;transform-origin:0 50%;z-index:-1}
+.c .lights{position:absolute;left:70px;top:1215px;display:flex;gap:22px}.c .lights i{width:78px;height:78px;border-radius:50%;opacity:0}
+.c .who{position:absolute;left:70px;top:1330px;display:flex;align-items:center;gap:26px;opacity:0}
+.c .who img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:5px solid #19e6c4}
+.c .who b{font-family:SG;font-size:54px;display:block;line-height:1.05}.c .who small{font-family:SG;font-size:34px;color:#b9b2a4}
+.c .pill{position:absolute;left:70px;top:1505px;font-family:AN;font-size:66px;background:#f1ebdf;color:#0b0b0b;padding:10px 40px 14px;border-radius:999px;opacity:0}
+.c .cta{position:absolute;left:560px;top:1512px;font-family:SG;font-size:36px;line-height:1.15;opacity:0}
+
+.big{font-family:AN;text-transform:uppercase;line-height:1.02;position:absolute;left:62px;right:50px}
+.big .w,.l .w{display:inline-block;transform-origin:0 60%;opacity:0}
+.foot{position:absolute;left:62px;right:62px;font-family:JB;font-size:27px;letter-spacing:.08em;line-height:1.5}
+.mono2{position:absolute;font-family:JB;letter-spacing:.1em}
+.sc{background:#f1ebdf;color:#0b0b0b}.sk{background:#0b0b0b;color:#f1ebdf}.sr{background:#ff2d1f;color:#fff}
+.hl2{background:#ffd400}
+.bb.fwd{background:#d9fdd3}.nm{font-size:21px;font-weight:700;color:#128c7e;margin-bottom:3px}.nm.t{color:#c2410c}
+.mini{font-size:19px;color:#6b7479;font-style:italic;margin-bottom:6px;border-left:4px solid #19e6c4;padding-left:9px}
+.strip{position:absolute;left:0;width:1080px}
+.pk{display:inline-block;position:relative;padding:0 16px;transform:rotate(-2deg)}
+</style></head><body><div id="cam"><div class="f sk" id="S1"><div class="top" style="color:#f1ebdf"><b>CYBER MOBILE</b><span class="mono">OBSERVATORIO · NOV 2026</span></div>
+<div class="big" style="top:230px;font-size:130px;color:#f1ebdf"><span class="w" id="a1">N.º 1 en Argentina</span><br><span class="w" id="a2">este mes</span></div>
+<div class="big" style="top:620px;font-size:110px;color:#ffd400"><span class="w" id="a3">Plataforma de inversión falsa</span></div>
+<div id="n93" class="w" style="position:absolute;left:62px;top:1010px;font-family:AN;font-size:560px;line-height:.9;color:#19e66b;opacity:0">93</div>
+<div class="mono2" id="a5" style="left:70px;top:1560px;font-size:32px;color:#f1ebdf;opacity:0">/100 ÍNDICE DE ACTIVIDAD</div>
+<div class="mono2" style="left:62px;top:1830px;font-size:22px;color:#9a9a9a">Fuente: Observatorio de Fraude Digital de Cyber Mobile</div></div><div class="f p" id="P"><div id="pz"><canvas id="ph"></canvas><div class="top"><b>CYBER MOBILE</b><span class="mono">RECREACIÓN ILUSTRATIVA</span></div>
+<h1><span class="w" id="p1">Así la analiza</span> <span class="k"><i id="pk"></i><span class="w" id="p2">Vera.</span></span></h1>
+<div id="scr"><div class="sb"><span>09:13</span><span>5G ▮</span></div><div class="hd"><span class="bk">‹</span><img src="vera-perfil.png"><div><b>Vera AI Antiestafas</b><small id="est">en línea</small></div></div><div class="chat">
+<div class="bb out" id="m1"><div class="fw">↪ Reenviado</div>Duplicá tu dinero en 7 días. <span id="hl">Ganancia asegurada.</span> Transferí para activar tu cuenta:<br><span class="dm">inversion-segura-ar.online</span><time style="margin-top:12px">09:13 ✓✓</time>
+<svg class="ink" fill="none" stroke="#ff2d1f" stroke-width="5.5" stroke-linecap="round"><path class="d" id="sq" d="M18,162 q11.5,-11 23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0"/></svg></div>
+<div class="bb in" id="m3"><span class="tag">🔴 RIESGO ALTO</span><br>Es la <b>inversión falsa</b>: la modalidad N.º 1 del Observatorio.<p>🚩 Promete ganancias rápidas y altas</p><p>🚩 Te pide transferir para “activar”</p><div class="do">✋ No transfieras.</div><time>09:13</time></div>
+<div id="typ"><i></i><i></i><i></i></div></div><div class="inp"><div>Mensaje</div><span></span></div></div>
+<div id="pcam"></div><div id="glare"></div><span class="st" id="stk" style="left:300px;top:1395px;--r:-4deg">LA RECONOCE POR EL PATRÓN</span></div></div><div class="f sr" id="R"><div class="top" style="color:#fff"><b>VERA · ANTIESTAFAS</b><span class="mono">RIESGO ALTO</span></div>
+<div class="big" style="top:300px;font-size:330px;color:#fff;transform:rotate(-3deg);transform-origin:0 0"><span class="w" id="r1">Es</span><br><span class="w" id="r2">estafa.</span></div>
+<div id="strips" style="position:absolute;left:0;right:0;top:1150px"><div class="strip" id="s1" style="height:130px;background:#ff2d1f;border:6px solid #fff;display:flex;align-items:center;padding:0 62px;font-family:SG;font-weight:700;font-size:44px;color:#fff">🔴 NO TOQUES · NO TRANSFIERAS</div><div class="strip" id="s2" style="top:130px;height:100px;background:#ffd400"></div><div class="strip" id="s3" style="top:230px;height:100px;background:#19e66b"></div></div>
+<div class="big" id="r3" style="top:1520px;font-size:84px;color:#0b0b0b;line-height:1.05;opacity:0">Lo vimos primero<br>en el Observatorio.</div>
+<div class="foot" id="r4" style="color:#fff;bottom:66px;font-size:36px;font-weight:700;opacity:0"></div></div></div><script>
+const $=id=>document.getElementById(id), cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), ez=x=>{x=cl(x);return x*x*(3-2*x)};
+const out=x=>{x=cl(x);return 1-Math.pow(1-x,3)}, back=x=>{x=cl(x);const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const canal=new URLSearchParams(location.search).get('canal')||'ig';
+const BT=60/106;
+function slam(el,t,at,d=.22){const k=out((t-at)/d);el.style.opacity=cl((t-at)/.06);el.style.transform=`scale(${1.35-.35*k}) translateY(${(1-k)*-14}px)`;}
+function pop(el,t,at){const k=back((t-at)/.32);el.style.opacity=cl((t-at)/.08);el.style.transform=`rotate(var(--r,0deg)) scale(${Math.max(0,k)})`;}
+function bub(el,t,at){const k=out((t-at)/.3);el.style.opacity=cl((t-at)/.1);el.style.transform=`translateY(${(1-k)*22}px) scale(${.92+.08*k})`;}
+function draw(p,t,at,d){p.style.strokeDashoffset=p._l*(1-ez((t-at)/d));}
+function fade(el,t,at,d=.4,dy=18){const k=ez((t-at)/d);el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dy}px)`;}
+function shake(t,at,amp){const u=t-at;return u<0||u>.4?0:amp*Math.exp(-u*9)*Math.sin(u*70)}
+
+const T={a:[0,1,3.5],n93:6.5,a5:7.5,chat:14,m1:15.5,hl:17.3,sq:18.6,ty:20,m3:21.3,stk:24.5,flood:34.5,drop:36,s1:38,r3:41,r4:46};
+document.getElementById('r4').innerHTML=({ig:'COMENTÁ VERA Y TE ENVÍO EL LINK',tt:'LINK EN EL PERFIL',wa:'ESCRIBILE A VERA POR WHATSAPP'})[canal]+'<br>7 DÍAS GRATIS';
+function render(t){
+ const tb=t/BT, B=x=>x*BT;
+ const sh=shake(t,B(T.drop),16)+shake(t,B(T.drop+1),10);
+ $('cam').style.transform=`translate(${sh}px,${sh*.6}px)`;
+ ['a1','a2','a3'].forEach((id,i)=>slam($(id),t,B(T.a[i])));
+ slam($('n93'),t,B(T.n93),.25); fade($('a5'),t,B(T.a5));
+ $('S1').style.transform=`scale(${1+.025*cl(t/B(T.chat))})`;
+ const pin=ez((t-B(T.chat))/.5); $('P').style.opacity=pin; $('P').style.visibility=t<B(T.chat)-.02?'hidden':'visible';
+ $('pz').style.transform=`translateY(${(1-out((t-B(T.chat))/.7))*90}px) scale(${1+.05*cl((t-B(T.chat))/(B(T.flood-T.chat)))})`;
+ slam($('p1'),t,B(T.chat)+.25); slam($('p2'),t,B(T.chat)+.25+BT); $('pk').style.transform=`scaleX(${out((t-(B(T.chat)+.2+BT))/.3)})`;
+ bub($('m1'),t,B(T.m1));
+ $('hl').style.cssText='background-image:linear-gradient(#ffd400,#ffd400);background-repeat:no-repeat;padding:0 4px;background-size:'+(100*ez((t-B(T.hl))/.4))+'% 100%';
+ draw($('sq'),t,B(T.sq),.5);
+ const ty=cl((t-B(T.ty))/.2)*(1-cl((t-(B(T.m3)-.12))/.12)); $('typ').style.opacity=ty; $('typ').style.top=($('m1').offsetTop+$('m1').offsetHeight+14)+'px';
+ [...$('typ').children].forEach((d,i)=>d.style.transform=`translateY(${-6*Math.max(0,Math.sin(t*9-i*.9))}px)`);
+ $('est').textContent=(ty>.5)?'escribiendo…':'en línea';
+ bub($('m3'),t,B(T.m3)); pop($('stk'),t,B(T.stk));
+ $('R').style.clipPath=`circle(${2400*Math.pow(cl((t-B(T.flood))/(B(T.drop-T.flood))),2.2)}px at 540px 1050px)`; $('R').style.visibility=t<B(T.flood)?'hidden':'visible';
+ slam($('r1'),t,B(T.drop),.2); slam($('r2'),t,B(T.drop+1),.2);
+ ['s1','s2','s3'].forEach((id,i)=>{const k=out((t-B(T.s1+i*.5))/.3);$(id).style.transform=`translateX(${(1-k)*-1200}px)`});
+ fade($('r3'),t,B(T.r3)); fade($('r4'),t,B(T.r4));
+}
+// foto real: reemplaza la pantalla verde y ubica el chat encima
+const im=new Image(); im.onload=()=>{
+ const c=$('ph'); c.width=im.width; c.height=im.height; const x=c.getContext('2d'); x.drawImage(im,0,0);
+ const d=x.getImageData(0,0,c.width,c.height), p=d.data; let x0=1e9,y0=1e9,x1=0,y1=0;
+ for(let j=0;j<c.height;j++)for(let i=0;i<c.width;i++){const k=(j*c.width+i)*4; if(p[k+1]>110&&p[k+1]>p[k]*1.35&&p[k+1]>p[k+2]*1.35){ if(i<x0)x0=i;if(i>x1)x1=i;if(j<y0)y0=j;if(j>y1)y1=j; p[k]=6;p[k+1]=6;p[k+2]=8; } }
+ x.putImageData(d,0,0); x0-=3;y0-=3;x1+=3;y1+=3;
+ const TW=640, sc=TW/(x1-x0), TL=220, TT=375, H=(y1-y0)*sc; c.style.transform=`translate(${TL-x0*sc}px,${TT-y0*sc}px) scale(${sc})`;
+ for(const id of ['scr','glare']){const s=$(id); s.style.left=TL+'px'; s.style.top=TT+'px'; s.style.width=TW+'px'; s.style.height=H+'px'; s.style.borderRadius=(TW*.085)+'px';}
+ $('pcam').style.left=(TL+TW/2-13)+'px'; $('pcam').style.top=(TT+22)+'px';
+ document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode?i.decode().catch(()=>0):0))).then(()=>{
+  document.querySelectorAll('.d').forEach(q=>{q._l=q.getTotalLength();q.style.strokeDasharray=q._l;q.style.strokeDashoffset=q._l});
+  render(0); document.documentElement.setAttribute('data-listo','1');});
+}; im.src='foto/mano.jpg';
+</script></body></html>
