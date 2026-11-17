@@ -9,9 +9,9 @@
 import crypto from 'node:crypto';
 import Redis from 'ioredis';
 
-export const GRATIS = 2;                 // consultas gratis por navegador
+export const GRATIS = 3;                 // consultas gratis por navegador
 export const GRATIS_EXT = 3;             // consultas gratis en la extensión de Chrome
-export const GRATIS_POR_IP = 6;          // tope de consultas gratis por IP y por mes
+export const GRATIS_POR_IP = 9;          // tope de consultas gratis por IP y por mes (3 navegadores completos de 3)
 export const COOKIE = 'cm_agente';
 const COOKIE_DIAS = 180;
 export const WA_AGENTE = '5491170598505';
