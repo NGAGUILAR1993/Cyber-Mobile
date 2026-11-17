@@ -819,15 +819,15 @@
   "phishing-banco": {
    "key": "phishing_banco",
    "nombre": "Phishing bancario",
-   "canal": "SMS",
+   "canal": "TELEFONO",
    "riesgo": "alto",
    "act": 91,
-   "como": "Los estafadores envían mensajes de texto haciéndose pasar por entidades bancarias. Solicitan a las víctimas que hagan clic en un enlace malicioso para 'actualizar' sus datos o 'resolver' supuestos problemas con sus cuentas. Al ingresar la información, los delincuentes obtienen acceso a las credenciales bancarias para vaciar las cuentas.",
-   "detectar": "Mensajes de texto inesperados de supuestos bancos con enlaces para 'actualizar' datos o 'resolver' problemas urgentes en la cuenta. Suelen tener errores de ortografía o gramática.",
+   "como": "Un comerciante de Neuquén fue contactado telefónicamente por supuestos empleados bancarios mientras realizaba operaciones. Los estafadores, con información previa de sus movimientos, lo guiaron para instalar una aplicación de acceso remoto, logrando así vaciar su cuenta bancaria. La víctima creyó estar hablando con su banco.",
+   "detectar": "La víctima recibió una llamada de supuestos empleados bancarios que tenían detalles de sus transacciones y lo convencieron de instalar una aplicación de acceso remoto.",
    "provincias": [
     {
      "nombre": "Buenos Aires",
-     "n": 89
+     "n": 90
     },
     {
      "nombre": "Santiago del Estero",
@@ -835,7 +835,7 @@
     },
     {
      "nombre": "La Pampa",
-     "n": 10
+     "n": 11
     },
     {
      "nombre": "Córdoba",
@@ -851,6 +851,10 @@
     },
     {
      "nombre": "Catamarca",
+     "n": 2
+    },
+    {
+     "nombre": "Neuquén",
      "n": 2
     },
     {
@@ -913,16 +917,16 @@
    "seccion": "top",
    "pos": 3,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-16T15:00:19.012Z"
+   "visto": "2026-11-17T01:00:18.467Z"
   },
   "phishing-mercadopago": {
    "key": "phishing_mercadopago",
    "nombre": "Phishing de billetera virtual",
    "canal": "WHATSAPP",
    "riesgo": "alto",
-   "act": 48,
-   "como": "Los estafadores envían mensajes de WhatsApp haciéndose pasar por Mercado Libre, ofreciendo supuestos premios o beneficios. El objetivo es engañar a las víctimas para que hagan clic en enlaces maliciosos, donde se les solicita información personal y bancaria, o se les induce a descargar software fraudulento para robar sus datos y acceder a sus cuentas.",
-   "detectar": "Mensajes de WhatsApp de Mercado Libre con ofertas o premios inusuales, solicitando datos personales o bancarios, o pidiendo hacer clic en enlaces sospechosos.",
+   "act": 45,
+   "como": "Los estafadores se hacen pasar por Mercado Pago y envían mensajes de WhatsApp con un enlace falso. Al hacer clic, la víctima es redirigida a una página que simula ser la de Mercado Pago, donde se le solicitan datos personales y bancarios. Con esta información, los delincuentes vacían las cuentas o realizan compras fraudulentas.",
+   "detectar": "Mensajes de WhatsApp de supuestos representantes de Mercado Pago con enlaces sospechosos o solicitudes de datos personales y bancarios.",
    "provincias": [
     {
      "nombre": "Entre Ríos",
@@ -931,6 +935,10 @@
     {
      "nombre": "Santa Fe",
      "n": 9
+    },
+    {
+     "nombre": "Chaco",
+     "n": 1
     }
    ],
    "evidencias": [
@@ -978,9 +986,9 @@
    "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQWnVLb0FnR29LdDMwR0xNaGZMUE5qVXctRnpSRHpfRXVwWmx5TkVTaWd1T09xc2JzS2tyUTVxYWlpNHV1UHlERFB6N29vdllKUWxMUV9oOUhIZlJwUWlkN2lkS2hlNmFrei04Tm5NM1ZkU2c1bUZGLW4tSFBia0U5dnVDN3BMeURZeXJ6YzFGNl9DLXJ6SVJQVnNDWTNVZ0ZrUUluUGh4NU9WLWZFWjVneU0yWG5aSVlROS1VTw?oc=5",
    "fuente": "Chequeado",
    "seccion": "watch",
-   "pos": 15,
+   "pos": 16,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-01T00:00:22.881Z"
+   "visto": "2026-11-17T01:00:18.467Z"
   },
   "phishing-pami": {
    "key": "phishing_pami",
@@ -1581,9 +1589,9 @@
    "nombre": "Suplantacion de banco por telefono",
    "canal": "TELEFONO",
    "riesgo": "alto",
-   "act": 66,
-   "como": "Los estafadores se hacen pasar por empleados de un banco y llaman a la víctima para alertar sobre supuestos movimientos sospechosos en su cuenta. Con la excusa de 'solucionar' el problema, solicitan datos personales y bancarios, o incluso guían a la víctima para que instale una aplicación de acceso remoto, vaciando la cuenta en cuestión de segundos.",
-   "detectar": "Llamadas telefónicas inesperadas de supuestos bancos que solicitan datos personales o bancarios, o que piden instalar aplicaciones para 'resolver' problemas de seguridad en la cuenta.",
+   "act": 70,
+   "como": "Un cliente del Banco Formosa recibió un llamado telefónico de un estafador que se hizo pasar por un empleado bancario. Bajo el pretexto de una supuesta actualización de datos o problema de seguridad, el delincuente obtuvo información sensible del cliente, logrando realizar transferencias no autorizadas desde su cuenta. La Justicia ordenó al banco devolver el dinero.",
+   "detectar": "Llamadas telefónicas inesperadas de supuestos bancos solicitando datos personales o credenciales bancarias, o pidiendo realizar operaciones para 'solucionar' problemas de seguridad.",
    "provincias": [
     {
      "nombre": "Jujuy",
@@ -1606,11 +1614,11 @@
      "n": 2
     },
     {
-     "nombre": "La Pampa",
-     "n": 1
+     "nombre": "Formosa",
+     "n": 2
     },
     {
-     "nombre": "Formosa",
+     "nombre": "La Pampa",
      "n": 1
     }
    ],
@@ -1661,7 +1669,7 @@
    "seccion": "watch",
    "pos": 13,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-16T15:00:19.012Z"
+   "visto": "2026-11-17T01:00:18.467Z"
   },
   "suplantacion-contacto": {
    "key": "suplantacion_contacto",
