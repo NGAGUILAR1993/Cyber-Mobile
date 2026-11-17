@@ -113,7 +113,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
     - **Marcas a mano de Vera** (resaltador amarillo, círculo y subrayado rojos) y etiquetas rojas tipo sticker.
     - **Vera como contacto de WhatsApp en un celular real:** foto de una mano sosteniendo el teléfono (`redes/2026-11-14/marcado-por-vera/foto/mano.jpg`, generada con IA) con el chat montado en la pantalla: contacto "Vera AI Antiestafas", su foto de perfil, "en línea", mensaje reenviado, respuesta con semáforo y señales. Nunca un celular dibujado.
     - **Veredicto como sello** a pantalla completa ("ES ESTAFA.") y el semáforo en franjas de color.
-    - **Música instrumental** sintetizada (`musica.py`), con los golpes de texto sobre el compás. 30 s, tiempos de lectura de la regla 1.
+    - **Música instrumental** sintetizada (`musica.py`), con los golpes de texto sobre el compás. 30 s, tiempos de lectura de la regla 1. **La música NO se repite entre reels (pedido del dueño, 17/11): cambiar de tema y estilo en cada pieza** (ej. techno 126 BPM en `redes/2026-11-17/comparacion-v2/musica_techno.py`, pop-electrónico 106 BPM en `musica.py`); registrar cuál se usó y variar la siguiente.
 
 ## TikTok
 - Guía completa en `scripts/redes/TIKTOK.md`: perfil, público, estilo, series y frecuencia (lunes, miércoles y viernes 20:00).
