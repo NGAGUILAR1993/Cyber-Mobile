@@ -1,0 +1,30 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:AN;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:SG;font-weight:700;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/JetBrainsMono-Medium.ttf)}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;background:radial-gradient(ellipse at 50% 50%,#0b1a26 0%,#04070d 70%);position:relative;overflow:hidden;color:#f1ebdf;font-family:SG}
+svg{position:absolute;inset:0}.t{position:absolute;left:60px;right:60px;top:120px;font:158px/1.03 AN;text-transform:uppercase}
+.t .r{color:#ff2d1f;text-shadow:0 0 40px #ff2d1f88}.t .g{color:#19e66b;text-shadow:0 0 40px #19e66b88}.t .c{color:#19e6c4;text-shadow:0 0 40px #19e6c488}
+.hud{position:absolute;left:60px;top:60px;font:500 30px JB;letter-spacing:4px;color:#19e6c4;text-transform:uppercase}.hud2{position:absolute;right:60px;top:60px;font:500 30px JB;letter-spacing:4px;color:#ffffff88}
+.s{position:absolute;left:60px;right:60px;bottom:50px;font:700 46px/1.2 SG}.s b{color:#19e66b}
+.al{position:absolute;left:100px;right:100px;top:1600px;border:3px solid #ff2d1f;background:#2a0a0acc;border-radius:16px;padding:22px 30px;font:500 36px/1.3 JB;color:#ff6b5e;box-shadow:0 0 40px #ff2d1f66}
+.ok{border-color:#19e66b;background:#06241acc;color:#19e66b;box-shadow:0 0 40px #19e66b66}
+.cta{position:absolute;left:60px;bottom:50px;font-size:40px;font:700 46px SG;background:#19e66b;color:#04070d;padding:26px 40px;border-radius:20px;box-shadow:0 0 50px #19e66b88}
+</style><div id=app></div>
+<script>
+const n=+location.hash.slice(1)||1,A=document.getElementById('app');
+let s=7;const rnd=()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const N=[[540,1050,'c']];for(let i=0;i<70;i++){let x,y,ok;do{x=70+rnd()*940;y=560+rnd()*1000;ok=N.every(p=>Math.hypot(p[0]-x,p[1]-y)>95)}while(!ok);N.push([x,y])}
+const C=N[0];const dist=p=>Math.hypot(p[0]-C[0],p[1]-C[1]);
+const lit=p=>n==3?true:(n==2?dist(p)<340:false);
+let L=[];N.forEach((p,i)=>{N.map((q,j)=>[j,Math.hypot(p[0]-q[0],p[1]-q[1])]).filter(x=>x[0]!=i).sort((a,b)=>a[1]-b[1]).slice(0,2).forEach(x=>{if(x[1]<210&&i<x[0])L.push([i,x[0]])})});
+let svg='<svg viewBox="0 0 1080 1920"><defs><filter id=gl><feGaussianBlur stdDeviation=7 result=b /><feMerge><feMergeNode in=b /><feMergeNode in=SourceGraphic /></feMerge></filter></defs>';
+for(let r=1;r<=4;r++){const col=n==1?'#ff2d1f':'#19e66b';if(n<3)svg+=`<circle cx=${C[0]} cy=${C[1]} r=${r*(n==1?70:100)} fill=none stroke=${col} stroke-width=3 opacity=${.65-r*.1} />`}
+L.forEach(([i,j])=>{const a=N[i],b=N[j];const on=lit(a)&&lit(b);svg+=`<line x1=${a[0]} y1=${a[1]} x2=${b[0]} y2=${b[1]} stroke=${on?'#19e66b':'#19e6c4'} stroke-width=${on?4:2} opacity=${on?.95:.3} ${on?'filter=url(#gl)':''} />`});
+N.forEach((p,i)=>{const isC=i==0;const on=lit(p);let col=isC?(n==1?'#ff2d1f':'#19e66b'):(on?'#19e66b':'#19e6c4');let r=isC?26:(on?12:8);svg+=`<circle cx=${p[0]} cy=${p[1]} r=${r} fill=${col} opacity=${isC||on?1:.55} filter=url(#gl) />`});
+svg+='</svg>';
+const T=['<div class=hud>● RED VERA · NODO 0001</div><div class=hud2>ALERTA</div><div class=t>Una estafa <span class=r>aparece.</span></div><div class="al">⚠ MENSAJE SOSPECHOSO DETECTADO<br>banco-clientes.online</div><div class=s>Hoy nadie más lo sabe.</div>',
+'<div class=hud>● RED VERA · PROPAGANDO ALERTA</div><div class=hud2>RADIO 340 m</div><div class=t>Uno avisa. <span class=g>La red se activa.</span></div><div class="al ok">✓ ES ESTAFA · NO TOQUES EL LINK<br>Alerta enviada a tu red</div><div class=s>Como una alarma vecinal, <b>pero digital.</b></div>',
+'<div class=hud>● RED VERA · ACTIVA</div><div class=hud2>TODOS EN ALERTA</div><div class=t>Todos <span class=g>protegidos.</span></div><div style="position:absolute;left:60px;right:60px;top:1590px;font:92px/1.02 AN;text-transform:uppercase;color:#19e6c4;text-shadow:0 0 40px #19e6c488">Cuidémonos entre todos.</div><div class=cta>Sumate a Vera · 7 días gratis</div>'];
+A.innerHTML=svg+T[n-1];document.documentElement.setAttribute('data-listo',1)
+</script>

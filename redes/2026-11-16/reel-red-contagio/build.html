@@ -1,0 +1,127 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:AN;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:SG;font-weight:700;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SG;font-weight:400;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/JetBrainsMono-Medium.ttf)}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;background:radial-gradient(ellipse at 50% 55%,#0b1a26 0%,#04070d 70%);position:relative;overflow:hidden;color:#f1ebdf;font-family:SG}
+svg{position:absolute;inset:0}.t{position:absolute;left:60px;right:60px;top:110px;font:150px/1.03 AN;text-transform:uppercase}
+.r{color:#ff2d1f;text-shadow:0 0 40px #ff2d1f88}.g{color:#19e66b;text-shadow:0 0 40px #19e66b88}.c{color:#19e6c4;text-shadow:0 0 40px #19e6c488}
+.hud{position:absolute;left:60px;top:55px;font:500 28px JB;letter-spacing:4px;color:#19e6c4;text-transform:uppercase}.hud2{position:absolute;right:60px;top:55px;font:500 28px JB;letter-spacing:4px;color:#ffffff88}
+.s{position:absolute;left:60px;right:60px;bottom:50px;font:700 46px/1.2 SG}.s b{color:#19e66b}
+.ph{position:absolute;left:110px;right:110px;top:470px;height:1500px;background:#0b141a;border:14px solid #1d2a33;border-radius:90px 90px 0 0;box-shadow:0 0 90px #19e66b55}
+.hd{height:130px;background:#1f2c34;border-radius:76px 76px 0 0;display:flex;align-items:center;gap:26px;padding:0 40px;font:700 44px SG}.hd img{width:92px;height:92px;border-radius:50%;border:4px solid #ffd400}.hd small{display:block;font:400 30px SG;color:#19e66b}
+.m{margin:40px 34px 0;border-radius:28px;padding:30px 36px;font:400 44px/1.3 SG;max-width:700px}.me{background:#005c4b;margin-left:auto}.me small{display:block;font:400 30px SG;color:#9fd5c7;margin-bottom:8px}.ve{background:#202c33;border:4px solid #19e66b;box-shadow:0 0 60px #19e66b88}
+mark{background:#ffd40099;color:#fff;padding:0 6px;border-radius:6px}.tag{display:inline-block;background:#ff2d1f;color:#fff;font:700 40px SG;padding:8px 24px;border-radius:12px;margin-bottom:18px}
+.sig{font:500 38px/1.45 JB;color:#e9edef;margin-top:6px}.scan{position:absolute;left:30px;right:30px;top:830px;height:6px;background:#19e66b;box-shadow:0 0 40px #19e66b}
+.lbl{position:absolute;font:700 36px SG;color:#f1ebdf;transform:translateX(-50%);text-align:center;text-shadow:0 0 14px #000}.cta{position:absolute;left:60px;bottom:50px;font:700 40px SG;background:#19e66b;color:#04070d;padding:26px 40px;border-radius:20px;box-shadow:0 0 50px #19e66b88}
+
+.fr{background:#202c33;border-radius:28px;padding:26px;margin:40px 34px 0;max-width:700px;margin-left:auto;border:3px solid #ffffff22}.fr .row{display:flex;gap:24px;align-items:center}.fr img{width:120px;height:120px;border-radius:50%;border:5px solid #ffd400}.fr b{font:700 46px/1.15 SG;display:block}.fr small{font:400 32px SG;color:#9fd5c7}
+.bt{display:flex;margin-top:22px;border-top:2px solid #ffffff22;font:700 40px SG;color:#19e66b}.bt div{flex:1;text-align:center;padding-top:20px}
+.sv2{position:absolute;left:110px;right:110px;top:520px;background:#fff;color:#0b0b0b;border-radius:60px;padding:60px 40px;text-align:center;box-shadow:0 0 90px #19e66b88}.sv2 img{width:300px;height:300px;border-radius:50%;border:10px solid #ffd400}.sv2 b{display:block;font:700 64px SG;margin-top:26px}.sv2 small{font:400 42px SG;color:#555;display:block;margin-top:8px}.sv2 .ok{margin:40px auto 0;width:620px;background:#19e66b;border-radius:30px;padding:28px;font:700 52px SG}
+.big{position:absolute;left:60px;right:60px;bottom:120px;font:150px/1.02 AN;text-transform:uppercase}
+
+.sc{position:absolute;inset:0;opacity:0}
+.top{position:absolute;left:0;right:0;top:0;padding:110px 60px 60px;background:linear-gradient(#04070d 80%,#04070d00);z-index:5}.top .t{position:static;font:150px/1.03 AN}
+.hud,.hud2{z-index:6}
+.cap{position:absolute;left:40px;right:40px;bottom:230px;font:700 46px/1.25 SG;background:#04070de6;padding:20px 28px;border-radius:18px;z-index:5;border:2px solid #19e66b44}.cap b{color:#19e66b}
+.rec{position:absolute;right:60px;top:432px;font:500 26px JB;letter-spacing:3px;color:#ffd400;border:2px solid #ffd400;padding:6px 16px;border-radius:10px;background:#04070dcc;z-index:7}
+.ph{height:1700px}.bt .tap{background:#19e66b;color:#04070d;border-radius:14px}
+body::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#19e6c410 2px,transparent 2px),linear-gradient(90deg,#19e6c410 2px,transparent 2px);background-size:90px 90px;background-position:var(--gx,0) var(--gy,0)}
+.cta{left:50px;right:50px;bottom:200px;font-size:38px;text-align:center;line-height:1.25}
+.sv2{top:470px}.sv2 img{width:240px;height:240px}.sv2{padding:44px 40px}
+.big{bottom:370px;font-size:122px}
+</style>
+<div id=app>
+<div class=rec id=rec>RECREACIÓN ILUSTRATIVA</div>
+<div class=hud id=hud></div><div class=hud2 id=hud2></div>
+
+<div class=sc id=s0>
+ <div id=zoom style="position:absolute;inset:0;transform-origin:540px 1080px">
+  <div class=ph style="top:470px"><div class=hd><img src=vera-perfil.png><div>Vera AI Antiestafas<small>● en línea</small></div></div>
+  <div class="m me"><small>↪ Reenviado</small>Tu cuenta será <mark data-mark=0.3>suspendida hoy</mark>. Verificá ahora: <mark data-mark=0.8>banco-clientes.online</mark></div>
+  <div class="m ve" id=ve data-t=-0.1><span class=tag>🔴 RIESGO ALTO</span><div style="font:700 48px/1.2 SG">Es una estafa. No toqués el link.</div><div class=sig><div data-t=0.9>⚑ Te amenaza con suspender la cuenta</div><div data-t=1.5>⚑ Te apura: “hoy”</div><div data-t=2.1>⚑ Link que no es oficial</div></div></div></div>
+ </div>
+ <div class=top><div class=t data-k=slam data-t=-0.5>Vera <span class=r>detecta</span><br>la estafa.</div></div>
+ <div class=cap data-t=4.3>Todo empieza en <b>un solo celular.</b></div>
+</div>
+
+<div class=sc id=s1>
+ <div class=top><div class=t data-k=slam data-t=6.2>Lo <span class=g>reenvía</span> a una amiga.</div></div>
+ <div class=ph style="top:560px"><div class=hd><div style="width:92px;height:92px;border-radius:50%;background:#6b7c85;display:flex;align-items:center;justify-content:center;font:700 50px SG">A</div><div>Amiga<small>en línea</small></div></div>
+ <div class="m me" data-t=6.6 style="font-size:40px;padding:24px 30px">No abras el link que te llegó. Es estafa 🚨</div>
+ <div class=fr data-t=7.6 style="margin-top:30px"><div class=row><img src=vera-perfil.png><div><b>Vera AI Antiestafas</b><small>↪ Reenviado</small></div></div><div style="margin-top:18px;font:400 38px/1.3 SG">🔴 <b>RIESGO ALTO.</b> Es una estafa. No toqués el link.</div></div>
+ <div class=m data-t=9.0 style="background:#202c33;max-width:640px;font-size:40px">😱 Iba a entrar… ¿cómo lo supiste?</div></div>
+ <div class=cap data-t=8.4>Una alerta de <b>una persona a otra.</b></div>
+</div>
+
+<div class=sc id=s2>
+ <div class=top><div class=t data-k=slam data-t=13.0>Le <span class=g>pasa</span> el contacto.</div></div>
+ <div class=ph style="top:560px"><div class=hd><div style="width:92px;height:92px;border-radius:50%;background:#6b7c85;display:flex;align-items:center;justify-content:center;font:700 50px SG">A</div><div>Amiga<small>en línea</small></div></div>
+ <div class="m me" data-t=13.4 style="font-size:40px;padding:24px 30px">Se lo mandé a Vera, mi asistente antiestafas. Te paso el contacto 👇</div>
+ <div class=fr data-t=14.4 style="margin-top:26px"><div class=row><img src=vera-perfil.png><div><b>Vera AI Antiestafas</b><small>Contacto</small></div></div><div class=bt><div>Mensaje</div><div id=gu>Guardar</div></div></div>
+ <div class=m data-t=16.0 style="background:#202c33;max-width:640px;font-size:40px">Dale, la agendo ahora ✅</div></div>
+ <div class=cap data-t=16.8>Y <b>otro celular más</b> queda protegido.</div>
+</div>
+
+<div class=sc id=s3>
+ <div class=top><div class=t data-k=slam data-t=19.5>Ella avisa <span class=g>a los suyos.</span></div></div>
+ <svg id=net viewBox="0 0 1080 1920" style="position:absolute;inset:0"></svg>
+ <div class=cap data-t=20.6>Cada contacto agendado <b>suma un nodo a la red.</b></div>
+</div>
+
+<div class=sc id=s4>
+ <div class=top><div class=t data-k=slam data-t=23.9>Ahora te toca <span class=g>a vos.</span></div></div>
+ <div class=sv2 data-t=24.2><img src=vera-perfil.png><b>Vera AI Antiestafas</b><small>+54 9 11 7059-8505</small><div class=ok data-k=pop data-t=25.4>✓ Contacto guardado</div></div>
+ <div class=big data-t=26.0>Sumate.<br><span class=g>No te quedes afuera.</span></div>
+ <div class=cta data-t=27.2 id=cta></div>
+</div>
+</div>
+<script>
+const canal=new URLSearchParams(location.search).get('canal')||'ig';
+const CT={ig:"Comentá VERA y te envío el link · 7 días gratis",tt:"Link en el perfil · 7 días gratis",wa:"Escribile a Vera por WhatsApp · 7 días gratis"};
+document.getElementById('cta').textContent=CT[canal];
+const HUD=[['NODO 0001 · CELULAR DE UN USUARIO','ANÁLISIS'],['REENVÍO','ALERTA A SU CONTACTO'],['CONTACTO · VERA','SE SUMA UNA PERSONA MÁS'],['LA RED CRECE','CONTACTO A CONTACTO'],['AGENDÁ A VERA','TU ASISTENTE, EN TU CELULAR']];
+const SC=[[0,6],[6,12.8],[12.8,19.4],[19.4,23.8],[23.8,30]];
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)),sm=x=>{x=cl(x);return x*x*(3-2*x)},eo=x=>1-Math.pow(1-cl(x),3);
+const bk=x=>{x=cl(x);const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+// red
+let sd=7;const rnd=()=>{sd|=0;sd=sd+0x6D2B79F5|0;let t=Math.imul(sd^sd>>>15,1|sd);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const N=[[540,1050]];for(let i=0;i<70;i++){let x,y,ok;do{x=70+rnd()*940;y=560+rnd()*1000;ok=N.every(p=>Math.hypot(p[0]-x,p[1]-y)>95)}while(!ok);N.push([x,y])}
+const D=N.map(p=>Math.hypot(p[0]-540,p[1]-1050)),LIT=480,V=170,T0=19.9;
+const L=[];N.forEach((p,i)=>{N.map((q,j)=>[j,Math.hypot(p[0]-q[0],p[1]-q[1])]).filter(x=>x[0]!=i).sort((a,b)=>a[1]-b[1]).slice(0,2).forEach(x=>{if(x[1]<210&&i<x[0])L.push([i,x[0]])})});
+const NS='http://www.w3.org/2000/svg',svg=document.getElementById('net');
+const mk=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e};
+svg.innerHTML='<defs><filter id=gl x=-50% y=-50% width=200% height=200%><feGaussianBlur stdDeviation=7 result=b /><feMerge><feMergeNode in=b /><feMergeNode in=SourceGraphic /></feMerge></filter></defs>';
+const ring=[0,1,2].map(()=>mk('circle',{cx:540,cy:1050,fill:'none','stroke-width':3,stroke:'#19e66b'}));
+const ln=L.map(([i,j])=>({i,j,e:mk('line',{x1:N[i][0],y1:N[i][1],x2:N[j][0],y2:N[j][1]})}));
+const nd=N.map((p,i)=>mk('circle',{cx:p[0],cy:p[1],filter:'url(#gl)'}));
+const lab=mk('text',{x:540,y:1135,'text-anchor':'middle','font-size':34,fill:'#f1ebdf','font-family':'SG','font-weight':700});lab.textContent='';
+const tl=i=>T0+D[i]/V;
+function render(t){
+ // escenas
+ SC.forEach(([a,b],i)=>{const e=document.getElementById('s'+i);let o=1;if(i>0)o=Math.min(o,sm((t-(a-.3))/.6));if(i<4)o=Math.min(o,sm(((b+.3)-t)/.6));e.style.opacity=o;e.style.pointerEvents='none'});
+ const si=SC.findIndex(([a,b])=>t<b);const s=si<0?4:si;
+ document.getElementById('hud').textContent='● '+HUD[s][0];document.getElementById('hud2').textContent=HUD[s][1];
+ document.getElementById('rec').style.opacity=t<19.0?1:0;
+ document.body.style.setProperty('--gx',(t*14)+'px');document.body.style.setProperty('--gy',(t*9)+'px');
+ // zoom escena 1
+ const z=document.getElementById('zoom');const zs=t<3.8?1.2+0.07*(t/3.8):1.27-0.27*eo((t-3.8)/.8);z.style.transform='scale('+zs+')';
+ // apariciones
+ document.querySelectorAll('[data-t]').forEach(e=>{const T=+e.dataset.t,p=cl((t-T)/.5),k=e.dataset.k;
+  if(k=='slam'){e.style.opacity=sm(p*1.6);e.style.transform='scale('+(1+.09*(1-eo(p)))+')';e.style.transformOrigin='0 0'}
+  else if(k=='pop'){e.style.opacity=cl(p*3);e.style.transform='scale('+(.55+.45*bk(p))+')'}
+  else{e.style.opacity=sm(p);e.style.transform='translateY('+(36*(1-eo(p)))+'px)'}});
+ document.querySelectorAll('mark').forEach(e=>{const p=eo((t-(+e.dataset.mark))/.6);e.style.background='linear-gradient(#ffd400aa,#ffd400aa) no-repeat 0 88%/'+(p*100)+'% 100%';e.style.color='#fff'});
+ const ve=document.getElementById('ve');ve.style.boxShadow='0 0 '+(50+30*Math.sin(t*5))+'px #19e66bcc';
+ document.getElementById('gu').className=(t>15.2&&t<16.4)?'tap':'';
+ // red
+ const w=t-T0;
+ ring.forEach((r,k)=>{const age=w-k*.9;if(age>0&&age<3.2){r.setAttribute('r',age*V);r.setAttribute('opacity',Math.max(0,.85-age/3.2))}else r.setAttribute('opacity',0)});
+ const lit=i=>t>=tl(i)&&D[i]<LIT;
+ ln.forEach(({i,j,e})=>{const on=lit(i)&&lit(j);e.setAttribute('stroke',on?'#19e66b':'#19e6c4');e.setAttribute('stroke-width',on?4:2);e.setAttribute('opacity',on?.95:.28);if(on)e.setAttribute('filter','url(#gl)');else e.removeAttribute('filter')});
+ nd.forEach((e,i)=>{if(i==0){const red=t<20.5;const pr=red?30+8*Math.sin(t*14):26*(1+.25*Math.exp(-(t-20.5)*4));e.setAttribute('r',pr);e.setAttribute('fill',red?'#ff2d1f':'#19e66b');e.setAttribute('opacity',t<19.4?0:1);return}
+  const on=lit(i),age=t-tl(i);const r=on?12*(1+1.3*Math.exp(-age*5))+1.2*Math.sin(t*3+i):8;e.setAttribute('r',r);e.setAttribute('fill',on?'#19e66b':'#19e6c4');e.setAttribute('opacity',on?1:.5)});
+ lab.setAttribute('opacity',0);
+}
+document.fonts.ready.then(()=>{render(0);document.documentElement.setAttribute('data-listo','1')});
+</script>

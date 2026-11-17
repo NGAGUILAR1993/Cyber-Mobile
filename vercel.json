@@ -92,6 +92,30 @@
           "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
         }
       ]
+    },    {
+      "source": "/informe-fraude-digital(/)?",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'none'; style-src 'unsafe-inline'; font-src 'self'; img-src 'self' data:; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/(extension|navegador)(/.*)?",
@@ -251,6 +275,10 @@
     {
       "source": "/sitemap.xml",
       "destination": "/api/sitemap"
+    },
+    {
+      "source": "/informe-fraude-digital",
+      "destination": "/informe-fraude-digital/index.html"
     },
     {
       "source": "/guias",

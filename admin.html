@@ -645,6 +645,11 @@
               </section>
 
               <section>
+                <h2 class="section-title">Clics a Vera por origen (30 días)</h2>
+                <div id="vera-clics" style="color:var(--text-muted);">Cargando...</div>
+              </section>
+
+              <section>
                 <h2 class="section-title">Evolución por período</h2>
                 <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
                   <button class="perBtn active" data-per="semanal">Semanal</button>
@@ -926,10 +931,25 @@
                 if (!r.ok) throw new Error('HTTP '+r.status);
                 OBS_DATA = await r.json();
                 pintarObservatorio();
+                cargarClicsVera();
             } catch(e){
                 document.getElementById('obs-periodos').innerHTML =
                   '<p style="color:var(--text-muted);text-align:center;">No se pudieron cargar las métricas ('+esc(e.message)+'). El motor todavía puede no haber corrido.</p>';
             }
+        }
+
+        async function cargarClicsVera(){
+            const el = document.getElementById('vera-clics');
+            try {
+                const r = await fetch(OBS_ENDPOINT+'?vista=vera', { headers:{ 'Authorization':`Bearer ${SESSION_TOKEN}` }});
+                if (!r.ok) throw new Error('HTTP '+r.status);
+                const d = await r.json();
+                const t = Object.entries(d.totales||{}).sort(function(a,b){return b[1]-a[1];});
+                const sum = t.reduce(function(a,x){return a+x[1];},0);
+                el.innerHTML = t.length ? '<div class="obs-row"><span></span><span><b>Total</b></span><span><b>'+sum+'</b></span></div>'+
+                  t.map(function(x){return '<div class="obs-row"><span></span><span>'+esc(x[0])+'</span><span>'+x[1]+'</span></div>';}).join('')
+                  : 'Todavía no hay clics registrados.';
+            } catch(e){ el.textContent = 'No se pudieron cargar los clics ('+e.message+').'; }
         }
 
         function pintarObservatorio(){

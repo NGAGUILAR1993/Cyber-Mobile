@@ -1,0 +1,46 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:AN;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:SG;font-weight:700;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SG;font-weight:400;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Regular.ttf)}
+*{margin:0;box-sizing:border-box}body{width:1080px;height:1920px;font-family:SG;position:relative;overflow:hidden;background:#f1ebdf;color:#0b0b0b}
+.h{position:absolute;left:0;width:1080px;height:960px;overflow:hidden}.top{top:0;background:#e9e9ee}.bot{top:960px;background:#19e6c4}
+.lab{position:absolute;left:0;top:0;right:0;height:120px;display:flex;align-items:center;padding:0 50px;font:84px AN;text-transform:uppercase}
+.top .lab{background:#ff2d1f;color:#f1ebdf}.bot .lab{background:#0b0b0b;color:#19e6c4}
+.div{position:absolute;left:0;top:955px;width:1080px;height:10px;background:#0b0b0b;z-index:5}
+.card{position:absolute;left:60px;right:60px;top:170px;background:#fff;border-radius:34px;padding:40px;box-shadow:0 10px 0 #0003}
+.ico{width:150px;height:150px;border-radius:34px;background:linear-gradient(135deg,#7a8cff,#3a4cc8);display:flex;align-items:center;justify-content:center;font-size:84px;float:left;margin-right:34px}
+.card b{font:700 50px/1.15 SG;display:block}.card small{font:400 34px SG;color:#666}.btn{float:right;margin-top:18px;background:#007aff;color:#fff;font:700 40px SG;padding:18px 44px;border-radius:40px}
+.dlg{position:absolute;left:110px;right:110px;top:470px;background:#fff;border-radius:30px;padding:36px;font:700 40px/1.3 SG;text-align:center;box-shadow:0 20px 0 #0002}
+.dlg i{display:block;font:400 34px/1.3 SG;color:#666;margin:14px 0 26px;font-style:normal}.dlg span{display:inline-block;margin:0 14px;color:#007aff}
+.form{position:absolute;left:60px;right:60px;top:170px;background:#fff;border-radius:34px;padding:40px;font:700 44px/1 SG}
+.in{height:92px;border:3px solid #ccc;border-radius:18px;margin-top:22px;display:flex;align-items:center;padding:0 26px;font:400 38px SG;color:#999}
+.steps{position:absolute;left:60px;right:60px;bottom:40px;font:700 46px/1.3 SG;color:#c0392b}
+.ph{position:absolute;left:150px;right:150px;top:165px;bottom:-40px;background:#0b0b0b;border-radius:70px 70px 0 0;padding:22px 22px 0}
+.sc{background:#fff;border-radius:52px 52px 0 0;height:100%;overflow:hidden;position:relative}
+.ct{padding:44px 40px;text-align:center}.ct img{width:260px;height:260px;border-radius:50%;border:8px solid #ffd400}.ct b{display:block;font:700 54px SG;margin-top:22px}.ct small{font:400 36px SG;color:#555;display:block;margin-top:8px}.sv{margin:34px auto 0;width:420px;background:#19e66b;border-radius:24px;padding:22px;font:700 44px SG}
+.chat{background:#efe7dc;position:absolute;inset:0;padding:130px 20px 20px}.hd{position:absolute;left:0;right:0;top:0;height:112px;background:#0b6b5c;color:#fff;display:flex;align-items:center;gap:20px;padding:0 24px;font:700 38px SG}.hd img{width:76px;height:76px;border-radius:50%}
+.m{max-width:760px;border-radius:26px;padding:20px 26px;font:400 33px/1.28 SG;margin-bottom:18px;box-shadow:0 3px 0 #0002}.me{background:#dcf8c6;margin-left:auto}.ve{background:#fff}.ve b{font-weight:700}
+.ft{position:absolute;inset:0;background:#0b0b0b;color:#f1ebdf;padding:150px 70px;display:flex;flex-direction:column;justify-content:center}
+.ft h1{font:128px/1.06 AN;text-transform:uppercase}.ft h1 span{color:#ff2d1f}.ft p{font:700 52px/1.25 SG;margin-top:60px}.cta{margin-top:50px;font:700 44px SG;background:#19e66b;color:#0b0b0b;padding:26px 40px;border-radius:24px;display:inline-block;align-self:flex-start}
+.rec{position:absolute;right:30px;top:128px;font:700 24px SG;letter-spacing:3px;color:#555;z-index:6}
+</style>
+<div id=app></div>
+<script>
+const n=+location.hash.slice(1)||1,A=document.getElementById('app');
+const TOP1=`<div class=h style="top:0" ><div class=top style="position:absolute;inset:0"><div class=lab>Otras apps</div>
+<div class=card><div class=ico>🛡️</div><b>App antiestafas</b><small>Tienda de aplicaciones · Seguridad</small><div class=btn>Obtener</div><div style="clear:both"></div></div>
+<div class=dlg>“App” quiere acceder a tus contactos, fotos y notificaciones<i>Permisos que tenés que aceptar</i><span>No permitir</span><span>Permitir</span></div>
+<div class=steps>1 Descargar · 2 Registrarte · 3 Contraseña · 4 Permisos</div></div></div>`;
+const TOP2=`<div class=h style="top:0"><div class=top style="position:absolute;inset:0"><div class=lab>Otras apps</div>
+<div class=form>Creá tu cuenta<div class=in>Nombre y apellido</div><div class=in>Email</div><div class=in>Contraseña ••••••••</div><div class=in>Repetir contraseña</div></div>
+<div class=steps>…y después aprender a usarla.</div></div></div>`;
+const BOT1=`<div class=h style="top:960px"><div class=bot style="position:absolute;inset:0"><div class=lab>Vera</div>
+<div class=ph><div class=sc><div class=ct><img src=vera-perfil.png><b>Vera AI Antiestafas</b><small>+54 9 11 7059-8505</small><div class=sv>Guardar contacto</div></div></div></div></div></div>`;
+const BOT2=`<div class=h style="top:960px"><div class=bot style="position:absolute;inset:0"><div class=lab>Vera</div><div class=rec>RECREACIÓN ILUSTRATIVA</div>
+<div class=ph><div class=sc><div class=chat><div class=hd><img src=vera-perfil.png>Vera AI Antiestafas</div>
+<div class="m me">Hola</div>
+<div class="m ve"><b>¡Hola! Soy Vera, tu asistente antiestafas 🛡️</b><br>Mandame lo que te dé dudas y te digo qué hacer:<br>🔗 Links · 🏦 CBU/CVU · 📧 Mails · 📞 Teléfonos<br>🖼️ Capturas · 📎 Archivos · 👤 Perfiles · 🎤 Audios<br>Te respondo con un semáforo 🔴🟡🟢</div></div></div></div></div></div>`;
+if(n==1)A.innerHTML=TOP1+BOT1+'<div class=div></div>';
+if(n==2)A.innerHTML=TOP2+BOT2+'<div class=div></div>';
+if(n==3)A.innerHTML=`<div class=ft><h1>Sin app.<br><span>Sin registro.</span><br>Sin contraseñas.<br>Sin permisos.</h1><p>Tu asistente en tu teléfono, cuando lo necesites.</p><div class=cta>Escribile a Vera · 7 días gratis</div></div>`;
+document.documentElement.setAttribute('data-listo',1)</script>
