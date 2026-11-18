@@ -37,7 +37,8 @@ function detectarPais() {
 const PAIS = detectarPais();
 // Link de pago internacional (Paddle). Placeholder hasta que Germán conecte su cuenta de Paddle;
 // se puede sobreescribir cargando CM_PADDLE en chrome.storage.local sin tocar el código.
-let PADDLE_CHECKOUT = 'https://www.cybermobile.com.ar/pagar?plan=individual';
+let PADDLE_CHECKOUT = '';   // checkout internacional real (https). Vacío = todavía no se cobra del exterior: se muestra el aviso por mail.
+const AVISO_INT = 'mailto:info@cybermobile.com.ar?subject=' + encodeURIComponent('Vera: avisenme cuando abran las suscripciones internacionales') + '&body=' + encodeURIComponent('Hola, quiero suscribirme a Vera desde mi pais. Pais: ');
 // Guías propias y fuentes oficiales para entender el resultado (solo dominios conocidos).
 const GUIA = (slug, titulo, c) => ({ href: `${BASE}/guias/${slug}?o=extension`, origen: 'Guía de Cyber Mobile', titulo, c });
 const G = {
@@ -334,7 +335,7 @@ $('l-observatorio').href = BASE + '/observatorio?o=extension';
 $('l-web').href = BASE + '/?o=extension';
 pintarCapacidades();
 $('b-suscribir').onclick = () => abrir(WA_SUSCRIBIR);
-$('b-suscribir-int').onclick = () => abrir(PADDLE_CHECKOUT);
+$('b-suscribir-int').onclick = () => abrir(PADDLE_CHECKOUT || AVISO_INT);
 $('b-suscribir-bar').onclick = irAPago;
 $('b-compartir').onclick = () => {
     const msg = PAIS === 'AR'

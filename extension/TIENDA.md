@@ -49,7 +49,7 @@ Qué podés verificar:
 • Lo que ves en pantalla: Vera mira una captura y te dice si es una trampa.
 • Archivos: capturas, PDF o APK de hasta 3 MB.
 
-3 consultas gratis, sin registrarte. Después, seguí protegido con un plan mensual desde $10.000 por débito automático en Mercado Pago, que también incluye a Vera en tu WhatsApp. Si ya sos cliente, vinculás tu WhatsApp con un código y listo.
+3 consultas gratis, sin registrarte. Después, seguí protegido con un plan mensual desde $5.000 por débito automático en Mercado Pago, que también incluye a Vera en tu WhatsApp. Si ya sos cliente, vinculás tu WhatsApp con un código y listo.
 
 Privacidad: la extensión no lee tu historial ni las páginas que visitás. Solo envía lo que vos elegís verificar.
 
@@ -104,3 +104,10 @@ Certificar:
 ## Imágenes
 - Ícono: 128×128, ya va dentro del paquete (`icons/icon-128.png`).
 - Capturas 1280×800 (nuevo estilo, 27/10): `tienda/captura-1.jpg` a `captura-5.jpg` (portada, clic derecho, resultado, links de contexto, qué revisa). Mosaico 440×280 y marquesina 1400×560 en `tienda/`. Se arman con `scripts/extension/tienda.html` (imágenes reales de la extensión 1.1).
+
+
+## Versión 1.3.1 (18/11, pedido del dueño: "la extensión funciona mal, quienes la descargan no pueden adherirse")
+- **Problema:** la versión publicada en la tienda (1.1.0) mandaba a TODOS al pago por WhatsApp y Mercado Pago en pesos (los del exterior no podían pagar). Las 1.2.0 y 1.3.0 (cobro por país) nunca se subieron y apuntaban al checkout de PRUEBAS de Paddle (sin aprobar).
+- **1.3.1:** Argentina sigue con WhatsApp y Mercado Pago; desde otro país ya no se abre el checkout de pruebas: se muestra "las suscripciones internacionales abren pronto" con un botón que abre un mail a info@ para avisarles. Cuando haya cobro real se pone el link en `PADDLE_CHECKOUT` (o en `CM_PADDLE` del storage) y el botón vuelve a ser "Subscribe".
+- **Ficha de la tienda:** corregir el precio ("desde $5.000", antes decía $10.000) al subir el paquete.
+- Los permisos no cambian. Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.3.1.zip`. Subirlo en Chrome Web Store → Paquete → Subir nuevo paquete → Enviar a revisión.
