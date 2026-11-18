@@ -113,17 +113,15 @@ const HERR = [
     { id: 'cf', n: 'Cloudflare', s: 'dominios bloqueados', c: '#fbbf24', g: 'CF' },
     { id: 'ps', n: 'PhishStats', s: 'phishing activo', c: '#f43f5e', g: 'PS' },
     { id: 'rd', n: 'RDAP · WHOIS', s: 'antigüedad del sitio', c: '#22d3ee', g: 'DN' },
-    { id: 'ob', n: 'Observatorio', s: 'estafas del mes', c: '#a3e635', g: 'OB' },
-    { id: 'fi', n: 'Filtraciones', s: 'mails vulnerados', c: '#f472b6', g: 'FL' },
-    { id: 're', n: 'Reportes', s: 'CBU y teléfonos', c: '#34d399', g: 'RP' },
+    { id: 'fi', n: 'Filtraciones', s: 'mails filtrados', c: '#f472b6', g: 'FL' },
     { id: 'ga', n: 'Gemini', s: 'lee texto e imágenes', c: '#22d3ee', g: 'GE' },
-    { id: 'tv', n: 'Tavily', s: 'búsqueda en la web', c: '#a78bfa', g: 'TV' }
+    { id: 'tv', n: 'Tavily', s: 'denuncias en la web', c: '#a78bfa', g: 'TV' }
 ];
 // Qué herramientas usa Vera según el tipo de consulta (por diseño). Si el backend informa
 // `herramientas` en el resultado, se muestran esas, que son las realmente usadas.
 const POR_TIPO = {
-    link: ['cf', 'vt', 'ps', 'rd', 'ob'], cbu: ['re', 'ob'], tel: ['re', 'ob'], email: ['fi', 'rd', 'ob'],
-    archivo: ['ga', 'vt', 'ob'], mensaje: ['ga', 'vt', 'tv', 'ob']
+    link: ['cf', 'vt', 'ps', 'rd', 'tv'], cbu: ['tv'], tel: ['tv'], email: ['fi'],
+    archivo: ['ga', 'vt', 'rd', 'tv'], mensaje: ['vt', 'tv']
 };
 const NS = 'http://www.w3.org/2000/svg', PASO = 52, NW = 170, NX = 150;
 let activas = [];
@@ -151,7 +149,7 @@ function armarLienzo() {
     // Investigación: Tavily busca y Gemini lo lee (se dibuja solo cuando ambas están activas).
     const yt = 4 + HERR.findIndex((t) => t.id === 'tv') * PASO + 22, yg = 4 + HERR.findIndex((t) => t.id === 'ga') * PASO + 22;
     const enlace = document.createElementNS(NS, 'path');
-    enlace.setAttribute('d', `M${NX + NW} ${yt} C ${NX + NW + 22} ${yt}, ${NX + NW + 22} ${yg}, ${NX + NW} ${yg}`);
+    enlace.setAttribute('d', `M${NX + NW} ${yt} C ${NX + NW + 9} ${yt}, ${NX + NW + 9} ${yg}, ${NX + NW} ${yg}`);
     enlace.setAttribute('class', 'hilo'); enlace.id = 'h-tvga'; enlace.style.setProperty('--c', '#22d3ee');
     svg.append(enlace);
 }

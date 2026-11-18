@@ -215,6 +215,6 @@ export function normalizarWeb(r) {
         hallazgos,
         pasos,
         modalidad,
-        herramientas: (Array.isArray(r.herramientas) ? r.herramientas : []).filter((x) => ['vt', 'cf', 'ps', 'rd', 'ob', 'fi', 're', 'ga', 'tv'].includes(x)).slice(0, 9)
+        herramientas: (Array.isArray(r.herramientas) ? r.herramientas : []).filter((x) => ['vt', 'cf', 'ps', 'rd', 'fi', 'ga', 'tv'].includes(x)).slice(0, 7)
     };
 }
