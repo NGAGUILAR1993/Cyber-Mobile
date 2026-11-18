@@ -16,7 +16,7 @@ chrome.runtime.onInstalled.addListener((info) => {
 
 async function abrirVentana(pendiente) {
     await chrome.storage.session.set({ pendiente: { ...pendiente, t: Date.now() } });
-    await chrome.windows.create({ url: chrome.runtime.getURL('panel.html?ventana=1'), type: 'popup', width: 420, height: 680 });
+    await chrome.windows.create({ url: chrome.runtime.getURL('panel.html?ventana=1'), type: 'popup', width: 820, height: 700 });
 }
 
 const dataUrlABase64 = (d) => ({ mime: d.slice(5, d.indexOf(';')), datos: d.slice(d.indexOf(',') + 1) });

@@ -111,3 +111,10 @@ Certificar:
 - **1.3.1:** Argentina sigue con WhatsApp y Mercado Pago; desde otro país ya no se abre el checkout de pruebas: se muestra "las suscripciones internacionales abren pronto" con un botón que abre un mail a info@ para avisarles. Cuando haya cobro real se pone el link en `PADDLE_CHECKOUT` (o en `CM_PADDLE` del storage) y el botón vuelve a ser "Subscribe".
 - **Ficha de la tienda:** corregir el precio ("desde $5.000", antes decía $10.000) al subir el paquete.
 - Los permisos no cambian. Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.3.1.zip`. Subirlo en Chrome Web Store → Paquete → Subir nuevo paquete → Enviar a revisión.
+
+
+## Versión 1.4.0 (18/11, pedido del dueño: "iconos estilo lienzo de n8n a un costado que se activan a requerimiento de la consulta")
+- **Lienzo de herramientas** a la derecha del panel (ancho 780 px; en ventanas angostas se oculta): el **Agente Vera** y sus herramientas (VirusTotal, Cloudflare, PhishStats, RDAP/WHOIS, Observatorio, Filtraciones, Reportes de CBU/teléfonos, Gemini y Tavily). Al consultar, el agente enciende solo las que usa ese tipo de consulta (archivo → VirusTotal; investigación → Tavily → Gemini) y al terminar las marca con ✓. Sin el flujo interno de n8n y sin nodos de pago.
+- **Honestidad:** mientras el backend no informe qué herramientas usó, el panel dice "Herramientas que Vera usa para este tipo de consulta". Si el resultado trae `herramientas: ['vt','tv',...]` (ids: vt, cf, ps, rd, ob, fi, re, ga, tv), muestra esas y dice "Herramientas que usó Vera en tu consulta". `api/_lib/agente.js` (`normalizarWeb`) ya deja pasar ese campo; falta que el flujo de n8n lo devuelva (nodo de respuesta del agente web).
+- Se sacó la terminal simulada y el botón "Suscribirme" de la primera pantalla: ahora aparece solo cuando se agotan las consultas gratis.
+- La ventana del clic derecho es más ancha (820 x 700). Los permisos no cambian. Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.4.0.zip`.

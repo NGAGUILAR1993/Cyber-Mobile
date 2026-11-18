@@ -214,6 +214,7 @@ export function normalizarWeb(r) {
         resumen: txt(r.resumen, 1500) || txt(r.explicacion, 1500),
         hallazgos,
         pasos,
-        modalidad
+        modalidad,
+        herramientas: (Array.isArray(r.herramientas) ? r.herramientas : []).filter((x) => ['vt', 'cf', 'ps', 'rd', 'ob', 'fi', 're', 'ga', 'tv'].includes(x)).slice(0, 9)
     };
 }

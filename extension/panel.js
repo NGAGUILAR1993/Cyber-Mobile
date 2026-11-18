@@ -71,6 +71,8 @@ async function pintarEstado() {
     cupo.hidden = false;
     cupo.classList.toggle('pro', Boolean(datos.suscripto));
     cupo.textContent = datos.suscripto ? 'Suscripción activa' : `${datos.restantes} de ${datos.gratis} gratis`;
+    // El botón de suscripción solo aparece cuando se agotan las consultas gratis (no antes de dar valor).
+    $('b-suscribir-bar').hidden = Boolean(datos.suscripto) || datos.restantes > 0;
     const pie = $('pie-cuenta');
     pie.textContent = '';
     if (datos.vinculado) {
@@ -95,42 +97,100 @@ async function verificar(consulta) {
     correrTerminal(consulta.tipo);
     mostrar('cargando');
     const { status, datos } = await consultar(consulta);
-    clearInterval(giro);
     pintarEstado();
-    if (status === 200 && datos.resultado) return pintarResultado(datos.resultado);
+    if (status === 200 && datos.resultado) { cerrarLienzo(datos.resultado); return pintarResultado(datos.resultado); }
+    reposoLienzo();
     if (status === 402) return irAPago();
     if (status === 409 && datos.codigo === 'solo_whatsapp') { mostrar('inicio'); return error('Los audios se analizan por WhatsApp: reenviáselo a Vera al +54 9 11 7059-8505.'); }
     mostrar('inicio');
     error(datos.error || 'No pude completar el análisis. Probá de nuevo en un rato.');
 }
 
-// Terminal en vivo: imprime, una por una, las fuentes que Vera consulta para este tipo de consulta.
-function correrTerminal(tipo) {
-    const cuerpo = $('term-cuerpo'); cuerpo.textContent = '';
-    const fuentes = FUENTES[tipo] || FUENTES.mensaje;
-    const cmd = document.createElement('div'); cmd.className = 't-cmd';
-    cmd.textContent = 'vera@cybermobile ~ % analizar --fuente ' + (tipo || 'mensaje');
-    cuerpo.append(cmd);
-    const lineas = fuentes.map(([nombre, det], idx) => {
-        const l = document.createElement('div'); l.className = 't-line';
-        const ix = document.createElement('span'); ix.className = 't-ix'; ix.textContent = '[' + (idx + 1) + '/' + fuentes.length + ']';
-        const nm = document.createElement('span'); nm.className = 't-name'; nm.textContent = nombre;
-        const dt = document.createElement('span'); dt.className = 't-det'; dt.textContent = det;
-        const st = document.createElement('span'); st.className = 't-st'; st.textContent = '…';
-        l.append(ix, nm, dt, st); cuerpo.append(l);
-        return { l, st };
+// ---------- Lienzo de herramientas (a un costado): se enciende solo lo que usa la consulta ----------
+// Herramientas de Vera (capacidades). Nada de pagos ni del flujo interno: solo lo que analiza.
+const HERR = [
+    { id: 'vt', n: 'VirusTotal', s: '70+ motores antivirus', c: '#a78bfa', g: 'VT' },
+    { id: 'cf', n: 'Cloudflare', s: 'dominios bloqueados', c: '#fbbf24', g: 'CF' },
+    { id: 'ps', n: 'PhishStats', s: 'phishing activo', c: '#f43f5e', g: 'PS' },
+    { id: 'rd', n: 'RDAP · WHOIS', s: 'antigüedad del sitio', c: '#22d3ee', g: 'DN' },
+    { id: 'ob', n: 'Observatorio', s: 'estafas del mes', c: '#a3e635', g: 'OB' },
+    { id: 'fi', n: 'Filtraciones', s: 'mails vulnerados', c: '#f472b6', g: 'FL' },
+    { id: 're', n: 'Reportes', s: 'CBU y teléfonos', c: '#34d399', g: 'RP' },
+    { id: 'ga', n: 'Gemini', s: 'lee texto e imágenes', c: '#22d3ee', g: 'GE' },
+    { id: 'tv', n: 'Tavily', s: 'búsqueda en la web', c: '#a78bfa', g: 'TV' }
+];
+// Qué herramientas usa Vera según el tipo de consulta (por diseño). Si el backend informa
+// `herramientas` en el resultado, se muestran esas, que son las realmente usadas.
+const POR_TIPO = {
+    link: ['cf', 'vt', 'ps', 'rd', 'ob'], cbu: ['re', 'ob'], tel: ['re', 'ob'], email: ['fi', 'rd', 'ob'],
+    archivo: ['ga', 'vt', 'ob'], mensaje: ['ga', 'vt', 'tv', 'ob']
+};
+const NS = 'http://www.w3.org/2000/svg', PASO = 52, NW = 170, NX = 150;
+let activas = [];
+function armarLienzo() {
+    const cv = $('canvas'), h = HERR.length * PASO + 8;
+    cv.style.minHeight = h + 'px';
+    const svg = $('hilos'); svg.setAttribute('width', 330); svg.setAttribute('height', h); svg.style.width = '330px'; svg.style.height = h + 'px'; svg.textContent = '';
+    const ag = $('agente'); ag.style.top = (h / 2 - 56) + 'px';
+    const ax = 96, ay = h / 2;
+    const nodos = $('nodos'); nodos.textContent = '';
+    HERR.forEach((t, i) => {
+        const y = 4 + i * PASO, cy = y + 22;
+        const path = document.createElementNS(NS, 'path');
+        path.setAttribute('d', `M${ax} ${ay} C ${ax + 40} ${ay}, ${NX - 40} ${cy}, ${NX} ${cy}`);
+        path.setAttribute('class', 'hilo'); path.id = 'h-' + t.id; path.style.setProperty('--c', t.c);
+        svg.append(path);
+        const d = document.createElement('div');
+        d.className = 'nodo'; d.id = 'n-' + t.id; d.style.top = y + 'px'; d.style.setProperty('--c', t.c);
+        const ic = document.createElement('i'); ic.textContent = t.g;
+        const tx = document.createElement('div');
+        const b = document.createElement('b'); b.textContent = t.n;
+        const sm = document.createElement('small'); sm.textContent = t.s;
+        tx.append(b, sm); d.append(ic, tx); nodos.append(d);
     });
-    const cur = document.createElement('div'); cur.className = 't-line done';
-    const cs = document.createElement('span'); cs.className = 't-cur'; cs.textContent = '█'; cur.append(cs); cuerpo.append(cur);
-    let i = 0;
-    clearInterval(giro);
-    giro = setInterval(() => {
-        if (i > 0) { const p = lineas[i - 1]; p.st.textContent = 'ok'; p.st.className = 't-st ok'; p.l.classList.add('done'); }
-        if (i < lineas.length) { const n = lineas[i]; n.st.textContent = 'consultando'; n.st.className = 't-st run'; n.l.classList.add('done'); i++; }
-        else { clearInterval(giro); cs.textContent = 'compilando informe… █'; }
-        cuerpo.scrollTop = cuerpo.scrollHeight;
-    }, 1300);
+    // Investigación: Tavily busca y Gemini lo lee (se dibuja solo cuando ambas están activas).
+    const yt = 4 + HERR.findIndex((t) => t.id === 'tv') * PASO + 22, yg = 4 + HERR.findIndex((t) => t.id === 'ga') * PASO + 22;
+    const enlace = document.createElementNS(NS, 'path');
+    enlace.setAttribute('d', `M${NX + NW} ${yt} C ${NX + NW + 22} ${yt}, ${NX + NW + 22} ${yg}, ${NX + NW} ${yg}`);
+    enlace.setAttribute('class', 'hilo'); enlace.id = 'h-tvga'; enlace.style.setProperty('--c', '#22d3ee');
+    svg.append(enlace);
 }
+function pintarLienzo(estados, leyenda, agente) {
+    HERR.forEach((t) => {
+        const n = $('n-' + t.id), h = $('h-' + t.id), e = estados[t.id] || '';
+        n.className = 'nodo' + (e ? ' act' : '') + (e === 'ok' ? ' ok' : '');
+        h.setAttribute('class', 'hilo' + (e ? ' act' : '') + (e === 'ok' ? ' ok' : ''));
+    });
+    const both = estados.tv && estados.ga;
+    $('h-tvga').setAttribute('class', 'hilo' + (both ? ' act' : '') + (both && estados.tv === 'ok' && estados.ga === 'ok' ? ' ok' : ''));
+    $('agente').classList.toggle('run', agente === 'run');
+    $('ag-st').textContent = { run: 'ANALIZANDO', ok: 'LISTO', idle: 'EN ESPERA' }[agente] || 'EN ESPERA';
+    if (leyenda) $('leyenda').textContent = leyenda;
+}
+// Mientras analiza: va encendiendo, una por una, las herramientas que usa Vera para este tipo de consulta.
+function correrTerminal(tipo) {
+    activas = (POR_TIPO[tipo] || POR_TIPO.mensaje).slice();
+    const estados = {}; let i = 0;
+    clearInterval(giro);
+    pintarLienzo(estados, 'Herramientas que Vera usa para este tipo de consulta.', 'run');
+    const paso = () => {
+        if (i > 0) estados[activas[i - 1]] = 'ok';
+        if (i < activas.length) estados[activas[i]] = 'run';
+        i++;
+        pintarLienzo(estados, null, 'run');
+        if (i > activas.length) clearInterval(giro);
+    };
+    paso();
+    giro = setInterval(paso, 1100);
+}
+function cerrarLienzo(res) {
+    clearInterval(giro);
+    const reales = Array.isArray(res && res.herramientas) ? res.herramientas.filter((x) => HERR.some((t) => t.id === x)) : [];
+    const ids = reales.length ? reales : activas;
+    const estados = {}; ids.forEach((x) => { estados[x] = 'ok'; });
+    pintarLienzo(estados, reales.length ? 'Herramientas que usó Vera en tu consulta.' : 'Herramientas que Vera usa para este tipo de consulta.', 'ok');
+}
+function reposoLienzo() { clearInterval(giro); pintarLienzo({}, 'Se enciende solo lo que usa tu consulta.', 'idle'); }
 
 // Pago según el país: Argentina ve Mercado Pago (pesos); el resto, el plan en USD.
 function irAPago() {
@@ -334,6 +394,7 @@ $('b-avisar').onclick = avisarFamilia;
 $('l-observatorio').href = BASE + '/observatorio?o=extension';
 $('l-web').href = BASE + '/?o=extension';
 pintarCapacidades();
+armarLienzo(); reposoLienzo();
 $('b-suscribir').onclick = () => abrir(WA_SUSCRIBIR);
 $('b-suscribir-int').onclick = () => abrir(PADDLE_CHECKOUT || AVISO_INT);
 $('b-suscribir-bar').onclick = irAPago;
