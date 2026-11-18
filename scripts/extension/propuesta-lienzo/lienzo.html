@@ -1,0 +1,53 @@
+<!doctype html><meta charset=utf-8><style>
+@font-face{font-family:SG;src:url(/home/user/Cyber-Mobile/extension/fonts/SpaceGrotesk-Bold.ttf);font-weight:700}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/extension/fonts/JetBrainsMono-Medium.ttf);font-weight:500}
+:root{--bg:#060914;--panel:#0f172ac7;--line:#ffffff1f;--fg:#f8fafc;--txt:#e2e8f0;--muted:#94a3b8;--cyan:#22d3ee;--vio:#a78bfa;--rosa:#f472b6;--lima:#a3e635;--amb:#fbbf24;--rojo:#f43f5e;--verde:#34d399}
+*{box-sizing:border-box;margin:0}body{width:780px;height:620px;background:var(--bg);color:var(--txt);font-family:system-ui,Segoe UI,sans-serif;position:relative;overflow:hidden}
+body:before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 20% -10%,#22d3ee22,transparent),radial-gradient(500px 300px at 100% 100%,#a78bfa22,transparent),linear-gradient(#ffffff08 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,#ffffff08 1px,transparent 1px) 0 0/28px 28px}
+.top{position:absolute;left:0;right:0;top:0;height:62px;display:flex;align-items:center;gap:12px;padding:0 18px;border-bottom:1px solid var(--line);background:#060914cc}
+.top img{width:36px;height:36px}.top b{font:700 20px SG;display:block;color:#fff}.top small{font:500 10px JB;letter-spacing:2px;color:var(--cyan)}
+.chip{margin-left:auto;font:500 11px JB;padding:6px 12px;border-radius:99px;background:linear-gradient(90deg,#22d3ee,#f472b6);color:#06101a}
+.col{position:absolute;left:0;top:62px;bottom:0;width:318px;padding:16px;border-right:1px solid var(--line)}
+.lab{font:500 10px JB;letter-spacing:2px;color:var(--muted);margin:0 0 8px}
+.msg{background:#111a2e;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.4;margin-bottom:12px}
+.file{display:flex;gap:10px;align-items:center}.file i{width:34px;height:34px;border-radius:9px;background:#a78bfa33;border:1px solid #a78bfa77;display:flex;align-items:center;justify-content:center;font:700 11px JB;color:var(--vio);font-style:normal}
+.status{font:500 11px JB;color:var(--cyan);margin:4px 0 12px;display:flex;gap:8px;align-items:center}.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.res{border:1px solid #f43f5e66;border-radius:16px;background:#f43f5e12;padding:14px;margin-top:8px}.res .sem{display:flex;gap:6px;margin-bottom:8px}.res .sem i{width:12px;height:12px;border-radius:50%;background:#ffffff22}.res .sem i.on{background:var(--rojo);box-shadow:0 0 10px var(--rojo)}
+.res .n{font:500 10px JB;letter-spacing:2px;color:var(--rojo)}.res h4{font:700 16px SG;color:#fff;margin:4px 0 6px}.res p{font-size:12px;color:var(--txt);line-height:1.4}
+.res.ok{border-color:#34d39966;background:#34d39912}.res.ok .sem i.on{background:var(--verde);box-shadow:0 0 10px var(--verde)}.res.ok .n{color:var(--verde)}
+.canvas{position:absolute;left:318px;top:62px;right:0;bottom:0}
+svg{position:absolute;inset:0;width:100%;height:100%}
+.nd{position:absolute;width:170px;height:46px;border-radius:12px;background:#0f172ae6;border:1px solid var(--line);display:flex;align-items:center;gap:9px;padding:0 10px;opacity:.38}
+.nd i{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font:700 12px JB;font-style:normal;border:1px solid}
+.nd b{font:700 12px SG;color:#fff;display:block;line-height:1.1}.nd small{white-space:nowrap;font:500 9px JB;color:var(--muted)}
+.nd.on{opacity:1;box-shadow:0 0 22px -4px var(--c);border-color:var(--c)}.nd.on:after{content:"✓";position:absolute;right:-8px;top:-8px;width:18px;height:18px;border-radius:50%;background:var(--verde);color:#04110c;font:700 11px sans-serif;display:flex;align-items:center;justify-content:center}
+.nd.run:after{content:"";background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.ag{position:absolute;left:18px;top:236px;width:116px;height:116px;border-radius:26px;background:linear-gradient(160deg,#111a2e,#0b1224);border:1px solid #a78bfa88;box-shadow:0 0 34px -6px #a78bfa;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.ag img{width:46px;height:46px}.ag b{font:700 13px SG;color:#fff}.ag small{font:500 9px JB;color:var(--vio);letter-spacing:1px}
+.cap{position:absolute;left:18px;bottom:12px;font:500 9px JB;letter-spacing:1.5px;color:var(--muted)}
+.tag{position:absolute;right:16px;top:10px;font:500 10px JB;letter-spacing:2px;color:var(--muted)}
+</style><div id=app></div>
+<script>
+const n=+location.hash.slice(1)||1,A=document.getElementById('app');
+const T=[ // [id,nombre,sub,color,glifo,y]
+['vt','VirusTotal','70+ motores','#a78bfa','VT'],['cf','Cloudflare','dominios','#fbbf24','CF'],['ps','PhishStats','phishing activo','#f43f5e','PS'],['rd','RDAP · WHOIS','antigüedad','#22d3ee','DN'],
+['ob','Observatorio','estafas del mes','#a3e635','OB'],['fi','Filtraciones','mails','#f472b6','FL'],['re','Reportes','CBU y teléfonos','#34d399','RP'],['ga','Gemini','visión e IA','#22d3ee','GE'],['tv','Tavily','búsqueda web','#a78bfa','TV']];
+const X=[190,190,190,190,190,190,190,190,190];
+const Y0=40,DY=56;
+function pos(i){return {x:392-190,y:Y0+i*DY}}
+const sets={1:{act:['vt'],run:[],user:'<div class=file><i>ZIP</i><div><b style="color:#fff">Factura_pendiente.zip</b><br><small style="color:#94a3b8">1,2 MB · archivo</small></div></div>',st:'Archivo recibido → Agente Vera → VirusTotal',res:['alto','RIESGO ALTO','Archivo con un troyano','Lo revisaron decenas de antivirus. No lo abras.']},
+2:{act:['tv','ga'],run:[],user:'¿Es seguro invertir en “CryptoMax Pro”? Me prometen ganar 5% por semana.',st:'Consulta de investigación → Agente Vera → Tavily → Gemini',res:['alto','RIESGO ALTO','Promesa de ganancia fija','Ninguna inversión legítima garantiza 5% semanal. Es el patrón de la inversión falsa.']}};
+const S=sets[n];
+let h='<div class=top><img src=icon-128.png><div><b>Vera</b><small>ANTIESTAFAS · CYBER MOBILE</small></div><span class=chip>3 de 3 gratis</span></div>';
+h+=`<div class=col><div class=lab>TU CONSULTA</div><div class=msg>${S.user}</div><div class=status><span class=dot></span>${S.st}</div><div class="res"><div class=sem><i class=on></i><i></i><i></i></div><div class=n>${S.res[1]}</div><h4>${S.res[2]}</h4><p>${S.res[3]}</p></div></div>`;
+h+='<div class=canvas><div class=tag>HERRAMIENTAS DE VERA</div>';
+let svg='<svg>';const ay=294;
+T.forEach((t,i)=>{const p=pos(i),on=S.act.includes(t[0]);const x1=134+18,y1=ay;const x2=p.x,y2=p.y+23;
+ svg+=`<path d="M${x1} ${y1} C ${x1+60} ${y1}, ${x2-60} ${y2}, ${x2} ${y2}" fill=none stroke="${on?t[3]:'#ffffff22'}" stroke-width="${on?3:1.5}" ${on?'stroke-dasharray="6 6"':''} />`;});
+if(n==2){const a=pos(8),b=pos(7);svg+=`<path d="M${a.x+170} ${a.y+23} C ${a.x+205} ${a.y+23}, ${b.x+205} ${b.y+23}, ${b.x+170} ${b.y+23}" fill=none stroke=#22d3ee stroke-width=3 stroke-dasharray="6 6" />`}
+svg+='</svg>';h+=svg;
+h+='<div class=ag><img src=icon-128.png><b>Agente Vera</b><small>ANALIZA</small></div>';
+T.forEach((t,i)=>{const p=pos(i),on=S.act.includes(t[0]);h+=`<div class="nd ${on?'on':''}" style="left:${p.x}px;top:${p.y}px;--c:${t[3]}"><i style="color:${t[3]};background:${t[3]}22;border-color:${t[3]}66">${t[4]}</i><div><b>${t[1]}</b><small>${t[2]}</small></div></div>`});
+h+='<div class=cap>SOLO SE ENCIENDE LO QUE USA TU CONSULTA</div></div>';
+A.innerHTML=h;document.documentElement.setAttribute('data-listo',1)
+</script>
