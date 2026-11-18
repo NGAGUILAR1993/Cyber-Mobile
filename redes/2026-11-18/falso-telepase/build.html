@@ -1,0 +1,161 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>
+@font-face{font-family:AN;src:url(/home/user/Cyber-Mobile/tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:SG;font-weight:700;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:SG;font-weight:400;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/SpaceGrotesk-Regular.ttf)}
+@font-face{font-family:JB;src:url(/home/user/Cyber-Mobile/scripts/redes/propuestas/2026-11-10/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;background:#000;overflow:hidden}
+#cam{position:absolute;inset:0;transform-origin:50% 45%}
+.f{position:absolute;inset:0;overflow:hidden}
+.grain{position:absolute;inset:0;opacity:.2;mix-blend-mode:multiply;pointer-events:none}
+.mono{font-family:JB;letter-spacing:.14em;font-size:26px}
+.top{position:absolute;top:150px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.top b{font-family:SG;font-size:26px;letter-spacing:.22em}
+.w{display:inline-block;transform-origin:0 60%;opacity:0}
+/* P: celular real */
+.p{background:#f1ebdf;color:#0e0e0e;opacity:0}
+#pz{position:absolute;inset:0;transform-origin:50% 55%}
+#ph{position:absolute;left:0;top:0;transform-origin:0 0}
+.p h1{position:absolute;left:62px;top:196px;font-family:AN;font-weight:400;font-size:84px;line-height:1.06;text-transform:uppercase;white-space:nowrap;z-index:5}
+.p h1 .k{display:inline-block;position:relative;padding:0 14px;transform:rotate(-2deg)}
+.p h1 .k i{position:absolute;inset:0;background:#19e6c4;transform-origin:0 50%;z-index:-1}
+#scr{position:absolute;overflow:hidden;background:#efe7dd;z-index:3}
+.sb{height:74px;background:#f7f5f2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 44px 8px;font-weight:700;font-size:23px;font-family:system-ui,sans-serif}
+.hd{height:104px;background:#f7f5f2;border-bottom:1px solid #dcd6cd;display:flex;align-items:center;gap:15px;padding:0 20px;font-family:system-ui,sans-serif}
+.hd .bk{font-size:40px;color:#128c7e;line-height:1}.hd img{width:76px;height:76px;border-radius:50%;object-fit:cover}
+.hd b{font-size:29px;display:block;line-height:1.15}.hd small{font-size:21px;color:#128c7e}
+.chat{padding:20px 18px;font-family:system-ui,sans-serif;display:flex;flex-direction:column;gap:14px;background-color:#efe7dd;background-image:radial-gradient(rgba(120,100,70,.08) 2px,transparent 2.4px);background-size:30px 30px;height:100%}
+.bb{position:relative;max-width:548px;padding:14px 17px 10px;border-radius:19px;font-size:28.5px;line-height:1.3;box-shadow:0 2px 3px rgba(0,0,0,.14);opacity:0}
+.bb.out{background:#d9fdd3;align-self:flex-end;border-top-right-radius:5px;transform-origin:100% 100%}
+.bb.in{background:#fff;align-self:flex-start;border-top-left-radius:5px;transform-origin:0 100%}
+.bb time{display:block;text-align:right;font-size:17px;color:#7b8389;margin-top:3px}
+.fw{font-size:20px;color:#6b7479;font-style:italic;margin-bottom:4px}
+#hl{background-image:linear-gradient(#ffd400,#ffd400);background-repeat:no-repeat;background-size:0% 100%;padding:0 4px}
+.dm{font-family:JB;font-size:22px}
+.tag{display:inline-block;background:#ff2d1f;color:#fff;font-weight:700;font-size:28px;padding:6px 14px;border-radius:9px;margin-bottom:7px}
+.in p{margin-top:5px}.in .do{margin-top:9px;padding-top:9px;border-top:1px solid #e6e2dc;font-weight:700}
+svg.ink{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#typ{position:absolute;left:18px;background:#fff;border-radius:19px;padding:18px 22px;display:flex;gap:8px;opacity:0;box-shadow:0 2px 3px rgba(0,0,0,.14)}
+#typ i{width:13px;height:13px;border-radius:50%;background:#98a1a7}
+.inp{position:absolute;left:0;right:0;bottom:0;height:96px;background:#f7f5f2;display:flex;align-items:center;gap:14px;padding:0 20px 14px;font-family:system-ui}
+.inp div{flex:1;height:58px;border-radius:30px;background:#fff;border:1px solid #e2ddd5;font-size:24px;color:#9aa1a6;display:flex;align-items:center;padding-left:24px}
+.inp span{width:60px;height:60px;border-radius:50%;background:#128c7e}
+#pcam{position:absolute;width:26px;height:26px;border-radius:50%;background:#050505;z-index:4}
+#glare{position:absolute;z-index:4;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.16) 0,rgba(255,255,255,0) 24%)}
+.st{position:absolute;font-family:JB;font-size:32px;letter-spacing:.06em;background:#ff2d1f;color:#fff;padding:11px 18px;border-radius:6px;box-shadow:6px 6px 0 #0e0e0e;white-space:nowrap;z-index:6;opacity:0}
+.rc{background:#0b0b0b;color:#f1ebdf;font-family:JB;font-size:19px;letter-spacing:.1em;text-align:center;padding:9px 0;margin:-20px -18px 2px}
+
+.a{background:#f1ebdf;color:#0b0b0b}
+.a .tg{position:absolute;left:60px;top:150px;font-family:SG;font-weight:700;font-size:34px;letter-spacing:.14em;background:#0b0b0b;color:#ffd400;padding:14px 24px;transform:rotate(-2deg)}
+.a h1{position:absolute;left:60px;top:260px;font-family:AN;font-weight:400;font-size:176px;line-height:1.1;text-transform:uppercase}
+.a h1 span.w{display:block}.hlt{background:#ffd400;padding:0 12px}.rd{color:#ff2d1f}
+.a .stk{position:absolute;left:60px;top:1330px;background:#ff2d1f;color:#fff;font-family:AN;font-size:78px;padding:14px 34px;transform:rotate(-3deg);opacity:0;text-transform:uppercase}
+.a .src{position:absolute;left:60px;right:60px;top:1500px;font-family:SG;font-weight:700;font-size:38px;line-height:1.35;opacity:0}
+.b{background:#ff2d1f;color:#0e0e0e;clip-path:circle(0px at 540px 1050px)}
+.b .big{position:absolute;left:54px;top:420px;font-family:AN;font-size:318px;line-height:1.02;transform:rotate(-5deg);transform-origin:0 50%;white-space:nowrap}
+.b .big span{display:block;opacity:0;transform-origin:0 60%}.b .big span:first-child{font-size:200px}.b .big .wh{color:#fff}
+.b .sub{position:absolute;left:70px;right:70px;top:1200px;font-family:SG;font-weight:700;font-size:70px;line-height:1.1;color:#fff;opacity:0}
+.q{background:#0b0b0b;color:#f1ebdf;opacity:0}
+.q h2{position:absolute;left:60px;top:230px;font-family:AN;font-weight:400;font-size:170px;line-height:1;color:#ffd400;text-transform:uppercase;opacity:0}
+.q .stp{position:absolute;left:60px;right:60px;top:480px}
+.q .stp div{font-family:AN;font-size:90px;line-height:1.06;margin-bottom:38px;text-transform:uppercase;opacity:0}.q .stp span{color:#19e66b}
+.q .cta{position:absolute;left:60px;right:60px;top:1450px;opacity:0}
+.q .cta .pill{display:inline-block;font-family:AN;font-size:70px;background:#ffd400;color:#0b0b0b;padding:8px 36px 12px;text-transform:uppercase}
+.q .cta .tx{font-family:SG;font-weight:700;font-size:48px;line-height:1.15;margin-top:22px}
+.q .fu{position:absolute;left:60px;right:60px;bottom:100px;font-family:SG;font-weight:700;font-size:30px;color:#cfc9bd}
+</style></head><body>
+<svg width="0" height="0"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0"/></filter></svg>
+<div id="cam">
+<div class="f a" id="A">
+ <div class="top" style="top:70px"><b>CYBER MOBILE</b><span class="mono">CASO REAL · RECREACIÓN</span></div>
+ <div class="tg" id="tg">GENERAL MADARIAGA · 4 DE NOVIEMBRE</div>
+ <h1><span class="w" id="w1">“<i class="hlt" style="font-style:normal">50% de</i></span><span class="w" id="w2"><i class="hlt" style="font-style:normal">descuento</i> en</span><span class="w" id="w3">peajes.”</span><span class="w rd" id="w4">Era un falso</span><span class="w rd" id="w5" style="position:relative">Telepase.<svg id="ul" width="760" height="40" style="position:absolute;left:0;top:150px" fill="none" stroke="#0b0b0b" stroke-width="10" stroke-linecap="round"><path class="d" id="ulp" d="M6,22 q60,-18 120,0 t120,0 t120,0 t120,0 t120,0 t100,0"/></svg></span></h1>
+ <div class="stk" id="stk">Perdió $796.281,90</div>
+ <div class="src" id="src">Una jubilada recibió un llamado por WhatsApp de un falso operador de Telepase, dio datos personales y le vaciaron la cuenta.<br><span style="font-weight:400;font-size:30px">Fuente: El Mensajero de la Costa, 05/11/2026</span></div>
+ <svg class="grain" width="1080" height="1920"><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</div>
+<div class="f p" id="P"><div id="pz">
+ <canvas id="ph"></canvas>
+ <div class="top"><b>CYBER MOBILE</b><span class="mono">GENERAL MADARIAGA · 4/11</span></div>
+ <h1><span class="w" id="p1">Un descuento por WhatsApp</span><br><span class="k"><i id="pk"></i><span class="w" id="p2">que te pide datos.</span></span></h1>
+ <div id="scr">
+  <div class="sb"><span>16:02</span><span>5G ▮</span></div>
+  <div class="hd"><span class="bk">‹</span><img src="vera-perfil.png"><div><b>Vera AI Antiestafas</b><small id="est">en línea</small></div></div>
+  <div class="chat">
+   <div class="rc">RECREACIÓN · NO ES UN CHAT REAL</div>
+   <div class="bb out" id="m1">Me llaman por WhatsApp de “Telepase”: tengo <span id="hl">50% de descuento</span> en las rutas y debo confirmar <span id="hl2">mis datos personales</span>. ¿Es real?<time>16:02 ✓✓</time>
+    <svg class="ink" fill="none" stroke="#ff2d1f" stroke-width="5.5" stroke-linecap="round"><path class="d" id="sq" d="M18,166 q11.5,-11 23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 t23,0 "/></svg></div>
+   <div class="bb in" id="m3"><span class="tag">🔴 RIESGO ALTO</span><br>Es una <b>estafa</b>: el falso Telepase.
+    <p>🚩 Una empresa de peajes no te llama por WhatsApp</p><p>🚩 Usa un descuento para engancharte</p><p>🚩 Te pide datos personales</p>
+    <div class="do">✋ Cortá. No des ningún dato.</div><time>16:02</time></div>
+   <div id="typ"><i></i><i></i><i></i></div>
+  </div>
+  <div class="inp"><div>Mensaje</div><span></span></div>
+ </div>
+ <div id="pcam"></div><div id="glare"></div>
+ </div>
+</div>
+<div class="f b" id="B">
+ <div class="top"><b>CYBER MOBILE</b><span class="mono">VEREDICTO DE VERA</span></div>
+ <div class="big"><span id="b1">ES</span><span class="wh" id="b2">ESTAFA.</span></div>
+ <div class="sub" id="b3">Te llaman, te ofrecen un descuento y te piden datos.</div>
+ <svg class="grain" width="1080" height="1920"><rect width="100%" height="100%" filter="url(#n)"/></svg>
+</div>
+<div class="f q" id="Q">
+ <div class="top"><b>CYBER MOBILE</b><span class="mono">GENERAL MADARIAGA · 4/11</span></div>
+ <h2 id="qh">Qué hacer</h2>
+ <div class="stp"><div id="s1"><span>1.</span> Cortá la llamada.</div><div id="s2"><span>2.</span> No confirmes datos ni claves.</div><div id="s3"><span>3.</span> Llamá vos a la empresa o al banco.</div><div id="s4"><span>4.</span> ¿Ya diste datos? Avisá al banco ya y denunciá.</div></div>
+ <div class="cta" id="cta"><span class="pill">7 días gratis</span><div class="tx" id="ctx"></div></div>
+ <div class="fu">Fuente: El Mensajero de la Costa, 05/11/2026 · Chat con Vera recreado</div>
+</div>
+</div>
+<script>
+const $=id=>document.getElementById(id), cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x)), ez=x=>{x=cl(x);return x*x*(3-2*x)};
+const out=x=>{x=cl(x);return 1-Math.pow(1-x,3)}, back=x=>{x=cl(x);const c=1.9;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const canal=new URLSearchParams(location.search).get('canal')||'ig';
+$('ctx').innerHTML=canal==='tt'?'Link en el perfil':canal==='wa'?'Escribile a Vera por WhatsApp<br><span style="font-size:38px;font-weight:400">+54 9 11 7059-8505</span>':'Comentá <span style="background:#ffd400;color:#0b0b0b;padding:0 10px">VERA</span> y te envío el link';
+const BT=60/90;
+function slam(el,t,at,d=.22){const k=out((t-at)/d);el.style.opacity=cl((t-at)/.06);el.style.transform=`scale(${1.35-.35*k}) translateY(${(1-k)*-14}px)`;}
+function pop(el,t,at){const k=back((t-at)/.32);el.style.opacity=cl((t-at)/.08);el.style.transform=`rotate(-3deg) scale(${Math.max(0,k)})`;}
+function bub(el,t,at){const k=out((t-at)/.3);el.style.opacity=cl((t-at)/.1);el.style.transform=`translateY(${(1-k)*22}px) scale(${.92+.08*k})`;}
+function draw(p,t,at,d){p.style.strokeDashoffset=p._l*(1-ez((t-at)/d));}
+function fade(el,t,at,d=.4,dy=18){const k=ez((t-at)/d);el.style.opacity=k;el.style.transform=`translateY(${(1-k)*dy}px)`;}
+const T={w:[.1,.77,1.43,2.1,2.77], ul:3.1, stk:3.6, src:3.9, chat:10*BT, m1:7.6, hl:8.6, hl2:9.6, sq:10.2, typ:11.2, m3:12.0, flood:16.2, drop:25*BT, q:32*BT, s:[21.8,23.4,25.0,26.6], cta:27.4};
+function shake(t,at,amp){const u=t-at;return u<0||u>.4?0:amp*Math.exp(-u*9)*Math.sin(u*70)}
+function render(t){
+ const sh=shake(t,T.drop,16)+shake(t,T.drop+BT,10)+shake(t,T.q,8);
+ $('cam').style.transform=`translate(${sh}px,${sh*.6}px)`;
+ T.w.forEach((at,i)=>slam($('w'+(i+1)),t,at)); $('tg').style.opacity=1;
+ draw($('ulp'),t,T.ul,.6); pop($('stk'),t,T.stk); fade($('src'),t,T.src);
+ $('A').style.transform=`scale(${1+.025*cl(t/T.chat)})`;
+ const pin=ez((t-T.chat)/.5); $('P').style.opacity=pin; $('P').style.visibility=t<T.chat-.02?'hidden':'visible';
+ $('pz').style.transform=`translateY(${(1-out((t-T.chat)/.7))*90}px) scale(${1+.04*cl((t-T.chat)/(T.flood-T.chat))})`;
+ slam($('p1'),t,T.chat+.2); slam($('p2'),t,T.chat+.2+BT); $('pk').style.transform=`scaleX(${out((t-(T.chat+.2+BT))/.3)})`;
+ bub($('m1'),t,T.m1);
+ $('hl').style.cssText=`background-image:linear-gradient(#ffd400,#ffd400);background-repeat:no-repeat;background-size:${100*ez((t-T.hl)/.4)}% 100%;padding:0 4px`;
+ $('hl2').style.cssText=`background-image:linear-gradient(#ffd400,#ffd400);background-repeat:no-repeat;background-size:${100*ez((t-T.hl2)/.4)}% 100%;padding:0 4px`;
+ draw($('sq'),t,T.sq,.5);
+ const ty=cl((t-T.typ)/.2)*(1-cl((t-(T.m3-.12))/.12)); $('typ').style.opacity=ty; $('typ').style.top=($('m1').offsetTop+$('m1').offsetHeight+14)+'px';
+ [...$('typ').children].forEach((d,i)=>d.style.transform=`translateY(${-6*Math.max(0,Math.sin(t*9-i*.9))}px)`);
+ $('est').textContent=(t>T.typ&&t<T.m3)?'escribiendo…':'en línea';
+ bub($('m3'),t,T.m3);
+ $('B').style.clipPath=`circle(${2400*Math.pow(cl((t-T.flood)/(T.drop-T.flood)),2.2)}px at 540px 1050px)`; $('B').style.visibility=t<T.flood?'hidden':'visible';
+ slam($('b1'),t,T.drop,.2); slam($('b2'),t,T.drop+BT,.2); fade($('b3'),t,18.4);
+ $('Q').style.opacity=t>=T.q-.02?1:0;
+ slam($('qh'),t,T.q+.1);
+ T.s.forEach((at,i)=>fade($('s'+(i+1)),t,at,.35,24));
+ fade($('cta'),t,T.cta);
+}
+const im=new Image(); im.onload=()=>{
+ const c=$('ph'); c.width=im.width; c.height=im.height; const x=c.getContext('2d'); x.drawImage(im,0,0);
+ const d=x.getImageData(0,0,c.width,c.height), p=d.data; let x0=1e9,y0=1e9,x1=0,y1=0;
+ for(let j=0;j<c.height;j++)for(let i=0;i<c.width;i++){const k=(j*c.width+i)*4; if(p[k+1]>110&&p[k+1]>p[k]*1.35&&p[k+1]>p[k+2]*1.35){ if(i<x0)x0=i;if(i>x1)x1=i;if(j<y0)y0=j;if(j>y1)y1=j; p[k]=6;p[k+1]=6;p[k+2]=8; } }
+ x.putImageData(d,0,0); x0-=3;y0-=3;x1+=3;y1+=3;
+ const TW=640, sc=TW/(x1-x0), TL=220, TT=375, H=(y1-y0)*sc; c.style.transform=`translate(${TL-x0*sc}px,${TT-y0*sc}px) scale(${sc})`;
+ for(const id of ['scr','glare']){const s=$(id); s.style.left=TL+'px'; s.style.top=TT+'px'; s.style.width=TW+'px'; s.style.height=H+'px'; s.style.borderRadius=(TW*.085)+'px';}
+ $('pcam').style.left=(TL+TW/2-13)+'px'; $('pcam').style.top=(TT+22)+'px';
+ document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.decode?i.decode().catch(()=>0):0))).then(()=>{
+  document.querySelectorAll('.d').forEach(q=>{q._l=q.getTotalLength();q.style.strokeDasharray=q._l;q.style.strokeDashoffset=q._l});
+  render(0); document.documentElement.setAttribute('data-listo','1');});
+}; im.src='foto/mano.jpg';
+</script></body></html>
