@@ -13,7 +13,7 @@ Pedido del dueño (17/11): la base de las publicaciones es el Observatorio, pero
 ## Lista (Top 10 de noviembre de 2026) — estado
 | # | Modalidad | Ficha | Hecho |
 |---|---|---|---|
-| 2 | App de acceso remoto | /observatorio/acceso-remoto-app | |
+| 2 | App de acceso remoto | /observatorio/acceso-remoto-app | 18/11 (propuesta, caso Cipolletti; falta OK) |
 | 3 | Phishing bancario | /observatorio/phishing-banco | |
 | 4 | Phishing de PAMI | /observatorio/phishing-pami | |
 | 5 | Tienda online falsa | /observatorio/ecommerce-falso | |
