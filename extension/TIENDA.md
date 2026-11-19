@@ -122,5 +122,6 @@ Certificar:
 ## Versión 1.4.1 (19/11, cobro internacional con Polar)
 - Reemplaza el aviso "avisame por mail" del panel internacional por dos botones que abren el checkout de **Polar** (vendedor oficial, paga a Argentina): Individual USD 5/mes y Familiar USD 10/mes · 5 personas. Links de producción `buy.polar.sh`, cargados en `extension/panel.js` (`POLAR_INDIVIDUAL`, `POLAR_FAMILIAR`).
 - Sin permisos nuevos: el botón solo abre una pestaña (`chrome.tabs.create`).
-- Pendiente: la activación del acceso tras el pago es manual (mail a info@ con el mismo email de la compra) hasta conectar el aviso (webhook) de Polar con n8n.
+- **Activación automática:** el botón abre el checkout con `?reference_id=<id de la sesión>`; Polar avisa el pago a `https://www.cybermobile.com.ar/api/agente/confirmar?via=polar` (firma Standard Webhooks, variable de Vercel `POLAR_WEBHOOK_SECRET`) y la web guarda `cm_agente:pago:<id>`; `/api/agente/estado` y `/consulta` lo reconocen. La extensión consulta el estado cada 4 s mientras se paga y se destraba sola. Cancelación/fin: el evento `subscription.*` con estado no vigente borra la clave; vigente, acceso hasta el fin del período + 3 días.
+- Pasos de Germán (una vez): en Polar → Settings → Webhooks, crear el endpoint con esa URL (eventos subscription.* y order.paid); copiar el secreto y cargarlo en Vercel como `POLAR_WEBHOOK_SECRET`.
 - Ficha de la tienda: sacar cualquier mención a Paddle; precio internacional USD 5 / USD 10.

@@ -393,8 +393,31 @@ $('l-web').href = BASE + '/?o=extension';
 pintarCapacidades();
 armarLienzo(); reposoLienzo();
 $('b-suscribir').onclick = () => abrir(WA_SUSCRIBIR);
-$('b-plan-ind').onclick = () => abrir(POLAR_INDIVIDUAL);
-$('b-plan-fam').onclick = () => abrir(POLAR_FAMILIAR);
+// El checkout lleva el id de esta sesión como reference_id: cuando Polar avisa el pago, la web activa SOLO este navegador (sin mails ni pasos manuales).
+async function abrirPago(base) {
+    let ref = '';
+    try {
+        const { sesion } = await chrome.storage.local.get('sesion');
+        const id = JSON.parse(atob(String(sesion).split('.')[0].replace(/-/g, '+').replace(/_/g, '/'))).id;
+        if (/^[a-f0-9]{32}$/.test(id)) ref = id;
+    } catch { /* sin sesión: se abre el checkout igual */ }
+    abrir(ref ? base + '?reference_id=' + ref : base);
+    // Mientras se paga, se consulta cada pocos segundos: apenas Polar avisa, se destraba solo.
+    clearInterval(esperaPago);
+    let n = 0;
+    esperaPago = setInterval(async () => {
+        n += 1;
+        const { status, datos } = await estado();
+        if (status === 200 && datos.suscripto) {
+            clearInterval(esperaPago);
+            await pintarEstado();
+            mostrar('inicio');
+        } else if (n > 150) clearInterval(esperaPago);
+    }, 4000);
+}
+let esperaPago = null;
+$('b-plan-ind').onclick = () => abrirPago(POLAR_INDIVIDUAL);
+$('b-plan-fam').onclick = () => abrirPago(POLAR_FAMILIAR);
 $('b-suscribir-bar').onclick = irAPago;
 $('b-compartir').onclick = () => {
     const msg = PAIS === 'AR'
