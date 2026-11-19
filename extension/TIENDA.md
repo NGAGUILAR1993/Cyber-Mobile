@@ -118,3 +118,9 @@ Certificar:
 - **Honestidad:** mientras el backend no informe qué herramientas usó, el panel dice "Herramientas que Vera usa para este tipo de consulta". Si el resultado trae `herramientas: ['vt','tv',...]` (ids: vt, cf, ps, rd, ob, fi, re, ga, tv), muestra esas y dice "Herramientas que usó Vera en tu consulta". `api/_lib/agente.js` (`normalizarWeb`) ya deja pasar ese campo; falta que el flujo de n8n lo devuelva (nodo de respuesta del agente web).
 - Se sacó la terminal simulada y el botón "Suscribirme" de la primera pantalla: ahora aparece solo cuando se agotan las consultas gratis.
 - La ventana del clic derecho es más ancha (820 x 700). Los permisos no cambian. Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.4.0.zip`.
+
+## Versión 1.4.1 (19/11, cobro internacional con Polar)
+- Reemplaza el aviso "avisame por mail" del panel internacional por dos botones que abren el checkout de **Polar** (vendedor oficial, paga a Argentina): Individual USD 5/mes y Familiar USD 10/mes · 5 personas. Links de producción `buy.polar.sh`, cargados en `extension/panel.js` (`POLAR_INDIVIDUAL`, `POLAR_FAMILIAR`).
+- Sin permisos nuevos: el botón solo abre una pestaña (`chrome.tabs.create`).
+- Pendiente: la activación del acceso tras el pago es manual (mail a info@ con el mismo email de la compra) hasta conectar el aviso (webhook) de Polar con n8n.
+- Ficha de la tienda: sacar cualquier mención a Paddle; precio internacional USD 5 / USD 10.

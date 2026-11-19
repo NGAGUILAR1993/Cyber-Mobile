@@ -25,7 +25,7 @@ const FUENTES = {
     archivo: [['Lectura del archivo', 'texto, links y datos con OCR/IA'], ['VirusTotal', 'si es APK o documento, 70+ motores'], ['Qué te piden', 'el patrón de engaño'], ['Observatorio', 'modalidades que circulan']],
     mensaje: [['Lectura del mensaje', 'links, cuentas y teléfonos que aparecen'], ['Reputación', 'de los dominios y datos citados'], ['Qué te piden', 'el patrón de engaño'], ['Observatorio', 'modalidades que circulan']]
 };
-// ¿Desde qué país se usa? Define el cobro: Argentina → Mercado Pago (pesos); resto → Paddle (USD).
+// ¿Desde qué país se usa? Define el cobro: Argentina → Mercado Pago (pesos); resto → Polar (USD).
 function detectarPais() {
     try {
         const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
@@ -35,10 +35,9 @@ function detectarPais() {
     } catch { return 'INT'; }
 }
 const PAIS = detectarPais();
-// Link de pago internacional (Paddle). Placeholder hasta que Germán conecte su cuenta de Paddle;
-// se puede sobreescribir cargando CM_PADDLE en chrome.storage.local sin tocar el código.
-let PADDLE_CHECKOUT = '';   // checkout internacional real (https). Vacío = todavía no se cobra del exterior: se muestra el aviso por mail.
-const AVISO_INT = 'mailto:info@cybermobile.com.ar?subject=' + encodeURIComponent('Vera: avisenme cuando abran las suscripciones internacionales') + '&body=' + encodeURIComponent('Hola, quiero suscribirme a Vera desde mi pais. Pais: ');
+// Links de pago internacional (Polar, vendedor oficial). Producción: buy.polar.sh.
+const POLAR_INDIVIDUAL = 'https://buy.polar.sh/polar_cl_zsp5E3ih83lybv6x7VS4DgkrRoKmsS6Ysc2Tb11wAa8';
+const POLAR_FAMILIAR = 'https://buy.polar.sh/polar_cl_XcBJYzI7mP8avu0nKBxvg5VWFAziBrjgyPMiv2czpDH';
 // Guías propias y fuentes oficiales para entender el resultado (solo dominios conocidos).
 const GUIA = (slug, titulo, c) => ({ href: `${BASE}/guias/${slug}?o=extension`, origen: 'Guía de Cyber Mobile', titulo, c });
 const G = {
@@ -394,7 +393,8 @@ $('l-web').href = BASE + '/?o=extension';
 pintarCapacidades();
 armarLienzo(); reposoLienzo();
 $('b-suscribir').onclick = () => abrir(WA_SUSCRIBIR);
-$('b-suscribir-int').onclick = () => abrir(PADDLE_CHECKOUT || AVISO_INT);
+$('b-plan-ind').onclick = () => abrir(POLAR_INDIVIDUAL);
+$('b-plan-fam').onclick = () => abrir(POLAR_FAMILIAR);
 $('b-suscribir-bar').onclick = irAPago;
 $('b-compartir').onclick = () => {
     const msg = PAIS === 'AR'
@@ -406,7 +406,6 @@ $('b-ya-soy').onclick = iniciarVinculo;
 $('b-volver').onclick = () => { clearInterval(sondeo); if (ultimo) irAPago(); else mostrar('inicio'); };
 
 (async () => {
-    try { const { CM_PADDLE } = await chrome.storage.local.get('CM_PADDLE'); if (typeof CM_PADDLE === 'string' && /^https:\/\//.test(CM_PADDLE)) PADDLE_CHECKOUT = CM_PADDLE; } catch { /* sin override */ }
     if (params.get('ventana') || params.get('bienvenida')) document.body.classList.add('ventana');
     if (params.get('bienvenida')) {
         $('hero-tag').textContent = 'LISTO · VERA YA ESTÁ INSTALADA';
