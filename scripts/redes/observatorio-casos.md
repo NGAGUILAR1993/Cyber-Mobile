@@ -16,7 +16,7 @@ Pedido del dueño (17/11): la base de las publicaciones es el Observatorio, pero
 | 2 | App de acceso remoto | /observatorio/acceso-remoto-app | 18/11 (propuesta, caso Cipolletti; falta OK) |
 | 3 | Phishing bancario | /observatorio/phishing-banco | 18/11 (propuesta b, caso Gral. Madariaga 16/11; falta OK) |
 | 11 | Falso Telepase (archivada) | /observatorio/phishing-telepase | 18/11 (propuesta c, caso Gral. Madariaga 4/11, $796.281,90; falta OK) |
-| 4 | Phishing de PAMI | /observatorio/phishing-pami | |
+| 4 | Phishing de PAMI | /observatorio/phishing-pami | 19/11 (propuesta, caso Palpalá, Jujuy; falta OK) |
 | 5 | Tienda online falsa | /observatorio/ecommerce-falso | |
 | 6 | Secuestro de cuenta de WhatsApp | /observatorio/secuestro-whatsapp | |
 | 7 | Phishing de ARCA | /observatorio/phishing-arca | |
