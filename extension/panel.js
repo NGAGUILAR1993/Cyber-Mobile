@@ -34,7 +34,7 @@ function detectarPais() {
         return 'INT';
     } catch { return 'INT'; }
 }
-const PAIS = detectarPais();
+let PAIS = detectarPais();   // CM_PAIS='INT' en chrome.storage.local fuerza el modo internacional (solo para pruebas)
 // Links de pago internacional (Polar, vendedor oficial). Producción: buy.polar.sh.
 const POLAR_INDIVIDUAL = 'https://buy.polar.sh/polar_cl_zsp5E3ih83lybv6x7VS4DgkrRoKmsS6Ysc2Tb11wAa8';
 const POLAR_FAMILIAR = 'https://buy.polar.sh/polar_cl_XcBJYzI7mP8avu0nKBxvg5VWFAziBrjgyPMiv2czpDH';
@@ -361,6 +361,7 @@ async function iniciarVinculo() {
     clearInterval(sondeo);
     const fin = Date.now() + datos.vence * 1000;
     sondeo = setInterval(async () => {
+    try { const { CM_PAIS } = await chrome.storage.local.get('CM_PAIS'); if (CM_PAIS === 'INT') PAIS = 'INT'; } catch { /* sin override */ }
         if (Date.now() > fin) { clearInterval(sondeo); $('v-estado').textContent = 'El código venció. Volvé a intentarlo.'; return; }
         const r = await vincularEstado(datos.codigo);
         if (r.status === 200 && r.datos.vinculado) {
