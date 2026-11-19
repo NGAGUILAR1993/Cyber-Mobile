@@ -13,6 +13,14 @@
   var estado = document.getElementById('estado');
   function msg(t, clase) { if (estado) { estado.textContent = t || ''; estado.className = clase || ''; } }
 
+  // Mientras no haya cobro real del exterior (Paddle sandbox sin aprobar), no se muestran planes que no se pueden pagar.
+  var HABILITADO = false;
+  if (!HABILITADO) {
+    var pl = document.querySelector('.planes'); if (pl) pl.style.display = 'none';
+    msg('Los pagos internacionales abren muy pronto. Escribinos a info@cybermobile.com.ar y te avisamos el día que estén disponibles.', '');
+    return;
+  }
+
   var listo = false;
   try {
     if (typeof Paddle !== 'undefined') {

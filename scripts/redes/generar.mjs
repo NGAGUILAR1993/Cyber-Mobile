@@ -147,8 +147,12 @@ const casoTutorial = caso(tutorial.caso);
 const promo = fecha <= FIN_PROMO_MADRE;
 
 const salida = path.join(RAIZ, 'redes', fecha);
-fs.rmSync(salida, { recursive: true, force: true });
+// Se borran solo los archivos de la pieza automática anterior: las carpetas (piezas especiales cargadas a mano,
+// por ejemplo redes/<fecha>/reel-xxx/) se conservan. Antes se borraba todo el día y se perdían (17/11).
 fs.mkdirSync(salida, { recursive: true });
+for (const e of fs.readdirSync(salida, { withFileTypes: true })) {
+    if (!e.isDirectory()) fs.rmSync(path.join(salida, e.name), { force: true });
+}
 
 // ---------- Imágenes ----------
 const plantilla = pathToFileURL(path.join(RAIZ, 'scripts', 'redes', 'plantilla.html')).href;

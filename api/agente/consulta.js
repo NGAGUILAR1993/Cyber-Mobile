@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 import { validar } from '../_lib/validar.js';
 import {
     redis, configurado, urlN8n, responder, ipDe, origenPermitido, sesionOCrear, reservarGratis, devolverGratis,
-    excedeLimite, estadoSuscripcion, guardarEstado, firmaN8n, normalizarWeb, ESTADOS_CON_ACCESO, MIMES, MAX_ARCHIVO, gratisUsadas, tokenSesion, cupoGratis, esExtension
+    excedeLimite, estadoSuscripcion, pagoActivo, guardarEstado, firmaN8n, normalizarWeb, ESTADOS_CON_ACCESO, MIMES, MAX_ARCHIVO, gratisUsadas, tokenSesion, cupoGratis, esExtension
 } from '../_lib/agente.js';
 
 const TIMEOUT_MS = 55000;
@@ -65,7 +65,8 @@ export default async function handler(req, res) {
     let modo = 'gratis', reservada = false;
     try {
         const estado = await estadoSuscripcion(r, s.tel);
-        if (s.tel && (ESTADOS_CON_ACCESO.includes(estado) || !estado)) modo = 'suscripcion';   // sin dato: que lo confirme n8n
+        if (await pagoActivo(r, s)) modo = 'gratis';   // pagó por Polar (internacional): no gasta cupo gratis
+        else if (s.tel && (ESTADOS_CON_ACCESO.includes(estado) || !estado)) modo = 'suscripcion';   // sin dato: que lo confirme n8n
         else if (await reservarGratis(r, s, ip, cupo)) reservada = true;
         else if (s.tel) modo = 'suscripcion';   // sin gratis: n8n revisa si ya pagó
         else return responder(res, 402, { codigo: 'sin_cupo', error: 'Usaste tus consultas gratis.', sesion: tokenSesion(s) });

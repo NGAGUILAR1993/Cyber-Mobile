@@ -49,7 +49,7 @@ Qué podés verificar:
 • Lo que ves en pantalla: Vera mira una captura y te dice si es una trampa.
 • Archivos: capturas, PDF o APK de hasta 3 MB.
 
-3 consultas gratis, sin registrarte. Después, seguí protegido con un plan mensual desde $10.000 por débito automático en Mercado Pago, que también incluye a Vera en tu WhatsApp. Si ya sos cliente, vinculás tu WhatsApp con un código y listo.
+3 consultas gratis, sin registrarte. Después, seguí protegido con un plan mensual desde $5.000 por débito automático en Mercado Pago, que también incluye a Vera en tu WhatsApp. Si ya sos cliente, vinculás tu WhatsApp con un código y listo.
 
 Privacidad: la extensión no lee tu historial ni las páginas que visitás. Solo envía lo que vos elegís verificar.
 
@@ -104,3 +104,24 @@ Certificar:
 ## Imágenes
 - Ícono: 128×128, ya va dentro del paquete (`icons/icon-128.png`).
 - Capturas 1280×800 (nuevo estilo, 27/10): `tienda/captura-1.jpg` a `captura-5.jpg` (portada, clic derecho, resultado, links de contexto, qué revisa). Mosaico 440×280 y marquesina 1400×560 en `tienda/`. Se arman con `scripts/extension/tienda.html` (imágenes reales de la extensión 1.1).
+
+
+## Versión 1.3.1 (18/11, pedido del dueño: "la extensión funciona mal, quienes la descargan no pueden adherirse")
+- **Problema:** la versión publicada en la tienda (1.1.0) mandaba a TODOS al pago por WhatsApp y Mercado Pago en pesos (los del exterior no podían pagar). Las 1.2.0 y 1.3.0 (cobro por país) nunca se subieron y apuntaban al checkout de PRUEBAS de Paddle (sin aprobar).
+- **1.3.1:** Argentina sigue con WhatsApp y Mercado Pago; desde otro país ya no se abre el checkout de pruebas: se muestra "las suscripciones internacionales abren pronto" con un botón que abre un mail a info@ para avisarles. Cuando haya cobro real se pone el link en `PADDLE_CHECKOUT` (o en `CM_PADDLE` del storage) y el botón vuelve a ser "Subscribe".
+- **Ficha de la tienda:** corregir el precio ("desde $5.000", antes decía $10.000) al subir el paquete.
+- Los permisos no cambian. Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.3.1.zip`. Subirlo en Chrome Web Store → Paquete → Subir nuevo paquete → Enviar a revisión.
+
+
+## Versión 1.4.0 (18/11, pedido del dueño: "iconos estilo lienzo de n8n a un costado que se activan a requerimiento de la consulta")
+- **Lienzo de herramientas** a la derecha del panel (ancho 780 px; en ventanas angostas se oculta): el **Agente Vera** y sus herramientas (VirusTotal, Cloudflare, PhishStats, RDAP/WHOIS, Observatorio, Filtraciones, Reportes de CBU/teléfonos, Gemini y Tavily). Al consultar, el agente enciende solo las que usa ese tipo de consulta (archivo → VirusTotal; investigación → Tavily → Gemini) y al terminar las marca con ✓. Sin el flujo interno de n8n y sin nodos de pago.
+- **Honestidad:** mientras el backend no informe qué herramientas usó, el panel dice "Herramientas que Vera usa para este tipo de consulta". Si el resultado trae `herramientas: ['vt','tv',...]` (ids: vt, cf, ps, rd, ob, fi, re, ga, tv), muestra esas y dice "Herramientas que usó Vera en tu consulta". `api/_lib/agente.js` (`normalizarWeb`) ya deja pasar ese campo; falta que el flujo de n8n lo devuelva (nodo de respuesta del agente web).
+- Se sacó la terminal simulada y el botón "Suscribirme" de la primera pantalla: ahora aparece solo cuando se agotan las consultas gratis.
+- La ventana del clic derecho es más ancha (820 x 700). Los permisos no cambian. Paquete: `node scripts/extension/empaquetar.mjs` → `extension/dist/vera-chrome-1.4.0.zip`.
+
+## Versión 1.4.1 (19/11, cobro internacional con Polar)
+- Reemplaza el aviso "avisame por mail" del panel internacional por dos botones que abren el checkout de **Polar** (vendedor oficial, paga a Argentina): Individual USD 5/mes y Familiar USD 10/mes · 5 personas. Links de producción `buy.polar.sh`, cargados en `extension/panel.js` (`POLAR_INDIVIDUAL`, `POLAR_FAMILIAR`).
+- Sin permisos nuevos: el botón solo abre una pestaña (`chrome.tabs.create`).
+- **Activación automática:** el botón abre el checkout con `?reference_id=<id de la sesión>`; Polar avisa el pago a `https://www.cybermobile.com.ar/api/agente/confirmar?via=polar` (firma Standard Webhooks, variable de Vercel `POLAR_WEBHOOK_SECRET`) y la web guarda `cm_agente:pago:<id>`; `/api/agente/estado` y `/consulta` lo reconocen. La extensión consulta el estado cada 4 s mientras se paga y se destraba sola. Cancelación/fin: el evento `subscription.*` con estado no vigente borra la clave; vigente, acceso hasta el fin del período + 3 días.
+- Pasos de Germán (una vez): en Polar → Settings → Webhooks, crear el endpoint con esa URL (eventos subscription.* y order.paid); copiar el secreto y cargarlo en Vercel como `POLAR_WEBHOOK_SECRET`.
+- Ficha de la tienda: sacar cualquier mención a Paddle; precio internacional USD 5 / USD 10.

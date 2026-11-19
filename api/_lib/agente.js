@@ -150,6 +150,12 @@ export async function guardarEstado(r, tel, estado) {
     // n8n lo vuelve a confirmar en cada consulta de un número vinculado.
     await r.set(`cm_agente:sus:${tel}`, e || 'ninguno', 'EX', 30 * 86400);
 }
+// Suscripción internacional (Polar): la escribe el aviso de pago firmado (confirmar.js?via=polar)
+// con la sesión de la extensión que el comprador llevó como reference_id.
+export async function pagoActivo(r, s) {
+    if (!s || !s.id) return false;
+    return (await r.get(`cm_agente:pago:${s.id}`)) === 'activo';
+}
 export function telefonoOculto(tel) {
     if (!tel) return '';
     return `+${tel.slice(0, 2)} ${tel.slice(2, 3)} ••• ••• ${tel.slice(-4)}`;
@@ -214,6 +220,7 @@ export function normalizarWeb(r) {
         resumen: txt(r.resumen, 1500) || txt(r.explicacion, 1500),
         hallazgos,
         pasos,
-        modalidad
+        modalidad,
+        herramientas: (Array.isArray(r.herramientas) ? r.herramientas : []).filter((x) => ['vt', 'cf', 'ps', 'rd', 'fi', 'ga', 'tv'].includes(x)).slice(0, 7)
     };
 }

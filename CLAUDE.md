@@ -85,7 +85,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
 | Sáb | Carrusel "IA general vs Vera" / "Guardalo para tu familia" + historia de preguntas | 12:00 |
 | Dom | Libre | |
 
-- Si `redes/<fecha>/textos.json` ya existe, la pieza automática de ese día no se genera. Sirve para cargar piezas especiales.
+- Si `redes/<fecha>/textos.json` ya existe, la pieza automática de ese día no se genera. Sirve para cargar piezas especiales. **Ojo (18/11):** el 17/11 el generador automático borró las subcarpetas `redes/<fecha>/comparacion*/` porque hacía `rmSync` de todo el día. Ya no borra carpetas (solo los archivos de la pieza automática), pero las piezas especiales conviene guardarlas en subcarpetas y avisar si algo desaparece (se recupera del historial de git: commit `4d82ffc`).
 - `--caso <id>` arma un reel "Se lo mandé a Vera" con un caso puntual de `scripts/redes/casos.json`. Las capturas van en `scripts/redes/casos/`, siempre con los datos personales tapados.
 - Los videos especiales se suben a `redes/<fecha>/<nombre>/` para poder mandar el link por mail. Los archivos de más de ~7 MB no se adjuntan: se mandan links a la web y a GitHub.
 
