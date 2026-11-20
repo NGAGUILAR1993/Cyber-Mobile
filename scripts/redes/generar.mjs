@@ -12,7 +12,7 @@
 //   --caso arma ese día un reel "Se lo mandé a Vera" con el caso indicado (por ejemplo, uno nuevo y urgente).
 // Requiere Playwright (Chromium) y ffmpeg.
 // Estructura de cada pieza (scripts/redes/GUIA.md): portada que abre una incógnita, puente que amplía el problema,
-// entrega que se guarda o comparte, y CTA con un siguiente paso concreto (Comentá VERA → link por privado).
+// entrega que se guarda o comparte, y CTA con un siguiente paso concreto (link en el perfil, web o ficha del Observatorio; ya no se pide comentar).
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -241,7 +241,7 @@ const m = elegida, e = m.ejemplo, ficha = `${SITIO}/observatorio/${m.slug}`;
 const senales = e.senales.map((x, i) => `${i + 1}. ${x}`).join('\n');
 const pasos = m.pasos.map((p, i) => `${i + 1}️⃣ ${p}`).join('\n');
 const VERA = `${SITIO}/vera`;
-const CTA_IG = '💬 Comentá VERA y te envío por mensaje privado el link para probarla 7 días gratis en tu WhatsApp (o entrá a cybermobile.com.ar/vera).';
+const CTA_IG = '🔗 Probá a Vera 7 días gratis: link en el perfil o en cybermobile.com.ar/vera.';
 const CTA_WA = `📲 *Probá Vera 7 días gratis:*\n${VERA}?o=canal`;
 const waFicha = `🚨 *${sinMarcas(e.gancho)}*\n\n${m.comoCorto}\n\n🚩 *Señales:*\n${senales}\n\n✅ *${m.clave}*\n\n*Si te llegó:*\n${pasos}\n\n📲 *¿Dudás? Verificalo con Vera:*\n${VERA}?o=canal\n\n🔎 *Ficha completa:*\n${ficha}\n\nReenviá este mensaje a tu familia 🙏`;
 const sticker = 'un sticker de enlace a cybermobile.com.ar/vera?o=historia (abre el chat con Vera directo)';

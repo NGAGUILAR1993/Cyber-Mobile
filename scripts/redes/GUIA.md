@@ -18,7 +18,7 @@ Cada pieza (carrusel, reel o historia) sigue cuatro pasos. `generar.mjs` y `plan
 
 ## 4. CTA: un siguiente paso concreto
 - Nunca cerrar con "espero que te haya gustado".
-- CTA único: **Comentá "VERA" y te envío por mensaje privado el link para probarla 7 días gratis** (ManyChat). Fuera de Instagram: cybermobile.com.ar/vera.
+- CTA (desde el 20/11, ya no se pide comentar): **link en el perfil · 7 días gratis**, la ficha del Observatorio del caso, o cybermobile.com.ar/agente. Fuera de Instagram: cybermobile.com.ar/vera.
 - Pedir una sola acción principal; guardar y compartir van como apoyo.
 
 ## Reglas que no cambian

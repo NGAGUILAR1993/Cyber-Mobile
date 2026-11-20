@@ -99,7 +99,7 @@ Los horarios automáticos de GitHub se atrasan mucho en este repo: el monitor co
    - **Portada:** abre una incógnita y no revela la respuesta.
    - **Puente:** amplía el problema.
    - **Entrega:** algo que se guarda o se comparte.
-   - **CTA variable (dueño, 03/11):** "Comentá VERA y te envío el link por privado (7 días gratis)" (ManyChat responde por DM) es UNA opción, NO obligatoria en cada pieza. No siempre hay que buscar que comenten "VERA" ni interacción: muchas piezas ganan por estilo, movimiento, color y calidad. Variar el cierre (dato, mostrar a Vera trabajando, noticia, o solo la marca).
+   - **CTA (dueño, 20/11): se terminó el "Comentá VERA" en los reels y piezas** ("nadie comenta"). Ya no se pide comentar ni se usa ManyChat como cierre. Cada pieza cierra con un destino claro, a elección del agente redes según el caso: **link en el perfil · 7 días gratis** (`/vera?o=bio`), la **ficha del Observatorio** del caso (`cybermobile.com.ar/observatorio/<slug>`, para piezas basadas en un caso), **probá a Vera en la web** (`cybermobile.com.ar/agente`, sirve sin WhatsApp) o la **extensión** (`cybermobile.com.ar/chrome`). Variar el cierre; si hace falta medir, usar el origen del link corto (`/vera?o=...`). (Antes, 03/11: el CTA "Comentá VERA" era opcional.)
 3. **Tapar siempre** mails, nombres, números, caras y chats ajenos en las capturas, incluidos los datos del estafador. El dominio falso se puede mostrar.
 4. **No tomar sus palabras literalmente:** son ideas para mejorar. Implementar directo, con criterio de marketing.
 5. **Mensaje de marca:** "No somos otra cuenta de alertas: creamos una herramienta para que te enteres primero, en tu teléfono." Detrás de Vera hay ciberseguridad, IA entrenada, automatizaciones y herramientas especializadas.
