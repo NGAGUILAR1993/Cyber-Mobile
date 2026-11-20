@@ -73,3 +73,8 @@ Leé `scripts/redes/CAPACITACION.md` antes de cada pieza: es el criterio de las 
 
 ## Entrega
 El archivo final en `redes/<fecha>/<nombre>/` (más `textos.json`, `instagram.txt` y `whatsapp.txt`), las 3 mejores ideas que descartaste en una línea cada una, en una línea por qué la elegida debería traer seguidores y en otra qué tramo del embudo empuja (alcance, confianza o venta) y con qué número se mide.
+
+
+## Regla del dueño 20/11 (segunda vuelta)
+- Casos del Observatorio con **imágenes reales** (mensaje, mail o sitio de la estafa de una fuente oficial o de seguridad, con fuente y datos tapados): nada de recreaciones. Si no hay imagen real descargable, cambiá de caso.
+- **No digas "gratis", "consultas gratis" ni "7 días gratis"** en piezas ni textos: la gente ve cobro y se va. Mandá a la web (`cybermobile.com.ar/agente`) y a la ficha del Observatorio, sin precios ni cupos.
