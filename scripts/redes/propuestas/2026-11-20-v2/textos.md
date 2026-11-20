@@ -7,4 +7,4 @@ Nota: no pude bajar las capturas del mail que publicó Infobae/ESET (el sandbox 
 ## B) Set "¿Qué es Vera?" set-vera-1..6.jpg
 Privacidad: web/extensión "no se guarda una vez entregado el resultado"; WhatsApp datos técnicos hasta 30 días (privacidad.html).
 Capas (links): VirusTotal, Cloudflare, PhishStats, antigüedad del dominio, denuncias (CLAUDE.md, V43b).
-Pie "entorno de pruebas" de las capturas: sacar al publicar y reemplazar por captura de producción.
+Pie "entorno de pruebas" retirado (v3, 20/11): la captura no lo traía; ya no se menciona "gratis".

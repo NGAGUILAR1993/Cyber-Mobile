@@ -34,7 +34,6 @@ P['caso-2']=page(NEG,CREMA,`<div class="pad" style="top:230px"><span class=tag>L
 <div class="pad src" style="bottom:150px;font-size:34px">Descripción del mail apócrifo tal como lo informó Infobae (nota del 05/11/2026, que recuerda el caso de junio). ARCA respondió: “Se trata de un mail apócrifo”.</div>`);
 P['caso-3']=page(AMA,NEG,`<div class="pad" style="top:200px"><div class=h style="font-size:150px;line-height:1.12">PEGALO ANTES<br>DE <span style="background:${NEG};color:${AMA};padding:0 16px">TOCAR.</span></div></div>
 ${cap('agente.png',640,170,740,700,0,0,100)}
-<div class="pad" style="top:1380px;font-size:40px;font-weight:700;line-height:1.3">Captura real de cybermobile.com.ar/agente (entorno de pruebas).</div>
 <div class="pad url" style="bottom:210px;font-size:60px">CYBERMOBILE.COM.AR/AGENTE</div>
 <div class="pad src" style="bottom:110px;font-size:36px;color:${NEG}">Ficha del caso: cybermobile.com.ar/observatorio/phishing-arca</div>`);
 // ---- SET QUE ES VERA ----
@@ -49,7 +48,7 @@ P['vera-2']=page(CREMA,NEG,`<div class="pad" style="top:210px"><span class=tag>Q
 ${cap('agente.png',1180,200,680,520,0,-640,100)}
 <div class="pad url" style="bottom:70px;font-size:48px">cybermobile.com.ar/agente</div>`);
 P['vera-3']=page(TUR,NEG,`<div class="pad" style="top:260px"><div class=h style="font-size:190px">SIN<br>REGISTRARTE.</div>
-<div style="font-size:64px;line-height:1.25;font-weight:700;margin-top:60px">Entrás a la web, pegás y analizás. Las primeras consultas son gratis.</div>
+<div style="font-size:64px;line-height:1.25;font-weight:700;margin-top:60px">Entrás a la web, pegás lo que te llegó y analizás.</div>
 <div style="font-size:50px;line-height:1.3;margin-top:70px;border-top:8px solid ${NEG};padding-top:40px">Lo que pegás o subís en la web <b>no se guarda</b> una vez entregado el resultado.</div></div>
 <div class="pad src" style="bottom:260px;font-size:34px;color:${NEG}">En WhatsApp, los datos técnicos del análisis se conservan hasta 30 días. Detalle en cybermobile.com.ar/privacidad</div>
 <div class="pad url" style="bottom:110px;font-size:56px">cybermobile.com.ar/agente</div>`);
@@ -66,7 +65,6 @@ ${['VirusTotal','Resolvedor de Cloudflare','PhishStats','Antigüedad del dominio
 P['vera-6']=page(CREMA,NEG,`<div class="pad" style="top:210px"><span class=tag>Cómo funciona</span>
 <div class=h style="font-size:140px;margin-top:40px">PEGÁS.<br>VERA INVESTIGA.<br><span class=mk>VOS DECIDÍS.</span></div></div>
 ${cap('agente-como.png',860,170,740,640,0,-520,100)}
-<div class="pad" style="top:1530px;font-size:32px;font-weight:700">Captura real de cybermobile.com.ar/agente (entorno de pruebas).</div>
 <div class="pad url" style="bottom:90px;font-size:50px">PROBALA: CYBERMOBILE.COM.AR/AGENTE</div>`);
 fs.mkdirSync('html',{recursive:true});
 const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium',args:['--allow-file-access-from-files']});
