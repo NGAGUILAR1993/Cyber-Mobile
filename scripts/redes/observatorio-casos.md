@@ -18,7 +18,8 @@ Pedido del dueño (17/11): la base de las publicaciones es el Observatorio, pero
 | 11 | Falso Telepase (archivada) | /observatorio/phishing-telepase | 18/11 (propuesta c, caso Gral. Madariaga 4/11, $796.281,90; falta OK) |
 | 4 | Phishing de PAMI | /observatorio/phishing-pami | 19/11 (propuesta, caso Palpalá, Jujuy; falta OK) |
 | 5 | Tienda online falsa | /observatorio/ecommerce-falso | 20/11 (propuesta, falso Frávega, ESET 13/10; falta OK) |
-| 6 | Secuestro de cuenta de WhatsApp | /observatorio/secuestro-whatsapp | |
+| 6 | Secuestro de cuenta de WhatsApp | /observatorio/secuestro-whatsapp | 21/11 probado: sin captura real reciente, saltado |
+| - | Falsa multa (archivada) | /observatorio/falsa-multa | 21/11 (propuesta, acta falsa Berisso, 0221 17/10; falta OK) |
 | 7 | Phishing de ARCA | /observatorio/phishing-arca | |
 | 8 | Robo de identidad digital | /observatorio/robo-identidad | |
 | 9 | Suplantación de un contacto conocido | /observatorio/suplantacion-contacto | |
