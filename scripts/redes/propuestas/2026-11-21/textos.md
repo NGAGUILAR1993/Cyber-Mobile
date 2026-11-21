@@ -6,3 +6,6 @@
 - Ficha: cybermobile.com.ar/observatorio/falsa-multa (archivo). Cierre: cybermobile.com.ar/agente
 - Texto IG: "Esta acta apareció en autos estacionados de Berisso con fecha 13/10. La Municipalidad avisó que no la emitió su personal: la falsa es blanca con letras rojas, la oficial es celeste con letras blancas. Si encontrás una, no pagues ni des datos: consultá por los canales oficiales. Podés subir la foto a Vera en cybermobile.com.ar/agente. Fuente: 0221.com.ar, 17/10/2026. Modalidad: cybermobile.com.ar/observatorio/falsa-multa"
 - Aviso: el modus operandi digital (QR/pago) de la ficha del Observatorio no lo confirma esta nota; la pieza solo afirma lo que dice 0221.
+
+## Versión con "Así lo verifica Vera" (22/11)
+Historias (4): 1 caso con el acta real · 2 la falsa vs la oficial · 3 Así lo verifica Vera (lee el acta; revisa link, QR, CBU o alias y el dominio; cruza con el Observatorio; semáforo y qué hacer) · 4 "No pagues. No des datos." con el cierre a cybermobile.com.ar/agente y la ficha /observatorio/falsa-multa. Aclaración al pie de la 3: Vera orienta con señales y fuentes; la confirmación final es del municipio por su canal oficial.

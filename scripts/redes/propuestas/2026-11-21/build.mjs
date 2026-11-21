@@ -36,7 +36,11 @@ multa:{
  <div class=mkl style="left:300px;top:1030px;background:#19b8a0;transform:rotate(2deg)">Oficial: celeste y blanca</div>
  <div class="pad" style="top:1560px;font-size:44px;line-height:1.3;font-weight:700">Según la Secretaría de Seguridad Ciudadana de Berisso, esa es la diferencia que hay que mirar.</div>
  <div class="pad src" style="bottom:90px;color:${CREMA};font-size:28px">Fuente: 0221.com.ar, 17/10/2026. Foto de la multa oficial: nota original.</div>`),
- f3:page(AMA,NEG,`<div class="pad" style="top:190px"><div class=h style="font-size:150px">NO PAGUES.<br>NO DES<br>DATOS.</div><div style="font-size:48px;line-height:1.3;font-weight:700;margin-top:50px">Consultá el acta solo por los canales oficiales del municipio. Si aparece una, llamá al organismo antes de transferir.</div>
+ f3:page(CREMA,NEG,`<div class="pad" style="top:190px"><span class=tag style="background:${NEG};color:${AMA}">Así lo verifica Vera</span><div class=h style="font-size:104px;margin-top:30px">SUBÍS LA FOTO.<br><span class=mk>VERA REVISA.</span></div></div>
+ <div class="pad" style="top:660px;font-size:44px;line-height:1.28;font-weight:700">
+ ${[['1','Lee el acta: quién la emite, municipio, fecha, monto y cómo piden pagar.'],['2','Revisa cada dato de pago: link, QR, CBU o alias, y la antigüedad y reputación del dominio.'],['3','Lo cruza con las estafas que ya registra el Observatorio.'],['4','Te responde con un semáforo y qué hacer, paso a paso.']].map(([n,t])=>`<div style="display:flex;gap:28px;align-items:flex-start;margin-bottom:46px"><div class=h style="font-size:84px;color:${ROJO};min-width:70px">${n}</div><div style="padding-top:8px">${t}</div></div>`).join('')}</div>
+ <div class="pad src" style="bottom:90px;font-size:28px">Vera orienta con señales y fuentes; la confirmación final es siempre del municipio, por su canal oficial.</div>`),
+ f4:page(AMA,NEG,`<div class="pad" style="top:190px"><div class=h style="font-size:150px">NO PAGUES.<br>NO DES<br>DATOS.</div><div style="font-size:48px;line-height:1.3;font-weight:700;margin-top:50px">Consultá el acta solo por los canales oficiales del municipio. Si aparece una, llamá al organismo antes de transferir.</div>
  <div style="font-size:48px;line-height:1.3;font-weight:700;margin-top:46px;border-top:8px solid ${NEG};padding-top:34px">Subí la foto del acta a Vera y mirá qué encuentra.</div></div>
  <div class="pad url" style="bottom:200px;font-size:62px">CYBERMOBILE.COM.AR/AGENTE</div><div class="pad src" style="bottom:90px;font-size:34px;font-weight:700">Modalidad: cybermobile.com.ar/observatorio/falsa-multa</div>`)}
 };
@@ -47,6 +51,6 @@ for(const [c,fr] of Object.entries(casos))for(const [f,h] of Object.entries(fr))
  await p.goto('file://'+D+`/html/${c}-${f}.html`);await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(300);
  await p.screenshot({path:`${c}-${f}.jpg`,type:'jpeg',quality:92});}
 for(const c of Object.keys(casos)){
- const h=`<html><body style="margin:0;background:#222;display:flex;gap:30px;padding:30px">${['f1','f2','f3'].map(f=>`<img src="file://${D}/${c}-${f}.jpg" style="width:540px">`).join('')}</body></html>`;
- fs.writeFileSync('html/m.html',h);const q=await b.newPage({viewport:{width:1740,height:1080}});await q.goto('file://'+D+'/html/m.html');await q.waitForTimeout(500);await q.screenshot({path:`preview-${c}.jpg`,type:'jpeg',quality:90});}
+ const h=`<html><body style="margin:0;background:#222;display:flex;gap:30px;padding:30px">${['f1','f2','f3','f4'].map(f=>`<img src="file://${D}/${c}-${f}.jpg" style="width:420px">`).join('')}</body></html>`;
+ fs.writeFileSync('html/m.html',h);const q=await b.newPage({viewport:{width:1790,height:820}});await q.goto('file://'+D+'/html/m.html');await q.waitForTimeout(500);await q.screenshot({path:`preview-${c}.jpg`,type:'jpeg',quality:90});}
 await b.close();
