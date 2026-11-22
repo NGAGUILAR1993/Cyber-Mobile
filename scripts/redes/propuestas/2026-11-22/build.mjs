@@ -38,14 +38,17 @@ ${paso(3,'Mira desde cuándo existe el dominio.')}
 ${paso(4,'Lo cruza con los casos del Observatorio.')}
 ${paso(5,'Te da el semáforo y qué hacer.')}</div>
 <div class="pad src" style="bottom:110px;font-size:31px;border-top:6px solid ${NEG};padding-top:26px">Vera orienta. La confirmación final es de la empresa u organismo oficial (acá, Rockstar Games y las tiendas de tu consola).</div>`);
-const f4=page(AMA,NEG,`<div class="pad" style="top:190px"><div class=h style="font-size:160px">NO INSTALES<br>ESE APK.</div><div style="font-size:50px;line-height:1.3;font-weight:700;margin-top:50px">Bajá juegos solo de las tiendas oficiales de tu consola.</div>
+const f5=page(AMA,NEG,`<div class="pad" style="top:190px"><div class=h style="font-size:160px">NO INSTALES<br>ESE APK.</div><div style="font-size:50px;line-height:1.3;font-weight:700;margin-top:50px">Bajá juegos solo de las tiendas oficiales de tu consola.</div>
 <div style="font-size:50px;line-height:1.3;font-weight:700;margin-top:50px;border-top:8px solid ${NEG};padding-top:36px">¿Un sitio te ofrece GTA 6 en el celular? Pegá el link en Vera antes de tocar nada.</div></div>
 <div class="pad url" style="bottom:230px;font-size:62px">CYBERMOBILE.COM.AR/AGENTE</div><div class="pad src" style="bottom:130px;font-size:34px;font-weight:700">Modalidad: cybermobile.com.ar/observatorio/ecommerce-falso</div>`);
+const f4=page(NEG,CREMA,`<div class="pad" style="top:170px"><span class=tag style="background:${AMA};color:${NEG}">Respuesta real en WhatsApp</span><div class=h style="font-size:96px;margin-top:26px">ESTO RESPONDIÓ <span style="color:${AMA}">VERA.</span></div></div>
+<div style="position:absolute;left:222px;top:520px;width:636px;height:1210px;overflow:hidden;border:5px solid ${CREMA};border-radius:18px;background:#000"><img src="${D}/real/vera-whatsapp.png" style="display:block;width:636px;margin-top:-60px"></div>
+<div class="pad src" style="bottom:50px;color:${CREMA};font-size:27px;line-height:1.3">Captura real de WhatsApp, 22/11/2026. Riesgo alto: dominio no oficial y un APK de un juego que no existe en celulares. En VirusTotal, 5 motores lo marcan peligroso y 2 sospechoso, sobre 92.</div>`);
 const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium',args:['--allow-file-access-from-files']});
 const p=await b.newPage({viewport:{width:1080,height:1920}});
 fs.mkdirSync('html',{recursive:true});
-const fr={f1,f2,f3,f4};
+const fr={f1,f2,f3,f4,f5};
 for(const [f,h] of Object.entries(fr)){fs.writeFileSync(`html/${f}.html`,h);await p.goto('file://'+D+`/html/${f}.html`);await p.evaluate(()=>document.fonts.ready);await p.waitForTimeout(300);await p.screenshot({path:`historia-gta6-${f.slice(1)}.jpg`,type:'jpeg',quality:92});}
-fs.writeFileSync('html/m.html',`<html><body style="margin:0;background:#222;display:flex;gap:24px;padding:24px">${[1,2,3,4].map(i=>`<img src="file://${D}/historia-gta6-${i}.jpg" style="width:420px">`).join('')}</body></html>`);
-const q=await b.newPage({viewport:{width:1776,height:780}});await q.goto('file://'+D+'/html/m.html');await q.waitForTimeout(500);await q.screenshot({path:'preview-gta6.jpg',type:'jpeg',quality:90});
+fs.writeFileSync('html/m.html',`<html><body style="margin:0;background:#222;display:flex;gap:24px;padding:24px">${[1,2,3,4,5].map(i=>`<img src="file://${D}/historia-gta6-${i}.jpg" style="width:340px">`).join('')}</body></html>`);
+const q=await b.newPage({viewport:{width:1900,height:700}});await q.goto('file://'+D+'/html/m.html');await q.waitForTimeout(500);await q.screenshot({path:'preview-gta6.jpg',type:'jpeg',quality:90});
 await b.close();
