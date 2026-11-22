@@ -1,7 +1,7 @@
 {
   "meta": {
     "mes": "noviembre de 2026",
-    "actualizado": "2026-11-21T15:00:18.953Z",
+    "actualizado": "2026-11-22T01:00:26.015Z",
     "version_schema": 3,
     "generado_por": "n8n"
   },
@@ -13,7 +13,7 @@
       "canal": "REDES",
       "act": 86,
       "delta": 0,
-      "riesgo": "medio",
+      "riesgo": "alto",
       "emergente": false,
       "como": "Durante eventos como el CyberMonday, los estafadores crean sitios web de comercio electrónico falsos o perfiles fraudulentos en redes sociales, ofreciendo productos con descuentos increíbles. Los usuarios, atraídos por las ofertas, realizan la compra y el pago, pero nunca reciben el producto. El objetivo es robar dinero y datos personales de las víctimas.",
       "detectar": "Ofertas con descuentos excesivamente altos, sitios web con errores de diseño o URL sospechosas, y la solicitud de datos personales o bancarios de forma inusual.",
@@ -72,10 +72,10 @@
       "canal": "REDES",
       "act": 91,
       "delta": 0,
-      "riesgo": "medio",
-      "emergente": false,
-      "como": "Los estafadores utilizan Discord para engañar a usuarios con ofertas falsas de criptomonedas, NFTs o sorteos. Crean servidores y perfiles falsos, enviando enlaces maliciosos que roban credenciales o instalan malware. También pueden suplantar identidades de amigos para pedir dinero o información personal, aprovechando la confianza de la víctima.",
-      "detectar": "Alertas de Kaspersky sobre estafas en Discord, mencionando la creación de servidores falsos, ofertas de criptomonedas o NFTs, y suplantación de identidad para robar datos o dinero.",
+      "riesgo": "alto",
+      "emergente": true,
+      "como": "Los estafadores aprovechan la expectativa por el lanzamiento de GTA 6 para engañar a los usuarios. Crean sitios web y perfiles falsos que prometen acceso anticipado al juego o betas exclusivas. Piden datos personales, información de tarjetas de crédito o la descarga de software malicioso, con el objetivo de robar credenciales o instalar malware en los dispositivos de las víctimas.",
+      "detectar": "Ofertas de acceso anticipado o betas exclusivas de juegos muy esperados que solicitan datos personales o financieros, o la descarga de archivos de fuentes no oficiales.",
       "fuente": "welivesecurity.com",
       "origen": "Exterior",
       "pais": "Exterior",
@@ -134,7 +134,7 @@
       "riesgo": "alto",
       "emergente": true,
       "como": "Los estafadores utilizan una aplicación móvil para clonar tarjetas de crédito o débito de las víctimas. Una vez obtenida la información, la usan para realizar compras o sacar dinero de cajeros automáticos, dejando a la persona sin sus fondos y con cargos no reconocidos. Es una modalidad que combina tecnología y descuido de la víctima.",
-      "detectar": "Alerta de los Mossos d'Esquadra sobre una nueva técnica de clonación de tarjetas mediante el uso de aplicaciones móviles, lo que permite a los delincuentes acceder a los fondos de las víctimas.",
+      "detectar": "Alerta de los Mossos d'Esquadra sobre una nueva modalidad de clonación de tarjetas mediante el uso de aplicaciones móviles, lo que permite a los delincuentes acceder a los fondos de las víctimas.",
       "fuente": "El Periódico (España)",
       "origen": "España",
       "pais": "España",
@@ -198,22 +198,22 @@
       "pos": 5,
       "key": "suplantacion_contacto@intl",
       "nombre": "Suplantacion de un contacto conocido",
-      "canal": "WHATSAPP",
-      "act": 83,
-      "delta": 0,
+      "canal": "TELEFONO",
+      "act": 84,
+      "delta": 1,
       "riesgo": "alto",
-      "emergente": true,
-      "como": "Los estafadores utilizan inteligencia artificial para clonar la voz de un familiar o amigo de la víctima. Luego, a través de WhatsApp, envían un mensaje de audio con la voz clonada, solicitando dinero con una excusa urgente, como una emergencia o un problema económico. La víctima, al reconocer la voz, transfiere el dinero sin verificar la identidad real del solicitante, cayendo en la trampa.",
-      "detectar": "Alertas de prensa sobre el uso de IA para clonar voces en WhatsApp y solicitar dinero. La clave es la suplantación de identidad de un contacto cercano mediante un audio falso.",
-      "fuente": "65 y más (Chile)",
-      "origen": "Chile",
-      "pais": "Chile",
+      "emergente": false,
+      "como": "Los estafadores se hacen pasar por funcionarios de salud en California, contactando a las víctimas para supuestas inspecciones o trámites. Buscan obtener información personal o dinero bajo falsos pretextos, aprovechando la confianza en las autoridades sanitarias. Es fundamental verificar la identidad de cualquier supuesto funcionario antes de compartir datos o realizar pagos.",
+      "detectar": "Contactos inesperados de supuestos funcionarios de salud que solicitan información personal, dinero o acceso a propiedades, sin previa notificación oficial o credenciales verificables.",
+      "fuente": "65 y más (Estados Unidos)",
+      "origen": "Estados Unidos",
+      "pais": "Estados Unidos",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUUl0N1VtYW1RNkt4d09BVXUzSVV4VllEVEUzM2pxQ2g1NlhsWXlQUTVkZFQ5OTgxUUVMMWFJdUh2MnRhZzJ0SE12OEpqTllrNWFhT2VHQjBqOGF3Szd6aXNBZ1pOc1lpWkY3ejJmcWtWc2RvNjdNUS1rd3BWMjBoVldhMjZQb3liODlVU0VJODdmUXlpVVpQbkZRbXZFYlhSWXlKd2lLNl9BVkpHR0o4LTBiaw?oc=5",
       "evidencias": [
         {
           "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUUl0N1VtYW1RNkt4d09BVXUzSVV4VllEVEUzM2pxQ2g1NlhsWXlQUTVkZFQ5OTgxUUVMMWFJdUh2MnRhZzJ0SE12OEpqTllrNWFhT2VHQjBqOGF3Szd6aXNBZ1pOc1lpWkY3ejJmcWtWc2RvNjdNUS1rd3BWMjBoVldhMjZQb3liODlVU0VJODdmUXlpVVpQbkZRbXZFYlhSWXlKd2lLNl9BVkpHR0o4LTBiaw?oc=5",
           "medio": "65 y más",
-          "pais": "Chile",
+          "pais": "Estados Unidos",
           "titulo": "La Policía alerta de la estafa de las mascotas perdidas: usan IA para engañar a sus dueños - 65 y más",
           "anillo": 1,
           "fecha": "2026-08-31T13:02:13.055Z"
@@ -221,7 +221,7 @@
         {
           "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOYXhIc29ES2NYWlpoSWwzQy01WWJvV0lOaHE1cE40ZHJyaUdCSTR0Uml6WmRVRlc4VWtmcGJhbkFjN3FIaVhnY0Z2NmJxQUc0b2RrVmZvRnNFOVdCb0hxbWlPazBFQnBCOFZNUmFXZVFRbGV2Z2dtb1dNZHNmeUl6UHlRNWlaYTJFa3M2VTU4cy1PLXdFLTBrd0tpNUN0X2drT0l1TE9sNVdoS2tzZXNuejRtUmUwaEtDNzk3aGc1TndfWXcwdWFLSzNXSFU?oc=5",
           "medio": "Teletrece",
-          "pais": "Chile",
+          "pais": "Estados Unidos",
           "titulo": "¿Buscas a tu mascota perdida?: PDI alerta por estafa y revela cómo comprobar si realmente la encontraron - Teletrece",
           "anillo": 1,
           "fecha": "2026-09-30T14:00:18.060Z"
@@ -229,7 +229,7 @@
         {
           "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPNmdyZ2NvWDBSSHYyalNWRjJhWkEwZkY5dTl2Zk02MkxFRFhjcGdMbjhKTFJ6REV1NzV4VFhwOEdETkFHWkhLbDBnQlRLRXZwckZMLWlINmVGZEZKdVUydE5aenQzNFlia0Q2QTNtaG02UTRwckREU2ZnMUJYZGtVSXNxQmFIREN0aldEN1VZZlpSVl9iRVZ5Z0ZfWmZ3WVNjSmxuZFF1OEJXejM5Z0tSei03ZFQ1RGZ4ekRJ?oc=5",
           "medio": "LAUD 90.4 FM",
-          "pais": "Chile",
+          "pais": "Estados Unidos",
           "titulo": "¡Pilas viajeros! Terminal de Transporte alertó modalidad de estafa por WhatsApp - LAUD 90.4 FM",
           "anillo": 1,
           "fecha": "2026-11-15T01:00:22.547Z"
@@ -237,7 +237,7 @@
         {
           "url": "https://www.ocu.org/tecnologia/ciberseguridad/noticias/timo-cambio-router-movistar",
           "medio": "OCU",
-          "pais": "Chile",
+          "pais": "Estados Unidos",
           "titulo": "Movistar alerta de una nueva estafa de cambio de router",
           "anillo": 2,
           "fecha": "2026-09-09T04:00:24.463Z"
@@ -245,7 +245,7 @@
         {
           "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOSDBQN1d3d09LWDJZZWZfbDBHY2J6TWVoVy03U2NUVzIwcE1nYVBwN29aNFlwem10bmNhU1NnaUpMSGhZUGN6NC1OSmhVc3Z4dnZCYWRUUklxZTEwd3hmWTVxc3djWWJzVS04TnBsejlDdG10dF92RElvdlhWNDY1ZVlVV1EtdE5RTWZjWFFRcmo5MkZoQUpXNDU0MUxaSi0wbExxSDltT2I3M05PQTg2NkdRS0F1U1dodklPYQ?oc=5",
           "medio": "Radio Gabal 104.1 MHz",
-          "pais": "Chile",
+          "pais": "Estados Unidos",
           "titulo": "Advierten sobre una nueva modalidad de estafa: \"mamá, agendá mi número nuevo\" - Radio Gabal 104.1 MHz",
           "anillo": 3,
           "fecha": "2026-09-03T04:00:45.524Z"
@@ -255,33 +255,6 @@
     },
     {
       "pos": 6,
-      "key": "oferta_laboral_falsa@intl",
-      "nombre": "Falsa oferta laboral",
-      "canal": "REDES",
-      "act": 77,
-      "delta": 0,
-      "riesgo": "medio",
-      "emergente": false,
-      "como": "Los estafadores crean sitios web de comercio electrónico falsos o perfiles en redes sociales para ofrecer productos inexistentes a precios muy bajos. También publican ofertas de empleo atractivas que requieren un pago inicial o datos personales sensibles para un supuesto proceso de selección, que nunca se concreta. El objetivo es robar dinero o información.",
-      "detectar": "Alerta de prensa sobre cómo identificar tiendas y empleos falsos en internet, mencionando la necesidad de verificar la autenticidad de las ofertas y los sitios web.",
-      "fuente": "Expansión (España)",
-      "origen": "España",
-      "pais": "España",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZnQxYzV5ZWtNandiV0dqQm96R1dQeHhmNldjWmhicjU5NV9hYlg3WHhKdEFqWloya0c1MW5wMWdFRWI5cWdGR2otbmdCdDB0WklKek5YQ1FsR2czZVVTbE1qMC1vU2k3VGlITklYRmZSeUhQdUEzZjJvVU9Xd0s3U3VSc3FfOFRmdmI4MEFkQ2xXOVB5QVZyRkFNNTZ5Z9IBqwFBVV95cUxQZElodndLRTBqdm1RSVpVNHVRX2Q2NnZ4RHc1UjhkdnFOZW5UdUdmU3p5SE9TRWJ6cUdJLWFubnhLY1M0OW9ZZmZLOFBaMVlhdkFtSm45ZUxHcGg1ajl5bnRkT1l3MWJhX0h4cnFmMVYwSmRRaXZmNE1tNzdKcVlGNktIWkdyR0RzSS1YTkM4Vjh5MnBmMXM3MmVLbV8zZHh0VlFieGhEcmw3SVk?oc=5",
-      "evidencias": [
-        {
-          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZnQxYzV5ZWtNandiV0dqQm96R1dQeHhmNldjWmhicjU5NV9hYlg3WHhKdEFqWloya0c1MW5wMWdFRWI5cWdGR2otbmdCdDB0WklKek5YQ1FsR2czZVVTbE1qMC1vU2k3VGlITklYRmZSeUhQdUEzZjJvVU9Xd0s3U3VSc3FfOFRmdmI4MEFkQ2xXOVB5QVZyRkFNNTZ5Z9IBqwFBVV95cUxQZElodndLRTBqdm1RSVpVNHVRX2Q2NnZ4RHc1UjhkdnFOZW5UdUdmU3p5SE9TRWJ6cUdJLWFubnhLY1M0OW9ZZmZLOFBaMVlhdkFtSm45ZUxHcGg1ajl5bnRkT1l3MWJhX0h4cnFmMVYwSmRRaXZmNE1tNzdKcVlGNktIWkdyR0RzSS1YTkM4Vjh5MnBmMXM3MmVLbV8zZHh0VlFieGhEcmw3SVk?oc=5",
-          "medio": "Expansión",
-          "pais": "España",
-          "titulo": "Estafas en internet 2026: cómo identificar tiendas y empleos falsos - Expansión",
-          "anillo": 3,
-          "fecha": "2026-11-06T01:00:18.693Z"
-        }
-      ],
-      "provincias": []
-    },
-    {
-      "pos": 7,
       "key": "secuestro_whatsapp@intl",
       "nombre": "Secuestro de cuenta de WhatsApp",
       "canal": "WHATSAPP",
@@ -289,8 +262,8 @@
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores contactan a las víctimas por WhatsApp, haciéndose pasar por un familiar o amigo que necesita ayuda urgente. Piden un código de verificación de WhatsApp, que en realidad es para tomar control de la cuenta de la víctima. Una vez que acceden, se hacen pasar por la víctima para pedir dinero a sus contactos.",
-      "detectar": "Mensajes de WhatsApp de contactos conocidos pidiendo códigos de verificación o dinero de forma inusual, o con excusas urgentes para transferencias.",
+      "como": "Los estafadores contactan a la víctima por WhatsApp, a menudo haciéndose pasar por un contacto conocido o una empresa. Con un pretexto, solicitan un código de verificación que la víctima recibe por SMS. Una vez que la víctima comparte este código, los delincuentes toman el control de su cuenta de WhatsApp, usándola para pedir dinero a sus contactos o cometer otros fraudes.",
+      "detectar": "Mensajes inesperados solicitando un código de verificación de WhatsApp, especialmente si provienen de contactos que actúan de forma inusual o de números desconocidos.",
       "fuente": "65 y más (Colombia)",
       "origen": "Colombia",
       "pais": "Colombia",
@@ -340,6 +313,41 @@
       "provincias": []
     },
     {
+      "pos": 7,
+      "key": "oferta_laboral_falsa@intl",
+      "nombre": "Falsa oferta laboral",
+      "canal": "WHATSAPP",
+      "act": 84,
+      "delta": 7,
+      "riesgo": "alto",
+      "emergente": false,
+      "como": "Los estafadores contactan a las víctimas por WhatsApp o Telegram ofreciendo un trabajo online con tareas sencillas y bien remuneradas. Para acceder a supuestas comisiones más altas, solicitan realizar pagos a través de Bizum, prometiendo un retorno mayor. Una vez que la víctima invierte, los delincuentes desaparecen con el dinero.",
+      "detectar": "Ofertas de empleo con sueldos muy altos por tareas sencillas, que exigen pagos previos o inversiones para acceder a mejores comisiones, y que se gestionan por plataformas de mensajería.",
+      "fuente": "INCIBE (España)",
+      "origen": "España",
+      "pais": "España",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPNjYtR2hZM3J3ektZa2NHRU9CQ1ljYlVsZU9XTkZZN3h2NS1FVk1MeEVSc2hwTDZSOEVzVHJ4d2xKZ0pMZ0ZfTm1ZbmYwNXVxTUgySjdRZWR0bktCMzJIeko5RnJueVFnWVVaUzdkM3pTV1VPa1pzVzVGVUJNMVUyYjJTek9mZDJMSXd3cmpMai1wd1AtVEVBQlRIdmdXTU9VOEctdUVRRmNORVdMVDNfbmxSOGRzY29pcHJqNGk4YmZ6WHNBWmVDMTZjS19weFZLMVZSaG5XUkJudw?oc=5",
+      "evidencias": [
+        {
+          "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPNjYtR2hZM3J3ektZa2NHRU9CQ1ljYlVsZU9XTkZZN3h2NS1FVk1MeEVSc2hwTDZSOEVzVHJ4d2xKZ0pMZ0ZfTm1ZbmYwNXVxTUgySjdRZWR0bktCMzJIeko5RnJueVFnWVVaUzdkM3pTV1VPa1pzVzVGVUJNMVUyYjJTek9mZDJMSXd3cmpMai1wd1AtVEVBQlRIdmdXTU9VOEctdUVRRmNORVdMVDNfbmxSOGRzY29pcHJqNGk4YmZ6WHNBWmVDMTZjS19weFZLMVZSaG5XUkJudw?oc=5",
+          "medio": "INCIBE",
+          "pais": "España",
+          "titulo": "Falsa oferta de empleo en Telegram con tareas online exige pagos por Bizum - INCIBE",
+          "anillo": 2,
+          "fecha": "2026-11-22T01:00:25.954Z"
+        },
+        {
+          "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZnQxYzV5ZWtNandiV0dqQm96R1dQeHhmNldjWmhicjU5NV9hYlg3WHhKdEFqWloya0c1MW5wMWdFRWI5cWdGR2otbmdCdDB0WklKek5YQ1FsR2czZVVTbE1qMC1vU2k3VGlITklYRmZSeUhQdUEzZjJvVU9Xd0s3U3VSc3FfOFRmdmI4MEFkQ2xXOVB5QVZyRkFNNTZ5Z9IBqwFBVV95cUxQZElodndLRTBqdm1RSVpVNHVRX2Q2NnZ4RHc1UjhkdnFOZW5UdUdmU3p5SE9TRWJ6cUdJLWFubnhLY1M0OW9ZZmZLOFBaMVlhdkFtSm45ZUxHcGg1ajl5bnRkT1l3MWJhX0h4cnFmMVYwSmRRaXZmNE1tNzdKcVlGNktIWkdyR0RzSS1YTkM4Vjh5MnBmMXM3MmVLbV8zZHh0VlFieGhEcmw3SVk?oc=5",
+          "medio": "Expansión",
+          "pais": "España",
+          "titulo": "Estafas en internet 2026: cómo identificar tiendas y empleos falsos - Expansión",
+          "anillo": 3,
+          "fecha": "2026-11-06T01:00:18.693Z"
+        }
+      ],
+      "provincias": []
+    },
+    {
       "pos": 8,
       "key": "qr_fraudulento@intl",
       "nombre": "QR fraudulento en pagos",
@@ -348,8 +356,8 @@
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores manipulan códigos QR legítimos o los reemplazan por otros falsos en lugares públicos, como carteles o terminales de pago. Al escanear el código, la víctima es redirigida a sitios web maliciosos que simulan ser oficiales, donde se le solicita ingresar datos personales, credenciales bancarias o realizar pagos a cuentas controladas por los delincuentes.",
-      "detectar": "Alertas sobre códigos QR adulterados en espacios públicos o recibidos por canales no oficiales, que redirigen a sitios web sospechosos o solicitan información sensible.",
+      "como": "Los estafadores manipulan códigos QR legítimos o los reemplazan por otros falsos en lugares públicos, como estacionamientos o restaurantes. Al escanear el código, la víctima es redirigida a una página web maliciosa que simula ser la original, donde se le solicita ingresar datos personales o bancarios, o descargar software malicioso, comprometiendo su información.",
+      "detectar": "Alertas sobre códigos QR adulterados en espacios públicos o recibidos por canales no oficiales. Páginas web que solicitan datos sensibles tras escanear un QR, con URL sospechosas.",
       "fuente": "NueveCuatroUno",
       "origen": "Exterior",
       "pais": "Exterior",
@@ -403,12 +411,12 @@
       "key": "romance_scam@intl",
       "nombre": "Perfil romantico falso",
       "canal": "REDES",
-      "act": 64,
+      "act": 65,
       "delta": 1,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Una mujer fue contactada por un estafador que se hizo pasar por la novia de Jimin de BTS. Tras establecer una relación de confianza, el delincuente la convenció de invertir en un esquema fraudulento, prometiéndole grandes ganancias. La víctima transfirió más de 50.000 dólares a cuentas controladas por los estafadores, perdiendo todo su dinero.",
-      "detectar": "Contactos inesperados de supuestas celebridades o personas famosas que solicitan dinero o inversiones, promesas de ganancias exorbitantes y presión para realizar transferencias.",
+      "como": "Una mujer fue engañada por un estafador que se hizo pasar por la novia de Jimin de BTS en redes sociales. El delincuente, tras ganarse su confianza, la convenció de invertir en una plataforma de criptomonedas fraudulenta, prometiéndole grandes ganancias. La víctima transfirió más de 50.000 dólares antes de darse cuenta de la estafa.",
+      "detectar": "Contactos inesperados de perfiles de famosos o personas que dicen serlo, solicitudes de inversión en plataformas desconocidas y promesas de ganancias exorbitantes son señales claras de estafa.",
       "fuente": "Infobae (Estados Unidos)",
       "origen": "Estados Unidos",
       "pais": "Estados Unidos",
@@ -489,7 +497,7 @@
     "provincias": [
       {
         "nombre": "Buenos Aires",
-        "casos": 575,
+        "casos": 579,
         "modalidades": [
           "Phishing de PAMI",
           "Phishing bancario",
@@ -534,20 +542,8 @@
         ]
       },
       {
-        "nombre": "Santa Fe",
-        "casos": 151,
-        "modalidades": [
-          "Phishing bancario",
-          "Plataforma de inversion falsa",
-          "Falsa oferta laboral",
-          "App de acceso remoto",
-          "Suplantacion de banco por telefono",
-          "Phishing de billetera virtual"
-        ]
-      },
-      {
         "nombre": "Jujuy",
-        "casos": 150,
+        "casos": 153,
         "modalidades": [
           "Phishing de PAMI",
           "Phishing bancario",
@@ -555,6 +551,18 @@
           "App de acceso remoto",
           "Suplantacion de banco por telefono",
           "Phishing de servicios (luz, gas, agua)"
+        ]
+      },
+      {
+        "nombre": "Santa Fe",
+        "casos": 152,
+        "modalidades": [
+          "Phishing bancario",
+          "Plataforma de inversion falsa",
+          "Falsa oferta laboral",
+          "App de acceso remoto",
+          "Suplantacion de banco por telefono",
+          "Phishing de billetera virtual"
         ]
       },
       {
@@ -587,7 +595,7 @@
       },
       {
         "nombre": "La Rioja",
-        "casos": 49,
+        "casos": 51,
         "modalidades": [
           "Plataforma de inversion falsa",
           "App de acceso remoto",
@@ -633,7 +641,7 @@
       },
       {
         "nombre": "Formosa",
-        "casos": 16,
+        "casos": 17,
         "modalidades": [
           "App de acceso remoto",
           "Suplantacion de banco por telefono"
@@ -699,10 +707,10 @@
       "canal": "WHATSAPP",
       "act": 89,
       "delta": 0,
-      "riesgo": "medio",
-      "emergente": false,
-      "como": "Los estafadores se hacen pasar por el ISJ (Instituto de Seguros de Jujuy) a través de WhatsApp, enviando mensajes con enlaces maliciosos. Buscan obtener datos personales y bancarios de los afiliados con la excusa de actualizar información o gestionar trámites, lo que puede derivar en el robo de identidad o vaciamiento de cuentas.",
-      "detectar": "Mensajes de WhatsApp de números desconocidos que se hacen pasar por el ISJ, solicitando datos personales o pidiendo hacer clic en enlaces para supuestas actualizaciones o trámites.",
+      "riesgo": "alto",
+      "emergente": true,
+      "como": "Los estafadores se hacen pasar por el ISJ (Instituto de Seguros de Jujuy) a través de WhatsApp, enviando mensajes con un link fraudulento. El objetivo es que los afiliados hagan clic en el enlace para robarles información personal y credenciales bancarias, bajo la excusa de actualizar datos o acceder a beneficios. Es una variante del phishing que busca suplantar una entidad de salud provincial.",
+      "detectar": "Mensajes de WhatsApp de números desconocidos que se hacen pasar por el ISJ, solicitando clics en enlaces para actualizar datos o acceder a supuestos beneficios, con errores de ortografía o gramática.",
       "fuente": "Diario Inforama - Catamarca",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -752,7 +760,7 @@
       "provincias": [
         {
           "nombre": "Jujuy",
-          "n": 96
+          "n": 99
         },
         {
           "nombre": "Buenos Aires",
@@ -777,8 +785,8 @@
       "delta": 0,
       "riesgo": "alto",
       "emergente": true,
-      "como": "Los estafadores utilizan anuncios pagos en redes sociales para suplantar la identidad de bancos y billeteras virtuales. Al hacer clic en estos anuncios, las víctimas son redirigidas a sitios web falsos que imitan a las plataformas legítimas, donde se les solicita ingresar sus credenciales bancarias o datos personales, que luego son robados para vaciar sus cuentas.",
-      "detectar": "Anuncios en redes sociales que prometen beneficios o soluciones urgentes de bancos o billeteras virtuales, pero que al hacer clic dirigen a sitios web con URL sospechosas o diferencias sutiles en el diseño.",
+      "como": "Los estafadores utilizan anuncios pagos en redes sociales y buscadores para suplantar la identidad de bancos y billeteras virtuales. Al hacer clic en estos anuncios, las víctimas son redirigidas a sitios web falsos que imitan a los originales, donde se les solicita ingresar sus credenciales bancarias o datos personales, que luego son robados para vaciar sus cuentas.",
+      "detectar": "Anuncios en redes o buscadores que dirigen a sitios web con URL sospechosas o que solicitan información sensible de forma inusual, haciéndose pasar por entidades financieras.",
       "fuente": "Diario El Día de La Plata",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -882,11 +890,11 @@
       "nombre": "App de acceso remoto",
       "canal": "TELEFONO",
       "act": 84,
-      "delta": -1,
+      "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores contactan a la víctima por teléfono, haciéndose pasar por personal de soporte técnico o bancario. Con excusas como problemas de seguridad o actualizaciones, la convencen de instalar una aplicación de acceso remoto en su celular. Una vez instalada, los delincuentes toman control del dispositivo y vacían las cuentas bancarias de la víctima.",
-      "detectar": "La alerta se activa por el vaciamiento de una cuenta bancaria tras una interacción telefónica donde se solicitó la instalación de una app de acceso remoto. La noticia menciona 'le vaciaron cuenta'.",
+      "como": "Los estafadores contactan a la víctima por teléfono, haciéndose pasar por personal de soporte técnico o bancario. Con excusas como problemas en la cuenta o actualizaciones de seguridad, convencen a la persona de instalar una aplicación de acceso remoto en su celular. Una vez instalada, toman el control del dispositivo y vacían las cuentas bancarias de la víctima, realizando transferencias o compras no autorizadas.",
+      "detectar": "La alerta se detecta por el vaciamiento de una cuenta bancaria tras una llamada telefónica y la instalación de una aplicación de acceso remoto, lo que indica una manipulación directa del dispositivo de la víctima.",
       "fuente": "Defensoria Santa Fe",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -936,7 +944,7 @@
       "provincias": [
         {
           "nombre": "Buenos Aires",
-          "n": 295
+          "n": 298
         },
         {
           "nombre": "Córdoba",
@@ -959,11 +967,11 @@
           "n": 27
         },
         {
-          "nombre": "La Rioja",
-          "n": 13
+          "nombre": "Formosa",
+          "n": 14
         },
         {
-          "nombre": "Formosa",
+          "nombre": "La Rioja",
           "n": 13
         },
         {
@@ -1010,8 +1018,8 @@
       "nombre": "Phishing de ARCA",
       "canal": "MAIL",
       "act": 83,
-      "delta": 1,
-      "riesgo": "medio",
+      "delta": 0,
+      "riesgo": "alto",
       "emergente": true,
       "como": "Los estafadores envían correos electrónicos falsos que simulan ser de ARCA, la Agencia de Recaudación de Catamarca, para engañar a los usuarios. Estos mails suelen contener enlaces maliciosos que, al ser clickeados, redirigen a sitios web fraudulentos donde se solicita información personal y bancaria, con el objetivo de robar datos y realizar transacciones no autorizadas.",
       "detectar": "Correos electrónicos con remitentes sospechosos o dominios que no corresponden a ARCA, errores ortográficos, solicitudes urgentes de datos personales o bancarios, y enlaces que dirigen a sitios web no oficiales.",
@@ -1101,8 +1109,8 @@
       "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores se hacen pasar por un contacto conocido de la víctima, solicitando un código de verificación de WhatsApp. Una vez que la víctima lo proporciona, los delincuentes toman control de la cuenta, suplantan la identidad y piden dinero a los contactos del afectado, alegando una emergencia o necesidad económica.",
-      "detectar": "La señal de detección es la solicitud inesperada de un código de verificación de WhatsApp por parte de un contacto, o mensajes de contactos pidiendo dinero de forma inusual.",
+      "como": "Los estafadores se hacen pasar por contactos conocidos de la víctima, pidiendo un código de verificación de WhatsApp. Una vez que la víctima lo proporciona, los delincuentes toman control de la cuenta, suplantan la identidad del usuario y solicitan dinero a sus contactos, alegando una emergencia o necesidad urgente. La víctima pierde el acceso a su cuenta y sus contactos son engañados.",
+      "detectar": "La señal de detección es un mensaje inesperado de un contacto conocido solicitando un código de verificación de WhatsApp o pidiendo dinero de forma inusual, lo que indica que la cuenta del contacto podría haber sido comprometida.",
       "fuente": "Chequeado",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1186,11 +1194,11 @@
       "nombre": "Plataforma de inversion falsa",
       "canal": "WHATSAPP",
       "act": 82,
-      "delta": 1,
+      "delta": 0,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Un periodista fue contactado por WhatsApp con una propuesta de inversión en criptomonedas que prometía altas ganancias. Tras depositar una suma inicial, lo convencieron de invertir más dinero, llegando a un total de 20 millones de pesos. Los estafadores simularon rendimientos y, cuando la víctima quiso retirar sus fondos, le exigieron más dinero para 'liberar' la cuenta, resultando en la pérdida total de su inversión.",
-      "detectar": "Contacto inicial por WhatsApp con una oferta de inversión en criptomonedas con promesas de altos rendimientos. Exigencia de depósitos adicionales para 'liberar' fondos al intentar retirar ganancias.",
+      "como": "Un periodista argentino fue contactado por WhatsApp con una propuesta de inversión en criptomonedas. Tras una videollamada con un supuesto asesor, invirtió una suma inicial y luego, bajo la promesa de altos rendimientos, transfirió más dinero a una cuenta de un tercero. Cuando quiso retirar las ganancias, le exigieron más dinero para 'liberar' los fondos, revelando la estafa.",
+      "detectar": "Contacto inicial por WhatsApp con una propuesta de inversión en criptomonedas, videollamada con un 'asesor', promesas de altos rendimientos y exigencia de pagos adicionales para 'liberar' fondos.",
       "fuente": "0221",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1244,11 +1252,11 @@
         },
         {
           "nombre": "Buenos Aires",
-          "n": 63
+          "n": 64
         },
         {
           "nombre": "La Rioja",
-          "n": 27
+          "n": 28
         },
         {
           "nombre": "Santa Fe",
@@ -1311,10 +1319,10 @@
       "canal": "WHATSAPP",
       "act": 78,
       "delta": 0,
-      "riesgo": "medio",
-      "emergente": false,
-      "como": "Los estafadores contactan a las víctimas por WhatsApp con ofertas de empleo falsas, prometiendo altos ingresos por tareas sencillas como dar 'me gusta' a videos. Luego, solicitan una inversión inicial para supuestas 'tareas de alto rendimiento', que nunca se recupera. El objetivo es robar dinero a través de depósitos fraudulentos.",
-      "detectar": "Mensajes de WhatsApp con ofertas de trabajo demasiado buenas para ser verdad, que piden dinero para acceder a supuestas 'tareas de alto rendimiento' o 'inversiones'.",
+      "riesgo": "alto",
+      "emergente": true,
+      "como": "Los estafadores contactan a las víctimas por WhatsApp con supuestas ofertas de empleo de empresas reconocidas. Piden datos personales y bancarios, o solicitan una pequeña inversión inicial para \"capacitación\" o \"materiales\", prometiendo grandes ganancias. Una vez que obtienen el dinero o la información, desaparecen.",
+      "detectar": "Mensajes de WhatsApp con ofertas de trabajo demasiado buenas para ser verdad, solicitando datos sensibles o un pago inicial para un puesto laboral.",
       "fuente": "Chequeado",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1368,7 +1376,7 @@
         },
         {
           "nombre": "Santa Fe",
-          "n": 39
+          "n": 40
         }
       ]
     },
@@ -1458,7 +1466,7 @@
       "nombre": "Suplantacion de banco por telefono",
       "canal": "TELEFONO",
       "act": 76,
-      "delta": 1,
+      "delta": 0,
       "riesgo": "alto",
       "emergente": true,
       "como": "Los estafadores se hacen pasar por empleados de un banco y llaman a la víctima para alertar sobre un supuesto movimiento sospechoso en su cuenta. Con la excusa de 'solucionar' el problema, le piden datos personales y bancarios, o la convencen de instalar una aplicación de acceso remoto, para luego vaciarle la cuenta en cuestión de segundos.",
@@ -1576,7 +1584,7 @@
       "canal": "REDES",
       "act": 64,
       "delta": 0,
-      "riesgo": "medio",
+      "riesgo": "alto",
       "emergente": false,
       "como": "Durante eventos como el CyberMonday, los estafadores crean sitios web de comercio electrónico falsos o perfiles fraudulentos en redes sociales, ofreciendo productos con descuentos increíbles. Engañan a las víctimas para que ingresen sus datos bancarios o realicen pagos, pero nunca reciben los productos comprados. A veces, utilizan publicidad engañosa para redirigir a sitios maliciosos.",
       "detectar": "Ofertas de productos con descuentos excesivamente altos en sitios web desconocidos o perfiles de redes sociales sin reputación, y solicitudes de datos personales o bancarios en plataformas no seguras.",
@@ -1644,7 +1652,7 @@
       "canal": "REDES",
       "act": 55,
       "delta": 0,
-      "riesgo": "medio",
+      "riesgo": "alto",
       "emergente": false,
       "como": "",
       "detectar": "Anuncios de alquiler con precios muy por debajo del mercado, presión para pagar rápidamente, y la imposibilidad de visitar la propiedad antes de realizar cualquier pago.",
@@ -1682,12 +1690,12 @@
       "key": "soporte_tecnico_falso",
       "nombre": "Falso soporte tecnico",
       "canal": "REDES",
-      "act": 46,
-      "delta": 0,
+      "act": 48,
+      "delta": 2,
       "riesgo": "alto",
       "emergente": false,
-      "como": "Los estafadores se hacen pasar por soporte técnico o vendedores en redes sociales, ofreciendo ayuda o productos inexistentes. Engañan a las víctimas para que entreguen información personal o realicen pagos, resultando en pérdidas económicas y posible robo de identidad. Utilizan perfiles falsos para generar confianza y manipular a los usuarios.",
-      "detectar": "Alertas de prensa sobre estafas en Chilecito, La Rioja, mencionando falsos soportes técnicos y ventas fraudulentas en redes sociales. Se detectan perfiles sospechosos y ofertas demasiado buenas para ser verdad.",
+      "como": "Los estafadores se hacen pasar por soporte técnico en redes sociales, ofreciendo ayuda para problemas informáticos o de dispositivos. Una vez que la víctima contacta, solicitan acceso remoto a sus equipos o información personal y bancaria, con el pretexto de solucionar el inconveniente, pero en realidad roban datos o realizan transacciones fraudulentas. También se detectaron ventas falsas en redes.",
+      "detectar": "Alertas de prensa sobre falsos soportes técnicos y ventas fraudulentas en redes sociales que afectan a vecinos de Chilecito. Se reportan solicitudes de acceso remoto y datos personales.",
       "fuente": "Nueva Rioja",
       "origen": "Argentina",
       "pais": "Argentina",
@@ -1705,7 +1713,7 @@
       "provincias": [
         {
           "nombre": "La Rioja",
-          "n": 6
+          "n": 7
         }
       ]
     },
@@ -1716,7 +1724,7 @@
       "canal": "WHATSAPP",
       "act": 43,
       "delta": 0,
-      "riesgo": "medio",
+      "riesgo": "alto",
       "emergente": false,
       "como": "Los estafadores contactan a la víctima por WhatsApp, haciéndose pasar por una empresa de internet satelital. Ofrecen un servicio inexistente y, bajo el pretexto de gestionar la instalación, solicitan datos bancarios y credenciales de acceso a la cuenta. Una vez obtenidos, realizan transferencias fraudulentas, vaciando las cuentas del damnificado.",
       "detectar": "Contacto inesperado por WhatsApp ofreciendo servicios de internet satelital a precios muy bajos, con solicitud de datos bancarios y credenciales para una supuesta instalación.",
@@ -1883,9 +1891,9 @@
   "kpi": {
     "monit": 31,
     "intl": 15,
-    "emerg": 3,
-    "sube": 3,
-    "baja": 1
+    "emerg": 5,
+    "sube": 1,
+    "baja": 0
   },
   "riesgo": {
     "alto": 10,
@@ -1896,12 +1904,12 @@
     {
       "id": "2026-11",
       "mes": "noviembre de 2026",
-      "actualizado": "2026-11-21T15:00:19.039Z",
+      "actualizado": "2026-11-22T01:00:26.108Z",
       "totalModalidades": 16,
       "internacionales": 10,
       "riesgo": {
-        "alto": 7,
-        "medio": 3,
+        "alto": 10,
+        "medio": 0,
         "bajo": 0
       },
       "top": [
@@ -1909,7 +1917,7 @@
           "pos": 1,
           "nombre": "Phishing de PAMI",
           "act": 89,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "Diario Inforama - Catamarca",
           "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxOMUNWTkpxSXJnRGlKWTlPN0JwbS1aeUlBX3RybERGV0VZUGthTFpVRWNzU3BzNDZfcUxDMU53eHZOR3NWVjlSVGlUSk00QXB1eDhlUU9KZTFDbVRvVlpvLWtGcFNQTzRCbHlPNlVsTDZKUXB1QTJLTDBhdktxeEdsbDM1THRyZWQxUy1kR2dQaDlxa1hDdDVrY2FuVGdKNGpGYXR1X3FFclVVZkt4MGlwTmpsVDA0amxReFJMemtkaDZMZkM3NlNjaU5QT2xlUnh5RDFlT2RwVGNYcGN2SDBuUEoxR240SE91dEYzYzZxMEpIOFN1aV9zbmRKUWZYdWxlSVpDSm1KdHhpbnPSAZACQVVfeXFMUDFURFlReVNjX3plWDNYd1psRHRsS0lpZmxuVlpDdlZHR2phaHlwWHJSQmVXeXQyazg4MmlCbGRnSnd4VUlQMC1VZEhKU1VBbG9nbFlCZzQxdjVaSmxqcU91N3YydFhBTWktMENodWRZc3dNU0FTNHN3OVE4R0hzeFpvWHBJY0ZFNGF6S2VDNXRlQmRYdnAtLURXOUMydkZlZGgtRk5JdFNiNktKOTZTMVA4OVhkc21XcUxFTGhxRDJJN05KaFJkbHpNX3BtVkc5bzlwb19PbVRYZGplSU5mbk1fcVNMMmxMSHpVSm1NVmliM2xMVTU0aVFlWkdNeXY1NzZRR3ZKTkFtX1ZLWGVUTWE?oc=5"
@@ -1936,7 +1944,7 @@
           "pos": 4,
           "nombre": "Phishing de ARCA",
           "act": 83,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "MAIL",
           "fuente": "diariomendoza.com.ar",
           "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOc3RKQnJ3MUpXbi1aU2llTlUtb3ZVUVJVNlhWQTZETWpnblZZUjZEMkxGZ3dPVXJxb0RiZC16SXo0U2RXSDhDMU9ySERfZ1hIZWNfZmhLUGpJeVlYOWM4VGo1MlFvWlZMczV0YUtXa1k4QU5HeDg5cmtUaUU1RTJXU2d1b0xnaWpHMGh5X1F6bmxZMGlpZG00aDMxaEVtcDVpMzdBRHdVeDNJd2NtY0tLa3dDRFN6aE83ZW0wM2VESnpVTFRVblJEeNIBzgFBVV95cUxNbTJGb210cndmc3hKeXZwdFg5enktbXhXeTJSSG53cGgyNWZvck9URk1JcTlUQWpSQ3pfQWYwVlZEbWtRaHRvaFc4TjBLcHJaaGJHWk5fS3JCM0ZhV0tUSWh1WFN1WmNZSXZrUkpDZmdpVFI2YVYwT3Z0RWZDM3ktN0pNRWJVVzNGUHh0MmxLOUhRQzduS2FQWDRpOVZmRTFkb2I4a3l0Q25tcXI3TUpWVFI1dlhGZW1JZ3JKYThhWjE0Q29KNTJIMnhXMlhJUQ?oc=5"
@@ -1972,7 +1980,7 @@
           "pos": 8,
           "nombre": "Falsa oferta laboral",
           "act": 78,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "Chequeado",
           "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/"
@@ -2004,8 +2012,8 @@
       "totalModalidades": 19,
       "internacionales": 10,
       "riesgo": {
-        "alto": 6,
-        "medio": 4,
+        "alto": 10,
+        "medio": 0,
         "bajo": 0
       },
       "top": [
@@ -2022,7 +2030,7 @@
           "pos": 2,
           "nombre": "Tienda online falsa",
           "act": 92,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "MARKETPLACE",
           "fuente": "PRENSA GOBIERNO DE MENDOZA",
           "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNYUZhclVlQzdtUzMzRWlPM01vSHJybF9BLU9YV3VEUHhlSmViMkJqcEx6MjRpNEQtTU90WTVGVUUwWk5jTzBuV2h3Z1cxb3lhZjIxZ0FlNzZmeXlBbllrOXBpSVNMM0xMNHNIeS01R2dzelR3ZENZNVVMYmVBT04wOFA3OFlXYkFBaTdLYl9faHNjc09QSHJYSXNfSDBaeVRqR0ZmNXlmX1lMbHRwRktlRXlhQkpNcmNJNmtMQXhHTno?oc=5"
@@ -2049,7 +2057,7 @@
           "pos": 5,
           "nombre": "Phishing de PAMI",
           "act": 87,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "TELEFONO",
           "fuente": "Diario Inforama - Catamarca",
           "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxOMUNWTkpxSXJnRGlKWTlPN0JwbS1aeUlBX3RybERGV0VZUGthTFpVRWNzU3BzNDZfcUxDMU53eHZOR3NWVjlSVGlUSk00QXB1eDhlUU9KZTFDbVRvVlpvLWtGcFNQTzRCbHlPNlVsTDZKUXB1QTJLTDBhdktxeEdsbDM1THRyZWQxUy1kR2dQaDlxa1hDdDVrY2FuVGdKNGpGYXR1X3FFclVVZkt4MGlwTmpsVDA0amxReFJMemtkaDZMZkM3NlNjaU5QT2xlUnh5RDFlT2RwVGNYcGN2SDBuUEoxR240SE91dEYzYzZxMEpIOFN1aV9zbmRKUWZYdWxlSVpDSm1KdHhpbnPSAZACQVVfeXFMUDFURFlReVNjX3plWDNYd1psRHRsS0lpZmxuVlpDdlZHR2phaHlwWHJSQmVXeXQyazg4MmlCbGRnSnd4VUlQMC1VZEhKU1VBbG9nbFlCZzQxdjVaSmxqcU91N3YydFhBTWktMENodWRZc3dNU0FTNHN3OVE4R0hzeFpvWHBJY0ZFNGF6S2VDNXRlQmRYdnAtLURXOUMydkZlZGgtRk5JdFNiNktKOTZTMVA4OVhkc21XcUxFTGhxRDJJN05KaFJkbHpNX3BtVkc5bzlwb19PbVRYZGplSU5mbk1fcVNMMmxMSHpVSm1NVmliM2xMVTU0aVFlWkdNeXY1NzZRR3ZKTkFtX1ZLWGVUTWE?oc=5"
@@ -2067,7 +2075,7 @@
           "pos": 7,
           "nombre": "Alquiler inexistente",
           "act": 81,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "REDES",
           "fuente": "Intercomarcal Televisión",
           "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxPUUJJaFJYNk9rQVJQYzU1OU1ReThxS3Y3endaQnRjQVU2SmhLNUlUWWUzWnFCUXJVX1RocUgyTlJ4Yy0xaW1ydEFhT2N4bE9mSF95V3hPeEJIcV9xeURtZW5pVXZuQ20zTTVTcmNzd0xiMm9hNE11SU44RjU3UE5SdGRiN3U4T2NtZXVBUlpyM2xWRWt5LXlYYzJTTjVOLTlPVl9VSTcycjBkOFVpYUJEWVNPbmp5c0M0TEYzWFdaenlBYVF6WGQ5bkFVd1FpelhSSEtZUnQwTDJRTGV6RzNGemtyU2RKcUZ2X1FwUXBHS0tVUVhCNGhmSEduSQ?oc=5"
@@ -2076,7 +2084,7 @@
           "pos": 8,
           "nombre": "Falsa oferta laboral",
           "act": 80,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "Chequeado",
           "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/"
@@ -2108,16 +2116,16 @@
       "totalModalidades": 17,
       "internacionales": 10,
       "riesgo": {
-        "alto": 5,
-        "medio": 4,
-        "bajo": 1
+        "alto": 10,
+        "medio": 0,
+        "bajo": 0
       },
       "top": [
         {
           "pos": 1,
           "nombre": "Phishing de PAMI",
           "act": 81,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "Diario Inforama - Catamarca",
           "url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxOMUNWTkpxSXJnRGlKWTlPN0JwbS1aeUlBX3RybERGV0VZUGthTFpVRWNzU3BzNDZfcUxDMU53eHZOR3NWVjlSVGlUSk00QXB1eDhlUU9KZTFDbVRvVlpvLWtGcFNQTzRCbHlPNlVsTDZKUXB1QTJLTDBhdktxeEdsbDM1THRyZWQxUy1kR2dQaDlxa1hDdDVrY2FuVGdKNGpGYXR1X3FFclVVZkt4MGlwTmpsVDA0amxReFJMemtkaDZMZkM3NlNjaU5QT2xlUnh5RDFlT2RwVGNYcGN2SDBuUEoxR240SE91dEYzYzZxMEpIOFN1aV9zbmRKUWZYdWxlSVpDSm1KdHhpbnPSAZACQVVfeXFMUDFURFlReVNjX3plWDNYd1psRHRsS0lpZmxuVlpDdlZHR2phaHlwWHJSQmVXeXQyazg4MmlCbGRnSnd4VUlQMC1VZEhKU1VBbG9nbFlCZzQxdjVaSmxqcU91N3YydFhBTWktMENodWRZc3dNU0FTNHN3OVE4R0hzeFpvWHBJY0ZFNGF6S2VDNXRlQmRYdnAtLURXOUMydkZlZGgtRk5JdFNiNktKOTZTMVA4OVhkc21XcUxFTGhxRDJJN05KaFJkbHpNX3BtVkc5bzlwb19PbVRYZGplSU5mbk1fcVNMMmxMSHpVSm1NVmliM2xMVTU0aVFlWkdNeXY1NzZRR3ZKTkFtX1ZLWGVUTWE?oc=5"
@@ -2144,7 +2152,7 @@
           "pos": 4,
           "nombre": "Premios y sorteos falsos",
           "act": 56,
-          "riesgo": "bajo",
+          "riesgo": "alto",
           "canal": "REDES",
           "fuente": "WeLiveSecurity",
           "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbFpzblRuLWh2X1pCbDljM1NEbTEyYXpvY29OZG9aS3d6emNuMWJDUUMydE1mWUZmdk9wMV9FLWRBcUh1Y25FY05janRVdjlVY2x3bVQyOE1SZXlNeDhRd1Y1TDFidEpjSWx1Nkw1U3l0ZjJQa29kc2ZzQVFnVmJtY0RRRkl1X1E?oc=5"
@@ -2153,7 +2161,7 @@
           "pos": 5,
           "nombre": "Phishing de servicios (luz, gas, agua)",
           "act": 54,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "Gobierno de Río Negro",
           "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNbEJDV3RLaWdENi1qcFhHb1V4TlJCYXVuNmxTRjE0TVRzQjRaNTkxNUJCa1JNWF9vaDlxeGhrWk5iaTZBY3loaVpXRkN3ODlLRjdvakNVVkt1WWc3NXluUGJpNXJsdmRabDRndmppY2hwV2RCU2ZjcUtSNXRSUFVIeVhjaFp2a09UX0RZUWc1TEFwOWFSOFlIZU9kdndQMTVyWk93NUtJVW9HNGYwbFBvSEtGcS1SN0JjaEE?oc=5"
@@ -2171,7 +2179,7 @@
           "pos": 7,
           "nombre": "Phishing de ARCA",
           "act": 48,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "SMS",
           "fuente": "diariomendoza.com.ar",
           "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOc3RKQnJ3MUpXbi1aU2llTlUtb3ZVUVJVNlhWQTZETWpnblZZUjZEMkxGZ3dPVXJxb0RiZC16SXo0U2RXSDhDMU9ySERfZ1hIZWNfZmhLUGpJeVlYOWM4VGo1MlFvWlZMczV0YUtXa1k4QU5HeDg5cmtUaUU1RTJXU2d1b0xnaWpHMGh5X1F6bmxZMGlpZG00aDMxaEVtcDVpMzdBRHdVeDNJd2NtY0tLa3dDRFN6aE83ZW0wM2VESnpVTFRVblJEeNIBzgFBVV95cUxNbTJGb210cndmc3hKeXZwdFg5enktbXhXeTJSSG53cGgyNWZvck9URk1JcTlUQWpSQ3pfQWYwVlZEbWtRaHRvaFc4TjBLcHJaaGJHWk5fS3JCM0ZhV0tUSWh1WFN1WmNZSXZrUkpDZmdpVFI2YVYwT3Z0RWZDM3ktN0pNRWJVVzNGUHh0MmxLOUhRQzduS2FQWDRpOVZmRTFkb2I4a3l0Q25tcXI3TUpWVFI1dlhGZW1JZ3JKYThhWjE0Q29KNTJIMnhXMlhJUQ?oc=5"
@@ -2180,7 +2188,7 @@
           "pos": 8,
           "nombre": "Falsa oferta laboral",
           "act": 45,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "Chequeado",
           "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/"
@@ -2212,8 +2220,8 @@
       "totalModalidades": 19,
       "internacionales": 9,
       "riesgo": {
-        "alto": 6,
-        "medio": 4,
+        "alto": 10,
+        "medio": 0,
         "bajo": 0
       },
       "top": [
@@ -2266,7 +2274,7 @@
           "pos": 6,
           "nombre": "Falsa oferta laboral",
           "act": 92,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "REDES",
           "fuente": "Chequeado",
           "url": "https://chequeado.com/el-explicador/estafas-virtuales-como-pueden-enganarte-con-mensajes-del-extranjero-que-ofrecen-trabajo-y-que-podes-hacer-para-evitar-caer-en-el-engano/"
@@ -2275,7 +2283,7 @@
           "pos": 7,
           "nombre": "Phishing de servicios (luz, gas, agua)",
           "act": 87,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "Chequeado",
           "url": "https://chequeado.com/ultimas-noticias/alerta-estafa-es-falso-el-supuesto-descuento-de-la-empresa-ecogas-para-jubilados/"
@@ -2284,7 +2292,7 @@
           "pos": 8,
           "nombre": "Vendedor falso en marketplace",
           "act": 80,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "MARKETPLACE",
           "fuente": "alertadigital.ar",
           "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNWWdyRFBuMjVidkRsUl9mOEV1M1RZd2JQazBGXzZveGRGSXF5bmVqcnBEUXN3ZUxqc0dBQk83R2Z0NE52cDEzanIwQXdQVHRxbWI3aExpWjNLa3VwT2RZZWFTWlVmTGJHbXV4d3c0VjF4OTZ6N1hTVndDRjJHRTM4Qzh5OHZLM2twb3hFMTRTNzIxVnp6LS1UeWVtVFY4T1oyMjNCZm9zOWdTLTZ3THBabkRTeWc3N1BlaWVUXzY1SDJFTmFWQ090ZHpQaEZhbG1yWWNuZUZLb3pRd9IB3wFBVV95cUxPOS05dzZlV2RzdVh2R1pIVldHb1JWR2ROS0dvNEhCVHFSS3p5NERkVUxhZFFQdXVnbTJxM18wb0kxNHg0MDZkUU5YcDNrV0wzTG1qZHZ2SWwtdzlVZjZjeEhnZ2gzMVJQaXRGb2FQVWU5UFNMc09tNi1lX2dZU0NrV0gxOFJ4eE1FZ1ViZGRCbG96STNLdDJiczhEYTNEVDhzY1dMWGVRbkkyOFZpODhielY3MFJnLUItNTJLTUJvVURkSEUwcFJRUGV3eE9GRk9GUlZuWktCU0JaTUpLcU1R?oc=5"
@@ -2302,7 +2310,7 @@
           "pos": 10,
           "nombre": "Phishing de ANSES",
           "act": 75,
-          "riesgo": "medio",
+          "riesgo": "alto",
           "canal": "WHATSAPP",
           "fuente": "News",
           "url": "https://news.google.com/rss/articles/CBMilgJBVV95cUxQRDNhOXBwOVFrdGo4MVZqV3NPZ2t0SjVjMDY0Qm81Znp3YjNBeHlpdmRERlJuUVdHbHRUWWZIM1V4XzdjUFpXMjZOV2NBY0ZmZS1yaW4yWXdlWVBzZ2lPTXBJdDlBamU5eHlmMUJ0ZU5SWjdUdlBkdktxS2VqWlZPRFdfQTAtWmdicVJndFVQenVHSWdQbXVqcFgyUlBFdFhFd2EyNWFxaXdDa1NVUUZ0WWRtd3BBLTRuSmE3N2lvcjNYYXpTY1F6NmFpaEdkOWZFMlRYek44WmRCQnhieXp1aEtiZ1ZtcHYyVlNHX0ZYemVKWmN6eGNPVzdZYmx2dFJSRGlEbUFfWjhHVFZrMEs2YlUwNnFwQdIBmwJBVV95cUxNaUJFTWFzTEltcDVYT0tRR1BqeG9CTDFaOW8xZHRBUzJ2ckw3VDZLd1NpajNJYWdLelljVk0zZFNxZWt3VnRISkJiYTRjeFVfUjJWdVdzbXFOVURfM0RFbFpjcVFrRGt0Q3l4Mmowb2xGeVJyXzhaM3pzX3cwczRIM3NGX3YwczZlanNaakxpTXpSUWdGR0FkT19adlZKa0R0R1c3eHprUjlkcTFmX1JwSjRDQV82RG84NjlxQThqOXloQUhjS3R4eEhuWFBIaWN5ZTdyQTZOTzlYd1F3VTZod3BoYUJTdV9meENGMWwzRXRSQ0dmVm4wSHkzNkRIeEdmR214a29BOW4xdWpGZ0YxUThFTms3R0tXMktN?oc=5"
