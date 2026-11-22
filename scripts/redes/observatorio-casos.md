@@ -20,10 +20,11 @@ Pedido del dueño (17/11): la base de las publicaciones es el Observatorio, pero
 | 5 | Tienda online falsa | /observatorio/ecommerce-falso | 20/11 (propuesta, falso Frávega, ESET 13/10; falta OK) |
 | 6 | Secuestro de cuenta de WhatsApp | /observatorio/secuestro-whatsapp | 21/11 probado: sin captura real reciente, saltado |
 | - | Falsa multa (archivada) | /observatorio/falsa-multa | 21/11 (propuesta, acta falsa Berisso, 0221 17/10; falta OK) |
+| - | Sitio falso de descarga (GTA 6 Mobile) | /observatorio/ecommerce-falso | 22/11 (propuesta, gta6mobile.app, Netcraft 03/11; falta OK) |
 | 7 | Phishing de ARCA | /observatorio/phishing-arca | |
 | 8 | Robo de identidad digital | /observatorio/robo-identidad | |
 | 9 | Suplantación de un contacto conocido | /observatorio/suplantacion-contacto | |
-| 10 | Falsa encomienda de Correo Argentino | /observatorio/encomienda-correo | |
+| 10 | Falsa encomienda de Correo Argentino | /observatorio/encomienda-correo | 22/11 probado: sin nota ni captura real en 60 días (lo más nuevo es de 2023/jun-2025), saltado |
 | 1 | Plataforma de inversión falsa (versión específica; el 16/11 salió la genérica) | /observatorio/inversion-falsa | |
 
 Cuando termine la lista, volver a `observatorio/datos.json` (el ranking cambia por mes) y seguir.
