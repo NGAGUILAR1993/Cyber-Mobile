@@ -28,9 +28,9 @@ const IM='gmail.png';
 
 const paso=(n,t)=>`<div style="display:flex;gap:28px;align-items:flex-start;margin-bottom:34px"><div class=h style="font-size:70px;color:${ROJO};min-width:56px">${n}</div><div style="font-size:42px;line-height:1.25;font-weight:700">${t}</div></div>`;
 const cap=(f,top,mt,h)=>`<div style="position:absolute;left:222px;top:${top}px;width:636px;height:${h}px;overflow:hidden;border:5px solid ${CREMA};border-radius:18px;background:#000"><img src="${D}/real/${f}" style="display:block;width:636px;margin-top:-${mt}px"></div>`;
-const f1=page(CREMA,NEG,`<div class="pad" style="top:190px"><span class=tag>Anuncios reales · Gmail</span><div class=h style="font-size:100px;margin-top:30px">“DE 100.000 A 386.000 EN <span class=mk>7 DÍAS.</span>” NO ERA UNA JUBILADA.</div></div>
-<div class="img" style="top:830px;left:80px;width:920px"><img src="${D}/real/anuncios-gmail-completo.png" style="display:block;width:100%"></div>
-<div class="pad src" style="top:1425px;font-size:44px;line-height:1.3;font-weight:700">Anuncios patrocinados que llegaron a la bandeja de Gmail, con marcas de medios y bancos que no los emitieron.</div>
+const f1=page(CREMA,NEG,`<div class="pad" style="top:190px"><span class=tag>Anuncios reales · Gmail</span><div class=h style="font-size:112px;margin-top:30px">ESTOS ANUNCIOS SON UNA <span class=mk>ESTAFA.</span></div><div style="font-size:48px;line-height:1.3;font-weight:700;margin-top:34px">Prometen convertir <span class=mk>$100.000 en $386.000</span> en 7 días.</div></div>
+<div class="img" style="top:900px;left:80px;width:920px"><img src="${D}/real/anuncios-gmail-completo.png" style="display:block;width:100%"></div>
+<div class="pad src" style="top:1500px;font-size:40px;line-height:1.3;font-weight:700">Usan el nombre de un medio y de un banco que no los emitieron.</div>
 <div class="pad src" style="bottom:90px;font-size:26px">Fuente: ESET Latinoamérica (WeLiveSecurity), 15/10/2026. Imagen 1 del informe. Anuncios activos entre mayo y septiembre de 2026.</div>`);
 const f2=page(NEG,CREMA,`<div class="pad" style="top:190px"><span class=tag style="background:${AMA};color:${NEG}">Así lo verifica Vera</span><div class=h style="font-size:96px;margin:30px 0 50px">SUBÍS LA IMAGEN.<br><span style="color:${AMA}">VERA REVISA.</span></div>
 ${paso(1,'Lee los anuncios: quién dice emitirlos, qué prometen y a quién apuntan.')}
