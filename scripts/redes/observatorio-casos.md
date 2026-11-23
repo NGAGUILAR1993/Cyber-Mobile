@@ -25,6 +25,6 @@ Pedido del dueño (17/11): la base de las publicaciones es el Observatorio, pero
 | 8 | Robo de identidad digital | /observatorio/robo-identidad | |
 | 9 | Suplantación de un contacto conocido | /observatorio/suplantacion-contacto | |
 | 10 | Falsa encomienda de Correo Argentino | /observatorio/encomienda-correo | 22/11 probado: sin nota ni captura real en 60 días (lo más nuevo es de 2023/jun-2025), saltado |
-| 1 | Plataforma de inversión falsa (versión específica; el 16/11 salió la genérica) | /observatorio/inversion-falsa | |
+| 1 | Plataforma de inversión falsa (versión específica; el 16/11 salió la genérica) | /observatorio/inversion-falsa | 23/11 (propuesta, anuncios de Gmail + VT Markets, ESET 15/10; falta OK) |
 
 Cuando termine la lista, volver a `observatorio/datos.json` (el ranking cambia por mes) y seguir.
