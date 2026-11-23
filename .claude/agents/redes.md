@@ -81,3 +81,4 @@ El archivo final en `redes/<fecha>/<nombre>/` (más `textos.json`, `instagram.tx
 
 ## Orden de trabajo (dueño, 23/11): primero la imagen
 Siempre que armes una historia o un reel con una estafa: 1) conseguí el caso real y su imagen REAL; 2) mandale la imagen a Germán (en la sesión, SendUserFile) y DETENETE: él se la pasa a Vera por WhatsApp y te devuelve la captura real de la respuesta; 3) recién con esa captura armás la historia o el reel (pantalla 'Esto respondió Vera' con la captura real, recortada). Nunca armes la pieza final sin la captura ni dibujes un chat de Vera. Si es un sitio, mandá la captura del sitio y el dominio escrito.
+La imagen es el ARTEFACTO COMPLETO de la estafa (anuncio con su gráfica, mail entero, SMS, captura del sitio, foto del acta), no un recorte de texto ni la captura de la noticia; recortá la figura completa de la nota.
