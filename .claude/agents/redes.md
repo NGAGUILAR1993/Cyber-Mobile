@@ -78,3 +78,6 @@ El archivo final en `redes/<fecha>/<nombre>/` (más `textos.json`, `instagram.tx
 ## Regla del dueño 20/11 (segunda vuelta)
 - Casos del Observatorio con **imágenes reales** (mensaje, mail o sitio de la estafa de una fuente oficial o de seguridad, con fuente y datos tapados): nada de recreaciones. Si no hay imagen real descargable, cambiá de caso.
 - **No digas "gratis", "consultas gratis" ni "7 días gratis"** en piezas ni textos: la gente ve cobro y se va. Mandá a la web (`cybermobile.com.ar/agente`) y a la ficha del Observatorio, sin precios ni cupos.
+
+## Orden de trabajo (dueño, 23/11): primero la imagen
+Siempre que armes una historia o un reel con una estafa: 1) conseguí el caso real y su imagen REAL; 2) mandale la imagen a Germán (en la sesión, SendUserFile) y DETENETE: él se la pasa a Vera por WhatsApp y te devuelve la captura real de la respuesta; 3) recién con esa captura armás la historia o el reel (pantalla 'Esto respondió Vera' con la captura real, recortada). Nunca armes la pieza final sin la captura ni dibujes un chat de Vera. Si es un sitio, mandá la captura del sitio y el dominio escrito.
