@@ -7,12 +7,12 @@
    "canal": "TELEFONO",
    "riesgo": "alto",
    "act": 85,
-   "como": "Los estafadores contactan a la víctima por teléfono, haciéndose pasar por personal de soporte técnico o bancario. Con excusas como problemas de seguridad o actualizaciones, la convencen de instalar una aplicación de acceso remoto en su celular. Una vez instalada, toman control del dispositivo y vacían sus cuentas bancarias o realizan transferencias no autorizadas.",
-   "detectar": "Llamadas inesperadas de supuestos soportes técnicos o bancarios que solicitan instalar aplicaciones o compartir datos sensibles. La urgencia y la presión son tácticas comunes.",
+   "como": "Los estafadores contactan a la víctima por teléfono, haciéndose pasar por personal de soporte técnico o bancario. Con excusas como problemas en la cuenta o actualizaciones de seguridad, convencen a la persona para que instale una aplicación de acceso remoto en su celular, lo que les permite tomar el control del dispositivo y vaciar sus cuentas bancarias.",
+   "detectar": "La alerta se detecta por la noticia de una persona en Formosa a la que le vaciaron la cuenta bancaria tras ser contactada telefónicamente y engañada para instalar una app de acceso remoto.",
    "provincias": [
     {
      "nombre": "Buenos Aires",
-     "n": 305
+     "n": 309
     },
     {
      "nombre": "Córdoba",
@@ -36,7 +36,7 @@
     },
     {
      "nombre": "Formosa",
-     "n": 15
+     "n": 16
     },
     {
      "nombre": "La Rioja",
@@ -126,7 +126,7 @@
    "seccion": "top",
    "pos": 3,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-23T01:00:35.820Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "alquiler-inexistente": {
    "key": "alquiler_inexistente",
@@ -410,11 +410,11 @@
   "inversion-falsa": {
    "key": "inversion_falsa",
    "nombre": "Plataforma de inversion falsa",
-   "canal": "WHATSAPP",
+   "canal": "REDES",
    "riesgo": "alto",
    "act": 82,
-   "como": "Un periodista fue contactado por WhatsApp por un supuesto asesor de inversiones que le prometió grandes ganancias. Lo convenció de invertir una suma considerable de dinero en una plataforma fraudulenta, mostrándole supuestos rendimientos. Finalmente, el dinero desapareció y el contacto se esfumó, dejando a la víctima con una pérdida millonaria.",
-   "detectar": "Contacto no solicitado por WhatsApp ofreciendo inversiones con rendimientos 'garantizados' y excesivamente altos, uso de plataformas de inversión desconocidas y presión para depositar grandes sumas de dinero.",
+   "como": "Los estafadores contactaron a la víctima a través de redes sociales, ofreciéndole una inversión con promesas de altos rendimientos. Una vez que el inversor de La Plata depositó casi 8 millones de pesos, los delincuentes desaparecieron con el dinero, sin entregar los supuestos beneficios ni devolver el capital inicial.",
+   "detectar": "Promesas de altos rendimientos en inversiones que se contactan por redes sociales y luego desaparecen con el dinero sin dejar rastro.",
    "provincias": [
     {
      "nombre": "Entre Ríos",
@@ -422,7 +422,7 @@
     },
     {
      "nombre": "Buenos Aires",
-     "n": 66
+     "n": 67
     },
     {
      "nombre": "La Rioja",
@@ -488,7 +488,7 @@
    "seccion": "top",
    "pos": 6,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-23T01:00:35.820Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "marketplace-falso": {
    "key": "marketplace_falso",
@@ -563,8 +563,8 @@
    "canal": "WHATSAPP",
    "riesgo": "medio",
    "act": 78,
-   "como": "Los estafadores contactan a las víctimas por WhatsApp con supuestas ofertas de empleo de empresas conocidas. Piden datos personales y bancarios para un falso registro o para \"pagar\" por adelantado, con la promesa de un sueldo alto y flexibilidad. Una vez que obtienen la información, realizan compras o transferencias no autorizadas.",
-   "detectar": "Mensajes de WhatsApp con ofertas de trabajo demasiado buenas para ser verdad, que solicitan datos personales o bancarios de forma inusual o piden dinero por adelantado.",
+   "como": "Los estafadores contactan a las víctimas por WhatsApp con supuestas ofertas de empleo de empresas reconocidas. Solicitan datos personales y bancarios, o piden una pequeña inversión inicial para 'capacitación' o 'materiales', prometiendo grandes ganancias. Una vez que obtienen la información o el dinero, desaparecen.",
+   "detectar": "Mensajes de WhatsApp con ofertas de trabajo demasiado buenas para ser verdad, solicitando datos sensibles o un pago inicial para un puesto laboral.",
    "provincias": [
     {
      "nombre": "Catamarca",
@@ -572,7 +572,7 @@
     },
     {
      "nombre": "Santa Fe",
-     "n": 42
+     "n": 43
     }
    ],
    "evidencias": [
@@ -622,7 +622,7 @@
    "seccion": "top",
    "pos": 8,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-23T01:00:35.820Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "paqueteria-falsa": {
    "key": "paqueteria_falsa",
@@ -732,11 +732,11 @@
   "phishing-arca": {
    "key": "phishing_arca",
    "nombre": "Phishing de ARCA",
-   "canal": "WHATSAPP",
+   "canal": "MAIL",
    "riesgo": "medio",
    "act": 83,
-   "como": "Los estafadores se hacen pasar por el ISJ (Instituto de Seguros de Jujuy) y envían mensajes de WhatsApp a los afiliados, solicitando datos personales y bancarios con la excusa de actualizar información o gestionar trámites. El objetivo es robar credenciales para acceder a cuentas y realizar operaciones fraudulentas.",
-   "detectar": "Mensajes de WhatsApp de números desconocidos que se hacen pasar por el ISJ, solicitando datos personales o bancarios con urgencia o bajo pretexto de trámites. URLs sospechosas en los enlaces.",
+   "como": "Los estafadores envían correos electrónicos falsos que simulan ser de ARCA, la Agencia de Recaudación de Catamarca, para engañar a los usuarios. Estos mails suelen contener enlaces maliciosos que, al ser clickeados, redirigen a sitios web fraudulentos donde se solicita información personal y bancaria, con el objetivo de robar datos y realizar transacciones no autorizadas.",
+   "detectar": "Correos electrónicos con remitentes sospechosos o dominios que no corresponden a ARCA, errores ortográficos, solicitudes urgentes de información personal o enlaces a sitios web no oficiales.",
    "provincias": [
     {
      "nombre": "Catamarca",
@@ -748,7 +748,7 @@
     },
     {
      "nombre": "Mendoza",
-     "n": 11
+     "n": 12
     },
     {
      "nombre": "Buenos Aires",
@@ -814,7 +814,7 @@
    "seccion": "top",
    "pos": 4,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-23T01:00:35.820Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "phishing-banco": {
    "key": "phishing_banco",
@@ -822,8 +822,8 @@
    "canal": "REDES",
    "riesgo": "alto",
    "act": 89,
-   "como": "Los estafadores utilizan anuncios pagos en redes sociales para suplantar la identidad de bancos y billeteras virtuales. Al hacer clic en estos anuncios, las víctimas son redirigidas a sitios web falsos que imitan a las plataformas legítimas, donde se les solicita ingresar sus credenciales bancarias o datos personales, que luego son robados para vaciar sus cuentas.",
-   "detectar": "Anuncios en redes sociales que prometen beneficios o soluciones urgentes de bancos o billeteras virtuales, con URLs sospechosas o diferencias sutiles en el diseño de la página de destino.",
+   "como": "Los estafadores utilizan anuncios pagos en redes sociales para suplantar la identidad de bancos y billeteras virtuales. Al hacer clic en estos anuncios, las víctimas son redirigidas a sitios web falsos que imitan a las plataformas legítimas, donde se les solicita ingresar sus credenciales bancarias o datos personales, que luego son robados para vaciar sus cuentas o realizar transacciones fraudulentas.",
+   "detectar": "Anuncios en redes sociales que prometen beneficios o soluciones urgentes de bancos o billeteras virtuales, pero que al hacer clic redirigen a sitios web con URL sospechosas o diferencias sutiles en el diseño.",
    "provincias": [
     {
      "nombre": "Buenos Aires",
@@ -843,7 +843,7 @@
     },
     {
      "nombre": "Entre Ríos",
-     "n": 5
+     "n": 6
     },
     {
      "nombre": "Salta",
@@ -921,7 +921,7 @@
    "seccion": "top",
    "pos": 2,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-23T01:00:35.820Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "phishing-mercadopago": {
    "key": "phishing_mercadopago",
@@ -1000,12 +1000,12 @@
    "canal": "WHATSAPP",
    "riesgo": "medio",
    "act": 89,
-   "como": "Los estafadores se hacen pasar por personal del ISJ (Instituto de Seguros de Jujuy) a través de WhatsApp. Envían mensajes con enlaces maliciosos o solicitan datos personales y bancarios, con la excusa de actualizar información o gestionar trámites, para luego robar credenciales y cometer fraudes financieros. Buscan engañar a los afiliados para obtener acceso a sus cuentas.",
-   "detectar": "Mensajes de WhatsApp no solicitados que se hacen pasar por el ISJ, solicitando datos personales o bancarios, o pidiendo hacer clic en enlaces sospechosos para supuestas actualizaciones o trámites.",
+   "como": "Los estafadores se hacen pasar por el Instituto de Seguros de Jujuy (ISJ) a través de WhatsApp, enviando mensajes con un enlace falso. Este link redirige a una página apócrifa que simula ser la del ISJ, solicitando a los afiliados que ingresen sus datos personales y bancarios para supuestamente acceder a beneficios o trámites, con el objetivo de robarles la información.",
+   "detectar": "Mensajes de WhatsApp de números desconocidos que se hacen pasar por el ISJ, solicitando datos personales o bancarios a través de enlaces sospechosos.",
    "provincias": [
     {
      "nombre": "Jujuy",
-     "n": 104
+     "n": 107
     },
     {
      "nombre": "Buenos Aires",
@@ -1067,7 +1067,7 @@
    "seccion": "top",
    "pos": 1,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-23T01:00:35.820Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "phishing-servicios": {
    "key": "phishing_servicios",
@@ -1395,8 +1395,8 @@
    "canal": "WHATSAPP",
    "riesgo": "alto",
    "act": 83,
-   "como": "Los estafadores se hacen pasar por un contacto conocido de la víctima, pidiéndole un código de verificación de WhatsApp. Una vez que la víctima lo proporciona, los delincuentes toman control de su cuenta, suplantan su identidad y comienzan a pedir dinero a sus contactos, alegando una emergencia o necesidad urgente. La víctima pierde el acceso a su cuenta y sus contactos son engañados.",
-   "detectar": "La señal de detección es un mensaje inesperado de un contacto conocido pidiendo un código de verificación de WhatsApp, o mensajes de contactos pidiendo dinero de forma inusual.",
+   "como": "Los estafadores se hacen pasar por un contacto conocido de la víctima, solicitando un código de verificación de WhatsApp. Una vez que la víctima lo proporciona, los delincuentes toman control de su cuenta, suplantan su identidad y piden dinero a sus contactos, alegando una emergencia o necesidad urgente.",
+   "detectar": "La víctima recibe un mensaje de un contacto conocido pidiendo un código de verificación de WhatsApp, lo cual es una señal clara de intento de secuestro de cuenta.",
    "provincias": [
     {
      "nombre": "Catamarca",
@@ -1474,7 +1474,7 @@
    "seccion": "top",
    "pos": 5,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-23T01:00:35.820Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "sextorsion": {
    "key": "sextorsion",
@@ -1566,13 +1566,13 @@
    "nombre": "Falso soporte tecnico",
    "canal": "REDES",
    "riesgo": "alto",
-   "act": 51,
-   "como": "Los estafadores se hacen pasar por soporte técnico de empresas conocidas o publican ofertas de productos inexistentes en redes sociales. Contactan a las víctimas, solicitan datos personales o bancarios, o piden transferencias de dinero por productos que nunca entregan, aprovechándose de la confianza de los usuarios en plataformas populares.",
-   "detectar": "Alertas sobre falsos soportes técnicos y ventas fraudulentas en redes sociales, con reportes de víctimas que perdieron dinero o datos personales.",
+   "act": 52,
+   "como": "Los estafadores se hacen pasar por soporte técnico de empresas conocidas o publican ventas falsas en redes sociales. Contactan a las víctimas, solicitan acceso remoto a sus dispositivos o datos personales/bancarios con la excusa de solucionar un problema o concretar una venta, y así les roban información o dinero. Es un engaño doble que combina el falso soporte con el ecommerce fraudulento.",
+   "detectar": "Alertas sobre falsos soportes técnicos y ventas fraudulentas en redes sociales, con reportes de víctimas que perdieron dinero o información personal.",
    "provincias": [
     {
      "nombre": "La Rioja",
-     "n": 9
+     "n": 10
     }
    ],
    "evidencias": [
@@ -1590,16 +1590,16 @@
    "seccion": "watch",
    "pos": 14,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-23T01:00:35.820Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "suplantacion-banco": {
    "key": "suplantacion_banco",
    "nombre": "Suplantacion de banco por telefono",
    "canal": "TELEFONO",
    "riesgo": "alto",
-   "act": 76,
-   "como": "Los estafadores se hacen pasar por empleados de un banco y llaman a la víctima para alertar sobre un supuesto movimiento sospechoso en su cuenta. Con la excusa de 'solucionar' el problema, le piden datos personales y bancarios, o la convencen de instalar una aplicación de acceso remoto, para luego vaciarle la cuenta en cuestión de segundos.",
-   "detectar": "Llamadas telefónicas inesperadas de supuestos bancos que solicitan datos personales o la instalación de software, con la excusa de resolver problemas de seguridad en la cuenta.",
+   "act": 77,
+   "como": "Los estafadores se hacen pasar por empleados de un banco y llaman a la víctima para alertar sobre supuestos movimientos sospechosos en su cuenta. Con la excusa de 'solucionar' el problema, solicitan datos personales y bancarios, o incluso guían a la víctima para que instale una aplicación de acceso remoto, vaciando la cuenta en cuestión de segundos.",
+   "detectar": "Llamadas telefónicas inesperadas de supuestos bancos que solicitan datos personales o bancarios, o que piden instalar software de acceso remoto para 'resolver' problemas de seguridad.",
    "provincias": [
     {
      "nombre": "Jujuy",
@@ -1677,7 +1677,7 @@
    "seccion": "top",
    "pos": 10,
    "mes": "noviembre de 2026",
-   "visto": "2026-11-21T15:00:18.953Z"
+   "visto": "2026-11-23T15:00:24.966Z"
   },
   "suplantacion-contacto": {
    "key": "suplantacion_contacto",
