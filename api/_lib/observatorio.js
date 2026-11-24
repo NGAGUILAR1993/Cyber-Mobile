@@ -76,7 +76,8 @@ const TILDES = [
     [/\binversion\b/gi, 'inversión'], [/\bSextorsion\b/g, 'Sextorsión'], [/\bsextorsion\b/g, 'sextorsión'],
     [/\bfalsificacion\b/gi, 'falsificación'], [/\bsuplantacion\b/g, 'suplantación'], [/\bSuplantacion\b/g, 'Suplantación'],
     [/\bprestamo\b/g, 'préstamo'], [/\bPrestamo\b/g, 'Préstamo'], [/\brapido\b/g, 'rápido'],
-    [/\bromantico\b/g, 'romántico'], [/\btelefono\b/g, 'teléfono'], [/\bTelefono\b/g, 'Teléfono']
+    [/\bromantico\b/g, 'romántico'], [/\btelefono\b/g, 'teléfono'], [/\bTelefono\b/g, 'Teléfono'],
+    [/\btecnico\b/g, 'técnico'], [/\bTecnico\b/g, 'Técnico']
 ];
 export function conTildes(t) {
     let s = String(t || '');

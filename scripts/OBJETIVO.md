@@ -47,6 +47,7 @@ Reglas: escribir con `batch` cuando son varias filas; para cambiar algo existent
 - Si una fila quedó Aprobada, el agente la ejecuta al día siguiente y la pasa a Hecho.
 
 ## Reglas para todos
+- **Los agentes comparten información (pedido del dueño, 24/11):** están autorizados a intercambiar información entre sí para lograr sus objetivos. El fin último es que Cyber Mobile sea conocida y que la gente use a Vera. Cada agente lee y usa lo que producen los demás (informes de Vera en `scripts/vera/`, Observatorio, `scripts/campanas/`, `scripts/competencia/`, `scripts/redes/`, `scripts/guias/`, `scripts/estrategia/` y la bitácora del Centro de Mando) y deja en su bloque "Para el tablero" lo que le sirve a otro como "Para <agente>: …". Quien recibe ese pedido lo toma en su próxima tarea.
 - Nadie le escribe a terceros por su cuenta: los mensajes para clientes, medios o empresas quedan como borrador en Zoho (info@cybermobile.com.ar) y en el Centro de Mando; el dueño los aprueba y los envía. **Todo mail a terceros sale desde info@cybermobile.com.ar, nunca desde Gmail** (pedido del dueño, 20/10).
 - Nada inventado: ni cifras, ni testimonios, ni promesas que Vera no cumpla.
 - Nada de gastar plata sin aprobación del dueño.
