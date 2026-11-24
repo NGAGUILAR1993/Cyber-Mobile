@@ -1,7 +1,25 @@
 // Página propia de cada estafa del Observatorio: /observatorio/<slug>
 // Se genera en el servidor a partir de observatorio/datos.json para que los
 // buscadores reciban el contenido completo, sin depender de JavaScript.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { cargarDatos, cargarArchivo, modalidades, slugDe, canal, conTildes, esc, SITIO } from './_lib/observatorio.js';
+
+// Guías que tratan cada estafa (guias/lista.json lo arma scripts/guias/generar.mjs con el campo "fichas").
+// Enlazar ficha → guía reparte autoridad hacia las guías y le da al lector el paso a paso completo.
+let guiasCache = null;
+function guiasDe(slug) {
+    if (!guiasCache) {
+        try {
+            guiasCache = JSON.parse(readFileSync(join(process.cwd(), 'guias', 'lista.json'), 'utf8'))
+                .filter((g) => /^[a-z0-9-]{3,80}$/.test(g.slug) && g.h1);
+        } catch (e) { console.error('estafa.js: guías', e.message); guiasCache = []; }
+    }
+    const propias = guiasCache.filter((g) => (g.fichas || []).includes(slug));
+    const base = ['como-saber-si-es-estafa', 'estafas-por-whatsapp-mas-comunes'].map((s) => guiasCache.find((g) => g.slug === s)).filter(Boolean);
+    return [...propias, ...base].filter((g, i, a) => a.indexOf(g) === i).slice(0, 3);
+}
+const sinTildes = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 const WA = 'https://wa.me/5491170598505?text=';
 const RIESGO = { alto: 'Riesgo alto', medio: 'Riesgo medio', bajo: 'Riesgo bajo' };
@@ -208,10 +226,17 @@ export default function handler(req, res) {
 
     const mesActual = (d.meta && d.meta.mes) || '';
     const mes = s.archivada ? (s.mes || mesActual) : mesActual;
-    const mesCap = mes.charAt(0).toUpperCase() + mes.slice(1);
     const c = canal(s.canal);
     const nombre = conTildes(s.nombre);
-    const titulo = `${nombre}${c.frase ? ' ' + c.frase : ''}: cómo reconocerla`;
+    // Si el nombre ya dice el canal ("... de WhatsApp", "... por teléfono"), no se repite.
+    const frase = c.frase && !sinTildes(nombre).includes(sinTildes(c.frase).replace(/^(por|en) (las )?/, '')) ? ' ' + c.frase : '';
+    const base = `${nombre}${frase}`;
+    const titulo = `${base}: cómo reconocerla`;
+    // Título para Google: la palabra "estafa" adelante del corte de 60 caracteres, con el año si entra.
+    const anio = (String(mes).match(/\d{4}/) || [''])[0];
+    const tituloSeo = [`${base}: cómo reconocer la estafa (${anio})`, `${base}: cómo reconocer la estafa`,
+        `${base}: señales de estafa (${anio})`, `${base}: señales de estafa`, `Estafa: ${base}`, base]
+        .find((t) => t.length <= 60) || base;
     const url = `${SITIO}/observatorio/${slug}`;
     const act = Math.max(0, Math.min(100, Number(s.act) || 0));
     const riesgo = RIESGO[s.riesgo] ? s.riesgo : 'medio';
@@ -236,6 +261,7 @@ export default function handler(req, res) {
     const compartir = `Alerta de estafa: ${nombre}.\n\nCómo reconocerla: ${detectar}\n\nMás info: ${url}`;
     const consultar = `Hola, me llegó algo que parece "${nombre}". ¿Me ayudan a verificarlo?`;
     const ps = pasos(s.canal);
+    const guias = guiasDe(slug);
 
     const body = `<div class="wrap"><div class="glow"></div>
 <section class="hero">
@@ -273,7 +299,9 @@ export default function handler(req, res) {
   <div class="steps">${ps.map((x, i) => `<div class="tile step"><span class="num">${i + 1}</span><span><b>${esc(x[0])}</b> ${esc(x[1])}</span></div>`).join('')}</div>
  </section>
 
- <div class="duo">
+ ${guias.length ? `<section id="guias"><h2>Guías para protegerte</h2><div class="tile box src">${guias.map((g) => `<a href="/guias/${esc(g.slug)}">${esc(g.h1)}</a>`).join('')}</div></section>
+
+ ` : ''}<div class="duo">
   <div class="tile box"><span class="lbl">DÓNDE SE REPORTÓ</span><div class="chips">${provincias.length ? provincias.map((p) => `<span>${esc(p)}</span>`).join('') : '<span>Argentina</span>'}</div></div>
   <div class="tile box"><span class="lbl">FUENTES</span><div class="src">${fuentes || '<span class="note">Sin fuentes publicadas.</span>'}</div></div>
  </div>
@@ -334,8 +362,8 @@ ${relacionadas.length ? `<section style="padding-top:72px"><h2>${s.archivada ? '
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
     res.end(documento({
-        title: `${titulo} (${mesCap.replace(' de ', ' ')}) | Cyber Mobile`,
-        description: recortar(`${detectar} Cómo opera, señales y qué hacer si te llegó.`, 158),
+        title: tituloSeo,
+        description: recortar(`${base} en Argentina: cómo reconocerla y qué hacer si te llegó. ${detectar}`, 155),
         canonical: url,
         jsonld,
         body
