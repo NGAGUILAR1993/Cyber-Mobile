@@ -1,0 +1,239 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>
+@font-face{font-family:AN;src:url(../../../../tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:SG;font-weight:700;src:url(../../../../tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:JB;src:url(../../../../tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:4320px;height:3840px;overflow:hidden;background:#0b0b0b}
+.f{position:absolute;width:1080px;height:1920px;overflow:hidden}
+.an{font-family:AN;font-weight:400;text-transform:uppercase;line-height:1.0}
+.top{position:absolute;top:110px;left:66px;right:66px;display:flex;justify-content:space-between;align-items:center;z-index:9}
+.top b{font-family:SG;font-size:27px;letter-spacing:.22em}
+.top span{font-family:JB;font-size:24px;letter-spacing:.1em;padding:6px 12px}
+.lab{position:absolute;font-family:JB;font-size:22px;letter-spacing:.1em;background:#0b0b0b;color:#f1ebdf;padding:9px 14px;z-index:9}
+.st{position:absolute;font-family:JB;font-size:30px;letter-spacing:.05em;background:#ff2d1f;color:#fff;padding:12px 20px;border-radius:6px;box-shadow:6px 6px 0 #0b0b0b;white-space:nowrap;z-index:9}
+
+/* ---------- situación (foto) ---------- */
+.situ img.foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.08)}
+.situ::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.42) 0,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 52%,rgba(0,0,0,.78) 100%);z-index:1}
+.situ .top{color:#f1ebdf}
+.situ .bloque{position:absolute;left:58px;right:58px;bottom:190px;z-index:5}
+.situ h1{font-size:200px;color:#f1ebdf;letter-spacing:.005em}
+.situ h1 .k{display:inline-block;padding:4px 22px 0;transform:rotate(-2deg);color:#0b0b0b}
+.situ p{font-family:SG;font-size:48px;line-height:1.2;color:#f1ebdf;margin-top:26px}
+.situ p .hl{background:#ffd400;color:#0b0b0b;padding:0 8px}
+.situ .ref{left:58px;bottom:84px;background:rgba(11,11,11,.85)}
+.cuad{position:absolute;z-index:6;border:6px dashed #ffd400;border-radius:16px}
+.cuad i{position:absolute;right:-6px;top:-50px;font-family:JB;font-style:normal;font-size:22px;background:#ffd400;color:#0b0b0b;padding:6px 10px;letter-spacing:.08em}
+
+/* ---------- zoom: celular (mano real) ---------- */
+#z1{background:#ffd400;color:#0b0b0b}
+#z1 h2{position:absolute;left:62px;top:180px;font-size:94px;z-index:6}
+#z1 h2 .k{display:inline-block;background:#0b0b0b;color:#ffd400;padding:2px 14px 0;transform:rotate(-2deg)}
+#ph{position:absolute;left:0;top:0;transform-origin:0 0;z-index:2}
+#scr{position:absolute;overflow:hidden;background:#efe7dd;z-index:3}
+.sb{height:56px;background:#f7f5f2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 44px 6px;font-weight:700;font-size:20px;font-family:system-ui,sans-serif}
+.hd{height:88px;background:#f7f5f2;border-bottom:1px solid #dcd6cd;display:flex;align-items:center;gap:14px;padding:0 18px;font-family:system-ui,sans-serif}
+.hd .bk{font-size:38px;color:#128c7e;line-height:1}.hd img{width:64px;height:64px;border-radius:50%;object-fit:cover}
+.hd b{font-size:26px;display:block;line-height:1.15}.hd small{font-size:19px;color:#128c7e}
+.chat{padding:16px;font-family:system-ui,sans-serif;display:flex;flex-direction:column;gap:12px;background:#efe7dd radial-gradient(rgba(120,100,70,.08) 2px,transparent 2.4px) 0 0/30px 30px;height:100%}
+.b{position:relative;max-width:600px;padding:10px 13px 8px;border-radius:18px;font-size:25px;line-height:1.28;box-shadow:0 2px 3px rgba(0,0,0,.14)}
+.b.out{background:#d9fdd3;align-self:flex-end;border-top-right-radius:5px}
+.b.in{background:#fff;align-self:flex-start;border-top-left-radius:5px}
+.b time{display:block;text-align:right;font-size:16px;color:#7b8389;margin-top:2px}
+.fw{font-size:18px;color:#6b7479;font-style:italic;margin-bottom:6px}
+.fwd{background:rgba(0,0,0,.05);border-left:5px solid #9aa1a6;border-radius:8px;padding:8px 10px;margin-bottom:8px;font-size:23px}
+.lnk{color:#027eb5;text-decoration:underline}
+.hl{background:#ffd400;padding:0 4px}
+.tag{display:inline-block;background:#ff2d1f;color:#fff;font-weight:700;font-size:25px;padding:5px 12px;border-radius:8px;margin-bottom:6px}
+.in p{margin-top:5px}.in .do{margin-top:8px;padding-top:8px;border-top:1px solid #e6e2dc;font-weight:700}
+svg.ink{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:4;pointer-events:none}
+.inp{position:absolute;left:0;right:0;bottom:0;height:86px;background:#f7f5f2;display:flex;align-items:center;gap:14px;padding:0 20px 12px;font-family:system-ui}
+.inp div{flex:1;height:54px;border-radius:30px;background:#fff;border:1px solid #e2ddd5;font-size:22px;color:#9aa1a6;display:flex;align-items:center;padding-left:24px}
+.inp span{width:56px;height:56px;border-radius:50%;background:#128c7e}
+#cam{position:absolute;width:22px;height:22px;border-radius:50%;background:#050505;z-index:4}
+#glare{position:absolute;z-index:4;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.16) 0,rgba(255,255,255,0) 24%)}
+
+/* ---------- zoom: monitor del comercio ---------- */
+.zbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#z2{background:#19e6c4}
+#z2 .velo{position:absolute;inset:0;background:linear-gradient(180deg,#19e6c4 0,#19e6c4 21%,rgba(25,230,196,.0) 40%,rgba(11,11,11,.35) 100%);z-index:1}
+#z2 h2,#z3 h2{position:absolute;left:62px;top:180px;font-size:94px;z-index:6;color:#0b0b0b}
+#z2 h2 .k{display:inline-block;background:#0b0b0b;color:#19e6c4;padding:2px 14px 0;transform:rotate(-2deg)}
+.mon{position:absolute;left:24px;right:24px;top:520px;z-index:4;background:#121212;border-radius:22px;padding:18px 18px 46px;box-shadow:0 50px 90px rgba(0,0,0,.55),inset 0 0 0 2px #2a2a2a}
+.mon::after{content:"";position:absolute;left:50%;bottom:16px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:#2c2c2c}
+.mon .pant{position:relative;overflow:hidden;border-radius:6px;background:#0a0d14;display:flex;align-items:center;min-height:900px}
+.mon .pant img{position:absolute;left:0;top:0;transform-origin:0 0}
+.mon .pie{position:absolute;left:50%;bottom:-190px;width:300px;margin-left:-150px;height:150px;background:linear-gradient(#1d1d1d,#0f0f0f);clip-path:polygon(32% 0,68% 0,82% 100%,18% 100%);z-index:-1}
+
+/* ---------- zoom: notebook con Chrome y la extensión ---------- */
+#z3{background:#19e66b}
+#z3 .velo{position:absolute;inset:0;background:linear-gradient(180deg,#19e66b 0,#19e66b 21%,rgba(25,230,107,0) 40%,rgba(11,11,11,.4) 100%);z-index:1}
+#z3 h2 .k{display:inline-block;background:#0b0b0b;color:#19e66b;padding:2px 14px 0;transform:rotate(-2deg)}
+.nb{position:absolute;left:0;right:-60px;top:500px;z-index:4;background:#1b1b1d;border-radius:26px 26px 0 0;padding:22px 22px 0;box-shadow:0 50px 90px rgba(0,0,0,.55),inset 0 0 0 2px #2d2d30}
+.nb .pant{position:relative;overflow:hidden;height:1250px;border-radius:6px 6px 0 0;background:#202124}
+.cbar{height:58px;background:#35363a;display:flex;align-items:center;gap:12px;padding:0 16px;font-family:system-ui}
+.cbar .d{width:12px;height:12px;border-radius:50%;background:#5f6368}
+.cbar .url{flex:1;height:38px;border-radius:19px;background:#202124;color:#e8eaed;font-size:20px;display:flex;align-items:center;padding:0 16px;gap:8px;white-space:nowrap;overflow:hidden}
+.cbar .url em{font-style:normal;color:#ff8a80}
+.cbar .ext{width:42px;height:42px;border-radius:50%;background:#4a4b4f;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #22D3EE,0 0 18px #22D3EE}
+.cbar .ext img{width:28px;height:28px;border-radius:6px}
+.cbar .puz{color:#bdc1c6;font-size:24px}
+.web{position:absolute;left:0;right:0;top:58px;bottom:0;background:#f3f4f6;font-family:system-ui;padding:40px 40px}
+.web .t{font-size:34px;font-weight:700;color:#202124}.web .s{font-size:22px;color:#5f6368;margin-top:8px}
+.web .btn{display:inline-block;margin-top:26px;background:#1a73e8;color:#fff;font-size:24px;padding:14px 26px;border-radius:8px}
+.dl{position:absolute;left:24px;bottom:24px;width:470px;background:#2b2c2f;border-radius:12px;padding:16px 18px;color:#e8eaed;font-family:system-ui;font-size:21px;box-shadow:0 12px 30px rgba(0,0,0,.5);z-index:3}
+.dl b{display:block;font-size:23px;margin-bottom:4px}.dl small{color:#9aa0a6}
+.menu{position:absolute;left:270px;bottom:120px;background:#292a2d;border:1px solid #3c4043;border-radius:10px;padding:8px 0;font-size:21px;color:#e8eaed;box-shadow:0 18px 50px rgba(0,0,0,.55);width:420px;font-family:system-ui;z-index:4}
+.menu div{padding:10px 18px;display:flex;align-items:center;gap:12px}
+.menu .on{background:#3c4043;box-shadow:inset 4px 0 0 #F472B6}
+.menu img{width:24px;height:24px;border-radius:5px}
+.pop{position:absolute;right:68px;top:66px;width:690px;border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 0 2px rgba(167,139,250,.6);z-index:5;background:#060914}
+.pop img{display:block;width:1170px;margin-left:-6px;margin-top:-4px}
+.popwrap{position:absolute;right:68px;top:66px;width:800px;height:1170px;overflow:hidden;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.75),0 0 0 2px rgba(167,139,250,.65);z-index:5;background:#060914}
+.popwrap img{position:absolute;left:0;top:0;width:1430px}
+
+/* ---------- cierre ---------- */
+#c{background:#0b0b0b;color:#f1ebdf}
+#c .dev{position:absolute;left:62px;right:62px;top:250px;display:flex;flex-direction:column;gap:22px}
+#c .dev div{font-size:150px;display:flex;align-items:baseline;gap:26px}
+#c .dev small{font-family:JB;font-size:28px;letter-spacing:.12em;color:#f1ebdf;opacity:.75}
+#c .lema{position:absolute;left:62px;right:62px;top:1010px;font-size:96px;line-height:1.04}
+#c .lema .k{display:inline-block;background:#ff2d1f;color:#f1ebdf;padding:2px 16px 0;transform:rotate(-2deg)}
+#c .cta{position:absolute;left:62px;right:62px;top:1400px;background:#f1ebdf;color:#0b0b0b;padding:34px 38px;box-shadow:14px 14px 0 #ffd400}
+#c .cta b{display:block;font-family:AN;font-weight:400;font-size:74px;text-transform:uppercase;line-height:1}
+#c .cta span{display:block;font-family:JB;font-size:31px;margin-top:14px}
+#c .sem{position:absolute;left:62px;bottom:96px;display:flex;gap:18px;background:#1b1b1b;border-radius:50px;padding:14px 22px}
+#c .sem i{width:44px;height:44px;border-radius:50%}
+
+/* ---------- ficha ---------- */
+#g{background:#f1ebdf;color:#0b0b0b;padding:210px 62px 0}
+#g h3{font-size:92px;line-height:1.12}
+#g h3 .k{background:#ffd400;padding:0 12px}
+#g table{width:100%;border-collapse:collapse;margin-top:44px;font-family:JB;font-size:25px}
+#g td{padding:15px 8px;border-top:3px solid #0b0b0b;vertical-align:top;line-height:1.3}
+#g td:first-child{white-space:nowrap;font-weight:700;width:190px}
+#g .nota{margin-top:34px;font-family:SG;font-size:30px;line-height:1.3;background:#0b0b0b;color:#f1ebdf;padding:26px 28px}
+#g .nota b{color:#ffd400}
+</style></head><body>
+
+<!-- 1. SITUACIÓN: la señora en el sofá -->
+<section class="f situ" style="left:0;top:0">
+ <img class="foto" src="situ-senora.jpg"><div style="position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.7) 0,rgba(0,0,0,.35) 38%,rgba(0,0,0,0) 55%)"></div>
+ <div class="top"><b>CYBER MOBILE</b><span style="background:#ffd400;color:#0b0b0b">1 · 0 – 2,5 s</span></div>
+ <div class="cuad" style="left:360px;top:1400px;width:360px;height:380px"><i>ZOOM →</i></div>
+ <div class="bloque" style="top:300px;bottom:auto"><h1 class="an">EN TU <span class="k" style="background:#ffd400">CELU.</span></h1>
+  <p>Le llegó un cupón de <span class="hl">$150.000</span> para gastar hoy. ¿Es real?</p></div>
+ <span class="lab ref">FOTO DE REFERENCIA · ESCENA FINAL: SOLA EN SU SOFÁ</span>
+</section>
+
+<!-- 2. ZOOM: WhatsApp con Vera -->
+<section class="f" id="z1" style="left:1080px;top:0">
+ <div class="top"><b>CYBER MOBILE</b><span style="background:#0b0b0b;color:#ffd400">2 · 3,2 – 8 s</span></div>
+ <h2 class="an">¿Un cupón de Temu?<br><span class="k">Se lo mandó a Vera.</span></h2>
+ <canvas id="ph"></canvas>
+ <div id="scr">
+  <div class="sb"><span>16:20</span><span>4G ▮</span></div>
+  <div class="hd"><span class="bk">‹</span><img src="vera-perfil.png"><div><b>Vera AI Antiestafas</b><small>en línea</small></div></div>
+  <div class="chat">
+   <div class="b out"><div class="fw">↪ Reenviado</div>
+    <div class="fwd">🎁 Ganaste un cupón de $150.000 para gastar <b>solo hoy</b>. Reclamalo acá: <span class="lnk" id="dom">temu-ofertas-ar.shop</span></div>
+    ¿Esto es verdad? <time>16:20 ✓✓</time>
+    <svg class="ink" fill="none" stroke="#ff2d1f" stroke-width="5" stroke-linecap="round" id="ink1"></svg>
+   </div>
+   <div class="b in"><span class="tag">🔴 RIESGO ALTO</span><br>Es una <b>tienda falsa</b> que imita a Temu.
+    <p>🚩 No es el sitio oficial: <span class="hl">temu-ofertas-ar.shop</span></p>
+    <p>🚩 El dominio se creó hace <span class="hl">4 días</span></p>
+    <p>🚩 "Solo hoy": <span class="hl">apuro armado</span> para que pagues</p>
+    <div class="do">✋ No entres ni cargues tu tarjeta.</div><time>16:20</time></div>
+  </div>
+  <div class="inp"><div>Mensaje</div><span></span></div>
+ </div>
+ <div id="cam"></div><div id="glare"></div>
+ <span class="lab" style="left:62px;bottom:70px">RECREACIÓN · LINK Y CHAT DE EJEMPLO</span>
+</section>
+
+<!-- 3. SITUACIÓN: el señor en su comercio -->
+<section class="f situ" style="left:2160px;top:0">
+ <img class="foto" src="situ-senor.jpg">
+ <div class="top"><b>CYBER MOBILE</b><span style="background:#19e6c4;color:#0b0b0b">3 · 8,6 – 11,1 s</span></div>
+ <div class="bloque"><h1 class="an">EN LA <span class="k" style="background:#19e6c4">WEB.</span></h1>
+  <p>Un cliente "le pagó de más" y le pide <span class="hl">que devuelva</span> la diferencia.</p></div>
+ <span class="lab ref">FOTO DE REFERENCIA · ESCENA FINAL: SU COMERCIO, LA COMPU CON VERA WEB</span>
+</section>
+
+<!-- 4. ZOOM: Vera web en la compu -->
+<section class="f" id="z2" style="left:3240px;top:0">
+ <img class="zbg" src="bg-senor.jpg"><div class="velo"></div>
+ <div class="top"><b>CYBER MOBILE</b><span style="background:#0b0b0b;color:#19e6c4">4 · 11,8 – 16,6 s</span></div>
+ <h2 class="an">¿Devolver $48.000<br><span class="k">a otro CBU?</span></h2>
+ <div class="mon"><div class="pant"><img id="webimg" src="pantallas/web-zoom.png" style="width:100%;position:static"></div><div class="pie"></div></div>
+ <span class="lab" style="left:62px;bottom:70px">WEB REAL DE VERA · CONSULTA DE EJEMPLO</span>
+</section>
+
+<!-- 5. SITUACIÓN: la hija en su pieza -->
+<section class="f situ" style="left:0;top:1920px">
+ <img class="foto" src="situ-hija.jpg">
+ <div class="top"><b>CYBER MOBILE</b><span style="background:#19e66b;color:#0b0b0b">5 · 17,2 – 19,7 s</span></div>
+ <div class="bloque"><h1 class="an">EN TU <span class="k" style="background:#19e66b">COMPU.</span></h1>
+  <p>Bajó los "apuntes del final" de un link que pasaron <span class="hl">en el grupo</span>.</p></div>
+ <span class="lab ref">FOTO DE REFERENCIA · ESCENA FINAL: SOLA EN SU PIEZA, ESTUDIANDO</span>
+</section>
+
+<!-- 6. ZOOM: notebook con la extensión -->
+<section class="f" id="z3" style="left:1080px;top:1920px">
+ <img class="zbg" src="bg-hija.jpg"><div class="velo"></div>
+ <div class="top"><b>CYBER MOBILE</b><span style="background:#0b0b0b;color:#19e66b">6 · 20,4 – 25,2 s</span></div>
+ <h2 class="an">Clic en Vera,<br><span class="k">antes de abrirlo.</span></h2>
+ <div class="nb"><div class="pant">
+  <div class="cbar"><span class="d"></span><span class="d"></span><span class="d"></span><div class="url">🔒 <em>drive-apuntes-compartidos.site</em>/descarga</div><span class="puz">🧩</span><span class="ext"><img src="../../../../extension/icons/icon-48.png"></span></div>
+  <div class="web"><div class="t">apuntes_final.zip</div><div class="s">Resúmenes y parciales resueltos · 2,1 MB</div><div class="btn">Descargar</div></div>
+  <div class="dl"><b>📦 apuntes_final.zip</b><small>Descargado · hace un momento</small></div>
+  <div class="popwrap"><img id="extimg" src="pantallas/ext-resultado.png"></div>
+ </div></div>
+ <span class="st" style="left:600px;top:1610px;transform:rotate(4deg)">.PDF.EXE ESCONDIDO</span>
+ <span class="lab" style="left:62px;bottom:70px">EXTENSIÓN REAL DE VERA · CONSULTA DE EJEMPLO</span>
+</section>
+
+<!-- 7. CIERRE -->
+<section class="f" id="c" style="left:2160px;top:1920px">
+ <div class="top"><b>CYBER MOBILE</b><span style="background:#f1ebdf;color:#0b0b0b">7 · 25,8 – 30 s</span></div>
+ <div class="dev">
+  <div class="an" style="color:#ffd400">CELU <small>WHATSAPP</small></div>
+  <div class="an" style="color:#19e6c4">WEB <small>CYBERMOBILE.COM.AR</small></div>
+  <div class="an" style="color:#19e66b">NAVEGADOR <small>EXTENSIÓN</small></div>
+ </div>
+ <div class="an lema">UNA SUSCRIPCIÓN.<br><span class="k">VERA EN TODAS.</span></div>
+ <div class="cta"><b>Probala 7 días gratis</b><span>cybermobile.com.ar/vera</span></div>
+ <div class="sem"><i style="background:#ff2d1f"></i><i style="background:#ffd400"></i><i style="background:#19e66b"></i></div>
+</section>
+
+<!-- 8. FICHA -->
+<section class="f" id="g" style="left:3240px;top:1920px">
+ <h3 class="an">VERA EN TODOS<br><span class="k">TUS DISPOSITIVOS</span></h3>
+ <table>
+  <tr><td>FORMATO</td><td>Reel 30 s · 1080x1920 · 3 escenas: situación → zoom lento a la pantalla</td></tr>
+  <tr><td>RITMO</td><td>Foto 2,5 s · zoom 0,7 s · pantalla 4,8 s · transición 0,6 s (x3) · cierre 4,2 s</td></tr>
+  <tr><td>PANTALLAS</td><td>UI real: WhatsApp con "Vera AI Antiestafas", /agente y la extensión 1.4. Consultas de ejemplo, rotuladas</td></tr>
+  <tr><td>MÚSICA</td><td>Nueva: lo-fi house 118 BPM con pad cálido (no repite pop 106, techno 126, thriller 90 ni garage 132)</td></tr>
+  <tr><td>PERSONAJES</td><td>La familia creada con IA del reel del 13/11 (misma cara y ropa)</td></tr>
+ </table>
+ <div class="nota"><b>Falta para producir:</b> las 3 fotos nuevas (comercio, sofá sola, pieza) con estos mismos personajes. Las de arriba son las de referencia. Hoy no hay créditos de imagen en Higgsfield (0,3) ni en Canva.</div>
+</section>
+
+<script>
+const im=new Image(); im.onload=()=>{
+ const c=document.getElementById('ph'); c.width=im.width; c.height=im.height; const x=c.getContext('2d'); x.drawImage(im,0,0);
+ const d=x.getImageData(0,0,c.width,c.height), p=d.data; let x0=1e9,y0=1e9,x1=0,y1=0;
+ for(let j=0;j<c.height;j++)for(let i=0;i<c.width;i++){const k=(j*c.width+i)*4; if(p[k+1]>110&&p[k+1]>p[k]*1.35&&p[k+1]>p[k+2]*1.35){ if(i<x0)x0=i;if(i>x1)x1=i;if(j<y0)y0=j;if(j>y1)y1=j; p[k]=6;p[k+1]=6;p[k+2]=8; } }
+ x.putImageData(d,0,0);
+ x0-=3;y0-=3;x1+=3;y1+=3; const TW=640, sc=TW/(x1-x0), TL=220, TT=450; c.style.transform=`translate(${TL-x0*sc}px,${TT-y0*sc}px) scale(${sc})`;
+ const s=document.getElementById('scr'), H=(y1-y0)*sc; for(const el of [s,document.getElementById('glare')]){el.style.left=TL+'px'; el.style.top=TT+'px'; el.style.width=TW+'px'; el.style.height=H+'px'; el.style.borderRadius=(TW*.085)+'px';}
+ const cm=document.getElementById('cam'); cm.style.left=(TL+TW/2-11)+'px'; cm.style.top=(TT+18)+'px';
+ // círculo a mano alrededor del dominio falso
+ const dom=document.getElementById('dom'), svg=document.getElementById('ink1'), bb=svg.getBoundingClientRect(), r=dom.getBoundingClientRect();
+ const cx=(r.left+r.right)/2-bb.left, cy=(r.top+r.bottom)/2-bb.top, rx=r.width/2+22, ry=r.height/2+10;
+ svg.innerHTML=`<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" transform="rotate(-3 ${cx} ${cy})"/>`;
+ // web: recorte de la zona del veredicto
+ document.documentElement.setAttribute('data-listo','1');
+}; im.src='mano.jpg';
+</script></body></html>
