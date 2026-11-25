@@ -263,3 +263,23 @@ Contexto: 05/11 y 08/11 fueron recreaciones de una app (acceso remoto, inversió
 | 09/11 | "Tienda falsa rumbo al Black Friday" | Reel caso | #6 y fecha | Guardada (semana del 23/11) |
 | 09/11 | "Tu viejo vs. el mensaje": dúo/respuesta a un video de una cuenta grande de consejos que dice "fijate las faltas" | Respuesta a cuenta grande | Alcance prestado | Propuesta (no se ejecuta: elegir la cuenta y aprobar con el dueño) |
 | 09/11 | Historia: encuesta "¿Vos la reconocés por las faltas de ortografía?" Sí / No, antes del reel | Historia encuesta | 1 toque, anticipa el reel | Usada como historia |
+
+## 2026-11-24 · martes · Black Friday (vie 27/11) · PROPUESTA para aprobar (regla 12: solo preview)
+Contexto: Observatorio al 24/11: "Tienda online falsa" N.º 1 del ranking internacional (act. 86, emergente) y en vigilancia en Argentina (puesto 12). La guía `/guias/tienda-falsa-compras-online` ya tiene la sección Black Friday (agente SEO). Gancho elegido: hookscore 58,5 ("$29.999 por 9 minutos. Recargá la página: el reloj vuelve a empezar."). Música propuesta: UK garage 2-step 132 BPM con el tic del reloj como hi-hat (nueva).
+
+| Fecha | Idea | Formato | Por qué podría funcionar | Estado |
+|---|---|---|---|---|
+| 24/11 | **"Este reloj miente"**: el contador de "termina en 10 minutos" de la tienda falsa se reinicia al recargar; se lo mandás a Vera, sello ES ESTAFA, dato del Observatorio | Reel 30 s, estilo estándar (negro → crema con Vera en el celular → rojo) | Truco nuevo, visual y que cualquiera prueba el viernes; se manda a quien tiene el carrito lleno | **Elegida** (propuesta en `scripts/redes/propuestas/2026-11-24-black-friday/`) |
+| 24/11 | "Ese link no es de [tienda]": 3 dominios que copian tiendas conocidas | Reel claridad tipo fraude.uy | Gancho local fuerte | Descartada (sin marca real pierde fuerza; con marca real, riesgo) |
+| 24/11 | "La cuenta del 10% extra": por qué te premian si transferís | Carrusel | Explica la trampa del pago | Guardada (repurposing para el sábado 28/11) |
+| 24/11 | "¿Tienda falsa o segura?" (idea de SEO): 2 tiendas, adiviná | Reel juego | Participación | Descartada (juego de "cuál es la falsa" ya usado el 17/10 y 21/10; va como CTA a la guía) |
+| 24/11 | "El precio que no existe": el producto a −70% comparado con el precio de todos lados | Reel dato | Indignación | Descartada (habría que inventar precios de mercado) |
+| 24/11 | "Comentarios cerrados": la cuenta de Instagram de la tienda sin comentarios y con 3 semanas | Reel caso | Señal concreta | Fusionada (va en la guía; no entra legible en 30 s) |
+| 24/11 | "Lo que llega después del Black Friday": seguimiento de envío falso por SMS | Reel suspenso | Secuela | Guardada (para el 1/12; el 28/10 ya hubo "después de comprar", esperar) |
+| 24/11 | Persona con IA mirando el reloj en el celular, cara de apuro | Reel con persona IA | Emoción | Descartada para orgánico (16/11: rinden en pauta, no en orgánico); posible versión paga |
+| 24/11 | "Black Friday en 3 reglas para la heladera" | Placa guardable | Guardable | Descartada (formato lista de tips que hacen todos) |
+| 24/11 | Encuesta "¿Recargaste alguna vez para ver si el reloj era real?" | Historia | 1 toque, anticipa el reel | Usada como historia de apoyo |
+
+## 2026-11-25 · Vera en todos tus dispositivos (pedido de Germán)
+- Elegida: 3 escenas con la familia del 13/11 (señora/celu, señor/web en su comercio, hija/extensión en su pieza), situación → zoom a la pantalla real, cierre "una suscripción, Vera en todas". Venta + confianza.
+- Descartadas: pantalla partida con la misma estafa en 3 dispositivos; "un día con Vera" con reloj; la hija le instala la extensión al padre.
