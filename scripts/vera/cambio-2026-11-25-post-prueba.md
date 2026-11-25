@@ -4,6 +4,7 @@ Pedido de Germán: cuando la prueba terminó, Vera respondía solo el texto fijo
 
 - **Publicada:** V50, versionId `f4e68899-6860-4f10-9871-adf5c0afa202`.
 - **Para revertir:** `publish_workflow` con `d3f768c1-2511-4999-aecc-843967baa20a` (V49).
+- **V50b (25/11, publicada):** versionId `db693246-aa4a-4aed-8834-5d053248407e`. Para revertir a V50: `f4e68899-6860-4f10-9871-adf5c0afa202`. `Pedir Reintento Comprobante` ahora muestra el monto de $5.000 por mes (plan Individual, con los precios de los packs entre paréntesis), en lugar de $12.000. El nodo no conoce el plan elegido porque `Leer Plan Elegido` corre recién después de activar. El mail pasó a info@cybermobile.com.ar (antes, el de Gmail). Se probó con una ejecución manual: `pendiente_pago` vigente y captura ilegible. Las claves de prueba se borraron y el flujo temporal se archivó.
 
 ## Qué cambió (4 nodos + 1 nuevo)
 - `Interpretar Estado Suscripcion` define **prueba vencida** así: `cortado`, o `pendiente`/`prueba` con 7 días o más desde el primer caso (del día 8 en adelante), sin acceso gratis vigente (referidos o premio). Para esas personas:
@@ -33,4 +34,3 @@ Pedido de Germán: cuando la prueba terminó, Vera respondía solo el texto fijo
 ## Para verificar con el próximo mensaje real
 - La primera persona `cortado` que escriba: ver en la ejecución que `Responder Post Prueba` salga con `fuentePostPrueba: ia` y sin veredicto.
 - Pendiente: en el cron de las 20 h, `Chequear Estado Suscripcion Dia8` está desconectado. Quien no responde el aviso del día 7 queda en `pendiente` o `prueba`. V50 igual los trata como vencidos desde el día 8.
-- Pendiente: `Pedir Reintento Comprobante` sigue mostrando $12.000 como monto y cybermobile.ai@gmail.com (no se tocó).
