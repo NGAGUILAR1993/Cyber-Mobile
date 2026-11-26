@@ -21,7 +21,7 @@ Pedido del dueño (17/11): la base de las publicaciones es el Observatorio, pero
 | 6 | Secuestro de cuenta de WhatsApp | /observatorio/secuestro-whatsapp | 21/11 probado: sin captura real reciente, saltado |
 | - | Falsa multa (archivada) | /observatorio/falsa-multa | 21/11 (propuesta, acta falsa Berisso, 0221 17/10; falta OK) |
 | - | Sitio falso de descarga (GTA 6 Mobile) | /observatorio/ecommerce-falso | 22/11 (propuesta, gta6mobile.app, Netcraft 03/11; falta OK) |
-| 7 | Phishing de ARCA | /observatorio/phishing-arca | 26/11 (paso 1: mail real "aranceles aduaneros $198.092", Infobae 24/06 y alerta ARCA 05/11; espera captura de Vera) |
+| 7 | Phishing de ARCA | /observatorio/phishing-arca | 26/11 (paso 1: mail real "aranceles aduaneros $198.092", Infobae 24/06 y alerta ARCA 05/11; historia de 7 pantallas lista con captura real de Vera, captura de Gmail de LA NACION 13/03 sin sello; OK de Germán 26/11, falta publicar) |
 | 8 | Robo de identidad digital | /observatorio/robo-identidad | 26/11 buscado sin captura real reciente, pendiente |
 | 9 | Suplantación de un contacto conocido | /observatorio/suplantacion-contacto | 26/11 buscado: solo posts de Instagram/notas sin captura descargable, pendiente |
 | 10 | Falsa encomienda de Correo Argentino | /observatorio/encomienda-correo | 22/11 probado: sin nota ni captura real en 60 días (lo más nuevo es de 2023/jun-2025), saltado |
