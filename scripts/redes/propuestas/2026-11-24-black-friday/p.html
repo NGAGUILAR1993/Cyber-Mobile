@@ -1,0 +1,150 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><style>
+@font-face{font-family:AN;src:url(../../../../tarjetas/fuentes/Anton-Regular.ttf)}
+@font-face{font-family:SG;font-weight:700;src:url(../../../../tarjetas/fuentes/SpaceGrotesk-Bold.ttf)}
+@font-face{font-family:JB;src:url(../../../../tarjetas/fuentes/JetBrainsMono-Medium.ttf)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:3240px;height:1920px;overflow:hidden;background:#0b0b0b}
+.f{position:absolute;top:0;width:1080px;height:1920px;overflow:hidden}
+.top{position:absolute;top:120px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.top b{font-family:SG;font-size:28px;letter-spacing:.22em}.mono{font-family:JB;letter-spacing:.12em;font-size:26px}
+.an{font-family:AN;font-weight:400;text-transform:uppercase;line-height:1.02}
+.lab{position:absolute;font-family:JB;font-size:23px;letter-spacing:.12em;background:#0b0b0b;color:#f1ebdf;padding:9px 16px;z-index:7}
+.st{position:absolute;font-family:JB;font-size:30px;letter-spacing:.06em;background:#ff2d1f;color:#fff;padding:12px 20px;border-radius:6px;box-shadow:6px 6px 0 #0b0b0b;white-space:nowrap;z-index:8}
+.pie{position:absolute;left:70px;bottom:70px;font-family:JB;font-size:22px;letter-spacing:.1em;opacity:.6}
+
+/* cuadro 1 */
+#f1{left:0;background:#0b0b0b;color:#f1ebdf}
+#f1 .old{position:absolute;left:70px;top:330px;font-family:JB;font-size:44px;color:#6d6a64}
+#f1 .old s{text-decoration-thickness:5px;text-decoration-color:#ff2d1f}
+#f1 .old span{color:#ffd400;margin-left:18px}
+#f1 .t{position:absolute;left:84px;top:440px;font-size:390px;letter-spacing:-.01em;color:#f1ebdf;font-variant-numeric:tabular-nums}
+#f1 .cap{position:absolute;left:78px;top:360px;font-family:JB;font-size:26px;letter-spacing:.2em;color:#ffd400;display:none}
+#f1 h1{position:absolute;left:66px;top:1040px;font-size:190px}
+#f1 h1 .k{display:inline-block;background:#ff2d1f;color:#f1ebdf;padding:0 22px;transform:rotate(-2deg);margin-top:10px}
+#f1 .sub{position:absolute;left:70px;top:1500px;right:90px;font-family:SG;font-size:44px;line-height:1.25}
+#f1 .sub .hl{background:#ffd400;color:#0b0b0b;padding:0 8px}
+#f1 svg{position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:6}
+
+/* cuadro 2 */
+#f2{left:1080px;background:#f1ebdf;color:#0b0b0b}
+#f2 h1{position:absolute;left:62px;top:175px;font-size:96px;z-index:5;line-height:1.05}
+#f2 h1 .k{display:inline-block;background:#ffd400;padding:0 14px;transform:rotate(-2deg)}
+#ph{position:absolute;left:0;top:0;transform-origin:0 0}
+#scr{position:absolute;overflow:hidden;background:#efe7dd;z-index:3}
+.sb{height:62px;background:#f7f5f2;display:flex;align-items:flex-end;justify-content:space-between;padding:0 44px 6px;font-weight:700;font-size:21px;font-family:system-ui,sans-serif}
+.hd{height:92px;background:#f7f5f2;border-bottom:1px solid #dcd6cd;display:flex;align-items:center;gap:14px;padding:0 18px;font-family:system-ui,sans-serif}
+.hd .bk{font-size:38px;color:#128c7e;line-height:1}.hd img{width:66px;height:66px;border-radius:50%;object-fit:cover}
+.hd b{font-size:27px;display:block;line-height:1.15}.hd small{font-size:20px;color:#128c7e}
+.chat{padding:16px 16px;font-family:system-ui,sans-serif;display:flex;flex-direction:column;gap:12px;background-color:#efe7dd;background-image:radial-gradient(rgba(120,100,70,.08) 2px,transparent 2.4px);background-size:30px 30px;height:100%}
+.b{position:relative;max-width:560px;padding:10px 12px 8px;border-radius:18px;font-size:25px;line-height:1.28;box-shadow:0 2px 3px rgba(0,0,0,.14)}
+.b.out{background:#d9fdd3;align-self:flex-end;border-top-right-radius:5px}
+.b.in{background:#fff;align-self:flex-start;border-top-left-radius:5px}
+.b time{display:block;text-align:right;font-size:16px;color:#7b8389;margin-top:2px}
+.fw{font-size:18px;color:#6b7479;font-style:italic;margin-bottom:5px}
+.hl{background:#ffd400;padding:0 4px}
+.tag{display:inline-block;background:#ff2d1f;color:#fff;font-weight:700;font-size:25px;padding:5px 12px;border-radius:8px;margin-bottom:6px}
+.in p{margin-top:4px}.in .do{margin-top:8px;padding-top:8px;border-top:1px solid #e6e2dc;font-weight:700}
+/* captura de la tienda trucha dentro del chat */
+.shot{width:520px;border-radius:12px;overflow:hidden;background:#111;color:#fff;font-family:system-ui,sans-serif;position:relative;margin-bottom:8px}
+.shot .url{background:#2a2a2a;font-family:JB;font-size:17px;padding:8px 12px;color:#ddd}
+.shot .url i{font-style:normal;color:#ff6a5f}
+.shot .bf{padding:12px 14px 14px;display:flex;gap:14px;align-items:center}
+.shot .pr{width:150px;height:118px;border-radius:10px;background:linear-gradient(135deg,#ff2d1f,#ffd400);display:flex;align-items:center;justify-content:center;font-family:AN;font-size:62px;color:#0b0b0b}
+.shot .tx{flex:1}
+.shot .tx small{display:block;font-size:16px;letter-spacing:.14em;color:#ffd400;font-weight:700}
+.shot .tx b{display:block;font-size:30px;line-height:1.1}
+.shot .tx s{font-size:18px;color:#999}
+.shot .tm{margin:0 14px 12px;background:#ff2d1f;border-radius:8px;text-align:center;font-family:JB;font-size:22px;padding:6px 0}
+.shot .tf{margin:0 14px 14px;font-size:17px;color:#ccc;text-align:center}
+svg.ink{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:4}
+.inp{position:absolute;left:0;right:0;bottom:0;height:90px;background:#f7f5f2;display:flex;align-items:center;gap:14px;padding:0 20px 12px;font-family:system-ui}
+.inp div{flex:1;height:56px;border-radius:30px;background:#fff;border:1px solid #e2ddd5;font-size:23px;color:#9aa1a6;display:flex;align-items:center;padding-left:24px}
+.inp span{width:58px;height:58px;border-radius:50%;background:#128c7e}
+#cam{position:absolute;width:24px;height:24px;border-radius:50%;background:#050505;z-index:4}
+#glare{position:absolute;z-index:4;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.16) 0,rgba(255,255,255,0) 24%)}
+
+/* cuadro 3 */
+#f3{left:2160px;background:#ff2d1f;color:#0b0b0b}
+#f3 .sello{position:absolute;left:70px;top:230px;width:940px;border:16px solid #0b0b0b;padding:30px 30px 20px;transform:rotate(-5deg);text-align:center}
+#f3 .sello .an{font-size:215px;line-height:.95;color:#0b0b0b}
+#f3 .sello small{display:block;font-family:JB;font-size:30px;letter-spacing:.2em;margin-top:14px}
+#f3 .sem{position:absolute;left:70px;top:905px;height:110px;width:400px;display:flex;gap:26px;align-items:center;background:#0b0b0b;border-radius:60px;padding:0 30px}
+#f3 .sem i{width:68px;height:68px;border-radius:50%;display:block}
+#f3 .semt{position:absolute;left:500px;top:922px;font-family:JB;font-size:30px;letter-spacing:.14em;color:#0b0b0b}
+#f3 .dato{position:absolute;left:70px;right:70px;top:1070px;background:#0b0b0b;color:#f1ebdf;padding:46px 46px 40px;box-shadow:14px 14px 0 #ffd400}
+#f3 .dato small{font-family:JB;font-size:24px;letter-spacing:.16em;color:#ffd400}
+#f3 .dato .an{font-size:118px;margin:10px 0 8px}
+#f3 .dato p{font-family:SG;font-size:36px;line-height:1.3}
+#f3 .dato p b{color:#19e66b}
+#f3 .cierre{position:absolute;left:70px;right:70px;top:1585px;font-size:80px;color:#f1ebdf}
+#f3 .url{position:absolute;left:70px;bottom:70px;font-family:JB;font-size:27px;color:#0b0b0b;background:#f1ebdf;padding:10px 16px}
+</style></head><body>
+
+<!-- CUADRO 1: gancho -->
+<section class="f" id="f1">
+ <div class="top"><b>CYBER MOBILE</b><span class="mono" style="color:#ffd400">CUADRO 1 · 0 – 4,5 s</span></div>
+ <div class="old"><s>TERMINA EN 00:01</s><span>↻ recargás…</span></div>
+ <div class="an t">09:59</div>
+ <span class="st" style="left:700px;top:196px;transform:rotate(5deg);background:#ffd400;color:#0b0b0b">−70% SOLO HOY</span>
+ <h1 class="an">ESTE RELOJ<br><span class="k">MIENTE.</span></h1>
+ <div class="sub">$29.999 por 9 minutos. Recargás la página y <span class="hl">vuelve a empezar.</span></div>
+ <svg fill="none" stroke="#ff2d1f" stroke-width="12" stroke-linecap="round"><path d="M90,570 C80,450 400,415 640,428 C900,440 1045,530 1030,700 C1015,880 720,925 480,918 C240,910 62,860 66,700 C68,650 92,610 135,585"/></svg>
+ <div class="pie" style="color:#ffd400;opacity:1">BLACK FRIDAY · VIERNES 27/11</div>
+</section>
+
+<!-- CUADRO 2: Vera en el celular -->
+<section class="f" id="f2">
+ <div class="top"><b>CYBER MOBILE</b><span class="mono">CUADRO 2 · 8 – 18 s</span></div>
+ <h1 class="an">Recargué.<br><span class="k">Volvió a 09:59.</span></h1>
+ <canvas id="ph"></canvas>
+ <div id="scr">
+  <div class="sb"><span>21:47</span><span>5G ▮</span></div>
+  <div class="hd"><span class="bk">‹</span><img src="vera-perfil.png"><div><b>Vera AI Antiestafas</b><small>en línea</small></div></div>
+  <div class="chat">
+   <div class="b out">
+    <div class="shot" id="shot">
+     <div class="url">🔒 <i>zapas-blackfriday-oficial-outlet.shop</i></div>
+     <div class="bf"><div class="pr">−70%</div><div class="tx"><small>BLACK FRIDAY</small><b>Zapatillas running $29.999</b><s>$99.999</s></div></div>
+     <div class="tm">TERMINA EN 09:59</div>
+     <div class="tf">10% extra pagando por transferencia</div>
+    </div>
+    Recargo y el reloj vuelve a 10 minutos. <span class="hl">¿Es real?</span><time>21:47 ✓✓</time>
+    <svg class="ink" fill="none" stroke="#ff2d1f" stroke-width="5.5" stroke-linecap="round"><ellipse cx="272" cy="222" rx="222" ry="30" transform="rotate(-2 272 225)"/><path d="M44,54 q12,-10 24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0 t24,0"/></svg>
+   </div>
+   <div class="b in"><span class="tag">🔴 RIESGO ALTO</span><br>Es una <b>tienda falsa</b>. 3 señales:
+    <p>🚩 La página se creó hace <span class="hl">6 días</span></p><p>🚩 Te empuja a <span class="hl">transferir</span> a una cuenta personal</p><p>🚩 El reloj se reinicia: es <span class="hl">apuro armado</span></p>
+    <div class="do">✋ No pagues. Buscá la tienda oficial.</div><time>21:47</time></div>
+  </div>
+  <div class="inp"><div>Mensaje</div><span></span></div>
+ </div>
+ <div id="cam"></div><div id="glare"></div>
+ <span class="lab" style="right:70px;top:405px">RECREACIÓN · TIENDA Y CHAT DE EJEMPLO</span>
+ <span class="st" style="left:600px;top:1560px;transform:rotate(4deg)">SE REINICIA ↻</span>
+ 
+</section>
+
+<!-- CUADRO 3: sello + dato del Observatorio -->
+<section class="f" id="f3">
+ <div class="top"><b style="color:#0b0b0b">CYBER MOBILE</b><span class="mono" style="color:#0b0b0b">CUADRO 3 · 18 – 30 s</span></div>
+ <div class="sello"><div class="an">ES ESTAFA.</div><small>EL APURO ES EL ANZUELO</small></div>
+ <div class="sem"><i style="background:#ff2d1f;box-shadow:0 0 0 6px #f1ebdf,0 0 30px #ff2d1f"></i><i style="background:#ffd400;opacity:.25"></i><i style="background:#19e66b;opacity:.25"></i></div><div class="semt">SEMÁFORO DE VERA:<br>ROJO · NO PAGUES</div>
+ <div class="dato"><small>OBSERVATORIO DE FRAUDE DIGITAL · NOV 2026</small>
+  <div class="an">TIENDA ONLINE FALSA</div>
+  <p><b>N.º 1</b> del ranking internacional y <b>en vigilancia</b> en Argentina, justo antes del Black Friday.</p></div>
+ <div class="an cierre">ANTES DE PAGAR,<br>MANDALE EL LINK A VERA.</div>
+ <div class="url">cybermobile.com.ar/vera · 7 días gratis</div>
+ 
+</section>
+
+<script>
+const im=new Image(); im.onload=()=>{
+ const c=document.getElementById('ph'); c.width=im.width; c.height=im.height; const x=c.getContext('2d'); x.drawImage(im,0,0);
+ const d=x.getImageData(0,0,c.width,c.height), p=d.data; let x0=1e9,y0=1e9,x1=0,y1=0;
+ for(let j=0;j<c.height;j++)for(let i=0;i<c.width;i++){const k=(j*c.width+i)*4; if(p[k+1]>110&&p[k+1]>p[k]*1.35&&p[k+1]>p[k+2]*1.35){ if(i<x0)x0=i;if(i>x1)x1=i;if(j<y0)y0=j;if(j>y1)y1=j; p[k]=6;p[k+1]=6;p[k+2]=8; } }
+ x.putImageData(d,0,0);
+ x0-=3;y0-=3;x1+=3;y1+=3; const TW=660, sc=TW/(x1-x0), TL=210, TT=470; c.style.transform=`translate(${TL-x0*sc}px,${TT-y0*sc}px) scale(${sc})`;
+ const s=document.getElementById('scr'), H=(y1-y0)*sc; for(const el of [s,document.getElementById('glare')]){el.style.left=TL+'px'; el.style.top=TT+'px'; el.style.width=TW+'px'; el.style.height=H+'px'; el.style.borderRadius=(TW*.085)+'px';}
+ const cm=document.getElementById('cam'); cm.style.left=(TL+TW/2-12)+'px'; cm.style.top=(TT+20)+'px';
+ document.documentElement.setAttribute('data-listo','1');
+}; im.src='mano.jpg';
+</script></body></html>

@@ -145,6 +145,8 @@ ${jsonld.map(ld).join('\n')}
 }
 
 const ORG = { '@type': 'Organization', name: 'Cyber Mobile', url: SITIO + '/', logo: SITIO + '/Escudo%20CM.jpeg' };
+// Autor visible y en datos estructurados (E-E-A-T): el mismo responsable que firman las fichas del Observatorio.
+const AUTOR = { '@type': 'Person', name: 'Norberto Germán Aguilar', alternateName: 'Germán Aguilar', honorificPrefix: 'Mg.', worksFor: ORG, url: SITIO + '/' };
 const veraTop = () => `<div class="vera vera-top"><div><b>¿Te llegó algo así? Reenviáselo a Vera.</b><br><span>Por WhatsApp te dice en segundos si es estafa y qué hacer.</span></div><a class="btn btn-p" href="${VERA}" rel="nofollow">Probala gratis</a></div>`;
 const veraBox = (frase) => `<div class="vera"><b>${esc(frase)}</b><span>Reenviale el mensaje, el link, el número o la captura a Vera por WhatsApp. Te responde en segundos con un semáforo y qué hacer.</span><a class="btn btn-p" href="${VERA}" rel="nofollow">Probala 7 días gratis</a></div>`;
 
@@ -166,7 +168,7 @@ ${fich.length ? `<div class="box"><span class="lbl">Estafas que circulan hoy</sp
     const cuerpo = `<ol class="crumbs"><li><a href="/">Inicio</a></li><li><a href="/guias">Guías</a></li><li aria-current="page">${esc(g.h1)}</li></ol>
 <div class="kick">Guía · Ciberseguridad para todos</div>
 <h1>${esc(g.h1)}</h1>
-<p class="meta">Actualizada el ${fechaLarga(g.actualizada || g.publicada)} · Equipo de Cyber Mobile</p>
+<p class="meta">Actualizada el <time datetime="${esc(g.actualizada || g.publicada)}">${fechaLarga(g.actualizada || g.publicada)}</time> · Por Mg. Germán Aguilar, Cyber Mobile</p>
 <div class="layout"><article>
 <div class="res"><b>RESPUESTA RÁPIDA</b><p>${md(g.resumen)}</p></div>
 ${veraTop()}
@@ -174,7 +176,7 @@ ${secciones}${caso}${veraBox('¿No querés revisarlo vos? Mandáselo a Vera.')}$
 </article>${aside}</div>`;
     const jsonld = [
         { '@context': 'https://schema.org', '@type': 'Article', headline: g.h1, description: g.descripcion, inLanguage: 'es-AR', mainEntityOfPage: url,
-            datePublished: g.publicada, dateModified: g.actualizada || g.publicada, author: ORG, publisher: ORG, image: SITIO + '/Escudo%20CM.jpeg' },
+            datePublished: g.publicada, dateModified: g.actualizada || g.publicada, author: AUTOR, publisher: ORG, image: SITIO + '/Escudo%20CM.jpeg' },
         { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITIO + '/' },
             { '@type': 'ListItem', position: 2, name: 'Guías', item: SITIO + '/guias' },
@@ -209,13 +211,16 @@ for (const g of guias) {
     fs.mkdirSync(path.join(salida, g.slug), { recursive: true });
     fs.writeFileSync(path.join(salida, g.slug, 'index.html'), paginaGuia(g));
 }
-// Bloque "Guías" de la portada (entre las marcas guias:inicio y guias:fin): las 3 más recientes.
+// Bloque "Guías" de la portada (entre las marcas guias:inicio y guias:fin): primero las marcadas con
+// "portada" (1, 2, 3: las que están más cerca de la primera página de Google) y, si faltan, las más recientes.
 const portada = path.join(RAIZ, 'index.html');
 const html = fs.readFileSync(portada, 'utf8');
 const marca = /(<!-- guias:inicio[^>]*-->)[\s\S]*?(\s*<!-- guias:fin -->)/;
 if (!marca.test(html)) throw new Error('index.html no tiene las marcas guias:inicio / guias:fin');
-const recientes = [...guias].sort((a, b) => (b.actualizada || b.publicada).localeCompare(a.actualizada || a.publicada)).slice(0, 3);
+const fijas = guias.filter((g) => Number(g.portada) > 0).sort((a, b) => a.portada - b.portada);
+const recientes = [...fijas, ...[...guias].filter((g) => !fijas.includes(g))
+    .sort((a, b) => (b.actualizada || b.publicada).localeCompare(a.actualizada || a.publicada))].slice(0, 3);
 const bloque = `\n            <div class="guias-home reveal">\n${recientes.map((g) => `                <a class="tile guia-card" href="/guias/${g.slug}" data-track="home_guia"><b>${esc(g.h1)}</b><span>${esc(g.descripcion)}</span><em>Leer la guía →</em></a>`).join('\n')}\n            </div>`;
 fs.writeFileSync(portada, html.replace(marca, (m, a, b) => a + bloque + b));
-fs.writeFileSync(path.join(salida, 'lista.json'), JSON.stringify(guias.map((g) => ({ slug: g.slug, fecha: g.actualizada || g.publicada })), null, 1) + '\n');
+fs.writeFileSync(path.join(salida, 'lista.json'), JSON.stringify(guias.map((g) => ({ slug: g.slug, fecha: g.actualizada || g.publicada, h1: g.h1, fichas: g.fichas || [] })), null, 1) + '\n');
 console.log(`Guías generadas: ${guias.length} (${guias.map((g) => g.slug).join(', ')})`);
