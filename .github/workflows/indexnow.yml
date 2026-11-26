@@ -1,0 +1,39 @@
+name: IndexNow
+
+# Después de cada cambio del sitio en main, avisa a Bing (y por él a ChatGPT y Copilot) qué páginas
+# hay, con IndexNow. Espera unos minutos a que Vercel publique. No usa secretos: la clave es pública.
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'scripts/**'
+      - 'app/**'
+      - 'docs/**'
+      - '.claude/**'
+      - 'extension/**'
+      - 'redes/**'
+      - 'CLAUDE.md'
+      - 'README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: true
+
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 20
+      - name: Esperar el deploy de Vercel
+        if: github.event_name == 'push'
+        run: sleep 300
+      - name: Avisar a IndexNow
+        run: node scripts/seo/indexnow.mjs
