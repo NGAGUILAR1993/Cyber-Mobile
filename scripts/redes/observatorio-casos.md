@@ -28,5 +28,6 @@ Pedido del dueño (17/11): la base de las publicaciones es el Observatorio, pero
 | 1 | Plataforma de inversión falsa (versión específica; el 16/11 salió la genérica) | /observatorio/inversion-falsa | 23/11 (propuesta, anuncios de Gmail + VT Markets, ESET 15/10; falta OK) |
 | - | Black Friday / Cyber Monday (tienda falsa) | 27/11 buscado: ESET/Kaspersky/medios AR sin captura completa argentina; solo figura de Kaspersky (Sephora falso en alemán, baja resolución), pendiente |
 | - | Quishing / QR falso en mail (WeLiveSecurity 29/10/2026) | 28/11 buscado: solo mail DocuSign en inglés, no argentino y con marca de agua de ESET; QR Mercado Libre y compra no reconocida sin captura descargable; sin caso válido, pendiente (ver `propuestas/2026-11-28/real/textos.md`) |
+| - | Segunda búsqueda 28/11 en fuentes oficiales (CERT.ar, Defensa del Consumidor, bancos, billeteras, ANSES, PAMI, Correo, Edenor/Edesur) | 28/11 buscado: sin captura completa de SMS/mail/sitio en 60 días; sin caso válido (ver `propuestas/2026-11-28/real2/textos.md`) |
 
 Cuando termine la lista, volver a `observatorio/datos.json` (el ranking cambia por mes) y seguir.
